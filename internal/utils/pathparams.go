@@ -55,11 +55,11 @@ func getSimplePathParams(ctx context.Context, parentName string, objType reflect
 		if objValue.Len() == 0 {
 			return nil
 		}
-		ppVals := fmt.Sprintf("%v", objValue.Index(0).Interface())
-		for i := 1; i < objValue.Len(); i++ {
-			ppVals += fmt.Sprintf(",%v", objValue.Index(i).Interface())
+		var ppVals []string
+		for i := 0; i < objValue.Len(); i++ {
+			ppVals = append(ppVals, fmt.Sprintf("%v", objValue.Index(i).Interface()))
 		}
-		pathParams[parentName] = ppVals
+		pathParams[parentName] = strings.Join(ppVals, ",")
 	default:
 		pathParams[parentName] = fmt.Sprintf("%v", objValue.Interface())
 	}
