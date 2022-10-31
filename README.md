@@ -28,12 +28,15 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := sdk.New()
-	s.ConfigureSecurity(shared.Security{
-		APIKey: shared.SchemeAPIKey{
-			APIKey: "YOUR_API_KEY", // Replace with your API key from your Speakeasy Workspace
-		},
-	})
+	opts := []sdk.SDKOption{
+		sdk.WithSecurity(shared.Security{
+			APIKey: shared.SchemeAPIKey{
+				APIKey: "YOUR_API_KEY", // Replace with your API key from your Speakeasy Workspace
+			},
+		}),
+	}
+
+	s := sdk.New(opts...)
 
 	res, err := s.GetApis(ctx, operations.GetApisRequest{
 		QueryParams: operations.GetApisQueryParams{
