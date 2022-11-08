@@ -41,12 +41,15 @@ func GenerateURL(ctx context.Context, serverURL, path string, pathParams interfa
 func getSimplePathParams(ctx context.Context, parentName string, objType reflect.Type, objValue reflect.Value, explode bool) map[string]string {
 	pathParams := make(map[string]string)
 
-	switch objType.Kind() {
-	case reflect.Pointer:
+	if objType.Kind() == reflect.Ptr {
 		if objValue.IsNil() {
 			return nil
 		}
+		objType = objType.Elem()
 		objValue = objValue.Elem()
+	}
+
+	switch objType.Kind() {
 	case reflect.Array, reflect.Slice:
 		if objValue.Len() == 0 {
 			return nil

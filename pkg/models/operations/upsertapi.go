@@ -10,7 +10,7 @@ type UpsertAPIPathParams struct {
 
 type UpsertAPIRequest struct {
 	PathParams UpsertAPIPathParams
-	Request    shared.API `request:"mediaType=application/json"`
+	Request    shared.APIInput `request:"mediaType=application/json"`
 }
 
 type UpsertAPIResponse struct {

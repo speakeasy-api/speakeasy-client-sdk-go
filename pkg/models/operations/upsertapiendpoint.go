@@ -12,7 +12,7 @@ type UpsertAPIEndpointPathParams struct {
 
 type UpsertAPIEndpointRequest struct {
 	PathParams UpsertAPIEndpointPathParams
-	Request    shared.APIEndpoint `request:"mediaType=application/json"`
+	Request    shared.APIEndpointInput `request:"mediaType=application/json"`
 }
 
 type UpsertAPIEndpointResponse struct {

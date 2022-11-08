@@ -11,7 +11,7 @@ type InsertVersionMetadataPathParams struct {
 
 type InsertVersionMetadataRequest struct {
 	PathParams InsertVersionMetadataPathParams
-	Request    shared.VersionMetadata `request:"mediaType=application/json"`
+	Request    shared.VersionMetadataInput `request:"mediaType=application/json"`
 }
 
 type InsertVersionMetadataResponse struct {
