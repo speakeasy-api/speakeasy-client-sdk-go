@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type GetEmbedAccessTokenQueryParams struct {
@@ -11,6 +12,7 @@ type GetEmbedAccessTokenQueryParams struct {
 }
 
 type GetEmbedAccessTokenRequest struct {
+	Retries     *utils.RetryConfig
 	QueryParams GetEmbedAccessTokenQueryParams
 }
 

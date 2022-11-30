@@ -4,6 +4,17 @@ import (
 	"time"
 )
 
+// APIEndpointInput
+// An ApiEndpoint is a description of an Endpoint for an API.
+type APIEndpointInput struct {
+	APIEndpointID string `json:"api_endpoint_id"`
+	Description   string `json:"description"`
+	DisplayName   string `json:"display_name"`
+	Method        string `json:"method"`
+	Path          string `json:"path"`
+	VersionID     string `json:"version_id"`
+}
+
 // APIEndpoint
 // An ApiEndpoint is a description of an Endpoint for an API.
 type APIEndpoint struct {
@@ -18,15 +29,4 @@ type APIEndpoint struct {
 	UpdatedAt     time.Time `json:"updated_at"`
 	VersionID     string    `json:"version_id"`
 	WorkspaceID   string    `json:"workspace_id"`
-}
-
-// APIEndpointInput
-// An ApiEndpoint is a description of an Endpoint for an API.
-type APIEndpointInput struct {
-	APIEndpointID string `json:"api_endpoint_id"`
-	Description   string `json:"description"`
-	DisplayName   string `json:"display_name"`
-	Method        string `json:"method"`
-	Path          string `json:"path"`
-	VersionID     string `json:"version_id"`
 }

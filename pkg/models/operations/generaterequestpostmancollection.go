@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type GenerateRequestPostmanCollectionPathParams struct {
@@ -9,6 +10,7 @@ type GenerateRequestPostmanCollectionPathParams struct {
 }
 
 type GenerateRequestPostmanCollectionRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams GenerateRequestPostmanCollectionPathParams
 }
 

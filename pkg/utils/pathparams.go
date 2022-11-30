@@ -79,16 +79,22 @@ func getSimplePathParams(ctx context.Context, parentName string, objType reflect
 			fieldType := objType.Field(i)
 			valType := objValue.Field(i)
 
+			ppTag := parseParamTag(pathParamTagKey, fieldType, "simple", explode)
+			if ppTag == nil {
+				continue
+			}
+
 			if fieldType.Type.Kind() == reflect.Pointer {
 				if valType.IsNil() {
 					continue
 				}
 				valType = valType.Elem()
 			}
+
 			if explode {
-				ppVals = append(ppVals, fmt.Sprintf("%s=%v", fieldType.Name, valType.Interface()))
+				ppVals = append(ppVals, fmt.Sprintf("%s=%v", ppTag.ParamName, valType.Interface()))
 			} else {
-				ppVals = append(ppVals, fmt.Sprintf("%s,%v", fieldType.Name, valType.Interface()))
+				ppVals = append(ppVals, fmt.Sprintf("%s,%v", ppTag.ParamName, valType.Interface()))
 			}
 		}
 		pathParams[parentName] = strings.Join(ppVals, ",")

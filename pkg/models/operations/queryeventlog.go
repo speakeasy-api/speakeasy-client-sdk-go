@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type QueryEventLogQueryParams struct {
@@ -9,6 +10,7 @@ type QueryEventLogQueryParams struct {
 }
 
 type QueryEventLogRequest struct {
+	Retries     *utils.RetryConfig
 	QueryParams QueryEventLogQueryParams
 }
 

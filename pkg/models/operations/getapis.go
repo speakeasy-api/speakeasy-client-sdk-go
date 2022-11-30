@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type GetApisOp struct {
@@ -14,6 +15,7 @@ type GetApisQueryParams struct {
 }
 
 type GetApisRequest struct {
+	Retries     *utils.RetryConfig
 	QueryParams GetApisQueryParams
 }
 

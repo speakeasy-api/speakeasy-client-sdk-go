@@ -51,10 +51,10 @@ func populateForm(paramName string, explode bool, objType reflect.Type, objValue
 			} else {
 				items = append(items, fmt.Sprintf("%s,%v", iter.Key().String(), iter.Value().Interface()))
 			}
+		}
 
-			if len(items) > 0 {
-				formValues.Add(paramName, strings.Join(items, ","))
-			}
+		if len(items) > 0 {
+			formValues.Add(paramName, strings.Join(items, ","))
 		}
 	case reflect.Slice, reflect.Array:
 		values := parseFormStyleArray(explode, objValue)

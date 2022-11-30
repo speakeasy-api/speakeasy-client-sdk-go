@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type RegisterSchemaPathParams struct {
@@ -19,6 +20,7 @@ type RegisterSchemaRequestBody struct {
 }
 
 type RegisterSchemaRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams RegisterSchemaPathParams
 	Request    RegisterSchemaRequestBody `request:"mediaType=multipart/form-data"`
 }

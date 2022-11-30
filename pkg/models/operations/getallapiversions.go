@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type GetAllAPIVersionsPathParams struct {
@@ -18,6 +19,7 @@ type GetAllAPIVersionsQueryParams struct {
 }
 
 type GetAllAPIVersionsRequest struct {
+	Retries     *utils.RetryConfig
 	PathParams  GetAllAPIVersionsPathParams
 	QueryParams GetAllAPIVersionsQueryParams
 }

@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type DeleteSchemaPathParams struct {
@@ -11,6 +12,7 @@ type DeleteSchemaPathParams struct {
 }
 
 type DeleteSchemaRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams DeleteSchemaPathParams
 }
 

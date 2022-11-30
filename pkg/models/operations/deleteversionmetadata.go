@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type DeleteVersionMetadataPathParams struct {
@@ -12,6 +13,7 @@ type DeleteVersionMetadataPathParams struct {
 }
 
 type DeleteVersionMetadataRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams DeleteVersionMetadataPathParams
 }
 

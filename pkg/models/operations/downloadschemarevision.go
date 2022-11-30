@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type DownloadSchemaRevisionPathParams struct {
@@ -11,6 +12,7 @@ type DownloadSchemaRevisionPathParams struct {
 }
 
 type DownloadSchemaRevisionRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams DownloadSchemaRevisionPathParams
 }
 

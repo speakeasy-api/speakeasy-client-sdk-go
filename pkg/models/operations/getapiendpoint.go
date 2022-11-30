@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type GetAPIEndpointPathParams struct {
@@ -11,6 +12,7 @@ type GetAPIEndpointPathParams struct {
 }
 
 type GetAPIEndpointRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams GetAPIEndpointPathParams
 }
 

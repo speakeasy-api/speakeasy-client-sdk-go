@@ -45,7 +45,7 @@ func serializeHeader(objType reflect.Type, objValue reflect.Value, explode bool)
 			fieldType := objType.Field(i)
 			valType := objValue.Field(i)
 
-			tag := parseQueryParamTag(fieldType)
+			tag := parseParamTag(headerParamTagKey, fieldType, "simple", false)
 			if tag == nil {
 				continue
 			}

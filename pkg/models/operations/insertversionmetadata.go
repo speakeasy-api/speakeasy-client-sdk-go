@@ -2,6 +2,7 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 )
 
 type InsertVersionMetadataPathParams struct {
@@ -10,6 +11,7 @@ type InsertVersionMetadataPathParams struct {
 }
 
 type InsertVersionMetadataRequest struct {
+	Retries    *utils.RetryConfig
 	PathParams InsertVersionMetadataPathParams
 	Request    shared.VersionMetadataInput `request:"mediaType=application/json"`
 }
