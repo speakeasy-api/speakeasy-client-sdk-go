@@ -158,7 +158,7 @@ func (s *apis) GenerateOpenAPISpec(ctx context.Context, request operations.Gener
 
 // GeneratePostmanCollection - Generate a Postman collection for a particular Api.
 // Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
-func (s *apis) GeneratePostmanCollection(ctx context.Context, request operations.GeneratePostmanCollectionRequest) (*operations.GeneratePostmanCollectionResponse, error) {
+func (s *apis) GeneratePostmanCollection(ctx context.Context, request operations.GeneratePostmanCollectionRequest, opts ...operations.Option) (*operations.GeneratePostmanCollectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/generate/postman", request, nil)
 	if err != nil {
@@ -169,7 +169,12 @@ func (s *apis) GeneratePostmanCollection(ctx context.Context, request operations
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/octet-stream;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/octet-stream;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	client := s.sdkConfiguration.SecurityClient

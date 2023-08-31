@@ -145,8 +145,8 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.3.0",
-			SDKVersion:        "1.24.0",
-			GenVersion:        "2.83.3",
+			SDKVersion:        "1.25.0",
+			GenVersion:        "2.89.1",
 		},
 	}
 	for _, opt := range opts {
