@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// UnboundedRequest - An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
+// An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
 type UnboundedRequest struct {
 	// Creation timestamp.
 	CreatedAt time.Time `json:"created_at"`
