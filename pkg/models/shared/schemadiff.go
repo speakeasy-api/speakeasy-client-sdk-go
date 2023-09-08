@@ -23,7 +23,7 @@ func (o *SchemaDiffValueChange) GetTo() string {
 	return o.To
 }
 
-// SchemaDiff - A SchemaDiff represents a diff of two Schemas.
+// A SchemaDiff represents a diff of two Schemas.
 type SchemaDiff struct {
 	// Holds every addition change in the diff.
 	Additions []string `json:"additions"`

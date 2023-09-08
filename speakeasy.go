@@ -58,6 +58,7 @@ type sdkConfiguration struct {
 	OpenAPIDocVersion string
 	SDKVersion        string
 	GenVersion        string
+	RetryConfig       *utils.RetryConfig
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -72,22 +73,23 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.Server], nil
 }
 
-// Speakeasy - Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+//
 // https://speakeasyapi.dev/docs/ - The Speakeasy Platform Documentation
 type Speakeasy struct {
-	// APIEndpoints - REST APIs for managing ApiEndpoint entities
+	// REST APIs for managing ApiEndpoint entities
 	APIEndpoints *apiEndpoints
-	// Apis - REST APIs for managing Api entities
+	// REST APIs for managing Api entities
 	Apis *apis
-	// Embeds - REST APIs for managing embeds
+	// REST APIs for managing embeds
 	Embeds *embeds
-	// Metadata - REST APIs for managing Version Metadata entities
+	// REST APIs for managing Version Metadata entities
 	Metadata *metadata
-	// Plugins - REST APIs for managing and running plugins
+	// REST APIs for managing and running plugins
 	Plugins *plugins
-	// Requests - REST APIs for retrieving request information
+	// REST APIs for retrieving request information
 	Requests *requests
-	// Schemas - REST APIs for managing Schema entities
+	// REST APIs for managing Schema entities
 	Schemas *schemas
 
 	sdkConfiguration sdkConfiguration
@@ -139,14 +141,20 @@ func WithSecurity(security shared.Security) SDKOption {
 	}
 }
 
+func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+	return func(sdk *SDK) {
+		sdk.sdkConfiguration.RetryConfig = &retryConfig
+	}
+}
+
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Speakeasy {
 	sdk := &Speakeasy{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.3.0",
-			SDKVersion:        "1.26.0",
-			GenVersion:        "2.96.9",
+			SDKVersion:        "1.27.0",
+			GenVersion:        "2.107.0",
 		},
 	}
 	for _, opt := range opts {
