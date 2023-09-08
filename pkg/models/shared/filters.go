@@ -2,7 +2,7 @@
 
 package shared
 
-// Filters - Filters are used to query requests.
+// Filters are used to query requests.
 type Filters struct {
 	// A list of filters to apply to the query.
 	Filters []Filter `json:"filters"`

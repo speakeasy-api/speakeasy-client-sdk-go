@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// Schema - A Schema represents an API schema for a particular Api and Version.
+// A Schema represents an API schema for a particular Api and Version.
 type Schema struct {
 	// The ID of the Api this Schema belongs to.
 	APIID string `json:"api_id"`
