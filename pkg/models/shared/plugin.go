@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -15,6 +16,17 @@ type Plugin struct {
 	Title       string     `json:"title"`
 	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
 	WorkspaceID string     `json:"workspace_id"`
+}
+
+func (p Plugin) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Plugin) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Plugin) GetCode() string {

@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -42,6 +43,17 @@ type VersionMetadata struct {
 	VersionID string `json:"version_id"`
 	// The workspace ID this Metadata belongs to.
 	WorkspaceID string `json:"workspace_id"`
+}
+
+func (v VersionMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *VersionMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *VersionMetadata) GetAPIID() string {

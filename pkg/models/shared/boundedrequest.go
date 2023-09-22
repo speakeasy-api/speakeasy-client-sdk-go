@@ -3,10 +3,11 @@
 package shared
 
 import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 	"time"
 )
 
-// BoundedRequest - A BoundedRequest is a request that has been logged by the Speakeasy without the contents of the request.
+// A BoundedRequest is a request that has been logged by the Speakeasy without the contents of the request.
 type BoundedRequest struct {
 	// The ID of the ApiEndpoint this request was made to.
 	APIEndpointID string `json:"api_endpoint_id"`
@@ -36,6 +37,17 @@ type BoundedRequest struct {
 	VersionID string `json:"version_id"`
 	// The workspace ID this request was made to.
 	WorkspaceID string `json:"workspace_id"`
+}
+
+func (b BoundedRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BoundedRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BoundedRequest) GetAPIEndpointID() string {

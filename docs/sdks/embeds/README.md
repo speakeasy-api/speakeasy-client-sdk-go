@@ -23,33 +23,33 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Embeds.GetEmbedAccessToken(ctx, operations.GetEmbedAccessTokenRequest{
-        Description: speakeasy.String("porro"),
-        Duration: speakeasy.Int64(678880),
+        Description: speakeasyclientsdkgo.String("dicta"),
+        Duration: speakeasyclientsdkgo.Int64(720633),
         Filters: &shared.Filters{
             Filters: []shared.Filter{
                 shared.Filter{
-                    Key: "dicta",
-                    Operator: "nam",
-                    Value: "officia",
+                    Key: "officia",
+                    Operator: "occaecati",
+                    Value: "fugit",
                 },
             },
-            Limit: 582020,
-            Offset: 143353,
-            Operator: "deleniti",
+            Limit: 537373,
+            Offset: 944669,
+            Operator: "optio",
         },
     })
     if err != nil {
@@ -87,13 +87,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
@@ -134,21 +134,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Embeds.RevokeEmbedAccessToken(ctx, operations.RevokeEmbedAccessTokenRequest{
-        TokenID: "hic",
+        TokenID: "totam",
     })
     if err != nil {
         log.Fatal(err)

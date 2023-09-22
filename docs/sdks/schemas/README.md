@@ -27,23 +27,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.DeleteSchema(ctx, operations.DeleteSchemaRequest{
-        APIID: "mollitia",
-        RevisionID: "laborum",
-        VersionID: "dolores",
+        APIID: "dolores",
+        RevisionID: "dolorem",
+        VersionID: "corporis",
     })
     if err != nil {
         log.Fatal(err)
@@ -80,22 +80,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.DownloadSchema(ctx, operations.DownloadSchemaRequest{
-        APIID: "dolorem",
-        VersionID: "corporis",
+        APIID: "explicabo",
+        VersionID: "nobis",
     })
     if err != nil {
         log.Fatal(err)
@@ -132,23 +132,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.DownloadSchemaRevision(ctx, operations.DownloadSchemaRevisionRequest{
-        APIID: "explicabo",
-        RevisionID: "nobis",
-        VersionID: "enim",
+        APIID: "enim",
+        RevisionID: "omnis",
+        VersionID: "nemo",
     })
     if err != nil {
         log.Fatal(err)
@@ -186,22 +186,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchema(ctx, operations.GetSchemaRequest{
-        APIID: "omnis",
-        VersionID: "nemo",
+        APIID: "minima",
+        VersionID: "excepturi",
     })
     if err != nil {
         log.Fatal(err)
@@ -238,24 +238,24 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemaDiff(ctx, operations.GetSchemaDiffRequest{
-        APIID: "minima",
-        BaseRevisionID: "excepturi",
-        TargetRevisionID: "accusantium",
-        VersionID: "iure",
+        APIID: "accusantium",
+        BaseRevisionID: "iure",
+        TargetRevisionID: "culpa",
+        VersionID: "doloribus",
     })
     if err != nil {
         log.Fatal(err)
@@ -293,23 +293,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemaRevision(ctx, operations.GetSchemaRevisionRequest{
-        APIID: "culpa",
-        RevisionID: "doloribus",
-        VersionID: "sapiente",
+        APIID: "sapiente",
+        RevisionID: "architecto",
+        VersionID: "mollitia",
     })
     if err != nil {
         log.Fatal(err)
@@ -347,22 +347,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemas(ctx, operations.GetSchemasRequest{
-        APIID: "architecto",
-        VersionID: "mollitia",
+        APIID: "dolorem",
+        VersionID: "culpa",
     })
     if err != nil {
         log.Fatal(err)
@@ -400,14 +400,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )
@@ -416,12 +416,12 @@ func main() {
     res, err := s.Schemas.RegisterSchema(ctx, operations.RegisterSchemaRequest{
         RequestBody: operations.RegisterSchemaRequestBody{
             File: operations.RegisterSchemaRequestBodyFile{
-                Content: []byte("dolorem"),
-                File: "culpa",
+                Content: []byte("consequuntur"),
+                File: "repellat",
             },
         },
-        APIID: "consequuntur",
-        VersionID: "repellat",
+        APIID: "mollitia",
+        VersionID: "occaecati",
     })
     if err != nil {
         log.Fatal(err)

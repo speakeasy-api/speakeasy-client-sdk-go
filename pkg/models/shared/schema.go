@@ -3,10 +3,11 @@
 package shared
 
 import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 	"time"
 )
 
-// Schema - A Schema represents an API schema for a particular Api and Version.
+// A Schema represents an API schema for a particular Api and Version.
 type Schema struct {
 	// The ID of the Api this Schema belongs to.
 	APIID string `json:"api_id"`
@@ -20,6 +21,17 @@ type Schema struct {
 	VersionID string `json:"version_id"`
 	// The workspace ID this Schema belongs to.
 	WorkspaceID string `json:"workspace_id"`
+}
+
+func (s Schema) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Schema) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Schema) GetAPIID() string {

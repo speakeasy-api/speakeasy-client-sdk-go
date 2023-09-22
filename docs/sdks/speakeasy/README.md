@@ -22,13 +22,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
-    s := speakeasy.New(
-        speakeasy.WithSecurity(shared.Security{
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
     )

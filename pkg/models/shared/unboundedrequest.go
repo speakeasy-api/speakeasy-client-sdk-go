@@ -3,10 +3,11 @@
 package shared
 
 import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 	"time"
 )
 
-// UnboundedRequest - An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
+// An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
 type UnboundedRequest struct {
 	// Creation timestamp.
 	CreatedAt time.Time `json:"created_at"`
@@ -18,6 +19,17 @@ type UnboundedRequest struct {
 	RequestID string `json:"request_id"`
 	// The workspace ID this request was made to.
 	WorkspaceID string `json:"workspace_id"`
+}
+
+func (u UnboundedRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UnboundedRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UnboundedRequest) GetCreatedAt() time.Time {

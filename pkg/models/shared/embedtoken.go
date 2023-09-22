@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -28,6 +29,17 @@ type EmbedToken struct {
 	RevokedBy *string `json:"revoked_by,omitempty"`
 	// The workspace ID this token belongs to.
 	WorkspaceID string `json:"workspace_id"`
+}
+
+func (e EmbedToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EmbedToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EmbedToken) GetCreatedAt() time.Time {
