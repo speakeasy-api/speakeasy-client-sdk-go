@@ -47,12 +47,15 @@ func (o *GetSchemaDiffRequest) GetVersionID() string {
 }
 
 type GetSchemaDiffResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
 	Error *shared.Error
 	// OK
-	SchemaDiff  *shared.SchemaDiff
-	StatusCode  int
+	SchemaDiff *shared.SchemaDiff
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

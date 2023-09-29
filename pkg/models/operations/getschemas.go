@@ -29,12 +29,15 @@ func (o *GetSchemasRequest) GetVersionID() string {
 }
 
 type GetSchemasResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
 	Error *shared.Error
 	// OK
-	Schemata    []shared.Schema
-	StatusCode  int
+	Schemata []shared.Schema
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

@@ -1,4 +1,5 @@
 # Embeds
+(*Embeds*)
 
 ## Overview
 
@@ -37,19 +38,19 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Embeds.GetEmbedAccessToken(ctx, operations.GetEmbedAccessTokenRequest{
-        Description: speakeasyclientsdkgo.String("dicta"),
-        Duration: speakeasyclientsdkgo.Int64(720633),
+        Description: speakeasyclientsdkgo.String("Versatile asynchronous leverage"),
+        Duration: speakeasyclientsdkgo.Int64(554373),
         Filters: &shared.Filters{
             Filters: []shared.Filter{
                 shared.Filter{
-                    Key: "officia",
-                    Operator: "occaecati",
-                    Value: "fugit",
+                    Key: "<key>",
+                    Operator: "Account",
+                    Value: "unless to frame",
                 },
             },
-            Limit: 537373,
-            Offset: 944669,
-            Operator: "optio",
+            Limit: 792058,
+            Offset: 425010,
+            Operator: "kilogram innovative Virginia",
         },
     })
     if err != nil {
@@ -148,7 +149,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Embeds.RevokeEmbedAccessToken(ctx, operations.RevokeEmbedAccessTokenRequest{
-        TokenID: "totam",
+        TokenID: "Small",
     })
     if err != nil {
         log.Fatal(err)

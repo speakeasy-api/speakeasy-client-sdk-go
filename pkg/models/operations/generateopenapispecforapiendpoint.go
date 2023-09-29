@@ -38,13 +38,16 @@ func (o *GenerateOpenAPISpecForAPIEndpointRequest) GetVersionID() string {
 }
 
 type GenerateOpenAPISpecForAPIEndpointResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
 	Error *shared.Error
 	// OK
 	GenerateOpenAPISpecDiff *shared.GenerateOpenAPISpecDiff
-	StatusCode              int
-	RawResponse             *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GenerateOpenAPISpecForAPIEndpointResponse) GetContentType() string {

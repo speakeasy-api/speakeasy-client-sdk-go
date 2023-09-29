@@ -1,4 +1,5 @@
 # Apis
+(*Apis*)
 
 ## Overview
 
@@ -39,8 +40,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-        APIID: "deserunt",
-        VersionID: "perferendis",
+        APIID: "Applications Mercedes fuchsia",
+        VersionID: "Conroe",
     })
     if err != nil {
         log.Fatal(err)
@@ -92,8 +93,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Apis.GenerateOpenAPISpec(ctx, operations.GenerateOpenAPISpecRequest{
-        APIID: "ipsam",
-        VersionID: "repellendus",
+        APIID: "frictionless District South",
+        VersionID: "West Global",
     })
     if err != nil {
         log.Fatal(err)
@@ -144,8 +145,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Apis.GeneratePostmanCollection(ctx, operations.GeneratePostmanCollectionRequest{
-        APIID: "sapiente",
-        VersionID: "quo",
+        APIID: "extend Security",
+        VersionID: "reconfirm",
     })
     if err != nil {
         log.Fatal(err)
@@ -197,10 +198,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Apis.GetAllAPIVersions(ctx, operations.GetAllAPIVersionsRequest{
-        APIID: "odit",
+        APIID: "yum Rustic Berkshire",
         Metadata: map[string][]string{
-            "at": []string{
-                "at",
+            "assumenda": []string{
+                "Fresh",
             },
         },
         Op: &operations.GetAllAPIVersionsOp{
@@ -258,8 +259,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Apis.GetApis(ctx, operations.GetApisRequest{
         Metadata: map[string][]string{
-            "maiores": []string{
-                "molestiae",
+            "aut": []string{
+                "bypassing",
             },
         },
         Op: &operations.GetApisOp{
@@ -317,16 +318,16 @@ func main() {
     ctx := context.Background()
     res, err := s.Apis.UpsertAPI(ctx, operations.UpsertAPIRequest{
         APIInput: shared.APIInput{
-            APIID: "quod",
-            Description: "quod",
+            APIID: "Martinique redefine Garland",
+            Description: "Balanced 24/7 utilisation",
             MetaData: map[string][]string{
-                "esse": []string{
-                    "totam",
+                "deleniti": []string{
+                    "male",
                 },
             },
-            VersionID: "porro",
+            VersionID: "Forward",
         },
-        APIID: "dolorum",
+        APIID: "Facilitator",
     })
     if err != nil {
         log.Fatal(err)

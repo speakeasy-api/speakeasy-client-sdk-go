@@ -51,13 +51,14 @@ func Float64(f float64) *float64 { return &f }
 type sdkConfiguration struct {
 	DefaultClient     HTTPClient
 	SecurityClient    HTTPClient
-	Security          *shared.Security
+	Security          func(context.Context) (interface{}, error)
 	ServerURL         string
 	Server            string
 	Language          string
 	OpenAPIDocVersion string
 	SDKVersion        string
 	GenVersion        string
+	UserAgent         string
 	RetryConfig       *utils.RetryConfig
 }
 
@@ -133,11 +134,25 @@ func WithClient(client HTTPClient) SDKOption {
 		sdk.sdkConfiguration.DefaultClient = client
 	}
 }
+func withSecurity(security interface{}) func(context.Context) (interface{}, error) {
+	return func(context.Context) (interface{}, error) {
+		return &security, nil
+	}
+}
 
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *Speakeasy) {
-		sdk.sdkConfiguration.Security = &security
+		sdk.sdkConfiguration.Security = withSecurity(security)
+	}
+}
+
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Speakeasy) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
 	}
 }
 
@@ -153,8 +168,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.3.0",
-			SDKVersion:        "1.27.0",
-			GenVersion:        "2.125.1",
+			SDKVersion:        "1.28.0",
+			GenVersion:        "2.139.1",
+			UserAgent:         "speakeasy-sdk/go 1.28.0 2.139.1 0.3.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 		},
 	}
 	for _, opt := range opts {
@@ -200,7 +216,7 @@ func (s *Speakeasy) ValidateAPIKey(ctx context.Context) (*operations.ValidateAPI
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 

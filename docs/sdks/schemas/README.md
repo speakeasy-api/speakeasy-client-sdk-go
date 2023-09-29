@@ -1,4 +1,5 @@
 # Schemas
+(*Schemas*)
 
 ## Overview
 
@@ -41,9 +42,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.DeleteSchema(ctx, operations.DeleteSchemaRequest{
-        APIID: "dolores",
-        RevisionID: "dolorem",
-        VersionID: "corporis",
+        APIID: "Hybrid",
+        RevisionID: "Funk Garden Specialist",
+        VersionID: "male",
     })
     if err != nil {
         log.Fatal(err)
@@ -94,8 +95,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.DownloadSchema(ctx, operations.DownloadSchemaRequest{
-        APIID: "explicabo",
-        VersionID: "nobis",
+        APIID: "Specialist correctly",
+        VersionID: "customer Exclusive oof",
     })
     if err != nil {
         log.Fatal(err)
@@ -146,9 +147,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.DownloadSchemaRevision(ctx, operations.DownloadSchemaRevisionRequest{
-        APIID: "enim",
-        RevisionID: "omnis",
-        VersionID: "nemo",
+        APIID: "Belarus hacking firewall",
+        RevisionID: "Coupe affidavit Cheese",
+        VersionID: "pink deposit",
     })
     if err != nil {
         log.Fatal(err)
@@ -200,8 +201,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchema(ctx, operations.GetSchemaRequest{
-        APIID: "minima",
-        VersionID: "excepturi",
+        APIID: "Assistant",
+        VersionID: "banter Cotton withdrawal",
     })
     if err != nil {
         log.Fatal(err)
@@ -252,10 +253,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemaDiff(ctx, operations.GetSchemaDiffRequest{
-        APIID: "accusantium",
-        BaseRevisionID: "iure",
-        TargetRevisionID: "culpa",
-        VersionID: "doloribus",
+        APIID: "Tuna",
+        BaseRevisionID: "South Van",
+        TargetRevisionID: "whoever",
+        VersionID: "henry Tulare",
     })
     if err != nil {
         log.Fatal(err)
@@ -307,9 +308,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemaRevision(ctx, operations.GetSchemaRevisionRequest{
-        APIID: "sapiente",
-        RevisionID: "architecto",
-        VersionID: "mollitia",
+        APIID: "Mauritius",
+        RevisionID: "West Rustic Plastic",
+        VersionID: "Yttrium Loan",
     })
     if err != nil {
         log.Fatal(err)
@@ -361,8 +362,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemas(ctx, operations.GetSchemasRequest{
-        APIID: "dolorem",
-        VersionID: "culpa",
+        APIID: "white",
+        VersionID: "optical round",
     })
     if err != nil {
         log.Fatal(err)
@@ -416,12 +417,12 @@ func main() {
     res, err := s.Schemas.RegisterSchema(ctx, operations.RegisterSchemaRequest{
         RequestBody: operations.RegisterSchemaRequestBody{
             File: operations.RegisterSchemaRequestBodyFile{
-                Content: []byte("consequuntur"),
-                File: "repellat",
+                Content: []byte("mg|mf\".]!\"),
+                File: "Bronze Table Blues",
             },
         },
-        APIID: "mollitia",
-        VersionID: "occaecati",
+        APIID: "Oganesson",
+        VersionID: "matrix Pennsylvania Southeast",
     })
     if err != nil {
         log.Fatal(err)

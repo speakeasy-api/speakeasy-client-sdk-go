@@ -22,8 +22,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Apis.GetApis(ctx, operations.GetApisRequest{
         Metadata: map[string][]string{
-            "corrupti": []string{
-                "provident",
+            "aut": []string{
+                "bypassing",
             },
         },
         Op: &operations.GetApisOp{

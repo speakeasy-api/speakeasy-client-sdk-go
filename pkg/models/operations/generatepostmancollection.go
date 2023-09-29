@@ -29,13 +29,16 @@ func (o *GeneratePostmanCollectionRequest) GetVersionID() string {
 }
 
 type GeneratePostmanCollectionResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
 	Error *shared.Error
 	// OK
 	PostmanCollection []byte
-	StatusCode        int
-	RawResponse       *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GeneratePostmanCollectionResponse) GetContentType() string {
