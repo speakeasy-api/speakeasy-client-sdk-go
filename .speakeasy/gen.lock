@@ -1,24 +1,25 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: ba638b2ad28966c596e28321a2003686
-  docVersion: 0.3.0
+  docChecksum: 58142e9374716c1446b210b506d857bd
+  docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 2.3.3
-  configChecksum: c4e87f75e4e5c8af1ee6d2653362edc4
+  generationVersion: 2.233.6
+  releaseVersion: 2.5.1
+  configChecksum: de793bec570fa3d8b433c7f32cf0ad27
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
   published: true
 features:
   go:
-    core: 3.3.1
+    core: 3.3.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
     examples: 2.81.3
-    globalSecurity: 2.82.4
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
+    globals: 2.81.1
     inputOutputModels: 2.83.0
     serverIDs: 2.81.1
 generatedFiles:
@@ -26,12 +27,14 @@ generatedFiles:
   - apiendpoints.go
   - metadata.go
   - schemas.go
+  - auth.go
   - requests.go
-  - plugins.go
   - embeds.go
+  - events.go
   - speakeasy.go
   - go.mod
   - go.sum
+  - tests/helpers.go
   - pkg/models/sdkerrors/sdkerror.go
   - pkg/types/bigint.go
   - pkg/types/date.go
@@ -48,7 +51,6 @@ generatedFiles:
   - pkg/utils/retries.go
   - pkg/utils/security.go
   - pkg/utils/utils.go
-  - /pkg/models/operations/validateapikey.go
   - /pkg/models/operations/deleteapi.go
   - /pkg/models/operations/generateopenapispec.go
   - /pkg/models/operations/generatepostmancollection.go
@@ -74,15 +76,14 @@ generatedFiles:
   - /pkg/models/operations/getschemarevision.go
   - /pkg/models/operations/getschemas.go
   - /pkg/models/operations/registerschema.go
+  - /pkg/models/operations/validateapikey.go
   - /pkg/models/operations/generaterequestpostmancollection.go
   - /pkg/models/operations/getrequestfromeventlog.go
   - /pkg/models/operations/queryeventlog.go
-  - /pkg/models/operations/getplugins.go
-  - /pkg/models/operations/runplugin.go
-  - /pkg/models/operations/upsertplugin.go
   - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getvalidembedaccesstokens.go
   - /pkg/models/operations/revokeembedaccesstoken.go
+  - /pkg/models/operations/postworkspaceevents.go
   - /pkg/models/shared/error.go
   - /pkg/models/shared/generateopenapispecdiff.go
   - /pkg/models/shared/api.go
@@ -93,16 +94,16 @@ generatedFiles:
   - /pkg/models/shared/versionmetadatainput.go
   - /pkg/models/shared/schema.go
   - /pkg/models/shared/schemadiff.go
+  - /pkg/models/shared/apikeydetails.go
   - /pkg/models/shared/unboundedrequest.go
   - /pkg/models/shared/boundedrequest.go
   - /pkg/models/shared/requestmetadata.go
   - /pkg/models/shared/filters.go
   - /pkg/models/shared/filter.go
-  - /pkg/models/shared/plugin.go
   - /pkg/models/shared/embedaccesstokenresponse.go
   - /pkg/models/shared/embedtoken.go
+  - /pkg/models/shared/clievent.go
   - /pkg/models/shared/security.go
-  - docs/pkg/models/operations/validateapikeyresponse.md
   - docs/pkg/models/operations/deleteapirequest.md
   - docs/pkg/models/operations/deleteapiresponse.md
   - docs/pkg/models/operations/generateopenapispecrequest.md
@@ -157,21 +158,20 @@ generatedFiles:
   - docs/pkg/models/operations/registerschemarequestbody.md
   - docs/pkg/models/operations/registerschemarequest.md
   - docs/pkg/models/operations/registerschemaresponse.md
+  - docs/pkg/models/operations/validateapikeyresponse.md
   - docs/pkg/models/operations/generaterequestpostmancollectionrequest.md
   - docs/pkg/models/operations/generaterequestpostmancollectionresponse.md
   - docs/pkg/models/operations/getrequestfromeventlogrequest.md
   - docs/pkg/models/operations/getrequestfromeventlogresponse.md
   - docs/pkg/models/operations/queryeventlogrequest.md
   - docs/pkg/models/operations/queryeventlogresponse.md
-  - docs/pkg/models/operations/getpluginsresponse.md
-  - docs/pkg/models/operations/runpluginrequest.md
-  - docs/pkg/models/operations/runpluginresponse.md
-  - docs/pkg/models/operations/upsertpluginresponse.md
   - docs/pkg/models/operations/getembedaccesstokenrequest.md
   - docs/pkg/models/operations/getembedaccesstokenresponse.md
   - docs/pkg/models/operations/getvalidembedaccesstokensresponse.md
   - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
   - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
+  - docs/pkg/models/operations/postworkspaceeventsrequest.md
+  - docs/pkg/models/operations/postworkspaceeventsresponse.md
   - docs/pkg/models/shared/error.md
   - docs/pkg/models/shared/generateopenapispecdiff.md
   - docs/pkg/models/shared/api.md
@@ -183,23 +183,25 @@ generatedFiles:
   - docs/pkg/models/shared/schema.md
   - docs/pkg/models/shared/valuechange.md
   - docs/pkg/models/shared/schemadiff.md
+  - docs/pkg/models/shared/apikeydetails.md
   - docs/pkg/models/shared/unboundedrequest.md
   - docs/pkg/models/shared/boundedrequest.md
   - docs/pkg/models/shared/requestmetadata.md
   - docs/pkg/models/shared/filters.md
   - docs/pkg/models/shared/filter.md
-  - docs/pkg/models/shared/plugin.md
   - docs/pkg/models/shared/embedaccesstokenresponse.md
   - docs/pkg/models/shared/embedtoken.md
+  - docs/pkg/models/shared/clievent.md
   - docs/pkg/models/shared/security.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/apis/README.md
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/metadata/README.md
   - docs/sdks/schemas/README.md
+  - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
-  - docs/sdks/plugins/README.md
   - docs/sdks/embeds/README.md
+  - docs/sdks/events/README.md
   - USAGE.md
   - pkg/models/operations/options.go
   - .gitattributes

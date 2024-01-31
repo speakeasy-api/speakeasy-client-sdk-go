@@ -32,6 +32,7 @@ import(
 func main() {
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
     )
 
     ctx := context.Background()
@@ -93,6 +94,7 @@ import(
 func main() {
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
     )
 
     ctx := context.Background()
@@ -142,6 +144,7 @@ import(
 func main() {
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
     )
 
     ctx := context.Background()

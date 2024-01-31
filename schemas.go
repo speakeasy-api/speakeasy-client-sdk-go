@@ -28,7 +28,7 @@ func newSchemas(sdkConfig sdkConfiguration) *Schemas {
 // DeleteSchema - Delete a particular schema revision for an Api.
 func (s *Schemas) DeleteSchema(ctx context.Context, request operations.DeleteSchemaRequest) (*operations.DeleteSchemaResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -100,7 +100,7 @@ func (s *Schemas) DownloadSchema(ctx context.Context, request operations.Downloa
 		}
 	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/download", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/download", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -192,7 +192,7 @@ func (s *Schemas) DownloadSchemaRevision(ctx context.Context, request operations
 		}
 	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}/download", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}/download", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -276,7 +276,7 @@ func (s *Schemas) DownloadSchemaRevision(ctx context.Context, request operations
 // This won't include the schema itself, that can be retrieved via the downloadSchema operation.
 func (s *Schemas) GetSchema(ctx context.Context, request operations.GetSchemaRequest) (*operations.GetSchemaResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -349,7 +349,7 @@ func (s *Schemas) GetSchema(ctx context.Context, request operations.GetSchemaReq
 // GetSchemaDiff - Get a diff of two schema revisions for an Api.
 func (s *Schemas) GetSchemaDiff(ctx context.Context, request operations.GetSchemaDiffRequest) (*operations.GetSchemaDiffResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{baseRevisionID}/diff/{targetRevisionID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{baseRevisionID}/diff/{targetRevisionID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -424,7 +424,7 @@ func (s *Schemas) GetSchemaDiff(ctx context.Context, request operations.GetSchem
 // This won't include the schema itself, that can be retrieved via the downloadSchema operation.
 func (s *Schemas) GetSchemaRevision(ctx context.Context, request operations.GetSchemaRevisionRequest) (*operations.GetSchemaRevisionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -499,7 +499,7 @@ func (s *Schemas) GetSchemaRevision(ctx context.Context, request operations.GetS
 // This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
 func (s *Schemas) GetSchemas(ctx context.Context, request operations.GetSchemasRequest) (*operations.GetSchemasResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schemas", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schemas", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -574,7 +574,7 @@ func (s *Schemas) GetSchemas(ctx context.Context, request operations.GetSchemasR
 // This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
 func (s *Schemas) RegisterSchema(ctx context.Context, request operations.RegisterSchemaRequest) (*operations.RegisterSchemaResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/schema", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

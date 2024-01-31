@@ -9,7 +9,7 @@ generation:
   fixes:
     nameResolutionDec2023: false
 go:
-  version: 2.3.3
+  version: 2.5.1
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

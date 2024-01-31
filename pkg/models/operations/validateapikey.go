@@ -8,6 +8,8 @@ import (
 )
 
 type ValidateAPIKeyResponse struct {
+	// OK
+	APIKeyDetails *shared.APIKeyDetails
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -16,6 +18,13 @@ type ValidateAPIKeyResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *ValidateAPIKeyResponse) GetAPIKeyDetails() *shared.APIKeyDetails {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyDetails
 }
 
 func (o *ValidateAPIKeyResponse) GetContentType() string {
