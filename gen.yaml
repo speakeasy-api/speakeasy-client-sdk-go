@@ -9,8 +9,9 @@ generation:
   fixes:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: true
 go:
-  version: 3.0.1
+  version: 3.2.0
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

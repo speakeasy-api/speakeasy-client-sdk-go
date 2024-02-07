@@ -38,7 +38,7 @@ type GetVersionMetadataResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Classes []shared.VersionMetadata
+	VersionMetadata []shared.VersionMetadata
 }
 
 func (o *GetVersionMetadataResponse) GetContentType() string {
@@ -69,9 +69,9 @@ func (o *GetVersionMetadataResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetVersionMetadataResponse) GetClasses() []shared.VersionMetadata {
+func (o *GetVersionMetadataResponse) GetVersionMetadata() []shared.VersionMetadata {
 	if o == nil {
 		return nil
 	}
-	return o.Classes
+	return o.VersionMetadata
 }

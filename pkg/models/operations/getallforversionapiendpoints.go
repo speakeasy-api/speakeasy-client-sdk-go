@@ -29,6 +29,8 @@ func (o *GetAllForVersionAPIEndpointsRequest) GetVersionID() string {
 }
 
 type GetAllForVersionAPIEndpointsResponse struct {
+	// OK
+	APIEndpoints []shared.APIEndpoint
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -37,8 +39,13 @@ type GetAllForVersionAPIEndpointsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// OK
-	Classes []shared.APIEndpoint
+}
+
+func (o *GetAllForVersionAPIEndpointsResponse) GetAPIEndpoints() []shared.APIEndpoint {
+	if o == nil {
+		return nil
+	}
+	return o.APIEndpoints
 }
 
 func (o *GetAllForVersionAPIEndpointsResponse) GetContentType() string {
@@ -67,11 +74,4 @@ func (o *GetAllForVersionAPIEndpointsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *GetAllForVersionAPIEndpointsResponse) GetClasses() []shared.APIEndpoint {
-	if o == nil {
-		return nil
-	}
-	return o.Classes
 }

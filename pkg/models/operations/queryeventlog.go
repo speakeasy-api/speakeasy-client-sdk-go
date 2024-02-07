@@ -20,6 +20,8 @@ func (o *QueryEventLogRequest) GetFilters() *shared.Filters {
 }
 
 type QueryEventLogResponse struct {
+	// OK
+	BoundedRequests []shared.BoundedRequest
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -28,8 +30,13 @@ type QueryEventLogResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// OK
-	Classes []shared.BoundedRequest
+}
+
+func (o *QueryEventLogResponse) GetBoundedRequests() []shared.BoundedRequest {
+	if o == nil {
+		return nil
+	}
+	return o.BoundedRequests
 }
 
 func (o *QueryEventLogResponse) GetContentType() string {
@@ -58,11 +65,4 @@ func (o *QueryEventLogResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *QueryEventLogResponse) GetClasses() []shared.BoundedRequest {
-	if o == nil {
-		return nil
-	}
-	return o.Classes
 }

@@ -13,6 +13,7 @@ import (
 func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
 	)
 
 	ctx := context.Background()
@@ -30,7 +31,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.Classes != nil {
+	if res.Apis != nil {
 		// handle response
 	}
 }

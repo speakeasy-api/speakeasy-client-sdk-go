@@ -40,7 +40,7 @@ func (s *Embeds) GetEmbedAccessToken(ctx context.Context, request operations.Get
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -147,7 +147,7 @@ func (s *Embeds) GetValidEmbedAccessTokens(ctx context.Context) (*operations.Get
 				return nil, err
 			}
 
-			res.Classes = out
+			res.EmbedTokens = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -175,7 +175,7 @@ func (s *Embeds) GetValidEmbedAccessTokens(ctx context.Context) (*operations.Get
 // RevokeEmbedAccessToken - Revoke an embed access EmbedToken.
 func (s *Embeds) RevokeEmbedAccessToken(ctx context.Context, request operations.RevokeEmbedAccessTokenRequest) (*operations.RevokeEmbedAccessTokenResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/embed-access-tokens/{tokenID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/embed-access-tokens/{tokenID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

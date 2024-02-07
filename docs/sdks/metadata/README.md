@@ -32,6 +32,7 @@ import(
 func main() {
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
     )
 
     ctx := context.Background()
@@ -86,6 +87,7 @@ import(
 func main() {
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
     )
 
     ctx := context.Background()
@@ -97,7 +99,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Classes != nil {
+    if res.VersionMetadata != nil {
         // handle response
     }
 }
@@ -138,6 +140,7 @@ import(
 func main() {
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
     )
 
     ctx := context.Background()

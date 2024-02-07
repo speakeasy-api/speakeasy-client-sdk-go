@@ -3,16 +3,11 @@
 package speakeasyclientsdkgo
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
-	"io"
 	"net/http"
-	"strings"
 	"time"
 )
 
@@ -59,6 +54,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
+	Globals           map[string]map[string]map[string]interface{}
 	RetryConfig       *utils.RetryConfig
 }
 
@@ -86,12 +82,14 @@ type Speakeasy struct {
 	Metadata *Metadata
 	// REST APIs for managing Schema entities
 	Schemas *Schemas
+	// REST APIs for managing Authentication
+	Auth *Auth
 	// REST APIs for retrieving request information
 	Requests *Requests
-	// REST APIs for managing and running plugins
-	Plugins *Plugins
 	// REST APIs for managing embeds
 	Embeds *Embeds
+	// REST APIs for capturing event data
+	Events *Events
 
 	sdkConfiguration sdkConfiguration
 }
@@ -158,6 +156,17 @@ func WithSecuritySource(security func(context.Context) (shared.Security, error))
 	}
 }
 
+// WithWorkspaceID allows setting the WorkspaceID parameter for all supported operations
+func WithWorkspaceID(workspaceID string) SDKOption {
+	return func(sdk *Speakeasy) {
+		if _, ok := sdk.sdkConfiguration.Globals["parameters"]["pathParam"]; !ok {
+			sdk.sdkConfiguration.Globals["parameters"]["pathParam"] = map[string]interface{}{}
+		}
+
+		sdk.sdkConfiguration.Globals["parameters"]["pathParam"]["WorkspaceID"] = workspaceID
+	}
+}
+
 func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
 	return func(sdk *Speakeasy) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
@@ -169,10 +178,13 @@ func New(opts ...SDKOption) *Speakeasy {
 	sdk := &Speakeasy{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "0.3.0",
-			SDKVersion:        "3.0.1",
-			GenVersion:        "2.250.2",
-			UserAgent:         "speakeasy-sdk/go 3.0.1 2.250.2 0.3.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			OpenAPIDocVersion: "0.4.0",
+			SDKVersion:        "3.2.0",
+			GenVersion:        "2.250.15",
+			UserAgent:         "speakeasy-sdk/go 3.2.0 2.250.15 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			Globals: map[string]map[string]map[string]interface{}{
+				"parameters": {},
+			},
 		},
 	}
 	for _, opt := range opts {
@@ -199,70 +211,13 @@ func New(opts ...SDKOption) *Speakeasy {
 
 	sdk.Schemas = newSchemas(sdk.sdkConfiguration)
 
-	sdk.Requests = newRequests(sdk.sdkConfiguration)
+	sdk.Auth = newAuth(sdk.sdkConfiguration)
 
-	sdk.Plugins = newPlugins(sdk.sdkConfiguration)
+	sdk.Requests = newRequests(sdk.sdkConfiguration)
 
 	sdk.Embeds = newEmbeds(sdk.sdkConfiguration)
 
+	sdk.Events = newEvents(sdk.sdkConfiguration)
+
 	return sdk
-}
-
-// ValidateAPIKey - Validate the current api key.
-func (s *Speakeasy) ValidateAPIKey(ctx context.Context) (*operations.ValidateAPIKeyResponse, error) {
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/auth/validate"
-
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
-	client := s.sdkConfiguration.SecurityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.ValidateAPIKeyResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-
-	rawBody, err := io.ReadAll(httpRes.Body)
-	if err != nil {
-		return nil, fmt.Errorf("error reading response body: %w", err)
-	}
-	httpRes.Body.Close()
-	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
-	switch {
-	case httpRes.StatusCode == 200:
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out shared.Error
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			res.Error = &out
-		default:
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
-		}
-	}
-
-	return res, nil
 }

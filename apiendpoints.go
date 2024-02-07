@@ -29,7 +29,7 @@ func newAPIEndpoints(sdkConfig sdkConfiguration) *APIEndpoints {
 // Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
 func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations.DeleteAPIEndpointRequest) (*operations.DeleteAPIEndpointResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -93,7 +93,7 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 // This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
 func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.FindAPIEndpointRequest) (*operations.FindAPIEndpointResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -168,7 +168,7 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 // Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
 func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, request operations.GenerateOpenAPISpecForAPIEndpointRequest) (*operations.GenerateOpenAPISpecForAPIEndpointResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -252,7 +252,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 		}
 	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -329,7 +329,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 // GetAllAPIEndpoints - Get all Api endpoints for a particular apiID.
 func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operations.GetAllAPIEndpointsRequest) (*operations.GetAllAPIEndpointsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/api_endpoints", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/api_endpoints", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -374,7 +374,7 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 				return nil, err
 			}
 
-			res.Classes = out
+			res.APIEndpoints = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -402,7 +402,7 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 // GetAllForVersionAPIEndpoints - Get all ApiEndpoints for a particular apiID and versionID.
 func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request operations.GetAllForVersionAPIEndpointsRequest) (*operations.GetAllForVersionAPIEndpointsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -447,7 +447,7 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 				return nil, err
 			}
 
-			res.Classes = out
+			res.APIEndpoints = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -475,7 +475,7 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 // GetAPIEndpoint - Get an ApiEndpoint.
 func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.GetAPIEndpointRequest) (*operations.GetAPIEndpointResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -549,7 +549,7 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 // Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, otherwise it will be updated.
 func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations.UpsertAPIEndpointRequest) (*operations.UpsertAPIEndpointResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

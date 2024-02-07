@@ -30,7 +30,7 @@ func newApis(sdkConfig sdkConfiguration) *Apis {
 // Delete a particular version of an Api. The will also delete all associated ApiEndpoints, Metadata, Schemas & Request Logs (if using a Postgres datastore).
 func (s *Apis) DeleteAPI(ctx context.Context, request operations.DeleteAPIRequest) (*operations.DeleteAPIResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -94,7 +94,7 @@ func (s *Apis) DeleteAPI(ctx context.Context, request operations.DeleteAPIReques
 // Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
 func (s *Apis) GenerateOpenAPISpec(ctx context.Context, request operations.GenerateOpenAPISpecRequest) (*operations.GenerateOpenAPISpecResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/generate/openapi", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/generate/openapi", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -178,7 +178,7 @@ func (s *Apis) GeneratePostmanCollection(ctx context.Context, request operations
 		}
 	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/generate/postman", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/generate/postman", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -257,7 +257,7 @@ func (s *Apis) GeneratePostmanCollection(ctx context.Context, request operations
 // Supports filtering the versions based on metadata attributes.
 func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllAPIVersionsRequest) (*operations.GetAllAPIVersionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -269,7 +269,7 @@ func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllA
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -306,7 +306,7 @@ func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllA
 				return nil, err
 			}
 
-			res.Classes = out
+			res.Apis = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -345,7 +345,7 @@ func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -382,7 +382,7 @@ func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (
 				return nil, err
 			}
 
-			res.Classes = out
+			res.Apis = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -412,7 +412,7 @@ func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (
 // If the Api exists, it will be updated.
 func (s *Apis) UpsertAPI(ctx context.Context, request operations.UpsertAPIRequest) (*operations.UpsertAPIResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

@@ -51,6 +51,8 @@ func (o *GetAllAPIVersionsRequest) GetOp() *Op {
 }
 
 type GetAllAPIVersionsResponse struct {
+	// OK
+	Apis []shared.API
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -59,8 +61,13 @@ type GetAllAPIVersionsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// OK
-	Classes []shared.API
+}
+
+func (o *GetAllAPIVersionsResponse) GetApis() []shared.API {
+	if o == nil {
+		return nil
+	}
+	return o.Apis
 }
 
 func (o *GetAllAPIVersionsResponse) GetContentType() string {
@@ -89,11 +96,4 @@ func (o *GetAllAPIVersionsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *GetAllAPIVersionsResponse) GetClasses() []shared.API {
-	if o == nil {
-		return nil
-	}
-	return o.Classes
 }

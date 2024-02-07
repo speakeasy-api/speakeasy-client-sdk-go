@@ -20,6 +20,8 @@ func (o *GetAllAPIEndpointsRequest) GetAPIID() string {
 }
 
 type GetAllAPIEndpointsResponse struct {
+	// OK
+	APIEndpoints []shared.APIEndpoint
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -28,8 +30,13 @@ type GetAllAPIEndpointsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// OK
-	Classes []shared.APIEndpoint
+}
+
+func (o *GetAllAPIEndpointsResponse) GetAPIEndpoints() []shared.APIEndpoint {
+	if o == nil {
+		return nil
+	}
+	return o.APIEndpoints
 }
 
 func (o *GetAllAPIEndpointsResponse) GetContentType() string {
@@ -58,11 +65,4 @@ func (o *GetAllAPIEndpointsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *GetAllAPIEndpointsResponse) GetClasses() []shared.APIEndpoint {
-	if o == nil {
-		return nil
-	}
-	return o.Classes
 }

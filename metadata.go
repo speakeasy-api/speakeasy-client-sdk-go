@@ -28,7 +28,7 @@ func newMetadata(sdkConfig sdkConfiguration) *Metadata {
 // DeleteVersionMetadata - Delete metadata for a particular apiID and versionID.
 func (s *Metadata) DeleteVersionMetadata(ctx context.Context, request operations.DeleteVersionMetadataRequest) (*operations.DeleteVersionMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -90,7 +90,7 @@ func (s *Metadata) DeleteVersionMetadata(ctx context.Context, request operations
 // GetVersionMetadata - Get all metadata for a particular apiID and versionID.
 func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.GetVersionMetadataRequest) (*operations.GetVersionMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -135,7 +135,7 @@ func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.Ge
 				return nil, err
 			}
 
-			res.Classes = out
+			res.VersionMetadata = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -163,7 +163,7 @@ func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.Ge
 // InsertVersionMetadata - Insert metadata for a particular apiID and versionID.
 func (s *Metadata) InsertVersionMetadata(ctx context.Context, request operations.InsertVersionMetadataRequest) (*operations.InsertVersionMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

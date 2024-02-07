@@ -27,6 +27,7 @@ import (
 func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
 	)
 
 	ctx := context.Background()
@@ -44,7 +45,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.Classes != nil {
+	if res.Apis != nil {
 		// handle response
 	}
 }
@@ -54,10 +55,6 @@ func main() {
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
-### [Speakeasy SDK](docs/sdks/speakeasy/README.md)
-
-* [ValidateAPIKey](docs/sdks/speakeasy/README.md#validateapikey) - Validate the current api key.
 
 ### [Apis](docs/sdks/apis/README.md)
 
@@ -96,23 +93,25 @@ func main() {
 * [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
 * [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [ValidateAPIKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
+
 ### [Requests](docs/sdks/requests/README.md)
 
 * [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
 * [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
 * [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
 
-### [Plugins](docs/sdks/plugins/README.md)
-
-* [GetPlugins](docs/sdks/plugins/README.md#getplugins) - Get all plugins for the current workspace.
-* [RunPlugin](docs/sdks/plugins/README.md#runplugin) - Run a plugin
-* [UpsertPlugin](docs/sdks/plugins/README.md#upsertplugin) - Upsert a plugin
-
 ### [Embeds](docs/sdks/embeds/README.md)
 
 * [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
 * [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
 * [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
+
+### [Events](docs/sdks/events/README.md)
+
+* [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -147,6 +146,7 @@ import (
 	"context"
 	"errors"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
@@ -155,10 +155,14 @@ import (
 func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
 	)
 
 	ctx := context.Background()
-	res, err := s.ValidateAPIKey(ctx)
+	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
+		APIID:     "string",
+		VersionID: "string",
+	})
 	if err != nil {
 
 		var e *sdkerrors.SDKError
@@ -193,6 +197,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 	"net/http"
@@ -202,10 +207,14 @@ func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServer("prod"),
 		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
 	)
 
 	ctx := context.Background()
-	res, err := s.ValidateAPIKey(ctx)
+	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
+		APIID:     "string",
+		VersionID: "string",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -227,6 +236,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 	"net/http"
@@ -236,10 +246,14 @@ func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL("https://api.prod.speakeasyapi.dev"),
 		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
 	)
 
 	ctx := context.Background()
-	res, err := s.ValidateAPIKey(ctx)
+	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
+		APIID:     "string",
+		VersionID: "string",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -303,6 +317,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 	"net/http"
 )
@@ -310,10 +325,14 @@ import (
 func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
 	)
 
 	ctx := context.Background()
-	res, err := s.ValidateAPIKey(ctx)
+	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
+		APIID:     "string",
+		VersionID: "string",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -325,6 +344,72 @@ func main() {
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `workspaceID` to `"string"` at SDK initialization and then you do not have to pass the same value on calls to operations like `PostWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| WorkspaceID | string |  | The WorkspaceID parameter. |
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	"log"
+	"net/http"
+)
+
+func main() {
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+	)
+
+	ctx := context.Background()
+	res, err := s.Events.PostWorkspaceEvents(ctx, operations.PostWorkspaceEventsRequest{
+		RequestBody: []shared.CliEvent{
+			shared.CliEvent{
+				CreatedAt:           types.MustTimeFromString("2024-11-21T06:58:42.120Z"),
+				ExecutionID:         "string",
+				ID:                  "<ID>",
+				InteractionType:     shared.InteractionTypeCliExec,
+				LocalStartedAt:      types.MustTimeFromString("2024-05-07T12:35:47.182Z"),
+				SpeakeasyAPIKeyName: "string",
+				SpeakeasyVersion:    "string",
+				Success:             false,
+				WorkspaceID:         "string",
+			},
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.StatusCode == http.StatusOK {
+		// handle response
+	}
+}
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

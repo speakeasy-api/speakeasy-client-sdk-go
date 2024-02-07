@@ -42,6 +42,8 @@ func (o *GetApisRequest) GetOp() *QueryParamOp {
 }
 
 type GetApisResponse struct {
+	// OK
+	Apis []shared.API
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -50,8 +52,13 @@ type GetApisResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// OK
-	Classes []shared.API
+}
+
+func (o *GetApisResponse) GetApis() []shared.API {
+	if o == nil {
+		return nil
+	}
+	return o.Apis
 }
 
 func (o *GetApisResponse) GetContentType() string {
@@ -80,11 +87,4 @@ func (o *GetApisResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *GetApisResponse) GetClasses() []shared.API {
-	if o == nil {
-		return nil
-	}
-	return o.Classes
 }
