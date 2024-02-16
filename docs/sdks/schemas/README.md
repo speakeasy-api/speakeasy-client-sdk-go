@@ -36,15 +36,17 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.DeleteSchema(ctx, operations.DeleteSchemaRequest{
-        APIID: "string",
-        RevisionID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        RevisionID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -90,14 +92,16 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.DownloadSchema(ctx, operations.DownloadSchemaRequest{
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -143,15 +147,17 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.DownloadSchemaRevision(ctx, operations.DownloadSchemaRevisionRequest{
-        APIID: "string",
-        RevisionID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        RevisionID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -198,14 +204,16 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchema(ctx, operations.GetSchemaRequest{
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -251,16 +259,18 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemaDiff(ctx, operations.GetSchemaDiffRequest{
-        APIID: "string",
-        BaseRevisionID: "string",
-        TargetRevisionID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        BaseRevisionID: "<value>",
+        TargetRevisionID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -307,15 +317,17 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemaRevision(ctx, operations.GetSchemaRevisionRequest{
-        APIID: "string",
-        RevisionID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        RevisionID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -362,14 +374,16 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Schemas.GetSchemas(ctx, operations.GetSchemasRequest{
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -417,8 +431,10 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
@@ -429,8 +445,8 @@ func main() {
                 FileName: "bronze_table_blues.m2a",
             },
         },
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)

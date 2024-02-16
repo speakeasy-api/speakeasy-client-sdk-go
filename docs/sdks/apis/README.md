@@ -34,14 +34,16 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -88,14 +90,16 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Apis.GenerateOpenAPISpec(ctx, operations.GenerateOpenAPISpecRequest{
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -141,14 +145,16 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Apis.GeneratePostmanCollection(ctx, operations.GeneratePostmanCollectionRequest{
-        APIID: "string",
-        VersionID: "string",
+        APIID: "<value>",
+        VersionID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -195,13 +201,15 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Apis.GetAllAPIVersions(ctx, operations.GetAllAPIVersionsRequest{
-        APIID: "string",
+        APIID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -248,8 +256,10 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
@@ -299,18 +309,20 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
-        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("string")),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
     ctx := context.Background()
     res, err := s.Apis.UpsertAPI(ctx, operations.UpsertAPIRequest{
         API: shared.APIInput{
-            APIID: "string",
+            APIID: "<value>",
             Description: "Synchronised 5th generation knowledge user",
-            VersionID: "string",
+            VersionID: "<value>",
         },
-        APIID: "string",
+        APIID: "<value>",
     })
     if err != nil {
         log.Fatal(err)

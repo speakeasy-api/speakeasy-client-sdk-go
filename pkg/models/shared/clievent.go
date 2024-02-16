@@ -89,13 +89,13 @@ type CliEvent struct {
 	GenerateConfigPostChecksum *string `json:"generate_config_post_checksum,omitempty"`
 	// Rendered configuration file (post generation)
 	GenerateConfigPostRaw *string `json:"generate_config_post_raw,omitempty"`
-	// Version of the generated target (post generation)
+	// The version of the customer's SDK that we just generated
 	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
 	// Checksum of the configuration file (prior to generation)
 	GenerateConfigPreChecksum *string `json:"generate_config_pre_checksum,omitempty"`
 	// Rendered configuration file (prior to generation)
 	GenerateConfigPreRaw *string `json:"generate_config_pre_raw,omitempty"`
-	// Version of the generated target (prior to generation)
+	// The version of the customer's SDK before we generated
 	GenerateConfigPreVersion *string `json:"generate_config_pre_version,omitempty"`
 	// gen.lock ID (expected to be a uuid).
 	GenerateGenLockID *string `json:"generate_gen_lock_id,omitempty"`

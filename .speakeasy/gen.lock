@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: c81aa4e807522359d28c09ee16d252ba
+  docChecksum: c74df53db6bd1b7928bfe22164235934
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.253.0
-  releaseVersion: 3.2.2
-  configChecksum: 3cd33b4c5940ea8e97478516034af236
+  generationVersion: 2.259.1
+  releaseVersion: 3.3.2
+  configChecksum: ccb412f6f829b720dd73ec8b5bab5880
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
   published: true
 features:
   go:
-    core: 3.3.2
+    core: 3.4.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
     examples: 2.81.3
@@ -76,7 +76,6 @@ generatedFiles:
   - /pkg/models/operations/getschemarevision.go
   - /pkg/models/operations/getschemas.go
   - /pkg/models/operations/registerschema.go
-  - /pkg/models/operations/getworkspaceaccess.go
   - /pkg/models/operations/validateapikey.go
   - /pkg/models/operations/generaterequestpostmancollection.go
   - /pkg/models/operations/getrequestfromeventlog.go
@@ -84,6 +83,8 @@ generatedFiles:
   - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getvalidembedaccesstokens.go
   - /pkg/models/operations/revokeembedaccesstoken.go
+  - /pkg/models/operations/getworkspaceevents.go
+  - /pkg/models/operations/getworkspacetargets.go
   - /pkg/models/operations/postworkspaceevents.go
   - /pkg/models/sdkerrors/error.go
   - /pkg/models/shared/generateopenapispecdiff.go
@@ -95,7 +96,6 @@ generatedFiles:
   - /pkg/models/shared/versionmetadatainput.go
   - /pkg/models/shared/schema.go
   - /pkg/models/shared/schemadiff.go
-  - /pkg/models/shared/accessdetails.go
   - /pkg/models/shared/apikeydetails.go
   - /pkg/models/shared/unboundedrequest.go
   - /pkg/models/shared/boundedrequest.go
@@ -105,6 +105,7 @@ generatedFiles:
   - /pkg/models/shared/embedaccesstokenresponse.go
   - /pkg/models/shared/embedtoken.go
   - /pkg/models/shared/clievent.go
+  - /pkg/models/shared/targetsdk.go
   - /pkg/models/shared/security.go
   - docs/pkg/models/operations/deleteapirequest.md
   - docs/pkg/models/operations/deleteapiresponse.md
@@ -160,8 +161,6 @@ generatedFiles:
   - docs/pkg/models/operations/registerschemarequestbody.md
   - docs/pkg/models/operations/registerschemarequest.md
   - docs/pkg/models/operations/registerschemaresponse.md
-  - docs/pkg/models/operations/getworkspaceaccessrequest.md
-  - docs/pkg/models/operations/getworkspaceaccessresponse.md
   - docs/pkg/models/operations/validateapikeyresponse.md
   - docs/pkg/models/operations/generaterequestpostmancollectionrequest.md
   - docs/pkg/models/operations/generaterequestpostmancollectionresponse.md
@@ -174,6 +173,10 @@ generatedFiles:
   - docs/pkg/models/operations/getvalidembedaccesstokensresponse.md
   - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
   - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
+  - docs/pkg/models/operations/getworkspaceeventsrequest.md
+  - docs/pkg/models/operations/getworkspaceeventsresponse.md
+  - docs/pkg/models/operations/getworkspacetargetsrequest.md
+  - docs/pkg/models/operations/getworkspacetargetsresponse.md
   - docs/pkg/models/operations/postworkspaceeventsrequest.md
   - docs/pkg/models/operations/postworkspaceeventsresponse.md
   - docs/pkg/models/sdkerrors/error.md
@@ -187,7 +190,6 @@ generatedFiles:
   - docs/pkg/models/shared/schema.md
   - docs/pkg/models/shared/valuechange.md
   - docs/pkg/models/shared/schemadiff.md
-  - docs/pkg/models/shared/accessdetails.md
   - docs/pkg/models/shared/apikeydetails.md
   - docs/pkg/models/shared/unboundedrequest.md
   - docs/pkg/models/shared/boundedrequest.md
@@ -199,16 +201,17 @@ generatedFiles:
   - docs/pkg/models/shared/generatebumptype.md
   - docs/pkg/models/shared/interactiontype.md
   - docs/pkg/models/shared/clievent.md
+  - docs/pkg/models/shared/targetsdk.md
   - docs/pkg/models/shared/security.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/apis/README.md
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/metadata/README.md
   - docs/sdks/schemas/README.md
-  - docs/pkg/models/operations/option.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
   - docs/sdks/embeds/README.md
+  - docs/pkg/models/operations/option.md
   - docs/sdks/events/README.md
   - USAGE.md
   - pkg/models/operations/options.go
@@ -216,3 +219,4 @@ generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
+  - internal/hooks/hooks.go
