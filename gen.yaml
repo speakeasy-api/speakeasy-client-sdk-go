@@ -11,7 +11,8 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 go:
-  version: 3.3.3
+  version: 3.3.4
+  additionalDependencies: {}
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
