@@ -88,6 +88,7 @@ func main() {
 
 ### [Auth](docs/sdks/auth/README.md)
 
+* [GetWorkspaceAccess](docs/sdks/auth/README.md#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateAPIKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
 
 ### [Requests](docs/sdks/requests/README.md)
@@ -420,10 +421,8 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
 	"log"
-	"net/http"
 	"pkg/models/operations"
 )
 
@@ -436,21 +435,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Events.PostWorkspaceEvents(ctx, operations.PostWorkspaceEventsRequest{
-		RequestBody: []shared.CliEvent{
-			shared.CliEvent{
-				CreatedAt:           types.MustTimeFromString("2024-11-21T06:58:42.120Z"),
-				ExecutionID:         "<value>",
-				ID:                  "<id>",
-				InteractionType:     shared.InteractionTypeCliExec,
-				LocalStartedAt:      types.MustTimeFromString("2024-05-07T12:35:47.182Z"),
-				SpeakeasyAPIKeyName: "<value>",
-				SpeakeasyVersion:    "<value>",
-				Success:             false,
-				WorkspaceID:         "<value>",
-			},
-		},
-	}, operations.WithRetries(
+	res, err := s.Auth.GetWorkspaceAccess(ctx, operations.GetWorkspaceAccessRequest{}, operations.WithRetries(
 		utils.RetryConfig{
 			Strategy: "backoff",
 			Backoff: &utils.BackoffStrategy{
@@ -465,7 +450,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.StatusCode == http.StatusOK {
+	if res.AccessDetails != nil {
 		// handle response
 	}
 }
@@ -481,10 +466,8 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -507,26 +490,12 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Events.PostWorkspaceEvents(ctx, operations.PostWorkspaceEventsRequest{
-		RequestBody: []shared.CliEvent{
-			shared.CliEvent{
-				CreatedAt:           types.MustTimeFromString("2024-11-21T06:58:42.120Z"),
-				ExecutionID:         "<value>",
-				ID:                  "<id>",
-				InteractionType:     shared.InteractionTypeCliExec,
-				LocalStartedAt:      types.MustTimeFromString("2024-05-07T12:35:47.182Z"),
-				SpeakeasyAPIKeyName: "<value>",
-				SpeakeasyVersion:    "<value>",
-				Success:             false,
-				WorkspaceID:         "<value>",
-			},
-		},
-	})
+	res, err := s.Auth.GetWorkspaceAccess(ctx, operations.GetWorkspaceAccessRequest{})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.StatusCode == http.StatusOK {
+	if res.AccessDetails != nil {
 		// handle response
 	}
 }
