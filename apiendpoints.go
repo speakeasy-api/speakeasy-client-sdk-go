@@ -29,11 +29,7 @@ func newAPIEndpoints(sdkConfig sdkConfiguration) *APIEndpoints {
 // DeleteAPIEndpoint - Delete an ApiEndpoint.
 // Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
 func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations.DeleteAPIEndpointRequest) (*operations.DeleteAPIEndpointResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "deleteApiEndpoint",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "deleteApiEndpoint"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, s.sdkConfiguration.Globals)
@@ -50,7 +46,7 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -63,19 +59,20 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteAPIEndpointResponse{
@@ -118,11 +115,7 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 // Find an ApiEndpoint via its displayName (set by operationId from a registered OpenAPI schema).
 // This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
 func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.FindAPIEndpointRequest) (*operations.FindAPIEndpointResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "findApiEndpoint",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "findApiEndpoint"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}", request, s.sdkConfiguration.Globals)
@@ -139,7 +132,7 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -152,19 +145,20 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FindAPIEndpointResponse{
@@ -218,11 +212,7 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 // This endpoint will generate a new operation in any registered OpenAPI document if the operation does not already exist in the document.
 // Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
 func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, request operations.GenerateOpenAPISpecForAPIEndpointRequest) (*operations.GenerateOpenAPISpecForAPIEndpointResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "generateOpenApiSpecForApiEndpoint",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "generateOpenApiSpecForApiEndpoint"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi", request, s.sdkConfiguration.Globals)
@@ -239,7 +229,7 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -252,19 +242,20 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GenerateOpenAPISpecForAPIEndpointResponse{
@@ -317,11 +308,7 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 // GeneratePostmanCollectionForAPIEndpoint - Generate a Postman collection for a particular ApiEndpoint.
 // Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
 func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Context, request operations.GeneratePostmanCollectionForAPIEndpointRequest, opts ...operations.Option) (*operations.GeneratePostmanCollectionForAPIEndpointResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "generatePostmanCollectionForApiEndpoint",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "generatePostmanCollectionForApiEndpoint"}
 
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -353,7 +340,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -366,19 +353,20 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GeneratePostmanCollectionForAPIEndpointResponse{
@@ -429,11 +417,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 
 // GetAllAPIEndpoints - Get all Api endpoints for a particular apiID.
 func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operations.GetAllAPIEndpointsRequest) (*operations.GetAllAPIEndpointsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getAllApiEndpoints",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getAllApiEndpoints"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/api_endpoints", request, s.sdkConfiguration.Globals)
@@ -450,7 +434,7 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -463,19 +447,20 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetAllAPIEndpointsResponse{
@@ -527,11 +512,7 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 
 // GetAllForVersionAPIEndpoints - Get all ApiEndpoints for a particular apiID and versionID.
 func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request operations.GetAllForVersionAPIEndpointsRequest) (*operations.GetAllForVersionAPIEndpointsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getAllForVersionApiEndpoints",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getAllForVersionApiEndpoints"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints", request, s.sdkConfiguration.Globals)
@@ -548,7 +529,7 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -561,19 +542,20 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetAllForVersionAPIEndpointsResponse{
@@ -625,11 +607,7 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 
 // GetAPIEndpoint - Get an ApiEndpoint.
 func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.GetAPIEndpointRequest) (*operations.GetAPIEndpointResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getApiEndpoint",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getApiEndpoint"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, s.sdkConfiguration.Globals)
@@ -646,7 +624,7 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -659,19 +637,20 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetAPIEndpointResponse{
@@ -724,11 +703,7 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 // UpsertAPIEndpoint - Upsert an ApiEndpoint.
 // Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, otherwise it will be updated.
 func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations.UpsertAPIEndpointRequest) (*operations.UpsertAPIEndpointResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "upsertApiEndpoint",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "upsertApiEndpoint"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request, s.sdkConfiguration.Globals)
@@ -751,7 +726,7 @@ func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -764,19 +739,20 @@ func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.UpsertAPIEndpointResponse{

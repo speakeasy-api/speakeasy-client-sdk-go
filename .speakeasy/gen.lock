@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 10893fff3e9a4e77b8628de48190cd77
+  docChecksum: 2341dd6743191a8c0148cd7bca25811d
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 3.3.7
-  configChecksum: 7c8ac7487c1fd212fa0516f449d4966d
+  generationVersion: 2.259.1
+  releaseVersion: 3.3.11
+  configChecksum: 4d3d05e3ca83741c7f96c49fd72c485e
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
   published: true
 features:
   go:
-    core: 3.4.3
+    core: 3.4.0
     devContainers: 2.90.0
     downloadStreams: 0.1.1
     examples: 2.81.3
-    globalSecurity: 2.82.7
+    globalSecurity: 2.82.6
     globalServerURLs: 2.82.1
     globals: 2.81.1
     inputOutputModels: 2.83.0
@@ -34,6 +34,7 @@ generatedFiles:
   - events.go
   - speakeasy.go
   - go.mod
+  - go.sum
   - pkg/models/sdkerrors/sdkerror.go
   - pkg/types/bigint.go
   - pkg/types/date.go
@@ -83,6 +84,8 @@ generatedFiles:
   - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getvalidembedaccesstokens.go
   - /pkg/models/operations/revokeembedaccesstoken.go
+  - /pkg/models/operations/getworkspaceevents.go
+  - /pkg/models/operations/getworkspacetargets.go
   - /pkg/models/operations/postworkspaceevents.go
   - /pkg/models/sdkerrors/error.go
   - /pkg/models/shared/generateopenapispecdiff.go
@@ -104,6 +107,7 @@ generatedFiles:
   - /pkg/models/shared/embedaccesstokenresponse.go
   - /pkg/models/shared/embedtoken.go
   - /pkg/models/shared/clievent.go
+  - /pkg/models/shared/targetsdk.go
   - /pkg/models/shared/security.go
   - docs/pkg/models/operations/deleteapirequest.md
   - docs/pkg/models/operations/deleteapiresponse.md
@@ -173,6 +177,10 @@ generatedFiles:
   - docs/pkg/models/operations/getvalidembedaccesstokensresponse.md
   - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
   - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
+  - docs/pkg/models/operations/getworkspaceeventsrequest.md
+  - docs/pkg/models/operations/getworkspaceeventsresponse.md
+  - docs/pkg/models/operations/getworkspacetargetsrequest.md
+  - docs/pkg/models/operations/getworkspacetargetsresponse.md
   - docs/pkg/models/operations/postworkspaceeventsrequest.md
   - docs/pkg/models/operations/postworkspaceeventsresponse.md
   - docs/pkg/models/sdkerrors/error.md
@@ -199,6 +207,7 @@ generatedFiles:
   - docs/pkg/models/shared/generatebumptype.md
   - docs/pkg/models/shared/interactiontype.md
   - docs/pkg/models/shared/clievent.md
+  - docs/pkg/models/shared/targetsdk.md
   - docs/pkg/models/shared/security.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/apis/README.md

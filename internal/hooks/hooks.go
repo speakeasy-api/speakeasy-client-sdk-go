@@ -3,7 +3,6 @@
 package hooks
 
 import (
-	"context"
 	"errors"
 	"net/http"
 )
@@ -24,10 +23,7 @@ type HTTPClient interface {
 }
 
 type HookContext struct {
-	Context        context.Context
-	OperationID    string
-	OAuth2Scopes   []string
-	SecuritySource func(context.Context) (interface{}, error)
+	OperationID string
 }
 
 type BeforeRequestContext struct {
@@ -42,9 +38,9 @@ type AfterErrorContext struct {
 	HookContext
 }
 
-// sdkInitHook is called when the SDK is initializing. The hook can modify and return a new baseURL and HTTP client to be used by the SDK.
-type sdkInitHook interface {
-	SDKInit(baseURL string, client HTTPClient) (string, HTTPClient)
+// clientInitHook is called when the SDK is initializing the HTTP client. The hook can return a new HTTP client to be used by the SDK.
+type clientInitHook interface {
+	ClientInit(client HTTPClient) HTTPClient
 }
 
 // beforeRequestHook is called before the SDK sends a request. The hook can modify the request before it is sent or return an error to stop the request from being sent.
@@ -57,14 +53,14 @@ type afterSuccessHook interface {
 	AfterSuccess(hookCtx AfterSuccessContext, res *http.Response) (*http.Response, error)
 }
 
-// afterErrorHook is called after the SDK encounters an error, or a non-successful response. The hook can modify the response if available otherwise modify the error.
+// afterSuccessHook is called after the SDK encounters an error, or a non-successful response. The hook can modify the response if available otherwise modify the error.
 // All afterErrorHook hooks are called and returning an error won't stop the other hooks from being called. But if you want to stop the other hooks from being called, you can return a FailEarly error wrapping your error.
 type afterErrorHook interface {
 	AfterError(hookCtx AfterErrorContext, res *http.Response, err error) (*http.Response, error)
 }
 
 type Hooks struct {
-	sdkInitHooks      []sdkInitHook
+	clientInitHooks   []clientInitHook
 	beforeRequestHook []beforeRequestHook
 	afterSuccessHook  []afterSuccessHook
 	afterErrorHook    []afterErrorHook
@@ -72,18 +68,20 @@ type Hooks struct {
 
 func New() *Hooks {
 	h := &Hooks{
-		sdkInitHooks:      []sdkInitHook{},
+		clientInitHooks:   []clientInitHook{},
 		beforeRequestHook: []beforeRequestHook{},
 		afterSuccessHook:  []afterSuccessHook{},
 		afterErrorHook:    []afterErrorHook{},
 	}
 
+	initHooks(h)
+
 	return h
 }
 
-// registerSDKInitHook registers a hook to be used by the SDK for the initialization event.
-func (h *Hooks) registerSDKInitHook(hook sdkInitHook) {
-	h.sdkInitHooks = append(h.sdkInitHooks, hook)
+// registerClientInitHook registers a hook to be used by the SDK for the client initialization event.
+func (h *Hooks) registerClientInitHook(hook clientInitHook) {
+	h.clientInitHooks = append(h.clientInitHooks, hook)
 }
 
 // registerBeforeRequestHook registers a hook to be used by the SDK for the before request event.
@@ -101,11 +99,11 @@ func (h *Hooks) registerAfterErrorHook(hook afterErrorHook) {
 	h.afterErrorHook = append(h.afterErrorHook, hook)
 }
 
-func (h *Hooks) SDKInit(baseURL string, client HTTPClient) (string, HTTPClient) {
-	for _, hook := range h.sdkInitHooks {
-		baseURL, client = hook.SDKInit(baseURL, client)
+func (h *Hooks) ClientInit(client HTTPClient) HTTPClient {
+	for _, hook := range h.clientInitHooks {
+		client = hook.ClientInit(client)
 	}
-	return baseURL, client
+	return client
 }
 
 func (h *Hooks) BeforeRequest(hookCtx BeforeRequestContext, req *http.Request) (*http.Request, error) {

@@ -6,7 +6,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/cenkalti/backoff/v4"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/hooks"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
@@ -31,11 +30,7 @@ func newAuth(sdkConfig sdkConfiguration) *Auth {
 // GetWorkspaceAccess - Get access allowances for a particular workspace
 // Checks if generation is permitted for a particular run of the CLI
 func (s *Auth) GetWorkspaceAccess(ctx context.Context, request operations.GetWorkspaceAccessRequest, opts ...operations.Option) (*operations.GetWorkspaceAccessResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceAccess",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getWorkspaceAccess"}
 
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -101,32 +96,29 @@ func (s *Auth) GetWorkspaceAccess(ctx context.Context, request operations.GetWor
 			}
 			req.Body = copyBody
 		}
-
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
-		if err != nil {
-			return nil, backoff.Permanent(err)
-		}
-
-		httpRes, err := client.Do(req)
-		if err != nil || httpRes == nil {
-			if err != nil {
-				err = fmt.Errorf("error sending request: %w", err)
-			} else {
-				err = fmt.Errorf("error sending request: no response")
-			}
-
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
-		}
-		return httpRes, err
+		return client.Do(req)
 	})
-	if err != nil {
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetWorkspaceAccessResponse{
@@ -156,18 +148,9 @@ func (s *Auth) GetWorkspaceAccess(ctx context.Context, request operations.GetWor
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out sdkerrors.Error
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-			return nil, &out
-		default:
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
-		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -175,11 +158,7 @@ func (s *Auth) GetWorkspaceAccess(ctx context.Context, request operations.GetWor
 
 // ValidateAPIKey - Validate the current api key.
 func (s *Auth) ValidateAPIKey(ctx context.Context) (*operations.ValidateAPIKeyResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "validateApiKey",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "validateApiKey"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/v1/auth/validate")
@@ -196,7 +175,7 @@ func (s *Auth) ValidateAPIKey(ctx context.Context) (*operations.ValidateAPIKeyRe
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -209,19 +188,20 @@ func (s *Auth) ValidateAPIKey(ctx context.Context) (*operations.ValidateAPIKeyRe
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.ValidateAPIKeyResponse{

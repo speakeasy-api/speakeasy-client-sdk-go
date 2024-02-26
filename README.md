@@ -26,7 +26,9 @@ import (
 
 func main() {
 	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
@@ -103,6 +105,8 @@ func main() {
 
 ### [Events](docs/sdks/events/README.md)
 
+* [GetWorkspaceEvents](docs/sdks/events/README.md#getworkspaceevents) - Load recent events for a particular workspace
+* [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->
 
@@ -147,12 +151,14 @@ import (
 
 func main() {
 	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
 	ctx := context.Background()
-	res, err := s.Auth.GetWorkspaceAccess(ctx, operations.GetWorkspaceAccessRequest{})
+	res, err := s.Events.GetWorkspaceEvents(ctx, operations.GetWorkspaceEventsRequest{})
 	if err != nil {
 
 		var e *sdkerrors.Error
@@ -202,7 +208,9 @@ import (
 func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServer("prod"),
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
@@ -241,7 +249,9 @@ import (
 func main() {
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL("https://api.prod.speakeasyapi.dev"),
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
@@ -300,13 +310,14 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name     | Type     | Scheme   |
-| -------- | -------- | -------- |
-| `APIKey` | apiKey   | API key  |
+| Name        | Type        | Scheme      |
+| ----------- | ----------- | ----------- |
+| `APIKey`    | apiKey      | API key     |
+| `Bearer`    | http        | HTTP Bearer |
 
-You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
 package main
 
@@ -314,13 +325,16 @@ import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 	"net/http"
 )
 
 func main() {
 	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
@@ -346,7 +360,7 @@ func main() {
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `PostWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -368,38 +382,24 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
-	"net/http"
 )
 
 func main() {
 	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
 	ctx := context.Background()
-	res, err := s.Events.PostWorkspaceEvents(ctx, operations.PostWorkspaceEventsRequest{
-		RequestBody: []shared.CliEvent{
-			shared.CliEvent{
-				CreatedAt:           types.MustTimeFromString("2024-11-21T06:58:42.120Z"),
-				ExecutionID:         "<value>",
-				ID:                  "<id>",
-				InteractionType:     shared.InteractionTypeCliExec,
-				LocalStartedAt:      types.MustTimeFromString("2024-05-07T12:35:47.182Z"),
-				SpeakeasyAPIKeyName: "<value>",
-				SpeakeasyVersion:    "<value>",
-				Success:             false,
-				WorkspaceID:         "<value>",
-			},
-		},
-	})
+	res, err := s.Events.GetWorkspaceEvents(ctx, operations.GetWorkspaceEventsRequest{})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.StatusCode == http.StatusOK {
+	if res.CliEventBatch != nil {
 		// handle response
 	}
 }
@@ -428,7 +428,9 @@ import (
 
 func main() {
 	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 
@@ -481,7 +483,9 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
 		speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
 	)
 

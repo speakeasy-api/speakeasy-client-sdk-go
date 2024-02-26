@@ -28,11 +28,7 @@ func newMetadata(sdkConfig sdkConfiguration) *Metadata {
 
 // DeleteVersionMetadata - Delete metadata for a particular apiID and versionID.
 func (s *Metadata) DeleteVersionMetadata(ctx context.Context, request operations.DeleteVersionMetadataRequest) (*operations.DeleteVersionMetadataResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "deleteVersionMetadata",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "deleteVersionMetadata"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}", request, s.sdkConfiguration.Globals)
@@ -49,7 +45,7 @@ func (s *Metadata) DeleteVersionMetadata(ctx context.Context, request operations
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -62,19 +58,20 @@ func (s *Metadata) DeleteVersionMetadata(ctx context.Context, request operations
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteVersionMetadataResponse{
@@ -115,11 +112,7 @@ func (s *Metadata) DeleteVersionMetadata(ctx context.Context, request operations
 
 // GetVersionMetadata - Get all metadata for a particular apiID and versionID.
 func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.GetVersionMetadataRequest) (*operations.GetVersionMetadataResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getVersionMetadata",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getVersionMetadata"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata", request, s.sdkConfiguration.Globals)
@@ -136,7 +129,7 @@ func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.Ge
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -149,19 +142,20 @@ func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.Ge
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetVersionMetadataResponse{
@@ -213,11 +207,7 @@ func (s *Metadata) GetVersionMetadata(ctx context.Context, request operations.Ge
 
 // InsertVersionMetadata - Insert metadata for a particular apiID and versionID.
 func (s *Metadata) InsertVersionMetadata(ctx context.Context, request operations.InsertVersionMetadataRequest) (*operations.InsertVersionMetadataResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "insertVersionMetadata",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "insertVersionMetadata"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/metadata", request, s.sdkConfiguration.Globals)
@@ -240,7 +230,7 @@ func (s *Metadata) InsertVersionMetadata(ctx context.Context, request operations
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -253,19 +243,20 @@ func (s *Metadata) InsertVersionMetadata(ctx context.Context, request operations
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.InsertVersionMetadataResponse{

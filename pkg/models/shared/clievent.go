@@ -52,6 +52,11 @@ type InteractionType string
 const (
 	InteractionTypeCliExec        InteractionType = "CLI_EXEC"
 	InteractionTypeTargetGenerate InteractionType = "TARGET_GENERATE"
+	InteractionTypeAuthenticate   InteractionType = "AUTHENTICATE"
+	InteractionTypeQuickstart     InteractionType = "QUICKSTART"
+	InteractionTypeRun            InteractionType = "RUN"
+	InteractionTypeConfigure      InteractionType = "CONFIGURE"
+	InteractionTypePublish        InteractionType = "PUBLISH"
 )
 
 func (e InteractionType) ToPointer() *InteractionType {
@@ -67,6 +72,16 @@ func (e *InteractionType) UnmarshalJSON(data []byte) error {
 	case "CLI_EXEC":
 		fallthrough
 	case "TARGET_GENERATE":
+		fallthrough
+	case "AUTHENTICATE":
+		fallthrough
+	case "QUICKSTART":
+		fallthrough
+	case "RUN":
+		fallthrough
+	case "CONFIGURE":
+		fallthrough
+	case "PUBLISH":
 		*e = InteractionType(v)
 		return nil
 	default:
@@ -89,13 +104,13 @@ type CliEvent struct {
 	GenerateConfigPostChecksum *string `json:"generate_config_post_checksum,omitempty"`
 	// Rendered configuration file (post generation)
 	GenerateConfigPostRaw *string `json:"generate_config_post_raw,omitempty"`
-	// Version of the generated target (post generation)
+	// The version of the customer's SDK that we just generated
 	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
 	// Checksum of the configuration file (prior to generation)
 	GenerateConfigPreChecksum *string `json:"generate_config_pre_checksum,omitempty"`
 	// Rendered configuration file (prior to generation)
 	GenerateConfigPreRaw *string `json:"generate_config_pre_raw,omitempty"`
-	// Version of the generated target (prior to generation)
+	// The version of the customer's SDK before we generated
 	GenerateConfigPreVersion *string `json:"generate_config_pre_version,omitempty"`
 	// gen.lock ID (expected to be a uuid).
 	GenerateGenLockID *string `json:"generate_gen_lock_id,omitempty"`
@@ -137,7 +152,7 @@ type CliEvent struct {
 	GitRemoteDefaultRepo *string `json:"git_remote_default_repo,omitempty"`
 	// User email from git configuration.
 	GitUserEmail *string `json:"git_user_email,omitempty"`
-	// User name from git configuration.
+	// User's name from git configuration. (not GitHub username)
 	GitUserName *string `json:"git_user_name,omitempty"`
 	// Remote hostname.
 	Hostname *string `json:"hostname,omitempty"`
@@ -153,6 +168,14 @@ type CliEvent struct {
 	ManagementDocChecksum *string `json:"management_doc_checksum,omitempty"`
 	// Version taken from info.version field of the Rendered OpenAPI document.
 	ManagementDocVersion *string `json:"management_doc_version,omitempty"`
+	// Name of the published package.
+	PublishPackageName *string `json:"publish_package_name,omitempty"`
+	// Name of the registry where the package was published.
+	PublishPackageRegistryName *string `json:"publish_package_registry_name,omitempty"`
+	// URL of the published package.
+	PublishPackageURL *string `json:"publish_package_url,omitempty"`
+	// Version of the published package.
+	PublishPackageVersion *string `json:"publish_package_version,omitempty"`
 	// Full CLI command.
 	RawCommand *string `json:"raw_command,omitempty"`
 	// Label of the git repository.
@@ -449,6 +472,34 @@ func (o *CliEvent) GetManagementDocVersion() *string {
 		return nil
 	}
 	return o.ManagementDocVersion
+}
+
+func (o *CliEvent) GetPublishPackageName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageName
+}
+
+func (o *CliEvent) GetPublishPackageRegistryName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageRegistryName
+}
+
+func (o *CliEvent) GetPublishPackageURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageURL
+}
+
+func (o *CliEvent) GetPublishPackageVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageVersion
 }
 
 func (o *CliEvent) GetRawCommand() *string {

@@ -30,11 +30,7 @@ func newApis(sdkConfig sdkConfiguration) *Apis {
 // DeleteAPI - Delete an Api.
 // Delete a particular version of an Api. The will also delete all associated ApiEndpoints, Metadata, Schemas & Request Logs (if using a Postgres datastore).
 func (s *Apis) DeleteAPI(ctx context.Context, request operations.DeleteAPIRequest) (*operations.DeleteAPIResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "deleteApi",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "deleteApi"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}", request, s.sdkConfiguration.Globals)
@@ -51,7 +47,7 @@ func (s *Apis) DeleteAPI(ctx context.Context, request operations.DeleteAPIReques
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -64,19 +60,20 @@ func (s *Apis) DeleteAPI(ctx context.Context, request operations.DeleteAPIReques
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteAPIResponse{
@@ -119,11 +116,7 @@ func (s *Apis) DeleteAPI(ctx context.Context, request operations.DeleteAPIReques
 // This endpoint will generate any missing operations in any registered OpenAPI document if the operation does not already exist in the document.
 // Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
 func (s *Apis) GenerateOpenAPISpec(ctx context.Context, request operations.GenerateOpenAPISpecRequest) (*operations.GenerateOpenAPISpecResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "generateOpenApiSpec",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "generateOpenApiSpec"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}/version/{versionID}/generate/openapi", request, s.sdkConfiguration.Globals)
@@ -140,7 +133,7 @@ func (s *Apis) GenerateOpenAPISpec(ctx context.Context, request operations.Gener
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -153,19 +146,20 @@ func (s *Apis) GenerateOpenAPISpec(ctx context.Context, request operations.Gener
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GenerateOpenAPISpecResponse{
@@ -218,11 +212,7 @@ func (s *Apis) GenerateOpenAPISpec(ctx context.Context, request operations.Gener
 // GeneratePostmanCollection - Generate a Postman collection for a particular Api.
 // Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
 func (s *Apis) GeneratePostmanCollection(ctx context.Context, request operations.GeneratePostmanCollectionRequest, opts ...operations.Option) (*operations.GeneratePostmanCollectionResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "generatePostmanCollection",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "generatePostmanCollection"}
 
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -254,7 +244,7 @@ func (s *Apis) GeneratePostmanCollection(ctx context.Context, request operations
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -267,19 +257,20 @@ func (s *Apis) GeneratePostmanCollection(ctx context.Context, request operations
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GeneratePostmanCollectionResponse{
@@ -332,11 +323,7 @@ func (s *Apis) GeneratePostmanCollection(ctx context.Context, request operations
 // Get all Api versions for a particular ApiEndpoint.
 // Supports filtering the versions based on metadata attributes.
 func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllAPIVersionsRequest) (*operations.GetAllAPIVersionsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getAllApiVersions",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getAllApiVersions"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}", request, s.sdkConfiguration.Globals)
@@ -357,7 +344,7 @@ func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllA
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -370,19 +357,20 @@ func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllA
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetAllAPIVersionsResponse{
@@ -436,11 +424,7 @@ func (s *Apis) GetAllAPIVersions(ctx context.Context, request operations.GetAllA
 // Get a list of all Apis and their versions for a given workspace.
 // Supports filtering the APIs based on metadata attributes.
 func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (*operations.GetApisResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getApis",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getApis"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/v1/apis")
@@ -461,7 +445,7 @@ func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -474,19 +458,20 @@ func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetApisResponse{
@@ -540,11 +525,7 @@ func (s *Apis) GetApis(ctx context.Context, request operations.GetApisRequest) (
 // Upsert an Api. If the Api does not exist, it will be created.
 // If the Api exists, it will be updated.
 func (s *Apis) UpsertAPI(ctx context.Context, request operations.UpsertAPIRequest) (*operations.UpsertAPIResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "upsertApi",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "upsertApi"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/apis/{apiID}", request, s.sdkConfiguration.Globals)
@@ -567,7 +548,7 @@ func (s *Apis) UpsertAPI(ctx context.Context, request operations.UpsertAPIReques
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -580,19 +561,20 @@ func (s *Apis) UpsertAPI(ctx context.Context, request operations.UpsertAPIReques
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.UpsertAPIResponse{

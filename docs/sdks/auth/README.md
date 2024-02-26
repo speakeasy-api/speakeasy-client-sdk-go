@@ -29,7 +29,9 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
         speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 
@@ -59,7 +61,6 @@ func main() {
 **[*operations.GetWorkspaceAccessResponse](../../pkg/models/operations/getworkspaceaccessresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.Error    | 5XX                | application/json   |
 | sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ValidateAPIKey
@@ -80,7 +81,9 @@ import(
 
 func main() {
     s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
         speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
     )
 

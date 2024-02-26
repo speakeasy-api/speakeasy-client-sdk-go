@@ -31,11 +31,7 @@ func newEmbeds(sdkConfig sdkConfiguration) *Embeds {
 // Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.
 // Filters can be applied allowing views to be filtered to things like particular customerIds.
 func (s *Embeds) GetEmbedAccessToken(ctx context.Context, request operations.GetEmbedAccessTokenRequest) (*operations.GetEmbedAccessTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getEmbedAccessToken",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getEmbedAccessToken"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/v1/workspace/embed-access-token")
@@ -56,7 +52,7 @@ func (s *Embeds) GetEmbedAccessToken(ctx context.Context, request operations.Get
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -69,19 +65,20 @@ func (s *Embeds) GetEmbedAccessToken(ctx context.Context, request operations.Get
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetEmbedAccessTokenResponse{
@@ -133,11 +130,7 @@ func (s *Embeds) GetEmbedAccessToken(ctx context.Context, request operations.Get
 
 // GetValidEmbedAccessTokens - Get all valid embed access tokens for the current workspace.
 func (s *Embeds) GetValidEmbedAccessTokens(ctx context.Context) (*operations.GetValidEmbedAccessTokensResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getValidEmbedAccessTokens",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "getValidEmbedAccessTokens"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/v1/workspace/embed-access-tokens/valid")
@@ -154,7 +147,7 @@ func (s *Embeds) GetValidEmbedAccessTokens(ctx context.Context) (*operations.Get
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -167,19 +160,20 @@ func (s *Embeds) GetValidEmbedAccessTokens(ctx context.Context) (*operations.Get
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.GetValidEmbedAccessTokensResponse{
@@ -231,11 +225,7 @@ func (s *Embeds) GetValidEmbedAccessTokens(ctx context.Context) (*operations.Get
 
 // RevokeEmbedAccessToken - Revoke an embed access EmbedToken.
 func (s *Embeds) RevokeEmbedAccessToken(ctx context.Context, request operations.RevokeEmbedAccessTokenRequest) (*operations.RevokeEmbedAccessTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "revokeEmbedAccessToken",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
+	hookCtx := hooks.HookContext{OperationID: "revokeEmbedAccessToken"}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/embed-access-tokens/{tokenID}", request, s.sdkConfiguration.Globals)
@@ -252,7 +242,7 @@ func (s *Embeds) RevokeEmbedAccessToken(ctx context.Context, request operations.
 
 	client := s.sdkConfiguration.SecurityClient
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
@@ -265,19 +255,20 @@ func (s *Embeds) RevokeEmbedAccessToken(ctx context.Context, request operations.
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
 	}
+
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RevokeEmbedAccessTokenResponse{

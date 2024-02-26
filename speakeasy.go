@@ -137,15 +137,14 @@ func WithClient(client HTTPClient) SDKOption {
 
 func withSecurity(security interface{}) func(context.Context) (interface{}, error) {
 	return func(context.Context) (interface{}, error) {
-		return security, nil
+		return &security, nil
 	}
 }
 
 // WithSecurity configures the SDK to use the provided security details
-func WithSecurity(apiKey string) SDKOption {
+func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *Speakeasy) {
-		security := shared.Security{APIKey: apiKey}
-		sdk.sdkConfiguration.Security = withSecurity(&security)
+		sdk.sdkConfiguration.Security = withSecurity(security)
 	}
 }
 
@@ -181,9 +180,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.3.7",
-			GenVersion:        "2.272.4",
-			UserAgent:         "speakeasy-sdk/go 3.3.7 2.272.4 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.3.11",
+			GenVersion:        "2.259.1",
+			UserAgent:         "speakeasy-sdk/go 3.3.11 2.259.1 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -194,18 +193,12 @@ func New(opts ...SDKOption) *Speakeasy {
 		opt(sdk)
 	}
 
+	sdk.sdkConfiguration.DefaultClient = sdk.sdkConfiguration.Hooks.ClientInit(sdk.sdkConfiguration.DefaultClient)
+
 	// Use WithClient to override the default client if you would like to customize the timeout
 	if sdk.sdkConfiguration.DefaultClient == nil {
 		sdk.sdkConfiguration.DefaultClient = &http.Client{Timeout: 60 * time.Second}
 	}
-
-	currentServerURL, _ := sdk.sdkConfiguration.GetServerDetails()
-	serverURL := currentServerURL
-	serverURL, sdk.sdkConfiguration.DefaultClient = sdk.sdkConfiguration.Hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.DefaultClient)
-	if serverURL != currentServerURL {
-		sdk.sdkConfiguration.ServerURL = serverURL
-	}
-
 	if sdk.sdkConfiguration.SecurityClient == nil {
 		if sdk.sdkConfiguration.Security != nil {
 			sdk.sdkConfiguration.SecurityClient = utils.ConfigureSecurityClient(sdk.sdkConfiguration.DefaultClient, sdk.sdkConfiguration.Security)

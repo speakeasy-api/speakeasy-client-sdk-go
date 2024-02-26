@@ -131,12 +131,12 @@ func parseSecurityStruct(c *securityConfig, security interface{}) {
 	}
 }
 
-func handleSecurityOption(c *securityConfig, option interface{}) {
+func handleSecurityOption(c *securityConfig, option interface{}) error {
 	optionValType := trueReflectValue(reflect.ValueOf(option))
 	optionStructType := optionValType.Type()
 
 	if isNil(optionStructType, optionValType) {
-		return
+		return nil
 	}
 
 	for i := 0; i < optionStructType.NumField(); i++ {
@@ -148,6 +148,8 @@ func handleSecurityOption(c *securityConfig, option interface{}) {
 			parseSecurityScheme(c, secTag, valType.Interface())
 		}
 	}
+
+	return nil
 }
 
 func parseSecurityScheme(client *securityConfig, schemeTag *securityTag, scheme interface{}) {
@@ -204,9 +206,7 @@ func parseSecuritySchemeValue(client *securityConfig, schemeTag *securityTag, se
 	case "openIdConnect":
 		client.headers[secTag.Name] = prefixBearer(valToString(val))
 	case "oauth2":
-		if schemeTag.SubType != "client_credentials" {
-			client.headers[secTag.Name] = prefixBearer(valToString(val))
-		}
+		client.headers[secTag.Name] = prefixBearer(valToString(val))
 	case "http":
 		switch schemeTag.SubType {
 		case "bearer":
