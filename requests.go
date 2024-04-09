@@ -49,7 +49,7 @@ func (s *Requests) GenerateRequestPostmanCollection(ctx context.Context, request
 		}
 	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/eventlog/{requestID}/generate/postman", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/eventlog/{requestID}/generate/postman", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -153,7 +153,7 @@ func (s *Requests) GetRequestFromEventLog(ctx context.Context, request operation
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/eventlog/{requestID}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/eventlog/{requestID}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -267,7 +267,7 @@ func (s *Requests) QueryEventLog(ctx context.Context, request operations.QueryEv
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
