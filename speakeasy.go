@@ -5,6 +5,7 @@ package speakeasyclientsdkgo
 import (
 	"context"
 	"fmt"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/globals"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/hooks"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
@@ -54,7 +55,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
-	Globals           map[string]map[string]map[string]interface{}
+	Globals           globals.Globals
 	RetryConfig       *utils.RetryConfig
 	Hooks             *hooks.Hooks
 }
@@ -160,11 +161,7 @@ func WithSecuritySource(security func(context.Context) (shared.Security, error))
 // WithWorkspaceID allows setting the WorkspaceID parameter for all supported operations
 func WithWorkspaceID(workspaceID string) SDKOption {
 	return func(sdk *Speakeasy) {
-		if _, ok := sdk.sdkConfiguration.Globals["parameters"]["pathParam"]; !ok {
-			sdk.sdkConfiguration.Globals["parameters"]["pathParam"] = map[string]interface{}{}
-		}
-
-		sdk.sdkConfiguration.Globals["parameters"]["pathParam"]["WorkspaceID"] = workspaceID
+		sdk.sdkConfiguration.Globals.WorkspaceID = workspaceID
 	}
 }
 
@@ -180,13 +177,11 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.5.1",
-			GenVersion:        "2.292.0",
-			UserAgent:         "speakeasy-sdk/go 3.5.1 2.292.0 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
-			Globals: map[string]map[string]map[string]interface{}{
-				"parameters": {},
-			},
-			Hooks: hooks.New(),
+			SDKVersion:        "3.5.2",
+			GenVersion:        "2.301.0",
+			UserAgent:         "speakeasy-sdk/go 3.5.2 2.301.0 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			Globals:           globals.Globals{},
+			Hooks:             hooks.New(),
 		},
 	}
 	for _, opt := range opts {

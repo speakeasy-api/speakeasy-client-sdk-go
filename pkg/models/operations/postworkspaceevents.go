@@ -7,6 +7,17 @@ import (
 	"net/http"
 )
 
+type PostWorkspaceEventsGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
+}
+
+func (o *PostWorkspaceEventsGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type PostWorkspaceEventsRequest struct {
 	RequestBody []shared.CliEvent `request:"mediaType=application/json"`
 	// Unique identifier of the workspace.

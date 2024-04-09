@@ -9,6 +9,17 @@ import (
 	"time"
 )
 
+type GetWorkspaceEventsGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
+}
+
+func (o *GetWorkspaceEventsGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type GetWorkspaceEventsRequest struct {
 	// Filter to only return events created after this timestamp
 	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`

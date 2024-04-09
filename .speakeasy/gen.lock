@@ -3,17 +3,17 @@ id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
   docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
   docVersion: 0.4.0
-  speakeasyVersion: 1.228.1
-  generationVersion: 2.292.0
-  releaseVersion: 3.5.1
-  configChecksum: 29304d7c6094caed4802cf893b3477d2
+  speakeasyVersion: 1.244.0
+  generationVersion: 2.301.0
+  releaseVersion: 3.5.2
+  configChecksum: 2f7f4c2c956a664f0a2a22bd15bedd7e
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
   published: true
 features:
   go:
-    core: 3.4.5
+    core: 3.4.6
     devContainers: 2.90.0
     downloadStreams: 0.1.1
     examples: 2.81.3
@@ -52,6 +52,7 @@ generatedFiles:
   - pkg/utils/retries.go
   - pkg/utils/security.go
   - pkg/utils/utils.go
+  - internal/globals/globals.go
   - /pkg/models/operations/deleteapi.go
   - /pkg/models/operations/generateopenapispec.go
   - /pkg/models/operations/generatepostmancollection.go
@@ -189,10 +190,13 @@ generatedFiles:
   - docs/pkg/models/operations/getvalidembedaccesstokensresponse.md
   - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
   - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
+  - docs/pkg/models/operations/getworkspaceeventsglobals.md
   - docs/pkg/models/operations/getworkspaceeventsrequest.md
   - docs/pkg/models/operations/getworkspaceeventsresponse.md
+  - docs/pkg/models/operations/getworkspacetargetsglobals.md
   - docs/pkg/models/operations/getworkspacetargetsrequest.md
   - docs/pkg/models/operations/getworkspacetargetsresponse.md
+  - docs/pkg/models/operations/postworkspaceeventsglobals.md
   - docs/pkg/models/operations/postworkspaceeventsrequest.md
   - docs/pkg/models/operations/postworkspaceeventsresponse.md
   - docs/pkg/models/sdkerrors/error.md

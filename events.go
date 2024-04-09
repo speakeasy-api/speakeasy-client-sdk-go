@@ -36,8 +36,12 @@ func (s *Events) GetWorkspaceEvents(ctx context.Context, request operations.GetW
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceEventsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspaceID}/events", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspaceID}/events", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -49,7 +53,9 @@ func (s *Events) GetWorkspaceEvents(ctx context.Context, request operations.GetW
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
+	utils.PopulateHeaders(ctx, req, request, globals)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -140,8 +146,12 @@ func (s *Events) GetWorkspaceTargets(ctx context.Context, request operations.Get
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceTargetsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspaceID}/events/targets", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspaceID}/events/targets", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -153,7 +163,9 @@ func (s *Events) GetWorkspaceTargets(ctx context.Context, request operations.Get
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
+	utils.PopulateHeaders(ctx, req, request, globals)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -245,6 +257,10 @@ func (s *Events) PostWorkspaceEvents(ctx context.Context, request operations.Pos
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.PostWorkspaceEventsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -256,7 +272,7 @@ func (s *Events) PostWorkspaceEvents(ctx context.Context, request operations.Pos
 		}
 	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspaceID}/events", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspaceID}/events", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -273,6 +289,12 @@ func (s *Events) PostWorkspaceEvents(ctx context.Context, request operations.Pos
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	utils.PopulateHeaders(ctx, req, request, globals)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, globals); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
