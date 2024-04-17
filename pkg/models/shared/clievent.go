@@ -53,10 +53,6 @@ type CliEvent struct {
 	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
 	// Timestamp when the event was created in the database.
 	CreatedAt time.Time `json:"created_at"`
-	// The namespace name of the base source.
-	DiffBaseSourceNamespaceName *string `json:"diff_base_source_namespace_name,omitempty"`
-	// The revision digest of the base source.
-	DiffBaseSourceRevisionDigest *string `json:"diff_base_source_revision_digest,omitempty"`
 	// Duration of the event in milliseconds.
 	DurationMs *int64 `json:"duration_ms,omitempty"`
 	// Unique identifier for each execution of the CLI.
@@ -79,6 +75,8 @@ type CliEvent struct {
 	GenerateGenLockID *string `json:"generate_gen_lock_id,omitempty"`
 	// Features post generation
 	GenerateGenLockPostFeatures *string `json:"generate_gen_lock_post_features,omitempty"`
+	// Blob digest of the Previous Generation
+	GenerateGenLockPreBlobDigest *string `json:"generate_gen_lock_pre_blob_digest,omitempty"`
 	// Checksum of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
 	GenerateGenLockPreDocChecksum *string `json:"generate_gen_lock_pre_doc_checksum,omitempty"`
 	// info.Version of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
@@ -143,6 +141,12 @@ type CliEvent struct {
 	ManagementDocChecksum *string `json:"management_doc_checksum,omitempty"`
 	// Version taken from info.version field of the Rendered OpenAPI document.
 	ManagementDocVersion *string `json:"management_doc_version,omitempty"`
+	// The blob digest of the base source.
+	OpenapiDiffBaseSourceBlobDigest *string `json:"openapi_diff_base_source_blob_digest,omitempty"`
+	// The namespace name of the base source.
+	OpenapiDiffBaseSourceNamespaceName *string `json:"openapi_diff_base_source_namespace_name,omitempty"`
+	// The revision digest of the base source.
+	OpenapiDiffBaseSourceRevisionDigest *string `json:"openapi_diff_base_source_revision_digest,omitempty"`
 	// The checksum of the openapi diff report.
 	OpenapiDiffReportDigest *string `json:"openapi_diff_report_digest,omitempty"`
 	// Name of the published package.
@@ -157,6 +161,8 @@ type CliEvent struct {
 	RawCommand *string `json:"raw_command,omitempty"`
 	// Label of the git repository.
 	RepoLabel *string `json:"repo_label,omitempty"`
+	// The blob digest of the source.
+	SourceBlobDigest *string `json:"source_blob_digest,omitempty"`
 	// The namespace name of the source.
 	SourceNamespaceName *string `json:"source_namespace_name,omitempty"`
 	// The revision digest of the source.
@@ -201,20 +207,6 @@ func (o *CliEvent) GetCreatedAt() time.Time {
 		return time.Time{}
 	}
 	return o.CreatedAt
-}
-
-func (o *CliEvent) GetDiffBaseSourceNamespaceName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DiffBaseSourceNamespaceName
-}
-
-func (o *CliEvent) GetDiffBaseSourceRevisionDigest() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DiffBaseSourceRevisionDigest
 }
 
 func (o *CliEvent) GetDurationMs() *int64 {
@@ -292,6 +284,13 @@ func (o *CliEvent) GetGenerateGenLockPostFeatures() *string {
 		return nil
 	}
 	return o.GenerateGenLockPostFeatures
+}
+
+func (o *CliEvent) GetGenerateGenLockPreBlobDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreBlobDigest
 }
 
 func (o *CliEvent) GetGenerateGenLockPreDocChecksum() *string {
@@ -518,6 +517,27 @@ func (o *CliEvent) GetManagementDocVersion() *string {
 	return o.ManagementDocVersion
 }
 
+func (o *CliEvent) GetOpenapiDiffBaseSourceBlobDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBaseSourceBlobDigest
+}
+
+func (o *CliEvent) GetOpenapiDiffBaseSourceNamespaceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBaseSourceNamespaceName
+}
+
+func (o *CliEvent) GetOpenapiDiffBaseSourceRevisionDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBaseSourceRevisionDigest
+}
+
 func (o *CliEvent) GetOpenapiDiffReportDigest() *string {
 	if o == nil {
 		return nil
@@ -565,6 +585,13 @@ func (o *CliEvent) GetRepoLabel() *string {
 		return nil
 	}
 	return o.RepoLabel
+}
+
+func (o *CliEvent) GetSourceBlobDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceBlobDigest
 }
 
 func (o *CliEvent) GetSourceNamespaceName() *string {
