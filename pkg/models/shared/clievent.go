@@ -46,6 +46,40 @@ func (e *GenerateBumpType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// OpenapiDiffBumpType - Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+type OpenapiDiffBumpType string
+
+const (
+	OpenapiDiffBumpTypeMajor OpenapiDiffBumpType = "major"
+	OpenapiDiffBumpTypeMinor OpenapiDiffBumpType = "minor"
+	OpenapiDiffBumpTypePatch OpenapiDiffBumpType = "patch"
+	OpenapiDiffBumpTypeNone  OpenapiDiffBumpType = "none"
+)
+
+func (e OpenapiDiffBumpType) ToPointer() *OpenapiDiffBumpType {
+	return &e
+}
+
+func (e *OpenapiDiffBumpType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "major":
+		fallthrough
+	case "minor":
+		fallthrough
+	case "patch":
+		fallthrough
+	case "none":
+		*e = OpenapiDiffBumpType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OpenapiDiffBumpType: %v", v)
+	}
+}
+
 type CliEvent struct {
 	// Remote commit ID.
 	CommitHead *string `json:"commit_head,omitempty"`
@@ -147,6 +181,10 @@ type CliEvent struct {
 	OpenapiDiffBaseSourceNamespaceName *string `json:"openapi_diff_base_source_namespace_name,omitempty"`
 	// The revision digest of the base source.
 	OpenapiDiffBaseSourceRevisionDigest *string `json:"openapi_diff_base_source_revision_digest,omitempty"`
+	// The number of breaking changes in the openapi diff report.
+	OpenapiDiffBreakingChangesCount *int64 `json:"openapi_diff_breaking_changes_count,omitempty"`
+	// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+	OpenapiDiffBumpType *OpenapiDiffBumpType `json:"openapi_diff_bump_type,omitempty"`
 	// The checksum of the openapi diff report.
 	OpenapiDiffReportDigest *string `json:"openapi_diff_report_digest,omitempty"`
 	// Name of the published package.
@@ -536,6 +574,20 @@ func (o *CliEvent) GetOpenapiDiffBaseSourceRevisionDigest() *string {
 		return nil
 	}
 	return o.OpenapiDiffBaseSourceRevisionDigest
+}
+
+func (o *CliEvent) GetOpenapiDiffBreakingChangesCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBreakingChangesCount
+}
+
+func (o *CliEvent) GetOpenapiDiffBumpType() *OpenapiDiffBumpType {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBumpType
 }
 
 func (o *CliEvent) GetOpenapiDiffReportDigest() *string {
