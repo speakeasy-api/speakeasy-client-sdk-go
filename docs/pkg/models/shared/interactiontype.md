@@ -9,6 +9,8 @@ Type of interaction.
 | ------------------------------- | ------------------------------- |
 | `InteractionTypeCiExec`         | CI_EXEC                         |
 | `InteractionTypeCliExec`        | CLI_EXEC                        |
+| `InteractionTypeLint`           | LINT                            |
+| `InteractionTypeOpenapiDiff`    | OPENAPI_DIFF                    |
 | `InteractionTypeTargetGenerate` | TARGET_GENERATE                 |
 | `InteractionTypeTombstone`      | TOMBSTONE                       |
 | `InteractionTypeAuthenticate`   | AUTHENTICATE                    |

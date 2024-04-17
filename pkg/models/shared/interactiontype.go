@@ -13,6 +13,8 @@ type InteractionType string
 const (
 	InteractionTypeCiExec         InteractionType = "CI_EXEC"
 	InteractionTypeCliExec        InteractionType = "CLI_EXEC"
+	InteractionTypeLint           InteractionType = "LINT"
+	InteractionTypeOpenapiDiff    InteractionType = "OPENAPI_DIFF"
 	InteractionTypeTargetGenerate InteractionType = "TARGET_GENERATE"
 	InteractionTypeTombstone      InteractionType = "TOMBSTONE"
 	InteractionTypeAuthenticate   InteractionType = "AUTHENTICATE"
@@ -35,6 +37,10 @@ func (e *InteractionType) UnmarshalJSON(data []byte) error {
 	case "CI_EXEC":
 		fallthrough
 	case "CLI_EXEC":
+		fallthrough
+	case "LINT":
+		fallthrough
+	case "OPENAPI_DIFF":
 		fallthrough
 	case "TARGET_GENERATE":
 		fallthrough

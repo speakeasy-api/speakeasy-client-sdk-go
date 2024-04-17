@@ -53,6 +53,10 @@ type CliEvent struct {
 	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
 	// Timestamp when the event was created in the database.
 	CreatedAt time.Time `json:"created_at"`
+	// The namespace name of the base source.
+	DiffBaseSourceNamespaceName *string `json:"diff_base_source_namespace_name,omitempty"`
+	// The revision digest of the base source.
+	DiffBaseSourceRevisionDigest *string `json:"diff_base_source_revision_digest,omitempty"`
 	// Duration of the event in milliseconds.
 	DurationMs *int64 `json:"duration_ms,omitempty"`
 	// Unique identifier for each execution of the CLI.
@@ -81,6 +85,10 @@ type CliEvent struct {
 	GenerateGenLockPreDocVersion *string `json:"generate_gen_lock_pre_doc_version,omitempty"`
 	// Features prior to generation
 	GenerateGenLockPreFeatures *string `json:"generate_gen_lock_pre_features,omitempty"`
+	// Namespace name of the Previous Generation
+	GenerateGenLockPreNamespaceName *string `json:"generate_gen_lock_pre_namespace_name,omitempty"`
+	// Revision digest of the Previous Generation
+	GenerateGenLockPreRevisionDigest *string `json:"generate_gen_lock_pre_revision_digest,omitempty"`
 	// Artifact version for the Previous Generation
 	GenerateGenLockPreVersion *string `json:"generate_gen_lock_pre_version,omitempty"`
 	// Indicates whether tests were output.
@@ -119,6 +127,14 @@ type CliEvent struct {
 	ID string `json:"id"`
 	// Type of interaction.
 	InteractionType InteractionType `json:"interaction_type"`
+	// The checksum of the lint report.
+	LintReportDigest *string `json:"lint_report_digest,omitempty"`
+	// The number of errors in the lint report.
+	LintReportErrorCount *int64 `json:"lint_report_error_count,omitempty"`
+	// The number of info messages in the lint report.
+	LintReportInfoCount *int64 `json:"lint_report_info_count,omitempty"`
+	// The number of warnings in the lint report.
+	LintReportWarningCount *int64 `json:"lint_report_warning_count,omitempty"`
 	// Timestamp when the event completed, in local time.
 	LocalCompletedAt *time.Time `json:"local_completed_at,omitempty"`
 	// Timestamp when the event started, in local time.
@@ -127,6 +143,8 @@ type CliEvent struct {
 	ManagementDocChecksum *string `json:"management_doc_checksum,omitempty"`
 	// Version taken from info.version field of the Rendered OpenAPI document.
 	ManagementDocVersion *string `json:"management_doc_version,omitempty"`
+	// The checksum of the openapi diff report.
+	OpenapiDiffReportDigest *string `json:"openapi_diff_report_digest,omitempty"`
 	// Name of the published package.
 	PublishPackageName *string `json:"publish_package_name,omitempty"`
 	// Name of the registry where the package was published.
@@ -139,6 +157,10 @@ type CliEvent struct {
 	RawCommand *string `json:"raw_command,omitempty"`
 	// Label of the git repository.
 	RepoLabel *string `json:"repo_label,omitempty"`
+	// The namespace name of the source.
+	SourceNamespaceName *string `json:"source_namespace_name,omitempty"`
+	// The revision digest of the source.
+	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
 	// Identifier of the Speakeasy API key.
 	SpeakeasyAPIKeyName string `json:"speakeasy_api_key_name"`
 	// Version of the Speakeasy CLI.
@@ -179,6 +201,20 @@ func (o *CliEvent) GetCreatedAt() time.Time {
 		return time.Time{}
 	}
 	return o.CreatedAt
+}
+
+func (o *CliEvent) GetDiffBaseSourceNamespaceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DiffBaseSourceNamespaceName
+}
+
+func (o *CliEvent) GetDiffBaseSourceRevisionDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DiffBaseSourceRevisionDigest
 }
 
 func (o *CliEvent) GetDurationMs() *int64 {
@@ -277,6 +313,20 @@ func (o *CliEvent) GetGenerateGenLockPreFeatures() *string {
 		return nil
 	}
 	return o.GenerateGenLockPreFeatures
+}
+
+func (o *CliEvent) GetGenerateGenLockPreNamespaceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreNamespaceName
+}
+
+func (o *CliEvent) GetGenerateGenLockPreRevisionDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreRevisionDigest
 }
 
 func (o *CliEvent) GetGenerateGenLockPreVersion() *string {
@@ -412,6 +462,34 @@ func (o *CliEvent) GetInteractionType() InteractionType {
 	return o.InteractionType
 }
 
+func (o *CliEvent) GetLintReportDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LintReportDigest
+}
+
+func (o *CliEvent) GetLintReportErrorCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LintReportErrorCount
+}
+
+func (o *CliEvent) GetLintReportInfoCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LintReportInfoCount
+}
+
+func (o *CliEvent) GetLintReportWarningCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LintReportWarningCount
+}
+
 func (o *CliEvent) GetLocalCompletedAt() *time.Time {
 	if o == nil {
 		return nil
@@ -438,6 +516,13 @@ func (o *CliEvent) GetManagementDocVersion() *string {
 		return nil
 	}
 	return o.ManagementDocVersion
+}
+
+func (o *CliEvent) GetOpenapiDiffReportDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffReportDigest
 }
 
 func (o *CliEvent) GetPublishPackageName() *string {
@@ -480,6 +565,20 @@ func (o *CliEvent) GetRepoLabel() *string {
 		return nil
 	}
 	return o.RepoLabel
+}
+
+func (o *CliEvent) GetSourceNamespaceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceNamespaceName
+}
+
+func (o *CliEvent) GetSourceRevisionDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceRevisionDigest
 }
 
 func (o *CliEvent) GetSpeakeasyAPIKeyName() string {
