@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 0df832386c1fcd5f74fb87fea6d0e2b7
+  docChecksum: 1836a7c67a74946f67def85c0bc7e5e3
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.267.2
-  generationVersion: 2.312.1
-  releaseVersion: 3.5.9
-  configChecksum: b360198ddfa01b0e230f1361d9fa8b48
+  speakeasyVersion: 1.277.0
+  generationVersion: 2.317.0
+  releaseVersion: 3.5.10
+  configChecksum: 0c4f0af0ac9439cfcefcee60acf0a2df
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -85,6 +85,7 @@ generatedFiles:
   - /pkg/models/operations/getnamespaces.go
   - /pkg/models/operations/getrevisions.go
   - /pkg/models/operations/gettags.go
+  - /pkg/models/operations/posttags.go
   - /pkg/models/operations/preflight.go
   - /pkg/models/operations/getaccesstoken.go
   - /pkg/models/operations/getuser.go
@@ -100,10 +101,10 @@ generatedFiles:
   - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getvalidembedaccesstokens.go
   - /pkg/models/operations/revokeembedaccesstoken.go
-  - /pkg/models/operations/getworkspaceevents.go
-  - /pkg/models/operations/getworkspaceeventsbysourcerevisiondigest.go
+  - /pkg/models/operations/getworkspaceeventsbytarget.go
   - /pkg/models/operations/getworkspacetargets.go
   - /pkg/models/operations/postworkspaceevents.go
+  - /pkg/models/operations/searchworkspaceevents.go
   - /pkg/models/sdkerrors/error.go
   - /pkg/models/shared/generateopenapispecdiff.go
   - /pkg/models/shared/api.go
@@ -123,6 +124,7 @@ generatedFiles:
   - /pkg/models/shared/revision.go
   - /pkg/models/shared/gettagsresponse.go
   - /pkg/models/shared/tag.go
+  - /pkg/models/shared/addtags.go
   - /pkg/models/shared/preflighttoken.go
   - /pkg/models/shared/preflightrequest.go
   - /pkg/models/shared/accesstoken.go
@@ -205,6 +207,8 @@ generatedFiles:
   - docs/pkg/models/operations/getrevisionsresponse.md
   - docs/pkg/models/operations/gettagsrequest.md
   - docs/pkg/models/operations/gettagsresponse.md
+  - docs/pkg/models/operations/posttagsrequest.md
+  - docs/pkg/models/operations/posttagsresponse.md
   - docs/pkg/models/operations/preflightresponse.md
   - docs/pkg/models/operations/getaccesstokenrequest.md
   - docs/pkg/models/operations/getaccesstokenresponse.md
@@ -234,18 +238,18 @@ generatedFiles:
   - docs/pkg/models/operations/getvalidembedaccesstokensresponse.md
   - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
   - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
-  - docs/pkg/models/operations/getworkspaceeventsglobals.md
-  - docs/pkg/models/operations/getworkspaceeventsrequest.md
-  - docs/pkg/models/operations/getworkspaceeventsresponse.md
-  - docs/pkg/models/operations/getworkspaceeventsbysourcerevisiondigestglobals.md
-  - docs/pkg/models/operations/getworkspaceeventsbysourcerevisiondigestrequest.md
-  - docs/pkg/models/operations/getworkspaceeventsbysourcerevisiondigestresponse.md
+  - docs/pkg/models/operations/getworkspaceeventsbytargetglobals.md
+  - docs/pkg/models/operations/getworkspaceeventsbytargetrequest.md
+  - docs/pkg/models/operations/getworkspaceeventsbytargetresponse.md
   - docs/pkg/models/operations/getworkspacetargetsglobals.md
   - docs/pkg/models/operations/getworkspacetargetsrequest.md
   - docs/pkg/models/operations/getworkspacetargetsresponse.md
   - docs/pkg/models/operations/postworkspaceeventsglobals.md
   - docs/pkg/models/operations/postworkspaceeventsrequest.md
   - docs/pkg/models/operations/postworkspaceeventsresponse.md
+  - docs/pkg/models/operations/searchworkspaceeventsglobals.md
+  - docs/pkg/models/operations/searchworkspaceeventsrequest.md
+  - docs/pkg/models/operations/searchworkspaceeventsresponse.md
   - docs/pkg/models/sdkerrors/error.md
   - docs/pkg/models/shared/generateopenapispecdiff.md
   - docs/pkg/models/shared/api.md
@@ -266,6 +270,7 @@ generatedFiles:
   - docs/pkg/models/shared/revision.md
   - docs/pkg/models/shared/gettagsresponse.md
   - docs/pkg/models/shared/tag.md
+  - docs/pkg/models/shared/addtags.md
   - docs/pkg/models/shared/preflighttoken.md
   - docs/pkg/models/shared/preflightrequest.md
   - docs/pkg/models/shared/claims.md

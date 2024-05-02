@@ -12,6 +12,8 @@ type TargetSDK struct {
 	CommitHead *string `json:"commit_head,omitempty"`
 	// Name of the CI environment.
 	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
+	// Error message if the last event was not successful.
+	Error *string `json:"error,omitempty"`
 	// Version of the generated target (post generation)
 	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
 	// gen.lock ID (expected to be a uuid). The same as `id`. A unique identifier for the target.
@@ -91,6 +93,13 @@ func (o *TargetSDK) GetContinuousIntegrationEnvironment() *string {
 		return nil
 	}
 	return o.ContinuousIntegrationEnvironment
+}
+
+func (o *TargetSDK) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
 }
 
 func (o *TargetSDK) GetGenerateConfigPostVersion() *string {

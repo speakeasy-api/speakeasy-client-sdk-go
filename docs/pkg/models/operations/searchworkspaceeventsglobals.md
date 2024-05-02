@@ -1,4 +1,4 @@
-# GetWorkspaceEventsGlobals
+# SearchWorkspaceEventsGlobals
 
 
 ## Fields

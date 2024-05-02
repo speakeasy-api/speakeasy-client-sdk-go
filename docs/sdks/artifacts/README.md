@@ -8,6 +8,7 @@
 * [GetNamespaces](#getnamespaces) - Each namespace contains many revisions.
 * [GetRevisions](#getrevisions)
 * [GetTags](#gettags)
+* [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
 
 ## GetBlob
@@ -269,6 +270,59 @@ func main() {
 ### Response
 
 **[*operations.GetTagsResponse](../../pkg/models/operations/gettagsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## PostTags
+
+Add tags to an existing revision
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+        speakeasyclientsdkgo.WithWorkspaceID(speakeasyclientsdkgo.String("<value>")),
+    )
+
+    ctx := context.Background()
+    res, err := s.Artifacts.PostTags(ctx, operations.PostTagsRequest{
+        NamespaceName: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.PostTagsRequest](../../pkg/models/operations/posttagsrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+
+
+### Response
+
+**[*operations.PostTagsResponse](../../pkg/models/operations/posttagsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 4xx-5xx            | */*                |

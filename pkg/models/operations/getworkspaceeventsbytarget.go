@@ -9,59 +9,59 @@ import (
 	"time"
 )
 
-type GetWorkspaceEventsGlobals struct {
+type GetWorkspaceEventsByTargetGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
 }
 
-func (o *GetWorkspaceEventsGlobals) GetWorkspaceID() *string {
+func (o *GetWorkspaceEventsByTargetGlobals) GetWorkspaceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WorkspaceID
 }
 
-type GetWorkspaceEventsRequest struct {
+type GetWorkspaceEventsByTargetRequest struct {
 	// Filter to only return events created after this timestamp
 	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`
 	// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
-	GenerateGenLockID *string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
+	TargetID string `pathParam:"style=simple,explode=false,name=targetID"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
 }
 
-func (g GetWorkspaceEventsRequest) MarshalJSON() ([]byte, error) {
+func (g GetWorkspaceEventsByTargetRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(g, "", false)
 }
 
-func (g *GetWorkspaceEventsRequest) UnmarshalJSON(data []byte) error {
+func (g *GetWorkspaceEventsByTargetRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetWorkspaceEventsRequest) GetAfterCreatedAt() *time.Time {
+func (o *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.AfterCreatedAt
 }
 
-func (o *GetWorkspaceEventsRequest) GetGenerateGenLockID() *string {
+func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.GenerateGenLockID
+	return o.TargetID
 }
 
-func (o *GetWorkspaceEventsRequest) GetWorkspaceID() *string {
+func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WorkspaceID
 }
 
-type GetWorkspaceEventsResponse struct {
+type GetWorkspaceEventsByTargetResponse struct {
 	// Success
 	CliEventBatch []shared.CliEvent
 	// HTTP response content type for this operation
@@ -72,28 +72,28 @@ type GetWorkspaceEventsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetWorkspaceEventsResponse) GetCliEventBatch() []shared.CliEvent {
+func (o *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []shared.CliEvent {
 	if o == nil {
 		return nil
 	}
 	return o.CliEventBatch
 }
 
-func (o *GetWorkspaceEventsResponse) GetContentType() string {
+func (o *GetWorkspaceEventsByTargetResponse) GetContentType() string {
 	if o == nil {
 		return ""
 	}
 	return o.ContentType
 }
 
-func (o *GetWorkspaceEventsResponse) GetStatusCode() int {
+func (o *GetWorkspaceEventsByTargetResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
 	}
 	return o.StatusCode
 }
 
-func (o *GetWorkspaceEventsResponse) GetRawResponse() *http.Response {
+func (o *GetWorkspaceEventsByTargetResponse) GetRawResponse() *http.Response {
 	if o == nil {
 		return nil
 	}

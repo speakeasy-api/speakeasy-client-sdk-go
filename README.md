@@ -92,6 +92,7 @@ func main() {
 * [GetNamespaces](docs/sdks/artifacts/README.md#getnamespaces) - Each namespace contains many revisions.
 * [GetRevisions](docs/sdks/artifacts/README.md#getrevisions)
 * [GetTags](docs/sdks/artifacts/README.md#gettags)
+* [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
 * [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
 
 ### [Auth](docs/sdks/auth/README.md)
@@ -125,10 +126,10 @@ func main() {
 
 ### [Events](docs/sdks/events/README.md)
 
-* [GetWorkspaceEvents](docs/sdks/events/README.md#getworkspaceevents) - Load recent events for a particular workspace
-* [GetWorkspaceEventsBySourceRevisionDigest](docs/sdks/events/README.md#getworkspaceeventsbysourcerevisiondigest) - Load events for a particular workspace and source revision digest
+* [GetWorkspaceEventsByTarget](docs/sdks/events/README.md#getworkspaceeventsbytarget) - Load recent events for a particular workspace
 * [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
+* [SearchWorkspaceEvents](docs/sdks/events/README.md#searchworkspaceevents) - Search events for a particular workspace by any field
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -179,7 +180,9 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Events.GetWorkspaceEvents(ctx, operations.GetWorkspaceEventsRequest{})
+	res, err := s.Events.GetWorkspaceEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
+		TargetID: "<value>",
+	})
 	if err != nil {
 
 		var e *sdkerrors.Error
@@ -375,7 +378,7 @@ func main() {
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspaceEventsByTarget`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -409,7 +412,9 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Events.GetWorkspaceEvents(ctx, operations.GetWorkspaceEventsRequest{})
+	res, err := s.Events.GetWorkspaceEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
+		TargetID: "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

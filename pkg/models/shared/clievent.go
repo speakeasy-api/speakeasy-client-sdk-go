@@ -89,6 +89,8 @@ type CliEvent struct {
 	CreatedAt time.Time `json:"created_at"`
 	// Duration of the event in milliseconds.
 	DurationMs *int64 `json:"duration_ms,omitempty"`
+	// Error message if the event was not successful.
+	Error *string `json:"error,omitempty"`
 	// Unique identifier for each execution of the CLI.
 	ExecutionID string `json:"execution_id"`
 	// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
@@ -252,6 +254,13 @@ func (o *CliEvent) GetDurationMs() *int64 {
 		return nil
 	}
 	return o.DurationMs
+}
+
+func (o *CliEvent) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
 }
 
 func (o *CliEvent) GetExecutionID() string {

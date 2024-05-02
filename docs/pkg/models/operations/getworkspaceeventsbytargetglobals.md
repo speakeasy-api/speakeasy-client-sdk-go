@@ -1,4 +1,4 @@
-# GetWorkspaceEventsBySourceRevisionDigestGlobals
+# GetWorkspaceEventsByTargetGlobals
 
 
 ## Fields
