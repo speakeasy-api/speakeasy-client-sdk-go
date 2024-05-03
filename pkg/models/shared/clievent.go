@@ -161,6 +161,8 @@ type CliEvent struct {
 	ID string `json:"id"`
 	// Type of interaction.
 	InteractionType InteractionType `json:"interaction_type"`
+	// The last step of the event.
+	LastStep *string `json:"last_step,omitempty"`
 	// The checksum of the lint report.
 	LintReportDigest *string `json:"lint_report_digest,omitempty"`
 	// The number of errors in the lint report.
@@ -177,6 +179,8 @@ type CliEvent struct {
 	ManagementDocChecksum *string `json:"management_doc_checksum,omitempty"`
 	// Version taken from info.version field of the Rendered OpenAPI document.
 	ManagementDocVersion *string `json:"management_doc_version,omitempty"`
+	// Mermaid diagram
+	MermaidDiagram *string `json:"mermaid_diagram,omitempty"`
 	// The blob digest of the base source.
 	OpenapiDiffBaseSourceBlobDigest *string `json:"openapi_diff_base_source_blob_digest,omitempty"`
 	// The namespace name of the base source.
@@ -213,6 +217,14 @@ type CliEvent struct {
 	SpeakeasyVersion string `json:"speakeasy_version"`
 	// Indicates whether the event was successful.
 	Success bool `json:"success"`
+	// Workflow lock file (post execution)
+	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
+	// Workflow lock file (prior to execution)
+	WorkflowLockPreRaw *string `json:"workflow_lock_pre_raw,omitempty"`
+	// Workflow file (post execution)
+	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
+	// Workflow file (prior to execution)
+	WorkflowPreRaw *string `json:"workflow_pre_raw,omitempty"`
 	// Identifier of the workspace.
 	WorkspaceID string `json:"workspace_id"`
 }
@@ -508,6 +520,13 @@ func (o *CliEvent) GetInteractionType() InteractionType {
 	return o.InteractionType
 }
 
+func (o *CliEvent) GetLastStep() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastStep
+}
+
 func (o *CliEvent) GetLintReportDigest() *string {
 	if o == nil {
 		return nil
@@ -562,6 +581,13 @@ func (o *CliEvent) GetManagementDocVersion() *string {
 		return nil
 	}
 	return o.ManagementDocVersion
+}
+
+func (o *CliEvent) GetMermaidDiagram() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MermaidDiagram
 }
 
 func (o *CliEvent) GetOpenapiDiffBaseSourceBlobDigest() *string {
@@ -688,6 +714,34 @@ func (o *CliEvent) GetSuccess() bool {
 		return false
 	}
 	return o.Success
+}
+
+func (o *CliEvent) GetWorkflowLockPostRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowLockPostRaw
+}
+
+func (o *CliEvent) GetWorkflowLockPreRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowLockPreRaw
+}
+
+func (o *CliEvent) GetWorkflowPostRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowPostRaw
+}
+
+func (o *CliEvent) GetWorkflowPreRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowPreRaw
 }
 
 func (o *CliEvent) GetWorkspaceID() string {
