@@ -1,8 +1,11 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     my-source:
         inputs:
             - location: https://docs.speakeasyapi.dev/openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/my-source
 targets:
     speakeasy-client-sdk-go:
         target: go
