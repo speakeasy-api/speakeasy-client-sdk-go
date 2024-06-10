@@ -285,7 +285,7 @@ func (s *Auth) GetWorkspaceAccess(ctx context.Context, request operations.GetWor
 					InitialInterval: 100,
 					MaxInterval:     2000,
 					Exponent:        1.5,
-					MaxElapsedTime:  30000,
+					MaxElapsedTime:  60000,
 				},
 				RetryConnectionErrors: true,
 			}

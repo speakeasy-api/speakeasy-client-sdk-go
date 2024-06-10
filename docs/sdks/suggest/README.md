@@ -35,7 +35,7 @@ func main() {
     request := operations.SuggestOperationIDsRequestBody{
         Schema: operations.Schema{
             Content: []byte("0xb2de88c98a"),
-            FileName: "quantify_gasoline.gif",
+            FileName: "your_file_here",
         },
     }
     ctx := context.Background()
