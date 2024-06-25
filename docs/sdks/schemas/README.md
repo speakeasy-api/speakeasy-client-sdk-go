@@ -423,7 +423,7 @@ func main() {
         RequestBody: operations.RegisterSchemaRequestBody{
             File: operations.RegisterSchemaFile{
                 Content: []byte("0xCAFCA03e0e"),
-                FileName: "bronze_table_blues.m2a",
+                FileName: "your_file_here",
             },
         },
         APIID: "<value>",

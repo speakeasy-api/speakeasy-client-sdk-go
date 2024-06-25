@@ -7,7 +7,26 @@ import (
 	"net/http"
 )
 
-type GithubConfigureTargetResponse struct {
+type CheckAccessRequest struct {
+	Org  string `queryParam:"style=form,explode=true,name=org"`
+	Repo string `queryParam:"style=form,explode=true,name=repo"`
+}
+
+func (o *CheckAccessRequest) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CheckAccessRequest) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+type CheckAccessResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -18,28 +37,28 @@ type GithubConfigureTargetResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubConfigureTargetResponse) GetContentType() string {
+func (o *CheckAccessResponse) GetContentType() string {
 	if o == nil {
 		return ""
 	}
 	return o.ContentType
 }
 
-func (o *GithubConfigureTargetResponse) GetError() *sdkerrors.Error {
+func (o *CheckAccessResponse) GetError() *sdkerrors.Error {
 	if o == nil {
 		return nil
 	}
 	return o.Error
 }
 
-func (o *GithubConfigureTargetResponse) GetStatusCode() int {
+func (o *CheckAccessResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
 	}
 	return o.StatusCode
 }
 
-func (o *GithubConfigureTargetResponse) GetRawResponse() *http.Response {
+func (o *CheckAccessResponse) GetRawResponse() *http.Response {
 	if o == nil {
 		return nil
 	}

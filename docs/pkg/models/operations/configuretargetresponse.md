@@ -1,4 +1,4 @@
-# GithubConfigureTargetResponse
+# ConfigureTargetResponse
 
 
 ## Fields

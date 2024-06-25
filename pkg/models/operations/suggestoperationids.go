@@ -3,87 +3,9 @@
 package operations
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"net/http"
 )
-
-type DepthStyle string
-
-const (
-	DepthStyleOriginal DepthStyle = "original"
-	DepthStyleFlat     DepthStyle = "flat"
-	DepthStyleNested   DepthStyle = "nested"
-	DepthStyleDeep     DepthStyle = "deep"
-)
-
-func (e DepthStyle) ToPointer() *DepthStyle {
-	return &e
-}
-func (e *DepthStyle) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "original":
-		fallthrough
-	case "flat":
-		fallthrough
-	case "nested":
-		fallthrough
-	case "deep":
-		*e = DepthStyle(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DepthStyle: %v", v)
-	}
-}
-
-type Style string
-
-const (
-	StyleStandardize Style = "standardize"
-	StyleResource    Style = "resource"
-)
-
-func (e Style) ToPointer() *Style {
-	return &e
-}
-func (e *Style) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "standardize":
-		fallthrough
-	case "resource":
-		*e = Style(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Style: %v", v)
-	}
-}
-
-type Opts struct {
-	DepthStyle *DepthStyle `json:"depth_style,omitempty"`
-	Style      *Style      `json:"style,omitempty"`
-}
-
-func (o *Opts) GetDepthStyle() *DepthStyle {
-	if o == nil {
-		return nil
-	}
-	return o.DepthStyle
-}
-
-func (o *Opts) GetStyle() *Style {
-	if o == nil {
-		return nil
-	}
-	return o.Style
-}
 
 type Schema struct {
 	Content  []byte `multipartForm:"content"`
@@ -106,11 +28,11 @@ func (o *Schema) GetFileName() string {
 
 // SuggestOperationIDsRequestBody - The schema file to upload provided as a multipart/form-data file segment.
 type SuggestOperationIDsRequestBody struct {
-	Opts   *Opts  `multipartForm:"name=opts,json"`
-	Schema Schema `multipartForm:"file"`
+	Opts   *shared.SuggestOperationIDsOpts `multipartForm:"name=opts,json"`
+	Schema Schema                          `multipartForm:"file"`
 }
 
-func (o *SuggestOperationIDsRequestBody) GetOpts() *Opts {
+func (o *SuggestOperationIDsRequestBody) GetOpts() *shared.SuggestOperationIDsOpts {
 	if o == nil {
 		return nil
 	}
@@ -124,16 +46,33 @@ func (o *SuggestOperationIDsRequestBody) GetSchema() Schema {
 	return o.Schema
 }
 
-// SuggestOperationIDsSuggestion - OK
-type SuggestOperationIDsSuggestion struct {
-	OperationIds map[string][]string `json:"operation_ids"`
+type SuggestOperationIDsRequest struct {
+	// The schema file to upload provided as a multipart/form-data file segment.
+	RequestBody SuggestOperationIDsRequestBody `request:"mediaType=multipart/form-data"`
+	// Max number of suggestions to request
+	Limit      *float64 `queryParam:"style=form,explode=true,name=limit"`
+	XSessionID string   `header:"style=simple,explode=false,name=x-session-id"`
 }
 
-func (o *SuggestOperationIDsSuggestion) GetOperationIds() map[string][]string {
+func (o *SuggestOperationIDsRequest) GetRequestBody() SuggestOperationIDsRequestBody {
 	if o == nil {
-		return map[string][]string{}
+		return SuggestOperationIDsRequestBody{}
 	}
-	return o.OperationIds
+	return o.RequestBody
+}
+
+func (o *SuggestOperationIDsRequest) GetLimit() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *SuggestOperationIDsRequest) GetXSessionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.XSessionID
 }
 
 type SuggestOperationIDsResponse struct {
@@ -144,7 +83,7 @@ type SuggestOperationIDsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Suggestion *SuggestOperationIDsSuggestion
+	SuggestedOperationIDs *shared.SuggestedOperationIDs
 }
 
 func (o *SuggestOperationIDsResponse) GetContentType() string {
@@ -168,9 +107,9 @@ func (o *SuggestOperationIDsResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *SuggestOperationIDsResponse) GetSuggestion() *SuggestOperationIDsSuggestion {
+func (o *SuggestOperationIDsResponse) GetSuggestedOperationIDs() *shared.SuggestedOperationIDs {
 	if o == nil {
 		return nil
 	}
-	return o.Suggestion
+	return o.SuggestedOperationIDs
 }

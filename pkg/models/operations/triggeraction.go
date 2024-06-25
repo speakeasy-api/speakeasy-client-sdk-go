@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-type GithubTriggerActionResponse struct {
+type TriggerActionResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// Default error response
@@ -18,28 +18,28 @@ type GithubTriggerActionResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubTriggerActionResponse) GetContentType() string {
+func (o *TriggerActionResponse) GetContentType() string {
 	if o == nil {
 		return ""
 	}
 	return o.ContentType
 }
 
-func (o *GithubTriggerActionResponse) GetError() *sdkerrors.Error {
+func (o *TriggerActionResponse) GetError() *sdkerrors.Error {
 	if o == nil {
 		return nil
 	}
 	return o.Error
 }
 
-func (o *GithubTriggerActionResponse) GetStatusCode() int {
+func (o *TriggerActionResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
 	}
 	return o.StatusCode
 }
 
-func (o *GithubTriggerActionResponse) GetRawResponse() *http.Response {
+func (o *TriggerActionResponse) GetRawResponse() *http.Response {
 	if o == nil {
 		return nil
 	}

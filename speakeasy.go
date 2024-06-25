@@ -83,7 +83,8 @@ type Speakeasy struct {
 	// REST APIs for managing Version Metadata entities
 	Metadata *Metadata
 	// REST APIs for managing Schema entities
-	Schemas   *Schemas
+	Schemas *Schemas
+	// REST APIs for working with Registry artifacts
 	Artifacts *Artifacts
 	// REST APIs for managing Authentication
 	Auth *Auth
@@ -177,9 +178,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0 .",
-			SDKVersion:        "3.8.8",
-			GenVersion:        "2.337.1",
-			UserAgent:         "speakeasy-sdk/go 3.8.8 2.337.1 0.4.0 . github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.8.9",
+			GenVersion:        "2.352.0",
+			UserAgent:         "speakeasy-sdk/go 3.8.9 2.352.0 0.4.0 . github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},

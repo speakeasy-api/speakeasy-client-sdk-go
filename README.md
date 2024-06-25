@@ -89,6 +89,7 @@ func main() {
 * [GetBlob](docs/sdks/artifacts/README.md#getblob) - Get blob for a particular digest
 * [GetManifest](docs/sdks/artifacts/README.md#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](docs/sdks/artifacts/README.md#getnamespaces) - Each namespace contains many revisions.
+* [GetOASSummary](docs/sdks/artifacts/README.md#getoassummary)
 * [GetRevisions](docs/sdks/artifacts/README.md#getrevisions)
 * [GetTags](docs/sdks/artifacts/README.md#gettags)
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
@@ -109,12 +110,14 @@ func main() {
 
 ### [Github](docs/sdks/github/README.md)
 
+* [CheckAccess](docs/sdks/github/README.md#checkaccess)
+* [ConfigureCodeSamples](docs/sdks/github/README.md#configurecodesamples)
+* [ConfigureMintlifyRepo](docs/sdks/github/README.md#configuremintlifyrepo)
+* [ConfigureTarget](docs/sdks/github/README.md#configuretarget)
 * [FetchPublishingPRs](docs/sdks/github/README.md#fetchpublishingprs)
-* [GithubCheckAccess](docs/sdks/github/README.md#githubcheckaccess)
 * [GithubCheckPublishingSecrets](docs/sdks/github/README.md#githubcheckpublishingsecrets)
-* [GithubConfigureTarget](docs/sdks/github/README.md#githubconfiguretarget)
 * [GithubStorePublishingSecrets](docs/sdks/github/README.md#githubstorepublishingsecrets)
-* [GithubTriggerAction](docs/sdks/github/README.md#githubtriggeraction)
+* [TriggerAction](docs/sdks/github/README.md#triggeraction)
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
@@ -130,7 +133,9 @@ func main() {
 
 ### [Suggest](docs/sdks/suggest/README.md)
 
+* [ApplyOperationIDs](docs/sdks/suggest/README.md#applyoperationids) - Apply operation ID suggestions and download result.
 * [SuggestOperationIDs](docs/sdks/suggest/README.md#suggestoperationids) - Generate operation ID suggestions.
+* [SuggestOperationIDsRegistry](docs/sdks/suggest/README.md#suggestoperationidsregistry) - Generate operation ID suggestions.
 
 ### [Embeds](docs/sdks/embeds/README.md)
 

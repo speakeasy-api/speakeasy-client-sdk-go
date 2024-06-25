@@ -76,6 +76,10 @@ type TargetSDK struct {
 	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
 	// Indicates whether the event was successful.
 	Success *bool `json:"success,omitempty"`
+	// Workflow file (post execution)
+	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
+	// Workflow file (prior to execution)
+	WorkflowPreRaw *string `json:"workflow_pre_raw,omitempty"`
 }
 
 func (t TargetSDK) MarshalJSON() ([]byte, error) {
@@ -325,4 +329,18 @@ func (o *TargetSDK) GetSuccess() *bool {
 		return nil
 	}
 	return o.Success
+}
+
+func (o *TargetSDK) GetWorkflowPostRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowPostRaw
+}
+
+func (o *TargetSDK) GetWorkflowPreRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowPreRaw
 }
