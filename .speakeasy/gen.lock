@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 030dd7b481bf8470a7bc69926ccae8f2
+  docChecksum: e4cb9ecada8b35163db080ecaaf60fe3
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.315.2
-  generationVersion: 2.352.0
-  releaseVersion: 3.8.9
-  configChecksum: 665c2c0f6148e7cb6feb44e098d2bd4f
+  speakeasyVersion: 1.325.0
+  generationVersion: 2.356.0
+  releaseVersion: 3.8.10
+  configChecksum: de8122d2934b4c09a200029c16492d22
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -109,6 +109,7 @@ generatedFiles:
   - /pkg/models/operations/configuremintlifyrepo.go
   - /pkg/models/operations/configuretarget.go
   - /pkg/models/operations/fetchpublishingprs.go
+  - /pkg/models/operations/getaction.go
   - /pkg/models/operations/githubcheckpublishingsecrets.go
   - /pkg/models/operations/githubstorepublishingsecrets.go
   - /pkg/models/operations/triggeraction.go
@@ -169,6 +170,7 @@ generatedFiles:
   - /pkg/models/shared/githubconfiguremintlifyreporequest.go
   - /pkg/models/shared/githubconfiguretargetrequest.go
   - /pkg/models/shared/githubpublishingprresponse.go
+  - /pkg/models/shared/githubgetactionresponse.go
   - /pkg/models/shared/githubmissingpublishingsecretsresponse.go
   - /pkg/models/shared/githubstorepublishingsecretsrequest.go
   - /pkg/models/shared/githubtriggeractionrequest.go
@@ -271,6 +273,8 @@ generatedFiles:
   - docs/pkg/models/operations/configuretargetresponse.md
   - docs/pkg/models/operations/fetchpublishingprsrequest.md
   - docs/pkg/models/operations/fetchpublishingprsresponse.md
+  - docs/pkg/models/operations/getactionrequest.md
+  - docs/pkg/models/operations/getactionresponse.md
   - docs/pkg/models/operations/githubcheckpublishingsecretsrequest.md
   - docs/pkg/models/operations/githubcheckpublishingsecretsresponse.md
   - docs/pkg/models/operations/githubstorepublishingsecretsresponse.md
@@ -364,6 +368,7 @@ generatedFiles:
   - docs/pkg/models/shared/githubconfiguremintlifyreporequest.md
   - docs/pkg/models/shared/githubconfiguretargetrequest.md
   - docs/pkg/models/shared/githubpublishingprresponse.md
+  - docs/pkg/models/shared/githubgetactionresponse.md
   - docs/pkg/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/pkg/models/shared/githubstorepublishingsecretsrequest.md
   - docs/pkg/models/shared/githubtriggeractionrequest.md
