@@ -10,6 +10,8 @@ type GithubTriggerActionRequest struct {
 	Org string `json:"org"`
 	// The GitHub repository name
 	RepoName string `json:"repo_name"`
+	// A version to override the SDK too in workflow dispatch
+	SetVersion *string `json:"set_version,omitempty"`
 	// The target name for the action
 	TargetName *string `json:"target_name,omitempty"`
 }
@@ -33,6 +35,13 @@ func (o *GithubTriggerActionRequest) GetRepoName() string {
 		return ""
 	}
 	return o.RepoName
+}
+
+func (o *GithubTriggerActionRequest) GetSetVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SetVersion
 }
 
 func (o *GithubTriggerActionRequest) GetTargetName() *string {

@@ -115,6 +115,7 @@ func main() {
 * [ConfigureMintlifyRepo](docs/sdks/github/README.md#configuremintlifyrepo)
 * [ConfigureTarget](docs/sdks/github/README.md#configuretarget)
 * [FetchPublishingPRs](docs/sdks/github/README.md#fetchpublishingprs)
+* [GetAction](docs/sdks/github/README.md#getaction)
 * [GithubCheckPublishingSecrets](docs/sdks/github/README.md#githubcheckpublishingsecrets)
 * [GithubStorePublishingSecrets](docs/sdks/github/README.md#githubstorepublishingsecrets)
 * [TriggerAction](docs/sdks/github/README.md#triggeraction)
