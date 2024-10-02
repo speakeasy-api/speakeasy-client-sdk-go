@@ -187,7 +187,7 @@ func (s *Suggest) Suggest(ctx context.Context, request operations.SuggestRequest
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			res.Schema = httpRes.Body
@@ -383,7 +383,7 @@ func (s *Suggest) SuggestOpenAPI(ctx context.Context, request operations.Suggest
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			res.Schema = httpRes.Body
@@ -579,7 +579,7 @@ func (s *Suggest) SuggestOpenAPIRegistry(ctx context.Context, request operations
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			res.Schema = httpRes.Body

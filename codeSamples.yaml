@@ -60,7 +60,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Apis.GetAllAPIVersions(ctx, operations.GetAllAPIVersionsRequest{
-                    APIID: "<value>",
+                    APIID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -94,11 +94,11 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Apis.UpsertAPI(ctx, operations.UpsertAPIRequest{
-                    APIID: "<value>",
+                    APIID: "<id>",
                     API: shared.APIInput{
-                        APIID: "<value>",
-                        Description: "Synchronised 5th generation knowledge user",
-                        VersionID: "<value>",
+                        APIID: "<id>",
+                        Description: "consequently brr happily yowza however gosh investigate joyfully direct",
+                        VersionID: "<id>",
                     },
                 })
                 if err != nil {
@@ -133,7 +133,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.GetAllAPIEndpoints(ctx, operations.GetAllAPIEndpointsRequest{
-                    APIID: "<value>",
+                    APIID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -167,8 +167,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -202,8 +202,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.GetAllForVersionAPIEndpoints(ctx, operations.GetAllForVersionAPIEndpointsRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -237,9 +237,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.FindAPIEndpoint(ctx, operations.FindAPIEndpointRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    DisplayName: "Don.Strosin",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    DisplayName: "Don_Kihn39",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -273,9 +273,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.DeleteAPIEndpoint(ctx, operations.DeleteAPIEndpointRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    APIEndpointID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    APIEndpointID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -309,9 +309,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.GetAPIEndpoint(ctx, operations.GetAPIEndpointRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    APIEndpointID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    APIEndpointID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -345,16 +345,16 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.UpsertAPIEndpoint(ctx, operations.UpsertAPIEndpointRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    APIEndpointID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    APIEndpointID: "<id>",
                     APIEndpoint: shared.APIEndpointInput{
-                        APIEndpointID: "<value>",
-                        Description: "Public-key systematic attitude",
-                        DisplayName: "Camille.Schaefer11",
+                        APIEndpointID: "<id>",
+                        Description: "commandeer equate pish psst hoot ugh frankly supposing",
+                        DisplayName: "Eliseo.Little15",
                         Method: "<value>",
-                        Path: "/Library",
-                        VersionID: "<value>",
+                        Path: "/etc/defaults",
+                        VersionID: "<id>",
                     },
                 })
                 if err != nil {
@@ -389,9 +389,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.GenerateOpenAPISpecForAPIEndpoint(ctx, operations.GenerateOpenAPISpecForAPIEndpointRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    APIEndpointID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    APIEndpointID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -425,9 +425,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.APIEndpoints.GeneratePostmanCollectionForAPIEndpoint(ctx, operations.GeneratePostmanCollectionForAPIEndpointRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    APIEndpointID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    APIEndpointID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -461,8 +461,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Apis.GenerateOpenAPISpec(ctx, operations.GenerateOpenAPISpecRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -496,8 +496,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Apis.GeneratePostmanCollection(ctx, operations.GeneratePostmanCollectionRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -531,8 +531,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Metadata.GetVersionMetadata(ctx, operations.GetVersionMetadataRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -566,8 +566,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Metadata.InsertVersionMetadata(ctx, operations.InsertVersionMetadataRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                     VersionMetadata: shared.VersionMetadataInput{
                         MetaKey: "<value>",
                         MetaValue: "<value>",
@@ -605,8 +605,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Metadata.DeleteVersionMetadata(ctx, operations.DeleteVersionMetadataRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                     MetaKey: "<value>",
                     MetaValue: "<value>",
                 })
@@ -642,8 +642,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.GetSchema(ctx, operations.GetSchemaRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -683,8 +683,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.RegisterSchema(ctx, operations.RegisterSchemaRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                     RequestBody: operations.RegisterSchemaRequestBody{
                         File: operations.File{
                             FileName: "example.file",
@@ -724,13 +724,13 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.DownloadSchema(ctx, operations.DownloadSchemaRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
                 }
-                if res.TwoHundredApplicationJSONSchema != nil {
+                if res.TwoXXApplicationJSONSchema != nil {
                     // handle response
                 }
             }
@@ -759,10 +759,10 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.GetSchemaDiff(ctx, operations.GetSchemaDiffRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    BaseRevisionID: "<value>",
-                    TargetRevisionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    BaseRevisionID: "<id>",
+                    TargetRevisionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -796,9 +796,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.DeleteSchema(ctx, operations.DeleteSchemaRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    RevisionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    RevisionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -832,9 +832,9 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.GetSchemaRevision(ctx, operations.GetSchemaRevisionRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    RevisionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    RevisionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -868,14 +868,14 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.DownloadSchemaRevision(ctx, operations.DownloadSchemaRevisionRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
-                    RevisionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
+                    RevisionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
                 }
-                if res.TwoHundredApplicationJSONSchema != nil {
+                if res.TwoXXApplicationJSONSchema != nil {
                     // handle response
                 }
             }
@@ -904,8 +904,8 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Schemas.GetSchemas(ctx, operations.GetSchemasRequest{
-                    APIID: "<value>",
-                    VersionID: "<value>",
+                    APIID: "<id>",
+                    VersionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -976,41 +976,6 @@ actions:
                     log.Fatal(err)
                 }
                 if res.GetRevisionsResponse != nil {
-                    // handle response
-                }
-            }
-  - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/revisions/{revision_reference}/summary"]["get"]
-    update:
-      x-codeSamples:
-        - lang: go
-          label: getOASSummary
-          source: |-
-            package main
-
-            import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-            	"log"
-            )
-
-            func main() {
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-                    }),
-                )
-
-                ctx := context.Background()
-                res, err := s.Artifacts.GetOASSummary(ctx, operations.GetOASSummaryRequest{
-                    NamespaceName: "<value>",
-                    RevisionReference: "<value>",
-                })
-                if err != nil {
-                    log.Fatal(err)
-                }
-                if res.OASSummary != nil {
                     // handle response
                 }
             }
@@ -1133,7 +1098,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
-                    WorkspaceID: "<value>",
+                    WorkspaceID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1230,7 +1195,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Requests.GetRequestFromEventLog(ctx, operations.GetRequestFromEventLogRequest{
-                    RequestID: "<value>",
+                    RequestID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1264,7 +1229,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Requests.GenerateRequestPostmanCollection(ctx, operations.GenerateRequestPostmanCollectionRequest{
-                    RequestID: "<value>",
+                    RequestID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1277,7 +1242,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: getAction
+          label: getGitHubAction
           source: |-
             package main
 
@@ -1297,7 +1262,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Github.GetAction(ctx, operations.GetActionRequest{
+                res, err := s.Github.GetAction(ctx, operations.GetGitHubActionRequest{
                     Org: "<value>",
                     Repo: "<value>",
                 })
@@ -1312,7 +1277,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: checkAccess
+          label: checkGithubAccess
           source: |-
             package main
 
@@ -1332,7 +1297,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Github.CheckAccess(ctx, operations.CheckAccessRequest{
+                res, err := s.Github.CheckAccess(ctx, operations.CheckGithubAccessRequest{
                     Org: "<value>",
                     Repo: "<value>",
                 })
@@ -1347,7 +1312,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: configureCodeSamples
+          label: githubConfigureCodeSamples
           source: |-
             package main
 
@@ -1382,7 +1347,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: configureMintlifyRepo
+          label: githubConfigureMintlifyRepo
           source: |-
             package main
 
@@ -1420,7 +1385,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: configureTarget
+          label: githubConfigureTarget
           source: |-
             package main
 
@@ -1454,7 +1419,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: fetchPublishingPRs
+          label: githubCheckPublishingPRs
           source: |-
             package main
 
@@ -1474,8 +1439,8 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Github.FetchPublishingPRs(ctx, operations.FetchPublishingPRsRequest{
-                    GenerateGenLockID: "<value>",
+                res, err := s.Github.CheckPublishingPRs(ctx, operations.GithubCheckPublishingPRsRequest{
+                    GenerateGenLockID: "<id>",
                     Org: "<value>",
                     Repo: "<value>",
                 })
@@ -1510,8 +1475,8 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Github.GithubCheckPublishingSecrets(ctx, operations.GithubCheckPublishingSecretsRequest{
-                    GenerateGenLockID: "<value>",
+                res, err := s.Github.CheckPublishingSecrets(ctx, operations.GithubCheckPublishingSecretsRequest{
+                    GenerateGenLockID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1543,8 +1508,8 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Github.GithubStorePublishingSecrets(ctx, shared.GithubStorePublishingSecretsRequest{
-                    GenerateGenLockID: "<value>",
+                res, err := s.Github.StorePublishingSecrets(ctx, shared.GithubStorePublishingSecretsRequest{
+                    GenerateGenLockID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1557,7 +1522,7 @@ actions:
     update:
       x-codeSamples:
         - lang: go
-          label: triggerAction
+          label: githubTriggerAction
           source: |-
             package main
 
@@ -1579,7 +1544,7 @@ actions:
                 res, err := s.Github.TriggerAction(ctx, shared.GithubTriggerActionRequest{
                     Org: "<value>",
                     RepoName: "<value>",
-                    GenLockID: "<value>",
+                    GenLockID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1662,11 +1627,11 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/organization"]["get"]
+  - target: $["paths"]["/v1/organization"]["post"]
     update:
       x-codeSamples:
         - lang: go
-          label: getOrganizations
+          label: createOrganization
           source: |-
             package main
 
@@ -1674,6 +1639,7 @@ actions:
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"log"
             )
 
@@ -1685,11 +1651,19 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Organizations.GetOrganizations(ctx)
+                res, err := s.Organizations.Create(ctx, shared.Organization{
+                    ID: "<id>",
+                    Name: "<value>",
+                    Slug: "<value>",
+                    AccountType: shared.AccountTypeScaleUp,
+                    TelemetryDisabled: false,
+                    CreatedAt: types.MustTimeFromString("2023-04-03T12:48:32.253Z"),
+                    UpdatedAt: types.MustTimeFromString("2022-05-28T06:20:22.766Z"),
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
-                if res.Organizations != nil {
+                if res.Organization != nil {
                     // handle response
                 }
             }
@@ -1747,7 +1721,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Organizations.GetOrganizationUsage(ctx)
+                res, err := s.Organizations.GetUsage(ctx)
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -1779,13 +1753,44 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Organizations.GetOrganization(ctx, operations.GetOrganizationRequest{
-                    OrganizationID: "<value>",
+                res, err := s.Organizations.Get(ctx, operations.GetOrganizationRequest{
+                    OrganizationID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
                 }
                 if res.Organization != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/organizations"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getOrganizations
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Organizations.GetAll(ctx)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Organizations != nil {
                     // handle response
                 }
             }
@@ -1926,7 +1931,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{
-                    URL: "http://limp-pastry.org",
+                    URL: "https://probable-heating.com/",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1966,7 +1971,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Suggest.SuggestOpenAPI(ctx, operations.SuggestOpenAPIRequest{
-                    XSessionID: "<value>",
+                    XSessionID: "<id>",
                     RequestBody: operations.SuggestOpenAPIRequestBody{
                         Schema: operations.Schema{
                             FileName: "example.file",
@@ -2008,7 +2013,7 @@ actions:
                 res, err := s.Suggest.SuggestOpenAPIRegistry(ctx, operations.SuggestOpenAPIRegistryRequest{
                     NamespaceName: "<value>",
                     RevisionReference: "<value>",
-                    XSessionID: "<value>",
+                    XSessionID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -2042,13 +2047,13 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Suggest.Suggest(ctx, operations.SuggestRequest{
-                    XSessionID: "<value>",
+                    XSessionID: "<id>",
                     SuggestRequestBody: shared.SuggestRequestBody{
                         OasSummary: shared.OASSummary{
                             Info: shared.OASInfo{
                                 Title: "<value>",
                                 Summary: "<value>",
-                                Description: "Operative impactful monitoring",
+                                Description: "ugh which garrote ashamed sarong fiddle really",
                                 Version: "<value>",
                                 License: shared.License{},
                             },
@@ -2056,8 +2061,8 @@ actions:
                                 shared.OASOperation{
                                     Method: "<value>",
                                     Path: "/rescue",
-                                    OperationID: "<value>",
-                                    Description: "Object-based multi-state pricing structure",
+                                    OperationID: "<id>",
+                                    Description: "kielbasa psst stitcher cannon devoted blindly apropos low",
                                     Tags: []string{
                                         "<value>",
                                     },
@@ -2069,7 +2074,7 @@ actions:
                             shared.Diagnostic{
                                 Message: "<value>",
                                 Path: []string{
-                                    "/opt/include",
+                                    "/opt/share",
                                 },
                                 Type: "<value>",
                             },
@@ -2114,6 +2119,78 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/v1/workspace"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getWorkspaceByContext
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.Get(ctx)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.WorkspaceAndOrganization != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: createWorkspace
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.Create(ctx, shared.Workspace{
+                    CreatedAt: types.MustTimeFromString("2023-06-18T07:14:55.338Z"),
+                    ID: "<id>",
+                    Name: "<value>",
+                    OrganizationID: "<id>",
+                    Slug: "<value>",
+                    TelemetryDisabled: false,
+                    UpdatedAt: types.MustTimeFromString("2023-04-03T12:48:32.253Z"),
+                    Verified: true,
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Workspace != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/v1/workspace/access"]["get"]
     update:
       x-codeSamples:
@@ -2138,7 +2215,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Auth.GetWorkspaceAccess(ctx, operations.GetWorkspaceAccessRequest{})
+                res, err := s.Auth.GetAccess(ctx, operations.GetWorkspaceAccessRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2234,7 +2311,7 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Embeds.RevokeEmbedAccessToken(ctx, operations.RevokeEmbedAccessTokenRequest{
-                    TokenID: "<value>",
+                    TokenID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -2243,7 +2320,39 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/workspace/{workspaceID}"]["get"]
+  - target: $["paths"]["/v1/workspace/events/targets"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getWorkspaceTargets
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Events.GetTargets(ctx, operations.GetWorkspaceTargetsRequest{})
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.TargetSDKList != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -2267,7 +2376,9 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetWorkspace(ctx, operations.GetWorkspaceRequest{})
+                res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
+                    WorkspaceID: "<id>",
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2275,7 +2386,52 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/workspace/{workspaceID}/events"]["get"]
+  - target: $["paths"]["/v1/workspace/{workspace_id}/details"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: updateWorkspaceDetails
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.Update(ctx, operations.UpdateWorkspaceDetailsRequest{
+                    WorkspaceID: "<id>",
+                    Workspace: shared.Workspace{
+                        CreatedAt: types.MustTimeFromString("2024-07-28T19:04:48.565Z"),
+                        ID: "<id>",
+                        Name: "<value>",
+                        OrganizationID: "<id>",
+                        Slug: "<value>",
+                        TelemetryDisabled: false,
+                        UpdatedAt: types.MustTimeFromString("2023-01-13T16:52:57.274Z"),
+                        Verified: false,
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/events"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -2299,7 +2455,9 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Events.SearchWorkspaceEvents(ctx, operations.SearchWorkspaceEventsRequest{})
+                res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
+                    WorkspaceID: "<id>",
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2307,7 +2465,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/workspace/{workspaceID}/events"]["post"]
+  - target: $["paths"]["/v1/workspace/{workspace_id}/events"]["post"]
     update:
       x-codeSamples:
         - lang: go
@@ -2332,18 +2490,19 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Events.PostWorkspaceEvents(ctx, operations.PostWorkspaceEventsRequest{
+                res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
+                    WorkspaceID: "<id>",
                     RequestBody: []shared.CliEvent{
                         shared.CliEvent{
                             ID: "<id>",
-                            ExecutionID: "<value>",
-                            WorkspaceID: "<value>",
+                            ExecutionID: "<id>",
+                            WorkspaceID: "<id>",
                             SpeakeasyAPIKeyName: "<value>",
-                            InteractionType: shared.InteractionTypePublish,
-                            LocalStartedAt: types.MustTimeFromString("2022-05-18T11:28:11.328Z"),
-                            CreatedAt: types.MustTimeFromString("2024-05-07T12:35:47.182Z"),
+                            InteractionType: shared.InteractionTypeQuickstart,
+                            LocalStartedAt: types.MustTimeFromString("2023-09-09T05:59:33.876Z"),
+                            CreatedAt: types.MustTimeFromString("2024-08-12T17:54:17.538Z"),
                             SpeakeasyVersion: "<value>",
-                            Success: false,
+                            Success: true,
                         },
                     },
                 })
@@ -2354,11 +2513,11 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/workspace/{workspaceID}/events/targets"]["get"]
+  - target: $["paths"]["/v1/workspace/{workspace_id}/events/targets"]["get"]
     update:
       x-codeSamples:
         - lang: go
-          label: getWorkspaceTargets
+          label: getWorkspaceTargetsDeprecated
           source: |-
             package main
 
@@ -2378,7 +2537,9 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Events.GetWorkspaceTargets(ctx, operations.GetWorkspaceTargetsRequest{})
+                res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
+                    WorkspaceID: "<id>",
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2386,7 +2547,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/workspace/{workspaceID}/events/targets/{targetID}/events"]["get"]
+  - target: $["paths"]["/v1/workspace/{workspace_id}/events/targets/{target_id}/events"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -2410,8 +2571,9 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Events.GetWorkspaceEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
-                    TargetID: "<value>",
+                res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
+                    WorkspaceID: "<id>",
+                    TargetID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -2420,7 +2582,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/workspace/{workspaceID}/feature_flags"]["get"]
+  - target: $["paths"]["/v1/workspace/{workspace_id}/feature_flags"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -2444,11 +2606,329 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetWorkspaceFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
+                res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
+                    WorkspaceID: "<id>",
+                })
                 if err != nil {
                     log.Fatal(err)
                 }
                 if res.WorkspaceFeatureFlagResponse != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/settings"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getWorkspaceSettings
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
+                    WorkspaceID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.WorkspaceSettings != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/settings"]["put"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: updateWorkspaceSettings
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
+                    WorkspaceID: "<id>",
+                    WorkspaceSettings: shared.WorkspaceSettings{
+                        WorkspaceID: "<id>",
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/team"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getWorkspaceTeam
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{
+                    WorkspaceID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.WorkspaceTeamResponse != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/team/email/{email}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: grantUserAccessToWorkspace
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.GrantAccess(ctx, operations.GrantUserAccessToWorkspaceRequest{
+                    WorkspaceID: "<id>",
+                    Email: "Lucinda.Batz8@hotmail.com",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.WorkspaceInviteResponse != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/team/{userId}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: revokeUserAccessToWorkspace
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.RevokeAccess(ctx, operations.RevokeUserAccessToWorkspaceRequest{
+                    WorkspaceID: "<id>",
+                    UserID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/tokens"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getWorkspaceTokens
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{
+                    WorkspaceID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.WorkspaceTokens != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/tokens"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: createWorkspaceToken
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.CreateToken(ctx, operations.CreateWorkspaceTokenRequest{
+                    WorkspaceID: "<id>",
+                    WorkspaceToken: shared.WorkspaceToken{
+                        ID: "<id>",
+                        Name: "<value>",
+                        Alg: "<value>",
+                        Key: "<key>",
+                        CreatedAt: "<value>",
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/tokens/{tokenID}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: deleteWorkspaceToken
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.DeleteToken(ctx, operations.DeleteWorkspaceTokenRequest{
+                    WorkspaceID: "<id>",
+                    TokenID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspaces"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getWorkspaces
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Workspaces.GetAll(ctx)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Workspaces != nil {
                     // handle response
                 }
             }

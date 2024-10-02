@@ -69,10 +69,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## DownloadSchema
 
@@ -106,7 +106,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TwoHundredApplicationJSONSchema != nil {
+    if res.TwoXXApplicationJSONSchema != nil {
         // handle response
     }
 }
@@ -126,10 +126,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## DownloadSchemaRevision
 
@@ -164,7 +164,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TwoHundredApplicationJSONSchema != nil {
+    if res.TwoXXApplicationJSONSchema != nil {
         // handle response
     }
 }
@@ -184,10 +184,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetSchema
 
@@ -242,10 +242,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetSchemaDiff
 
@@ -301,10 +301,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetSchemaRevision
 
@@ -360,10 +360,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetSchemas
 
@@ -418,10 +418,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## RegisterSchema
 
@@ -488,6 +488,7 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |

@@ -185,7 +185,7 @@ func (s *ShortURLs) Create(ctx context.Context, request operations.CreateRequest
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()

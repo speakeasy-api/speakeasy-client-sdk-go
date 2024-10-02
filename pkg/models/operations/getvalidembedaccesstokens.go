@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"net/http"
 )
@@ -13,8 +12,6 @@ type GetValidEmbedAccessTokensResponse struct {
 	ContentType string
 	// OK
 	EmbedTokens []shared.EmbedToken
-	// Default error response
-	Error *sdkerrors.Error
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -33,13 +30,6 @@ func (o *GetValidEmbedAccessTokensResponse) GetEmbedTokens() []shared.EmbedToken
 		return nil
 	}
 	return o.EmbedTokens
-}
-
-func (o *GetValidEmbedAccessTokensResponse) GetError() *sdkerrors.Error {
-	if o == nil {
-		return nil
-	}
-	return o.Error
 }
 
 func (o *GetValidEmbedAccessTokensResponse) GetStatusCode() int {

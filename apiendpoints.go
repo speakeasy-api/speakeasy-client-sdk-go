@@ -179,17 +179,8 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -202,7 +193,7 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -211,6 +202,20 @@ func (s *APIEndpoints) DeleteAPIEndpoint(ctx context.Context, request operations
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -370,7 +375,7 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -393,15 +398,6 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -414,7 +410,7 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -423,6 +419,20 @@ func (s *APIEndpoints) FindAPIEndpoint(ctx context.Context, request operations.F
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -582,7 +592,7 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -605,15 +615,6 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -626,7 +627,7 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -635,6 +636,20 @@ func (s *APIEndpoints) GenerateOpenAPISpecForAPIEndpoint(ctx context.Context, re
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -655,7 +670,6 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
-		operations.SupportedOptionAcceptHeaderOverride,
 	}
 
 	for _, opt := range opts {
@@ -685,12 +699,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	if o.AcceptHeaderOverride != nil {
-		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
-	} else {
-		req.Header.Set("Accept", "application/json;q=1, application/octet-stream;q=0")
-	}
-
+	req.Header.Set("Accept", "application/octet-stream")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
@@ -799,7 +808,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/octet-stream`):
 			res.PostmanCollection = httpRes.Body
@@ -814,15 +823,6 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -835,7 +835,7 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -844,6 +844,20 @@ func (s *APIEndpoints) GeneratePostmanCollectionForAPIEndpoint(ctx context.Conte
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -1001,7 +1015,7 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1024,15 +1038,6 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1045,7 +1050,7 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -1054,6 +1059,20 @@ func (s *APIEndpoints) GetAllAPIEndpoints(ctx context.Context, request operation
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -1211,7 +1230,7 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1234,15 +1253,6 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1255,7 +1265,7 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -1264,6 +1274,20 @@ func (s *APIEndpoints) GetAllForVersionAPIEndpoints(ctx context.Context, request
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -1421,7 +1445,7 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1444,15 +1468,6 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1465,7 +1480,7 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -1474,6 +1489,20 @@ func (s *APIEndpoints) GetAPIEndpoint(ctx context.Context, request operations.Ge
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -1638,7 +1667,7 @@ func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1661,15 +1690,6 @@ func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
-	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
-		rawBody, err := getRawBody()
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
-	default:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := getRawBody()
@@ -1682,7 +1702,7 @@ func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations
 				return nil, err
 			}
 
-			res.Error = &out
+			return nil, &out
 		default:
 			rawBody, err := getRawBody()
 			if err != nil {
@@ -1691,6 +1711,20 @@ func (s *APIEndpoints) UpsertAPIEndpoint(ctx context.Context, request operations
 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	default:
+		rawBody, err := getRawBody()
+		if err != nil {
+			return nil, err
+		}
+
+		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

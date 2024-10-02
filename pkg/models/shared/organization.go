@@ -10,13 +10,13 @@ import (
 // Organization - A speakeasy organization
 type Organization struct {
 	AccountType       AccountType `json:"account_type"`
-	CreatedAt         *time.Time  `json:"created_at,omitempty"`
+	CreatedAt         time.Time   `json:"created_at"`
 	FreeTrialExpiry   *time.Time  `json:"free_trial_expiry,omitempty"`
 	ID                string      `json:"id"`
 	Name              string      `json:"name"`
-	Slug              *string     `json:"slug,omitempty"`
+	Slug              string      `json:"slug"`
 	TelemetryDisabled bool        `json:"telemetry_disabled"`
-	UpdatedAt         *time.Time  `json:"updated_at,omitempty"`
+	UpdatedAt         time.Time   `json:"updated_at"`
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
@@ -37,9 +37,9 @@ func (o *Organization) GetAccountType() AccountType {
 	return o.AccountType
 }
 
-func (o *Organization) GetCreatedAt() *time.Time {
+func (o *Organization) GetCreatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.CreatedAt
 }
@@ -65,9 +65,9 @@ func (o *Organization) GetName() string {
 	return o.Name
 }
 
-func (o *Organization) GetSlug() *string {
+func (o *Organization) GetSlug() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Slug
 }
@@ -79,9 +79,9 @@ func (o *Organization) GetTelemetryDisabled() bool {
 	return o.TelemetryDisabled
 }
 
-func (o *Organization) GetUpdatedAt() *time.Time {
+func (o *Organization) GetUpdatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.UpdatedAt
 }

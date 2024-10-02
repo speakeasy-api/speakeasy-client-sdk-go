@@ -9,24 +9,13 @@ import (
 	"time"
 )
 
-type GetWorkspaceEventsByTargetGlobals struct {
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
-}
-
-func (o *GetWorkspaceEventsByTargetGlobals) GetWorkspaceID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceID
-}
-
 type GetWorkspaceEventsByTargetRequest struct {
 	// Filter to only return events created after this timestamp
 	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`
 	// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
-	TargetID string `pathParam:"style=simple,explode=false,name=targetID"`
+	TargetID string `pathParam:"style=simple,explode=false,name=target_id"`
 	// Unique identifier of the workspace.
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
+	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (g GetWorkspaceEventsByTargetRequest) MarshalJSON() ([]byte, error) {
@@ -54,9 +43,9 @@ func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
 	return o.TargetID
 }
 
-func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
+func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.WorkspaceID
 }

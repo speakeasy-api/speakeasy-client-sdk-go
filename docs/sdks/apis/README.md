@@ -66,10 +66,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GenerateOpenAPISpec
 
@@ -124,10 +124,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GeneratePostmanCollection
 
@@ -181,10 +181,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetAllAPIVersions
 
@@ -238,10 +238,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetApis
 
@@ -293,10 +293,10 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## UpsertAPI
 
@@ -355,6 +355,7 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |

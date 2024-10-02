@@ -3,30 +3,18 @@
 package operations
 
 import (
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"net/http"
 )
 
-type GetWorkspaceGlobals struct {
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
-}
-
-func (o *GetWorkspaceGlobals) GetWorkspaceID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceID
-}
-
 type GetWorkspaceRequest struct {
 	// Unique identifier of the workspace.
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
+	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceRequest) GetWorkspaceID() *string {
+func (o *GetWorkspaceRequest) GetWorkspaceID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.WorkspaceID
 }
@@ -34,8 +22,6 @@ func (o *GetWorkspaceRequest) GetWorkspaceID() *string {
 type GetWorkspaceResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	// Default error response
-	Error *sdkerrors.Error
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -49,13 +35,6 @@ func (o *GetWorkspaceResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetWorkspaceResponse) GetError() *sdkerrors.Error {
-	if o == nil {
-		return nil
-	}
-	return o.Error
 }
 
 func (o *GetWorkspaceResponse) GetStatusCode() int {
