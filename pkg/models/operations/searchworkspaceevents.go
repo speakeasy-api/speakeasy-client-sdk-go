@@ -7,17 +7,6 @@ import (
 	"net/http"
 )
 
-type SearchWorkspaceEventsGlobals struct {
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
-}
-
-func (o *SearchWorkspaceEventsGlobals) GetWorkspaceID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkspaceID
-}
-
 type SearchWorkspaceEventsRequest struct {
 	// A specific gen lock ID for the events.
 	GenerateGenLockID *string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
@@ -30,7 +19,7 @@ type SearchWorkspaceEventsRequest struct {
 	// Unique identifier of the source revision digest.
 	SourceRevisionDigest *string `queryParam:"style=form,explode=true,name=source_revision_digest"`
 	// Unique identifier of the workspace.
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
+	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *SearchWorkspaceEventsRequest) GetGenerateGenLockID() *string {
@@ -68,9 +57,9 @@ func (o *SearchWorkspaceEventsRequest) GetSourceRevisionDigest() *string {
 	return o.SourceRevisionDigest
 }
 
-func (o *SearchWorkspaceEventsRequest) GetWorkspaceID() *string {
+func (o *SearchWorkspaceEventsRequest) GetWorkspaceID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.WorkspaceID
 }

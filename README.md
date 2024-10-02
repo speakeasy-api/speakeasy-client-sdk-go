@@ -14,7 +14,6 @@ For more information about the API: [The Speakeasy Platform Documentation](/docs
 * [SDK Installation](#sdk-installation)
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
-* [Global Parameters](#global-parameters)
 * [Retries](#retries)
 * [Error Handling](#error-handling)
 * [Server Selection](#server-selection)
@@ -99,7 +98,6 @@ func main() {
 * [GetBlob](docs/sdks/artifacts/README.md#getblob) - Get blob for a particular digest
 * [GetManifest](docs/sdks/artifacts/README.md#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](docs/sdks/artifacts/README.md#getnamespaces) - Each namespace contains many revisions.
-* [GetOASSummary](docs/sdks/artifacts/README.md#getoassummary)
 * [GetRevisions](docs/sdks/artifacts/README.md#getrevisions)
 * [GetTags](docs/sdks/artifacts/README.md#gettags)
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
@@ -107,9 +105,9 @@ func main() {
 
 ### [Auth](docs/sdks/auth/README.md)
 
+* [GetAccess](docs/sdks/auth/README.md#getaccess) - Get access allowances for a particular workspace
 * [GetAccessToken](docs/sdks/auth/README.md#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetUser](docs/sdks/auth/README.md#getuser) - Get information about the current user.
-* [GetWorkspaceAccess](docs/sdks/auth/README.md#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateAPIKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
 
 ### [Embeds](docs/sdks/embeds/README.md)
@@ -120,21 +118,22 @@ func main() {
 
 ### [Events](docs/sdks/events/README.md)
 
-* [GetWorkspaceEventsByTarget](docs/sdks/events/README.md#getworkspaceeventsbytarget) - Load recent events for a particular workspace
-* [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
-* [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
-* [SearchWorkspaceEvents](docs/sdks/events/README.md#searchworkspaceevents) - Search events for a particular workspace by any field
+* [GetEventsByTarget](docs/sdks/events/README.md#geteventsbytarget) - Load recent events for a particular workspace
+* [GetTargets](docs/sdks/events/README.md#gettargets) - Load targets for a particular workspace
+* [GetTargetsDeprecated](docs/sdks/events/README.md#gettargetsdeprecated) - Load targets for a particular workspace
+* [Post](docs/sdks/events/README.md#post) - Post events for a specific workspace
+* [Search](docs/sdks/events/README.md#search) - Search events for a particular workspace by any field
 
 ### [Github](docs/sdks/github/README.md)
 
 * [CheckAccess](docs/sdks/github/README.md#checkaccess)
+* [CheckPublishingPRs](docs/sdks/github/README.md#checkpublishingprs)
+* [CheckPublishingSecrets](docs/sdks/github/README.md#checkpublishingsecrets)
 * [ConfigureCodeSamples](docs/sdks/github/README.md#configurecodesamples)
 * [ConfigureMintlifyRepo](docs/sdks/github/README.md#configuremintlifyrepo)
 * [ConfigureTarget](docs/sdks/github/README.md#configuretarget)
-* [FetchPublishingPRs](docs/sdks/github/README.md#fetchpublishingprs)
 * [GetAction](docs/sdks/github/README.md#getaction)
-* [GithubCheckPublishingSecrets](docs/sdks/github/README.md#githubcheckpublishingsecrets)
-* [GithubStorePublishingSecrets](docs/sdks/github/README.md#githubstorepublishingsecrets)
+* [StorePublishingSecrets](docs/sdks/github/README.md#storepublishingsecrets)
 * [TriggerAction](docs/sdks/github/README.md#triggeraction)
 
 ### [Metadata](docs/sdks/metadata/README.md)
@@ -145,10 +144,11 @@ func main() {
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
+* [Create](docs/sdks/organizations/README.md#create) - Create an organization
 * [CreateFreeTrial](docs/sdks/organizations/README.md#createfreetrial) - Create a free trial for an organization
-* [GetOrganization](docs/sdks/organizations/README.md#getorganization) - Get organization
-* [GetOrganizationUsage](docs/sdks/organizations/README.md#getorganizationusage) - Get billing usage summary for a particular organization
-* [GetOrganizations](docs/sdks/organizations/README.md#getorganizations) - Get organizations for a user
+* [Get](docs/sdks/organizations/README.md#get) - Get organization
+* [GetAll](docs/sdks/organizations/README.md#getall) - Get organizations for a user
+* [GetUsage](docs/sdks/organizations/README.md#getusage) - Get billing usage summary for a particular organization
 
 ### [Reports](docs/sdks/reports/README.md)
 
@@ -186,8 +186,20 @@ func main() {
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
-* [GetWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Get workspace
-* [GetWorkspaceFeatureFlags](docs/sdks/workspaces/README.md#getworkspacefeatureflags) - Get workspace feature flags
+* [Create](docs/sdks/workspaces/README.md#create) - Create a workspace
+* [CreateToken](docs/sdks/workspaces/README.md#createtoken) - Create a token for a particular workspace
+* [DeleteToken](docs/sdks/workspaces/README.md#deletetoken) - Delete a token for a particular workspace
+* [Get](docs/sdks/workspaces/README.md#get) - Get workspace by context
+* [GetAll](docs/sdks/workspaces/README.md#getall) - Get workspaces for a user
+* [GetByID](docs/sdks/workspaces/README.md#getbyid) - Get workspace
+* [GetFeatureFlags](docs/sdks/workspaces/README.md#getfeatureflags) - Get workspace feature flags
+* [GetSettings](docs/sdks/workspaces/README.md#getsettings) - Get workspace settings
+* [GetTeam](docs/sdks/workspaces/README.md#getteam) - Get team members for a particular workspace
+* [GetTokens](docs/sdks/workspaces/README.md#gettokens) - Get tokens for a particular workspace
+* [GrantAccess](docs/sdks/workspaces/README.md#grantaccess) - Grant a user access to a particular workspace
+* [RevokeAccess](docs/sdks/workspaces/README.md#revokeaccess) - Revoke a user's access to a particular workspace
+* [Update](docs/sdks/workspaces/README.md#update) - Update workspace details
+* [UpdateSettings](docs/sdks/workspaces/README.md#updatesettings) - Update workspace settings
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -209,12 +221,16 @@ func main() {
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+Handling errors in this SDK should largely match your expectations. All operations return a response object or an error, they will never return both.
 
-| Error Object       | Status Code        | Content Type       |
+By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
+
+For example, the `DeleteAPI` function may return the following errors:
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.Error    | 5XX                | application/json   |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ### Example
 
@@ -239,7 +255,10 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Workspaces.GetWorkspaceFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
+	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
+		APIID:     "<value>",
+		VersionID: "<value>",
+	})
 	if err != nil {
 
 		var e *sdkerrors.Error
@@ -387,10 +406,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 This SDK supports the following security schemes globally:
 
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `APIKey`    | apiKey      | API key     |
-| `Bearer`    | http        | HTTP Bearer |
+| Name                  | Type                  | Scheme                |
+| --------------------- | --------------------- | --------------------- |
+| `APIKey`              | apiKey                | API key               |
+| `Bearer`              | http                  | HTTP Bearer           |
+| `WorkspaceIdentifier` | apiKey                | API key               |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
@@ -426,56 +446,6 @@ func main() {
 
 ```
 <!-- End Authentication [security] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspace`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| WorkspaceID | string |  | The WorkspaceID parameter. |
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"log"
-)
-
-func main() {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Workspaces.GetWorkspace(ctx, operations.GetWorkspaceRequest{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	if res.Workspace != nil {
-		// handle response
-	}
-}
-
-```
-<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Retries [retries] -->
 ## Retries

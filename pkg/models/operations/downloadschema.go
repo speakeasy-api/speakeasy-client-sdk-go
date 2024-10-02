@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"io"
 	"net/http"
 )
@@ -32,32 +31,30 @@ func (o *DownloadSchemaRequest) GetVersionID() string {
 type DownloadSchemaResponse struct {
 	// OK
 	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationJSONSchema io.ReadCloser
+	TwoXXApplicationJSONSchema io.ReadCloser
 	// OK
 	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationXYamlSchema io.ReadCloser
+	TwoXXApplicationXYamlSchema io.ReadCloser
 	// HTTP response content type for this operation
 	ContentType string
-	// Default error response
-	Error *sdkerrors.Error
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
-func (o *DownloadSchemaResponse) GetTwoHundredApplicationJSONSchema() io.ReadCloser {
+func (o *DownloadSchemaResponse) GetTwoXXApplicationJSONSchema() io.ReadCloser {
 	if o == nil {
 		return nil
 	}
-	return o.TwoHundredApplicationJSONSchema
+	return o.TwoXXApplicationJSONSchema
 }
 
-func (o *DownloadSchemaResponse) GetTwoHundredApplicationXYamlSchema() io.ReadCloser {
+func (o *DownloadSchemaResponse) GetTwoXXApplicationXYamlSchema() io.ReadCloser {
 	if o == nil {
 		return nil
 	}
-	return o.TwoHundredApplicationXYamlSchema
+	return o.TwoXXApplicationXYamlSchema
 }
 
 func (o *DownloadSchemaResponse) GetContentType() string {
@@ -65,13 +62,6 @@ func (o *DownloadSchemaResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *DownloadSchemaResponse) GetError() *sdkerrors.Error {
-	if o == nil {
-		return nil
-	}
-	return o.Error
 }
 
 func (o *DownloadSchemaResponse) GetStatusCode() int {

@@ -102,10 +102,10 @@ type Speakeasy struct {
 	// REST APIs for managing short URLs
 	ShortURLs *ShortURLs
 	// REST APIs for managing LLM OAS suggestions
-	Suggest *Suggest
-	// REST APIs for managing embeds
-	Embeds     *Embeds
+	Suggest    *Suggest
 	Workspaces *Workspaces
+	// REST APIs for managing embeds
+	Embeds *Embeds
 	// REST APIs for capturing event data
 	Events *Events
 
@@ -193,9 +193,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0 .",
-			SDKVersion:        "3.13.1",
-			GenVersion:        "2.415.8",
-			UserAgent:         "speakeasy-sdk/go 3.13.1 2.415.8 0.4.0 . github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.14.0",
+			GenVersion:        "2.429.0",
+			UserAgent:         "speakeasy-sdk/go 3.14.0 2.429.0 0.4.0 . github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},
@@ -240,9 +240,9 @@ func New(opts ...SDKOption) *Speakeasy {
 
 	sdk.Suggest = newSuggest(sdk.sdkConfiguration)
 
-	sdk.Embeds = newEmbeds(sdk.sdkConfiguration)
-
 	sdk.Workspaces = newWorkspaces(sdk.sdkConfiguration)
+
+	sdk.Embeds = newEmbeds(sdk.sdkConfiguration)
 
 	sdk.Events = newEvents(sdk.sdkConfiguration)
 

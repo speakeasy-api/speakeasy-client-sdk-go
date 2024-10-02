@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"net/http"
 )
@@ -11,8 +10,6 @@ import (
 type GetNamespacesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	// Default error response
-	Error *sdkerrors.Error
 	// OK
 	GetNamespacesResponse *shared.GetNamespacesResponse
 	// HTTP response status code for this operation
@@ -26,13 +23,6 @@ func (o *GetNamespacesResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetNamespacesResponse) GetError() *sdkerrors.Error {
-	if o == nil {
-		return nil
-	}
-	return o.Error
 }
 
 func (o *GetNamespacesResponse) GetGetNamespacesResponse() *shared.GetNamespacesResponse {

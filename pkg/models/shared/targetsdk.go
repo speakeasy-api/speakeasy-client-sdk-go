@@ -66,6 +66,14 @@ type TargetSDK struct {
 	LastEventID string `json:"last_event_id"`
 	// Type of interaction.
 	LastEventInteractionType InteractionType `json:"last_event_interaction_type"`
+	// Name of the published package.
+	PublishPackageName *string `json:"publish_package_name,omitempty"`
+	// Name of the registry where the package was published.
+	PublishPackageRegistryName *string `json:"publish_package_registry_name,omitempty"`
+	// URL of the published package.
+	PublishPackageURL *string `json:"publish_package_url,omitempty"`
+	// Version of the published package.
+	PublishPackageVersion *string `json:"publish_package_version,omitempty"`
 	// Label of the git repository.
 	RepoLabel *string `json:"repo_label,omitempty"`
 	// The blob digest of the source.
@@ -294,6 +302,34 @@ func (o *TargetSDK) GetLastEventInteractionType() InteractionType {
 		return InteractionType("")
 	}
 	return o.LastEventInteractionType
+}
+
+func (o *TargetSDK) GetPublishPackageName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageName
+}
+
+func (o *TargetSDK) GetPublishPackageRegistryName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageRegistryName
+}
+
+func (o *TargetSDK) GetPublishPackageURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageURL
+}
+
+func (o *TargetSDK) GetPublishPackageVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageVersion
 }
 
 func (o *TargetSDK) GetRepoLabel() *string {

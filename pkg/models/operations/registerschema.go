@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"net/http"
 )
 
@@ -72,8 +71,6 @@ func (o *RegisterSchemaRequest) GetVersionID() string {
 type RegisterSchemaResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	// Default error response
-	Error *sdkerrors.Error
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -85,13 +82,6 @@ func (o *RegisterSchemaResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *RegisterSchemaResponse) GetError() *sdkerrors.Error {
-	if o == nil {
-		return nil
-	}
-	return o.Error
 }
 
 func (o *RegisterSchemaResponse) GetStatusCode() int {

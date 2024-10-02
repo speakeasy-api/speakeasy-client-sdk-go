@@ -5,10 +5,73 @@
 
 ### Available Operations
 
+* [Create](#create) - Create an organization
 * [CreateFreeTrial](#createfreetrial) - Create a free trial for an organization
-* [GetOrganization](#getorganization) - Get organization
-* [GetOrganizationUsage](#getorganizationusage) - Get billing usage summary for a particular organization
-* [GetOrganizations](#getorganizations) - Get organizations for a user
+* [Get](#get) - Get organization
+* [GetAll](#getall) - Get organizations for a user
+* [GetUsage](#getusage) - Get billing usage summary for a particular organization
+
+## Create
+
+Creates an organization
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Organizations.Create(ctx, shared.Organization{
+        AccountType: shared.AccountTypeScaleUp,
+        CreatedAt: types.MustTimeFromString("2023-12-01T17:06:07.804Z"),
+        ID: "<id>",
+        Name: "<value>",
+        Slug: "<value>",
+        TelemetryDisabled: true,
+        UpdatedAt: types.MustTimeFromString("2022-05-28T06:20:22.766Z"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Organization != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `request`                                                      | [shared.Organization](../../pkg/models/shared/organization.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `opts`                                                         | [][operations.Option](../../pkg/models/operations/option.md)   | :heavy_minus_sign:                                             | The options for this request.                                  |
+
+### Response
+
+**[*operations.CreateOrganizationResponse](../../pkg/models/operations/createorganizationresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## CreateFreeTrial
 
@@ -57,12 +120,12 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
-
-## GetOrganization
+## Get
 
 Get information about a particular organization.
 
@@ -87,7 +150,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Organizations.GetOrganization(ctx, operations.GetOrganizationRequest{
+    res, err := s.Organizations.Get(ctx, operations.GetOrganizationRequest{
         OrganizationID: "<value>",
     })
     if err != nil {
@@ -113,64 +176,12 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
-
-## GetOrganizationUsage
-
-Returns a billing usage summary by target languages for a particular organization
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
-	"log"
-)
-
-func main() {
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-        }),
-    )
-
-    ctx := context.Background()
-    res, err := s.Organizations.GetOrganizationUsage(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.OrganizationUsageResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
-| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
-
-### Response
-
-**[*operations.GetOrganizationUsageResponse](../../pkg/models/operations/getorganizationusageresponse.md), error**
-
-### Errors
-
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
-
-
-## GetOrganizations
+## GetAll
 
 Returns a list of organizations a user has access too
 
@@ -194,7 +205,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Organizations.GetOrganizations(ctx)
+    res, err := s.Organizations.GetAll(ctx)
     if err != nil {
         log.Fatal(err)
     }
@@ -217,6 +228,59 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
+
+## GetUsage
+
+Returns a billing usage summary by target languages for a particular organization
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Organizations.GetUsage(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.OrganizationUsageResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.GetOrganizationUsageResponse](../../pkg/models/operations/getorganizationusageresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |

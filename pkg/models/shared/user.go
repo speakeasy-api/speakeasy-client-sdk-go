@@ -27,7 +27,7 @@ type User struct {
 	// Unique identifier for the user.
 	ID string `json:"id"`
 	// Timestamp of the last login.
-	LastLoginAt time.Time `json:"last_login_at"`
+	LastLoginAt *time.Time `json:"last_login_at,omitempty"`
 	// URL of the user's photo.
 	PhotoURL *string `json:"photo_url,omitempty"`
 	// Timestamp of the user's last update.
@@ -110,9 +110,9 @@ func (o *User) GetID() string {
 	return o.ID
 }
 
-func (o *User) GetLastLoginAt() time.Time {
+func (o *User) GetLastLoginAt() *time.Time {
 	if o == nil {
-		return time.Time{}
+		return nil
 	}
 	return o.LastLoginAt
 }

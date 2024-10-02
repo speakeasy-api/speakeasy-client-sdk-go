@@ -7,12 +7,13 @@ REST APIs for capturing event data
 
 ### Available Operations
 
-* [GetWorkspaceEventsByTarget](#getworkspaceeventsbytarget) - Load recent events for a particular workspace
-* [GetWorkspaceTargets](#getworkspacetargets) - Load targets for a particular workspace
-* [PostWorkspaceEvents](#postworkspaceevents) - Post events for a specific workspace
-* [SearchWorkspaceEvents](#searchworkspaceevents) - Search events for a particular workspace by any field
+* [GetEventsByTarget](#geteventsbytarget) - Load recent events for a particular workspace
+* [GetTargets](#gettargets) - Load targets for a particular workspace
+* [GetTargetsDeprecated](#gettargetsdeprecated) - Load targets for a particular workspace
+* [Post](#post) - Post events for a specific workspace
+* [Search](#search) - Search events for a particular workspace by any field
 
-## GetWorkspaceEventsByTarget
+## GetEventsByTarget
 
 Load recent events for a particular workspace
 
@@ -37,8 +38,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.GetWorkspaceEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
-        TargetID: "<value>",
+    res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
+        TargetID: "<id>",
+        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -63,13 +65,12 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.Error    | 5XX                | application/json   |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
 
-
-## GetWorkspaceTargets
+## GetTargets
 
 Load targets for a particular workspace
 
@@ -94,7 +95,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.GetWorkspaceTargets(ctx, operations.GetWorkspaceTargetsRequest{})
+    res, err := s.Events.GetTargets(ctx, operations.GetWorkspaceTargetsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -118,13 +119,68 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.Error    | 5XX                | application/json   |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
 
+## GetTargetsDeprecated
 
-## PostWorkspaceEvents
+Load targets for a particular workspace
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
+        WorkspaceID: "<id>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TargetSDKList != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.GetWorkspaceTargetsDeprecatedRequest](../../pkg/models/operations/getworkspacetargetsdeprecatedrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../pkg/models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.GetWorkspaceTargetsDeprecatedResponse](../../pkg/models/operations/getworkspacetargetsdeprecatedresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 5XX                | application/json   |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
+
+## Post
 
 Sends an array of events to be stored for a particular workspace.
 
@@ -150,20 +206,21 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.PostWorkspaceEvents(ctx, operations.PostWorkspaceEventsRequest{
+    res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
         RequestBody: []shared.CliEvent{
             shared.CliEvent{
-                CreatedAt: types.MustTimeFromString("2024-11-21T06:58:42.120Z"),
-                ExecutionID: "<value>",
+                CreatedAt: types.MustTimeFromString("2023-05-08T03:24:39.583Z"),
+                ExecutionID: "<id>",
                 ID: "<id>",
-                InteractionType: shared.InteractionTypeCliExec,
-                LocalStartedAt: types.MustTimeFromString("2024-05-07T12:35:47.182Z"),
+                InteractionType: shared.InteractionTypeQuickstart,
+                LocalStartedAt: types.MustTimeFromString("2023-09-09T05:59:33.876Z"),
                 SpeakeasyAPIKeyName: "<value>",
                 SpeakeasyVersion: "<value>",
                 Success: false,
-                WorkspaceID: "<value>",
+                WorkspaceID: "<id>",
             },
         },
+        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -188,13 +245,12 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.Error    | 5XX                | application/json   |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
 
-
-## SearchWorkspaceEvents
+## Search
 
 Search events for a particular workspace by any field
 
@@ -219,7 +275,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.SearchWorkspaceEvents(ctx, operations.SearchWorkspaceEventsRequest{})
+    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
+        WorkspaceID: "<id>",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -243,7 +301,7 @@ func main() {
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.Error    | 5XX                | application/json   |
-| sdkerrors.SDKError | 4xx-5xx            | */*                |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
