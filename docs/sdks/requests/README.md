@@ -13,7 +13,7 @@ REST APIs for retrieving request information
 
 ## GenerateRequestPostmanCollection
 
-Generates a Postman collection for a particular request. 
+Generates a Postman collection for a particular request.
 Allowing it to be replayed with the same inputs that were captured by the SDK.
 
 ### Example Usage
