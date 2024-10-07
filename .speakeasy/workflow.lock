@@ -1,9 +1,9 @@
-speakeasyVersion: 1.406.0
+speakeasyVersion: 1.410.3
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:51b115e6067378754ae2aaa2e87d1d140e6de3e6e3a3e9b7f1e9d86caf850cdf
-        sourceBlobDigest: sha256:3a8dfb49ff3071b9dd0ce7f14bad505ea3071922eeaa6ca26709873cbd61738d
+        sourceRevisionDigest: sha256:f66625bcebf91545c71a3c9b3dda38cae68366a3a2982c5c46a8e5d6c6924fce
+        sourceBlobDigest: sha256:f5a6a776602f0d52882b31fb986311857356e9f95a49774fee822b6a1e14f4ac
         tags:
             - latest
             - main
@@ -11,10 +11,10 @@ targets:
     speakeasy-client-sdk-go:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:51b115e6067378754ae2aaa2e87d1d140e6de3e6e3a3e9b7f1e9d86caf850cdf
-        sourceBlobDigest: sha256:3a8dfb49ff3071b9dd0ce7f14bad505ea3071922eeaa6ca26709873cbd61738d
+        sourceRevisionDigest: sha256:f66625bcebf91545c71a3c9b3dda38cae68366a3a2982c5c46a8e5d6c6924fce
+        sourceBlobDigest: sha256:f5a6a776602f0d52882b31fb986311857356e9f95a49774fee822b6a1e14f4ac
         codeSamplesNamespace: code-samples-go-speakeasy-client-sdk-go
-        codeSamplesRevisionDigest: sha256:f5c046552d519b2e3ed258d2a1da9a0b348b3ec6e790277598e004f1b76e0c41
+        codeSamplesRevisionDigest: sha256:5a83dafd4a8082358227bd407c49ad3ec94e0c5bac11a38bd28d7df42cb69afe
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -159,6 +159,8 @@ type CliEvent struct {
 	GhActionRunLink *string `json:"gh_action_run_link,omitempty"`
 	// Version of the GitHub action.
 	GhActionVersion *string `json:"gh_action_version,omitempty"`
+	// The reference to a created pull request.
+	GhPullRequest *string `json:"gh_pull_request,omitempty"`
 	// Current working directory relative to the git root.
 	GitRelativeCwd *string `json:"git_relative_cwd,omitempty"`
 	// Default owner for git remote.
@@ -511,6 +513,13 @@ func (o *CliEvent) GetGhActionVersion() *string {
 		return nil
 	}
 	return o.GhActionVersion
+}
+
+func (o *CliEvent) GetGhPullRequest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GhPullRequest
 }
 
 func (o *CliEvent) GetGitRelativeCwd() *string {
