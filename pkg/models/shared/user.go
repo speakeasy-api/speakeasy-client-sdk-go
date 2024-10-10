@@ -26,6 +26,8 @@ type User struct {
 	GithubHandle *string `json:"github_handle,omitempty"`
 	// Unique identifier for the user.
 	ID string `json:"id"`
+	// Indicates whether the user is internal.
+	Internal *bool `json:"internal,omitempty"`
 	// Timestamp of the last login.
 	LastLoginAt *time.Time `json:"last_login_at,omitempty"`
 	// URL of the user's photo.
@@ -108,6 +110,13 @@ func (o *User) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *User) GetInternal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Internal
 }
 
 func (o *User) GetLastLoginAt() *time.Time {

@@ -1940,6 +1940,42 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/v1/suggest/items"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: suggestItems
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
+                    Prompt: "<value>",
+                    Items: []string{
+                        "<value>",
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Strings != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/v1/suggest/openapi"]["post"]
     update:
       x-codeSamples:

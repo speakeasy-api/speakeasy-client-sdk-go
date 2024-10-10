@@ -13,6 +13,7 @@ type Organization struct {
 	CreatedAt         time.Time   `json:"created_at"`
 	FreeTrialExpiry   *time.Time  `json:"free_trial_expiry,omitempty"`
 	ID                string      `json:"id"`
+	Internal          *bool       `json:"internal,omitempty"`
 	Name              string      `json:"name"`
 	Slug              string      `json:"slug"`
 	TelemetryDisabled bool        `json:"telemetry_disabled"`
@@ -56,6 +57,13 @@ func (o *Organization) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *Organization) GetInternal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Internal
 }
 
 func (o *Organization) GetName() string {

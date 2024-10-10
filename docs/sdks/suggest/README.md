@@ -8,6 +8,7 @@ REST APIs for managing LLM OAS suggestions
 ### Available Operations
 
 * [Suggest](#suggest) - Generate suggestions for improving an OpenAPI document.
+* [SuggestItems](#suggestitems) - Generate generic suggestions for a list of items.
 * [SuggestOpenAPI](#suggestopenapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [SuggestOpenAPIRegistry](#suggestopenapiregistry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
@@ -91,6 +92,63 @@ func main() {
 ### Response
 
 **[*operations.SuggestResponse](../../pkg/models/operations/suggestresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## SuggestItems
+
+Generate generic suggestions for a list of items.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
+        Items: []string{
+            "<value>",
+        },
+        Prompt: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Strings != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [shared.SuggestItemsRequestBody](../../pkg/models/shared/suggestitemsrequestbody.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../pkg/models/operations/option.md)                         | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
+
+### Response
+
+**[*operations.SuggestItemsResponse](../../pkg/models/operations/suggestitemsresponse.md), error**
 
 ### Errors
 

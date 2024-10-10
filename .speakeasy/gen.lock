@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: ff0251877ad0819b7ae028e9d209320c
+  docChecksum: 95fc7f79136848a9849118f27b24eb96
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.412.6
-  generationVersion: 2.436.3
-  releaseVersion: 3.14.3
-  configChecksum: 6be123fc74c08242a519ff87bbd93cf5
+  speakeasyVersion: 1.417.0
+  generationVersion: 2.438.2
+  releaseVersion: 3.14.4
+  configChecksum: 11a450ea6c2efebea82b8c3bac4be0f6
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -116,6 +116,7 @@ generatedFiles:
   - /pkg/models/operations/revokeuseraccesstoworkspace.go
   - /pkg/models/operations/searchworkspaceevents.go
   - /pkg/models/operations/suggest.go
+  - /pkg/models/operations/suggestitems.go
   - /pkg/models/operations/suggestopenapi.go
   - /pkg/models/operations/suggestopenapiregistry.go
   - /pkg/models/operations/updateworkspacedetails.go
@@ -175,6 +176,7 @@ generatedFiles:
   - /pkg/models/shared/security.go
   - /pkg/models/shared/shorturl.go
   - /pkg/models/shared/ssometadata.go
+  - /pkg/models/shared/suggestitemsrequestbody.go
   - /pkg/models/shared/suggestoptsold.go
   - /pkg/models/shared/suggestrequestbody.go
   - /pkg/models/shared/tag.go
@@ -337,6 +339,7 @@ generatedFiles:
   - docs/pkg/models/operations/schema.md
   - docs/pkg/models/operations/searchworkspaceeventsrequest.md
   - docs/pkg/models/operations/searchworkspaceeventsresponse.md
+  - docs/pkg/models/operations/suggestitemsresponse.md
   - docs/pkg/models/operations/suggestopenapiregistryrequest.md
   - docs/pkg/models/operations/suggestopenapiregistryresponse.md
   - docs/pkg/models/operations/suggestopenapirequest.md
@@ -416,6 +419,7 @@ generatedFiles:
   - docs/pkg/models/shared/shorturl.md
   - docs/pkg/models/shared/ssometadata.md
   - docs/pkg/models/shared/suggestiontype.md
+  - docs/pkg/models/shared/suggestitemsrequestbody.md
   - docs/pkg/models/shared/suggestoptsold.md
   - docs/pkg/models/shared/suggestrequestbody.md
   - docs/pkg/models/shared/suggestrequestbodysuggestiontype.md
@@ -1493,3 +1497,10 @@ examples:
           application/json: []
         5XX:
           application/json: {"message": "<value>", "status_code": 255923}
+  suggestItems:
+    speakeasy-default-suggest-items:
+      requestBody:
+        application/json: {"items": [], "prompt": "<value>"}
+      responses:
+        2XX:
+          application/json: ["<value>", "<value>"]
