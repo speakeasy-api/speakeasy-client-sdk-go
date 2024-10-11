@@ -9,16 +9,19 @@ import (
 
 // Workspace - A speakeasy workspace
 type Workspace struct {
-	CreatedAt         time.Time  `json:"created_at"`
-	ID                string     `json:"id"`
-	Name              string     `json:"name"`
-	OciRepo           *string    `json:"oci_repo,omitempty"`
-	OciRepoCreatedAt  *time.Time `json:"oci_repo_created_at,omitempty"`
-	OrganizationID    string     `json:"organization_id"`
-	Slug              string     `json:"slug"`
-	TelemetryDisabled bool       `json:"telemetry_disabled"`
-	UpdatedAt         time.Time  `json:"updated_at"`
-	Verified          bool       `json:"verified"`
+	CreatedAt        time.Time  `json:"created_at"`
+	ID               string     `json:"id"`
+	Name             string     `json:"name"`
+	OciRepo          *string    `json:"oci_repo,omitempty"`
+	OciRepoCreatedAt *time.Time `json:"oci_repo_created_at,omitempty"`
+	OrganizationID   string     `json:"organization_id"`
+	Slug             string     `json:"slug"`
+	// Deprecated. Use organization.telemetry_disabled instead.
+	//
+	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+	TelemetryDisabled *bool     `json:"telemetry_disabled,omitempty"`
+	UpdatedAt         time.Time `json:"updated_at"`
+	Verified          bool      `json:"verified"`
 }
 
 func (w Workspace) MarshalJSON() ([]byte, error) {
@@ -81,9 +84,9 @@ func (o *Workspace) GetSlug() string {
 	return o.Slug
 }
 
-func (o *Workspace) GetTelemetryDisabled() bool {
+func (o *Workspace) GetTelemetryDisabled() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.TelemetryDisabled
 }

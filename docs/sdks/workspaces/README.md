@@ -51,7 +51,7 @@ func main() {
         Name: "<value>",
         OrganizationID: "<id>",
         Slug: "<value>",
-        TelemetryDisabled: false,
+        TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
         UpdatedAt: types.MustTimeFromString("2023-04-03T12:48:32.253Z"),
         Verified: true,
     })
@@ -734,7 +734,7 @@ func main() {
             Name: "<value>",
             OrganizationID: "<id>",
             Slug: "<value>",
-            TelemetryDisabled: false,
+            TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
             UpdatedAt: types.MustTimeFromString("2023-01-13T16:52:57.274Z"),
             Verified: false,
         },
