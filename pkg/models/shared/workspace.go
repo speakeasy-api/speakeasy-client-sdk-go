@@ -11,6 +11,7 @@ import (
 type Workspace struct {
 	CreatedAt        time.Time  `json:"created_at"`
 	ID               string     `json:"id"`
+	Inactive         *bool      `json:"inactive,omitempty"`
 	Name             string     `json:"name"`
 	OciRepo          *string    `json:"oci_repo,omitempty"`
 	OciRepoCreatedAt *time.Time `json:"oci_repo_created_at,omitempty"`
@@ -47,6 +48,13 @@ func (o *Workspace) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *Workspace) GetInactive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Inactive
 }
 
 func (o *Workspace) GetName() string {
