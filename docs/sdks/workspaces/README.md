@@ -96,6 +96,7 @@ import(
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -111,10 +112,11 @@ func main() {
     res, err := s.Workspaces.CreateToken(ctx, operations.CreateWorkspaceTokenRequest{
         WorkspaceToken: shared.WorkspaceToken{
             Alg: "<value>",
-            CreatedAt: "<value>",
+            CreatedAt: types.MustTimeFromString("<value>"),
             ID: "<id>",
             Key: "<key>",
             Name: "<value>",
+            WorkspaceID: "<id>",
         },
         WorkspaceID: "<id>",
     })
@@ -781,6 +783,7 @@ import(
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -795,6 +798,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
         WorkspaceSettings: shared.WorkspaceSettings{
+            CreatedAt: types.MustTimeFromString("2022-07-05T11:43:28.305Z"),
+            UpdatedAt: types.MustTimeFromString("2023-05-15T05:39:21.874Z"),
+            WebhookURL: "https://grown-pharmacopoeia.net",
             WorkspaceID: "<id>",
         },
         WorkspaceID: "<id>",

@@ -2696,6 +2696,7 @@ actions:
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
             )
@@ -2712,6 +2713,9 @@ actions:
                     WorkspaceID: "<id>",
                     WorkspaceSettings: shared.WorkspaceSettings{
                         WorkspaceID: "<id>",
+                        WebhookURL: "https://last-suspension.info/",
+                        CreatedAt: types.MustTimeFromString("2023-12-29T06:46:35.807Z"),
+                        UpdatedAt: types.MustTimeFromString("2024-02-04T10:37:56.725Z"),
                     },
                 })
                 if err != nil {
@@ -2871,6 +2875,7 @@ actions:
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
             )
@@ -2888,9 +2893,10 @@ actions:
                     WorkspaceToken: shared.WorkspaceToken{
                         ID: "<id>",
                         Name: "<value>",
+                        WorkspaceID: "<id>",
                         Alg: "<value>",
                         Key: "<key>",
-                        CreatedAt: "<value>",
+                        CreatedAt: types.MustTimeFromString("2022-08-16T02:33:00.784Z"),
                     },
                 })
                 if err != nil {

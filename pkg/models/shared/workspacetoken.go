@@ -2,17 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
+	"time"
+)
+
 // WorkspaceToken - A workspace token
 type WorkspaceToken struct {
-	Alg         string  `json:"alg"`
-	CreatedAt   string  `json:"created_at"`
-	CreatedBy   *string `json:"created_by,omitempty"`
-	Email       *string `json:"email,omitempty"`
-	ID          string  `json:"id"`
-	Key         string  `json:"key"`
-	LastUsed    *string `json:"last_used,omitempty"`
-	Name        string  `json:"name"`
-	WorkspaceID *string `json:"workspace_id,omitempty"`
+	Alg         string    `json:"alg"`
+	CreatedAt   time.Time `json:"created_at"`
+	CreatedBy   *string   `json:"created_by,omitempty"`
+	Email       *string   `json:"email,omitempty"`
+	ID          string    `json:"id"`
+	Key         string    `json:"key"`
+	LastUsed    *string   `json:"last_used,omitempty"`
+	Name        string    `json:"name"`
+	WorkspaceID string    `json:"workspace_id"`
+}
+
+func (w WorkspaceToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WorkspaceToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *WorkspaceToken) GetAlg() string {
@@ -22,9 +38,9 @@ func (o *WorkspaceToken) GetAlg() string {
 	return o.Alg
 }
 
-func (o *WorkspaceToken) GetCreatedAt() string {
+func (o *WorkspaceToken) GetCreatedAt() time.Time {
 	if o == nil {
-		return ""
+		return time.Time{}
 	}
 	return o.CreatedAt
 }
@@ -71,9 +87,9 @@ func (o *WorkspaceToken) GetName() string {
 	return o.Name
 }
 
-func (o *WorkspaceToken) GetWorkspaceID() *string {
+func (o *WorkspaceToken) GetWorkspaceID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.WorkspaceID
 }

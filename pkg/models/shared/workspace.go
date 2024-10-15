@@ -9,14 +9,12 @@ import (
 
 // Workspace - A speakeasy workspace
 type Workspace struct {
-	CreatedAt        time.Time  `json:"created_at"`
-	ID               string     `json:"id"`
-	Inactive         *bool      `json:"inactive,omitempty"`
-	Name             string     `json:"name"`
-	OciRepo          *string    `json:"oci_repo,omitempty"`
-	OciRepoCreatedAt *time.Time `json:"oci_repo_created_at,omitempty"`
-	OrganizationID   string     `json:"organization_id"`
-	Slug             string     `json:"slug"`
+	CreatedAt      time.Time `json:"created_at"`
+	ID             string    `json:"id"`
+	Inactive       *bool     `json:"inactive,omitempty"`
+	Name           string    `json:"name"`
+	OrganizationID string    `json:"organization_id"`
+	Slug           string    `json:"slug"`
 	// Deprecated. Use organization.telemetry_disabled instead.
 	//
 	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -62,20 +60,6 @@ func (o *Workspace) GetName() string {
 		return ""
 	}
 	return o.Name
-}
-
-func (o *Workspace) GetOciRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OciRepo
-}
-
-func (o *Workspace) GetOciRepoCreatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.OciRepoCreatedAt
 }
 
 func (o *Workspace) GetOrganizationID() string {

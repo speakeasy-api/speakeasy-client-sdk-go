@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 2d37437d80dc456d75ab3edb949f06f6
+  docChecksum: 98314cef2e7eac81b1b2c047f39ec00c
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.418.2
+  speakeasyVersion: 1.418.4
   generationVersion: 2.438.3
-  releaseVersion: 3.14.6
-  configChecksum: 675df4b8e591b9fcc9d37e743bb67d0e
+  releaseVersion: 3.14.7
+  configChecksum: 19508ee9b566b49030be01b1cead10ae
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -1389,7 +1389,7 @@ examples:
         path:
           workspace_id: "<id>"
       requestBody:
-        application/json: {"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>"}
+        application/json: {"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 207213}
@@ -1423,7 +1423,7 @@ examples:
           workspace_id: "<id>"
       responses:
         2XX:
-          application/json: {"workspace_id": "<id>"}
+          application/json: {"created_at": "2024-05-29T22:34:47.605Z", "updated_at": "2023-02-24T21:50:01.663Z", "webhook_url": "https://different-amendment.com/", "workspace_id": "<id>"}
         4XX:
           application/json: {"message": "<value>", "status_code": 802866}
   getWorkspaceTeam:
@@ -1443,7 +1443,7 @@ examples:
           workspace_id: "<id>"
       responses:
         2XX:
-          application/json: [{"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>"}, {"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>"}, {"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>"}]
+          application/json: [{"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}, {"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}, {"alg": "<value>", "created_at": "<value>", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}]
         4XX:
           application/json: {"message": "<value>", "status_code": 498293}
   grantUserAccessToWorkspace:
@@ -1482,7 +1482,7 @@ examples:
         path:
           workspace_id: "<id>"
       requestBody:
-        application/json: {"workspace_id": "<id>"}
+        application/json: {"created_at": "2022-07-05T11:43:28.305Z", "updated_at": "2023-05-15T05:39:21.874Z", "webhook_url": "https://grown-pharmacopoeia.net", "workspace_id": "<id>"}
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 169241}

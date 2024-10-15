@@ -2,14 +2,46 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
+	"time"
+)
+
 type WorkspaceSettings struct {
-	WebhookURL  *string `json:"webhook_url,omitempty"`
-	WorkspaceID string  `json:"workspace_id"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+	WebhookURL  string    `json:"webhook_url"`
+	WorkspaceID string    `json:"workspace_id"`
 }
 
-func (o *WorkspaceSettings) GetWebhookURL() *string {
+func (w WorkspaceSettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WorkspaceSettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *WorkspaceSettings) GetCreatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *WorkspaceSettings) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *WorkspaceSettings) GetWebhookURL() string {
+	if o == nil {
+		return ""
 	}
 	return o.WebhookURL
 }

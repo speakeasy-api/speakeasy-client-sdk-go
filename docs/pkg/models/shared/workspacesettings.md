@@ -3,7 +3,9 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `WebhookURL`       | **string*          | :heavy_minus_sign: | N/A                |
-| `WorkspaceID`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                     | Type                                      | Required                                  | Description                               |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| `CreatedAt`                               | [time.Time](https://pkg.go.dev/time#Time) | :heavy_check_mark:                        | N/A                                       |
+| `UpdatedAt`                               | [time.Time](https://pkg.go.dev/time#Time) | :heavy_check_mark:                        | N/A                                       |
+| `WebhookURL`                              | *string*                                  | :heavy_check_mark:                        | N/A                                       |
+| `WorkspaceID`                             | *string*                                  | :heavy_check_mark:                        | N/A                                       |
