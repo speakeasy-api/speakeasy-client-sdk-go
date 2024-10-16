@@ -1,0 +1,19 @@
+# Subscription
+
+A subscription
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `CreatedAt`                                                               | [time.Time](https://pkg.go.dev/time#Time)                                 | :heavy_check_mark:                                                        | N/A                                                                       |
+| `DeletedAt`                                                               | [*time.Time](https://pkg.go.dev/time#Time)                                | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `EventType`                                                               | [shared.EventType](../../../pkg/models/shared/eventtype.md)               | :heavy_check_mark:                                                        | N/A                                                                       |
+| `ID`                                                                      | *string*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `NamespaceName`                                                           | *string*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `SubscriptionSettings`                                                    | *string*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `SubscriptionType`                                                        | [shared.SubscriptionType](../../../pkg/models/shared/subscriptiontype.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `Tags`                                                                    | []*string*                                                                | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `UpdatedAt`                                                               | [time.Time](https://pkg.go.dev/time#Time)                                 | :heavy_check_mark:                                                        | N/A                                                                       |
+| `WorkspaceID`                                                             | *string*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |

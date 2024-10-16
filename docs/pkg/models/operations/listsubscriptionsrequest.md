@@ -1,0 +1,12 @@
+# ListSubscriptionsRequest
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `EventType`                                                                | **string*                                                                  | :heavy_minus_sign:                                                         | The event type                                                             |
+| `NamespaceName`                                                            | **string*                                                                  | :heavy_minus_sign:                                                         | The namespace name                                                         |
+| `SubscriptionType`                                                         | [*shared.SubscriptionType](../../../pkg/models/shared/subscriptiontype.md) | :heavy_minus_sign:                                                         | The subscription type                                                      |
+| `Tag`                                                                      | **string*                                                                  | :heavy_minus_sign:                                                         | The tag                                                                    |
+| `WorkspaceID`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | The workspace ID                                                           |

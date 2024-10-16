@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
+	"time"
+)
+
 type APIKeyDetails struct {
 	AccountTypeV2   AccountType `json:"account_type_v2"`
 	EnabledFeatures []string    `json:"enabled_features"`
@@ -10,8 +15,21 @@ type APIKeyDetails struct {
 	GenerationAccessUnlimited *bool    `json:"generation_access_unlimited,omitempty"`
 	OrgSlug                   string   `json:"org_slug"`
 	TelemetryDisabled         bool     `json:"telemetry_disabled"`
-	WorkspaceID               string   `json:"workspace_id"`
-	WorkspaceSlug             string   `json:"workspace_slug"`
+	// Workspace creation timestamp.
+	WorkspaceCreatedAt time.Time `json:"workspace_created_at"`
+	WorkspaceID        string    `json:"workspace_id"`
+	WorkspaceSlug      string    `json:"workspace_slug"`
+}
+
+func (a APIKeyDetails) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIKeyDetails) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APIKeyDetails) GetAccountTypeV2() AccountType {
@@ -54,6 +72,13 @@ func (o *APIKeyDetails) GetTelemetryDisabled() bool {
 		return false
 	}
 	return o.TelemetryDisabled
+}
+
+func (o *APIKeyDetails) GetWorkspaceCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.WorkspaceCreatedAt
 }
 
 func (o *APIKeyDetails) GetWorkspaceID() string {

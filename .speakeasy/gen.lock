@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 98314cef2e7eac81b1b2c047f39ec00c
-  docVersion: 0.4.0 .
-  speakeasyVersion: 1.418.4
+  docChecksum: ee267248fdc38f30a92325f03aaa7eb5
+  docVersion: 0.4.0
+  speakeasyVersion: 1.419.0
   generationVersion: 2.438.3
-  releaseVersion: 3.14.7
-  configChecksum: 19508ee9b566b49030be01b1cead10ae
+  releaseVersion: 3.14.8
+  configChecksum: 91317e13a629a3a5fedb5b5d831bba29
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -46,6 +46,7 @@ generatedFiles:
   - /pkg/models/operations/create.go
   - /pkg/models/operations/createfreetrial.go
   - /pkg/models/operations/createorganization.go
+  - /pkg/models/operations/createsubscription.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
   - /pkg/models/operations/deleteapi.go
@@ -107,6 +108,7 @@ generatedFiles:
   - /pkg/models/operations/githubtriggeraction.go
   - /pkg/models/operations/grantuseraccesstoworkspace.go
   - /pkg/models/operations/insertversionmetadata.go
+  - /pkg/models/operations/listsubscriptions.go
   - /pkg/models/operations/posttags.go
   - /pkg/models/operations/postworkspaceevents.go
   - /pkg/models/operations/preflight.go
@@ -141,6 +143,7 @@ generatedFiles:
   - /pkg/models/shared/diagnostic.go
   - /pkg/models/shared/embedaccesstokenresponse.go
   - /pkg/models/shared/embedtoken.go
+  - /pkg/models/shared/eventtype.go
   - /pkg/models/shared/featureflag.go
   - /pkg/models/shared/filter.go
   - /pkg/models/shared/filters.go
@@ -176,6 +179,8 @@ generatedFiles:
   - /pkg/models/shared/security.go
   - /pkg/models/shared/shorturl.go
   - /pkg/models/shared/ssometadata.go
+  - /pkg/models/shared/subscription.go
+  - /pkg/models/shared/subscriptiontype.go
   - /pkg/models/shared/suggestitemsrequestbody.go
   - /pkg/models/shared/suggestoptsold.go
   - /pkg/models/shared/suggestrequestbody.go
@@ -206,6 +211,8 @@ generatedFiles:
   - docs/pkg/models/operations/createorganizationresponse.md
   - docs/pkg/models/operations/createrequestbody.md
   - docs/pkg/models/operations/createresponse.md
+  - docs/pkg/models/operations/createsubscriptionrequest.md
+  - docs/pkg/models/operations/createsubscriptionresponse.md
   - docs/pkg/models/operations/createworkspaceresponse.md
   - docs/pkg/models/operations/createworkspacetokenrequest.md
   - docs/pkg/models/operations/createworkspacetokenresponse.md
@@ -318,6 +325,8 @@ generatedFiles:
   - docs/pkg/models/operations/grantuseraccesstoworkspaceresponse.md
   - docs/pkg/models/operations/insertversionmetadatarequest.md
   - docs/pkg/models/operations/insertversionmetadataresponse.md
+  - docs/pkg/models/operations/listsubscriptionsrequest.md
+  - docs/pkg/models/operations/listsubscriptionsresponse.md
   - docs/pkg/models/operations/op.md
   - docs/pkg/models/operations/option.md
   - docs/pkg/models/operations/posttagsrequest.md
@@ -378,6 +387,7 @@ generatedFiles:
   - docs/pkg/models/shared/diagnostic.md
   - docs/pkg/models/shared/embedaccesstokenresponse.md
   - docs/pkg/models/shared/embedtoken.md
+  - docs/pkg/models/shared/eventtype.md
   - docs/pkg/models/shared/featureflag.md
   - docs/pkg/models/shared/filter.md
   - docs/pkg/models/shared/filters.md
@@ -418,6 +428,8 @@ generatedFiles:
   - docs/pkg/models/shared/security.md
   - docs/pkg/models/shared/shorturl.md
   - docs/pkg/models/shared/ssometadata.md
+  - docs/pkg/models/shared/subscription.md
+  - docs/pkg/models/shared/subscriptiontype.md
   - docs/pkg/models/shared/suggestiontype.md
   - docs/pkg/models/shared/suggestitemsrequestbody.md
   - docs/pkg/models/shared/suggestoptsold.md
@@ -455,6 +467,7 @@ generatedFiles:
   - docs/sdks/schemas/README.md
   - docs/sdks/shorturls/README.md
   - docs/sdks/speakeasy/README.md
+  - docs/sdks/subscriptions/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/workspaces/README.md
   - embeds.go
@@ -488,6 +501,7 @@ generatedFiles:
   - schemas.go
   - shorturls.go
   - speakeasy.go
+  - subscriptions.go
   - suggest.go
   - workspaces.go
 examples:
@@ -989,7 +1003,7 @@ examples:
         default:
           application/json: {"message": "<value>", "status_code": 858745}
         2XX:
-          application/json: {"account_type_v2": "enterprise", "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": true, "workspace_id": "<id>", "workspace_slug": "<value>"}
+          application/json: {"account_type_v2": "enterprise", "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": true, "workspace_created_at": "2024-04-24T00:30:38.626Z", "workspace_id": "<id>", "workspace_slug": "<value>"}
         4XX:
           application/json: {"message": "<value>", "status_code": 365836}
   generateRequestPostmanCollection:
@@ -1504,3 +1518,22 @@ examples:
       responses:
         2XX:
           application/json: ["<value>", "<value>"]
+  createSubscription:
+    speakeasy-default-create-subscription:
+      parameters:
+        path:
+          workspace_id: "<id>"
+      requestBody:
+        application/json: {"created_at": "2022-06-08T17:58:57.702Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2022-07-20T08:51:35.776Z", "workspace_id": "<id>"}
+      responses:
+        "200":
+          application/json: {"created_at": "2022-03-27T15:41:56.125Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2023-07-24T03:56:06.003Z", "workspace_id": "<id>"}
+  listSubscriptions:
+    speakeasy-default-list-subscriptions:
+      parameters:
+        path:
+          workspace_id: "<id>"
+        query: {}
+      responses:
+        "200":
+          application/json: [{"created_at": "2024-01-21T10:46:30.226Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2023-03-11T01:32:13.093Z", "workspace_id": "<id>"}, {"created_at": "2023-03-10T12:19:12.091Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2023-12-27T06:56:14.336Z", "workspace_id": "<id>"}]

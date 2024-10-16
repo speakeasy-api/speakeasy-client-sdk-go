@@ -3,7 +3,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
 
 For more information about the API: [The Speakeasy Platform Documentation](/docs)
 <!-- End Summary [summary] -->
@@ -177,6 +177,11 @@ func main() {
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
+
+### [Subscriptions](docs/sdks/subscriptions/README.md)
+
+* [CreateSubscription](docs/sdks/subscriptions/README.md#createsubscription) - Create Subscription
+* [ListSubscriptions](docs/sdks/subscriptions/README.md#listsubscriptions) - List Subscriptions
 
 ### [Suggest](docs/sdks/suggest/README.md)
 

@@ -77,7 +77,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.Server], nil
 }
 
-// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
 //
 // /docs - The Speakeasy Platform Documentation
 type Speakeasy struct {
@@ -108,6 +108,8 @@ type Speakeasy struct {
 	Embeds *Embeds
 	// REST APIs for capturing event data
 	Events *Events
+	// REST APIs for managing subscriptions
+	Subscriptions *Subscriptions
 
 	sdkConfiguration sdkConfiguration
 }
@@ -192,10 +194,10 @@ func New(opts ...SDKOption) *Speakeasy {
 	sdk := &Speakeasy{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "0.4.0 .",
-			SDKVersion:        "3.14.7",
+			OpenAPIDocVersion: "0.4.0",
+			SDKVersion:        "3.14.8",
 			GenVersion:        "2.438.3",
-			UserAgent:         "speakeasy-sdk/go 3.14.7 2.438.3 0.4.0 . github.com/speakeasy-api/speakeasy-client-sdk-go",
+			UserAgent:         "speakeasy-sdk/go 3.14.8 2.438.3 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},
@@ -245,6 +247,8 @@ func New(opts ...SDKOption) *Speakeasy {
 	sdk.Embeds = newEmbeds(sdk.sdkConfiguration)
 
 	sdk.Events = newEvents(sdk.sdkConfiguration)
+
+	sdk.Subscriptions = newSubscriptions(sdk.sdkConfiguration)
 
 	return sdk
 }

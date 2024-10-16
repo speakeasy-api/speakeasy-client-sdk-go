@@ -2725,6 +2725,85 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/subscriptions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: listSubscriptions
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Subscriptions.ListSubscriptions(ctx, operations.ListSubscriptionsRequest{
+                    WorkspaceID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Subscriptions != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/workspace/{workspace_id}/subscriptions"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: createSubscription
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
+                    WorkspaceID: "<id>",
+                    Subscription: shared.Subscription{
+                        ID: "<id>",
+                        WorkspaceID: "<id>",
+                        EventType: shared.EventTypeUpdate,
+                        NamespaceName: "<value>",
+                        SubscriptionType: shared.SubscriptionTypeCli,
+                        SubscriptionSettings: "<value>",
+                        CreatedAt: types.MustTimeFromString("2022-06-08T17:58:57.702Z"),
+                        UpdatedAt: types.MustTimeFromString("2022-07-20T08:51:35.776Z"),
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Subscription != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/v1/workspace/{workspace_id}/team"]["get"]
     update:
       x-codeSamples:
