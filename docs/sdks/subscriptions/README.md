@@ -8,7 +8,7 @@ REST APIs for managing subscriptions
 ### Available Operations
 
 * [CreateSubscription](#createsubscription) - Create Subscription
-* [ListSubscriptions](#listsubscriptions) - List Subscriptions
+* [ListRegistrySubscriptions](#listregistrysubscriptions) - List Subscriptions
 
 ## CreateSubscription
 
@@ -37,7 +37,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
-        Subscription: shared.Subscription{
+        RegistrySubscription: shared.RegistrySubscription{
             CreatedAt: types.MustTimeFromString("2022-06-08T17:58:57.702Z"),
             EventType: shared.EventTypeUpdate,
             ID: "<id>",
@@ -52,7 +52,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.Subscription != nil {
+    if res.RegistrySubscription != nil {
         // handle response
     }
 }
@@ -76,7 +76,7 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
-## ListSubscriptions
+## ListRegistrySubscriptions
 
 List Subscriptions
 
@@ -101,7 +101,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Subscriptions.ListSubscriptions(ctx, operations.ListSubscriptionsRequest{
+    res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{
         WorkspaceID: "<id>",
     })
     if err != nil {
@@ -115,15 +115,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
-| `request`                                                                                      | [operations.ListSubscriptionsRequest](../../pkg/models/operations/listsubscriptionsrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `opts`                                                                                         | [][operations.Option](../../pkg/models/operations/option.md)                                   | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |
+| `request`                                                                                                      | [operations.ListRegistrySubscriptionsRequest](../../pkg/models/operations/listregistrysubscriptionsrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `opts`                                                                                                         | [][operations.Option](../../pkg/models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |
 
 ### Response
 
-**[*operations.ListSubscriptionsResponse](../../pkg/models/operations/listsubscriptionsresponse.md), error**
+**[*operations.ListRegistrySubscriptionsResponse](../../pkg/models/operations/listregistrysubscriptionsresponse.md), error**
 
 ### Errors
 

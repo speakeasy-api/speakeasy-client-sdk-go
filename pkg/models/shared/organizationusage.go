@@ -11,6 +11,8 @@ type OrganizationUsage struct {
 	GenLockIds []string `json:"gen_lock_ids"`
 	// The programming language used
 	Language string `json:"language"`
+	// Maximum Number of operations per SDK specific in contract
+	MaxOperations int64 `json:"max_operations"`
 	// Number of operations performed
 	NumberOfOperations int64 `json:"number_of_operations"`
 	// Features that have been used
@@ -45,6 +47,13 @@ func (o *OrganizationUsage) GetLanguage() string {
 		return ""
 	}
 	return o.Language
+}
+
+func (o *OrganizationUsage) GetMaxOperations() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.MaxOperations
 }
 
 func (o *OrganizationUsage) GetNumberOfOperations() int64 {

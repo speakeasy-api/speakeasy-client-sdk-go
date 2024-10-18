@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// Subscription - A subscription
-type Subscription struct {
+// RegistrySubscription - A subscription to a registry event
+type RegistrySubscription struct {
 	CreatedAt            time.Time        `json:"created_at"`
 	DeletedAt            *time.Time       `json:"deleted_at,omitempty"`
 	EventType            EventType        `json:"event_type"`
@@ -21,81 +21,81 @@ type Subscription struct {
 	WorkspaceID          string           `json:"workspace_id"`
 }
 
-func (s Subscription) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (r RegistrySubscription) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
 }
 
-func (s *Subscription) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+func (r *RegistrySubscription) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Subscription) GetCreatedAt() time.Time {
+func (o *RegistrySubscription) GetCreatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *Subscription) GetDeletedAt() *time.Time {
+func (o *RegistrySubscription) GetDeletedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.DeletedAt
 }
 
-func (o *Subscription) GetEventType() EventType {
+func (o *RegistrySubscription) GetEventType() EventType {
 	if o == nil {
 		return EventType("")
 	}
 	return o.EventType
 }
 
-func (o *Subscription) GetID() string {
+func (o *RegistrySubscription) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Subscription) GetNamespaceName() string {
+func (o *RegistrySubscription) GetNamespaceName() string {
 	if o == nil {
 		return ""
 	}
 	return o.NamespaceName
 }
 
-func (o *Subscription) GetSubscriptionSettings() string {
+func (o *RegistrySubscription) GetSubscriptionSettings() string {
 	if o == nil {
 		return ""
 	}
 	return o.SubscriptionSettings
 }
 
-func (o *Subscription) GetSubscriptionType() SubscriptionType {
+func (o *RegistrySubscription) GetSubscriptionType() SubscriptionType {
 	if o == nil {
 		return SubscriptionType("")
 	}
 	return o.SubscriptionType
 }
 
-func (o *Subscription) GetTags() []string {
+func (o *RegistrySubscription) GetTags() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Tags
 }
 
-func (o *Subscription) GetUpdatedAt() time.Time {
+func (o *RegistrySubscription) GetUpdatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.UpdatedAt
 }
 
-func (o *Subscription) GetWorkspaceID() string {
+func (o *RegistrySubscription) GetWorkspaceID() string {
 	if o == nil {
 		return ""
 	}

@@ -7,13 +7,68 @@ REST APIs for working with Registry artifacts
 
 ### Available Operations
 
+* [CreateRemoteSource](#createremotesource) - Configure a new remote source
 * [GetBlob](#getblob) - Get blob for a particular digest
 * [GetManifest](#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](#getnamespaces) - Each namespace contains many revisions.
 * [GetRevisions](#getrevisions)
 * [GetTags](#gettags)
+* [ListRemoteSources](#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
+
+## CreateRemoteSource
+
+Configure a new remote source
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `request`                                                      | [shared.RemoteSource](../../pkg/models/shared/remotesource.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `opts`                                                         | [][operations.Option](../../pkg/models/operations/option.md)   | :heavy_minus_sign:                                             | The options for this request.                                  |
+
+### Response
+
+**[*operations.CreateRemoteSourceResponse](../../pkg/models/operations/createremotesourceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetBlob
 
@@ -285,6 +340,62 @@ func main() {
 ### Response
 
 **[*operations.GetTagsResponse](../../pkg/models/operations/gettagsresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
+
+## ListRemoteSources
+
+Get remote sources attached to a particular namespace
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Artifacts.ListRemoteSources(ctx, operations.ListRemoteSourcesRequest{
+        NamespaceName: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.RemoteSource != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.ListRemoteSourcesRequest](../../pkg/models/operations/listremotesourcesrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `opts`                                                                                         | [][operations.Option](../../pkg/models/operations/option.md)                                   | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+
+### Response
+
+**[*operations.ListRemoteSourcesResponse](../../pkg/models/operations/listremotesourcesresponse.md), error**
 
 ### Errors
 

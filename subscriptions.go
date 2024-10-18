@@ -48,12 +48,12 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/subscriptions", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Subscription", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RegistrySubscription", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -181,12 +181,12 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 				return nil, err
 			}
 
-			var out shared.Subscription
+			var out shared.RegistrySubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Subscription = &out
+			res.RegistrySubscription = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -214,11 +214,11 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 
 }
 
-// ListSubscriptions - List Subscriptions
-func (s *Subscriptions) ListSubscriptions(ctx context.Context, request operations.ListSubscriptionsRequest, opts ...operations.Option) (*operations.ListSubscriptionsResponse, error) {
+// ListRegistrySubscriptions - List Subscriptions
+func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request operations.ListRegistrySubscriptionsRequest, opts ...operations.Option) (*operations.ListRegistrySubscriptionsResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
-		OperationID:    "listSubscriptions",
+		OperationID:    "listRegistrySubscriptions",
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
@@ -236,7 +236,7 @@ func (s *Subscriptions) ListSubscriptions(ctx context.Context, request operation
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/subscriptions", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -352,7 +352,7 @@ func (s *Subscriptions) ListSubscriptions(ctx context.Context, request operation
 		}
 	}
 
-	res := &operations.ListSubscriptionsResponse{
+	res := &operations.ListRegistrySubscriptionsResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -367,7 +367,7 @@ func (s *Subscriptions) ListSubscriptions(ctx context.Context, request operation
 				return nil, err
 			}
 
-			var out []shared.Subscription
+			var out []shared.RegistrySubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: ee267248fdc38f30a92325f03aaa7eb5
+  docChecksum: 0de17f0e213d140341433691065dc210
   docVersion: 0.4.0
-  speakeasyVersion: 1.419.0
-  generationVersion: 2.438.3
-  releaseVersion: 3.14.8
-  configChecksum: 91317e13a629a3a5fedb5b5d831bba29
+  speakeasyVersion: 1.419.2
+  generationVersion: 2.438.15
+  releaseVersion: 3.14.9
+  configChecksum: b5b6eb743e92a897868b53ddd0f51274
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -46,6 +46,7 @@ generatedFiles:
   - /pkg/models/operations/create.go
   - /pkg/models/operations/createfreetrial.go
   - /pkg/models/operations/createorganization.go
+  - /pkg/models/operations/createremotesource.go
   - /pkg/models/operations/createsubscription.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
@@ -108,7 +109,8 @@ generatedFiles:
   - /pkg/models/operations/githubtriggeraction.go
   - /pkg/models/operations/grantuseraccesstoworkspace.go
   - /pkg/models/operations/insertversionmetadata.go
-  - /pkg/models/operations/listsubscriptions.go
+  - /pkg/models/operations/listregistrysubscriptions.go
+  - /pkg/models/operations/listremotesources.go
   - /pkg/models/operations/posttags.go
   - /pkg/models/operations/postworkspaceevents.go
   - /pkg/models/operations/preflight.go
@@ -171,6 +173,9 @@ generatedFiles:
   - /pkg/models/shared/organizationusageresponse.go
   - /pkg/models/shared/preflightrequest.go
   - /pkg/models/shared/preflighttoken.go
+  - /pkg/models/shared/registrysubscription.go
+  - /pkg/models/shared/remotedocument.go
+  - /pkg/models/shared/remotesource.go
   - /pkg/models/shared/report.go
   - /pkg/models/shared/requestmetadata.go
   - /pkg/models/shared/revision.go
@@ -179,7 +184,6 @@ generatedFiles:
   - /pkg/models/shared/security.go
   - /pkg/models/shared/shorturl.go
   - /pkg/models/shared/ssometadata.go
-  - /pkg/models/shared/subscription.go
   - /pkg/models/shared/subscriptiontype.go
   - /pkg/models/shared/suggestitemsrequestbody.go
   - /pkg/models/shared/suggestoptsold.go
@@ -209,6 +213,7 @@ generatedFiles:
   - docs/pkg/models/operations/checkgithubaccessresponse.md
   - docs/pkg/models/operations/createfreetrialresponse.md
   - docs/pkg/models/operations/createorganizationresponse.md
+  - docs/pkg/models/operations/createremotesourceresponse.md
   - docs/pkg/models/operations/createrequestbody.md
   - docs/pkg/models/operations/createresponse.md
   - docs/pkg/models/operations/createsubscriptionrequest.md
@@ -325,8 +330,10 @@ generatedFiles:
   - docs/pkg/models/operations/grantuseraccesstoworkspaceresponse.md
   - docs/pkg/models/operations/insertversionmetadatarequest.md
   - docs/pkg/models/operations/insertversionmetadataresponse.md
-  - docs/pkg/models/operations/listsubscriptionsrequest.md
-  - docs/pkg/models/operations/listsubscriptionsresponse.md
+  - docs/pkg/models/operations/listregistrysubscriptionsrequest.md
+  - docs/pkg/models/operations/listregistrysubscriptionsresponse.md
+  - docs/pkg/models/operations/listremotesourcesrequest.md
+  - docs/pkg/models/operations/listremotesourcesresponse.md
   - docs/pkg/models/operations/op.md
   - docs/pkg/models/operations/option.md
   - docs/pkg/models/operations/posttagsrequest.md
@@ -419,7 +426,10 @@ generatedFiles:
   - docs/pkg/models/shared/organizationusageresponse.md
   - docs/pkg/models/shared/preflightrequest.md
   - docs/pkg/models/shared/preflighttoken.md
+  - docs/pkg/models/shared/registrysubscription.md
   - docs/pkg/models/shared/relationship.md
+  - docs/pkg/models/shared/remotedocument.md
+  - docs/pkg/models/shared/remotesource.md
   - docs/pkg/models/shared/report.md
   - docs/pkg/models/shared/requestmetadata.md
   - docs/pkg/models/shared/revision.md
@@ -428,7 +438,6 @@ generatedFiles:
   - docs/pkg/models/shared/security.md
   - docs/pkg/models/shared/shorturl.md
   - docs/pkg/models/shared/ssometadata.md
-  - docs/pkg/models/shared/subscription.md
   - docs/pkg/models/shared/subscriptiontype.md
   - docs/pkg/models/shared/suggestiontype.md
   - docs/pkg/models/shared/suggestitemsrequestbody.md
@@ -1149,7 +1158,7 @@ examples:
         default:
           application/json: {"message": "<value>", "status_code": 689787}
         2XX:
-          application/json: {"allowed_languages": [], "total_allowed_languages": 863126, "usage": [{"accessible": false, "accessible_features": ["<value>"], "gen_lock_ids": ["<value>", "<value>", "<value>"], "language": "<value>", "number_of_operations": 939867, "used_features": ["<value>", "<value>", "<value>"], "workspaces": ["<value>"]}, {"accessible": false, "accessible_features": ["<value>"], "gen_lock_ids": ["<value>", "<value>", "<value>"], "language": "<value>", "number_of_operations": 478406, "used_features": ["<value>", "<value>"], "workspaces": ["<value>"]}]}
+          application/json: {"allowed_languages": [], "total_allowed_languages": 863126, "usage": [{"accessible": false, "accessible_features": ["<value>"], "gen_lock_ids": ["<value>", "<value>", "<value>"], "language": "<value>", "max_operations": 224089, "number_of_operations": 939867, "used_features": ["<value>", "<value>", "<value>"], "workspaces": ["<value>"]}, {"accessible": false, "accessible_features": ["<value>"], "gen_lock_ids": ["<value>", "<value>", "<value>"], "language": "<value>", "max_operations": 863126, "number_of_operations": 478406, "used_features": ["<value>", "<value>"], "workspaces": ["<value>"]}]}
         4XX:
           application/json: {"message": "<value>", "status_code": 378127}
   getOrganizations:
@@ -1537,3 +1546,27 @@ examples:
       responses:
         "200":
           application/json: [{"created_at": "2024-01-21T10:46:30.226Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2023-03-11T01:32:13.093Z", "workspace_id": "<id>"}, {"created_at": "2023-03-10T12:19:12.091Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2023-12-27T06:56:14.336Z", "workspace_id": "<id>"}]
+  createRemoteSource:
+    speakeasy-default-create-remote-source:
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 580557}
+  listRemoteSources:
+    speakeasy-default-list-remote-sources:
+      parameters:
+        query:
+          namespace_name: "<value>"
+      responses:
+        2XX:
+          application/json: {"inputs": [{"registry_url": "https://well-lit-cap.net"}, {"registry_url": "https://vibrant-labourer.net"}], "output": {"registry_url": "https://unfit-minor.biz"}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 754391}
+  listRegistrySubscriptions:
+    speakeasy-default-list-registry-subscriptions:
+      parameters:
+        path:
+          workspace_id: "<id>"
+        query: {}
+      responses:
+        "200":
+          application/json: [{"created_at": "2022-12-26T20:06:41.993Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2023-10-12T18:58:27.338Z", "workspace_id": "<id>"}, {"created_at": "2022-07-07T11:51:20.859Z", "event_type": "update", "id": "<id>", "namespace_name": "<value>", "subscription_settings": "<value>", "subscription_type": "cli", "updated_at": "2022-03-26T04:16:26.649Z", "workspace_id": "<id>"}]

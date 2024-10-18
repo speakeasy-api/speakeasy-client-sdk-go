@@ -1,4 +1,4 @@
-# ListSubscriptionsRequest
+# ListRegistrySubscriptionsRequest
 
 
 ## Fields

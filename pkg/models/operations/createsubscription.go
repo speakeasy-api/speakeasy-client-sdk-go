@@ -9,16 +9,16 @@ import (
 
 type CreateSubscriptionRequest struct {
 	// The subscription to create
-	Subscription shared.Subscription `request:"mediaType=application/json"`
+	RegistrySubscription shared.RegistrySubscription `request:"mediaType=application/json"`
 	// The workspace ID
 	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *CreateSubscriptionRequest) GetSubscription() shared.Subscription {
+func (o *CreateSubscriptionRequest) GetRegistrySubscription() shared.RegistrySubscription {
 	if o == nil {
-		return shared.Subscription{}
+		return shared.RegistrySubscription{}
 	}
-	return o.Subscription
+	return o.RegistrySubscription
 }
 
 func (o *CreateSubscriptionRequest) GetWorkspaceID() string {
@@ -31,12 +31,12 @@ func (o *CreateSubscriptionRequest) GetWorkspaceID() string {
 type CreateSubscriptionResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	// OK
+	RegistrySubscription *shared.RegistrySubscription
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// OK
-	Subscription *shared.Subscription
 }
 
 func (o *CreateSubscriptionResponse) GetContentType() string {
@@ -44,6 +44,13 @@ func (o *CreateSubscriptionResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *CreateSubscriptionResponse) GetRegistrySubscription() *shared.RegistrySubscription {
+	if o == nil {
+		return nil
+	}
+	return o.RegistrySubscription
 }
 
 func (o *CreateSubscriptionResponse) GetStatusCode() int {
@@ -58,11 +65,4 @@ func (o *CreateSubscriptionResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *CreateSubscriptionResponse) GetSubscription() *shared.Subscription {
-	if o == nil {
-		return nil
-	}
-	return o.Subscription
 }

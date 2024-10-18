@@ -1,6 +1,6 @@
-# Subscription
+# RegistrySubscription
 
-A subscription
+A subscription to a registry event
 
 
 ## Fields

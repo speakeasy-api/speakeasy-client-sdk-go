@@ -95,11 +95,13 @@ func main() {
 
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
+* [CreateRemoteSource](docs/sdks/artifacts/README.md#createremotesource) - Configure a new remote source
 * [GetBlob](docs/sdks/artifacts/README.md#getblob) - Get blob for a particular digest
 * [GetManifest](docs/sdks/artifacts/README.md#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](docs/sdks/artifacts/README.md#getnamespaces) - Each namespace contains many revisions.
 * [GetRevisions](docs/sdks/artifacts/README.md#getrevisions)
 * [GetTags](docs/sdks/artifacts/README.md#gettags)
+* [ListRemoteSources](docs/sdks/artifacts/README.md#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
 * [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
 
@@ -181,7 +183,7 @@ func main() {
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
 * [CreateSubscription](docs/sdks/subscriptions/README.md#createsubscription) - Create Subscription
-* [ListSubscriptions](docs/sdks/subscriptions/README.md#listsubscriptions) - List Subscriptions
+* [ListRegistrySubscriptions](docs/sdks/subscriptions/README.md#listregistrysubscriptions) - List Subscriptions
 
 ### [Suggest](docs/sdks/suggest/README.md)
 

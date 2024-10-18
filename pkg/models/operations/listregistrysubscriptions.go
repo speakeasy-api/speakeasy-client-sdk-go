@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-type ListSubscriptionsRequest struct {
+type ListRegistrySubscriptionsRequest struct {
 	// The event type
 	EventType *string `queryParam:"style=form,explode=true,name=event_type"`
 	// The namespace name
@@ -20,42 +20,42 @@ type ListSubscriptionsRequest struct {
 	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *ListSubscriptionsRequest) GetEventType() *string {
+func (o *ListRegistrySubscriptionsRequest) GetEventType() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EventType
 }
 
-func (o *ListSubscriptionsRequest) GetNamespaceName() *string {
+func (o *ListRegistrySubscriptionsRequest) GetNamespaceName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NamespaceName
 }
 
-func (o *ListSubscriptionsRequest) GetSubscriptionType() *shared.SubscriptionType {
+func (o *ListRegistrySubscriptionsRequest) GetSubscriptionType() *shared.SubscriptionType {
 	if o == nil {
 		return nil
 	}
 	return o.SubscriptionType
 }
 
-func (o *ListSubscriptionsRequest) GetTag() *string {
+func (o *ListRegistrySubscriptionsRequest) GetTag() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Tag
 }
 
-func (o *ListSubscriptionsRequest) GetWorkspaceID() string {
+func (o *ListRegistrySubscriptionsRequest) GetWorkspaceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.WorkspaceID
 }
 
-type ListSubscriptionsResponse struct {
+type ListRegistrySubscriptionsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
@@ -63,31 +63,31 @@ type ListSubscriptionsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Classes []shared.Subscription
+	Classes []shared.RegistrySubscription
 }
 
-func (o *ListSubscriptionsResponse) GetContentType() string {
+func (o *ListRegistrySubscriptionsResponse) GetContentType() string {
 	if o == nil {
 		return ""
 	}
 	return o.ContentType
 }
 
-func (o *ListSubscriptionsResponse) GetStatusCode() int {
+func (o *ListRegistrySubscriptionsResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
 	}
 	return o.StatusCode
 }
 
-func (o *ListSubscriptionsResponse) GetRawResponse() *http.Response {
+func (o *ListRegistrySubscriptionsResponse) GetRawResponse() *http.Response {
 	if o == nil {
 		return nil
 	}
 	return o.RawResponse
 }
 
-func (o *ListSubscriptionsResponse) GetClasses() []shared.Subscription {
+func (o *ListRegistrySubscriptionsResponse) GetClasses() []shared.RegistrySubscription {
 	if o == nil {
 		return nil
 	}
