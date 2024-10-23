@@ -7,6 +7,17 @@ import (
 	"net/http"
 )
 
+type ListRegistrySubscriptionsGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *ListRegistrySubscriptionsGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type ListRegistrySubscriptionsRequest struct {
 	// The event type
 	EventType *string `queryParam:"style=form,explode=true,name=event_type"`
@@ -17,7 +28,7 @@ type ListRegistrySubscriptionsRequest struct {
 	// The tag
 	Tag *string `queryParam:"style=form,explode=true,name=tag"`
 	// The workspace ID
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *ListRegistrySubscriptionsRequest) GetEventType() *string {
@@ -48,9 +59,9 @@ func (o *ListRegistrySubscriptionsRequest) GetTag() *string {
 	return o.Tag
 }
 
-func (o *ListRegistrySubscriptionsRequest) GetWorkspaceID() string {
+func (o *ListRegistrySubscriptionsRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }

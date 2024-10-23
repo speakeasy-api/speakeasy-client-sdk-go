@@ -6,11 +6,22 @@ import (
 	"net/http"
 )
 
+type DeleteWorkspaceTokenGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *DeleteWorkspaceTokenGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type DeleteWorkspaceTokenRequest struct {
 	// Unique identifier of the token.
 	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
 	// Unique identifier of the workspace.
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *DeleteWorkspaceTokenRequest) GetTokenID() string {
@@ -20,9 +31,9 @@ func (o *DeleteWorkspaceTokenRequest) GetTokenID() string {
 	return o.TokenID
 }
 
-func (o *DeleteWorkspaceTokenRequest) GetWorkspaceID() string {
+func (o *DeleteWorkspaceTokenRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }

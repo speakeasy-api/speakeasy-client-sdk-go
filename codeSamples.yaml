@@ -2476,9 +2476,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2512,7 +2510,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Workspaces.Update(ctx, operations.UpdateWorkspaceDetailsRequest{
-                    WorkspaceID: "<id>",
                     Workspace: shared.Workspace{
                         CreatedAt: types.MustTimeFromString("2024-07-28T19:04:48.565Z"),
                         ID: "<id>",
@@ -2554,9 +2551,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2590,7 +2585,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
-                    WorkspaceID: "<id>",
                     RequestBody: []shared.CliEvent{
                         shared.CliEvent{
                             ID: "<id>",
@@ -2636,9 +2630,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2671,7 +2663,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
-                    WorkspaceID: "<id>",
                     TargetID: "<id>",
                 })
                 if err != nil {
@@ -2705,9 +2696,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2739,9 +2728,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2775,7 +2762,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
-                    WorkspaceID: "<id>",
                     RegistrySubscription: shared.RegistrySubscription{
                         ID: "<id>",
                         WorkspaceID: "<id>",
@@ -2818,9 +2804,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2854,7 +2838,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
-                    WorkspaceID: "<id>",
                     WorkspaceSettings: shared.WorkspaceSettings{
                         WorkspaceID: "<id>",
                         WebhookURL: "https://last-suspension.info/",
@@ -2893,9 +2876,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2928,7 +2909,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Workspaces.GrantAccess(ctx, operations.GrantUserAccessToWorkspaceRequest{
-                    WorkspaceID: "<id>",
                     Email: "Lucinda.Batz8@hotmail.com",
                 })
                 if err != nil {
@@ -2963,7 +2943,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Workspaces.RevokeAccess(ctx, operations.RevokeUserAccessToWorkspaceRequest{
-                    WorkspaceID: "<id>",
                     UserID: "<id>",
                 })
                 if err != nil {
@@ -2997,9 +2976,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -3033,7 +3010,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Workspaces.CreateToken(ctx, operations.CreateWorkspaceTokenRequest{
-                    WorkspaceID: "<id>",
                     WorkspaceToken: shared.WorkspaceToken{
                         ID: "<id>",
                         Name: "<value>",
@@ -3075,7 +3051,6 @@ actions:
 
                 ctx := context.Background()
                 res, err := s.Workspaces.DeleteToken(ctx, operations.DeleteWorkspaceTokenRequest{
-                    WorkspaceID: "<id>",
                     TokenID: "<id>",
                 })
                 if err != nil {

@@ -6,11 +6,22 @@ import (
 	"net/http"
 )
 
+type RevokeUserAccessToWorkspaceGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *RevokeUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type RevokeUserAccessToWorkspaceRequest struct {
 	// Unique identifier of the user.
 	UserID string `pathParam:"style=simple,explode=false,name=userId"`
 	// Unique identifier of the workspace.
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *RevokeUserAccessToWorkspaceRequest) GetUserID() string {
@@ -20,9 +31,9 @@ func (o *RevokeUserAccessToWorkspaceRequest) GetUserID() string {
 	return o.UserID
 }
 
-func (o *RevokeUserAccessToWorkspaceRequest) GetWorkspaceID() string {
+func (o *RevokeUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }

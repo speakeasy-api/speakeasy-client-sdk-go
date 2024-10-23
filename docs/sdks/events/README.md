@@ -40,7 +40,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
         TargetID: "<id>",
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -149,9 +148,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -220,7 +217,6 @@ func main() {
                 WorkspaceID: "<id>",
             },
         },
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -275,9 +271,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{})
     if err != nil {
         log.Fatal(err)
     }

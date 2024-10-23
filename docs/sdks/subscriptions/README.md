@@ -47,7 +47,6 @@ func main() {
             UpdatedAt: types.MustTimeFromString("2022-07-20T08:51:35.776Z"),
             WorkspaceID: "<id>",
         },
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -101,9 +100,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})
     if err != nil {
         log.Fatal(err)
     }

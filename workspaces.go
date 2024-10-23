@@ -243,6 +243,10 @@ func (s *Workspaces) CreateToken(ctx context.Context, request operations.CreateW
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.CreateWorkspaceTokenGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -256,7 +260,7 @@ func (s *Workspaces) CreateToken(ctx context.Context, request operations.CreateW
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -430,6 +434,10 @@ func (s *Workspaces) DeleteToken(ctx context.Context, request operations.DeleteW
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.DeleteWorkspaceTokenGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -443,7 +451,7 @@ func (s *Workspaces) DeleteToken(ctx context.Context, request operations.DeleteW
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens/{tokenID}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens/{tokenID}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1016,6 +1024,10 @@ func (s *Workspaces) GetByID(ctx context.Context, request operations.GetWorkspac
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1029,7 +1041,7 @@ func (s *Workspaces) GetByID(ctx context.Context, request operations.GetWorkspac
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1217,6 +1229,10 @@ func (s *Workspaces) GetFeatureFlags(ctx context.Context, request operations.Get
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceFeatureFlagsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1230,7 +1246,7 @@ func (s *Workspaces) GetFeatureFlags(ctx context.Context, request operations.Get
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/feature_flags", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/feature_flags", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1419,6 +1435,10 @@ func (s *Workspaces) GetSettings(ctx context.Context, request operations.GetWork
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceSettingsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1432,7 +1452,7 @@ func (s *Workspaces) GetSettings(ctx context.Context, request operations.GetWork
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/settings", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/settings", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1620,6 +1640,10 @@ func (s *Workspaces) GetTeam(ctx context.Context, request operations.GetWorkspac
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceTeamGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1633,7 +1657,7 @@ func (s *Workspaces) GetTeam(ctx context.Context, request operations.GetWorkspac
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1821,6 +1845,10 @@ func (s *Workspaces) GetTokens(ctx context.Context, request operations.GetWorksp
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GetWorkspaceTokensGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1834,7 +1862,7 @@ func (s *Workspaces) GetTokens(ctx context.Context, request operations.GetWorksp
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2022,6 +2050,10 @@ func (s *Workspaces) GrantAccess(ctx context.Context, request operations.GrantUs
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.GrantUserAccessToWorkspaceGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2035,7 +2067,7 @@ func (s *Workspaces) GrantAccess(ctx context.Context, request operations.GrantUs
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team/email/{email}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team/email/{email}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2223,6 +2255,10 @@ func (s *Workspaces) RevokeAccess(ctx context.Context, request operations.Revoke
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.RevokeUserAccessToWorkspaceGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2236,7 +2272,7 @@ func (s *Workspaces) RevokeAccess(ctx context.Context, request operations.Revoke
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team/{userId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team/{userId}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2405,6 +2441,10 @@ func (s *Workspaces) Update(ctx context.Context, request operations.UpdateWorksp
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.UpdateWorkspaceDetailsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2418,7 +2458,7 @@ func (s *Workspaces) Update(ctx context.Context, request operations.UpdateWorksp
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/details", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/details", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2593,6 +2633,10 @@ func (s *Workspaces) UpdateSettings(ctx context.Context, request operations.Upda
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.UpdateWorkspaceSettingsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2606,7 +2650,7 @@ func (s *Workspaces) UpdateSettings(ctx context.Context, request operations.Upda
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/settings", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/settings", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

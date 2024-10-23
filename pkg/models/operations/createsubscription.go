@@ -7,11 +7,22 @@ import (
 	"net/http"
 )
 
+type CreateSubscriptionGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *CreateSubscriptionGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type CreateSubscriptionRequest struct {
 	// The subscription to create
 	RegistrySubscription shared.RegistrySubscription `request:"mediaType=application/json"`
 	// The workspace ID
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *CreateSubscriptionRequest) GetRegistrySubscription() shared.RegistrySubscription {
@@ -21,9 +32,9 @@ func (o *CreateSubscriptionRequest) GetRegistrySubscription() shared.RegistrySub
 	return o.RegistrySubscription
 }
 
-func (o *CreateSubscriptionRequest) GetWorkspaceID() string {
+func (o *CreateSubscriptionRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }

@@ -7,14 +7,25 @@ import (
 	"net/http"
 )
 
-type GetWorkspaceTokensRequest struct {
-	// Unique identifier of the workspace.
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+type GetWorkspaceTokensGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceTokensRequest) GetWorkspaceID() string {
+func (o *GetWorkspaceTokensGlobals) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
+	}
+	return o.WorkspaceID
+}
+
+type GetWorkspaceTokensRequest struct {
+	// Unique identifier of the workspace.
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *GetWorkspaceTokensRequest) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
 	}
 	return o.WorkspaceID
 }

@@ -118,7 +118,6 @@ func main() {
             Name: "<value>",
             WorkspaceID: "<id>",
         },
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -175,7 +174,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Workspaces.DeleteToken(ctx, operations.DeleteWorkspaceTokenRequest{
         TokenID: "<id>",
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -334,9 +332,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -390,9 +386,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -446,9 +440,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -502,9 +494,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -558,9 +548,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{
-        WorkspaceID: "<id>",
-    })
+    res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -616,7 +604,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Workspaces.GrantAccess(ctx, operations.GrantUserAccessToWorkspaceRequest{
         Email: "Lucinda.Batz8@hotmail.com",
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -673,7 +660,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Workspaces.RevokeAccess(ctx, operations.RevokeUserAccessToWorkspaceRequest{
         UserID: "<id>",
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -740,7 +726,6 @@ func main() {
             UpdatedAt: types.MustTimeFromString("2023-01-13T16:52:57.274Z"),
             Verified: false,
         },
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -803,7 +788,6 @@ func main() {
             WebhookURL: "https://grown-pharmacopoeia.net",
             WorkspaceID: "<id>",
         },
-        WorkspaceID: "<id>",
     })
     if err != nil {
         log.Fatal(err)

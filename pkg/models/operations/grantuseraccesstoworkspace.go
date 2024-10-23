@@ -7,11 +7,22 @@ import (
 	"net/http"
 )
 
+type GrantUserAccessToWorkspaceGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *GrantUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type GrantUserAccessToWorkspaceRequest struct {
 	// Email of the user to grant access to.
 	Email string `pathParam:"style=simple,explode=false,name=email"`
 	// Unique identifier of the workspace.
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *GrantUserAccessToWorkspaceRequest) GetEmail() string {
@@ -21,9 +32,9 @@ func (o *GrantUserAccessToWorkspaceRequest) GetEmail() string {
 	return o.Email
 }
 
-func (o *GrantUserAccessToWorkspaceRequest) GetWorkspaceID() string {
+func (o *GrantUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }

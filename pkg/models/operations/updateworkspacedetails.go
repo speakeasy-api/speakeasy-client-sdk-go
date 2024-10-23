@@ -7,11 +7,22 @@ import (
 	"net/http"
 )
 
+type UpdateWorkspaceDetailsGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *UpdateWorkspaceDetailsGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type UpdateWorkspaceDetailsRequest struct {
 	// The workspace details to update.
 	Workspace shared.Workspace `request:"mediaType=application/json"`
 	// Unique identifier of the workspace.
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *UpdateWorkspaceDetailsRequest) GetWorkspace() shared.Workspace {
@@ -21,9 +32,9 @@ func (o *UpdateWorkspaceDetailsRequest) GetWorkspace() shared.Workspace {
 	return o.Workspace
 }
 
-func (o *UpdateWorkspaceDetailsRequest) GetWorkspaceID() string {
+func (o *UpdateWorkspaceDetailsRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }

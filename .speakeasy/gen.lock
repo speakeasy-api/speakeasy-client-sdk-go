@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 0de17f0e213d140341433691065dc210
+  docChecksum: 2991dc7c944bdf121af2f1db99a7c94d
   docVersion: 0.4.0
-  speakeasyVersion: 1.419.2
+  speakeasyVersion: 1.421.0
   generationVersion: 2.438.15
-  releaseVersion: 3.14.9
-  configChecksum: b5b6eb743e92a897868b53ddd0f51274
+  releaseVersion: 3.14.10
+  configChecksum: 06affb6116ced66f9f5e56b48d9b3d4d
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -216,9 +216,11 @@ generatedFiles:
   - docs/pkg/models/operations/createremotesourceresponse.md
   - docs/pkg/models/operations/createrequestbody.md
   - docs/pkg/models/operations/createresponse.md
+  - docs/pkg/models/operations/createsubscriptionglobals.md
   - docs/pkg/models/operations/createsubscriptionrequest.md
   - docs/pkg/models/operations/createsubscriptionresponse.md
   - docs/pkg/models/operations/createworkspaceresponse.md
+  - docs/pkg/models/operations/createworkspacetokenglobals.md
   - docs/pkg/models/operations/createworkspacetokenrequest.md
   - docs/pkg/models/operations/createworkspacetokenresponse.md
   - docs/pkg/models/operations/deleteapiendpointrequest.md
@@ -229,6 +231,7 @@ generatedFiles:
   - docs/pkg/models/operations/deleteschemaresponse.md
   - docs/pkg/models/operations/deleteversionmetadatarequest.md
   - docs/pkg/models/operations/deleteversionmetadataresponse.md
+  - docs/pkg/models/operations/deleteworkspacetokenglobals.md
   - docs/pkg/models/operations/deleteworkspacetokenrequest.md
   - docs/pkg/models/operations/deleteworkspacetokenresponse.md
   - docs/pkg/models/operations/downloadschemarequest.md
@@ -300,21 +303,28 @@ generatedFiles:
   - docs/pkg/models/operations/getworkspaceaccessrequest.md
   - docs/pkg/models/operations/getworkspaceaccessresponse.md
   - docs/pkg/models/operations/getworkspacebycontextresponse.md
+  - docs/pkg/models/operations/getworkspaceeventsbytargetglobals.md
   - docs/pkg/models/operations/getworkspaceeventsbytargetrequest.md
   - docs/pkg/models/operations/getworkspaceeventsbytargetresponse.md
+  - docs/pkg/models/operations/getworkspacefeatureflagsglobals.md
   - docs/pkg/models/operations/getworkspacefeatureflagsrequest.md
   - docs/pkg/models/operations/getworkspacefeatureflagsresponse.md
+  - docs/pkg/models/operations/getworkspaceglobals.md
   - docs/pkg/models/operations/getworkspacerequest.md
   - docs/pkg/models/operations/getworkspaceresponse.md
+  - docs/pkg/models/operations/getworkspacesettingsglobals.md
   - docs/pkg/models/operations/getworkspacesettingsrequest.md
   - docs/pkg/models/operations/getworkspacesettingsresponse.md
   - docs/pkg/models/operations/getworkspacesresponse.md
+  - docs/pkg/models/operations/getworkspacetargetsdeprecatedglobals.md
   - docs/pkg/models/operations/getworkspacetargetsdeprecatedrequest.md
   - docs/pkg/models/operations/getworkspacetargetsdeprecatedresponse.md
   - docs/pkg/models/operations/getworkspacetargetsrequest.md
   - docs/pkg/models/operations/getworkspacetargetsresponse.md
+  - docs/pkg/models/operations/getworkspaceteamglobals.md
   - docs/pkg/models/operations/getworkspaceteamrequest.md
   - docs/pkg/models/operations/getworkspaceteamresponse.md
+  - docs/pkg/models/operations/getworkspacetokensglobals.md
   - docs/pkg/models/operations/getworkspacetokensrequest.md
   - docs/pkg/models/operations/getworkspacetokensresponse.md
   - docs/pkg/models/operations/githubcheckpublishingprsrequest.md
@@ -326,10 +336,12 @@ generatedFiles:
   - docs/pkg/models/operations/githubconfiguretargetresponse.md
   - docs/pkg/models/operations/githubstorepublishingsecretsresponse.md
   - docs/pkg/models/operations/githubtriggeractionresponse.md
+  - docs/pkg/models/operations/grantuseraccesstoworkspaceglobals.md
   - docs/pkg/models/operations/grantuseraccesstoworkspacerequest.md
   - docs/pkg/models/operations/grantuseraccesstoworkspaceresponse.md
   - docs/pkg/models/operations/insertversionmetadatarequest.md
   - docs/pkg/models/operations/insertversionmetadataresponse.md
+  - docs/pkg/models/operations/listregistrysubscriptionsglobals.md
   - docs/pkg/models/operations/listregistrysubscriptionsrequest.md
   - docs/pkg/models/operations/listregistrysubscriptionsresponse.md
   - docs/pkg/models/operations/listremotesourcesrequest.md
@@ -338,6 +350,7 @@ generatedFiles:
   - docs/pkg/models/operations/option.md
   - docs/pkg/models/operations/posttagsrequest.md
   - docs/pkg/models/operations/posttagsresponse.md
+  - docs/pkg/models/operations/postworkspaceeventsglobals.md
   - docs/pkg/models/operations/postworkspaceeventsrequest.md
   - docs/pkg/models/operations/postworkspaceeventsresponse.md
   - docs/pkg/models/operations/preflightresponse.md
@@ -350,9 +363,11 @@ generatedFiles:
   - docs/pkg/models/operations/registerschemaresponse.md
   - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
   - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
+  - docs/pkg/models/operations/revokeuseraccesstoworkspaceglobals.md
   - docs/pkg/models/operations/revokeuseraccesstoworkspacerequest.md
   - docs/pkg/models/operations/revokeuseraccesstoworkspaceresponse.md
   - docs/pkg/models/operations/schema.md
+  - docs/pkg/models/operations/searchworkspaceeventsglobals.md
   - docs/pkg/models/operations/searchworkspaceeventsrequest.md
   - docs/pkg/models/operations/searchworkspaceeventsresponse.md
   - docs/pkg/models/operations/suggestitemsresponse.md
@@ -363,8 +378,10 @@ generatedFiles:
   - docs/pkg/models/operations/suggestopenapiresponse.md
   - docs/pkg/models/operations/suggestrequest.md
   - docs/pkg/models/operations/suggestresponse.md
+  - docs/pkg/models/operations/updateworkspacedetailsglobals.md
   - docs/pkg/models/operations/updateworkspacedetailsrequest.md
   - docs/pkg/models/operations/updateworkspacedetailsresponse.md
+  - docs/pkg/models/operations/updateworkspacesettingsglobals.md
   - docs/pkg/models/operations/updateworkspacesettingsrequest.md
   - docs/pkg/models/operations/updateworkspacesettingsresponse.md
   - docs/pkg/models/operations/uploadreportrequestbody.md

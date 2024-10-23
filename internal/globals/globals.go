@@ -3,7 +3,7 @@
 package globals
 
 type Globals struct {
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspaceID"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *Globals) GetWorkspaceID() *string {

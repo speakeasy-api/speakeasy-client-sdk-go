@@ -35,6 +35,10 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.CreateSubscriptionGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -48,7 +52,7 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -223,6 +227,10 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
+	globals := operations.ListRegistrySubscriptionsGlobals{
+		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -236,7 +244,7 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -259,7 +267,7 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 

@@ -14,6 +14,7 @@ For more information about the API: [The Speakeasy Platform Documentation](/docs
 * [SDK Installation](#sdk-installation)
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
+* [Global Parameters](#global-parameters)
 * [Retries](#retries)
 * [Error Handling](#error-handling)
 * [Server Selection](#server-selection)
@@ -454,6 +455,53 @@ func main() {
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `workspace_id` to `"<id>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetAccessToken`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| WorkspaceID | string |  | The WorkspaceID parameter. |
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+	s := speakeasyclientsdkgo.New()
+
+	ctx := context.Background()
+	res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
+		WorkspaceID: "<value>",
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.AccessToken != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Retries [retries] -->
 ## Retries

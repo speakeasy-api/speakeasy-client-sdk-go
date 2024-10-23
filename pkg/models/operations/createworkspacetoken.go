@@ -7,10 +7,21 @@ import (
 	"net/http"
 )
 
+type CreateWorkspaceTokenGlobals struct {
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *CreateWorkspaceTokenGlobals) GetWorkspaceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkspaceID
+}
+
 type CreateWorkspaceTokenRequest struct {
 	WorkspaceToken shared.WorkspaceToken `request:"mediaType=application/json"`
 	// Unique identifier of the workspace.
-	WorkspaceID string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
 func (o *CreateWorkspaceTokenRequest) GetWorkspaceToken() shared.WorkspaceToken {
@@ -20,9 +31,9 @@ func (o *CreateWorkspaceTokenRequest) GetWorkspaceToken() shared.WorkspaceToken 
 	return o.WorkspaceToken
 }
 
-func (o *CreateWorkspaceTokenRequest) GetWorkspaceID() string {
+func (o *CreateWorkspaceTokenRequest) GetWorkspaceID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.WorkspaceID
 }
