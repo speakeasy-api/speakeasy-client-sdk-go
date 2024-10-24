@@ -135,6 +135,8 @@ type CliEvent struct {
 	GenerateNumberOfOperationsIgnored *int64 `json:"generate_number_of_operations_ignored,omitempty"`
 	// The number of operations used in generation.
 	GenerateNumberOfOperationsUsed *int64 `json:"generate_number_of_operations_used,omitempty"`
+	// The number of terraform resources used in generation.
+	GenerateNumberOfTerraformResources *int64 `json:"generate_number_of_terraform_resources,omitempty"`
 	// Indicates whether tests were output.
 	GenerateOutputTests *bool `json:"generate_output_tests,omitempty"`
 	// Indicates whether the target was considered published.
@@ -429,6 +431,13 @@ func (o *CliEvent) GetGenerateNumberOfOperationsUsed() *int64 {
 		return nil
 	}
 	return o.GenerateNumberOfOperationsUsed
+}
+
+func (o *CliEvent) GetGenerateNumberOfTerraformResources() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateNumberOfTerraformResources
 }
 
 func (o *CliEvent) GetGenerateOutputTests() *bool {
