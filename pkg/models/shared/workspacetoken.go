@@ -9,15 +9,15 @@ import (
 
 // WorkspaceToken - A workspace token
 type WorkspaceToken struct {
-	Alg         string    `json:"alg"`
-	CreatedAt   time.Time `json:"created_at"`
-	CreatedBy   *string   `json:"created_by,omitempty"`
-	Email       *string   `json:"email,omitempty"`
-	ID          string    `json:"id"`
-	Key         string    `json:"key"`
-	LastUsed    *string   `json:"last_used,omitempty"`
-	Name        string    `json:"name"`
-	WorkspaceID string    `json:"workspace_id"`
+	Alg         string     `json:"alg"`
+	CreatedAt   time.Time  `json:"created_at"`
+	CreatedBy   *string    `json:"created_by,omitempty"`
+	Email       *string    `json:"email,omitempty"`
+	ID          string     `json:"id"`
+	Key         string     `json:"key"`
+	LastUsed    *time.Time `json:"last_used,omitempty"`
+	Name        string     `json:"name"`
+	WorkspaceID string     `json:"workspace_id"`
 }
 
 func (w WorkspaceToken) MarshalJSON() ([]byte, error) {
@@ -73,7 +73,7 @@ func (o *WorkspaceToken) GetKey() string {
 	return o.Key
 }
 
-func (o *WorkspaceToken) GetLastUsed() *string {
+func (o *WorkspaceToken) GetLastUsed() *time.Time {
 	if o == nil {
 		return nil
 	}
