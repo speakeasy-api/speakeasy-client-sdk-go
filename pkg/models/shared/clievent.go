@@ -161,6 +161,8 @@ type CliEvent struct {
 	GhActionRunLink *string `json:"gh_action_run_link,omitempty"`
 	// Version of the GitHub action.
 	GhActionVersion *string `json:"gh_action_version,omitempty"`
+	// Whether or not changes were committed from generation in the Github Action.
+	GhChangesCommitted *bool `json:"gh_changes_committed,omitempty"`
 	// The reference to a created pull request.
 	GhPullRequest *string `json:"gh_pull_request,omitempty"`
 	// Current working directory relative to the git root.
@@ -522,6 +524,13 @@ func (o *CliEvent) GetGhActionVersion() *string {
 		return nil
 	}
 	return o.GhActionVersion
+}
+
+func (o *CliEvent) GetGhChangesCommitted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GhChangesCommitted
 }
 
 func (o *CliEvent) GetGhPullRequest() *string {
