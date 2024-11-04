@@ -163,7 +163,7 @@ type CliEvent struct {
 	GhActionVersion *string `json:"gh_action_version,omitempty"`
 	// Whether or not changes were committed from generation in the Github Action.
 	GhChangesCommitted *bool `json:"gh_changes_committed,omitempty"`
-	// The reference to a created pull request.
+	// The reference to a created pull request URL.
 	GhPullRequest *string `json:"gh_pull_request,omitempty"`
 	// Current working directory relative to the git root.
 	GitRelativeCwd *string `json:"git_relative_cwd,omitempty"`

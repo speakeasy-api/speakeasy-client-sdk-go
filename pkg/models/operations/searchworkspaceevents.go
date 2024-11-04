@@ -19,6 +19,8 @@ func (o *SearchWorkspaceEventsGlobals) GetWorkspaceID() *string {
 }
 
 type SearchWorkspaceEventsRequest struct {
+	// Shared execution ID for cli events across a single action.
+	ExecutionID *string `queryParam:"style=form,explode=true,name=execution_id"`
 	// A specific gen lock ID for the events.
 	GenerateGenLockID *string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
 	// Specified interaction type for events.
@@ -31,6 +33,13 @@ type SearchWorkspaceEventsRequest struct {
 	SourceRevisionDigest *string `queryParam:"style=form,explode=true,name=source_revision_digest"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+}
+
+func (o *SearchWorkspaceEventsRequest) GetExecutionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExecutionID
 }
 
 func (o *SearchWorkspaceEventsRequest) GetGenerateGenLockID() *string {
