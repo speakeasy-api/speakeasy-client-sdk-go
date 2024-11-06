@@ -12,6 +12,7 @@
 * [ConfigureMintlifyRepo](#configuremintlifyrepo)
 * [ConfigureTarget](#configuretarget)
 * [GetAction](#getaction)
+* [LinkGithub](#linkgithub)
 * [StorePublishingSecrets](#storepublishingsecrets)
 * [TriggerAction](#triggeraction)
 
@@ -394,6 +395,58 @@ func main() {
 ### Response
 
 **[*operations.GetGitHubActionResponse](../../pkg/models/operations/getgithubactionresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
+
+## LinkGithub
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    ctx := context.Background()
+    res, err := s.Github.LinkGithub(ctx, operations.LinkGithubAccessRequest{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [operations.LinkGithubAccessRequest](../../pkg/models/operations/linkgithubaccessrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../pkg/models/operations/option.md)                                 | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+
+### Response
+
+**[*operations.LinkGithubAccessResponse](../../pkg/models/operations/linkgithubaccessresponse.md), error**
 
 ### Errors
 
