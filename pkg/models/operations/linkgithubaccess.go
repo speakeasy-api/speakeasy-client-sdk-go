@@ -8,6 +8,7 @@ import (
 
 type LinkGithubAccessRequest struct {
 	GithubOidcToken *string `queryParam:"style=form,explode=true,name=github_oidc_token"`
+	GithubOrg       *string `queryParam:"style=form,explode=true,name=github_org"`
 	InstallationID  *string `queryParam:"style=form,explode=true,name=installation_id"`
 }
 
@@ -16,6 +17,13 @@ func (o *LinkGithubAccessRequest) GetGithubOidcToken() *string {
 		return nil
 	}
 	return o.GithubOidcToken
+}
+
+func (o *LinkGithubAccessRequest) GetGithubOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GithubOrg
 }
 
 func (o *LinkGithubAccessRequest) GetInstallationID() *string {
