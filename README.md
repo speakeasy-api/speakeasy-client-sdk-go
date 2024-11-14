@@ -180,6 +180,11 @@ func main() {
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
+### [Speakeasy SDK](docs/sdks/speakeasy/README.md)
+
+* [GenerateCodeSamplePreview](docs/sdks/speakeasy/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
+* [GenerateCodeSamplePreviewAsync](docs/sdks/speakeasy/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
+* [GetCodeSamplePreviewAsync](docs/sdks/speakeasy/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
@@ -228,12 +233,11 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `DeleteAPI` function may return the following errors:
+For example, the `GenerateCodeSamplePreview` function may return the following errors:
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.Error    | 4XX                | application/json   |
-| sdkerrors.SDKError | 5XX                | \*/\*              |
+| Error Type      | Status Code | Content Type     |
+| --------------- | ----------- | ---------------- |
+| sdkerrors.Error | 4XX, 5XX    | application/json |
 
 ### Example
 
@@ -244,10 +248,10 @@ import (
 	"context"
 	"errors"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
+	"os"
 )
 
 func main() {
@@ -257,10 +261,21 @@ func main() {
 		}),
 	)
 
+	content, fileErr := os.Open("example.file")
+	if fileErr != nil {
+		panic(fileErr)
+	}
+
 	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
+	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Languages: []string{
+			"<value>",
+			"<value>",
+		},
+		SchemaFile: shared.SchemaFile{
+			Content:  content,
+			FileName: "example.file",
+		},
 	})
 	if err != nil {
 
@@ -288,11 +303,11 @@ func main() {
 
 ### Select Server by Name
 
-You can override the default server globally using the `WithServer` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+You can override the default server globally using the `WithServer(server string)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `prod` | `https://api.prod.speakeasyapi.dev` | None |
+| Name   | Server                              |
+| ------ | ----------------------------------- |
+| `prod` | `https://api.prod.speakeasyapi.dev` |
 
 #### Example
 
@@ -302,9 +317,9 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
+	"os"
 )
 
 func main() {
@@ -315,34 +330,44 @@ func main() {
 		}),
 	)
 
+	content, fileErr := os.Open("example.file")
+	if fileErr != nil {
+		panic(fileErr)
+	}
+
 	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
+	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Languages: []string{
+			"<value>",
+			"<value>",
+		},
+		SchemaFile: shared.SchemaFile{
+			Content:  content,
+			FileName: "example.file",
+		},
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.TwoHundredApplicationJSONResponseStream != nil {
 		// handle response
 	}
 }
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
+The default server can also be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
 ```go
 package main
 
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
+	"os"
 )
 
 func main() {
@@ -353,15 +378,26 @@ func main() {
 		}),
 	)
 
+	content, fileErr := os.Open("example.file")
+	if fileErr != nil {
+		panic(fileErr)
+	}
+
 	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
+	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Languages: []string{
+			"<value>",
+			"<value>",
+		},
+		SchemaFile: shared.SchemaFile{
+			Content:  content,
+			FileName: "example.file",
+		},
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.TwoHundredApplicationJSONResponseStream != nil {
 		// handle response
 	}
 }
@@ -409,11 +445,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 This SDK supports the following security schemes globally:
 
-| Name                  | Type                  | Scheme                |
-| --------------------- | --------------------- | --------------------- |
-| `APIKey`              | apiKey                | API key               |
-| `Bearer`              | http                  | HTTP Bearer           |
-| `WorkspaceIdentifier` | apiKey                | API key               |
+| Name                  | Type   | Scheme      |
+| --------------------- | ------ | ----------- |
+| `APIKey`              | apiKey | API key     |
+| `Bearer`              | http   | HTTP Bearer |
+| `WorkspaceIdentifier` | apiKey | API key     |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
@@ -422,9 +458,9 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
+	"os"
 )
 
 func main() {
@@ -434,15 +470,26 @@ func main() {
 		}),
 	)
 
+	content, fileErr := os.Open("example.file")
+	if fileErr != nil {
+		panic(fileErr)
+	}
+
 	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
+	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Languages: []string{
+			"<value>",
+			"<value>",
+		},
+		SchemaFile: shared.SchemaFile{
+			Content:  content,
+			FileName: "example.file",
+		},
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.TwoHundredApplicationJSONResponseStream != nil {
 		// handle response
 	}
 }
@@ -462,10 +509,9 @@ For example, you can set `workspace_id` to `"<id>"` at SDK initialization and th
 
 The following global parameter is available.
 
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| WorkspaceID | string |  | The WorkspaceID parameter. |
-
+| Name        | Type   | Description                |
+| ----------- | ------ | -------------------------- |
+| WorkspaceID | string | The WorkspaceID parameter. |
 
 ### Example
 
@@ -509,10 +555,10 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
+	"os"
 	"pkg/models/operations"
 )
 
@@ -523,10 +569,21 @@ func main() {
 		}),
 	)
 
+	content, fileErr := os.Open("example.file")
+	if fileErr != nil {
+		panic(fileErr)
+	}
+
 	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
+	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Languages: []string{
+			"<value>",
+			"<value>",
+		},
+		SchemaFile: shared.SchemaFile{
+			Content:  content,
+			FileName: "example.file",
+		},
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -541,7 +598,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.TwoHundredApplicationJSONResponseStream != nil {
 		// handle response
 	}
 }
@@ -555,10 +612,10 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
+	"os"
 )
 
 func main() {
@@ -579,15 +636,26 @@ func main() {
 		}),
 	)
 
+	content, fileErr := os.Open("example.file")
+	if fileErr != nil {
+		panic(fileErr)
+	}
+
 	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
+	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Languages: []string{
+			"<value>",
+			"<value>",
+		},
+		SchemaFile: shared.SchemaFile{
+			Content:  content,
+			FileName: "example.file",
+		},
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.TwoHundredApplicationJSONResponseStream != nil {
 		// handle response
 	}
 }

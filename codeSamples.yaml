@@ -1203,6 +1203,133 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/v1/code_sample/preview"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: generateCodeSamplePreview
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"os"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
+                }
+
+                ctx := context.Background()
+                res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+                    Languages: []string{
+                        "<value>",
+                        "<value>",
+                    },
+                    SchemaFile: shared.SchemaFile{
+                        FileName: "example.file",
+                        Content: content,
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.TwoHundredApplicationXYamlResponseStream != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/code_sample/preview/async"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: generateCodeSamplePreviewAsync
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"os"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                content, fileErr := os.Open("example.file")
+                if fileErr != nil {
+                    panic(fileErr)
+                }
+
+                ctx := context.Background()
+                res, err := s.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
+                    Languages: []string{
+                        "<value>",
+                        "<value>",
+                        "<value>",
+                    },
+                    SchemaFile: shared.SchemaFile{
+                        FileName: "example.file",
+                        Content: content,
+                    },
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Object != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/code_sample/preview/async/{jobID}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getCodeSamplePreviewAsync
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.GetCodeSamplePreviewAsync(ctx, operations.GetCodeSamplePreviewAsyncRequest{
+                    JobID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.TwoHundredApplicationXYamlResponseStream != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/v1/eventlog/query"]["get"]
     update:
       x-codeSamples:

@@ -23,8 +23,8 @@ type AcceptHeaderEnum string
 
 const (
 	AcceptHeaderEnumApplicationJson                          AcceptHeaderEnum = "application/json"
-	AcceptHeaderEnumApplicationOctetStream                   AcceptHeaderEnum = "application/octet-stream"
 	AcceptHeaderEnumApplicationXYaml                         AcceptHeaderEnum = "application/x-yaml"
+	AcceptHeaderEnumApplicationOctetStream                   AcceptHeaderEnum = "application/octet-stream"
 	AcceptHeaderEnumApplicationVndOciImageManifestV1PlusJson AcceptHeaderEnum = "application/vnd.oci.image.manifest.v1+json"
 )
 

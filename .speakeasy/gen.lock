@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 9a034a66f4da4914406d1bf2b518d536
+  docChecksum: 02b88f594911af47ff6407c43e5990cb
   docVersion: 0.4.0
-  speakeasyVersion: 1.434.4
-  generationVersion: 2.452.0
-  releaseVersion: 3.15.4
-  configChecksum: 2060b46f81918dacf0b5639e6765241f
+  speakeasyVersion: 1.440.0
+  generationVersion: 2.457.9
+  releaseVersion: 3.15.5
+  configChecksum: 04c295309d0585dcb3aa4c526b9ee5bb
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,7 +15,7 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.5.15
+    core: 3.5.16
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -59,6 +59,8 @@ generatedFiles:
   - /pkg/models/operations/downloadschema.go
   - /pkg/models/operations/downloadschemarevision.go
   - /pkg/models/operations/findapiendpoint.go
+  - /pkg/models/operations/generatecodesamplepreview.go
+  - /pkg/models/operations/generatecodesamplepreviewasync.go
   - /pkg/models/operations/generateopenapispec.go
   - /pkg/models/operations/generateopenapispecforapiendpoint.go
   - /pkg/models/operations/generatepostmancollection.go
@@ -72,6 +74,7 @@ generatedFiles:
   - /pkg/models/operations/getapis.go
   - /pkg/models/operations/getblob.go
   - /pkg/models/operations/getchangesreportsignedurl.go
+  - /pkg/models/operations/getcodesamplepreviewasync.go
   - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getgithubaction.go
   - /pkg/models/operations/getlintingreportsignedurl.go
@@ -144,6 +147,8 @@ generatedFiles:
   - /pkg/models/shared/apikeydetails.go
   - /pkg/models/shared/boundedrequest.go
   - /pkg/models/shared/clievent.go
+  - /pkg/models/shared/codesampleschemainput.go
+  - /pkg/models/shared/codesamplesjobstatus.go
   - /pkg/models/shared/diagnostic.go
   - /pkg/models/shared/embedaccesstokenresponse.go
   - /pkg/models/shared/embedtoken.go
@@ -243,6 +248,9 @@ generatedFiles:
   - docs/pkg/models/operations/file.md
   - docs/pkg/models/operations/findapiendpointrequest.md
   - docs/pkg/models/operations/findapiendpointresponse.md
+  - docs/pkg/models/operations/generatecodesamplepreviewasyncresponse.md
+  - docs/pkg/models/operations/generatecodesamplepreviewasyncresponsebody.md
+  - docs/pkg/models/operations/generatecodesamplepreviewresponse.md
   - docs/pkg/models/operations/generateopenapispecforapiendpointrequest.md
   - docs/pkg/models/operations/generateopenapispecforapiendpointresponse.md
   - docs/pkg/models/operations/generateopenapispecrequest.md
@@ -270,6 +278,9 @@ generatedFiles:
   - docs/pkg/models/operations/getchangesreportsignedurlrequest.md
   - docs/pkg/models/operations/getchangesreportsignedurlresponse.md
   - docs/pkg/models/operations/getchangesreportsignedurlsignedaccess.md
+  - docs/pkg/models/operations/getcodesamplepreviewasyncrequest.md
+  - docs/pkg/models/operations/getcodesamplepreviewasyncresponse.md
+  - docs/pkg/models/operations/getcodesamplepreviewasyncresponsebody.md
   - docs/pkg/models/operations/getembedaccesstokenrequest.md
   - docs/pkg/models/operations/getembedaccesstokenresponse.md
   - docs/pkg/models/operations/getgithubactionrequest.md
@@ -412,6 +423,8 @@ generatedFiles:
   - docs/pkg/models/shared/boundedrequest.md
   - docs/pkg/models/shared/claims.md
   - docs/pkg/models/shared/clievent.md
+  - docs/pkg/models/shared/codesampleschemainput.md
+  - docs/pkg/models/shared/codesamplesjobstatus.md
   - docs/pkg/models/shared/diagnostic.md
   - docs/pkg/models/shared/embedaccesstokenresponse.md
   - docs/pkg/models/shared/embedtoken.md
@@ -456,6 +469,7 @@ generatedFiles:
   - docs/pkg/models/shared/revision.md
   - docs/pkg/models/shared/schema.md
   - docs/pkg/models/shared/schemadiff.md
+  - docs/pkg/models/shared/schemafile.md
   - docs/pkg/models/shared/security.md
   - docs/pkg/models/shared/shorturl.md
   - docs/pkg/models/shared/ssometadata.md
@@ -1596,3 +1610,29 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 774553}
+  generateCodeSamplePreview:
+    speakeasy-default-generate-code-sample-preview:
+      requestBody:
+        multipart/form-data: {"languages": ["<value>", "<value>"], "schema_file": {"": "example.file"}}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 140843}
+  generateCodeSamplePreviewAsync:
+    speakeasy-default-generate-code-sample-preview-async:
+      requestBody:
+        multipart/form-data: {"languages": ["<value>", "<value>", "<value>"], "schema_file": {"": "example.file"}}
+      responses:
+        "202":
+          application/json: {"jobID": "<id>", "status": "running"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 242219}
+  getCodeSamplePreviewAsync:
+    speakeasy-default-get-code-sample-preview-async:
+      parameters:
+        path:
+          jobID: "<id>"
+      responses:
+        "202":
+          application/json: {"status": "pending"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 44984}
