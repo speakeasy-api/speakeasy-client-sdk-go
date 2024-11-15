@@ -86,6 +86,10 @@ type TargetSDK struct {
 	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
 	// Indicates whether the event was successful.
 	Success *bool `json:"success,omitempty"`
+	// Workflow lock file (post execution)
+	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
+	// Workflow lock file (prior to execution)
+	WorkflowLockPreRaw *string `json:"workflow_lock_pre_raw,omitempty"`
 	// Workflow file (post execution)
 	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
 	// Workflow file (prior to execution)
@@ -374,6 +378,20 @@ func (o *TargetSDK) GetSuccess() *bool {
 		return nil
 	}
 	return o.Success
+}
+
+func (o *TargetSDK) GetWorkflowLockPostRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowLockPostRaw
+}
+
+func (o *TargetSDK) GetWorkflowLockPreRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowLockPreRaw
 }
 
 func (o *TargetSDK) GetWorkflowPostRaw() *string {

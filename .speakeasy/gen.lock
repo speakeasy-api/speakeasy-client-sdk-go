@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 02b88f594911af47ff6407c43e5990cb
+  docChecksum: be67da8c42c207e9bca0fa82315ff95a
   docVersion: 0.4.0
-  speakeasyVersion: 1.440.0
-  generationVersion: 2.457.9
-  releaseVersion: 3.15.5
-  configChecksum: 04c295309d0585dcb3aa4c526b9ee5bb
+  speakeasyVersion: 1.440.1
+  generationVersion: 2.460.1
+  releaseVersion: 3.15.6
+  configChecksum: 9b93bd6880cebc8faf6a13bf936b47c9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -1617,6 +1617,7 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 140843}
+        "200": {}
   generateCodeSamplePreviewAsync:
     speakeasy-default-generate-code-sample-preview-async:
       requestBody:
@@ -1636,3 +1637,4 @@ examples:
           application/json: {"status": "pending"}
         4XX:
           application/json: {"message": "<value>", "status_code": 44984}
+        "200": {}
