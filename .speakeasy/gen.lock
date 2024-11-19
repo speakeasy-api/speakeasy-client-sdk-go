@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: be67da8c42c207e9bca0fa82315ff95a
+  docChecksum: f29435bb099891e387e6c1c61cb02f8c
   docVersion: 0.4.0
-  speakeasyVersion: 1.440.1
+  speakeasyVersion: 1.441.0
   generationVersion: 2.460.1
-  releaseVersion: 3.15.6
-  configChecksum: 9b93bd6880cebc8faf6a13bf936b47c9
+  releaseVersion: 3.15.7
+  configChecksum: 39dc83c7f77503ecfb0a808709ca74a1
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -1624,7 +1624,7 @@ examples:
         multipart/form-data: {"languages": ["<value>", "<value>", "<value>"], "schema_file": {"": "example.file"}}
       responses:
         "202":
-          application/json: {"jobID": "<id>", "status": "running"}
+          application/json: {"job_id": "<id>", "status": "running"}
         4XX:
           application/json: {"message": "<value>", "status_code": 242219}
   getCodeSamplePreviewAsync:

@@ -10,7 +10,7 @@ import (
 // GenerateCodeSamplePreviewAsyncResponseBody - Job accepted, returns a job ID to poll for status and result
 type GenerateCodeSamplePreviewAsyncResponseBody struct {
 	// The job ID for polling
-	JobID string `json:"jobID"`
+	JobID string `json:"job_id"`
 	// The current status of the job. Possible values are `pending` or `running`.
 	Status shared.CodeSamplesJobStatus `json:"status"`
 }
