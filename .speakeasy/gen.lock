@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: f29435bb099891e387e6c1c61cb02f8c
+  docChecksum: 04169f580d81fde74dfa8c8a3b75a513
   docVersion: 0.4.0
-  speakeasyVersion: 1.441.0
-  generationVersion: 2.460.1
-  releaseVersion: 3.15.7
-  configChecksum: 39dc83c7f77503ecfb0a808709ca74a1
+  speakeasyVersion: 1.442.0
+  generationVersion: 2.461.4
+  releaseVersion: 3.15.8
+  configChecksum: 47c0a50d8ad262d1ee996db0ca05702a
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -32,7 +32,7 @@ features:
     nullables: 0.1.0
     openEnums: 0.1.0
     responseFormat: 0.1.2
-    retries: 2.83.0
+    retries: 2.83.1
     sdkHooks: 0.1.0
     serverEventsSentinels: 0.1.0
     serverIDs: 2.81.1
@@ -77,6 +77,7 @@ generatedFiles:
   - /pkg/models/operations/getcodesamplepreviewasync.go
   - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getgithubaction.go
+  - /pkg/models/operations/getgithubsetupstate.go
   - /pkg/models/operations/getlintingreportsignedurl.go
   - /pkg/models/operations/getmanifest.go
   - /pkg/models/operations/getnamespaces.go
@@ -167,6 +168,7 @@ generatedFiles:
   - /pkg/models/shared/githubgetactionresponse.go
   - /pkg/models/shared/githubmissingpublishingsecretsresponse.go
   - /pkg/models/shared/githubpublishingprresponse.go
+  - /pkg/models/shared/githubsetupstateresponse.go
   - /pkg/models/shared/githubstorepublishingsecretsrequest.go
   - /pkg/models/shared/githubtriggeractionrequest.go
   - /pkg/models/shared/interactiontype.go
@@ -285,6 +287,8 @@ generatedFiles:
   - docs/pkg/models/operations/getembedaccesstokenresponse.md
   - docs/pkg/models/operations/getgithubactionrequest.md
   - docs/pkg/models/operations/getgithubactionresponse.md
+  - docs/pkg/models/operations/getgithubsetupstaterequest.md
+  - docs/pkg/models/operations/getgithubsetupstateresponse.md
   - docs/pkg/models/operations/getlintingreportsignedurlrequest.md
   - docs/pkg/models/operations/getlintingreportsignedurlresponse.md
   - docs/pkg/models/operations/getlintingreportsignedurlsignedaccess.md
@@ -412,6 +416,7 @@ generatedFiles:
   - docs/pkg/models/shared/accesstoken.md
   - docs/pkg/models/shared/accesstokenuser.md
   - docs/pkg/models/shared/accounttype.md
+  - docs/pkg/models/shared/actions.md
   - docs/pkg/models/shared/addtags.md
   - docs/pkg/models/shared/annotations.md
   - docs/pkg/models/shared/api.md
@@ -444,6 +449,7 @@ generatedFiles:
   - docs/pkg/models/shared/githubgetactionresponse.md
   - docs/pkg/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/pkg/models/shared/githubpublishingprresponse.md
+  - docs/pkg/models/shared/githubsetupstateresponse.md
   - docs/pkg/models/shared/githubstorepublishingsecretsrequest.md
   - docs/pkg/models/shared/githubtriggeractionrequest.md
   - docs/pkg/models/shared/interactiontype.md
@@ -470,6 +476,7 @@ generatedFiles:
   - docs/pkg/models/shared/schema.md
   - docs/pkg/models/shared/schemadiff.md
   - docs/pkg/models/shared/schemafile.md
+  - docs/pkg/models/shared/secrets.md
   - docs/pkg/models/shared/security.md
   - docs/pkg/models/shared/shorturl.md
   - docs/pkg/models/shared/ssometadata.md
@@ -1638,3 +1645,15 @@ examples:
         4XX:
           application/json: {"message": "<value>", "status_code": 44984}
         "200": {}
+  getGithubSetupState:
+    speakeasy-default-get-github-setup-state:
+      parameters:
+        query:
+          org: "<value>"
+          repo: "<value>"
+          generate_gen_lock_id: "<id>"
+      responses:
+        2XX:
+          application/json: {"actions": {"generation_action_configured": false, "publish_action_configured": false}, "app_installed": false, "secrets": {"api_key_configured": true, "publishing_secrets_configured": true}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 743106}

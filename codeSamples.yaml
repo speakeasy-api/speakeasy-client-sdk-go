@@ -1742,6 +1742,42 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/v1/github/setup"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getGithubSetupState
+          source: |-
+            package main
+
+            import(
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Github.GetSetup(ctx, operations.GetGithubSetupStateRequest{
+                    Org: "<value>",
+                    Repo: "<value>",
+                    GenerateGenLockID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.GithubSetupStateResponse != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/v1/github/trigger_action"]["post"]
     update:
       x-codeSamples:
