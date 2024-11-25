@@ -621,7 +621,7 @@ func (s *Artifacts) GetManifest(ctx context.Context, request operations.GetManif
 }
 
 // GetNamespaces - Each namespace contains many revisions.
-func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option) (*operations.GetNamespacesResponse, error) {
+func (s *Artifacts) GetNamespaces(ctx context.Context, request operations.GetNamespacesRequest, opts ...operations.Option) (*operations.GetNamespacesResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "getNamespaces",
@@ -664,6 +664,10 @@ func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err

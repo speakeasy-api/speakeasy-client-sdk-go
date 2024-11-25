@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 04169f580d81fde74dfa8c8a3b75a513
+  docChecksum: bab3c8f9d597693c72890ed481ae46ea
   docVersion: 0.4.0
-  speakeasyVersion: 1.442.0
+  speakeasyVersion: 1.445.2
   generationVersion: 2.461.4
-  releaseVersion: 3.15.8
-  configChecksum: 47c0a50d8ad262d1ee996db0ca05702a
+  releaseVersion: 3.15.9
+  configChecksum: 471f488d07a1ca4e525b9e5cf23e78ac
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -294,6 +294,7 @@ generatedFiles:
   - docs/pkg/models/operations/getlintingreportsignedurlsignedaccess.md
   - docs/pkg/models/operations/getmanifestrequest.md
   - docs/pkg/models/operations/getmanifestresponse.md
+  - docs/pkg/models/operations/getnamespacesrequest.md
   - docs/pkg/models/operations/getnamespacesresponse.md
   - docs/pkg/models/operations/getorganizationrequest.md
   - docs/pkg/models/operations/getorganizationresponse.md

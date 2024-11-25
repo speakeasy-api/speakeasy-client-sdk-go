@@ -14,6 +14,7 @@ type Namespace struct {
 	ID string `json:"id"`
 	// A human-readable name for the namespace.
 	Name      string    `json:"name"`
+	Public    *bool     `json:"public,omitempty"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
@@ -47,6 +48,13 @@ func (o *Namespace) GetName() string {
 		return ""
 	}
 	return o.Name
+}
+
+func (o *Namespace) GetPublic() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Public
 }
 
 func (o *Namespace) GetUpdatedAt() time.Time {

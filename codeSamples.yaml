@@ -926,6 +926,7 @@ actions:
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
             )
 
@@ -937,7 +938,7 @@ actions:
                 )
 
                 ctx := context.Background()
-                res, err := s.Artifacts.GetNamespaces(ctx)
+                res, err := s.Artifacts.GetNamespaces(ctx, operations.GetNamespacesRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
