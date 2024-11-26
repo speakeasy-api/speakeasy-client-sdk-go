@@ -23,10 +23,10 @@ Load recent events for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -79,10 +79,10 @@ Load targets for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -133,10 +133,10 @@ Load targets for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -187,11 +187,11 @@ Sends an array of events to be stored for a particular workspace.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -206,11 +206,11 @@ func main() {
     res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
         RequestBody: []shared.CliEvent{
             shared.CliEvent{
-                CreatedAt: types.MustTimeFromString("2023-05-08T03:24:39.583Z"),
+                CreatedAt: types.MustTimeFromString("2024-08-12T17:54:17.538Z"),
                 ExecutionID: "<id>",
                 ID: "<id>",
-                InteractionType: shared.InteractionTypeQuickstart,
-                LocalStartedAt: types.MustTimeFromString("2023-09-09T05:59:33.876Z"),
+                InteractionType: shared.InteractionTypeCiExec,
+                LocalStartedAt: types.MustTimeFromString("2023-11-23T06:26:30.993Z"),
                 SpeakeasyAPIKeyName: "<value>",
                 SpeakeasyVersion: "<value>",
                 Success: false,
@@ -256,10 +256,10 @@ Search events for a particular workspace by any field
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 

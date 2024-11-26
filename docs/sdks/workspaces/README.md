@@ -30,10 +30,10 @@ Creates a workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	"context"
 	"log"
 )
 
@@ -93,11 +93,11 @@ Create a token for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -157,10 +157,10 @@ Delete a token for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -213,8 +213,8 @@ Get information about a particular workspace by context.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"context"
 	"log"
 )
@@ -265,8 +265,8 @@ Returns a list of workspaces a user has access too
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"context"
 	"log"
 )
@@ -317,10 +317,10 @@ Get information about a particular workspace.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -371,10 +371,10 @@ Get workspace feature flags
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -425,10 +425,10 @@ Get settings about a particular workspace.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -479,10 +479,10 @@ Get team members for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -533,10 +533,10 @@ Get tokens for a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -587,10 +587,10 @@ Grant a user access to a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -643,10 +643,10 @@ Revoke a user's access to a particular workspace
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -699,11 +699,11 @@ Update information about a particular workspace.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -765,11 +765,11 @@ Update settings about a particular workspace.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 

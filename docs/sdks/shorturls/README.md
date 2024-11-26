@@ -19,10 +19,10 @@ Shorten a URL.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 

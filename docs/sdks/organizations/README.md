@@ -21,10 +21,10 @@ Creates an organization
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	"context"
 	"log"
 )
 
@@ -83,8 +83,8 @@ Creates a free trial for an organization
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"context"
 	"log"
 )
@@ -135,10 +135,10 @@ Get information about a particular organization.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -191,8 +191,8 @@ Returns a list of organizations a user has access too
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"context"
 	"log"
 )
@@ -243,8 +243,8 @@ Returns a billing usage summary by target languages for a particular organizatio
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"context"
 	"log"
 )

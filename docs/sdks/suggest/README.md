@@ -22,10 +22,10 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -43,7 +43,7 @@ func main() {
                 shared.Diagnostic{
                     Message: "<value>",
                     Path: []string{
-                        "/rescue",
+                        "/var/yp",
                     },
                     Type: "<value>",
                 },
@@ -58,10 +58,10 @@ func main() {
                 },
                 Operations: []shared.OASOperation{
                     shared.OASOperation{
-                        Description: "kielbasa psst stitcher cannon devoted blindly apropos low",
+                        Description: "generously including staid responsibility quiet dial incidentally",
                         Method: "<value>",
                         OperationID: "<id>",
-                        Path: "/opt/share",
+                        Path: "/usr/obj",
                         Tags: []string{
                             "<value>",
                         },
@@ -109,8 +109,8 @@ Generate generic suggestions for a list of items.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"context"
 	"log"
 )
@@ -166,8 +166,8 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"os"
 	"context"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -233,10 +233,10 @@ Get suggestions from an LLM model for improving an OpenAPI document stored in th
 package main
 
 import(
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 

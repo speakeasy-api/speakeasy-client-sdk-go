@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: bab3c8f9d597693c72890ed481ae46ea
+  docChecksum: 461c434568ccf922eabedab19a4e0afd
   docVersion: 0.4.0
-  speakeasyVersion: 1.445.2
-  generationVersion: 2.461.4
-  releaseVersion: 3.15.9
-  configChecksum: 471f488d07a1ca4e525b9e5cf23e78ac
+  speakeasyVersion: 1.447.4
+  generationVersion: 2.463.1
+  releaseVersion: 3.16.0
+  configChecksum: 6e5833f81f425fc7f44e0400b831469c
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,7 +15,7 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.5.16
+    core: 3.5.17
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -36,7 +36,6 @@ features:
     sdkHooks: 0.1.0
     serverEventsSentinels: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.6.0
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -125,6 +124,7 @@ generatedFiles:
   - /pkg/models/operations/revokeembedaccesstoken.go
   - /pkg/models/operations/revokeuseraccesstoworkspace.go
   - /pkg/models/operations/searchworkspaceevents.go
+  - /pkg/models/operations/setvisibility.go
   - /pkg/models/operations/suggest.go
   - /pkg/models/operations/suggestitems.go
   - /pkg/models/operations/suggestopenapi.go
@@ -390,6 +390,9 @@ generatedFiles:
   - docs/pkg/models/operations/searchworkspaceeventsglobals.md
   - docs/pkg/models/operations/searchworkspaceeventsrequest.md
   - docs/pkg/models/operations/searchworkspaceeventsresponse.md
+  - docs/pkg/models/operations/setvisibilityrequest.md
+  - docs/pkg/models/operations/setvisibilityrequestbody.md
+  - docs/pkg/models/operations/setvisibilityresponse.md
   - docs/pkg/models/operations/suggestitemsresponse.md
   - docs/pkg/models/operations/suggestopenapiregistryrequest.md
   - docs/pkg/models/operations/suggestopenapiregistryresponse.md
@@ -539,6 +542,7 @@ generatedFiles:
   - pkg/types/decimal.go
   - pkg/types/pointers.go
   - pkg/utils/contenttype.go
+  - pkg/utils/env.go
   - pkg/utils/form.go
   - pkg/utils/headers.go
   - pkg/utils/json.go
@@ -1658,3 +1662,12 @@ examples:
           application/json: {"actions": {"generation_action_configured": false, "publish_action_configured": false}, "app_installed": false, "secrets": {"api_key_configured": true, "publishing_secrets_configured": true}}
         4XX:
           application/json: {"message": "<value>", "status_code": 743106}
+  setVisibility:
+    speakeasy-default-set-visibility:
+      parameters:
+        path:
+          namespace_name: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 651364}
+generatedTests: {}

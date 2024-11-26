@@ -104,6 +104,7 @@ func main() {
 * [ListRemoteSources](docs/sdks/artifacts/README.md#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
 * [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetVisibility](docs/sdks/artifacts/README.md#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ### [Auth](docs/sdks/auth/README.md)
 

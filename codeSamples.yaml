@@ -12,10 +12,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -44,10 +44,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -78,10 +78,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -117,10 +117,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -151,10 +151,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -186,10 +186,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -221,10 +221,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -257,10 +257,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -293,10 +293,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -329,10 +329,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -373,10 +373,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -409,10 +409,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -445,10 +445,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -480,10 +480,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -515,10 +515,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -550,10 +550,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -589,10 +589,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -626,10 +626,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -661,8 +661,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"context"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -708,10 +708,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -743,10 +743,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -780,10 +780,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -816,10 +816,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -852,10 +852,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -888,10 +888,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -923,10 +923,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -955,10 +955,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -989,10 +989,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1023,10 +1023,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1048,6 +1048,40 @@ actions:
                     // handle response
                 }
             }
+  - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/visibility"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: setVisibility
+          source: |-
+            package main
+
+            import(
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
+            	"log"
+            )
+
+            func main() {
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                ctx := context.Background()
+                res, err := s.Artifacts.SetVisibility(ctx, operations.SetVisibilityRequest{
+                    NamespaceName: "<value>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res != nil {
+                    // handle response
+                }
+            }
   - target: $["paths"]["/v1/artifacts/preflight"]["post"]
     update:
       x-codeSamples:
@@ -1057,8 +1091,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1088,10 +1122,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1122,8 +1156,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1154,8 +1188,8 @@ actions:
 
             import(
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1182,8 +1216,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1213,8 +1247,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"context"
             	"log"
@@ -1259,8 +1293,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"context"
             	"log"
@@ -1306,10 +1340,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1340,10 +1374,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1372,10 +1406,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1406,10 +1440,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1440,10 +1474,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1475,10 +1509,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1510,8 +1544,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1545,8 +1579,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1583,8 +1617,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1617,10 +1651,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1649,10 +1683,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1685,10 +1719,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1719,8 +1753,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1752,10 +1786,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1788,8 +1822,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1823,10 +1857,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1860,10 +1894,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -1897,10 +1931,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+            	"context"
             	"log"
             )
 
@@ -1937,8 +1971,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1968,8 +2002,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -1999,10 +2033,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2033,8 +2067,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -2064,8 +2098,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"context"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -2108,10 +2142,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2142,10 +2176,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2176,10 +2210,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2210,8 +2244,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -2246,8 +2280,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"context"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -2292,10 +2326,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2328,10 +2362,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2357,9 +2391,9 @@ actions:
                             Operations: []shared.OASOperation{
                                 shared.OASOperation{
                                     Method: "<value>",
-                                    Path: "/rescue",
+                                    Path: "/var/yp",
                                     OperationID: "<id>",
-                                    Description: "kielbasa psst stitcher cannon devoted blindly apropos low",
+                                    Description: "generously including staid responsibility quiet dial incidentally",
                                     Tags: []string{
                                         "<value>",
                                     },
@@ -2371,7 +2405,7 @@ actions:
                             shared.Diagnostic{
                                 Message: "<value>",
                                 Path: []string{
-                                    "/opt/share",
+                                    "/usr/obj",
                                 },
                                 Type: "<value>",
                             },
@@ -2394,8 +2428,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -2425,8 +2459,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -2456,10 +2490,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+            	"context"
             	"log"
             )
 
@@ -2496,10 +2530,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2528,10 +2562,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2560,8 +2594,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )
@@ -2591,10 +2625,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2625,10 +2659,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2657,10 +2691,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2689,11 +2723,11 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2732,10 +2766,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2764,11 +2798,11 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2811,10 +2845,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2843,10 +2877,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2877,10 +2911,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2909,10 +2943,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2941,11 +2975,11 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -2985,10 +3019,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3017,11 +3051,11 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3057,10 +3091,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3089,10 +3123,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3123,10 +3157,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3157,10 +3191,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3189,11 +3223,11 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3231,10 +3265,10 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-            	"context"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"context"
             	"log"
             )
 
@@ -3265,8 +3299,8 @@ actions:
             package main
 
             import(
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"context"
             	"log"
             )

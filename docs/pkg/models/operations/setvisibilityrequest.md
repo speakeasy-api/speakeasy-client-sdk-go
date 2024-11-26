@@ -1,0 +1,9 @@
+# SetVisibilityRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `RequestBody`                                                                                      | [*operations.SetVisibilityRequestBody](../../../pkg/models/operations/setvisibilityrequestbody.md) | :heavy_minus_sign:                                                                                 | Namespace visibility                                                                               |
+| `NamespaceName`                                                                                    | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
