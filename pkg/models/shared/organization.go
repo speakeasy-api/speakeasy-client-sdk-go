@@ -16,6 +16,8 @@ type Organization struct {
 	Internal          *bool       `json:"internal,omitempty"`
 	Name              string      `json:"name"`
 	Slug              string      `json:"slug"`
+	SsoActivated      bool        `json:"sso_activated"`
+	SsoConnectionID   *string     `json:"sso_connection_id,omitempty"`
 	TelemetryDisabled bool        `json:"telemetry_disabled"`
 	UpdatedAt         time.Time   `json:"updated_at"`
 }
@@ -78,6 +80,20 @@ func (o *Organization) GetSlug() string {
 		return ""
 	}
 	return o.Slug
+}
+
+func (o *Organization) GetSsoActivated() bool {
+	if o == nil {
+		return false
+	}
+	return o.SsoActivated
+}
+
+func (o *Organization) GetSsoConnectionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoConnectionID
 }
 
 func (o *Organization) GetTelemetryDisabled() bool {

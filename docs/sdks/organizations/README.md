@@ -42,6 +42,7 @@ func main() {
         ID: "<id>",
         Name: "<value>",
         Slug: "<value>",
+        SsoActivated: true,
         TelemetryDisabled: true,
         UpdatedAt: types.MustTimeFromString("2022-05-28T06:20:22.766Z"),
     })
