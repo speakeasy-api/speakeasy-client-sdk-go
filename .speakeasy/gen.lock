@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 89aa27989b46cb5f5c46967f9ea73f58
+  docChecksum: 867e0698f3110dba472ddc490d9dcf87
   docVersion: 0.4.0
-  speakeasyVersion: 1.448.2
+  speakeasyVersion: 1.449.0
   generationVersion: 2.467.4
-  releaseVersion: 3.16.1
-  configChecksum: ec9452d3a155f5dafbcd8c2610fde848
+  releaseVersion: 3.16.2
+  configChecksum: caa0c0c75765c43110111ce978e5d333
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -185,6 +185,7 @@ generatedFiles:
   - /pkg/models/shared/registrysubscription.go
   - /pkg/models/shared/remotedocument.go
   - /pkg/models/shared/remotesource.go
+  - /pkg/models/shared/remotesourcesubscriptionsettings.go
   - /pkg/models/shared/report.go
   - /pkg/models/shared/requestmetadata.go
   - /pkg/models/shared/revision.go
@@ -294,7 +295,6 @@ generatedFiles:
   - docs/pkg/models/operations/getlintingreportsignedurlsignedaccess.md
   - docs/pkg/models/operations/getmanifestrequest.md
   - docs/pkg/models/operations/getmanifestresponse.md
-  - docs/pkg/models/operations/getnamespacesrequest.md
   - docs/pkg/models/operations/getnamespacesresponse.md
   - docs/pkg/models/operations/getorganizationrequest.md
   - docs/pkg/models/operations/getorganizationresponse.md
@@ -434,6 +434,7 @@ generatedFiles:
   - docs/pkg/models/shared/clievent.md
   - docs/pkg/models/shared/codesampleschemainput.md
   - docs/pkg/models/shared/codesamplesjobstatus.md
+  - docs/pkg/models/shared/compositespecmetadata.md
   - docs/pkg/models/shared/diagnostic.md
   - docs/pkg/models/shared/embedaccesstokenresponse.md
   - docs/pkg/models/shared/embedtoken.md
@@ -474,6 +475,7 @@ generatedFiles:
   - docs/pkg/models/shared/relationship.md
   - docs/pkg/models/shared/remotedocument.md
   - docs/pkg/models/shared/remotesource.md
+  - docs/pkg/models/shared/remotesourcesubscriptionsettings.md
   - docs/pkg/models/shared/report.md
   - docs/pkg/models/shared/requestmetadata.md
   - docs/pkg/models/shared/revision.md
@@ -984,7 +986,7 @@ examples:
         default:
           application/json: {"message": "<value>", "status_code": 284614}
         2XX:
-          application/json: {"is_composite_spec": true, "items": [{"created_at": "2024-09-16T19:17:04.361Z", "digest": "sha256:6d1ef012b5674ad8a127ecfa9b5e6f5178d171b90ee462846974177fd9bdd39f", "id": "<id>", "namespace_name": "<value>", "tags": ["<value>"], "updated_at": "2023-12-06T05:58:38.953Z"}], "next_page_token": "<value>", "public": false}
+          application/json: {"items": [{"created_at": "2024-09-16T19:17:04.361Z", "digest": "sha256:6d1ef012b5674ad8a127ecfa9b5e6f5178d171b90ee462846974177fd9bdd39f", "id": "<id>", "namespace_name": "<value>", "tags": ["<value>"], "updated_at": "2023-12-06T05:58:38.953Z"}], "next_page_token": "<value>"}
         4XX:
           application/json: {"message": "<value>", "status_code": 414389}
   getTags:

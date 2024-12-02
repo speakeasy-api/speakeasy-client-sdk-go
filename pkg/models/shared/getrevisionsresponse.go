@@ -3,17 +3,8 @@
 package shared
 
 type GetRevisionsResponse struct {
-	IsCompositeSpec bool       `json:"is_composite_spec"`
-	Items           []Revision `json:"items"`
-	NextPageToken   string     `json:"next_page_token"`
-	Public          bool       `json:"public"`
-}
-
-func (o *GetRevisionsResponse) GetIsCompositeSpec() bool {
-	if o == nil {
-		return false
-	}
-	return o.IsCompositeSpec
+	Items         []Revision `json:"items"`
+	NextPageToken string     `json:"next_page_token"`
 }
 
 func (o *GetRevisionsResponse) GetItems() []Revision {
@@ -28,11 +19,4 @@ func (o *GetRevisionsResponse) GetNextPageToken() string {
 		return ""
 	}
 	return o.NextPageToken
-}
-
-func (o *GetRevisionsResponse) GetPublic() bool {
-	if o == nil {
-		return false
-	}
-	return o.Public
 }

@@ -7,17 +7,6 @@ import (
 	"net/http"
 )
 
-type GetNamespacesRequest struct {
-	IsComposite *bool `queryParam:"style=form,explode=true,name=is_composite"`
-}
-
-func (o *GetNamespacesRequest) GetIsComposite() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsComposite
-}
-
 type GetNamespacesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

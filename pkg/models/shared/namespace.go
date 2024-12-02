@@ -7,13 +7,35 @@ import (
 	"time"
 )
 
+type CompositeSpecMetadata struct {
+	// The subscription ID for the remote source subscription, if applicable. This indicates that the namespace is created by a remote source and thus is composite.
+	SubscriptionID       string                           `json:"subscription_id"`
+	SubscriptionSettings RemoteSourceSubscriptionSettings `json:"subscription_settings"`
+}
+
+func (o *CompositeSpecMetadata) GetSubscriptionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SubscriptionID
+}
+
+func (o *CompositeSpecMetadata) GetSubscriptionSettings() RemoteSourceSubscriptionSettings {
+	if o == nil {
+		return RemoteSourceSubscriptionSettings{}
+	}
+	return o.SubscriptionSettings
+}
+
 // Namespace - A namespace contains many revisions.
 type Namespace struct {
-	CreatedAt time.Time `json:"created_at"`
+	CompositeSpecMetadata *CompositeSpecMetadata `json:"composite_spec_metadata,omitempty"`
+	CreatedAt             time.Time              `json:"created_at"`
 	// {organization_slug}/{workspace_slug}/{namespace_name}
 	ID string `json:"id"`
 	// A human-readable name for the namespace.
-	Name      string    `json:"name"`
+	Name string `json:"name"`
+	// Indicates whether the namespace is publicly accessible
 	Public    *bool     `json:"public,omitempty"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -27,6 +49,13 @@ func (n *Namespace) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeSpecMetadata
 }
 
 func (o *Namespace) GetCreatedAt() time.Time {
