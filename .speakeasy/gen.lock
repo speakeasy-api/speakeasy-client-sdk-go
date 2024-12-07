@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 4370adb34e4b8d543b23bdcf77707fef
+  docChecksum: 09696cca6dbcaa4fa372f51b4fa17ebc
   docVersion: 0.4.0
-  speakeasyVersion: 1.451.2
-  generationVersion: 2.471.2
-  releaseVersion: 3.16.3
-  configChecksum: 0fc0f235260897c4e7b53e0f19d0801a
+  speakeasyVersion: 1.453.3
+  generationVersion: 2.474.6
+  releaseVersion: 3.16.4
+  configChecksum: 4241318152302c33ea0675e5b8aec273
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
