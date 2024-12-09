@@ -1,0 +1,1630 @@
+arazzo: 1.0.0
+info:
+  title: Test Suite
+  summary: Created from /Users/bflad/src/github.com/speakeasy-api/speakeasy-client-sdk-go/.speakeasy/temp/registry_1f2e8c.yaml
+  version: 0.0.1
+sourceDescriptions:
+  - name: /Users/bflad/src/github.com/speakeasy-api/speakeasy-client-sdk-go/.speakeasy/temp/registry_1f2e8c.yaml
+    url: https://TBD.com
+    type: openapi
+workflows:
+  - workflowId: generateCodeSamplePreview
+    steps:
+      - stepId: test
+        operationId: generateCodeSamplePreview
+        requestBody:
+          contentType: multipart/form-data
+          payload:
+            languages:
+              - <value>
+              - <value>
+            schema_file:
+              "": example.file
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: speakeasy
+  - workflowId: generateCodeSamplePreviewAsync
+    steps:
+      - stepId: test
+        operationId: generateCodeSamplePreviewAsync
+        requestBody:
+          contentType: multipart/form-data
+          payload:
+            languages:
+              - <value>
+              - <value>
+              - <value>
+            schema_file:
+              "": example.file
+        successCriteria:
+          - condition: $statusCode == 202
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "job_id": "\u003cid\u003e",
+                "status": "running"
+              }
+            type: simple
+    x-speakeasy-test-group: speakeasy
+  - workflowId: getCodeSamplePreviewAsync
+    steps:
+      - stepId: test
+        operationId: getCodeSamplePreviewAsync
+        parameters:
+          - name: jobID
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 202
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "status": "pending"
+              }
+            type: simple
+    x-speakeasy-test-group: speakeasy
+  - workflowId: deleteApi
+    steps:
+      - stepId: test
+        operationId: deleteApi
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Apis
+  - workflowId: generateOpenApiSpec
+    steps:
+      - stepId: test
+        operationId: generateOpenApiSpec
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "current_schema": "\u003cvalue\u003e",
+                "new_schema": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Apis
+  - workflowId: generatePostmanCollection
+    steps:
+      - stepId: test
+        operationId: generatePostmanCollection
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Apis
+  - workflowId: getAllApiVersions
+    steps:
+      - stepId: test
+        operationId: getAllApiVersions
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2022-12-01T14:20:45.655Z",
+                  "description": "cavernous so continually qua",
+                  "updated_at": "2023-05-30T05:25:29.047Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2023-04-23T11:41:22.396Z",
+                  "description": "readmit chubby oof gym sedately micromanage trench",
+                  "updated_at": "2022-10-16T03:11:00.742Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2023-03-06T08:55:20.384Z",
+                  "description": "aw even but peter abaft",
+                  "updated_at": "2024-07-27T04:38:48.315Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Apis
+  - workflowId: getApis
+    steps:
+      - stepId: test
+        operationId: getApis
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              []
+            type: simple
+    x-speakeasy-test-group: Apis
+  - workflowId: upsertApi
+    steps:
+      - stepId: test
+        operationId: upsertApi
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+        requestBody:
+          contentType: application/json
+          payload:
+            api_id: <value>
+            description: Synchronised 5th generation knowledge user
+            version_id: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_id": "\u003cid\u003e",
+                "created_at": "2024-07-28T23:25:43.547Z",
+                "description": "suspiciously joyously enormously save which behind jaggedly",
+                "updated_at": "2022-03-25T08:19:02.754Z",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Apis
+  - workflowId: deleteApiEndpoint
+    steps:
+      - stepId: test
+        operationId: deleteApiEndpoint
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: apiEndpointID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: findApiEndpoint
+    steps:
+      - stepId: test
+        operationId: findApiEndpoint
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: displayName
+            in: path
+            value: Don.Strosin
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_endpoint_id": "\u003cid\u003e",
+                "api_id": "\u003cid\u003e",
+                "created_at": "2022-10-24T08:32:17.323Z",
+                "description": "before vastly mould boohoo er aboard",
+                "display_name": "Kevon_Ortiz2",
+                "method": "\u003cvalue\u003e",
+                "path": "/opt",
+                "updated_at": "2023-11-17T00:18:25.893Z",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: generateOpenApiSpecForApiEndpoint
+    steps:
+      - stepId: test
+        operationId: generateOpenApiSpecForApiEndpoint
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: apiEndpointID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "current_schema": "\u003cvalue\u003e",
+                "new_schema": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: generatePostmanCollectionForApiEndpoint
+    steps:
+      - stepId: test
+        operationId: generatePostmanCollectionForApiEndpoint
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: apiEndpointID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: getAllApiEndpoints
+    steps:
+      - stepId: test
+        operationId: getAllApiEndpoints
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "api_endpoint_id": "\u003cid\u003e",
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2023-01-29T03:25:40.769Z",
+                  "description": "proliferate anenst gadzooks gosh without frightfully",
+                  "display_name": "Mireille.Wolff",
+                  "method": "\u003cvalue\u003e",
+                  "path": "/boot/defaults",
+                  "updated_at": "2023-01-23T16:26:38.331Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "api_endpoint_id": "\u003cid\u003e",
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2022-09-08T17:07:17.627Z",
+                  "description": "remark whoever for ignorance yahoo integer competent really tempting",
+                  "display_name": "Aliya.Hammes",
+                  "method": "\u003cvalue\u003e",
+                  "path": "/boot",
+                  "updated_at": "2024-01-01T08:51:16.176Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "api_endpoint_id": "\u003cid\u003e",
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2024-05-10T15:45:00.302Z",
+                  "description": "rudely acclaimed sentimental aircraft book",
+                  "display_name": "Cathrine_Cummerata",
+                  "method": "\u003cvalue\u003e",
+                  "path": "/opt/lib",
+                  "updated_at": "2024-11-01T08:41:53.910Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: getAllForVersionApiEndpoints
+    steps:
+      - stepId: test
+        operationId: getAllForVersionApiEndpoints
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "api_endpoint_id": "\u003cid\u003e",
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2024-06-17T00:07:30.468Z",
+                  "description": "cutover knottily productive thump scrabble abaft gracious pulp",
+                  "display_name": "Alek.Kunze41",
+                  "method": "\u003cvalue\u003e",
+                  "path": "/home/user",
+                  "updated_at": "2024-07-27T06:29:44.391Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "api_endpoint_id": "\u003cid\u003e",
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2022-06-22T07:41:12.922Z",
+                  "description": "sparse obligation er honorable offensively shallow",
+                  "display_name": "Jarrell82",
+                  "method": "\u003cvalue\u003e",
+                  "path": "/sys",
+                  "updated_at": "2024-08-17T07:17:55.780Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "api_endpoint_id": "\u003cid\u003e",
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2023-06-20T19:40:53.688Z",
+                  "description": "yieldingly widow blah phooey uh-huh corny fess",
+                  "display_name": "Moshe.Streich",
+                  "method": "\u003cvalue\u003e",
+                  "path": "/selinux",
+                  "updated_at": "2023-07-07T21:35:49.283Z",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: getApiEndpoint
+    steps:
+      - stepId: test
+        operationId: getApiEndpoint
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: apiEndpointID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_endpoint_id": "\u003cid\u003e",
+                "api_id": "\u003cid\u003e",
+                "created_at": "2024-12-16T12:54:48.841Z",
+                "description": "self-reliant till before and pick openly boo",
+                "display_name": "Frankie_Brown",
+                "method": "\u003cvalue\u003e",
+                "path": "/media",
+                "updated_at": "2022-12-01T02:36:45.697Z",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: upsertApiEndpoint
+    steps:
+      - stepId: test
+        operationId: upsertApiEndpoint
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: apiEndpointID
+            in: path
+            value: <value>
+        requestBody:
+          contentType: application/json
+          payload:
+            api_endpoint_id: <value>
+            description: Public-key systematic attitude
+            display_name: Camille.Schaefer11
+            method: <value>
+            path: /Library
+            version_id: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_endpoint_id": "\u003cid\u003e",
+                "api_id": "\u003cid\u003e",
+                "created_at": "2024-01-26T09:16:09.166Z",
+                "description": "micromanage shinny ick",
+                "display_name": "Eric.Lind",
+                "method": "\u003cvalue\u003e",
+                "path": "/usr/ports",
+                "updated_at": "2023-12-15T07:22:38.446Z",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: ApiEndpoints
+  - workflowId: deleteVersionMetadata
+    steps:
+      - stepId: test
+        operationId: deleteVersionMetadata
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: metaKey
+            in: path
+            value: <value>
+          - name: metaValue
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Metadata
+  - workflowId: getVersionMetadata
+    steps:
+      - stepId: test
+        operationId: getVersionMetadata
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "api_id": "\u003cid\u003e",
+                  "created_at": "2022-06-27T04:40:43.913Z",
+                  "meta_key": "\u003cvalue\u003e",
+                  "meta_value": "\u003cvalue\u003e",
+                  "version_id": "\u003cid\u003e",
+                  "workspace_id": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Metadata
+  - workflowId: insertVersionMetadata
+    steps:
+      - stepId: test
+        operationId: insertVersionMetadata
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        requestBody:
+          contentType: application/json
+          payload:
+            meta_key: <value>
+            meta_value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_id": "\u003cid\u003e",
+                "created_at": "2022-03-18T13:32:09.275Z",
+                "meta_key": "\u003cvalue\u003e",
+                "meta_value": "\u003cvalue\u003e",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Metadata
+  - workflowId: deleteSchema
+    steps:
+      - stepId: test
+        operationId: deleteSchema
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: revisionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Schemas
+  - workflowId: getSchema
+    steps:
+      - stepId: test
+        operationId: getSchema
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_id": "\u003cid\u003e",
+                "created_at": "2022-09-09T00:58:17.727Z",
+                "description": "polyester instead slowly than safely meh appropriate heroine free",
+                "revision_id": "\u003cid\u003e",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Schemas
+  - workflowId: getSchemaDiff
+    steps:
+      - stepId: test
+        operationId: getSchemaDiff
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: baseRevisionID
+            in: path
+            value: <value>
+          - name: targetRevisionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "additions": [],
+                "deletions": [
+                  "\u003cvalue\u003e",
+                  "\u003cvalue\u003e"
+                ],
+                "modifications": {}
+              }
+            type: simple
+    x-speakeasy-test-group: Schemas
+  - workflowId: getSchemaRevision
+    steps:
+      - stepId: test
+        operationId: getSchemaRevision
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+          - name: revisionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "api_id": "\u003cid\u003e",
+                "created_at": "2022-01-23T10:21:45.479Z",
+                "description": "woot neaten whoever submitter upon altruistic regarding",
+                "revision_id": "\u003cid\u003e",
+                "version_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Schemas
+  - workflowId: getSchemas
+    steps:
+      - stepId: test
+        operationId: getSchemas
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              []
+            type: simple
+    x-speakeasy-test-group: Schemas
+  - workflowId: registerSchema
+    steps:
+      - stepId: test
+        operationId: registerSchema
+        parameters:
+          - name: apiID
+            in: path
+            value: <value>
+          - name: versionID
+            in: path
+            value: <value>
+        requestBody:
+          contentType: multipart/form-data
+          payload:
+            file:
+              "": example.file
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Schemas
+  - workflowId: createRemoteSource
+    steps:
+      - stepId: test
+        operationId: createRemoteSource
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Artifacts
+  - workflowId: getBlob
+    steps:
+      - stepId: test
+        operationId: getBlob
+        parameters:
+          - name: organization_slug
+            in: path
+            value: <value>
+          - name: workspace_slug
+            in: path
+            value: <value>
+          - name: namespace_name
+            in: path
+            value: <value>
+          - name: digest
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Artifacts
+  - workflowId: getManifest
+    steps:
+      - stepId: test
+        operationId: getManifest
+        parameters:
+          - name: organization_slug
+            in: path
+            value: <value>
+          - name: workspace_slug
+            in: path
+            value: <value>
+          - name: namespace_name
+            in: path
+            value: <value>
+          - name: revision_reference
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/vnd.oci.image.manifest.v1+json
+          - context: $response.body
+            condition: |
+              {
+                "layers": [
+                  {
+                    "digest": "sha256:5d20c808ce198565ff70b3ed23a991dd49afac45dece63474b27ce6ed036adc6",
+                    "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                    "size": 2107098
+                  }
+                ],
+                "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+                "schemaVersion": 2
+              }
+            type: simple
+    x-speakeasy-test-group: Artifacts
+  - workflowId: getNamespaces
+    steps:
+      - stepId: test
+        operationId: getNamespaces
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": [
+                  {
+                    "created_at": "2024-01-20T10:11:46.428Z",
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "updated_at": "2022-01-07T04:43:36.873Z"
+                  },
+                  {
+                    "created_at": "2023-07-06T07:26:30.970Z",
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "updated_at": "2024-01-31T11:34:19.590Z"
+                  },
+                  {
+                    "created_at": "2022-08-10T13:43:30.983Z",
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "updated_at": "2022-07-15T08:41:36.371Z"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: Artifacts
+  - workflowId: getRevisions
+    steps:
+      - stepId: test
+        operationId: getRevisions
+        parameters:
+          - name: namespace_name
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": [
+                  {
+                    "created_at": "2024-09-16T19:17:04.361Z",
+                    "digest": "sha256:6d1ef012b5674ad8a127ecfa9b5e6f5178d171b90ee462846974177fd9bdd39f",
+                    "id": "\u003cid\u003e",
+                    "namespace_name": "\u003cvalue\u003e",
+                    "tags": [
+                      "\u003cvalue\u003e"
+                    ],
+                    "updated_at": "2023-12-06T05:58:38.953Z"
+                  }
+                ],
+                "next_page_token": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Artifacts
+  - workflowId: getTags
+    steps:
+      - stepId: test
+        operationId: getTags
+        parameters:
+          - name: namespace_name
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "items": []
+              }
+            type: simple
+    x-speakeasy-test-group: Artifacts
+  - workflowId: listRemoteSources
+    steps:
+      - stepId: test
+        operationId: listRemoteSources
+        parameters:
+          - name: namespace_name
+            in: query
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "inputs": [
+                  {
+                    "registry_url": "https://well-lit-cap.net"
+                  },
+                  {
+                    "registry_url": "https://vibrant-labourer.net"
+                  }
+                ],
+                "output": {
+                  "registry_url": "https://unfit-minor.biz"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Artifacts
+  - workflowId: postTags
+    steps:
+      - stepId: test
+        operationId: postTags
+        parameters:
+          - name: namespace_name
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Artifacts
+  - workflowId: setVisibility
+    steps:
+      - stepId: test
+        operationId: setVisibility
+        parameters:
+          - name: namespace_name
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Artifacts
+  - workflowId: getWorkspaceAccess
+    steps:
+      - stepId: test
+        operationId: getWorkspaceAccess
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "generation_allowed": true,
+                "message": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Auth
+  - workflowId: getAccessToken
+    steps:
+      - stepId: test
+        operationId: getAccessToken
+        parameters:
+          - name: workspace_id
+            in: query
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "access_token": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Auth
+  - workflowId: getUser
+    steps:
+      - stepId: test
+        operationId: getUser
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "admin": false,
+                "confirmed": true,
+                "created_at": "2024-09-05T08:59:40.988Z",
+                "display_name": "Tianna_Prohaska",
+                "email": "Morton82@gmail.com",
+                "email_verified": false,
+                "id": "\u003cid\u003e",
+                "updated_at": "2022-08-28T03:26:52.335Z",
+                "whitelisted": true
+              }
+            type: simple
+    x-speakeasy-test-group: Auth
+  - workflowId: validateApiKey
+    steps:
+      - stepId: test
+        operationId: validateApiKey
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "account_type_v2": "enterprise",
+                "enabled_features": [
+                  "\u003cvalue\u003e",
+                  "\u003cvalue\u003e",
+                  "\u003cvalue\u003e"
+                ],
+                "org_slug": "\u003cvalue\u003e",
+                "telemetry_disabled": true,
+                "workspace_created_at": "2024-04-24T00:30:38.626Z",
+                "workspace_id": "\u003cid\u003e",
+                "workspace_slug": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Auth
+  - workflowId: generateRequestPostmanCollection
+    steps:
+      - stepId: test
+        operationId: generateRequestPostmanCollection
+        parameters:
+          - name: requestID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Requests
+  - workflowId: getRequestFromEventLog
+    steps:
+      - stepId: test
+        operationId: getRequestFromEventLog
+        parameters:
+          - name: requestID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created_at": "2024-07-06T20:33:24.477Z",
+                "har": "\u003cvalue\u003e",
+                "har_size_bytes": 659422,
+                "request_id": "\u003cid\u003e",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Requests
+  - workflowId: checkGithubAccess
+    steps:
+      - stepId: test
+        operationId: checkGithubAccess
+        parameters:
+          - name: org
+            in: query
+            value: <value>
+          - name: repo
+            in: query
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Github
+  - workflowId: githubConfigureCodeSamples
+    steps:
+      - stepId: test
+        operationId: githubConfigureCodeSamples
+        requestBody:
+          contentType: application/json
+          payload:
+            org: <value>
+            repo: <value>
+            targetName: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "codeSampleOverlayRegistryURL": "https://giving-handover.net",
+                "source": {
+                  "location": "\u003cvalue\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Github
+  - workflowId: githubConfigureMintlifyRepo
+    steps:
+      - stepId: test
+        operationId: githubConfigureMintlifyRepo
+        requestBody:
+          contentType: application/json
+          payload:
+            input: <value>
+            org: <value>
+            overlays:
+              - <value>
+            repo: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Github
+  - workflowId: githubConfigureTarget
+    steps:
+      - stepId: test
+        operationId: githubConfigureTarget
+        requestBody:
+          contentType: application/json
+          payload:
+            org: <value>
+            repo_name: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Github
+  - workflowId: getGithubSetupState
+    steps:
+      - stepId: test
+        operationId: getGithubSetupState
+        parameters:
+          - name: org
+            in: query
+            value: <value>
+          - name: repo
+            in: query
+            value: <value>
+          - name: generate_gen_lock_id
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "actions": {
+                  "generation_action_configured": false,
+                  "publish_action_configured": false
+                },
+                "app_installed": false,
+                "secrets": {
+                  "api_key_configured": true,
+                  "publishing_secrets_configured": true
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Github
+  - workflowId: linkGithubAccess
+    steps:
+      - stepId: test
+        operationId: linkGithubAccess
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Github
+  - workflowId: githubStorePublishingSecrets
+    steps:
+      - stepId: test
+        operationId: githubStorePublishingSecrets
+        requestBody:
+          contentType: application/json
+          payload:
+            generate_gen_lock_id: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Github
+  - workflowId: githubTriggerAction
+    steps:
+      - stepId: test
+        operationId: githubTriggerAction
+        requestBody:
+          contentType: application/json
+          payload:
+            gen_lock_id: <id>
+            org: <value>
+            repo_name: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Github
+  - workflowId: createOrganization
+    steps:
+      - stepId: test
+        operationId: createOrganization
+        requestBody:
+          contentType: application/json
+          payload:
+            account_type: scale-up
+            created_at: "2023-12-01T17:06:07.804Z"
+            id: <id>
+            name: <value>
+            slug: <value>
+            sso_activated: true
+            telemetry_disabled: true
+            updated_at: "2022-05-28T06:20:22.766Z"
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "account_type": "free",
+                "created_at": "2024-05-22T22:27:14.379Z",
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "slug": "\u003cvalue\u003e",
+                "sso_activated": false,
+                "telemetry_disabled": false,
+                "updated_at": "2022-01-01T02:16:41.381Z"
+              }
+            type: simple
+    x-speakeasy-test-group: Organizations
+  - workflowId: createFreeTrial
+    steps:
+      - stepId: test
+        operationId: createFreeTrial
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Organizations
+  - workflowId: getOrganization
+    steps:
+      - stepId: test
+        operationId: getOrganization
+        parameters:
+          - name: organizationID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "account_type": "business",
+                "created_at": "2023-09-05T11:33:52.011Z",
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "slug": "\u003cvalue\u003e",
+                "sso_activated": false,
+                "telemetry_disabled": false,
+                "updated_at": "2023-07-26T06:33:15.810Z"
+              }
+            type: simple
+    x-speakeasy-test-group: Organizations
+  - workflowId: getOrganizations
+    steps:
+      - stepId: test
+        operationId: getOrganizations
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "account_type": "free",
+                  "created_at": "2023-10-18T22:25:06.537Z",
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "slug": "\u003cvalue\u003e",
+                  "sso_activated": true,
+                  "telemetry_disabled": false,
+                  "updated_at": "2022-01-18T20:59:19.735Z"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Organizations
+  - workflowId: getOrganizationUsage
+    steps:
+      - stepId: test
+        operationId: getOrganizationUsage
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "allowed_languages": [],
+                "total_allowed_languages": 863126,
+                "usage": [
+                  {
+                    "accessible": false,
+                    "accessible_features": [
+                      "\u003cvalue\u003e"
+                    ],
+                    "gen_lock_ids": [
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e"
+                    ],
+                    "language": "\u003cvalue\u003e",
+                    "max_operations": 224089,
+                    "number_of_operations": 939867,
+                    "used_features": [
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e"
+                    ],
+                    "workspaces": [
+                      "\u003cvalue\u003e"
+                    ]
+                  },
+                  {
+                    "accessible": false,
+                    "accessible_features": [
+                      "\u003cvalue\u003e"
+                    ],
+                    "gen_lock_ids": [
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e"
+                    ],
+                    "language": "\u003cvalue\u003e",
+                    "max_operations": 863126,
+                    "number_of_operations": 478406,
+                    "used_features": [
+                      "\u003cvalue\u003e",
+                      "\u003cvalue\u003e"
+                    ],
+                    "workspaces": [
+                      "\u003cvalue\u003e"
+                    ]
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: Organizations
+  - workflowId: getChangesReportSignedUrl
+    steps:
+      - stepId: test
+        operationId: getChangesReportSignedUrl
+        parameters:
+          - name: documentChecksum
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "https://rosy-masterpiece.biz/"
+              }
+            type: simple
+    x-speakeasy-test-group: Reports
+  - workflowId: getLintingReportSignedUrl
+    steps:
+      - stepId: test
+        operationId: getLintingReportSignedUrl
+        parameters:
+          - name: documentChecksum
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "https://negligible-merit.info"
+              }
+            type: simple
+    x-speakeasy-test-group: Reports
+  - workflowId: uploadReport
+    steps:
+      - stepId: test
+        operationId: uploadReport
+        requestBody:
+          contentType: multipart/form-data
+          payload:
+            file:
+              "": example.file
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "https://cluttered-stall.info"
+              }
+            type: simple
+    x-speakeasy-test-group: Reports
+  - workflowId: create
+    steps:
+      - stepId: test
+        operationId: create
+        requestBody:
+          contentType: application/json
+          payload:
+            url: http://limp-pastry.org
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "full_url": "https://probable-heating.com/",
+                "short_url": "https://standard-utilization.com/"
+              }
+            type: simple
+    x-speakeasy-test-group: ShortURLs
+  - workflowId: suggestItems
+    steps:
+      - stepId: test
+        operationId: suggestItems
+        requestBody:
+          contentType: application/json
+          payload:
+            items: []
+            prompt: <value>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                "\u003cvalue\u003e",
+                "\u003cvalue\u003e"
+              ]
+            type: simple
+    x-speakeasy-test-group: Suggest
+  - workflowId: createWorkspace
+    steps:
+      - stepId: test
+        operationId: createWorkspace
+        requestBody:
+          contentType: application/json
+          payload:
+            created_at: "2023-06-18T07:14:55.338Z"
+            id: <id>
+            name: <value>
+            organization_id: <id>
+            slug: <value>
+            telemetry_disabled: false
+            updated_at: "2023-04-03T12:48:32.253Z"
+            verified: true
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created_at": "2022-03-17T15:39:20.911Z",
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "organization_id": "\u003cid\u003e",
+                "slug": "\u003cvalue\u003e",
+                "telemetry_disabled": false,
+                "updated_at": "2024-11-08T08:43:39.394Z",
+                "verified": true
+              }
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: getWorkspaceByContext
+    steps:
+      - stepId: test
+        operationId: getWorkspaceByContext
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "organization": {
+                  "account_type": "business",
+                  "created_at": "2023-09-05T11:33:52.011Z",
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "slug": "\u003cvalue\u003e",
+                  "sso_activated": false,
+                  "telemetry_disabled": false,
+                  "updated_at": "2023-07-26T06:33:15.810Z"
+                },
+                "workspace": {
+                  "created_at": "2024-11-29T01:50:48.954Z",
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "organization_id": "\u003cid\u003e",
+                  "slug": "\u003cvalue\u003e",
+                  "telemetry_disabled": true,
+                  "updated_at": "2023-05-10T02:28:23.533Z",
+                  "verified": true
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: getWorkspaces
+    steps:
+      - stepId: test
+        operationId: getWorkspaces
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "created_at": "2022-03-06T21:36:22.528Z",
+                  "id": "\u003cid\u003e",
+                  "name": "\u003cvalue\u003e",
+                  "organization_id": "\u003cid\u003e",
+                  "slug": "\u003cvalue\u003e",
+                  "telemetry_disabled": false,
+                  "updated_at": "2023-12-15T17:14:28.501Z",
+                  "verified": true
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: getWorkspace
+    steps:
+      - stepId: test
+        operationId: getWorkspace
+        parameters:
+          - name: workspace_id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created_at": "2024-11-17T10:14:22.985Z",
+                "id": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "organization_id": "\u003cid\u003e",
+                "slug": "\u003cvalue\u003e",
+                "telemetry_disabled": false,
+                "updated_at": "2024-10-23T07:17:30.329Z",
+                "verified": false
+              }
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: getWorkspaceFeatureFlags
+    steps:
+      - stepId: test
+        operationId: getWorkspaceFeatureFlags
+        parameters:
+          - name: workspace_id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Workspaces
+  - workflowId: getWorkspaceSettings
+    steps:
+      - stepId: test
+        operationId: getWorkspaceSettings
+        parameters:
+          - name: workspace_id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created_at": "2024-05-29T22:34:47.605Z",
+                "updated_at": "2023-02-24T21:50:01.663Z",
+                "webhook_url": "https://different-amendment.com/",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Workspaces
+  - workflowId: updateWorkspaceSettings
+    steps:
+      - stepId: test
+        operationId: updateWorkspaceSettings
+        parameters:
+          - name: workspace_id
+            in: path
+            value: <id>
+        requestBody:
+          contentType: application/json
+          payload:
+            created_at: "2022-07-05T11:43:28.305Z"
+            updated_at: "2023-05-15T05:39:21.874Z"
+            webhook_url: https://grown-pharmacopoeia.net
+            workspace_id: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Workspaces
+  - workflowId: getEmbedAccessToken
+    steps:
+      - stepId: test
+        operationId: getEmbedAccessToken
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "access_token": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Embeds
+  - workflowId: revokeEmbedAccessToken
+    steps:
+      - stepId: test
+        operationId: revokeEmbedAccessToken
+        parameters:
+          - name: tokenID
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Embeds
+  - workflowId: createSubscription
+    steps:
+      - stepId: test
+        operationId: createSubscription
+        parameters:
+          - name: workspace_id
+            in: path
+            value: <id>
+        requestBody:
+          contentType: application/json
+          payload:
+            created_at: "2022-06-08T17:58:57.702Z"
+            event_type: update
+            id: <id>
+            namespace_name: <value>
+            subscription_settings: <value>
+            subscription_type: cli
+            updated_at: "2022-07-20T08:51:35.776Z"
+            workspace_id: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created_at": "2022-03-27T15:41:56.125Z",
+                "event_type": "update",
+                "id": "\u003cid\u003e",
+                "namespace_name": "\u003cvalue\u003e",
+                "subscription_settings": "\u003cvalue\u003e",
+                "subscription_type": "cli",
+                "updated_at": "2023-07-24T03:56:06.003Z",
+                "workspace_id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: Subscriptions
+  - workflowId: listRegistrySubscriptions
+    steps:
+      - stepId: test
+        operationId: listRegistrySubscriptions
+        parameters:
+          - name: workspace_id
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "created_at": "2022-12-26T20:06:41.993Z",
+                  "event_type": "update",
+                  "id": "\u003cid\u003e",
+                  "namespace_name": "\u003cvalue\u003e",
+                  "subscription_settings": "\u003cvalue\u003e",
+                  "subscription_type": "cli",
+                  "updated_at": "2023-10-12T18:58:27.338Z",
+                  "workspace_id": "\u003cid\u003e"
+                },
+                {
+                  "created_at": "2022-07-07T11:51:20.859Z",
+                  "event_type": "update",
+                  "id": "\u003cid\u003e",
+                  "namespace_name": "\u003cvalue\u003e",
+                  "subscription_settings": "\u003cvalue\u003e",
+                  "subscription_type": "cli",
+                  "updated_at": "2022-03-26T04:16:26.649Z",
+                  "workspace_id": "\u003cid\u003e"
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: Subscriptions
