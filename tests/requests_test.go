@@ -3,55 +3,13 @@
 package tests
 
 import (
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"testing"
 )
 
 func TestRequests_GenerateRequestPostmanCollection(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("generateRequestPostmanCollection")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Requests.GenerateRequestPostmanCollection(ctx, operations.GenerateRequestPostmanCollectionRequest{
-		RequestID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step generateRequestPostmanCollection.test referencing operation generateRequestPostmanCollection not found in document`]")
 }
 
 func TestRequests_GetRequestFromEventLog(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getRequestFromEventLog")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Requests.GetRequestFromEventLog(ctx, operations.GetRequestFromEventLogRequest{
-		RequestID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.UnboundedRequest)
-	assert.Equal(t, &shared.UnboundedRequest{
-		CreatedAt:    types.MustTimeFromString("2024-07-06T20:33:24.477Z"),
-		Har:          "<value>",
-		HarSizeBytes: 659422,
-		RequestID:    "<id>",
-		WorkspaceID:  "<id>",
-	}, res.UnboundedRequest)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getRequestFromEventLog.test referencing operation getRequestFromEventLog not found in document`]")
 }

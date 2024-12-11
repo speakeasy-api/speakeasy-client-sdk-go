@@ -15,6 +15,8 @@ import (
 )
 
 func TestWorkspaces_CreateWorkspace(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createWorkspace")),
@@ -23,7 +25,6 @@ func TestWorkspaces_CreateWorkspace(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.Create(ctx, shared.Workspace{
 		CreatedAt:         types.MustTimeFromString("2023-06-18T07:14:55.338Z"),
 		ID:                "<id>",
@@ -47,9 +48,12 @@ func TestWorkspaces_CreateWorkspace(t *testing.T) {
 		UpdatedAt:         types.MustTimeFromString("2024-11-08T08:43:39.394Z"),
 		Verified:          true,
 	}, res.Workspace)
+
 }
 
 func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceByContext")),
@@ -58,7 +62,6 @@ func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.Get(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -85,9 +88,12 @@ func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
 			Verified:          true,
 		},
 	}, res.WorkspaceAndOrganization)
+
 }
 
 func TestWorkspaces_GetWorkspaces(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaces")),
@@ -96,7 +102,6 @@ func TestWorkspaces_GetWorkspaces(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.GetAll(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -113,9 +118,12 @@ func TestWorkspaces_GetWorkspaces(t *testing.T) {
 			Verified:          true,
 		},
 	}, res.Workspaces)
+
 }
 
 func TestWorkspaces_GetWorkspace(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspace")),
@@ -124,7 +132,6 @@ func TestWorkspaces_GetWorkspace(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -139,9 +146,12 @@ func TestWorkspaces_GetWorkspace(t *testing.T) {
 		UpdatedAt:         types.MustTimeFromString("2024-10-23T07:17:30.329Z"),
 		Verified:          false,
 	}, res.Workspace)
+
 }
 
 func TestWorkspaces_GetWorkspaceFeatureFlags(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceFeatureFlags")),
@@ -150,13 +160,15 @@ func TestWorkspaces_GetWorkspaceFeatureFlags(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceSettings")),
@@ -165,7 +177,6 @@ func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -176,9 +187,12 @@ func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
 		WebhookURL:  "https://different-amendment.com/",
 		WorkspaceID: "<id>",
 	}, res.WorkspaceSettings)
+
 }
 
 func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("updateWorkspaceSettings")),
@@ -187,7 +201,6 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
 		WorkspaceSettings: shared.WorkspaceSettings{
 			CreatedAt:   types.MustTimeFromString("2022-07-05T11:43:28.305Z"),
@@ -198,4 +211,5 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }

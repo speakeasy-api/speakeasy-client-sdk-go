@@ -3,27 +3,32 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/utils"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathGetV1WorkspaceWorkspaceIDFeatureFlags(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathGetV1WorkspaceWorkspaceIDFeatureFlags(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "getWorkspaceFeatureFlags":
-			dir.HandlerFunc("getWorkspaceFeatureFlags", testGetWorkspaceFeatureFlagsGetWorkspaceFeatureFlags)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "getWorkspaceFeatureFlags[0]":
+			dir.HandlerFunc("getWorkspaceFeatureFlags", testGetWorkspaceFeatureFlagsGetWorkspaceFeatureFlags0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetWorkspaceFeatureFlagsGetWorkspaceFeatureFlags(w http.ResponseWriter, req *http.Request) {
+func testGetWorkspaceFeatureFlagsGetWorkspaceFeatureFlags0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

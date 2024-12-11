@@ -11,7 +11,7 @@ import (
 func (s *Server) registerGeneratedHandlers(ctx context.Context) {
 	s.logger.Debug("registering generated handlers")
 
-	for _, h := range handler.GeneratedHandlers(ctx, s.httpFileDir) {
+	for _, h := range handler.GeneratedHandlers(ctx, s.httpFileDir, s.requestTracker) {
 		s.RegisterHandlerFunc(ctx, h.HandlerPattern(), h.HandlerFunc())
 	}
 }

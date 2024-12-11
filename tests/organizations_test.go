@@ -15,6 +15,8 @@ import (
 )
 
 func TestOrganizations_CreateOrganization(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createOrganization")),
@@ -23,7 +25,6 @@ func TestOrganizations_CreateOrganization(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Organizations.Create(ctx, shared.Organization{
 		AccountType:       shared.AccountTypeScaleUp,
 		CreatedAt:         types.MustTimeFromString("2023-12-01T17:06:07.804Z"),
@@ -47,9 +48,12 @@ func TestOrganizations_CreateOrganization(t *testing.T) {
 		TelemetryDisabled: false,
 		UpdatedAt:         types.MustTimeFromString("2022-01-01T02:16:41.381Z"),
 	}, res.Organization)
+
 }
 
 func TestOrganizations_CreateFreeTrial(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createFreeTrial")),
@@ -58,13 +62,15 @@ func TestOrganizations_CreateFreeTrial(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Organizations.CreateFreeTrial(ctx)
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestOrganizations_GetOrganization(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getOrganization")),
@@ -73,7 +79,6 @@ func TestOrganizations_GetOrganization(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Organizations.Get(ctx, operations.GetOrganizationRequest{
 		OrganizationID: "<value>",
 	})
@@ -90,9 +95,12 @@ func TestOrganizations_GetOrganization(t *testing.T) {
 		TelemetryDisabled: false,
 		UpdatedAt:         types.MustTimeFromString("2023-07-26T06:33:15.810Z"),
 	}, res.Organization)
+
 }
 
 func TestOrganizations_GetOrganizations(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getOrganizations")),
@@ -101,7 +109,6 @@ func TestOrganizations_GetOrganizations(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Organizations.GetAll(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -118,9 +125,12 @@ func TestOrganizations_GetOrganizations(t *testing.T) {
 			UpdatedAt:         types.MustTimeFromString("2022-01-18T20:59:19.735Z"),
 		},
 	}, res.Organizations)
+
 }
 
 func TestOrganizations_GetOrganizationUsage(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getOrganizationUsage")),
@@ -129,7 +139,6 @@ func TestOrganizations_GetOrganizationUsage(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Organizations.GetUsage(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -185,4 +194,5 @@ func TestOrganizations_GetOrganizationUsage(t *testing.T) {
 			},
 		},
 	}, res.OrganizationUsageResponse)
+
 }

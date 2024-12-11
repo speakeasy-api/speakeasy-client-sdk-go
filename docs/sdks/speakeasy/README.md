@@ -23,14 +23,16 @@ This endpoint generates Code Sample previews from a file and configuration param
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"os"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
@@ -42,7 +44,7 @@ func main() {
         panic(fileErr)
     }
 
-    ctx := context.Background()
+
     res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
         Languages: []string{
             "<value>",
@@ -90,14 +92,16 @@ This endpoint generates Code Sample previews from a file and configuration param
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"os"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
@@ -109,7 +113,7 @@ func main() {
         panic(fileErr)
     }
 
-    ctx := context.Background()
+
     res, err := s.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
         Languages: []string{
             "<value>",
@@ -158,21 +162,22 @@ Poll for the result of an asynchronous Code Sample preview generation.
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.GetCodeSamplePreviewAsync(ctx, operations.GetCodeSamplePreviewAsyncRequest{
         JobID: "<id>",
     })

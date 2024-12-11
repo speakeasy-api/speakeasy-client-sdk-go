@@ -15,6 +15,8 @@ import (
 )
 
 func TestSubscriptions_CreateSubscription(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createSubscription")),
@@ -23,7 +25,6 @@ func TestSubscriptions_CreateSubscription(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
 		RegistrySubscription: shared.RegistrySubscription{
 			CreatedAt:            types.MustTimeFromString("2022-06-08T17:58:57.702Z"),
@@ -49,9 +50,12 @@ func TestSubscriptions_CreateSubscription(t *testing.T) {
 		UpdatedAt:            types.MustTimeFromString("2023-07-24T03:56:06.003Z"),
 		WorkspaceID:          "<id>",
 	}, res.RegistrySubscription)
+
 }
 
 func TestSubscriptions_ListRegistrySubscriptions(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("listRegistrySubscriptions")),
@@ -60,7 +64,6 @@ func TestSubscriptions_ListRegistrySubscriptions(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -87,4 +90,5 @@ func TestSubscriptions_ListRegistrySubscriptions(t *testing.T) {
 			WorkspaceID:          "<id>",
 		},
 	}, res.Classes)
+
 }

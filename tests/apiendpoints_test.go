@@ -3,292 +3,37 @@
 package tests
 
 import (
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"testing"
 )
 
 func TestApiendpoints_DeleteAPIEndpoint(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("deleteApiEndpoint")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.DeleteAPIEndpoint(ctx, operations.DeleteAPIEndpointRequest{
-		APIEndpointID: "<value>",
-		APIID:         "<value>",
-		VersionID:     "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step deleteApiEndpoint.test referencing operation deleteApiEndpoint not found in document`]")
 }
 
 func TestApiendpoints_FindAPIEndpoint(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("findApiEndpoint")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.FindAPIEndpoint(ctx, operations.FindAPIEndpointRequest{
-		APIID:       "<value>",
-		DisplayName: "Don.Strosin",
-		VersionID:   "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.APIEndpoint)
-	assert.Equal(t, &shared.APIEndpoint{
-		APIEndpointID: "<id>",
-		APIID:         "<id>",
-		CreatedAt:     types.MustTimeFromString("2022-10-24T08:32:17.323Z"),
-		Description:   "before vastly mould boohoo er aboard",
-		DisplayName:   "Kevon_Ortiz2",
-		Method:        "<value>",
-		Path:          "/opt",
-		UpdatedAt:     types.MustTimeFromString("2023-11-17T00:18:25.893Z"),
-		VersionID:     "<id>",
-		WorkspaceID:   "<id>",
-	}, res.APIEndpoint)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step findApiEndpoint.test referencing operation findApiEndpoint not found in document`]")
 }
 
 func TestApiendpoints_GenerateOpenAPISpecForAPIEndpoint(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("generateOpenApiSpecForApiEndpoint")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.GenerateOpenAPISpecForAPIEndpoint(ctx, operations.GenerateOpenAPISpecForAPIEndpointRequest{
-		APIEndpointID: "<value>",
-		APIID:         "<value>",
-		VersionID:     "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.GenerateOpenAPISpecDiff)
-	assert.Equal(t, &shared.GenerateOpenAPISpecDiff{
-		CurrentSchema: "<value>",
-		NewSchema:     "<value>",
-	}, res.GenerateOpenAPISpecDiff)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step generateOpenApiSpecForApiEndpoint.test referencing operation generateOpenApiSpecForApiEndpoint not found in document`]")
 }
 
 func TestApiendpoints_GeneratePostmanCollectionForAPIEndpoint(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("generatePostmanCollectionForApiEndpoint")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.GeneratePostmanCollectionForAPIEndpoint(ctx, operations.GeneratePostmanCollectionForAPIEndpointRequest{
-		APIEndpointID: "<value>",
-		APIID:         "<value>",
-		VersionID:     "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step generatePostmanCollectionForApiEndpoint.test referencing operation generatePostmanCollectionForApiEndpoint not found in document`]")
 }
 
 func TestApiendpoints_GetAllAPIEndpoints(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getAllApiEndpoints")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.GetAllAPIEndpoints(ctx, operations.GetAllAPIEndpointsRequest{
-		APIID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.APIEndpoints)
-	assert.Equal(t, []shared.APIEndpoint{
-		shared.APIEndpoint{
-			APIEndpointID: "<id>",
-			APIID:         "<id>",
-			CreatedAt:     types.MustTimeFromString("2023-01-29T03:25:40.769Z"),
-			Description:   "proliferate anenst gadzooks gosh without frightfully",
-			DisplayName:   "Mireille.Wolff",
-			Method:        "<value>",
-			Path:          "/boot/defaults",
-			UpdatedAt:     types.MustTimeFromString("2023-01-23T16:26:38.331Z"),
-			VersionID:     "<id>",
-			WorkspaceID:   "<id>",
-		},
-		shared.APIEndpoint{
-			APIEndpointID: "<id>",
-			APIID:         "<id>",
-			CreatedAt:     types.MustTimeFromString("2022-09-08T17:07:17.627Z"),
-			Description:   "remark whoever for ignorance yahoo integer competent really tempting",
-			DisplayName:   "Aliya.Hammes",
-			Method:        "<value>",
-			Path:          "/boot",
-			UpdatedAt:     types.MustTimeFromString("2024-01-01T08:51:16.176Z"),
-			VersionID:     "<id>",
-			WorkspaceID:   "<id>",
-		},
-		shared.APIEndpoint{
-			APIEndpointID: "<id>",
-			APIID:         "<id>",
-			CreatedAt:     types.MustTimeFromString("2024-05-10T15:45:00.302Z"),
-			Description:   "rudely acclaimed sentimental aircraft book",
-			DisplayName:   "Cathrine_Cummerata",
-			Method:        "<value>",
-			Path:          "/opt/lib",
-			UpdatedAt:     types.MustTimeFromString("2024-11-01T08:41:53.910Z"),
-			VersionID:     "<id>",
-			WorkspaceID:   "<id>",
-		},
-	}, res.APIEndpoints)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getAllApiEndpoints.test referencing operation getAllApiEndpoints not found in document`]")
 }
 
 func TestApiendpoints_GetAllForVersionAPIEndpoints(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getAllForVersionApiEndpoints")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.GetAllForVersionAPIEndpoints(ctx, operations.GetAllForVersionAPIEndpointsRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.APIEndpoints)
-	assert.Equal(t, []shared.APIEndpoint{
-		shared.APIEndpoint{
-			APIEndpointID: "<id>",
-			APIID:         "<id>",
-			CreatedAt:     types.MustTimeFromString("2024-06-17T00:07:30.468Z"),
-			Description:   "cutover knottily productive thump scrabble abaft gracious pulp",
-			DisplayName:   "Alek.Kunze41",
-			Method:        "<value>",
-			Path:          "/home/user",
-			UpdatedAt:     types.MustTimeFromString("2024-07-27T06:29:44.391Z"),
-			VersionID:     "<id>",
-			WorkspaceID:   "<id>",
-		},
-		shared.APIEndpoint{
-			APIEndpointID: "<id>",
-			APIID:         "<id>",
-			CreatedAt:     types.MustTimeFromString("2022-06-22T07:41:12.922Z"),
-			Description:   "sparse obligation er honorable offensively shallow",
-			DisplayName:   "Jarrell82",
-			Method:        "<value>",
-			Path:          "/sys",
-			UpdatedAt:     types.MustTimeFromString("2024-08-17T07:17:55.780Z"),
-			VersionID:     "<id>",
-			WorkspaceID:   "<id>",
-		},
-		shared.APIEndpoint{
-			APIEndpointID: "<id>",
-			APIID:         "<id>",
-			CreatedAt:     types.MustTimeFromString("2023-06-20T19:40:53.688Z"),
-			Description:   "yieldingly widow blah phooey uh-huh corny fess",
-			DisplayName:   "Moshe.Streich",
-			Method:        "<value>",
-			Path:          "/selinux",
-			UpdatedAt:     types.MustTimeFromString("2023-07-07T21:35:49.283Z"),
-			VersionID:     "<id>",
-			WorkspaceID:   "<id>",
-		},
-	}, res.APIEndpoints)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getAllForVersionApiEndpoints.test referencing operation getAllForVersionApiEndpoints not found in document`]")
 }
 
 func TestApiendpoints_GetAPIEndpoint(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getApiEndpoint")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.GetAPIEndpoint(ctx, operations.GetAPIEndpointRequest{
-		APIEndpointID: "<value>",
-		APIID:         "<value>",
-		VersionID:     "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.APIEndpoint)
-	assert.Equal(t, &shared.APIEndpoint{
-		APIEndpointID: "<id>",
-		APIID:         "<id>",
-		CreatedAt:     types.MustTimeFromString("2024-12-16T12:54:48.841Z"),
-		Description:   "self-reliant till before and pick openly boo",
-		DisplayName:   "Frankie_Brown",
-		Method:        "<value>",
-		Path:          "/media",
-		UpdatedAt:     types.MustTimeFromString("2022-12-01T02:36:45.697Z"),
-		VersionID:     "<id>",
-		WorkspaceID:   "<id>",
-	}, res.APIEndpoint)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getApiEndpoint.test referencing operation getApiEndpoint not found in document`]")
 }
 
 func TestApiendpoints_UpsertAPIEndpoint(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("upsertApiEndpoint")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.APIEndpoints.UpsertAPIEndpoint(ctx, operations.UpsertAPIEndpointRequest{
-		APIEndpoint: shared.APIEndpointInput{
-			APIEndpointID: "<value>",
-			Description:   "Public-key systematic attitude",
-			DisplayName:   "Camille.Schaefer11",
-			Method:        "<value>",
-			Path:          "/Library",
-			VersionID:     "<value>",
-		},
-		APIEndpointID: "<value>",
-		APIID:         "<value>",
-		VersionID:     "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.APIEndpoint)
-	assert.Equal(t, &shared.APIEndpoint{
-		APIEndpointID: "<id>",
-		APIID:         "<id>",
-		CreatedAt:     types.MustTimeFromString("2024-01-26T09:16:09.166Z"),
-		Description:   "micromanage shinny ick",
-		DisplayName:   "Eric.Lind",
-		Method:        "<value>",
-		Path:          "/usr/ports",
-		UpdatedAt:     types.MustTimeFromString("2023-12-15T07:22:38.446Z"),
-		VersionID:     "<id>",
-		WorkspaceID:   "<id>",
-	}, res.APIEndpoint)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step upsertApiEndpoint.test referencing operation upsertApiEndpoint not found in document`]")
 }

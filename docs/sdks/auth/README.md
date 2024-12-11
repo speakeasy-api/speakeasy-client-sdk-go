@@ -22,21 +22,22 @@ Checks if generation is permitted for a particular run of the CLI
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Auth.GetAccess(ctx, operations.GetWorkspaceAccessRequest{})
     if err != nil {
         log.Fatal(err)
@@ -75,16 +76,17 @@ Get or refresh an access token for the current workspace.
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New()
 
-    ctx := context.Background()
     res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
         WorkspaceID: "<value>",
     })
@@ -126,20 +128,21 @@ Get information about the current user.
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Auth.GetUser(ctx)
     if err != nil {
         log.Fatal(err)
@@ -178,20 +181,21 @@ Validate the current api key.
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Auth.ValidateAPIKey(ctx)
     if err != nil {
         log.Fatal(err)

@@ -16,6 +16,7 @@ import (
 	"net/url"
 )
 
+// Organizations - REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
 type Organizations struct {
 	sdkConfiguration sdkConfiguration
 }

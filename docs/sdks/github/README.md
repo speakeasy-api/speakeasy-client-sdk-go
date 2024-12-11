@@ -3,6 +3,8 @@
 
 ## Overview
 
+REST APIs for managing the github integration
+
 ### Available Operations
 
 * [CheckAccess](#checkaccess)
@@ -25,21 +27,22 @@
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.CheckAccess(ctx, operations.CheckGithubAccessRequest{
         Org: "<value>",
         Repo: "<value>",
@@ -80,21 +83,22 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.CheckPublishingPRs(ctx, operations.GithubCheckPublishingPRsRequest{
         GenerateGenLockID: "<id>",
         Org: "<value>",
@@ -136,21 +140,22 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.CheckPublishingSecrets(ctx, operations.GithubCheckPublishingSecretsRequest{
         GenerateGenLockID: "<value>",
     })
@@ -190,20 +195,21 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.ConfigureCodeSamples(ctx, shared.GithubConfigureCodeSamplesRequest{
         Org: "<value>",
         Repo: "<value>",
@@ -245,20 +251,21 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.ConfigureMintlifyRepo(ctx, shared.GithubConfigureMintlifyRepoRequest{
         Input: "<value>",
         Org: "<value>",
@@ -303,20 +310,21 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.ConfigureTarget(ctx, shared.GithubConfigureTargetRequest{
         Org: "<value>",
         RepoName: "<value>",
@@ -357,21 +365,22 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.GetAction(ctx, operations.GetGitHubActionRequest{
         Org: "<value>",
         Repo: "<value>",
@@ -412,21 +421,22 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.GetSetup(ctx, operations.GetGithubSetupStateRequest{
         GenerateGenLockID: "<id>",
         Org: "<value>",
@@ -468,21 +478,22 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.LinkGithub(ctx, operations.LinkGithubAccessRequest{})
     if err != nil {
         log.Fatal(err)
@@ -520,20 +531,21 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.StorePublishingSecrets(ctx, shared.GithubStorePublishingSecretsRequest{
         GenerateGenLockID: "<value>",
     })
@@ -573,20 +585,21 @@ func main() {
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Github.TriggerAction(ctx, shared.GithubTriggerActionRequest{
         GenLockID: "<id>",
         Org: "<value>",

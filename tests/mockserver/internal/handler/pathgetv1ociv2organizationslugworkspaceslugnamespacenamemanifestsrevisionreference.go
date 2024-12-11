@@ -3,28 +3,33 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameManifestsRevisionReference(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameManifestsRevisionReference(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "getManifest":
-			dir.HandlerFunc("getManifest", testGetManifestGetManifest)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "getManifest[0]":
+			dir.HandlerFunc("getManifest", testGetManifestGetManifest0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetManifestGetManifest(w http.ResponseWriter, req *http.Request) {
+func testGetManifestGetManifest0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

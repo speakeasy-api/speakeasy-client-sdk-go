@@ -85,32 +85,23 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // /docs - The Speakeasy Platform Documentation
 type Speakeasy struct {
-	// REST APIs for managing Api entities
-	Apis *Apis
-	// REST APIs for managing ApiEndpoint entities
-	APIEndpoints *APIEndpoints
-	// REST APIs for managing Version Metadata entities
-	Metadata *Metadata
-	// REST APIs for managing Schema entities
-	Schemas *Schemas
 	// REST APIs for working with Registry artifacts
 	Artifacts *Artifacts
 	// REST APIs for managing Authentication
 	Auth *Auth
-	// REST APIs for retrieving request information
-	Requests      *Requests
-	Github        *Github
+	// REST APIs for managing the github integration
+	Github *Github
+	// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
 	Organizations *Organizations
-	// REST APIs for managing reports
+	// REST APIs for managing reports (lint reports, change reports, etc)
 	Reports *Reports
 	// REST APIs for managing short URLs
 	ShortURLs *ShortURLs
 	// REST APIs for managing LLM OAS suggestions
-	Suggest    *Suggest
+	Suggest *Suggest
+	// REST APIs for managing Workspaces (speakeasy tenancy)
 	Workspaces *Workspaces
-	// REST APIs for managing embeds
-	Embeds *Embeds
-	// REST APIs for capturing event data
+	// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 	Events *Events
 	// REST APIs for managing subscriptions
 	Subscriptions *Subscriptions
@@ -199,9 +190,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.16.4",
-			GenVersion:        "2.474.6",
-			UserAgent:         "speakeasy-sdk/go 3.16.4 2.474.6 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.17.0",
+			GenVersion:        "2.477.0",
+			UserAgent:         "speakeasy-sdk/go 3.17.0 2.477.0 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},
@@ -222,19 +213,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.Apis = newApis(sdk.sdkConfiguration)
-
-	sdk.APIEndpoints = newAPIEndpoints(sdk.sdkConfiguration)
-
-	sdk.Metadata = newMetadata(sdk.sdkConfiguration)
-
-	sdk.Schemas = newSchemas(sdk.sdkConfiguration)
-
 	sdk.Artifacts = newArtifacts(sdk.sdkConfiguration)
 
 	sdk.Auth = newAuth(sdk.sdkConfiguration)
-
-	sdk.Requests = newRequests(sdk.sdkConfiguration)
 
 	sdk.Github = newGithub(sdk.sdkConfiguration)
 
@@ -247,8 +228,6 @@ func New(opts ...SDKOption) *Speakeasy {
 	sdk.Suggest = newSuggest(sdk.sdkConfiguration)
 
 	sdk.Workspaces = newWorkspaces(sdk.sdkConfiguration)
-
-	sdk.Embeds = newEmbeds(sdk.sdkConfiguration)
 
 	sdk.Events = newEvents(sdk.sdkConfiguration)
 

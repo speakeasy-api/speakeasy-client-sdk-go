@@ -20,22 +20,23 @@ Create Subscription
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
         RegistrySubscription: shared.RegistrySubscription{
             CreatedAt: types.MustTimeFromString("2022-06-08T17:58:57.702Z"),
@@ -85,21 +86,22 @@ List Subscriptions
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})
     if err != nil {
         log.Fatal(err)

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 09696cca6dbcaa4fa372f51b4fa17ebc
+  docChecksum: cfe5bd9d0515c386691a5c79ddd69e6a
   docVersion: 0.4.0
-  speakeasyVersion: 1.453.6
-  generationVersion: 2.474.6
-  releaseVersion: 3.16.4
-  configChecksum: cca14eceabf404a11a3c874af43541ca
+  speakeasyVersion: 1.454.0
+  generationVersion: 2.477.0
+  releaseVersion: 3.17.0
+  configChecksum: 042fb7ab09508efb37621888514d41eb
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,18 +15,16 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.5.17
+    core: 3.5.18
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     downloadStreams: 0.1.2
     envVarSecurityUsage: 0.3.2
-    examples: 2.81.3
     globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
     globals: 2.82.2
-    inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     mockServer: 0.1.0
     nameOverrides: 2.81.2
@@ -35,9 +33,8 @@ features:
     responseFormat: 0.1.2
     retries: 2.83.1
     sdkHooks: 0.1.0
-    serverEventsSentinels: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.7.1
+    tests: 0.8.0
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -52,31 +49,13 @@ generatedFiles:
   - /pkg/models/operations/createsubscription.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
-  - /pkg/models/operations/deleteapi.go
-  - /pkg/models/operations/deleteapiendpoint.go
-  - /pkg/models/operations/deleteschema.go
-  - /pkg/models/operations/deleteversionmetadata.go
   - /pkg/models/operations/deleteworkspacetoken.go
-  - /pkg/models/operations/downloadschema.go
-  - /pkg/models/operations/downloadschemarevision.go
-  - /pkg/models/operations/findapiendpoint.go
   - /pkg/models/operations/generatecodesamplepreview.go
   - /pkg/models/operations/generatecodesamplepreviewasync.go
-  - /pkg/models/operations/generateopenapispec.go
-  - /pkg/models/operations/generateopenapispecforapiendpoint.go
-  - /pkg/models/operations/generatepostmancollection.go
-  - /pkg/models/operations/generatepostmancollectionforapiendpoint.go
-  - /pkg/models/operations/generaterequestpostmancollection.go
   - /pkg/models/operations/getaccesstoken.go
-  - /pkg/models/operations/getallapiendpoints.go
-  - /pkg/models/operations/getallapiversions.go
-  - /pkg/models/operations/getallforversionapiendpoints.go
-  - /pkg/models/operations/getapiendpoint.go
-  - /pkg/models/operations/getapis.go
   - /pkg/models/operations/getblob.go
   - /pkg/models/operations/getchangesreportsignedurl.go
   - /pkg/models/operations/getcodesamplepreviewasync.go
-  - /pkg/models/operations/getembedaccesstoken.go
   - /pkg/models/operations/getgithubaction.go
   - /pkg/models/operations/getgithubsetupstate.go
   - /pkg/models/operations/getlintingreportsignedurl.go
@@ -85,16 +64,9 @@ generatedFiles:
   - /pkg/models/operations/getorganization.go
   - /pkg/models/operations/getorganizations.go
   - /pkg/models/operations/getorganizationusage.go
-  - /pkg/models/operations/getrequestfromeventlog.go
   - /pkg/models/operations/getrevisions.go
-  - /pkg/models/operations/getschema.go
-  - /pkg/models/operations/getschemadiff.go
-  - /pkg/models/operations/getschemarevision.go
-  - /pkg/models/operations/getschemas.go
   - /pkg/models/operations/gettags.go
   - /pkg/models/operations/getuser.go
-  - /pkg/models/operations/getvalidembedaccesstokens.go
-  - /pkg/models/operations/getversionmetadata.go
   - /pkg/models/operations/getworkspace.go
   - /pkg/models/operations/getworkspaceaccess.go
   - /pkg/models/operations/getworkspacebycontext.go
@@ -114,16 +86,12 @@ generatedFiles:
   - /pkg/models/operations/githubstorepublishingsecrets.go
   - /pkg/models/operations/githubtriggeraction.go
   - /pkg/models/operations/grantuseraccesstoworkspace.go
-  - /pkg/models/operations/insertversionmetadata.go
   - /pkg/models/operations/linkgithubaccess.go
   - /pkg/models/operations/listregistrysubscriptions.go
   - /pkg/models/operations/listremotesources.go
   - /pkg/models/operations/posttags.go
   - /pkg/models/operations/postworkspaceevents.go
   - /pkg/models/operations/preflight.go
-  - /pkg/models/operations/queryeventlog.go
-  - /pkg/models/operations/registerschema.go
-  - /pkg/models/operations/revokeembedaccesstoken.go
   - /pkg/models/operations/revokeuseraccesstoworkspace.go
   - /pkg/models/operations/searchworkspaceevents.go
   - /pkg/models/operations/setvisibility.go
@@ -134,8 +102,6 @@ generatedFiles:
   - /pkg/models/operations/updateworkspacedetails.go
   - /pkg/models/operations/updateworkspacesettings.go
   - /pkg/models/operations/uploadreport.go
-  - /pkg/models/operations/upsertapi.go
-  - /pkg/models/operations/upsertapiendpoint.go
   - /pkg/models/operations/validateapikey.go
   - /pkg/models/sdkerrors/error.go
   - /pkg/models/shared/accessdetails.go
@@ -143,23 +109,13 @@ generatedFiles:
   - /pkg/models/shared/accounttype.go
   - /pkg/models/shared/addtags.go
   - /pkg/models/shared/annotations.go
-  - /pkg/models/shared/api.go
-  - /pkg/models/shared/apiendpoint.go
-  - /pkg/models/shared/apiendpointinput.go
-  - /pkg/models/shared/apiinput.go
   - /pkg/models/shared/apikeydetails.go
-  - /pkg/models/shared/boundedrequest.go
   - /pkg/models/shared/clievent.go
   - /pkg/models/shared/codesampleschemainput.go
   - /pkg/models/shared/codesamplesjobstatus.go
   - /pkg/models/shared/diagnostic.go
-  - /pkg/models/shared/embedaccesstokenresponse.go
-  - /pkg/models/shared/embedtoken.go
   - /pkg/models/shared/eventtype.go
   - /pkg/models/shared/featureflag.go
-  - /pkg/models/shared/filter.go
-  - /pkg/models/shared/filters.go
-  - /pkg/models/shared/generateopenapispecdiff.go
   - /pkg/models/shared/getnamespacesresponse.go
   - /pkg/models/shared/getrevisionsresponse.go
   - /pkg/models/shared/gettagsresponse.go
@@ -189,10 +145,7 @@ generatedFiles:
   - /pkg/models/shared/remotesource.go
   - /pkg/models/shared/remotesourcesubscriptionsettings.go
   - /pkg/models/shared/report.go
-  - /pkg/models/shared/requestmetadata.go
   - /pkg/models/shared/revision.go
-  - /pkg/models/shared/schema.go
-  - /pkg/models/shared/schemadiff.go
   - /pkg/models/shared/security.go
   - /pkg/models/shared/shorturl.go
   - /pkg/models/shared/ssometadata.go
@@ -202,11 +155,8 @@ generatedFiles:
   - /pkg/models/shared/suggestrequestbody.go
   - /pkg/models/shared/tag.go
   - /pkg/models/shared/targetsdk.go
-  - /pkg/models/shared/unboundedrequest.go
   - /pkg/models/shared/user.go
   - /pkg/models/shared/v2descriptor.go
-  - /pkg/models/shared/versionmetadata.go
-  - /pkg/models/shared/versionmetadatainput.go
   - /pkg/models/shared/workflowdocument.go
   - /pkg/models/shared/workspace.go
   - /pkg/models/shared/workspaceandorganization.go
@@ -217,8 +167,6 @@ generatedFiles:
   - /pkg/models/shared/workspacetoken.go
   - CONTRIBUTING.md
   - USAGE.md
-  - apiendpoints.go
-  - apis.go
   - artifacts.go
   - auth.go
   - docs/pkg/models/operations/checkgithubaccessrequest.md
@@ -235,49 +183,15 @@ generatedFiles:
   - docs/pkg/models/operations/createworkspacetokenglobals.md
   - docs/pkg/models/operations/createworkspacetokenrequest.md
   - docs/pkg/models/operations/createworkspacetokenresponse.md
-  - docs/pkg/models/operations/deleteapiendpointrequest.md
-  - docs/pkg/models/operations/deleteapiendpointresponse.md
-  - docs/pkg/models/operations/deleteapirequest.md
-  - docs/pkg/models/operations/deleteapiresponse.md
-  - docs/pkg/models/operations/deleteschemarequest.md
-  - docs/pkg/models/operations/deleteschemaresponse.md
-  - docs/pkg/models/operations/deleteversionmetadatarequest.md
-  - docs/pkg/models/operations/deleteversionmetadataresponse.md
   - docs/pkg/models/operations/deleteworkspacetokenglobals.md
   - docs/pkg/models/operations/deleteworkspacetokenrequest.md
   - docs/pkg/models/operations/deleteworkspacetokenresponse.md
-  - docs/pkg/models/operations/downloadschemarequest.md
-  - docs/pkg/models/operations/downloadschemaresponse.md
-  - docs/pkg/models/operations/downloadschemarevisionrequest.md
-  - docs/pkg/models/operations/downloadschemarevisionresponse.md
   - docs/pkg/models/operations/file.md
-  - docs/pkg/models/operations/findapiendpointrequest.md
-  - docs/pkg/models/operations/findapiendpointresponse.md
   - docs/pkg/models/operations/generatecodesamplepreviewasyncresponse.md
   - docs/pkg/models/operations/generatecodesamplepreviewasyncresponsebody.md
   - docs/pkg/models/operations/generatecodesamplepreviewresponse.md
-  - docs/pkg/models/operations/generateopenapispecforapiendpointrequest.md
-  - docs/pkg/models/operations/generateopenapispecforapiendpointresponse.md
-  - docs/pkg/models/operations/generateopenapispecrequest.md
-  - docs/pkg/models/operations/generateopenapispecresponse.md
-  - docs/pkg/models/operations/generatepostmancollectionforapiendpointrequest.md
-  - docs/pkg/models/operations/generatepostmancollectionforapiendpointresponse.md
-  - docs/pkg/models/operations/generatepostmancollectionrequest.md
-  - docs/pkg/models/operations/generatepostmancollectionresponse.md
-  - docs/pkg/models/operations/generaterequestpostmancollectionrequest.md
-  - docs/pkg/models/operations/generaterequestpostmancollectionresponse.md
   - docs/pkg/models/operations/getaccesstokenrequest.md
   - docs/pkg/models/operations/getaccesstokenresponse.md
-  - docs/pkg/models/operations/getallapiendpointsrequest.md
-  - docs/pkg/models/operations/getallapiendpointsresponse.md
-  - docs/pkg/models/operations/getallapiversionsrequest.md
-  - docs/pkg/models/operations/getallapiversionsresponse.md
-  - docs/pkg/models/operations/getallforversionapiendpointsrequest.md
-  - docs/pkg/models/operations/getallforversionapiendpointsresponse.md
-  - docs/pkg/models/operations/getapiendpointrequest.md
-  - docs/pkg/models/operations/getapiendpointresponse.md
-  - docs/pkg/models/operations/getapisrequest.md
-  - docs/pkg/models/operations/getapisresponse.md
   - docs/pkg/models/operations/getblobrequest.md
   - docs/pkg/models/operations/getblobresponse.md
   - docs/pkg/models/operations/getchangesreportsignedurlrequest.md
@@ -286,8 +200,6 @@ generatedFiles:
   - docs/pkg/models/operations/getcodesamplepreviewasyncrequest.md
   - docs/pkg/models/operations/getcodesamplepreviewasyncresponse.md
   - docs/pkg/models/operations/getcodesamplepreviewasyncresponsebody.md
-  - docs/pkg/models/operations/getembedaccesstokenrequest.md
-  - docs/pkg/models/operations/getembedaccesstokenresponse.md
   - docs/pkg/models/operations/getgithubactionrequest.md
   - docs/pkg/models/operations/getgithubactionresponse.md
   - docs/pkg/models/operations/getgithubsetupstaterequest.md
@@ -302,24 +214,11 @@ generatedFiles:
   - docs/pkg/models/operations/getorganizationresponse.md
   - docs/pkg/models/operations/getorganizationsresponse.md
   - docs/pkg/models/operations/getorganizationusageresponse.md
-  - docs/pkg/models/operations/getrequestfromeventlogrequest.md
-  - docs/pkg/models/operations/getrequestfromeventlogresponse.md
   - docs/pkg/models/operations/getrevisionsrequest.md
   - docs/pkg/models/operations/getrevisionsresponse.md
-  - docs/pkg/models/operations/getschemadiffrequest.md
-  - docs/pkg/models/operations/getschemadiffresponse.md
-  - docs/pkg/models/operations/getschemarequest.md
-  - docs/pkg/models/operations/getschemaresponse.md
-  - docs/pkg/models/operations/getschemarevisionrequest.md
-  - docs/pkg/models/operations/getschemarevisionresponse.md
-  - docs/pkg/models/operations/getschemasrequest.md
-  - docs/pkg/models/operations/getschemasresponse.md
   - docs/pkg/models/operations/gettagsrequest.md
   - docs/pkg/models/operations/gettagsresponse.md
   - docs/pkg/models/operations/getuserresponse.md
-  - docs/pkg/models/operations/getvalidembedaccesstokensresponse.md
-  - docs/pkg/models/operations/getversionmetadatarequest.md
-  - docs/pkg/models/operations/getversionmetadataresponse.md
   - docs/pkg/models/operations/getworkspaceaccessrequest.md
   - docs/pkg/models/operations/getworkspaceaccessresponse.md
   - docs/pkg/models/operations/getworkspacebycontextresponse.md
@@ -359,8 +258,6 @@ generatedFiles:
   - docs/pkg/models/operations/grantuseraccesstoworkspaceglobals.md
   - docs/pkg/models/operations/grantuseraccesstoworkspacerequest.md
   - docs/pkg/models/operations/grantuseraccesstoworkspaceresponse.md
-  - docs/pkg/models/operations/insertversionmetadatarequest.md
-  - docs/pkg/models/operations/insertversionmetadataresponse.md
   - docs/pkg/models/operations/linkgithubaccessrequest.md
   - docs/pkg/models/operations/linkgithubaccessresponse.md
   - docs/pkg/models/operations/listregistrysubscriptionsglobals.md
@@ -368,7 +265,6 @@ generatedFiles:
   - docs/pkg/models/operations/listregistrysubscriptionsresponse.md
   - docs/pkg/models/operations/listremotesourcesrequest.md
   - docs/pkg/models/operations/listremotesourcesresponse.md
-  - docs/pkg/models/operations/op.md
   - docs/pkg/models/operations/option.md
   - docs/pkg/models/operations/posttagsrequest.md
   - docs/pkg/models/operations/posttagsresponse.md
@@ -376,15 +272,6 @@ generatedFiles:
   - docs/pkg/models/operations/postworkspaceeventsrequest.md
   - docs/pkg/models/operations/postworkspaceeventsresponse.md
   - docs/pkg/models/operations/preflightresponse.md
-  - docs/pkg/models/operations/queryeventlogrequest.md
-  - docs/pkg/models/operations/queryeventlogresponse.md
-  - docs/pkg/models/operations/queryparamop.md
-  - docs/pkg/models/operations/registerschemafile.md
-  - docs/pkg/models/operations/registerschemarequest.md
-  - docs/pkg/models/operations/registerschemarequestbody.md
-  - docs/pkg/models/operations/registerschemaresponse.md
-  - docs/pkg/models/operations/revokeembedaccesstokenrequest.md
-  - docs/pkg/models/operations/revokeembedaccesstokenresponse.md
   - docs/pkg/models/operations/revokeuseraccesstoworkspaceglobals.md
   - docs/pkg/models/operations/revokeuseraccesstoworkspacerequest.md
   - docs/pkg/models/operations/revokeuseraccesstoworkspaceresponse.md
@@ -412,10 +299,6 @@ generatedFiles:
   - docs/pkg/models/operations/uploadreportrequestbody.md
   - docs/pkg/models/operations/uploadreportresponse.md
   - docs/pkg/models/operations/uploadreportuploadedreport.md
-  - docs/pkg/models/operations/upsertapiendpointrequest.md
-  - docs/pkg/models/operations/upsertapiendpointresponse.md
-  - docs/pkg/models/operations/upsertapirequest.md
-  - docs/pkg/models/operations/upsertapiresponse.md
   - docs/pkg/models/operations/validateapikeyresponse.md
   - docs/pkg/models/sdkerrors/error.md
   - docs/pkg/models/shared/accessdetails.md
@@ -425,27 +308,17 @@ generatedFiles:
   - docs/pkg/models/shared/actions.md
   - docs/pkg/models/shared/addtags.md
   - docs/pkg/models/shared/annotations.md
-  - docs/pkg/models/shared/api.md
-  - docs/pkg/models/shared/apiendpoint.md
-  - docs/pkg/models/shared/apiendpointinput.md
-  - docs/pkg/models/shared/apiinput.md
   - docs/pkg/models/shared/apikeydetails.md
   - docs/pkg/models/shared/auth.md
-  - docs/pkg/models/shared/boundedrequest.md
   - docs/pkg/models/shared/claims.md
   - docs/pkg/models/shared/clievent.md
   - docs/pkg/models/shared/codesampleschemainput.md
   - docs/pkg/models/shared/codesamplesjobstatus.md
   - docs/pkg/models/shared/compositespecmetadata.md
   - docs/pkg/models/shared/diagnostic.md
-  - docs/pkg/models/shared/embedaccesstokenresponse.md
-  - docs/pkg/models/shared/embedtoken.md
   - docs/pkg/models/shared/eventtype.md
   - docs/pkg/models/shared/featureflag.md
-  - docs/pkg/models/shared/filter.md
-  - docs/pkg/models/shared/filters.md
   - docs/pkg/models/shared/generatebumptype.md
-  - docs/pkg/models/shared/generateopenapispecdiff.md
   - docs/pkg/models/shared/getnamespacesresponse.md
   - docs/pkg/models/shared/getrevisionsresponse.md
   - docs/pkg/models/shared/gettagsresponse.md
@@ -479,10 +352,7 @@ generatedFiles:
   - docs/pkg/models/shared/remotesource.md
   - docs/pkg/models/shared/remotesourcesubscriptionsettings.md
   - docs/pkg/models/shared/report.md
-  - docs/pkg/models/shared/requestmetadata.md
   - docs/pkg/models/shared/revision.md
-  - docs/pkg/models/shared/schema.md
-  - docs/pkg/models/shared/schemadiff.md
   - docs/pkg/models/shared/schemafile.md
   - docs/pkg/models/shared/secrets.md
   - docs/pkg/models/shared/security.md
@@ -497,12 +367,8 @@ generatedFiles:
   - docs/pkg/models/shared/tag.md
   - docs/pkg/models/shared/targetsdk.md
   - docs/pkg/models/shared/type.md
-  - docs/pkg/models/shared/unboundedrequest.md
   - docs/pkg/models/shared/user.md
   - docs/pkg/models/shared/v2descriptor.md
-  - docs/pkg/models/shared/valuechange.md
-  - docs/pkg/models/shared/versionmetadata.md
-  - docs/pkg/models/shared/versionmetadatainput.md
   - docs/pkg/models/shared/workflowdocument.md
   - docs/pkg/models/shared/workspace.md
   - docs/pkg/models/shared/workspaceandorganization.md
@@ -512,30 +378,22 @@ generatedFiles:
   - docs/pkg/models/shared/workspacesettings.md
   - docs/pkg/models/shared/workspaceteamresponse.md
   - docs/pkg/models/shared/workspacetoken.md
-  - docs/sdks/apiendpoints/README.md
-  - docs/sdks/apis/README.md
   - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
-  - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - docs/sdks/github/README.md
-  - docs/sdks/metadata/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
-  - docs/sdks/requests/README.md
-  - docs/sdks/schemas/README.md
   - docs/sdks/shorturls/README.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/subscriptions/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/workspaces/README.md
-  - embeds.go
   - events.go
   - github.go
   - go.mod
   - internal/globals/globals.go
   - internal/hooks/hooks.go
-  - metadata.go
   - organizations.go
   - pkg/models/operations/options.go
   - pkg/models/sdkerrors/sdkerror.go
@@ -557,8 +415,6 @@ generatedFiles:
   - pkg/utils/security.go
   - pkg/utils/utils.go
   - reports.go
-  - requests.go
-  - schemas.go
   - shorturls.go
   - speakeasy.go
   - subscriptions.go
@@ -584,26 +440,6 @@ generatedFiles:
   - tests/mockserver/internal/handler/doc.go
   - tests/mockserver/internal/handler/generated_handler.go
   - tests/mockserver/internal/handler/generated_handlers.go
-  - tests/mockserver/internal/handler/pathdeletev1apisapiidversionversionid.go
-  - tests/mockserver/internal/handler/pathdeletev1apisapiidversionversionidapiendpointsapiendpointid.go
-  - tests/mockserver/internal/handler/pathdeletev1apisapiidversionversionidmetadatametakeymetavalue.go
-  - tests/mockserver/internal/handler/pathdeletev1apisapiidversionversionidschemarevisionid.go
-  - tests/mockserver/internal/handler/pathdeletev1workspaceembedaccesstokenstokenid.go
-  - tests/mockserver/internal/handler/pathgetv1apis.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiid.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidapiendpoints.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidapiendpoints.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidapiendpointsapiendpointid.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidapiendpointsapiendpointidgenerateopenapi.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidapiendpointsapiendpointidgeneratepostman.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidapiendpointsfinddisplayname.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidgenerateopenapi.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidgeneratepostman.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidmetadata.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidschema.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidschemabaserevisioniddifftargetrevisionid.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidschemarevisionid.go
-  - tests/mockserver/internal/handler/pathgetv1apisapiidversionversionidschemas.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespaces.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespacesnamespacenamerevisions.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespacesnamespacenametags.go
@@ -611,8 +447,6 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1authaccesstoken.go
   - tests/mockserver/internal/handler/pathgetv1authvalidate.go
   - tests/mockserver/internal/handler/pathgetv1codesamplepreviewasyncjobid.go
-  - tests/mockserver/internal/handler/pathgetv1eventlogrequestid.go
-  - tests/mockserver/internal/handler/pathgetv1eventlogrequestidgeneratepostman.go
   - tests/mockserver/internal/handler/pathgetv1githubcheckaccess.go
   - tests/mockserver/internal/handler/pathgetv1githubsetup.go
   - tests/mockserver/internal/handler/pathgetv1ociv2organizationslugworkspaceslugnamespacenameblobsdigest.go
@@ -625,14 +459,11 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1user.go
   - tests/mockserver/internal/handler/pathgetv1workspace.go
   - tests/mockserver/internal/handler/pathgetv1workspaceaccess.go
-  - tests/mockserver/internal/handler/pathgetv1workspaceembedaccesstoken.go
   - tests/mockserver/internal/handler/pathgetv1workspaces.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceid.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidfeatureflags.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidregistrysubscriptions.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidsettings.go
-  - tests/mockserver/internal/handler/pathpostv1apisapiidversionversionidmetadata.go
-  - tests/mockserver/internal/handler/pathpostv1apisapiidversionversionidschema.go
   - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenametags.go
   - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenamevisibility.go
   - tests/mockserver/internal/handler/pathpostv1artifactsremotesources.go
@@ -651,8 +482,6 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathpostv1suggestitems.go
   - tests/mockserver/internal/handler/pathpostv1workspace.go
   - tests/mockserver/internal/handler/pathpostv1workspaceworkspaceidregistrysubscriptions.go
-  - tests/mockserver/internal/handler/pathputv1apisapiid.go
-  - tests/mockserver/internal/handler/pathputv1apisapiidversionversionidapiendpointsapiendpointid.go
   - tests/mockserver/internal/handler/pathputv1workspaceworkspaceidsettings.go
   - tests/mockserver/internal/handler/values/files.go
   - tests/mockserver/internal/logging/doc.go
@@ -668,23 +497,13 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/accounttype.go
   - tests/mockserver/internal/sdk/models/components/addtags.go
   - tests/mockserver/internal/sdk/models/components/annotations.go
-  - tests/mockserver/internal/sdk/models/components/api.go
-  - tests/mockserver/internal/sdk/models/components/apiendpoint.go
-  - tests/mockserver/internal/sdk/models/components/apiendpointinput.go
-  - tests/mockserver/internal/sdk/models/components/apiinput.go
   - tests/mockserver/internal/sdk/models/components/apikeydetails.go
-  - tests/mockserver/internal/sdk/models/components/boundedrequest.go
   - tests/mockserver/internal/sdk/models/components/clievent.go
   - tests/mockserver/internal/sdk/models/components/codesampleschemainput.go
   - tests/mockserver/internal/sdk/models/components/codesamplesjobstatus.go
   - tests/mockserver/internal/sdk/models/components/diagnostic.go
-  - tests/mockserver/internal/sdk/models/components/embedaccesstokenresponse.go
-  - tests/mockserver/internal/sdk/models/components/embedtoken.go
   - tests/mockserver/internal/sdk/models/components/eventtype.go
   - tests/mockserver/internal/sdk/models/components/featureflag.go
-  - tests/mockserver/internal/sdk/models/components/filter.go
-  - tests/mockserver/internal/sdk/models/components/filters.go
-  - tests/mockserver/internal/sdk/models/components/generateopenapispecdiff.go
   - tests/mockserver/internal/sdk/models/components/getnamespacesresponse.go
   - tests/mockserver/internal/sdk/models/components/getrevisionsresponse.go
   - tests/mockserver/internal/sdk/models/components/gettagsresponse.go
@@ -715,10 +534,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/remotesource.go
   - tests/mockserver/internal/sdk/models/components/remotesourcesubscriptionsettings.go
   - tests/mockserver/internal/sdk/models/components/report.go
-  - tests/mockserver/internal/sdk/models/components/requestmetadata.go
   - tests/mockserver/internal/sdk/models/components/revision.go
-  - tests/mockserver/internal/sdk/models/components/schema.go
-  - tests/mockserver/internal/sdk/models/components/schemadiff.go
   - tests/mockserver/internal/sdk/models/components/security.go
   - tests/mockserver/internal/sdk/models/components/shorturl.go
   - tests/mockserver/internal/sdk/models/components/ssometadata.go
@@ -728,11 +544,8 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/suggestrequestbody.go
   - tests/mockserver/internal/sdk/models/components/tag.go
   - tests/mockserver/internal/sdk/models/components/targetsdk.go
-  - tests/mockserver/internal/sdk/models/components/unboundedrequest.go
   - tests/mockserver/internal/sdk/models/components/user.go
   - tests/mockserver/internal/sdk/models/components/v2descriptor.go
-  - tests/mockserver/internal/sdk/models/components/versionmetadata.go
-  - tests/mockserver/internal/sdk/models/components/versionmetadatainput.go
   - tests/mockserver/internal/sdk/models/components/workflowdocument.go
   - tests/mockserver/internal/sdk/models/components/workspace.go
   - tests/mockserver/internal/sdk/models/components/workspaceandorganization.go
@@ -749,31 +562,13 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/createsubscription.go
   - tests/mockserver/internal/sdk/models/operations/createworkspace.go
   - tests/mockserver/internal/sdk/models/operations/createworkspacetoken.go
-  - tests/mockserver/internal/sdk/models/operations/deleteapi.go
-  - tests/mockserver/internal/sdk/models/operations/deleteapiendpoint.go
-  - tests/mockserver/internal/sdk/models/operations/deleteschema.go
-  - tests/mockserver/internal/sdk/models/operations/deleteversionmetadata.go
   - tests/mockserver/internal/sdk/models/operations/deleteworkspacetoken.go
-  - tests/mockserver/internal/sdk/models/operations/downloadschema.go
-  - tests/mockserver/internal/sdk/models/operations/downloadschemarevision.go
-  - tests/mockserver/internal/sdk/models/operations/findapiendpoint.go
   - tests/mockserver/internal/sdk/models/operations/generatecodesamplepreview.go
   - tests/mockserver/internal/sdk/models/operations/generatecodesamplepreviewasync.go
-  - tests/mockserver/internal/sdk/models/operations/generateopenapispec.go
-  - tests/mockserver/internal/sdk/models/operations/generateopenapispecforapiendpoint.go
-  - tests/mockserver/internal/sdk/models/operations/generatepostmancollection.go
-  - tests/mockserver/internal/sdk/models/operations/generatepostmancollectionforapiendpoint.go
-  - tests/mockserver/internal/sdk/models/operations/generaterequestpostmancollection.go
   - tests/mockserver/internal/sdk/models/operations/getaccesstoken.go
-  - tests/mockserver/internal/sdk/models/operations/getallapiendpoints.go
-  - tests/mockserver/internal/sdk/models/operations/getallapiversions.go
-  - tests/mockserver/internal/sdk/models/operations/getallforversionapiendpoints.go
-  - tests/mockserver/internal/sdk/models/operations/getapiendpoint.go
-  - tests/mockserver/internal/sdk/models/operations/getapis.go
   - tests/mockserver/internal/sdk/models/operations/getblob.go
   - tests/mockserver/internal/sdk/models/operations/getchangesreportsignedurl.go
   - tests/mockserver/internal/sdk/models/operations/getcodesamplepreviewasync.go
-  - tests/mockserver/internal/sdk/models/operations/getembedaccesstoken.go
   - tests/mockserver/internal/sdk/models/operations/getgithubaction.go
   - tests/mockserver/internal/sdk/models/operations/getgithubsetupstate.go
   - tests/mockserver/internal/sdk/models/operations/getlintingreportsignedurl.go
@@ -782,16 +577,9 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/getorganization.go
   - tests/mockserver/internal/sdk/models/operations/getorganizations.go
   - tests/mockserver/internal/sdk/models/operations/getorganizationusage.go
-  - tests/mockserver/internal/sdk/models/operations/getrequestfromeventlog.go
   - tests/mockserver/internal/sdk/models/operations/getrevisions.go
-  - tests/mockserver/internal/sdk/models/operations/getschema.go
-  - tests/mockserver/internal/sdk/models/operations/getschemadiff.go
-  - tests/mockserver/internal/sdk/models/operations/getschemarevision.go
-  - tests/mockserver/internal/sdk/models/operations/getschemas.go
   - tests/mockserver/internal/sdk/models/operations/gettags.go
   - tests/mockserver/internal/sdk/models/operations/getuser.go
-  - tests/mockserver/internal/sdk/models/operations/getvalidembedaccesstokens.go
-  - tests/mockserver/internal/sdk/models/operations/getversionmetadata.go
   - tests/mockserver/internal/sdk/models/operations/getworkspace.go
   - tests/mockserver/internal/sdk/models/operations/getworkspaceaccess.go
   - tests/mockserver/internal/sdk/models/operations/getworkspacebycontext.go
@@ -811,16 +599,12 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/githubstorepublishingsecrets.go
   - tests/mockserver/internal/sdk/models/operations/githubtriggeraction.go
   - tests/mockserver/internal/sdk/models/operations/grantuseraccesstoworkspace.go
-  - tests/mockserver/internal/sdk/models/operations/insertversionmetadata.go
   - tests/mockserver/internal/sdk/models/operations/linkgithubaccess.go
   - tests/mockserver/internal/sdk/models/operations/listregistrysubscriptions.go
   - tests/mockserver/internal/sdk/models/operations/listremotesources.go
   - tests/mockserver/internal/sdk/models/operations/posttags.go
   - tests/mockserver/internal/sdk/models/operations/postworkspaceevents.go
   - tests/mockserver/internal/sdk/models/operations/preflight.go
-  - tests/mockserver/internal/sdk/models/operations/queryeventlog.go
-  - tests/mockserver/internal/sdk/models/operations/registerschema.go
-  - tests/mockserver/internal/sdk/models/operations/revokeembedaccesstoken.go
   - tests/mockserver/internal/sdk/models/operations/revokeuseraccesstoworkspace.go
   - tests/mockserver/internal/sdk/models/operations/searchworkspaceevents.go
   - tests/mockserver/internal/sdk/models/operations/setvisibility.go
@@ -831,8 +615,6 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/updateworkspacedetails.go
   - tests/mockserver/internal/sdk/models/operations/updateworkspacesettings.go
   - tests/mockserver/internal/sdk/models/operations/uploadreport.go
-  - tests/mockserver/internal/sdk/models/operations/upsertapi.go
-  - tests/mockserver/internal/sdk/models/operations/upsertapiendpoint.go
   - tests/mockserver/internal/sdk/models/operations/validateapikey.go
   - tests/mockserver/internal/sdk/models/sdkerrors/error.go
   - tests/mockserver/internal/sdk/types/bigint.go
@@ -851,6 +633,7 @@ generatedFiles:
   - tests/mockserver/internal/server/templates/log/index.html.tmpl
   - tests/mockserver/internal/server/templates/log/operation.html.tmpl
   - tests/mockserver/internal/server/templates/log/style.css.tmpl
+  - tests/mockserver/internal/tracking/requesttracker.go
   - tests/mockserver/main.go
   - tests/organizations_test.go
   - tests/reports_test.go

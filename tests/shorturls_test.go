@@ -14,6 +14,8 @@ import (
 )
 
 func TestShorturls_Create(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("create")),
@@ -22,7 +24,6 @@ func TestShorturls_Create(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{
 		URL: "http://limp-pastry.org",
 	})
@@ -33,4 +34,5 @@ func TestShorturls_Create(t *testing.T) {
 		FullURL:  "https://probable-heating.com/",
 		ShortURL: "https://standard-utilization.com/",
 	}, res.ShortURL)
+
 }

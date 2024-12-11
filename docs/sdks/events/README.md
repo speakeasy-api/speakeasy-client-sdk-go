@@ -3,7 +3,7 @@
 
 ## Overview
 
-REST APIs for capturing event data
+REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 
 ### Available Operations
 
@@ -23,21 +23,22 @@ Load recent events for a particular workspace
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
         TargetID: "<id>",
     })
@@ -79,21 +80,22 @@ Load targets for a particular workspace
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Events.GetTargets(ctx, operations.GetWorkspaceTargetsRequest{})
     if err != nil {
         log.Fatal(err)
@@ -133,21 +135,22 @@ Load targets for a particular workspace
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{})
     if err != nil {
         log.Fatal(err)
@@ -187,22 +190,23 @@ Sends an array of events to be stored for a particular workspace.
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
         RequestBody: []shared.CliEvent{
             shared.CliEvent{
@@ -256,21 +260,22 @@ Search events for a particular workspace by any field
 package main
 
 import(
+	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{})
     if err != nil {
         log.Fatal(err)

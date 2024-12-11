@@ -3,27 +3,32 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
 	"mockserver/internal/sdk/utils"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPostV1Reports(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathPostV1Reports(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "uploadReport":
-			dir.HandlerFunc("uploadReport", testUploadReportUploadReport)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "uploadReport[0]":
+			dir.HandlerFunc("uploadReport", testUploadReportUploadReport0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testUploadReportUploadReport(w http.ResponseWriter, req *http.Request) {
+func testUploadReportUploadReport0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

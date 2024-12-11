@@ -3,26 +3,31 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/handler/values"
 	"mockserver/internal/logging"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPostV1CodeSamplePreview(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathPostV1CodeSamplePreview(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "generateCodeSamplePreview":
-			dir.HandlerFunc("generateCodeSamplePreview", testGenerateCodeSamplePreviewGenerateCodeSamplePreview)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "generateCodeSamplePreview[0]":
+			dir.HandlerFunc("generateCodeSamplePreview", testGenerateCodeSamplePreviewGenerateCodeSamplePreview0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testGenerateCodeSamplePreviewGenerateCodeSamplePreview(w http.ResponseWriter, req *http.Request) {
+func testGenerateCodeSamplePreviewGenerateCodeSamplePreview0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

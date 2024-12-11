@@ -15,6 +15,8 @@ import (
 )
 
 func TestAuth_GetWorkspaceAccess(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceAccess")),
@@ -23,7 +25,6 @@ func TestAuth_GetWorkspaceAccess(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Auth.GetAccess(ctx, operations.GetWorkspaceAccessRequest{})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -32,15 +33,17 @@ func TestAuth_GetWorkspaceAccess(t *testing.T) {
 		GenerationAllowed: true,
 		Message:           "<value>",
 	}, res.AccessDetails)
+
 }
 
 func TestAuth_GetAccessToken(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getAccessToken")),
 	)
 
-	ctx := context.Background()
 	res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
 		WorkspaceID: "<value>",
 	})
@@ -52,9 +55,12 @@ func TestAuth_GetAccessToken(t *testing.T) {
 		Claims:      shared.Claims{},
 		User:        shared.AccessTokenUser{},
 	}, res.AccessToken)
+
 }
 
 func TestAuth_GetUser(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getUser")),
@@ -63,7 +69,6 @@ func TestAuth_GetUser(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Auth.GetUser(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -79,9 +84,12 @@ func TestAuth_GetUser(t *testing.T) {
 		UpdatedAt:     types.MustTimeFromString("2022-08-28T03:26:52.335Z"),
 		Whitelisted:   true,
 	}, res.User)
+
 }
 
 func TestAuth_ValidateAPIKey(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("validateApiKey")),
@@ -90,7 +98,6 @@ func TestAuth_ValidateAPIKey(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Auth.ValidateAPIKey(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -108,4 +115,5 @@ func TestAuth_ValidateAPIKey(t *testing.T) {
 		WorkspaceID:        "<id>",
 		WorkspaceSlug:      "<value>",
 	}, res.APIKeyDetails)
+
 }

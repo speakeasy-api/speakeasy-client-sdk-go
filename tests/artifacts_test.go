@@ -15,6 +15,8 @@ import (
 )
 
 func TestArtifacts_CreateRemoteSource(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createRemoteSource")),
@@ -23,13 +25,15 @@ func TestArtifacts_CreateRemoteSource(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestArtifacts_GetBlob(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getBlob")),
@@ -38,7 +42,6 @@ func TestArtifacts_GetBlob(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.GetBlob(ctx, operations.GetBlobRequest{
 		Digest:           "<value>",
 		NamespaceName:    "<value>",
@@ -47,9 +50,12 @@ func TestArtifacts_GetBlob(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestArtifacts_GetManifest(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getManifest")),
@@ -58,7 +64,6 @@ func TestArtifacts_GetManifest(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.GetManifest(ctx, operations.GetManifestRequest{
 		NamespaceName:     "<value>",
 		OrganizationSlug:  "<value>",
@@ -79,9 +84,12 @@ func TestArtifacts_GetManifest(t *testing.T) {
 		MediaType:     speakeasyclientsdkgo.String("application/vnd.docker.distribution.manifest.v2+json"),
 		SchemaVersion: speakeasyclientsdkgo.Int64(2),
 	}, res.Manifest)
+
 }
 
 func TestArtifacts_GetNamespaces(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getNamespaces")),
@@ -90,7 +98,6 @@ func TestArtifacts_GetNamespaces(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.GetNamespaces(ctx)
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -117,9 +124,12 @@ func TestArtifacts_GetNamespaces(t *testing.T) {
 			},
 		},
 	}, res.GetNamespacesResponse)
+
 }
 
 func TestArtifacts_GetRevisions(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getRevisions")),
@@ -128,7 +138,6 @@ func TestArtifacts_GetRevisions(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.GetRevisions(ctx, operations.GetRevisionsRequest{
 		NamespaceName: "<value>",
 	})
@@ -150,9 +159,12 @@ func TestArtifacts_GetRevisions(t *testing.T) {
 		},
 		NextPageToken: "<value>",
 	}, res.GetRevisionsResponse)
+
 }
 
 func TestArtifacts_GetTags(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getTags")),
@@ -161,7 +173,6 @@ func TestArtifacts_GetTags(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.GetTags(ctx, operations.GetTagsRequest{
 		NamespaceName: "<value>",
 	})
@@ -178,9 +189,12 @@ func TestArtifacts_GetTags(t *testing.T) {
 			},
 		},
 	}, res.GetTagsResponse)
+
 }
 
 func TestArtifacts_ListRemoteSources(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("listRemoteSources")),
@@ -189,7 +203,6 @@ func TestArtifacts_ListRemoteSources(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.ListRemoteSources(ctx, operations.ListRemoteSourcesRequest{
 		NamespaceName: "<value>",
 	})
@@ -209,9 +222,12 @@ func TestArtifacts_ListRemoteSources(t *testing.T) {
 			RegistryURL: "https://unfit-minor.biz",
 		},
 	}, res.RemoteSource)
+
 }
 
 func TestArtifacts_PostTags(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("postTags")),
@@ -220,15 +236,17 @@ func TestArtifacts_PostTags(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.PostTags(ctx, operations.PostTagsRequest{
 		NamespaceName: "<value>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestArtifacts_SetVisibility(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("setVisibility")),
@@ -237,10 +255,10 @@ func TestArtifacts_SetVisibility(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Artifacts.SetVisibility(ctx, operations.SetVisibilityRequest{
 		NamespaceName: "<value>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }

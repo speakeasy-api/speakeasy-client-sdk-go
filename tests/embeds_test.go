@@ -3,48 +3,13 @@
 package tests
 
 import (
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"testing"
 )
 
 func TestEmbeds_GetEmbedAccessToken(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getEmbedAccessToken")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Embeds.GetEmbedAccessToken(ctx, operations.GetEmbedAccessTokenRequest{})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.EmbedAccessTokenResponse)
-	assert.Equal(t, &shared.EmbedAccessTokenResponse{
-		AccessToken: "<value>",
-	}, res.EmbedAccessTokenResponse)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getEmbedAccessToken.test referencing operation getEmbedAccessToken not found in document`]")
 }
 
 func TestEmbeds_RevokeEmbedAccessToken(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("revokeEmbedAccessToken")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Embeds.RevokeEmbedAccessToken(ctx, operations.RevokeEmbedAccessTokenRequest{
-		TokenID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step revokeEmbedAccessToken.test referencing operation revokeEmbedAccessToken not found in document`]")
 }

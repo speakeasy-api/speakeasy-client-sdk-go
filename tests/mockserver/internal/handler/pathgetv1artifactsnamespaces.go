@@ -3,28 +3,33 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathGetV1ArtifactsNamespaces(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathGetV1ArtifactsNamespaces(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "getNamespaces":
-			dir.HandlerFunc("getNamespaces", testGetNamespacesGetNamespaces)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "getNamespaces[0]":
+			dir.HandlerFunc("getNamespaces", testGetNamespacesGetNamespaces0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetNamespacesGetNamespaces(w http.ResponseWriter, req *http.Request) {
+func testGetNamespacesGetNamespaces0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

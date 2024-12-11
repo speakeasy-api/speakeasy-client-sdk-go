@@ -13,6 +13,8 @@ import (
 )
 
 func TestSuggest_SuggestItems(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("suggestItems")),
@@ -21,7 +23,6 @@ func TestSuggest_SuggestItems(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
 		Items: []string{
 			"<value>",
@@ -35,4 +36,5 @@ func TestSuggest_SuggestItems(t *testing.T) {
 		"<value>",
 		"<value>",
 	}, res.Strings)
+
 }

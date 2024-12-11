@@ -16,7 +16,7 @@ import (
 	"net/url"
 )
 
-// Events - REST APIs for capturing event data
+// Events - REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 type Events struct {
 	sdkConfiguration sdkConfiguration
 }

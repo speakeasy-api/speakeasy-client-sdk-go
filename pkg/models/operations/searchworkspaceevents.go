@@ -25,12 +25,16 @@ type SearchWorkspaceEventsRequest struct {
 	GenerateGenLockID *string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
 	// Specified interaction type for events.
 	InteractionType *shared.InteractionType `queryParam:"style=form,explode=true,name=interaction_type"`
+	// Number of results to return.
+	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
 	// Unique identifier of the lint report digest.
 	LintReportDigest *string `queryParam:"style=form,explode=true,name=lint_report_digest"`
 	// Unique identifier of the openapi diff report digest.
 	OpenapiDiffReportDigest *string `queryParam:"style=form,explode=true,name=openapi_diff_report_digest"`
 	// Unique identifier of the source revision digest.
 	SourceRevisionDigest *string `queryParam:"style=form,explode=true,name=source_revision_digest"`
+	// Whether the event was successful or not.
+	Success *bool `queryParam:"style=form,explode=true,name=success"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
@@ -56,6 +60,13 @@ func (o *SearchWorkspaceEventsRequest) GetInteractionType() *shared.InteractionT
 	return o.InteractionType
 }
 
+func (o *SearchWorkspaceEventsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
 func (o *SearchWorkspaceEventsRequest) GetLintReportDigest() *string {
 	if o == nil {
 		return nil
@@ -75,6 +86,13 @@ func (o *SearchWorkspaceEventsRequest) GetSourceRevisionDigest() *string {
 		return nil
 	}
 	return o.SourceRevisionDigest
+}
+
+func (o *SearchWorkspaceEventsRequest) GetSuccess() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Success
 }
 
 func (o *SearchWorkspaceEventsRequest) GetWorkspaceID() *string {

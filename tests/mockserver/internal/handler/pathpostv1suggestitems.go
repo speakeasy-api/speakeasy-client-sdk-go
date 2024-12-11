@@ -3,26 +3,31 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/utils"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPostV1SuggestItems(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathPostV1SuggestItems(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "suggestItems":
-			dir.HandlerFunc("suggestItems", testSuggestItemsSuggestItems)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "suggestItems[0]":
+			dir.HandlerFunc("suggestItems", testSuggestItemsSuggestItems0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testSuggestItemsSuggestItems(w http.ResponseWriter, req *http.Request) {
+func testSuggestItemsSuggestItems0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

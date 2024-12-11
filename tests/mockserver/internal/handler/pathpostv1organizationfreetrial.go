@@ -3,25 +3,30 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPostV1OrganizationFreeTrial(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathPostV1OrganizationFreeTrial(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "createFreeTrial":
-			dir.HandlerFunc("createFreeTrial", testCreateFreeTrialCreateFreeTrial)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "createFreeTrial[0]":
+			dir.HandlerFunc("createFreeTrial", testCreateFreeTrialCreateFreeTrial0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testCreateFreeTrialCreateFreeTrial(w http.ResponseWriter, req *http.Request) {
+func testCreateFreeTrialCreateFreeTrial0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

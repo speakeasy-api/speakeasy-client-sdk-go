@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log/slog"
 	"mockserver/internal/logging"
+	"mockserver/internal/tracking"
 	"net/http"
 	"time"
 )
@@ -33,15 +34,18 @@ type Server struct {
 
 	// Underlying server implementation.
 	server *http.Server
+
+	requestTracker *tracking.RequestTracker
 }
 
 // NewServer creates a new Server instance.
 func NewServer(ctx context.Context, opts ...ServerOption) (*Server, error) {
 	// Initialize with defaults.
 	result := &Server{
-		address: DefaultAddress,
-		logger:  slog.Default(),
-		mux:     http.NewServeMux(),
+		address:        DefaultAddress,
+		logger:         slog.Default(),
+		mux:            http.NewServeMux(),
+		requestTracker: tracking.New(),
 	}
 
 	// Customize based on ServerOption.

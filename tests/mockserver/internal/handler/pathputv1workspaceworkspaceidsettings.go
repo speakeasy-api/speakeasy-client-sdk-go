@@ -3,25 +3,30 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPutV1WorkspaceWorkspaceIDSettings(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathPutV1WorkspaceWorkspaceIDSettings(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "updateWorkspaceSettings":
-			dir.HandlerFunc("updateWorkspaceSettings", testUpdateWorkspaceSettingsUpdateWorkspaceSettings)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "updateWorkspaceSettings[0]":
+			dir.HandlerFunc("updateWorkspaceSettings", testUpdateWorkspaceSettingsUpdateWorkspaceSettings0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testUpdateWorkspaceSettingsUpdateWorkspaceSettings(w http.ResponseWriter, req *http.Request) {
+func testUpdateWorkspaceSettingsUpdateWorkspaceSettings0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

@@ -16,6 +16,7 @@ import (
 	"net/url"
 )
 
+// Github - REST APIs for managing the github integration
 type Github struct {
 	sdkConfiguration sdkConfiguration
 }

@@ -15,7 +15,7 @@ import (
 	"net/url"
 )
 
-// Reports - REST APIs for managing reports
+// Reports - REST APIs for managing reports (lint reports, change reports, etc)
 type Reports struct {
 	sdkConfiguration sdkConfiguration
 }

@@ -3,173 +3,29 @@
 package tests
 
 import (
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"testing"
 )
 
 func TestApis_DeleteAPI(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("deleteApi")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Apis.DeleteAPI(ctx, operations.DeleteAPIRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step deleteApi.test referencing operation deleteApi not found in document`]")
 }
 
 func TestApis_GenerateOpenAPISpec(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("generateOpenApiSpec")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Apis.GenerateOpenAPISpec(ctx, operations.GenerateOpenAPISpecRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.GenerateOpenAPISpecDiff)
-	assert.Equal(t, &shared.GenerateOpenAPISpecDiff{
-		CurrentSchema: "<value>",
-		NewSchema:     "<value>",
-	}, res.GenerateOpenAPISpecDiff)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step generateOpenApiSpec.test referencing operation generateOpenApiSpec not found in document`]")
 }
 
 func TestApis_GeneratePostmanCollection(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("generatePostmanCollection")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Apis.GeneratePostmanCollection(ctx, operations.GeneratePostmanCollectionRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step generatePostmanCollection.test referencing operation generatePostmanCollection not found in document`]")
 }
 
 func TestApis_GetAllAPIVersions(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getAllApiVersions")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Apis.GetAllAPIVersions(ctx, operations.GetAllAPIVersionsRequest{
-		APIID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.Apis)
-	assert.Equal(t, []shared.API{
-		shared.API{
-			APIID:       "<id>",
-			CreatedAt:   types.MustTimeFromString("2022-12-01T14:20:45.655Z"),
-			Description: "cavernous so continually qua",
-			UpdatedAt:   types.MustTimeFromString("2023-05-30T05:25:29.047Z"),
-			VersionID:   "<id>",
-			WorkspaceID: "<id>",
-		},
-		shared.API{
-			APIID:       "<id>",
-			CreatedAt:   types.MustTimeFromString("2023-04-23T11:41:22.396Z"),
-			Description: "readmit chubby oof gym sedately micromanage trench",
-			UpdatedAt:   types.MustTimeFromString("2022-10-16T03:11:00.742Z"),
-			VersionID:   "<id>",
-			WorkspaceID: "<id>",
-		},
-		shared.API{
-			APIID:       "<id>",
-			CreatedAt:   types.MustTimeFromString("2023-03-06T08:55:20.384Z"),
-			Description: "aw even but peter abaft",
-			UpdatedAt:   types.MustTimeFromString("2024-07-27T04:38:48.315Z"),
-			VersionID:   "<id>",
-			WorkspaceID: "<id>",
-		},
-	}, res.Apis)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getAllApiVersions.test referencing operation getAllApiVersions not found in document`]")
 }
 
 func TestApis_GetApis(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getApis")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Apis.GetApis(ctx, operations.GetApisRequest{})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.Apis)
-	assert.Equal(t, []shared.API{
-		shared.API{
-			APIID:       "<id>",
-			CreatedAt:   types.MustTimeFromString("2023-08-25T11:59:25.466Z"),
-			Description: "whole busily jive hawk gee basic minus hence",
-			UpdatedAt:   types.MustTimeFromString("2023-05-27T01:50:18.849Z"),
-			VersionID:   "<id>",
-			WorkspaceID: "<id>",
-		},
-	}, res.Apis)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getApis.test referencing operation getApis not found in document`]")
 }
 
 func TestApis_UpsertAPI(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("upsertApi")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Apis.UpsertAPI(ctx, operations.UpsertAPIRequest{
-		API: shared.APIInput{
-			APIID:       "<value>",
-			Description: "Synchronised 5th generation knowledge user",
-			VersionID:   "<value>",
-		},
-		APIID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.API)
-	assert.Equal(t, &shared.API{
-		APIID:       "<id>",
-		CreatedAt:   types.MustTimeFromString("2024-07-28T23:25:43.547Z"),
-		Description: "suspiciously joyously enormously save which behind jaggedly",
-		UpdatedAt:   types.MustTimeFromString("2022-03-25T08:19:02.754Z"),
-		VersionID:   "<id>",
-		WorkspaceID: "<id>",
-	}, res.API)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step upsertApi.test referencing operation upsertApi not found in document`]")
 }

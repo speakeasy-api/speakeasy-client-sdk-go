@@ -3,93 +3,17 @@
 package tests
 
 import (
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"testing"
 )
 
 func TestMetadata_DeleteVersionMetadata(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("deleteVersionMetadata")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Metadata.DeleteVersionMetadata(ctx, operations.DeleteVersionMetadataRequest{
-		APIID:     "<value>",
-		MetaKey:   "<value>",
-		MetaValue: "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step deleteVersionMetadata.test referencing operation deleteVersionMetadata not found in document`]")
 }
 
 func TestMetadata_GetVersionMetadata(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getVersionMetadata")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Metadata.GetVersionMetadata(ctx, operations.GetVersionMetadataRequest{
-		APIID:     "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.VersionMetadata)
-	assert.Equal(t, []shared.VersionMetadata{
-		shared.VersionMetadata{
-			APIID:       "<id>",
-			CreatedAt:   types.MustTimeFromString("2022-06-27T04:40:43.913Z"),
-			MetaKey:     "<value>",
-			MetaValue:   "<value>",
-			VersionID:   "<id>",
-			WorkspaceID: "<id>",
-		},
-	}, res.VersionMetadata)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getVersionMetadata.test referencing operation getVersionMetadata not found in document`]")
 }
 
 func TestMetadata_InsertVersionMetadata(t *testing.T) {
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("insertVersionMetadata")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	ctx := context.Background()
-	res, err := s.Metadata.InsertVersionMetadata(ctx, operations.InsertVersionMetadataRequest{
-		VersionMetadata: shared.VersionMetadataInput{
-			MetaKey:   "<value>",
-			MetaValue: "<value>",
-		},
-		APIID:     "<value>",
-		VersionID: "<value>",
-	})
-	require.NoError(t, err)
-	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
-	assert.NotNil(t, res.VersionMetadata)
-	assert.Equal(t, &shared.VersionMetadata{
-		APIID:       "<id>",
-		CreatedAt:   types.MustTimeFromString("2022-03-18T13:32:09.275Z"),
-		MetaKey:     "<value>",
-		MetaValue:   "<value>",
-		VersionID:   "<id>",
-		WorkspaceID: "<id>",
-	}, res.VersionMetadata)
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step insertVersionMetadata.test referencing operation insertVersionMetadata not found in document`]")
 }

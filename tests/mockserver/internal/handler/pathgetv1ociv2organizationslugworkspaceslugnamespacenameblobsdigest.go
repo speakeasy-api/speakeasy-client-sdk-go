@@ -3,25 +3,30 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameBlobsDigest(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameBlobsDigest(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "getBlob":
-			dir.HandlerFunc("getBlob", testGetBlobGetBlob)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "getBlob[0]":
+			dir.HandlerFunc("getBlob", testGetBlobGetBlob0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetBlobGetBlob(w http.ResponseWriter, req *http.Request) {
+func testGetBlobGetBlob0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

@@ -15,6 +15,8 @@ import (
 )
 
 func TestReports_GetChangesReportSignedURL(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getChangesReportSignedUrl")),
@@ -23,7 +25,6 @@ func TestReports_GetChangesReportSignedURL(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Reports.GetChangesReportSignedURL(ctx, operations.GetChangesReportSignedURLRequest{
 		DocumentChecksum: "<value>",
 	})
@@ -33,9 +34,12 @@ func TestReports_GetChangesReportSignedURL(t *testing.T) {
 	assert.Equal(t, &operations.GetChangesReportSignedURLSignedAccess{
 		URL: "https://rosy-masterpiece.biz/",
 	}, res.SignedAccess)
+
 }
 
 func TestReports_GetLintingReportSignedURL(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getLintingReportSignedUrl")),
@@ -44,7 +48,6 @@ func TestReports_GetLintingReportSignedURL(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Reports.GetLintingReportSignedURL(ctx, operations.GetLintingReportSignedURLRequest{
 		DocumentChecksum: "<value>",
 	})
@@ -54,9 +57,12 @@ func TestReports_GetLintingReportSignedURL(t *testing.T) {
 	assert.Equal(t, &operations.GetLintingReportSignedURLSignedAccess{
 		URL: "https://negligible-merit.info",
 	}, res.SignedAccess)
+
 }
 
 func TestReports_UploadReport(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("uploadReport")),
@@ -68,7 +74,6 @@ func TestReports_UploadReport(t *testing.T) {
 	content, fileErr := os.Open("../.speakeasy/testfiles/example.file")
 	require.NoError(t, fileErr)
 
-	ctx := context.Background()
 	res, err := s.Reports.UploadReport(ctx, operations.UploadReportRequestBody{
 		Data: shared.Report{},
 		File: operations.File{
@@ -82,4 +87,5 @@ func TestReports_UploadReport(t *testing.T) {
 	assert.Equal(t, &operations.UploadReportUploadedReport{
 		URL: "https://cluttered-stall.info",
 	}, res.UploadedReport)
+
 }

@@ -16,6 +16,7 @@ import (
 	"net/url"
 )
 
+// Workspaces - REST APIs for managing Workspaces (speakeasy tenancy)
 type Workspaces struct {
 	sdkConfiguration sdkConfiguration
 }

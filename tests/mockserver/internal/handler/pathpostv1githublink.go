@@ -3,25 +3,30 @@
 package handler
 
 import (
+	"fmt"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathPostV1GithubLink(dir *logging.HTTPFileDirectory) http.HandlerFunc {
+func pathPostV1GithubLink(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
+		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
 
-		switch test {
-		case "linkGithubAccess":
-			dir.HandlerFunc("linkGithubAccess", testLinkGithubAccessLinkGithubAccess)(w, req)
+		count := rt.GetRequestCount(test, instanceID)
+
+		switch fmt.Sprintf("%s[%d]", test, count) {
+		case "linkGithubAccess[0]":
+			dir.HandlerFunc("linkGithubAccess", testLinkGithubAccessLinkGithubAccess0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testLinkGithubAccessLinkGithubAccess(w http.ResponseWriter, req *http.Request) {
+func testLinkGithubAccessLinkGithubAccess0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

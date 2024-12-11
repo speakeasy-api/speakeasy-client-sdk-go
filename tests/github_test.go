@@ -14,6 +14,8 @@ import (
 )
 
 func TestGithub_CheckGithubAccess(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("checkGithubAccess")),
@@ -22,16 +24,18 @@ func TestGithub_CheckGithubAccess(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.CheckAccess(ctx, operations.CheckGithubAccessRequest{
 		Org:  "<value>",
 		Repo: "<value>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestGithub_GithubConfigureCodeSamples(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubConfigureCodeSamples")),
@@ -40,7 +44,6 @@ func TestGithub_GithubConfigureCodeSamples(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.ConfigureCodeSamples(ctx, shared.GithubConfigureCodeSamplesRequest{
 		Org:        "<value>",
 		Repo:       "<value>",
@@ -55,9 +58,12 @@ func TestGithub_GithubConfigureCodeSamples(t *testing.T) {
 			Location: "<value>",
 		},
 	}, res.GithubConfigureCodeSamplesResponse)
+
 }
 
 func TestGithub_GithubConfigureMintlifyRepo(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubConfigureMintlifyRepo")),
@@ -66,7 +72,6 @@ func TestGithub_GithubConfigureMintlifyRepo(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.ConfigureMintlifyRepo(ctx, shared.GithubConfigureMintlifyRepoRequest{
 		Input: "<value>",
 		Org:   "<value>",
@@ -77,9 +82,12 @@ func TestGithub_GithubConfigureMintlifyRepo(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestGithub_GithubConfigureTarget(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubConfigureTarget")),
@@ -88,16 +96,18 @@ func TestGithub_GithubConfigureTarget(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.ConfigureTarget(ctx, shared.GithubConfigureTargetRequest{
 		Org:      "<value>",
 		RepoName: "<value>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestGithub_GetGithubSetupState(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getGithubSetupState")),
@@ -106,7 +116,6 @@ func TestGithub_GetGithubSetupState(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.GetSetup(ctx, operations.GetGithubSetupStateRequest{
 		GenerateGenLockID: "<id>",
 		Org:               "<value>",
@@ -126,9 +135,12 @@ func TestGithub_GetGithubSetupState(t *testing.T) {
 			PublishingSecretsConfigured: true,
 		},
 	}, res.GithubSetupStateResponse)
+
 }
 
 func TestGithub_LinkGithubAccess(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("linkGithubAccess")),
@@ -137,13 +149,15 @@ func TestGithub_LinkGithubAccess(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.LinkGithub(ctx, operations.LinkGithubAccessRequest{})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestGithub_GithubStorePublishingSecrets(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubStorePublishingSecrets")),
@@ -152,15 +166,17 @@ func TestGithub_GithubStorePublishingSecrets(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.StorePublishingSecrets(ctx, shared.GithubStorePublishingSecretsRequest{
 		GenerateGenLockID: "<value>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
 
 func TestGithub_GithubTriggerAction(t *testing.T) {
+	ctx := context.Background()
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
 		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubTriggerAction")),
@@ -169,7 +185,6 @@ func TestGithub_GithubTriggerAction(t *testing.T) {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Github.TriggerAction(ctx, shared.GithubTriggerActionRequest{
 		GenLockID: "<id>",
 		Org:       "<value>",
@@ -177,4 +192,5 @@ func TestGithub_GithubTriggerAction(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
+
 }
