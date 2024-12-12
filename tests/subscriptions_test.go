@@ -7,7 +7,6 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -15,80 +14,49 @@ import (
 )
 
 func TestSubscriptions_CreateSubscription(t *testing.T) {
-	ctx := context.Background()
-
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createSubscription")),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
-		RegistrySubscription: shared.RegistrySubscription{
-			CreatedAt:            types.MustTimeFromString("2022-06-08T17:58:57.702Z"),
-			EventType:            shared.EventTypeUpdate,
-			ID:                   "<id>",
-			NamespaceName:        "<value>",
-			SubscriptionSettings: "<value>",
-			SubscriptionType:     shared.SubscriptionTypeCli,
-			UpdatedAt:            types.MustTimeFromString("2022-07-20T08:51:35.776Z"),
-			WorkspaceID:          "<id>",
-		},
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
-	assert.NotNil(t, res.RegistrySubscription)
-	assert.Equal(t, &shared.RegistrySubscription{
-		CreatedAt:            types.MustTimeFromString("2022-03-27T15:41:56.125Z"),
-		EventType:            shared.EventTypeUpdate,
-		ID:                   "<id>",
-		NamespaceName:        "<value>",
-		SubscriptionSettings: "<value>",
-		SubscriptionType:     shared.SubscriptionTypeCli,
-		UpdatedAt:            types.MustTimeFromString("2023-07-24T03:56:06.003Z"),
-		WorkspaceID:          "<id>",
-	}, res.RegistrySubscription)
-
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step createSubscription.test referencing operation createSubscription not found in document`]")
 }
 
 func TestSubscriptions_ListRegistrySubscriptions(t *testing.T) {
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step listRegistrySubscriptions.test referencing operation listRegistrySubscriptions not found in document`]")
+}
+
+func TestSubscriptions_ActivateSubscriptionNamespace(t *testing.T) {
 	ctx := context.Background()
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("listRegistrySubscriptions")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("activateSubscriptionNamespace")),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
-	res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})
+	res, err := s.Subscriptions.ActivateSubscriptionNamespace(ctx, operations.ActivateSubscriptionNamespaceRequest{
+		NamespaceName:  "<value>",
+		SubscriptionID: "<id>",
+	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
-	assert.NotNil(t, res.Classes)
-	assert.Equal(t, []shared.RegistrySubscription{
-		shared.RegistrySubscription{
-			CreatedAt:            types.MustTimeFromString("2022-12-26T20:06:41.993Z"),
-			EventType:            shared.EventTypeUpdate,
-			ID:                   "<id>",
-			NamespaceName:        "<value>",
-			SubscriptionSettings: "<value>",
-			SubscriptionType:     shared.SubscriptionTypeCli,
-			UpdatedAt:            types.MustTimeFromString("2023-10-12T18:58:27.338Z"),
-			WorkspaceID:          "<id>",
-		},
-		shared.RegistrySubscription{
-			CreatedAt:            types.MustTimeFromString("2022-07-07T11:51:20.859Z"),
-			EventType:            shared.EventTypeUpdate,
-			ID:                   "<id>",
-			NamespaceName:        "<value>",
-			SubscriptionSettings: "<value>",
-			SubscriptionType:     shared.SubscriptionTypeCli,
-			UpdatedAt:            types.MustTimeFromString("2022-03-26T04:16:26.649Z"),
-			WorkspaceID:          "<id>",
-		},
-	}, res.Classes)
+
+}
+
+func TestSubscriptions_IgnoreSubscriptionNamespace(t *testing.T) {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("ignoreSubscriptionNamespace")),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Subscriptions.IgnoreSubscriptionNamespace(ctx, operations.IgnoreSubscriptionNamespaceRequest{
+		NamespaceName:  "<value>",
+		SubscriptionID: "<id>",
+	})
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
 
 }

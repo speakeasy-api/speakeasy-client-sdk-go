@@ -97,14 +97,14 @@ type Speakeasy struct {
 	Reports *Reports
 	// REST APIs for managing short URLs
 	ShortURLs *ShortURLs
+	// REST APIs for managing subscriptions
+	Subscriptions *Subscriptions
 	// REST APIs for managing LLM OAS suggestions
 	Suggest *Suggest
 	// REST APIs for managing Workspaces (speakeasy tenancy)
 	Workspaces *Workspaces
 	// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 	Events *Events
-	// REST APIs for managing subscriptions
-	Subscriptions *Subscriptions
 
 	sdkConfiguration sdkConfiguration
 }
@@ -190,9 +190,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.17.0",
-			GenVersion:        "2.477.0",
-			UserAgent:         "speakeasy-sdk/go 3.17.0 2.477.0 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.17.1",
+			GenVersion:        "2.477.4",
+			UserAgent:         "speakeasy-sdk/go 3.17.1 2.477.4 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},
@@ -225,13 +225,13 @@ func New(opts ...SDKOption) *Speakeasy {
 
 	sdk.ShortURLs = newShortURLs(sdk.sdkConfiguration)
 
+	sdk.Subscriptions = newSubscriptions(sdk.sdkConfiguration)
+
 	sdk.Suggest = newSuggest(sdk.sdkConfiguration)
 
 	sdk.Workspaces = newWorkspaces(sdk.sdkConfiguration)
 
 	sdk.Events = newEvents(sdk.sdkConfiguration)
-
-	sdk.Subscriptions = newSubscriptions(sdk.sdkConfiguration)
 
 	return sdk
 }

@@ -1628,3 +1628,31 @@ workflows:
               ]
             type: simple
     x-speakeasy-test-group: Subscriptions
+  - workflowId: activateSubscriptionNamespace
+    steps:
+      - stepId: test
+        operationId: activateSubscriptionNamespace
+        parameters:
+          - name: subscriptionID
+            in: path
+            value: <id>
+          - name: namespaceName
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Subscriptions
+  - workflowId: ignoreSubscriptionNamespace
+    steps:
+      - stepId: test
+        operationId: ignoreSubscriptionNamespace
+        parameters:
+          - name: subscriptionID
+            in: path
+            value: <id>
+          - name: namespaceName
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Subscriptions

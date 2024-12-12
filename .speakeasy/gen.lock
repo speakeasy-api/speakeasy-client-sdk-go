@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: cfe5bd9d0515c386691a5c79ddd69e6a
+  docChecksum: a776550f34009612df62ba6268f834e3
   docVersion: 0.4.0
-  speakeasyVersion: 1.454.0
-  generationVersion: 2.477.0
-  releaseVersion: 3.17.0
-  configChecksum: 042fb7ab09508efb37621888514d41eb
+  speakeasyVersion: 1.454.2
+  generationVersion: 2.477.4
+  releaseVersion: 3.17.1
+  configChecksum: 3f214bb190c9b5501c135b31bc684e5b
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -41,12 +41,12 @@ generatedFiles:
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
   - .gitattributes
+  - /pkg/models/operations/activatesubscriptionnamespace.go
   - /pkg/models/operations/checkgithubaccess.go
   - /pkg/models/operations/create.go
   - /pkg/models/operations/createfreetrial.go
   - /pkg/models/operations/createorganization.go
   - /pkg/models/operations/createremotesource.go
-  - /pkg/models/operations/createsubscription.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
   - /pkg/models/operations/deleteworkspacetoken.go
@@ -86,8 +86,8 @@ generatedFiles:
   - /pkg/models/operations/githubstorepublishingsecrets.go
   - /pkg/models/operations/githubtriggeraction.go
   - /pkg/models/operations/grantuseraccesstoworkspace.go
+  - /pkg/models/operations/ignoresubscriptionnamespace.go
   - /pkg/models/operations/linkgithubaccess.go
-  - /pkg/models/operations/listregistrysubscriptions.go
   - /pkg/models/operations/listremotesources.go
   - /pkg/models/operations/posttags.go
   - /pkg/models/operations/postworkspaceevents.go
@@ -114,7 +114,6 @@ generatedFiles:
   - /pkg/models/shared/codesampleschemainput.go
   - /pkg/models/shared/codesamplesjobstatus.go
   - /pkg/models/shared/diagnostic.go
-  - /pkg/models/shared/eventtype.go
   - /pkg/models/shared/featureflag.go
   - /pkg/models/shared/getnamespacesresponse.go
   - /pkg/models/shared/getrevisionsresponse.go
@@ -140,7 +139,6 @@ generatedFiles:
   - /pkg/models/shared/organizationusageresponse.go
   - /pkg/models/shared/preflightrequest.go
   - /pkg/models/shared/preflighttoken.go
-  - /pkg/models/shared/registrysubscription.go
   - /pkg/models/shared/remotedocument.go
   - /pkg/models/shared/remotesource.go
   - /pkg/models/shared/remotesourcesubscriptionsettings.go
@@ -149,7 +147,6 @@ generatedFiles:
   - /pkg/models/shared/security.go
   - /pkg/models/shared/shorturl.go
   - /pkg/models/shared/ssometadata.go
-  - /pkg/models/shared/subscriptiontype.go
   - /pkg/models/shared/suggestitemsrequestbody.go
   - /pkg/models/shared/suggestoptsold.go
   - /pkg/models/shared/suggestrequestbody.go
@@ -169,6 +166,8 @@ generatedFiles:
   - USAGE.md
   - artifacts.go
   - auth.go
+  - docs/pkg/models/operations/activatesubscriptionnamespacerequest.md
+  - docs/pkg/models/operations/activatesubscriptionnamespaceresponse.md
   - docs/pkg/models/operations/checkgithubaccessrequest.md
   - docs/pkg/models/operations/checkgithubaccessresponse.md
   - docs/pkg/models/operations/createfreetrialresponse.md
@@ -176,9 +175,6 @@ generatedFiles:
   - docs/pkg/models/operations/createremotesourceresponse.md
   - docs/pkg/models/operations/createrequestbody.md
   - docs/pkg/models/operations/createresponse.md
-  - docs/pkg/models/operations/createsubscriptionglobals.md
-  - docs/pkg/models/operations/createsubscriptionrequest.md
-  - docs/pkg/models/operations/createsubscriptionresponse.md
   - docs/pkg/models/operations/createworkspaceresponse.md
   - docs/pkg/models/operations/createworkspacetokenglobals.md
   - docs/pkg/models/operations/createworkspacetokenrequest.md
@@ -258,11 +254,10 @@ generatedFiles:
   - docs/pkg/models/operations/grantuseraccesstoworkspaceglobals.md
   - docs/pkg/models/operations/grantuseraccesstoworkspacerequest.md
   - docs/pkg/models/operations/grantuseraccesstoworkspaceresponse.md
+  - docs/pkg/models/operations/ignoresubscriptionnamespacerequest.md
+  - docs/pkg/models/operations/ignoresubscriptionnamespaceresponse.md
   - docs/pkg/models/operations/linkgithubaccessrequest.md
   - docs/pkg/models/operations/linkgithubaccessresponse.md
-  - docs/pkg/models/operations/listregistrysubscriptionsglobals.md
-  - docs/pkg/models/operations/listregistrysubscriptionsrequest.md
-  - docs/pkg/models/operations/listregistrysubscriptionsresponse.md
   - docs/pkg/models/operations/listremotesourcesrequest.md
   - docs/pkg/models/operations/listremotesourcesresponse.md
   - docs/pkg/models/operations/option.md
@@ -316,7 +311,6 @@ generatedFiles:
   - docs/pkg/models/shared/codesamplesjobstatus.md
   - docs/pkg/models/shared/compositespecmetadata.md
   - docs/pkg/models/shared/diagnostic.md
-  - docs/pkg/models/shared/eventtype.md
   - docs/pkg/models/shared/featureflag.md
   - docs/pkg/models/shared/generatebumptype.md
   - docs/pkg/models/shared/getnamespacesresponse.md
@@ -346,7 +340,6 @@ generatedFiles:
   - docs/pkg/models/shared/organizationusageresponse.md
   - docs/pkg/models/shared/preflightrequest.md
   - docs/pkg/models/shared/preflighttoken.md
-  - docs/pkg/models/shared/registrysubscription.md
   - docs/pkg/models/shared/relationship.md
   - docs/pkg/models/shared/remotedocument.md
   - docs/pkg/models/shared/remotesource.md
@@ -358,7 +351,6 @@ generatedFiles:
   - docs/pkg/models/shared/security.md
   - docs/pkg/models/shared/shorturl.md
   - docs/pkg/models/shared/ssometadata.md
-  - docs/pkg/models/shared/subscriptiontype.md
   - docs/pkg/models/shared/suggestiontype.md
   - docs/pkg/models/shared/suggestitemsrequestbody.md
   - docs/pkg/models/shared/suggestoptsold.md
@@ -462,7 +454,6 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1workspaces.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceid.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidfeatureflags.go
-  - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidregistrysubscriptions.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidsettings.go
   - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenametags.go
   - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenamevisibility.go
@@ -479,9 +470,10 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathpostv1organizationfreetrial.go
   - tests/mockserver/internal/handler/pathpostv1reports.go
   - tests/mockserver/internal/handler/pathpostv1shorturls.go
+  - tests/mockserver/internal/handler/pathpostv1subscriptionssubscriptionidnamespacenameactivate.go
+  - tests/mockserver/internal/handler/pathpostv1subscriptionssubscriptionidnamespacenameignore.go
   - tests/mockserver/internal/handler/pathpostv1suggestitems.go
   - tests/mockserver/internal/handler/pathpostv1workspace.go
-  - tests/mockserver/internal/handler/pathpostv1workspaceworkspaceidregistrysubscriptions.go
   - tests/mockserver/internal/handler/pathputv1workspaceworkspaceidsettings.go
   - tests/mockserver/internal/handler/values/files.go
   - tests/mockserver/internal/logging/doc.go
@@ -502,7 +494,6 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/codesampleschemainput.go
   - tests/mockserver/internal/sdk/models/components/codesamplesjobstatus.go
   - tests/mockserver/internal/sdk/models/components/diagnostic.go
-  - tests/mockserver/internal/sdk/models/components/eventtype.go
   - tests/mockserver/internal/sdk/models/components/featureflag.go
   - tests/mockserver/internal/sdk/models/components/getnamespacesresponse.go
   - tests/mockserver/internal/sdk/models/components/getrevisionsresponse.go
@@ -529,7 +520,6 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/organizationusageresponse.go
   - tests/mockserver/internal/sdk/models/components/preflightrequest.go
   - tests/mockserver/internal/sdk/models/components/preflighttoken.go
-  - tests/mockserver/internal/sdk/models/components/registrysubscription.go
   - tests/mockserver/internal/sdk/models/components/remotedocument.go
   - tests/mockserver/internal/sdk/models/components/remotesource.go
   - tests/mockserver/internal/sdk/models/components/remotesourcesubscriptionsettings.go
@@ -538,7 +528,6 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/security.go
   - tests/mockserver/internal/sdk/models/components/shorturl.go
   - tests/mockserver/internal/sdk/models/components/ssometadata.go
-  - tests/mockserver/internal/sdk/models/components/subscriptiontype.go
   - tests/mockserver/internal/sdk/models/components/suggestitemsrequestbody.go
   - tests/mockserver/internal/sdk/models/components/suggestoptsold.go
   - tests/mockserver/internal/sdk/models/components/suggestrequestbody.go
@@ -554,12 +543,12 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/workspacesettings.go
   - tests/mockserver/internal/sdk/models/components/workspaceteamresponse.go
   - tests/mockserver/internal/sdk/models/components/workspacetoken.go
+  - tests/mockserver/internal/sdk/models/operations/activatesubscriptionnamespace.go
   - tests/mockserver/internal/sdk/models/operations/checkgithubaccess.go
   - tests/mockserver/internal/sdk/models/operations/create.go
   - tests/mockserver/internal/sdk/models/operations/createfreetrial.go
   - tests/mockserver/internal/sdk/models/operations/createorganization.go
   - tests/mockserver/internal/sdk/models/operations/createremotesource.go
-  - tests/mockserver/internal/sdk/models/operations/createsubscription.go
   - tests/mockserver/internal/sdk/models/operations/createworkspace.go
   - tests/mockserver/internal/sdk/models/operations/createworkspacetoken.go
   - tests/mockserver/internal/sdk/models/operations/deleteworkspacetoken.go
@@ -599,8 +588,8 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/githubstorepublishingsecrets.go
   - tests/mockserver/internal/sdk/models/operations/githubtriggeraction.go
   - tests/mockserver/internal/sdk/models/operations/grantuseraccesstoworkspace.go
+  - tests/mockserver/internal/sdk/models/operations/ignoresubscriptionnamespace.go
   - tests/mockserver/internal/sdk/models/operations/linkgithubaccess.go
-  - tests/mockserver/internal/sdk/models/operations/listregistrysubscriptions.go
   - tests/mockserver/internal/sdk/models/operations/listremotesources.go
   - tests/mockserver/internal/sdk/models/operations/posttags.go
   - tests/mockserver/internal/sdk/models/operations/postworkspaceevents.go
@@ -1756,6 +1745,24 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 651364}
+  activateSubscriptionNamespace:
+    speakeasy-default-activate-subscription-namespace:
+      parameters:
+        path:
+          subscriptionID: "<id>"
+          namespaceName: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 566510}
+  ignoreSubscriptionNamespace:
+    speakeasy-default-ignore-subscription-namespace:
+      parameters:
+        path:
+          subscriptionID: "<id>"
+          namespaceName: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 844164}
 generatedTests:
   generateCodeSamplePreview: "2024-12-09T10:07:33-05:00"
   generateCodeSamplePreviewAsync: "2024-12-09T10:07:33-05:00"
@@ -1827,3 +1834,5 @@ generatedTests:
   revokeEmbedAccessToken: "2024-12-09T10:07:33-05:00"
   createSubscription: "2024-12-09T10:07:33-05:00"
   listRegistrySubscriptions: "2024-12-09T10:07:33-05:00"
+  activateSubscriptionNamespace: "2024-12-12T22:02:48Z"
+  ignoreSubscriptionNamespace: "2024-12-12T22:02:48Z"

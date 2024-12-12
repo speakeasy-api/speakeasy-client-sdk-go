@@ -213,6 +213,18 @@ actions:
         - lang: go
           label: create
           source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{\n        URL: \"https://probable-heating.com/\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ShortURL != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/subscriptions/{subscriptionID}/{namespaceName}/activate"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: activateSubscriptionNamespace
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Subscriptions.ActivateSubscriptionNamespace(ctx, operations.ActivateSubscriptionNamespaceRequest{\n        SubscriptionID: \"<id>\",\n        NamespaceName: \"<value>\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: ignoreSubscriptionNamespace
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Subscriptions.IgnoreSubscriptionNamespace(ctx, operations.IgnoreSubscriptionNamespaceRequest{\n        SubscriptionID: \"<id>\",\n        NamespaceName: \"<value>\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
   - target: $["paths"]["/v1/suggest/items"]["post"]
     update:
       x-codeSamples:
@@ -309,18 +321,6 @@ actions:
         - lang: go
           label: getWorkspaceFeatureFlags
           source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.WorkspaceFeatureFlagResponse != nil {\n        // handle response\n    }\n}"
-  - target: $["paths"]["/v1/workspace/{workspace_id}/registry_subscriptions"]["get"]
-    update:
-      x-codeSamples:
-        - lang: go
-          label: listRegistrySubscriptions
-          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.RegistrySubscriptions != nil {\n        // handle response\n    }\n}"
-  - target: $["paths"]["/v1/workspace/{workspace_id}/registry_subscriptions"]["post"]
-    update:
-      x-codeSamples:
-        - lang: go
-          label: createSubscription
-          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{\n        RegistrySubscription: shared.RegistrySubscription{\n            ID: \"<id>\",\n            WorkspaceID: \"<id>\",\n            EventType: shared.EventTypeUpdate,\n            NamespaceName: \"<value>\",\n            SubscriptionType: shared.SubscriptionTypeCli,\n            SubscriptionSettings: \"<value>\",\n            CreatedAt: types.MustTimeFromString(\"2022-06-08T17:58:57.702Z\"),\n            UpdatedAt: types.MustTimeFromString(\"2022-07-20T08:51:35.776Z\"),\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.RegistrySubscription != nil {\n        // handle response\n    }\n}"
   - target: $["paths"]["/v1/workspace/{workspace_id}/settings"]["get"]
     update:
       x-codeSamples:

@@ -9,7 +9,6 @@ import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/hooks"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
 	"net/http"
@@ -26,17 +25,13 @@ func newSubscriptions(sdkConfig sdkConfiguration) *Subscriptions {
 	}
 }
 
-// CreateSubscription - Create Subscription
-func (s *Subscriptions) CreateSubscription(ctx context.Context, request operations.CreateSubscriptionRequest, opts ...operations.Option) (*operations.CreateSubscriptionResponse, error) {
+// ActivateSubscriptionNamespace - Activate an ignored namespace for a subscription
+func (s *Subscriptions) ActivateSubscriptionNamespace(ctx context.Context, request operations.ActivateSubscriptionNamespaceRequest, opts ...operations.Option) (*operations.ActivateSubscriptionNamespaceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
-		OperationID:    "createSubscription",
+		OperationID:    "activateSubscriptionNamespace",
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
-	}
-
-	globals := operations.CreateSubscriptionGlobals{
-		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
 
 	o := operations.Options{}
@@ -52,14 +47,9 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/subscriptions/{subscriptionID}/{namespaceName}/activate", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RegistrySubscription", "json", `request:"mediaType=application/json"`)
-	if err != nil {
-		return nil, err
 	}
 
 	timeout := o.Timeout
@@ -73,13 +63,12 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 		defer cancel()
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -174,14 +163,15 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 		}
 	}
 
-	res := &operations.CreateSubscriptionResponse{
+	res := &operations.ActivateSubscriptionNamespaceResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -189,12 +179,12 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 				return nil, err
 			}
 
-			var out shared.RegistrySubscription
+			var out sdkerrors.Error
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RegistrySubscription = &out
+			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -202,8 +192,6 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 			}
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -222,17 +210,13 @@ func (s *Subscriptions) CreateSubscription(ctx context.Context, request operatio
 
 }
 
-// ListRegistrySubscriptions - List Subscriptions
-func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request operations.ListRegistrySubscriptionsRequest, opts ...operations.Option) (*operations.ListRegistrySubscriptionsResponse, error) {
+// IgnoreSubscriptionNamespace - Ignored a namespace for a subscription
+func (s *Subscriptions) IgnoreSubscriptionNamespace(ctx context.Context, request operations.IgnoreSubscriptionNamespaceRequest, opts ...operations.Option) (*operations.IgnoreSubscriptionNamespaceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
-		OperationID:    "listRegistrySubscriptions",
+		OperationID:    "ignoreSubscriptionNamespace",
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
-	}
-
-	globals := operations.ListRegistrySubscriptionsGlobals{
-		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
 
 	o := operations.Options{}
@@ -248,7 +232,7 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/registry_subscriptions", request, globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -264,16 +248,12 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 		defer cancel()
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, globals); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
@@ -368,14 +348,15 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 		}
 	}
 
-	res := &operations.ListRegistrySubscriptionsResponse{
+	res := &operations.IgnoreSubscriptionNamespaceResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -383,12 +364,12 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 				return nil, err
 			}
 
-			var out []shared.RegistrySubscription
+			var out sdkerrors.Error
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Classes = out
+			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -396,8 +377,6 @@ func (s *Subscriptions) ListRegistrySubscriptions(ctx context.Context, request o
 			}
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
-	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

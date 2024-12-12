@@ -169,8 +169,8 @@ func main() {
 
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
-* [CreateSubscription](docs/sdks/subscriptions/README.md#createsubscription) - Create Subscription
-* [ListRegistrySubscriptions](docs/sdks/subscriptions/README.md#listregistrysubscriptions) - List Subscriptions
+* [ActivateSubscriptionNamespace](docs/sdks/subscriptions/README.md#activatesubscriptionnamespace) - Activate an ignored namespace for a subscription
+* [IgnoreSubscriptionNamespace](docs/sdks/subscriptions/README.md#ignoresubscriptionnamespace) - Ignored a namespace for a subscription
 
 ### [Suggest](docs/sdks/suggest/README.md)
 

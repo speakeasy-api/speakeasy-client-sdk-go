@@ -7,12 +7,12 @@ REST APIs for managing subscriptions
 
 ### Available Operations
 
-* [CreateSubscription](#createsubscription) - Create Subscription
-* [ListRegistrySubscriptions](#listregistrysubscriptions) - List Subscriptions
+* [ActivateSubscriptionNamespace](#activatesubscriptionnamespace) - Activate an ignored namespace for a subscription
+* [IgnoreSubscriptionNamespace](#ignoresubscriptionnamespace) - Ignored a namespace for a subscription
 
-## CreateSubscription
+## ActivateSubscriptionNamespace
 
-Create Subscription
+Activate an ignored namespace for a subscription
 
 ### Example Usage
 
@@ -23,7 +23,6 @@ import(
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -37,22 +36,14 @@ func main() {
         }),
     )
 
-    res, err := s.Subscriptions.CreateSubscription(ctx, operations.CreateSubscriptionRequest{
-        RegistrySubscription: shared.RegistrySubscription{
-            CreatedAt: types.MustTimeFromString("2022-06-08T17:58:57.702Z"),
-            EventType: shared.EventTypeUpdate,
-            ID: "<id>",
-            NamespaceName: "<value>",
-            SubscriptionSettings: "<value>",
-            SubscriptionType: shared.SubscriptionTypeCli,
-            UpdatedAt: types.MustTimeFromString("2022-07-20T08:51:35.776Z"),
-            WorkspaceID: "<id>",
-        },
+    res, err := s.Subscriptions.ActivateSubscriptionNamespace(ctx, operations.ActivateSubscriptionNamespaceRequest{
+        NamespaceName: "<value>",
+        SubscriptionID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
     }
-    if res.RegistrySubscription != nil {
+    if res != nil {
         // handle response
     }
 }
@@ -60,25 +51,26 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
-| `request`                                                                                        | [operations.CreateSubscriptionRequest](../../pkg/models/operations/createsubscriptionrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `opts`                                                                                           | [][operations.Option](../../pkg/models/operations/option.md)                                     | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.ActivateSubscriptionNamespaceRequest](../../pkg/models/operations/activatesubscriptionnamespacerequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../pkg/models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
 
 ### Response
 
-**[*operations.CreateSubscriptionResponse](../../pkg/models/operations/createsubscriptionresponse.md), error**
+**[*operations.ActivateSubscriptionNamespaceResponse](../../pkg/models/operations/activatesubscriptionnamespaceresponse.md), error**
 
 ### Errors
 
 | Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
 
-## ListRegistrySubscriptions
+## IgnoreSubscriptionNamespace
 
-List Subscriptions
+Ignored a namespace for a subscription
 
 ### Example Usage
 
@@ -102,11 +94,14 @@ func main() {
         }),
     )
 
-    res, err := s.Subscriptions.ListRegistrySubscriptions(ctx, operations.ListRegistrySubscriptionsRequest{})
+    res, err := s.Subscriptions.IgnoreSubscriptionNamespace(ctx, operations.IgnoreSubscriptionNamespaceRequest{
+        NamespaceName: "<value>",
+        SubscriptionID: "<id>",
+    })
     if err != nil {
         log.Fatal(err)
     }
-    if res.Classes != nil {
+    if res != nil {
         // handle response
     }
 }
@@ -114,18 +109,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |
-| `request`                                                                                                      | [operations.ListRegistrySubscriptionsRequest](../../pkg/models/operations/listregistrysubscriptionsrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
-| `opts`                                                                                                         | [][operations.Option](../../pkg/models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                              | :heavy_check_mark:                                                                                                 | The context to use for the request.                                                                                |
+| `request`                                                                                                          | [operations.IgnoreSubscriptionNamespaceRequest](../../pkg/models/operations/ignoresubscriptionnamespacerequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| `opts`                                                                                                             | [][operations.Option](../../pkg/models/operations/option.md)                                                       | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
 
 ### Response
 
-**[*operations.ListRegistrySubscriptionsResponse](../../pkg/models/operations/listregistrysubscriptionsresponse.md), error**
+**[*operations.IgnoreSubscriptionNamespaceResponse](../../pkg/models/operations/ignoresubscriptionnamespaceresponse.md), error**
 
 ### Errors
 
 | Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |

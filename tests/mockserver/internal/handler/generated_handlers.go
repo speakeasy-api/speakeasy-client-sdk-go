@@ -33,7 +33,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/access", pathGetV1WorkspaceAccess(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/{workspace_id}", pathGetV1WorkspaceWorkspaceID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/{workspace_id}/feature_flags", pathGetV1WorkspaceWorkspaceIDFeatureFlags(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/{workspace_id}/registry_subscriptions", pathGetV1WorkspaceWorkspaceIDRegistrySubscriptions(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/{workspace_id}/settings", pathGetV1WorkspaceWorkspaceIDSettings(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspaces", pathGetV1Workspaces(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/artifacts/namespaces/{namespace_name}/tags", pathPostV1ArtifactsNamespacesNamespaceNameTags(dir, rt)),
@@ -51,9 +50,10 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/organization/free_trial", pathPostV1OrganizationFreeTrial(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/reports", pathPostV1Reports(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/short_urls", pathPostV1ShortUrls(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/subscriptions/{subscriptionID}/{namespaceName}/activate", pathPostV1SubscriptionsSubscriptionIDNamespaceNameActivate(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore", pathPostV1SubscriptionsSubscriptionIDNamespaceNameIgnore(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/suggest/items", pathPostV1SuggestItems(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/workspace", pathPostV1Workspace(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/v1/workspace/{workspace_id}/registry_subscriptions", pathPostV1WorkspaceWorkspaceIDRegistrySubscriptions(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPut, "/v1/workspace/{workspace_id}/settings", pathPutV1WorkspaceWorkspaceIDSettings(dir, rt)),
 	}
 }
