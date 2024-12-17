@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: a776550f34009612df62ba6268f834e3
+  docChecksum: 3dbd165cb83aaf90203b78ec02c2a141
   docVersion: 0.4.0
-  speakeasyVersion: 1.454.2
-  generationVersion: 2.477.4
-  releaseVersion: 3.17.1
-  configChecksum: 3f214bb190c9b5501c135b31bc684e5b
+  speakeasyVersion: 1.456.0
+  generationVersion: 2.481.0
+  releaseVersion: 3.18.0
+  configChecksum: 354718fd35427d9148d0975794a62853
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,7 +15,7 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.5.18
+    core: 3.6.2
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -34,7 +34,7 @@ features:
     retries: 2.83.1
     sdkHooks: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.8.0
+    tests: 0.8.1
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -1091,7 +1091,8 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 820828}
-        2XX: {}
+        2XX:
+          application/json: {}
         4XX:
           application/json: {"message": "<value>", "status_code": 820828}
   getAccessToken:
@@ -1232,7 +1233,8 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 445560}
-        2XX: {}
+        2XX:
+          application/json: {}
         4XX:
           application/json: {"message": "<value>", "status_code": 749379}
   githubStorePublishingSecrets:
@@ -1408,7 +1410,8 @@ examples:
       responses:
         5XX:
           application/json: {"message": "<value>", "status_code": 365854}
-        "200": {}
+        "200":
+          application/json: {}
   getWorkspaceEventsByTarget:
     speakeasy-default-get-workspace-events-by-target:
       parameters:
@@ -1469,7 +1472,8 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 670562}
-        2XX: {}
+        2XX:
+          application/json: {}
   githubConfigureCodeSamples:
     speakeasy-default-github-configure-code-samples:
       requestBody:
@@ -1502,7 +1506,8 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 252330}
-        2XX: {}
+        2XX:
+          application/json: {}
   githubTriggerAction:
     speakeasy-default-github-trigger-action:
       requestBody:

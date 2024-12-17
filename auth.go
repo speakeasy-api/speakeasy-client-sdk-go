@@ -49,7 +49,12 @@ func (s *Auth) GetAccess(ctx context.Context, request operations.GetWorkspaceAcc
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/v1/workspace/access")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -79,6 +84,10 @@ func (s *Auth) GetAccess(ctx context.Context, request operations.GetWorkspaceAcc
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -248,7 +257,12 @@ func (s *Auth) GetAccessToken(ctx context.Context, request operations.GetAccessT
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/v1/auth/access_token")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -274,6 +288,10 @@ func (s *Auth) GetAccessToken(ctx context.Context, request operations.GetAccessT
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -453,7 +471,12 @@ func (s *Auth) GetUser(ctx context.Context, opts ...operations.Option) (*operati
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/v1/user")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -479,6 +502,10 @@ func (s *Auth) GetUser(ctx context.Context, opts ...operations.Option) (*operati
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig
@@ -658,7 +685,12 @@ func (s *Auth) ValidateAPIKey(ctx context.Context, opts ...operations.Option) (*
 		}
 	}
 
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	var baseURL string
+	if o.ServerURL == nil {
+		baseURL = utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	} else {
+		baseURL = *o.ServerURL
+	}
 	opURL, err := url.JoinPath(baseURL, "/v1/auth/validate")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
@@ -684,6 +716,10 @@ func (s *Auth) ValidateAPIKey(ctx context.Context, opts ...operations.Option) (*
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
+	}
+
+	for k, v := range o.SetHeaders {
+		req.Header.Set(k, v)
 	}
 
 	globalRetryConfig := s.sdkConfiguration.RetryConfig

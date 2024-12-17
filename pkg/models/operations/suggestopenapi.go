@@ -11,7 +11,7 @@ import (
 type Schema struct {
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content  any    `multipartForm:"content"`
-	FileName string `multipartForm:"name=schema"`
+	FileName string `multipartForm:"name=fileName"`
 }
 
 func (o *Schema) GetContent() any {
@@ -31,7 +31,7 @@ func (o *Schema) GetFileName() string {
 // SuggestOpenAPIRequestBody - The schema file to upload provided as a multipart/form-data file segment.
 type SuggestOpenAPIRequestBody struct {
 	Opts   *shared.SuggestOptsOld `multipartForm:"name=opts,json"`
-	Schema Schema                 `multipartForm:"file"`
+	Schema Schema                 `multipartForm:"file,name=schema"`
 }
 
 func (o *SuggestOpenAPIRequestBody) GetOpts() *shared.SuggestOptsOld {

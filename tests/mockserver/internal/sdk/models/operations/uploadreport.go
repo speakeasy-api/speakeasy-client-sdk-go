@@ -9,7 +9,7 @@ import (
 
 type File struct {
 	Content  io.Reader `multipartForm:"content"`
-	FileName string    `multipartForm:"name=file"`
+	FileName string    `multipartForm:"name=fileName"`
 }
 
 func (o *File) GetContent() io.Reader {

@@ -10,7 +10,7 @@ import (
 type File struct {
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content  any    `multipartForm:"content"`
-	FileName string `multipartForm:"name=file"`
+	FileName string `multipartForm:"name=fileName"`
 }
 
 func (o *File) GetContent() any {
@@ -30,7 +30,7 @@ func (o *File) GetFileName() string {
 // UploadReportRequestBody - The report file to upload provided as a multipart/form-data file segment.
 type UploadReportRequestBody struct {
 	Data shared.Report `multipartForm:"name=data,json"`
-	File File          `multipartForm:"file"`
+	File File          `multipartForm:"file,name=file"`
 }
 
 func (o *UploadReportRequestBody) GetData() shared.Report {

@@ -5,7 +5,7 @@ package shared
 type SchemaFile struct {
 	// This field accepts []byte data or io.Reader implementations, such as *os.File.
 	Content  any    `multipartForm:"content"`
-	FileName string `multipartForm:"name=schema_file"`
+	FileName string `multipartForm:"name=fileName"`
 }
 
 func (o *SchemaFile) GetContent() any {
@@ -28,7 +28,7 @@ type CodeSampleSchemaInput struct {
 	// The name of the package
 	PackageName *string `multipartForm:"name=package_name"`
 	// The OpenAPI file to be uploaded
-	SchemaFile SchemaFile `multipartForm:"file"`
+	SchemaFile SchemaFile `multipartForm:"file,name=schema_file"`
 	// The SDK class name
 	SDKClassName *string `multipartForm:"name=sdk_class_name"`
 }

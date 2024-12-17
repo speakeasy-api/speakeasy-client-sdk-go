@@ -9,7 +9,7 @@ import (
 
 type Schema struct {
 	Content  io.Reader `multipartForm:"content"`
-	FileName string    `multipartForm:"name=schema"`
+	FileName string    `multipartForm:"name=fileName"`
 }
 
 func (o *Schema) GetContent() io.Reader {
