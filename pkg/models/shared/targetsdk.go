@@ -68,6 +68,10 @@ type TargetSDK struct {
 	LastEventID string `json:"last_event_id"`
 	// Type of interaction.
 	LastEventInteractionType InteractionType `json:"last_event_interaction_type"`
+	// Timestamp when the last publishing event was created.
+	LastPublishCreatedAt *time.Time `json:"last_publish_created_at,omitempty"`
+	// Link to the GitHub action run for the last publishing event.
+	LastPublishGhActionRunLink *string `json:"last_publish_gh_action_run_link,omitempty"`
 	// Name of the published package.
 	PublishPackageName *string `json:"publish_package_name,omitempty"`
 	// Name of the registry where the package was published.
@@ -315,6 +319,20 @@ func (o *TargetSDK) GetLastEventInteractionType() InteractionType {
 		return InteractionType("")
 	}
 	return o.LastEventInteractionType
+}
+
+func (o *TargetSDK) GetLastPublishCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.LastPublishCreatedAt
+}
+
+func (o *TargetSDK) GetLastPublishGhActionRunLink() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastPublishGhActionRunLink
 }
 
 func (o *TargetSDK) GetPublishPackageName() *string {
