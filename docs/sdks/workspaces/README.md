@@ -122,6 +122,7 @@ func main() {
             Name: "<value>",
             WorkspaceID: "<id>",
         },
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -179,6 +180,7 @@ func main() {
 
     res, err := s.Workspaces.DeleteToken(ctx, operations.DeleteWorkspaceTokenRequest{
         TokenID: "<id>",
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -340,7 +342,9 @@ func main() {
         }),
     )
 
-    res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
+    res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -395,7 +399,9 @@ func main() {
         }),
     )
 
-    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
+    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -450,7 +456,9 @@ func main() {
         }),
     )
 
-    res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
+    res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -505,7 +513,9 @@ func main() {
         }),
     )
 
-    res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{})
+    res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -560,7 +570,9 @@ func main() {
         }),
     )
 
-    res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{})
+    res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -617,6 +629,7 @@ func main() {
 
     res, err := s.Workspaces.GrantAccess(ctx, operations.GrantUserAccessToWorkspaceRequest{
         Email: "Lucinda.Batz8@hotmail.com",
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -674,6 +687,7 @@ func main() {
 
     res, err := s.Workspaces.RevokeAccess(ctx, operations.RevokeUserAccessToWorkspaceRequest{
         UserID: "<id>",
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -741,6 +755,7 @@ func main() {
             UpdatedAt: types.MustTimeFromString("2023-01-13T16:52:57.274Z"),
             Verified: false,
         },
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -804,6 +819,7 @@ func main() {
             WebhookURL: "https://grown-pharmacopoeia.net",
             WorkspaceID: "<id>",
         },
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)

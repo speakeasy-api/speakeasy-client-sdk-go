@@ -7,7 +7,6 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
-	"os"
 )
 
 func main() {
@@ -19,25 +18,11 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }

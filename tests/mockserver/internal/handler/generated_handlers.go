@@ -18,6 +18,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/artifacts/remote_sources", pathGetV1ArtifactsRemoteSources(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/auth/access_token", pathGetV1AuthAccessToken(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/auth/validate", pathGetV1AuthValidate(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/v1/code_sample", pathGetV1CodeSample(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/code_sample/preview/async/{jobID}", pathGetV1CodeSamplePreviewAsyncJobID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/github/check_access", pathGetV1GithubCheckAccess(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/github/setup", pathGetV1GithubSetup(dir, rt)),

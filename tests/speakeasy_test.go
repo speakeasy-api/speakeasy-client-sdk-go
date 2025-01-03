@@ -28,7 +28,7 @@ func TestSpeakeasy_GenerateCodeSamplePreview(t *testing.T) {
 	content, fileErr := os.Open("../.speakeasy/testfiles/example.file")
 	require.NoError(t, fileErr)
 
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+	res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
 		Languages: []string{
 			"<value>",
 			"<value>",
@@ -57,7 +57,7 @@ func TestSpeakeasy_GenerateCodeSamplePreviewAsync(t *testing.T) {
 	content, fileErr := os.Open("../.speakeasy/testfiles/example.file")
 	require.NoError(t, fileErr)
 
-	res, err := s.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
+	res, err := s.CodeSamples.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
 		Languages: []string{
 			"<value>",
 			"<value>",
@@ -89,7 +89,7 @@ func TestSpeakeasy_GetCodeSamplePreviewAsync(t *testing.T) {
 		}),
 	)
 
-	res, err := s.GetCodeSamplePreviewAsync(ctx, operations.GetCodeSamplePreviewAsyncRequest{
+	res, err := s.CodeSamples.GetCodeSamplePreviewAsync(ctx, operations.GetCodeSamplePreviewAsyncRequest{
 		JobID: "<id>",
 	})
 	require.NoError(t, err)

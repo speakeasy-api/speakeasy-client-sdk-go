@@ -41,6 +41,7 @@ func main() {
 
     res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
         TargetID: "<id>",
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -151,7 +152,9 @@ func main() {
         }),
     )
 
-    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{})
+    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -210,17 +213,18 @@ func main() {
     res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
         RequestBody: []shared.CliEvent{
             shared.CliEvent{
-                CreatedAt: types.MustTimeFromString("2024-08-12T17:54:17.538Z"),
+                CreatedAt: types.MustTimeFromString("2025-08-12T17:54:17.538Z"),
                 ExecutionID: "<id>",
                 ID: "<id>",
                 InteractionType: shared.InteractionTypeCiExec,
-                LocalStartedAt: types.MustTimeFromString("2023-11-23T06:26:30.993Z"),
+                LocalStartedAt: types.MustTimeFromString("2024-11-22T06:26:30.993Z"),
                 SpeakeasyAPIKeyName: "<value>",
                 SpeakeasyVersion: "<value>",
                 Success: false,
                 WorkspaceID: "<id>",
             },
         },
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -276,7 +280,9 @@ func main() {
         }),
     )
 
-    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{})
+    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
+        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+    })
     if err != nil {
         log.Fatal(err)
     }

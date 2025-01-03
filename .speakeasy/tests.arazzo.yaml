@@ -1656,3 +1656,37 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
     x-speakeasy-test-group: Subscriptions
+  - workflowId: getCodeSamples
+    steps:
+      - stepId: test
+        operationId: getCodeSamples
+        parameters:
+          - name: registry_url
+            in: query
+            value: https://normal-making.name
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "snippets": [
+                  {
+                    "code": "\u003cvalue\u003e",
+                    "language": "\u003cvalue\u003e",
+                    "operationId": "\u003cid\u003e"
+                  },
+                  {
+                    "code": "\u003cvalue\u003e",
+                    "language": "\u003cvalue\u003e",
+                    "operationId": "\u003cid\u003e"
+                  },
+                  {
+                    "code": "\u003cvalue\u003e",
+                    "language": "\u003cvalue\u003e",
+                    "operationId": "\u003cid\u003e"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: CodeSamples

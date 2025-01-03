@@ -57,7 +57,6 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
-	"os"
 )
 
 func main() {
@@ -69,25 +68,11 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -120,6 +105,13 @@ func main() {
 * [GetAccessToken](docs/sdks/auth/README.md#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetUser](docs/sdks/auth/README.md#getuser) - Get information about the current user.
 * [ValidateAPIKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
+
+### [CodeSamples](docs/sdks/codesamples/README.md)
+
+* [GenerateCodeSamplePreview](docs/sdks/codesamples/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
+* [GenerateCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
+* [Get](docs/sdks/codesamples/README.md#get) - Retrieve usage snippets from document stored in the registry
+* [GetCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Events](docs/sdks/events/README.md)
 
@@ -161,11 +153,6 @@ func main() {
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
-### [Speakeasy SDK](docs/sdks/speakeasy/README.md)
-
-* [GenerateCodeSamplePreview](docs/sdks/speakeasy/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
-* [GenerateCodeSamplePreviewAsync](docs/sdks/speakeasy/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [GetCodeSamplePreviewAsync](docs/sdks/speakeasy/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
@@ -214,11 +201,12 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `GenerateCodeSamplePreview` function may return the following errors:
+For example, the `CreateRemoteSource` function may return the following errors:
 
-| Error Type      | Status Code | Content Type     |
-| --------------- | ----------- | ---------------- |
-| sdkerrors.Error | 4XX, 5XX    | application/json |
+| Error Type         | Status Code | Content Type     |
+| ------------------ | ----------- | ---------------- |
+| sdkerrors.Error    | 4XX         | application/json |
+| sdkerrors.SDKError | 5XX         | \*/\*            |
 
 ### Example
 
@@ -232,7 +220,6 @@ import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
-	"os"
 )
 
 func main() {
@@ -244,21 +231,7 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 
 		var e *sdkerrors.Error
@@ -301,7 +274,6 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
-	"os"
 )
 
 func main() {
@@ -314,25 +286,11 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -350,7 +308,6 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
-	"os"
 )
 
 func main() {
@@ -363,25 +320,11 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -444,7 +387,6 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
-	"os"
 )
 
 func main() {
@@ -456,25 +398,11 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -544,7 +472,6 @@ import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
-	"os"
 	"pkg/models/operations"
 )
 
@@ -557,21 +484,7 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	}, operations.WithRetries(
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -585,7 +498,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -602,7 +515,6 @@ import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
-	"os"
 )
 
 func main() {
@@ -625,25 +537,11 @@ func main() {
 		}),
 	)
 
-	content, fileErr := os.Open("example.file")
-	if fileErr != nil {
-		panic(fileErr)
-	}
-
-	res, err := s.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
-		SchemaFile: shared.SchemaFile{
-			Content:  content,
-			FileName: "example.file",
-		},
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.TwoHundredApplicationJSONResponseStream != nil {
+	if res != nil {
 		// handle response
 	}
 }

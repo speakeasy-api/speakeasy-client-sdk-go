@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 17684e14e65fca2909aaf49de5c6b935
+  docChecksum: bb7b102d1334d2d3e66e7cd8d8b866d8
   docVersion: 0.4.0
-  speakeasyVersion: 1.457.0
-  generationVersion: 2.483.1
-  releaseVersion: 3.18.1
-  configChecksum: c1ece8608c364281f0a827bef08de74f
+  speakeasyVersion: 1.462.2
+  generationVersion: 2.486.1
+  releaseVersion: 3.19.0
+  configChecksum: 9b5fe1018d076ecaa7cc40b54d12cde6
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -17,7 +17,7 @@ features:
     additionalDependencies: 0.1.0
     core: 3.6.2
     defaultEnabledRetries: 0.2.0
-    deprecations: 2.81.1
+    deprecations: 2.81.2
     devContainers: 2.90.0
     downloadStreams: 0.1.2
     envVarSecurityUsage: 0.3.2
@@ -34,7 +34,7 @@ features:
     retries: 2.83.1
     sdkHooks: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.8.1
+    tests: 0.10.1
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -56,6 +56,7 @@ generatedFiles:
   - /pkg/models/operations/getblob.go
   - /pkg/models/operations/getchangesreportsignedurl.go
   - /pkg/models/operations/getcodesamplepreviewasync.go
+  - /pkg/models/operations/getcodesamples.go
   - /pkg/models/operations/getgithubaction.go
   - /pkg/models/operations/getgithubsetupstate.go
   - /pkg/models/operations/getlintingreportsignedurl.go
@@ -152,6 +153,8 @@ generatedFiles:
   - /pkg/models/shared/suggestrequestbody.go
   - /pkg/models/shared/tag.go
   - /pkg/models/shared/targetsdk.go
+  - /pkg/models/shared/usagesnippet.go
+  - /pkg/models/shared/usagesnippets.go
   - /pkg/models/shared/user.go
   - /pkg/models/shared/v2descriptor.go
   - /pkg/models/shared/workflowdocument.go
@@ -166,6 +169,7 @@ generatedFiles:
   - USAGE.md
   - artifacts.go
   - auth.go
+  - codesamples.go
   - docs/pkg/models/operations/activatesubscriptionnamespacerequest.md
   - docs/pkg/models/operations/activatesubscriptionnamespaceresponse.md
   - docs/pkg/models/operations/checkgithubaccessrequest.md
@@ -196,6 +200,8 @@ generatedFiles:
   - docs/pkg/models/operations/getcodesamplepreviewasyncrequest.md
   - docs/pkg/models/operations/getcodesamplepreviewasyncresponse.md
   - docs/pkg/models/operations/getcodesamplepreviewasyncresponsebody.md
+  - docs/pkg/models/operations/getcodesamplesrequest.md
+  - docs/pkg/models/operations/getcodesamplesresponse.md
   - docs/pkg/models/operations/getgithubactionrequest.md
   - docs/pkg/models/operations/getgithubactionresponse.md
   - docs/pkg/models/operations/getgithubsetupstaterequest.md
@@ -359,6 +365,8 @@ generatedFiles:
   - docs/pkg/models/shared/tag.md
   - docs/pkg/models/shared/targetsdk.md
   - docs/pkg/models/shared/type.md
+  - docs/pkg/models/shared/usagesnippet.md
+  - docs/pkg/models/shared/usagesnippets.md
   - docs/pkg/models/shared/user.md
   - docs/pkg/models/shared/v2descriptor.md
   - docs/pkg/models/shared/workflowdocument.md
@@ -372,6 +380,7 @@ generatedFiles:
   - docs/pkg/models/shared/workspacetoken.md
   - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
+  - docs/sdks/codesamples/README.md
   - docs/sdks/events/README.md
   - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
@@ -415,6 +424,7 @@ generatedFiles:
   - tests/apis_test.go
   - tests/artifacts_test.go
   - tests/auth_test.go
+  - tests/codesamples_test.go
   - tests/embeds_test.go
   - tests/files.go
   - tests/github_test.go
@@ -438,6 +448,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1artifactsremotesources.go
   - tests/mockserver/internal/handler/pathgetv1authaccesstoken.go
   - tests/mockserver/internal/handler/pathgetv1authvalidate.go
+  - tests/mockserver/internal/handler/pathgetv1codesample.go
   - tests/mockserver/internal/handler/pathgetv1codesamplepreviewasyncjobid.go
   - tests/mockserver/internal/handler/pathgetv1githubcheckaccess.go
   - tests/mockserver/internal/handler/pathgetv1githubsetup.go
@@ -533,6 +544,8 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/suggestrequestbody.go
   - tests/mockserver/internal/sdk/models/components/tag.go
   - tests/mockserver/internal/sdk/models/components/targetsdk.go
+  - tests/mockserver/internal/sdk/models/components/usagesnippet.go
+  - tests/mockserver/internal/sdk/models/components/usagesnippets.go
   - tests/mockserver/internal/sdk/models/components/user.go
   - tests/mockserver/internal/sdk/models/components/v2descriptor.go
   - tests/mockserver/internal/sdk/models/components/workflowdocument.go
@@ -558,6 +571,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/getblob.go
   - tests/mockserver/internal/sdk/models/operations/getchangesreportsignedurl.go
   - tests/mockserver/internal/sdk/models/operations/getcodesamplepreviewasync.go
+  - tests/mockserver/internal/sdk/models/operations/getcodesamples.go
   - tests/mockserver/internal/sdk/models/operations/getgithubaction.go
   - tests/mockserver/internal/sdk/models/operations/getgithubsetupstate.go
   - tests/mockserver/internal/sdk/models/operations/getlintingreportsignedurl.go
@@ -1768,6 +1782,16 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 844164}
+  getCodeSamples:
+    speakeasy-default-get-code-samples:
+      parameters:
+        query:
+          registry_url: "https://normal-making.name"
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 458049}
 generatedTests:
   generateCodeSamplePreview: "2024-12-09T10:07:33-05:00"
   generateCodeSamplePreviewAsync: "2024-12-09T10:07:33-05:00"
@@ -1841,3 +1865,4 @@ generatedTests:
   listRegistrySubscriptions: "2024-12-09T10:07:33-05:00"
   activateSubscriptionNamespace: "2024-12-12T22:02:48Z"
   ignoreSubscriptionNamespace: "2024-12-12T22:02:48Z"
+  getCodeSamples: "2025-01-03T22:02:43Z"

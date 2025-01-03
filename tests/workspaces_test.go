@@ -132,7 +132,9 @@ func TestWorkspaces_GetWorkspace(t *testing.T) {
 		}),
 	)
 
-	res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
+	res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
+		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+	})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
 	assert.NotNil(t, res.Workspace)
@@ -160,7 +162,9 @@ func TestWorkspaces_GetWorkspaceFeatureFlags(t *testing.T) {
 		}),
 	)
 
-	res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
+	res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
+		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
 
@@ -177,7 +181,9 @@ func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
 		}),
 	)
 
-	res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
+	res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
+		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+	})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
 	assert.NotNil(t, res.WorkspaceSettings)
@@ -208,6 +214,7 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 			WebhookURL:  "https://grown-pharmacopoeia.net",
 			WorkspaceID: "<id>",
 		},
+		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
