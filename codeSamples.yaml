@@ -285,6 +285,12 @@ actions:
         - lang: go
           label: getWorkspaceTargets
           source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Events.GetTargets(ctx, operations.GetWorkspaceTargetsRequest{})\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.TargetSDKList != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/workspace/feature_flags"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: setWorkspaceFeatureFlags
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Workspaces.SetFeatureFlags(ctx, shared.WorkspaceFeatureFlagRequest{\n        FeatureFlags: []shared.WorkspaceFeatureFlag{\n            shared.WorkspaceFeatureFlagSkipSchemaRegistry,\n            shared.WorkspaceFeatureFlagWebhooks,\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.WorkspaceFeatureFlagResponse != nil {\n        // handle response\n    }\n}"
   - target: $["paths"]["/v1/workspace/{workspace_id}"]["get"]
     update:
       x-codeSamples:

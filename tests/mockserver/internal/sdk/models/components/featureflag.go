@@ -9,8 +9,9 @@ import (
 
 // FeatureFlag - A feature flag is a key-value pair that can be used to enable or disable features.
 type FeatureFlag struct {
-	FeatureFlag string     `json:"feature_flag"`
-	TrialEndsAt *time.Time `json:"trial_ends_at,omitempty"`
+	// enum value workspace feature flag
+	FeatureFlag WorkspaceFeatureFlag `json:"feature_flag"`
+	TrialEndsAt *time.Time           `json:"trial_ends_at,omitempty"`
 }
 
 func (f FeatureFlag) MarshalJSON() ([]byte, error) {
@@ -24,9 +25,9 @@ func (f *FeatureFlag) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FeatureFlag) GetFeatureFlag() string {
+func (o *FeatureFlag) GetFeatureFlag() WorkspaceFeatureFlag {
 	if o == nil {
-		return ""
+		return WorkspaceFeatureFlag("")
 	}
 	return o.FeatureFlag
 }

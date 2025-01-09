@@ -220,3 +220,27 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 	assert.Equal(t, 200, res.StatusCode)
 
 }
+
+func TestWorkspaces_SetWorkspaceFeatureFlags(t *testing.T) {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("setWorkspaceFeatureFlags")),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Workspaces.SetFeatureFlags(ctx, shared.WorkspaceFeatureFlagRequest{
+		FeatureFlags: []shared.WorkspaceFeatureFlag{
+			shared.WorkspaceFeatureFlagSkipSchemaRegistry,
+			shared.WorkspaceFeatureFlagWebhooks,
+		},
+	})
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
+	assert.NotNil(t, res.WorkspaceFeatureFlagResponse)
+	assert.Equal(t, &shared.WorkspaceFeatureFlagResponse{}, res.WorkspaceFeatureFlagResponse)
+
+}

@@ -1690,3 +1690,21 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: CodeSamples
+  - workflowId: setWorkspaceFeatureFlags
+    steps:
+      - stepId: test
+        operationId: setWorkspaceFeatureFlags
+        requestBody:
+          contentType: application/json
+          payload:
+            feature_flags:
+              - skip_schema_registry
+              - webhooks
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: Workspaces

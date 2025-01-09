@@ -180,6 +180,7 @@ func main() {
 * [GetTokens](docs/sdks/workspaces/README.md#gettokens) - Get tokens for a particular workspace
 * [GrantAccess](docs/sdks/workspaces/README.md#grantaccess) - Grant a user access to a particular workspace
 * [RevokeAccess](docs/sdks/workspaces/README.md#revokeaccess) - Revoke a user's access to a particular workspace
+* [SetFeatureFlags](docs/sdks/workspaces/README.md#setfeatureflags) - Set workspace feature flags
 * [Update](docs/sdks/workspaces/README.md#update) - Update workspace details
 * [UpdateSettings](docs/sdks/workspaces/README.md#updatesettings) - Update workspace settings
 

@@ -55,6 +55,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore", pathPostV1SubscriptionsSubscriptionIDNamespaceNameIgnore(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/suggest/items", pathPostV1SuggestItems(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/workspace", pathPostV1Workspace(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/workspace/feature_flags", pathPostV1WorkspaceFeatureFlags(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPut, "/v1/workspace/{workspace_id}/settings", pathPutV1WorkspaceWorkspaceIDSettings(dir, rt)),
 	}
 }

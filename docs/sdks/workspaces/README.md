@@ -19,6 +19,7 @@ REST APIs for managing Workspaces (speakeasy tenancy)
 * [GetTokens](#gettokens) - Get tokens for a particular workspace
 * [GrantAccess](#grantaccess) - Grant a user access to a particular workspace
 * [RevokeAccess](#revokeaccess) - Revoke a user's access to a particular workspace
+* [SetFeatureFlags](#setfeatureflags) - Set workspace feature flags
 * [Update](#update) - Update workspace details
 * [UpdateSettings](#updatesettings) - Update workspace settings
 
@@ -716,6 +717,65 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.Error    | 4XX                | application/json   |
 | sdkerrors.SDKError | 5XX                | \*/\*              |
+
+## SetFeatureFlags
+
+Set workspace feature flags
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    res, err := s.Workspaces.SetFeatureFlags(ctx, shared.WorkspaceFeatureFlagRequest{
+        FeatureFlags: []shared.WorkspaceFeatureFlag{
+            shared.WorkspaceFeatureFlagSkipSchemaRegistry,
+            shared.WorkspaceFeatureFlagWebhooks,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.WorkspaceFeatureFlagResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [shared.WorkspaceFeatureFlagRequest](../../pkg/models/shared/workspacefeatureflagrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../pkg/models/operations/option.md)                                 | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+
+### Response
+
+**[*operations.SetWorkspaceFeatureFlagsResponse](../../pkg/models/operations/setworkspacefeatureflagsresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 5XX                | application/json   |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
 
 ## Update
 
