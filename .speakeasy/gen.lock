@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: c0adff9c67d3441eb02a83b1cee1a956
+  docChecksum: 52df6f1f34dfe76968f8ed009cc2bfd3
   docVersion: 0.4.0
-  speakeasyVersion: 1.465.1
-  generationVersion: 2.488.4
-  releaseVersion: 3.19.1
-  configChecksum: 93cb08c9e2c4bcb8a9b9e97bec1bba0f
+  speakeasyVersion: 1.467.0
+  generationVersion: 2.492.3
+  releaseVersion: 3.19.2
+  configChecksum: 78309f1767add10831a0c6629f48c68b
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -350,6 +350,7 @@ generatedFiles:
   - docs/pkg/models/shared/organizationusageresponse.md
   - docs/pkg/models/shared/preflightrequest.md
   - docs/pkg/models/shared/preflighttoken.md
+  - docs/pkg/models/shared/pullrequestmetadata.md
   - docs/pkg/models/shared/relationship.md
   - docs/pkg/models/shared/remotedocument.md
   - docs/pkg/models/shared/remotesource.md

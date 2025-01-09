@@ -2,17 +2,107 @@
 
 package shared
 
-// GithubPublishingPRResponse - Open generation PRs pending publishing
-type GithubPublishingPRResponse struct {
-	GenerationPullRequest *string `json:"generation_pull_request,omitempty"`
-	PendingVersion        *string `json:"pending_version,omitempty"`
+import (
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
+	"time"
+)
+
+// PullRequestMetadata - This can only be populated when the github app is installed for a repo
+type PullRequestMetadata struct {
+	BaseBranch *string    `json:"base_branch,omitempty"`
+	CanMerge   *bool      `json:"can_merge,omitempty"`
+	CreatedAt  *time.Time `json:"created_at,omitempty"`
+	// truncated to first 1000 characters
+	Description *string `json:"description,omitempty"`
+	HeadBranch  *string `json:"head_branch,omitempty"`
+	// List of github labels
+	Labels []string `json:"labels,omitempty"`
+	// List of github handles
+	RequestedReviewers []string `json:"requested_reviewers,omitempty"`
+	Status             *string  `json:"status,omitempty"`
+	Title              *string  `json:"title,omitempty"`
 }
 
-func (o *GithubPublishingPRResponse) GetGenerationPullRequest() *string {
+func (p PullRequestMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PullRequestMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PullRequestMetadata) GetBaseBranch() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerationPullRequest
+	return o.BaseBranch
+}
+
+func (o *PullRequestMetadata) GetCanMerge() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanMerge
+}
+
+func (o *PullRequestMetadata) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *PullRequestMetadata) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *PullRequestMetadata) GetHeadBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HeadBranch
+}
+
+func (o *PullRequestMetadata) GetLabels() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Labels
+}
+
+func (o *PullRequestMetadata) GetRequestedReviewers() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestedReviewers
+}
+
+func (o *PullRequestMetadata) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *PullRequestMetadata) GetTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Title
+}
+
+// GithubPublishingPRResponse - Open generation PRs pending publishing
+type GithubPublishingPRResponse struct {
+	PendingVersion *string `json:"pending_version,omitempty"`
+	PullRequest    *string `json:"pull_request,omitempty"`
+	// This can only be populated when the github app is installed for a repo
+	PullRequestMetadata *PullRequestMetadata `json:"pull_request_metadata,omitempty"`
 }
 
 func (o *GithubPublishingPRResponse) GetPendingVersion() *string {
@@ -20,4 +110,18 @@ func (o *GithubPublishingPRResponse) GetPendingVersion() *string {
 		return nil
 	}
 	return o.PendingVersion
+}
+
+func (o *GithubPublishingPRResponse) GetPullRequest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PullRequest
+}
+
+func (o *GithubPublishingPRResponse) GetPullRequestMetadata() *PullRequestMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.PullRequestMetadata
 }
