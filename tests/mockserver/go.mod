@@ -5,6 +5,7 @@ go 1.22
 require (
 	github.com/ericlagergren/decimal v0.0.0-20221120152707-495c53812d05
 	github.com/go-pkgz/expirable-cache/v3 v3.0.0
+	github.com/gorilla/mux v1.8.1
 )
 
 require (

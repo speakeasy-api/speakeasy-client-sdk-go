@@ -144,9 +144,7 @@ func TestOrganizations_GetOrganizationUsage(t *testing.T) {
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
 	assert.NotNil(t, res.OrganizationUsageResponse)
 	assert.Equal(t, &shared.OrganizationUsageResponse{
-		AllowedLanguages: []string{
-			"<value>",
-		},
+		AllowedLanguages:      []string{},
 		TotalAllowedLanguages: 863126,
 		Usage: []shared.OrganizationUsage{
 			shared.OrganizationUsage{

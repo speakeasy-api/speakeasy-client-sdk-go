@@ -50,9 +50,7 @@ func testGetOrganizationUsageGetOrganizationUsage0(w http.ResponseWriter, req *h
 		return
 	}
 	respBody := &components.OrganizationUsageResponse{
-		AllowedLanguages: []string{
-			"<value>",
-		},
+		AllowedLanguages:      []string{},
 		TotalAllowedLanguages: 863126,
 		Usage: []components.OrganizationUsage{
 			components.OrganizationUsage{

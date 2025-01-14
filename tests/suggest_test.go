@@ -24,9 +24,7 @@ func TestSuggest_SuggestItems(t *testing.T) {
 	)
 
 	res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
-		Items: []string{
-			"<value>",
-		},
+		Items:  []string{},
 		Prompt: "<value>",
 	})
 	require.NoError(t, err)

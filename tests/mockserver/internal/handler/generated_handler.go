@@ -13,10 +13,10 @@ type GeneratedHandler struct {
 	handlerFunc http.HandlerFunc
 
 	// HTTP method, such as GET.
-	method string
+	Method string
 
 	// URL path, such as /path.
-	path string
+	Path string
 }
 
 // NewGeneratedHandler creates a generated handler via method, path, and handler
@@ -24,18 +24,12 @@ type GeneratedHandler struct {
 func NewGeneratedHandler(ctx context.Context, method string, path string, handlerFunc http.HandlerFunc) *GeneratedHandler {
 	return &GeneratedHandler{
 		handlerFunc: handlerFunc,
-		method:      method,
-		path:        path,
+		Method:      method,
+		Path:        path,
 	}
 }
 
 // HandlerFunc returns the underlying HTTP handler function.
 func (h GeneratedHandler) HandlerFunc() http.HandlerFunc {
 	return h.handlerFunc
-}
-
-// HandlerPattern returns the method and path in a [http.ServeMux] compatible
-// pattern.
-func (h GeneratedHandler) HandlerPattern() string {
-	return h.method + " " + h.path
 }

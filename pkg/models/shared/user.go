@@ -32,6 +32,8 @@ type User struct {
 	LastLoginAt *time.Time `json:"last_login_at,omitempty"`
 	// URL of the user's photo.
 	PhotoURL *string `json:"photo_url,omitempty"`
+	// Hash used for pylon identity verification returned on v1/user.
+	PylonIdentityHash *string `json:"pylon_identity_hash,omitempty"`
 	// Timestamp of the user's last update.
 	UpdatedAt time.Time `json:"updated_at"`
 	// Indicates whether the user has been whitelisted.
@@ -131,6 +133,13 @@ func (o *User) GetPhotoURL() *string {
 		return nil
 	}
 	return o.PhotoURL
+}
+
+func (o *User) GetPylonIdentityHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PylonIdentityHash
 }
 
 func (o *User) GetUpdatedAt() time.Time {

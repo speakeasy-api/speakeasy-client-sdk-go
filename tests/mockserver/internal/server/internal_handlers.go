@@ -18,28 +18,22 @@ const (
 	internalPathPrefix = "/_mockserver"
 )
 
-// internalPath returns a [http.ServeMux] compatible pattern with the internal
-// path prefix.
-func internalPath(method string, path string) string {
-	return method + " " + internalPathPrefix + path
-}
-
 // registerInternalHandlers adds any internal handlers, such as healthcheck
 // endpoints and fallback handling.
 func (s *Server) registerInternalHandlers(ctx context.Context) {
 	s.logger.Debug("registering internal handlers")
 
 	// Healthcheck endpoint
-	s.RegisterHandlerFunc(ctx, internalPath(http.MethodGet, "/health"), healthcheckHandler)
+	s.RegisterHandlerFunc(ctx, []string{http.MethodGet}, internalPathPrefix+"/health", healthcheckHandler)
 
 	// HTTP log index endpoint
-	s.RegisterHandlerFunc(ctx, internalPath(http.MethodGet, "/log"), s.httpFileIndexHandler)
+	s.RegisterHandlerFunc(ctx, []string{http.MethodGet}, internalPathPrefix+"/log", s.httpFileIndexHandler)
 
 	// HTTP log operation endpoint
-	s.RegisterHandlerFunc(ctx, internalPath(http.MethodGet, "/log/{operationId}"), s.httpOperationHandler)
+	s.RegisterHandlerFunc(ctx, []string{http.MethodGet}, internalPathPrefix+"/log/{operationId}", s.httpOperationHandler)
 
 	// Default all other requests to 404 Not Found
-	s.RegisterHandlerFunc(ctx, "/", rootHandler)
+	s.RegisterHandlerFunc(ctx, []string{}, "/", rootHandler)
 }
 
 // healthcheckHandler returns a simple OK response.

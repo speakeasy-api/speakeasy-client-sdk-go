@@ -50,14 +50,7 @@ func testGetTagsGetTags0(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 	respBody := &components.GetTagsResponse{
-		Items: []components.Tag{
-			components.Tag{
-				ID:             "<id>",
-				Name:           "<value>",
-				NamespaceName:  "<value>",
-				RevisionDigest: "<value>",
-			},
-		},
+		Items: []components.Tag{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

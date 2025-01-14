@@ -10,7 +10,7 @@ import (
 type APIKeyDetails struct {
 	AccountTypeV2   AccountType `json:"account_type_v2"`
 	EnabledFeatures []string    `json:"enabled_features"`
-	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	FeatureFlags              []string `json:"feature_flags,omitempty"`
 	GenerationAccessUnlimited *bool    `json:"generation_access_unlimited,omitempty"`
 	OrgSlug                   string   `json:"org_slug"`

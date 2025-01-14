@@ -180,14 +180,7 @@ func TestArtifacts_GetTags(t *testing.T) {
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
 	assert.NotNil(t, res.GetTagsResponse)
 	assert.Equal(t, &shared.GetTagsResponse{
-		Items: []shared.Tag{
-			shared.Tag{
-				ID:             "<id>",
-				Name:           "<value>",
-				NamespaceName:  "<value>",
-				RevisionDigest: "<value>",
-			},
-		},
+		Items: []shared.Tag{},
 	}, res.GetTagsResponse)
 
 }

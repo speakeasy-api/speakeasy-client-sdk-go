@@ -41,13 +41,7 @@ func main() {
     res, err := s.Suggest.Suggest(ctx, operations.SuggestRequest{
         SuggestRequestBody: shared.SuggestRequestBody{
             Diagnostics: []shared.Diagnostic{
-                shared.Diagnostic{
-                    Message: "<value>",
-                    Path: []string{
-                        "/var/yp",
-                    },
-                    Type: "<value>",
-                },
+
             },
             OasSummary: shared.OASSummary{
                 Info: shared.OASInfo{
@@ -58,15 +52,7 @@ func main() {
                     Version: "<value>",
                 },
                 Operations: []shared.OASOperation{
-                    shared.OASOperation{
-                        Description: "generously including staid responsibility quiet dial incidentally",
-                        Method: "<value>",
-                        OperationID: "<id>",
-                        Path: "/usr/obj",
-                        Tags: []string{
-                            "<value>",
-                        },
-                    },
+
                 },
             },
             SuggestionType: shared.SuggestRequestBodySuggestionTypeDiagnosticsOnly,
@@ -127,7 +113,7 @@ func main() {
 
     res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
         Items: []string{
-            "<value>",
+
         },
         Prompt: "<value>",
     })

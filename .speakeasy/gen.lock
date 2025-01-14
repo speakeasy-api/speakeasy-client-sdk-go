@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 52df6f1f34dfe76968f8ed009cc2bfd3
+  docChecksum: 53c59e9888ffa48d7fef9b0017efc602
   docVersion: 0.4.0
-  speakeasyVersion: 1.467.0
-  generationVersion: 2.492.3
-  releaseVersion: 3.19.2
-  configChecksum: 78309f1767add10831a0c6629f48c68b
+  speakeasyVersion: 1.468.6
+  generationVersion: 2.493.13
+  releaseVersion: 3.19.3
+  configChecksum: ada2ccd6c17dbe4a381e8e643b9e8e8a
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,7 +15,7 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.6.2
+    core: 3.6.5
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.2
     devContainers: 2.90.0
@@ -34,7 +34,7 @@ features:
     retries: 2.83.2
     sdkHooks: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.10.1
+    tests: 0.10.3
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -168,7 +168,6 @@ generatedFiles:
   - /pkg/models/shared/workspacesettings.go
   - /pkg/models/shared/workspaceteamresponse.go
   - /pkg/models/shared/workspacetoken.go
-  - CONTRIBUTING.md
   - USAGE.md
   - artifacts.go
   - auth.go
@@ -1030,7 +1029,8 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 115307}
-        2XX: {}
+        2XX:
+          application/octet-stream: "x-file: example.file"
         4XX:
           application/json: {"message": "<value>", "status_code": 115307}
   getManifest:
@@ -1131,7 +1131,7 @@ examples:
         default:
           application/json: {"message": "<value>", "status_code": 299050}
         2XX:
-          application/json: {"access_token": "<value>"}
+          application/json: {"access_token": "<value>", "claims": {}, "user": {}}
         4XX:
           application/json: {"message": "<value>", "status_code": 299050}
   getUser:
@@ -1344,7 +1344,7 @@ examples:
   uploadReport:
     speakeasy-default-upload-report:
       requestBody:
-        multipart/form-data: {"file": {"": "example.file"}}
+        multipart/form-data: {"data": {}, "file": {"": "example.file"}}
       responses:
         "200":
           application/json: {"url": "https://conventional-call.info"}
@@ -1365,7 +1365,10 @@ examples:
         header:
           x-session-id: "<value>"
       requestBody:
-        application/json: {"diagnostics": [], "oas_summary": {"info": {"description": "Operative impactful monitoring", "summary": "<value>", "title": "<value>", "version": "<value>"}, "operations": []}, "suggestion_type": "diagnostics-only"}
+        application/json: {"diagnostics": [], "oas_summary": {"info": {"description": "Operative impactful monitoring", "license": {}, "summary": "<value>", "title": "<value>", "version": "<value>"}, "operations": []}, "suggestion_type": "diagnostics-only"}
+      responses:
+        2XX:
+          application/json: "x-file: example.file"
   suggestOpenAPI:
     speakeasy-default-suggest-open-API:
       parameters:
@@ -1373,6 +1376,9 @@ examples:
           x-session-id: "<value>"
       requestBody:
         multipart/form-data: {"schema": {"": "example.file"}}
+      responses:
+        2XX:
+          application/json: "x-file: example.file"
   suggestOpenAPIRegistry:
     speakeasy-default-suggest-open-API-registry:
       parameters:
@@ -1381,6 +1387,9 @@ examples:
           revision_reference: "<value>"
         header:
           x-session-id: "<value>"
+      responses:
+        2XX:
+          application/json: "x-file: example.file"
   getEmbedAccessToken:
     speakeasy-default-get-embed-access-token:
       responses:
@@ -1734,7 +1743,9 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 140843}
-        "200": {}
+        "200":
+          application/json: "x-file: example.file"
+          application/x-yaml: "x-file: example.file"
   generateCodeSamplePreviewAsync:
     speakeasy-default-generate-code-sample-preview-async:
       requestBody:
@@ -1754,7 +1765,9 @@ examples:
           application/json: {"status": "pending"}
         4XX:
           application/json: {"message": "<value>", "status_code": 44984}
-        "200": {}
+        "200":
+          application/json: "x-file: example.file"
+          application/x-yaml: "x-file: example.file"
   getGithubSetupState:
     speakeasy-default-get-github-setup-state:
       parameters:
