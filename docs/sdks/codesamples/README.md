@@ -9,7 +9,7 @@ REST APIs for retrieving Code Samples
 
 * [GenerateCodeSamplePreview](#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
 * [GenerateCodeSamplePreviewAsync](#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [Get](#get) - Retrieve usage snippets from document stored in the registry
+* [Get](#get) - Retrieve usage snippets
 * [GetCodeSamplePreviewAsync](#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ## GenerateCodeSamplePreview
@@ -79,7 +79,8 @@ func main() {
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| sdkerrors.Error  | 4XX, 5XX         | application/json |
+| sdkerrors.Error  | 4XX              | application/json |
+| sdkerrors.Error  | 5XX              | application/json |
 
 ## GenerateCodeSamplePreviewAsync
 
@@ -149,11 +150,13 @@ func main() {
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| sdkerrors.Error  | 4XX, 5XX         | application/json |
+| sdkerrors.Error  | 4XX              | application/json |
+| sdkerrors.Error  | 5XX              | application/json |
 
 ## Get
 
-Retrieve usage snippets from document stored in the registry. Supports filtering by language and operation ID.
+Retrieve usage snippets from an OpenAPI document stored in the registry. Supports filtering by language and operation ID.
+
 
 ### Example Usage
 
@@ -178,7 +181,13 @@ func main() {
     )
 
     res, err := s.CodeSamples.Get(ctx, operations.GetCodeSamplesRequest{
-        RegistryURL: "https://normal-making.name",
+        Languages: []string{
+            "python",
+        },
+        OperationIds: []string{
+            "getPetById",
+        },
+        RegistryURL: "https://spec.speakeasy.com/my-org/my-workspace/my-source",
     })
     if err != nil {
         log.Fatal(err)
@@ -262,4 +271,5 @@ func main() {
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| sdkerrors.Error  | 4XX, 5XX         | application/json |
+| sdkerrors.Error  | 4XX              | application/json |
+| sdkerrors.Error  | 5XX              | application/json |

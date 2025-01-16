@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 53c59e9888ffa48d7fef9b0017efc602
+  docChecksum: 37a13cf25882217bb6883efc4407294c
   docVersion: 0.4.0
-  speakeasyVersion: 1.468.6
-  generationVersion: 2.493.13
-  releaseVersion: 3.19.3
-  configChecksum: ada2ccd6c17dbe4a381e8e643b9e8e8a
+  speakeasyVersion: 1.468.9
+  generationVersion: 2.493.21
+  releaseVersion: 3.19.4
+  configChecksum: 740e28bc9e9c18688289ea42ad39d30c
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,7 +15,7 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
-    core: 3.6.5
+    core: 3.6.6
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.2
     devContainers: 2.90.0
@@ -34,7 +34,7 @@ features:
     retries: 2.83.2
     sdkHooks: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.10.3
+    tests: 0.10.4
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -1746,6 +1746,8 @@ examples:
         "200":
           application/json: "x-file: example.file"
           application/x-yaml: "x-file: example.file"
+        5XX:
+          application/json: {"message": "<value>", "status_code": 569513}
   generateCodeSamplePreviewAsync:
     speakeasy-default-generate-code-sample-preview-async:
       requestBody:
@@ -1755,6 +1757,8 @@ examples:
           application/json: {"job_id": "<id>", "status": "running"}
         4XX:
           application/json: {"message": "<value>", "status_code": 242219}
+        5XX:
+          application/json: {"message": "<value>", "status_code": 933708}
   getCodeSamplePreviewAsync:
     speakeasy-default-get-code-sample-preview-async:
       parameters:
@@ -1768,6 +1772,8 @@ examples:
         "200":
           application/json: "x-file: example.file"
           application/x-yaml: "x-file: example.file"
+        5XX:
+          application/json: {"message": "<value>", "status_code": 91014}
   getGithubSetupState:
     speakeasy-default-get-github-setup-state:
       parameters:
@@ -1816,6 +1822,57 @@ examples:
           application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
         4XX:
           application/json: {"message": "<value>", "status_code": 458049}
+    "":
+      parameters:
+        query:
+          registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
+          operation_ids: ["getPetById"]
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 558834}
+    python:
+      parameters:
+        query:
+          registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
+          operation_ids: ["getPetById"]
+          languages: ["python"]
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 521235}
+    typescript:
+      parameters:
+        query:
+          registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
+          operation_ids: ["getPetById"]
+          languages: ["typescript"]
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 458049}
+    java:
+      parameters:
+        query:
+          registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
+          operation_ids: ["getPetById"]
+          languages: ["java"]
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 262795}
+    default:
+      parameters:
+        query:
+          registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
+          operation_ids: ["getPetById"]
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();", "language": "typescript", "operationId": "getPetById"}]}
   setWorkspaceFeatureFlags:
     speakeasy-default-set-workspace-feature-flags:
       requestBody:

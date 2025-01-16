@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"net/http/httputil"
@@ -45,14 +46,12 @@ type HTTPFileDirectory struct {
 // directory or will return an error.
 func NewHTTPFileDirectory(explicitPath string) (*HTTPFileDirectory, error) {
 	path, err := filepath.Abs(DefaultHTTPFileDirectory)
-
 	if err != nil {
 		return nil, fmt.Errorf("error getting absolute path of HTTP file directory (%s): %w", DefaultHTTPFileDirectory, err)
 	}
 
 	if explicitPath != "" {
 		absExplicitPath, err := filepath.Abs(explicitPath)
-
 		if err != nil {
 			return nil, fmt.Errorf("error getting absolute path of HTTP file directory (%s):  %w", explicitPath, err)
 		}
@@ -71,7 +70,6 @@ func NewHTTPFileDirectory(explicitPath string) (*HTTPFileDirectory, error) {
 
 	if errors.Is(err, os.ErrNotExist) {
 		err := os.Mkdir(path, 0o2777)
-
 		if err != nil {
 			return nil, fmt.Errorf("error making HTTP file directory (%s): %w", path, err)
 		}
@@ -108,7 +106,6 @@ func (d *HTTPFileDirectory) Clean() error {
 		absPath := filepath.Join(d.path, path)
 
 		err = os.Remove(absPath)
-
 		if err != nil {
 			return fmt.Errorf("error removing %s: %w", absPath, err)
 		}
@@ -124,23 +121,20 @@ func (d *HTTPFileDirectory) Clean() error {
 // {path}/{operationId}_{call}_response files respectively.
 func (d *HTTPFileDirectory) HandlerFunc(operationId string, next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
+		call := d.nextOperationCall(operationId)
+
 		dump, err := httputil.DumpRequest(req, true)
-
 		if err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-
-			return
+			log.Printf("error dumping HTTP request: %s", err)
 		}
 
-		call := d.nextOperationCall(operationId)
-		requestPath := filepath.Join(d.path, d.operationCallRequestFilename(operationId, call))
+		if len(dump) > 0 {
+			requestPath := filepath.Join(d.path, d.operationCallRequestFilename(operationId, call))
 
-		err = os.WriteFile(requestPath, dump, 0o644)
-
-		if err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-
-			return
+			err = os.WriteFile(requestPath, dump, 0o644)
+			if err != nil {
+				log.Printf("error writing HTTP request file (%s): %s", requestPath, err)
+			}
 		}
 
 		recorder := httptest.NewRecorder()
@@ -148,20 +142,16 @@ func (d *HTTPFileDirectory) HandlerFunc(operationId string, next http.HandlerFun
 		next(recorder, req)
 
 		dump, err = httputil.DumpResponse(recorder.Result(), true)
-
 		if err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-
-			return
+			log.Printf("error dumping HTTP response: %s", err)
 		}
 
-		responsePath := filepath.Join(d.path, d.operationCallResponseFilename(operationId, call))
-		err = os.WriteFile(responsePath, dump, 0o644)
-
-		if err != nil {
-			http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-
-			return
+		if len(dump) > 0 {
+			responsePath := filepath.Join(d.path, d.operationCallResponseFilename(operationId, call))
+			err = os.WriteFile(responsePath, dump, 0o644)
+			if err != nil {
+				log.Printf("error writing HTTP response file (%s): %s", responsePath, err)
+			}
 		}
 
 		recorderToWriter(recorder, w)
@@ -171,7 +161,6 @@ func (d *HTTPFileDirectory) HandlerFunc(operationId string, next http.HandlerFun
 // Operation will return a new OASOperation from HTTPFileDirectory.
 func (d *HTTPFileDirectory) Operation(operationId string) (*OASOperation, error) {
 	request, err := d.Request(operationId, 1)
-
 	if err != nil {
 		return nil, err
 	}
@@ -196,7 +185,6 @@ func (d *HTTPFileDirectory) Operations() ([]*OASOperation, error) {
 
 		operationId := strings.TrimSuffix(path, "_1_request")
 		operation, err := d.Operation(operationId)
-
 		if err != nil {
 			return err
 		}
@@ -231,7 +219,6 @@ func (d *HTTPFileDirectory) OperationCallCount(operationId string) int64 {
 func (d *HTTPFileDirectory) RawRequest(operationId string, call int64) ([]byte, error) {
 	filename := d.operationCallRequestFilename(operationId, call)
 	file, err := fs.ReadFile(d.filesystem, filename)
-
 	if err != nil {
 		return nil, fmt.Errorf("error reading HTTP request file (%s): %w", filename, err)
 	}
@@ -244,7 +231,6 @@ func (d *HTTPFileDirectory) RawRequest(operationId string, call int64) ([]byte, 
 func (d *HTTPFileDirectory) RawResponse(operationId string, call int64) ([]byte, error) {
 	filename := d.operationCallResponseFilename(operationId, call)
 	file, err := fs.ReadFile(d.filesystem, d.operationCallResponseFilename(operationId, call))
-
 	if err != nil {
 		return nil, fmt.Errorf("error reading HTTP response file (%s): %w", filename, err)
 	}
@@ -255,13 +241,11 @@ func (d *HTTPFileDirectory) RawResponse(operationId string, call int64) ([]byte,
 // Request returns the parsed HTTP request contents.
 func (d *HTTPFileDirectory) Request(operationId string, call int64) (*http.Request, error) {
 	rawRequest, err := d.RawRequest(operationId, call)
-
 	if err != nil {
 		return nil, err
 	}
 
 	result, err := http.ReadRequest(bufio.NewReader(bytes.NewReader(rawRequest)))
-
 	if err != nil {
 		return nil, fmt.Errorf("error converting HTTP request for operation %s call %d: %w", operationId, call, err)
 	}
@@ -272,13 +256,11 @@ func (d *HTTPFileDirectory) Request(operationId string, call int64) (*http.Reque
 // Response returns the parsed HTTP response contents.
 func (d *HTTPFileDirectory) Response(operationId string, call int64) (*http.Response, error) {
 	rawResponse, err := d.RawResponse(operationId, call)
-
 	if err != nil {
 		return nil, err
 	}
 
 	result, err := http.ReadResponse(bufio.NewReader(bytes.NewReader(rawResponse)), nil)
-
 	if err != nil {
 		return nil, fmt.Errorf("error converting HTTP response for operation %s call %d: %w", operationId, call, err)
 	}
@@ -310,11 +292,19 @@ func (d *HTTPFileDirectory) nextOperationCall(operationId string) int64 {
 // operationCallRequestFilename returns the raw HTTP request file name for the
 // given operation and call.
 func (d *HTTPFileDirectory) operationCallRequestFilename(operationId string, call int64) string {
-	return operationId + "_" + strconv.FormatInt(call, 10) + "_request"
+	return sanitizeOperationIdForFilename(operationId) + "_" + strconv.FormatInt(call, 10) + "_request"
 }
 
 // operationCallResponseFilename returns the raw HTTP response file name for the
 // given operation and call.
 func (d *HTTPFileDirectory) operationCallResponseFilename(operationId string, call int64) string {
-	return operationId + "_" + strconv.FormatInt(call, 10) + "_response"
+	return sanitizeOperationIdForFilename(operationId) + "_" + strconv.FormatInt(call, 10) + "_response"
+}
+
+func sanitizeOperationIdForFilename(operationId string) string {
+	operationId = strings.ReplaceAll(operationId, "{", "_")
+	operationId = strings.ReplaceAll(operationId, "}", "_")
+	operationId = strings.ReplaceAll(operationId, "/", "_")
+	operationId = strings.ReplaceAll(operationId, " ", "_")
+	return operationId
 }

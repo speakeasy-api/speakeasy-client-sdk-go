@@ -8,9 +8,11 @@ import (
 )
 
 type GetCodeSamplesRequest struct {
-	Languages    []string `queryParam:"style=form,explode=true,name=languages"`
+	// The languages to retrieve snippets for.
+	Languages []string `queryParam:"style=form,explode=true,name=languages"`
+	// The operation IDs to retrieve snippets for.
 	OperationIds []string `queryParam:"style=form,explode=true,name=operation_ids"`
-	// The registry URL from which to retrieve the snippets. E.g. https://spec.speakeasy.com/org/ws/my-source
+	// The registry URL from which to retrieve the snippets.
 	RegistryURL string `queryParam:"style=form,explode=true,name=registry_url"`
 }
 

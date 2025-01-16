@@ -110,7 +110,7 @@ func main() {
 
 * [GenerateCodeSamplePreview](docs/sdks/codesamples/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
 * [GenerateCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [Get](docs/sdks/codesamples/README.md#get) - Retrieve usage snippets from document stored in the registry
+* [Get](docs/sdks/codesamples/README.md#get) - Retrieve usage snippets
 * [GetCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Events](docs/sdks/events/README.md)
