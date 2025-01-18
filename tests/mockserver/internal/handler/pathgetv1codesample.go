@@ -54,17 +54,23 @@ func testGetCodeSamplesGetCodeSamples0(w http.ResponseWriter, req *http.Request)
 			components.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
+				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/root",
 			},
 			components.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
+				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/usr/bin",
 			},
 			components.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
+				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/sys",
 			},
 		},
 	}

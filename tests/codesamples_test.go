@@ -35,17 +35,23 @@ func TestCodesamples_GetCodeSamples(t *testing.T) {
 			shared.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
+				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/root",
 			},
 			shared.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
+				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/usr/bin",
 			},
 			shared.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
+				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/sys",
 			},
 		},
 	}, res.UsageSnippets)

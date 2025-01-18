@@ -157,7 +157,6 @@ func main() {
 
 Retrieve usage snippets from an OpenAPI document stored in the registry. Supports filtering by language and operation ID.
 
-
 ### Example Usage
 
 ```go
@@ -183,9 +182,16 @@ func main() {
     res, err := s.CodeSamples.Get(ctx, operations.GetCodeSamplesRequest{
         Languages: []string{
             "python",
+            "javascript",
+        },
+        MethodPaths: []operations.MethodPaths{
+            operations.MethodPaths{
+                Method: shared.HTTPMethodGet,
+                Path: "/pets",
+            },
         },
         OperationIds: []string{
-            "getPetById",
+            "getPets",
         },
         RegistryURL: "https://spec.speakeasy.com/my-org/my-workspace/my-source",
     })

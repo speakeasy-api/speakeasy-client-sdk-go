@@ -6,9 +6,30 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+type MethodPaths struct {
+	Method components.HTTPMethod `queryParam:"name=method"`
+	Path   string                `queryParam:"name=path"`
+}
+
+func (o *MethodPaths) GetMethod() components.HTTPMethod {
+	if o == nil {
+		return components.HTTPMethod("")
+	}
+	return o.Method
+}
+
+func (o *MethodPaths) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
 type GetCodeSamplesRequest struct {
 	// The languages to retrieve snippets for.
 	Languages []string `queryParam:"style=form,explode=true,name=languages"`
+	// The method paths to retrieve snippets for.
+	MethodPaths []MethodPaths `queryParam:"style=form,explode=true,name=method_paths"`
 	// The operation IDs to retrieve snippets for.
 	OperationIds []string `queryParam:"style=form,explode=true,name=operation_ids"`
 	// The registry URL from which to retrieve the snippets.
@@ -20,6 +41,13 @@ func (o *GetCodeSamplesRequest) GetLanguages() []string {
 		return nil
 	}
 	return o.Languages
+}
+
+func (o *GetCodeSamplesRequest) GetMethodPaths() []MethodPaths {
+	if o == nil {
+		return nil
+	}
+	return o.MethodPaths
 }
 
 func (o *GetCodeSamplesRequest) GetOperationIds() []string {

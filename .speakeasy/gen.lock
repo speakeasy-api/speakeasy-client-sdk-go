@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 37a13cf25882217bb6883efc4407294c
+  docChecksum: 1766b7749df601fc084985fa6f54c7be
   docVersion: 0.4.0
-  speakeasyVersion: 1.468.9
+  speakeasyVersion: 1.469.1
   generationVersion: 2.493.21
-  releaseVersion: 3.19.4
-  configChecksum: 740e28bc9e9c18688289ea42ad39d30c
+  releaseVersion: 3.20.0
+  configChecksum: 0ea4d7c78a5733ae04e0d5ea02cfd08a
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -16,6 +16,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     core: 3.6.6
+    deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.2
     devContainers: 2.90.0
@@ -130,6 +131,7 @@ generatedFiles:
   - /pkg/models/shared/githubsetupstateresponse.go
   - /pkg/models/shared/githubstorepublishingsecretsrequest.go
   - /pkg/models/shared/githubtriggeractionrequest.go
+  - /pkg/models/shared/httpmethod.go
   - /pkg/models/shared/interactiontype.go
   - /pkg/models/shared/manifest.go
   - /pkg/models/shared/namespace.go
@@ -268,6 +270,7 @@ generatedFiles:
   - docs/pkg/models/operations/linkgithubaccessresponse.md
   - docs/pkg/models/operations/listremotesourcesrequest.md
   - docs/pkg/models/operations/listremotesourcesresponse.md
+  - docs/pkg/models/operations/methodpaths.md
   - docs/pkg/models/operations/option.md
   - docs/pkg/models/operations/posttagsrequest.md
   - docs/pkg/models/operations/posttagsresponse.md
@@ -335,6 +338,7 @@ generatedFiles:
   - docs/pkg/models/shared/githubsetupstateresponse.md
   - docs/pkg/models/shared/githubstorepublishingsecretsrequest.md
   - docs/pkg/models/shared/githubtriggeractionrequest.md
+  - docs/pkg/models/shared/httpmethod.md
   - docs/pkg/models/shared/interactiontype.md
   - docs/pkg/models/shared/level.md
   - docs/pkg/models/shared/license.md
@@ -527,6 +531,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/githubstorepublishingsecretsrequest.go
   - tests/mockserver/internal/sdk/models/components/githubtriggeractionrequest.go
   - tests/mockserver/internal/sdk/models/components/httpmetadata.go
+  - tests/mockserver/internal/sdk/models/components/httpmethod.go
   - tests/mockserver/internal/sdk/models/components/interactiontype.go
   - tests/mockserver/internal/sdk/models/components/manifest.go
   - tests/mockserver/internal/sdk/models/components/namespace.go
@@ -1826,10 +1831,12 @@ examples:
       parameters:
         query:
           registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
-          operation_ids: ["getPetById"]
+          operation_ids: ["getPets"]
+          method_paths: [{"method": "get", "path": "/pets"}]
+          languages: ["python", "javascript"]
       responses:
         2XX:
-          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "method": "<value>", "operationId": "<id>", "path": "/usr/bin"}, {"code": "<value>", "language": "<value>", "method": "<value>", "operationId": "<id>", "path": "/sbin"}]}
         4XX:
           application/json: {"message": "<value>", "status_code": 558834}
     python:
@@ -1869,10 +1876,12 @@ examples:
       parameters:
         query:
           registry_url: "https://spec.speakeasy.com/my-org/my-workspace/my-source"
-          operation_ids: ["getPetById"]
+          operation_ids: ["getPets"]
+          method_paths: [{"method": "get", "path": "/pets"}]
+          languages: ["python", "javascript"]
       responses:
         2XX:
-          application/json: {"snippets": [{"code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();", "language": "typescript", "operationId": "getPetById"}]}
+          application/json: {"snippets": [{"code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();", "language": "typescript", "method": "get", "operationId": "getPetById", "path": "/pet/{id}"}]}
   setWorkspaceFeatureFlags:
     speakeasy-default-set-workspace-feature-flags:
       requestBody:
