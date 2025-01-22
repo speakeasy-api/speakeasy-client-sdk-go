@@ -50,13 +50,12 @@ func main() {
     )
 
     res, err := s.Workspaces.Create(ctx, shared.Workspace{
-        CreatedAt: types.MustTimeFromString("2023-06-18T07:14:55.338Z"),
+        CreatedAt: types.MustTimeFromString("2024-06-17T07:14:55.338Z"),
         ID: "<id>",
         Name: "<value>",
         OrganizationID: "<id>",
         Slug: "<value>",
-        TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
-        UpdatedAt: types.MustTimeFromString("2023-04-03T12:48:32.253Z"),
+        UpdatedAt: types.MustTimeFromString("2024-11-30T17:06:07.804Z"),
         Verified: true,
     })
     if err != nil {
@@ -117,7 +116,7 @@ func main() {
     res, err := s.Workspaces.CreateToken(ctx, operations.CreateWorkspaceTokenRequest{
         WorkspaceToken: shared.WorkspaceToken{
             Alg: "<value>",
-            CreatedAt: types.MustTimeFromString("<value>"),
+            CreatedAt: types.MustTimeFromString("2023-08-16T02:33:00.784Z"),
             ID: "<id>",
             Key: "<key>",
             Name: "<value>",
@@ -806,14 +805,13 @@ func main() {
 
     res, err := s.Workspaces.Update(ctx, operations.UpdateWorkspaceDetailsRequest{
         Workspace: shared.Workspace{
-            CreatedAt: types.MustTimeFromString("2024-07-28T19:04:48.565Z"),
+            CreatedAt: types.MustTimeFromString("2025-07-28T19:04:48.565Z"),
             ID: "<id>",
             Name: "<value>",
             OrganizationID: "<id>",
             Slug: "<value>",
-            TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
-            UpdatedAt: types.MustTimeFromString("2023-01-13T16:52:57.274Z"),
-            Verified: false,
+            UpdatedAt: types.MustTimeFromString("2024-10-16T10:52:42.015Z"),
+            Verified: true,
         },
         WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
@@ -874,8 +872,8 @@ func main() {
 
     res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
         WorkspaceSettings: shared.WorkspaceSettings{
-            CreatedAt: types.MustTimeFromString("2022-07-05T11:43:28.305Z"),
-            UpdatedAt: types.MustTimeFromString("2023-05-15T05:39:21.874Z"),
+            CreatedAt: types.MustTimeFromString("2023-07-05T11:43:28.305Z"),
+            UpdatedAt: types.MustTimeFromString("2024-05-14T05:39:21.874Z"),
             WebhookURL: "https://grown-pharmacopoeia.net",
             WorkspaceID: "<id>",
         },

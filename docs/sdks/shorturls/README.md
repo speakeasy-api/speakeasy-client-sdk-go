@@ -36,7 +36,7 @@ func main() {
     )
 
     res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{
-        URL: "http://limp-pastry.org",
+        URL: "https://probable-heating.com/",
     })
     if err != nil {
         log.Fatal(err)

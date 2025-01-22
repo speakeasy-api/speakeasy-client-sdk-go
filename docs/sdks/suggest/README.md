@@ -41,23 +41,46 @@ func main() {
     res, err := s.Suggest.Suggest(ctx, operations.SuggestRequest{
         SuggestRequestBody: shared.SuggestRequestBody{
             Diagnostics: []shared.Diagnostic{
+                shared.Diagnostic{
+                    Message: "<value>",
+                    Path: []string{
+                        "/opt/include",
+                        "/opt/share",
+                    },
+                    Type: "<value>",
+                },
+                shared.Diagnostic{
+                    Message: "<value>",
+                    Path: []string{
 
+                    },
+                    Type: "<value>",
+                },
             },
             OasSummary: shared.OASSummary{
                 Info: shared.OASInfo{
-                    Description: "Operative impactful monitoring",
+                    Description: "amid traffic the unfortunately underneath what father lovely out",
                     License: shared.License{},
                     Summary: "<value>",
                     Title: "<value>",
                     Version: "<value>",
                 },
                 Operations: []shared.OASOperation{
-
+                    shared.OASOperation{
+                        Description: "times dull than except",
+                        Method: "<value>",
+                        OperationID: "<id>",
+                        Path: "/mnt",
+                        Tags: []string{
+                            "<value>",
+                            "<value>",
+                        },
+                    },
                 },
             },
             SuggestionType: shared.SuggestRequestBodySuggestionTypeDiagnosticsOnly,
         },
-        XSessionID: "<value>",
+        XSessionID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -184,7 +207,7 @@ func main() {
                 FileName: "example.file",
             },
         },
-        XSessionID: "<value>",
+        XSessionID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -242,7 +265,7 @@ func main() {
     res, err := s.Suggest.SuggestOpenAPIRegistry(ctx, operations.SuggestOpenAPIRegistryRequest{
         NamespaceName: "<value>",
         RevisionReference: "<value>",
-        XSessionID: "<value>",
+        XSessionID: "<id>",
     })
     if err != nil {
         log.Fatal(err)

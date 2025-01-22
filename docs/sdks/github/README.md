@@ -157,7 +157,7 @@ func main() {
     )
 
     res, err := s.Github.CheckPublishingSecrets(ctx, operations.GithubCheckPublishingSecretsRequest{
-        GenerateGenLockID: "<value>",
+        GenerateGenLockID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -547,7 +547,7 @@ func main() {
     )
 
     res, err := s.Github.StorePublishingSecrets(ctx, shared.GithubStorePublishingSecretsRequest{
-        GenerateGenLockID: "<value>",
+        GenerateGenLockID: "<id>",
     })
     if err != nil {
         log.Fatal(err)

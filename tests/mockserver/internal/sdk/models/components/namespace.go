@@ -32,7 +32,8 @@ type Namespace struct {
 	CompositeSpecMetadata *CompositeSpecMetadata `json:"composite_spec_metadata,omitempty"`
 	CreatedAt             time.Time              `json:"created_at"`
 	// {organization_slug}/{workspace_slug}/{namespace_name}
-	ID string `json:"id"`
+	ID                     string                    `json:"id"`
+	LatestRevisionMetadata *RevisionContentsMetadata `json:"latest_revision_metadata,omitempty"`
 	// A human-readable name for the namespace.
 	Name string `json:"name"`
 	// Indicates whether the namespace is publicly accessible
@@ -70,6 +71,13 @@ func (o *Namespace) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.LatestRevisionMetadata
 }
 
 func (o *Namespace) GetName() string {

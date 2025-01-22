@@ -8,8 +8,9 @@ import (
 )
 
 type Revision struct {
-	CreatedAt time.Time `json:"created_at"`
-	Digest    string    `json:"digest"`
+	ContentsMetadata *RevisionContentsMetadata `json:"contents_metadata,omitempty"`
+	CreatedAt        time.Time                 `json:"created_at"`
+	Digest           string                    `json:"digest"`
 	// Format {namespace_id}/{revision_digest}
 	ID            string    `json:"id"`
 	NamespaceName string    `json:"namespace_name"`
@@ -26,6 +27,13 @@ func (r *Revision) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *Revision) GetContentsMetadata() *RevisionContentsMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.ContentsMetadata
 }
 
 func (o *Revision) GetCreatedAt() time.Time {

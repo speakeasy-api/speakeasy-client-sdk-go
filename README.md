@@ -445,7 +445,7 @@ func main() {
 	s := speakeasyclientsdkgo.New()
 
 	res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
-		WorkspaceID: "<value>",
+		WorkspaceID: "<id>",
 	})
 	if err != nil {
 		log.Fatal(err)

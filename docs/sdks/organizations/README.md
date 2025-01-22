@@ -41,13 +41,13 @@ func main() {
 
     res, err := s.Organizations.Create(ctx, shared.Organization{
         AccountType: shared.AccountTypeScaleUp,
-        CreatedAt: types.MustTimeFromString("2023-12-01T17:06:07.804Z"),
+        CreatedAt: types.MustTimeFromString("2024-11-30T17:06:07.804Z"),
         ID: "<id>",
         Name: "<value>",
         Slug: "<value>",
         SsoActivated: true,
         TelemetryDisabled: true,
-        UpdatedAt: types.MustTimeFromString("2022-05-28T06:20:22.766Z"),
+        UpdatedAt: types.MustTimeFromString("2023-03-17T15:39:20.911Z"),
     })
     if err != nil {
         log.Fatal(err)
@@ -157,7 +157,7 @@ func main() {
     )
 
     res, err := s.Organizations.Get(ctx, operations.GetOrganizationRequest{
-        OrganizationID: "<value>",
+        OrganizationID: "<id>",
     })
     if err != nil {
         log.Fatal(err)

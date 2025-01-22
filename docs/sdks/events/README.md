@@ -196,6 +196,7 @@ import(
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -211,7 +212,17 @@ func main() {
 
     res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
         RequestBody: []shared.CliEvent{
-
+            shared.CliEvent{
+                CreatedAt: types.MustTimeFromString("2025-03-02T10:07:28.113Z"),
+                ExecutionID: "<id>",
+                ID: "<id>",
+                InteractionType: shared.InteractionTypeAuthenticate,
+                LocalStartedAt: types.MustTimeFromString("2025-08-12T17:54:17.538Z"),
+                SpeakeasyAPIKeyName: "<value>",
+                SpeakeasyVersion: "<value>",
+                Success: true,
+                WorkspaceID: "<id>",
+            },
         },
         WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
