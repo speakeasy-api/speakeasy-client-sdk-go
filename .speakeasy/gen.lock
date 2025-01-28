@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 8e0ff093baf67c9e2001a9f810f355de
+  docChecksum: af467caf61bea274c32dd872e84f602e
   docVersion: 0.4.0
-  speakeasyVersion: 1.470.1
-  generationVersion: 2.493.34
-  releaseVersion: 3.20.1
-  configChecksum: 004f53488f1d06b369dd2a6ba4a95e73
+  speakeasyVersion: 1.477.0
+  generationVersion: 2.497.0
+  releaseVersion: 3.21.0
+  configChecksum: 12e793493549628200c7c1d578f87af9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -15,6 +15,7 @@ features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
+    constsAndDefaults: 0.1.6
     core: 3.6.9
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
@@ -43,6 +44,7 @@ generatedFiles:
   - .devcontainer/setup.sh
   - .gitattributes
   - /pkg/models/operations/activatesubscriptionnamespace.go
+  - /pkg/models/operations/archivenamespace.go
   - /pkg/models/operations/checkgithubaccess.go
   - /pkg/models/operations/create.go
   - /pkg/models/operations/createfreetrial.go
@@ -177,6 +179,9 @@ generatedFiles:
   - codesamples.go
   - docs/pkg/models/operations/activatesubscriptionnamespacerequest.md
   - docs/pkg/models/operations/activatesubscriptionnamespaceresponse.md
+  - docs/pkg/models/operations/archivenamespacerequest.md
+  - docs/pkg/models/operations/archivenamespacerequestbody.md
+  - docs/pkg/models/operations/archivenamespaceresponse.md
   - docs/pkg/models/operations/checkgithubaccessrequest.md
   - docs/pkg/models/operations/checkgithubaccessresponse.md
   - docs/pkg/models/operations/createfreetrialresponse.md
@@ -479,6 +484,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceid.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidfeatureflags.go
   - tests/mockserver/internal/handler/pathgetv1workspaceworkspaceidsettings.go
+  - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenamearchive.go
   - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenametags.go
   - tests/mockserver/internal/handler/pathpostv1artifactsnamespacesnamespacenamevisibility.go
   - tests/mockserver/internal/handler/pathpostv1artifactsremotesources.go
@@ -575,6 +581,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/workspaceteamresponse.go
   - tests/mockserver/internal/sdk/models/components/workspacetoken.go
   - tests/mockserver/internal/sdk/models/operations/activatesubscriptionnamespace.go
+  - tests/mockserver/internal/sdk/models/operations/archivenamespace.go
   - tests/mockserver/internal/sdk/models/operations/checkgithubaccess.go
   - tests/mockserver/internal/sdk/models/operations/create.go
   - tests/mockserver/internal/sdk/models/operations/createfreetrial.go
@@ -1263,6 +1270,14 @@ examples:
           application/json: [{"created_at": "2024-01-24T23:49:11.608Z", "execution_id": "<id>", "id": "<id>", "interaction_type": "LINT", "local_started_at": "2023-03-09T07:00:10.489Z", "speakeasy_api_key_name": "<value>", "speakeasy_version": "<value>", "success": true, "workspace_id": "<id>"}]
         5XX:
           application/json: {"message": "<value>", "status_code": 238575}
+  archiveNamespace:
+    speakeasy-default-archive-namespace:
+      parameters:
+        path:
+          namespace_name: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 334009}
 examplesVersion: 1.0.0
 generatedTests:
   generateCodeSamplePreview: "2024-12-09T10:07:33-05:00"
@@ -1339,3 +1354,4 @@ generatedTests:
   ignoreSubscriptionNamespace: "2024-12-12T22:02:48Z"
   getCodeSamples: "2025-01-03T22:02:43Z"
   setWorkspaceFeatureFlags: "2025-01-09T00:53:22Z"
+  archiveNamespace: "2025-01-28T22:02:35Z"

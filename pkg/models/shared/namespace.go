@@ -29,6 +29,7 @@ func (o *CompositeSpecMetadata) GetSubscriptionSettings() RemoteSourceSubscripti
 
 // Namespace - A namespace contains many revisions.
 type Namespace struct {
+	ArchivedAt            *time.Time             `json:"archived_at,omitempty"`
 	CompositeSpecMetadata *CompositeSpecMetadata `json:"composite_spec_metadata,omitempty"`
 	CreatedAt             time.Time              `json:"created_at"`
 	// {organization_slug}/{workspace_slug}/{namespace_name}
@@ -50,6 +51,13 @@ func (n *Namespace) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *Namespace) GetArchivedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
 }
 
 func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {

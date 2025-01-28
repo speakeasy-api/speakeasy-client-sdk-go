@@ -255,3 +255,22 @@ func TestArtifacts_SetVisibility(t *testing.T) {
 	assert.Equal(t, 200, res.StatusCode)
 
 }
+
+func TestArtifacts_ArchiveNamespace(t *testing.T) {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("archiveNamespace")),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Artifacts.SetArchived(ctx, operations.ArchiveNamespaceRequest{
+		NamespaceName: "<value>",
+	})
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
+
+}

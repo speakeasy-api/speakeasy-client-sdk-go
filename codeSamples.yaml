@@ -9,6 +9,12 @@ actions:
         - lang: go
           label: getNamespaces
           source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Artifacts.GetNamespaces(ctx)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.GetNamespacesResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/archive"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: archiveNamespace
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Artifacts.SetArchived(ctx, operations.ArchiveNamespaceRequest{\n        NamespaceName: \"<value>\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
   - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/revisions"]["get"]
     update:
       x-codeSamples:

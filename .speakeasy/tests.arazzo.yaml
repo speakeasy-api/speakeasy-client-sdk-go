@@ -1708,3 +1708,14 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: Workspaces
+  - workflowId: archiveNamespace
+    steps:
+      - stepId: test
+        operationId: archiveNamespace
+        parameters:
+          - name: namespace_name
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Artifacts

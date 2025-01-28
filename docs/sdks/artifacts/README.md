@@ -16,6 +16,7 @@ REST APIs for working with Registry artifacts
 * [ListRemoteSources](#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetArchived](#setarchived) - Set whether a namespace is archived
 * [SetVisibility](#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ## CreateRemoteSource
@@ -515,6 +516,63 @@ func main() {
 ### Response
 
 **[*operations.PreflightResponse](../../pkg/models/operations/preflightresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 4XX                | application/json   |
+| sdkerrors.SDKError | 5XX                | \*/\*              |
+
+## SetArchived
+
+Set whether a namespace is archived
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    res, err := s.Artifacts.SetArchived(ctx, operations.ArchiveNamespaceRequest{
+        NamespaceName: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [operations.ArchiveNamespaceRequest](../../pkg/models/operations/archivenamespacerequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../pkg/models/operations/option.md)                                 | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+
+### Response
+
+**[*operations.ArchiveNamespaceResponse](../../pkg/models/operations/archivenamespaceresponse.md), error**
 
 ### Errors
 

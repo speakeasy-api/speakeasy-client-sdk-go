@@ -36,6 +36,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/{workspace_id}/feature_flags", pathGetV1WorkspaceWorkspaceIDFeatureFlags(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspace/{workspace_id}/settings", pathGetV1WorkspaceWorkspaceIDSettings(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/workspaces", pathGetV1Workspaces(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/artifacts/namespaces/{namespace_name}/archive", pathPostV1ArtifactsNamespacesNamespaceNameArchive(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/artifacts/namespaces/{namespace_name}/tags", pathPostV1ArtifactsNamespacesNamespaceNameTags(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/artifacts/namespaces/{namespace_name}/visibility", pathPostV1ArtifactsNamespacesNamespaceNameVisibility(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/artifacts/remote_sources", pathPostV1ArtifactsRemoteSources(dir, rt)),
