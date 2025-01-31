@@ -24,7 +24,6 @@ const (
 	AcceptHeaderEnumApplicationJson                          AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumApplicationOctetStream                   AcceptHeaderEnum = "application/octet-stream"
 	AcceptHeaderEnumApplicationVndOciImageManifestV1PlusJson AcceptHeaderEnum = "application/vnd.oci.image.manifest.v1+json"
-	AcceptHeaderEnumApplicationXYaml                         AcceptHeaderEnum = "application/x-yaml"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {

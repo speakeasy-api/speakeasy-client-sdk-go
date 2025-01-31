@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"mockserver/internal/handler/assert"
-	"mockserver/internal/handler/values"
 	"mockserver/internal/logging"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -49,7 +48,7 @@ func testGenerateCodeSamplePreviewGenerateCodeSamplePreview0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if err := assert.AcceptHeader(req, []string{"application/json;q=1", "application/x-yaml;q=0"}); err != nil {
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -59,8 +58,6 @@ func testGenerateCodeSamplePreviewGenerateCodeSamplePreview0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBodyBytes := values.ReadFileToBytes("./testdata/example.file")
-	w.Header().Set("Content-Type", "application/json")
+
 	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write(respBodyBytes)
 }

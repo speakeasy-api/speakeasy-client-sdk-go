@@ -26,8 +26,10 @@ func (o *SchemaFile) GetFileName() string {
 }
 
 type CodeSampleSchemaInput struct {
-	// A list of languages to generate code samples for
-	Languages []string `multipartForm:"name=languages"`
+	// The language to generate code samples for
+	Language string `multipartForm:"name=language"`
+	// A list of operations IDs to generate code samples for
+	OperationIds []string `multipartForm:"name=operation_ids"`
 	// The name of the package
 	PackageName *string `multipartForm:"name=package_name"`
 	// The OpenAPI file to be uploaded
@@ -36,11 +38,18 @@ type CodeSampleSchemaInput struct {
 	SDKClassName *string `multipartForm:"name=sdk_class_name"`
 }
 
-func (o *CodeSampleSchemaInput) GetLanguages() []string {
+func (o *CodeSampleSchemaInput) GetLanguage() string {
 	if o == nil {
-		return []string{}
+		return ""
 	}
-	return o.Languages
+	return o.Language
+}
+
+func (o *CodeSampleSchemaInput) GetOperationIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.OperationIds
 }
 
 func (o *CodeSampleSchemaInput) GetPackageName() *string {

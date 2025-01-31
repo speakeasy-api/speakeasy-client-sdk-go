@@ -3,32 +3,13 @@
 package operations
 
 import (
-	"io"
 	"mockserver/internal/sdk/models/components"
 )
 
 type GenerateCodeSamplePreviewResponse struct {
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationJSONResponseStream io.ReadCloser
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationXYamlResponseStream io.ReadCloser
-	HTTPMeta                                 components.HTTPMetadata `json:"-"`
-}
-
-func (o *GenerateCodeSamplePreviewResponse) GetTwoHundredApplicationJSONResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationJSONResponseStream
-}
-
-func (o *GenerateCodeSamplePreviewResponse) GetTwoHundredApplicationXYamlResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationXYamlResponseStream
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	// OK
+	UsageSnippets *components.UsageSnippets
 }
 
 func (o *GenerateCodeSamplePreviewResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -36,4 +17,11 @@ func (o *GenerateCodeSamplePreviewResponse) GetHTTPMeta() components.HTTPMetadat
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GenerateCodeSamplePreviewResponse) GetUsageSnippets() *components.UsageSnippets {
+	if o == nil {
+		return nil
+	}
+	return o.UsageSnippets
 }

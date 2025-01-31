@@ -4,7 +4,6 @@ package operations
 
 import (
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"io"
 	"net/http"
 )
 
@@ -34,41 +33,16 @@ func (o *GetCodeSamplePreviewAsyncResponseBody) GetStatus() shared.CodeSamplesJo
 }
 
 type GetCodeSamplePreviewAsyncResponse struct {
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationJSONResponseStream io.ReadCloser
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationXYamlResponseStream io.ReadCloser
-	// Job is still in progress
-	TwoHundredAndTwoApplicationJSONObject *GetCodeSamplePreviewAsyncResponseBody
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *GetCodeSamplePreviewAsyncResponse) GetTwoHundredApplicationJSONResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationJSONResponseStream
-}
-
-func (o *GetCodeSamplePreviewAsyncResponse) GetTwoHundredApplicationXYamlResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationXYamlResponseStream
-}
-
-func (o *GetCodeSamplePreviewAsyncResponse) GetTwoHundredAndTwoApplicationJSONObject() *GetCodeSamplePreviewAsyncResponseBody {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredAndTwoApplicationJSONObject
+	// OK
+	UsageSnippets *shared.UsageSnippets
+	// Job is still in progress
+	Object *GetCodeSamplePreviewAsyncResponseBody
 }
 
 func (o *GetCodeSamplePreviewAsyncResponse) GetContentType() string {
@@ -90,4 +64,18 @@ func (o *GetCodeSamplePreviewAsyncResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetCodeSamplePreviewAsyncResponse) GetUsageSnippets() *shared.UsageSnippets {
+	if o == nil {
+		return nil
+	}
+	return o.UsageSnippets
+}
+
+func (o *GetCodeSamplePreviewAsyncResponse) GetObject() *GetCodeSamplePreviewAsyncResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

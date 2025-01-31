@@ -45,10 +45,7 @@ func main() {
 
 
     res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-        Languages: []string{
-            "<value>",
-            "<value>",
-        },
+        Language: "<value>",
         SchemaFile: shared.SchemaFile{
             Content: content,
             FileName: "example.file",
@@ -57,7 +54,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TwoHundredApplicationJSONResponseStream != nil {
+    if res.UsageSnippets != nil {
         // handle response
     }
 }
@@ -115,11 +112,7 @@ func main() {
 
 
     res, err := s.CodeSamples.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
-        Languages: []string{
-            "<value>",
-            "<value>",
-            "<value>",
-        },
+        Language: "<value>",
         SchemaFile: shared.SchemaFile{
             Content: content,
             FileName: "example.file",
@@ -255,7 +248,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.TwoHundredApplicationJSONResponseStream != nil {
+    if res.Object != nil {
         // handle response
     }
 }

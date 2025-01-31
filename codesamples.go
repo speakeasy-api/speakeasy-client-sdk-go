@@ -41,7 +41,6 @@ func (s *CodeSamples) GenerateCodeSamplePreview(ctx context.Context, request sha
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
-		operations.SupportedOptionAcceptHeaderOverride,
 	}
 
 	for _, opt := range opts {
@@ -81,12 +80,7 @@ func (s *CodeSamples) GenerateCodeSamplePreview(ctx context.Context, request sha
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	if o.AcceptHeaderOverride != nil {
-		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
-	} else {
-		req.Header.Set("Accept", "application/json;q=1, application/x-yaml;q=0")
-	}
-
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
@@ -196,16 +190,20 @@ func (s *CodeSamples) GenerateCodeSamplePreview(ctx context.Context, request sha
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			res.TwoHundredApplicationJSONResponseStream = httpRes.Body
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
 
-			return res, nil
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/x-yaml`):
-			res.TwoHundredApplicationXYamlResponseStream = httpRes.Body
+			var out shared.UsageSnippets
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
 
-			return res, nil
+			res.UsageSnippets = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -738,7 +736,6 @@ func (s *CodeSamples) GetCodeSamplePreviewAsync(ctx context.Context, request ope
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
-		operations.SupportedOptionAcceptHeaderOverride,
 	}
 
 	for _, opt := range opts {
@@ -773,12 +770,7 @@ func (s *CodeSamples) GetCodeSamplePreviewAsync(ctx context.Context, request ope
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	if o.AcceptHeaderOverride != nil {
-		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
-	} else {
-		req.Header.Set("Accept", "application/json;q=1, application/x-yaml;q=0")
-	}
-
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
@@ -885,23 +877,6 @@ func (s *CodeSamples) GetCodeSamplePreviewAsync(ctx context.Context, request ope
 	}
 
 	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
-			res.TwoHundredApplicationJSONResponseStream = httpRes.Body
-
-			return res, nil
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/x-yaml`):
-			res.TwoHundredApplicationXYamlResponseStream = httpRes.Body
-
-			return res, nil
-		default:
-			rawBody, err := utils.ConsumeRawBody(httpRes)
-			if err != nil {
-				return nil, err
-			}
-			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
-		}
 	case httpRes.StatusCode == 202:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
@@ -915,7 +890,28 @@ func (s *CodeSamples) GetCodeSamplePreviewAsync(ctx context.Context, request ope
 				return nil, err
 			}
 
-			res.TwoHundredAndTwoApplicationJSONObject = &out
+			res.Object = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out shared.UsageSnippets
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.UsageSnippets = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

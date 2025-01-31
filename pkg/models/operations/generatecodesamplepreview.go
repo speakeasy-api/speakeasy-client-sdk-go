@@ -3,37 +3,19 @@
 package operations
 
 import (
-	"io"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"net/http"
 )
 
 type GenerateCodeSamplePreviewResponse struct {
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationJSONResponseStream io.ReadCloser
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationXYamlResponseStream io.ReadCloser
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *GenerateCodeSamplePreviewResponse) GetTwoHundredApplicationJSONResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationJSONResponseStream
-}
-
-func (o *GenerateCodeSamplePreviewResponse) GetTwoHundredApplicationXYamlResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationXYamlResponseStream
+	// OK
+	UsageSnippets *shared.UsageSnippets
 }
 
 func (o *GenerateCodeSamplePreviewResponse) GetContentType() string {
@@ -55,4 +37,11 @@ func (o *GenerateCodeSamplePreviewResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GenerateCodeSamplePreviewResponse) GetUsageSnippets() *shared.UsageSnippets {
+	if o == nil {
+		return nil
+	}
+	return o.UsageSnippets
 }

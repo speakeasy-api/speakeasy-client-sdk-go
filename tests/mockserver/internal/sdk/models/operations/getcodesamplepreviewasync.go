@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"io"
 	"mockserver/internal/sdk/models/components"
 )
 
@@ -33,36 +32,11 @@ func (o *GetCodeSamplePreviewAsyncResponseBody) GetStatus() components.CodeSampl
 }
 
 type GetCodeSamplePreviewAsyncResponse struct {
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationJSONResponseStream io.ReadCloser
-	// Successfully returned codeSample overlay file
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredApplicationXYamlResponseStream io.ReadCloser
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	// OK
+	UsageSnippets *components.UsageSnippets
 	// Job is still in progress
-	TwoHundredAndTwoApplicationJSONObject *GetCodeSamplePreviewAsyncResponseBody
-	HTTPMeta                              components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetCodeSamplePreviewAsyncResponse) GetTwoHundredApplicationJSONResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationJSONResponseStream
-}
-
-func (o *GetCodeSamplePreviewAsyncResponse) GetTwoHundredApplicationXYamlResponseStream() io.ReadCloser {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationXYamlResponseStream
-}
-
-func (o *GetCodeSamplePreviewAsyncResponse) GetTwoHundredAndTwoApplicationJSONObject() *GetCodeSamplePreviewAsyncResponseBody {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredAndTwoApplicationJSONObject
+	Object *GetCodeSamplePreviewAsyncResponseBody
 }
 
 func (o *GetCodeSamplePreviewAsyncResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -70,4 +44,18 @@ func (o *GetCodeSamplePreviewAsyncResponse) GetHTTPMeta() components.HTTPMetadat
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetCodeSamplePreviewAsyncResponse) GetUsageSnippets() *components.UsageSnippets {
+	if o == nil {
+		return nil
+	}
+	return o.UsageSnippets
+}
+
+func (o *GetCodeSamplePreviewAsyncResponse) GetObject() *GetCodeSamplePreviewAsyncResponseBody {
+	if o == nil {
+		return nil
+	}
+	return o.Object
 }

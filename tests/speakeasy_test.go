@@ -29,10 +29,7 @@ func TestSpeakeasy_GenerateCodeSamplePreview(t *testing.T) {
 	require.NoError(t, fileErr)
 
 	res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-		},
+		Language: "<value>",
 		SchemaFile: shared.SchemaFile{
 			Content:  content,
 			FileName: "example.file",
@@ -58,11 +55,7 @@ func TestSpeakeasy_GenerateCodeSamplePreviewAsync(t *testing.T) {
 	require.NoError(t, fileErr)
 
 	res, err := s.CodeSamples.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
-		Languages: []string{
-			"<value>",
-			"<value>",
-			"<value>",
-		},
+		Language: "<value>",
 		SchemaFile: shared.SchemaFile{
 			Content:  content,
 			FileName: "example.file",
@@ -94,9 +87,9 @@ func TestSpeakeasy_GetCodeSamplePreviewAsync(t *testing.T) {
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 202, res.StatusCode)
-	assert.NotNil(t, res.TwoHundredAndTwoApplicationJSONObject)
+	assert.NotNil(t, res.Object)
 	assert.Equal(t, &operations.GetCodeSamplePreviewAsyncResponseBody{
 		Status: shared.CodeSamplesJobStatusPending,
-	}, res.TwoHundredAndTwoApplicationJSONObject)
+	}, res.Object)
 
 }
