@@ -22,6 +22,7 @@ const (
 	InteractionTypeRun            InteractionType = "RUN"
 	InteractionTypeConfigure      InteractionType = "CONFIGURE"
 	InteractionTypePublish        InteractionType = "PUBLISH"
+	InteractionTypeTest           InteractionType = "TEST"
 )
 
 func (e InteractionType) ToPointer() *InteractionType {
@@ -54,6 +55,8 @@ func (e *InteractionType) UnmarshalJSON(data []byte) error {
 	case "CONFIGURE":
 		fallthrough
 	case "PUBLISH":
+		fallthrough
+	case "TEST":
 		*e = InteractionType(v)
 		return nil
 	default:

@@ -18,3 +18,4 @@ Type of interaction.
 | `InteractionTypeRun`            | RUN                             |
 | `InteractionTypeConfigure`      | CONFIGURE                       |
 | `InteractionTypePublish`        | PUBLISH                         |
+| `InteractionTypeTest`           | TEST                            |

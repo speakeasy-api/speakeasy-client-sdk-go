@@ -237,6 +237,8 @@ type CliEvent struct {
 	SpeakeasyVersion string `json:"speakeasy_version"`
 	// Indicates whether the event was successful.
 	Success bool `json:"success"`
+	// The raw test report xml
+	TestReportRaw *string `json:"test_report_raw,omitempty"`
 	// Workflow lock file (post execution)
 	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
 	// Workflow lock file (prior to execution)
@@ -790,6 +792,13 @@ func (o *CliEvent) GetSuccess() bool {
 		return false
 	}
 	return o.Success
+}
+
+func (o *CliEvent) GetTestReportRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TestReportRaw
 }
 
 func (o *CliEvent) GetWorkflowLockPostRaw() *string {
