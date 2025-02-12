@@ -30,13 +30,6 @@ func newCodeSamples(sdkConfig sdkConfiguration) *CodeSamples {
 // GenerateCodeSamplePreview - Generate Code Sample previews from a file and configuration parameters.
 // This endpoint generates Code Sample previews from a file and configuration parameters.
 func (s *CodeSamples) GenerateCodeSamplePreview(ctx context.Context, request shared.CodeSampleSchemaInput, opts ...operations.Option) (*operations.GenerateCodeSamplePreviewResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "generateCodeSamplePreview",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -60,6 +53,13 @@ func (s *CodeSamples) GenerateCodeSamplePreview(ctx context.Context, request sha
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "generateCodeSamplePreview",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
 		return nil, err
@@ -268,13 +268,6 @@ func (s *CodeSamples) GenerateCodeSamplePreview(ctx context.Context, request sha
 // GenerateCodeSamplePreviewAsync - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
 // This endpoint generates Code Sample previews from a file and configuration parameters, receiving an async JobID response for polling.
 func (s *CodeSamples) GenerateCodeSamplePreviewAsync(ctx context.Context, request shared.CodeSampleSchemaInput, opts ...operations.Option) (*operations.GenerateCodeSamplePreviewAsyncResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "generateCodeSamplePreviewAsync",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -298,6 +291,13 @@ func (s *CodeSamples) GenerateCodeSamplePreviewAsync(ctx context.Context, reques
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "generateCodeSamplePreviewAsync",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
 		return nil, err
@@ -506,13 +506,6 @@ func (s *CodeSamples) GenerateCodeSamplePreviewAsync(ctx context.Context, reques
 // Get - Retrieve usage snippets
 // Retrieve usage snippets from an OpenAPI document stored in the registry. Supports filtering by language and operation ID.
 func (s *CodeSamples) Get(ctx context.Context, request operations.GetCodeSamplesRequest, opts ...operations.Option) (*operations.GetCodeSamplesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getCodeSamples",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -534,6 +527,14 @@ func (s *CodeSamples) Get(ctx context.Context, request operations.GetCodeSamples
 	opURL, err := url.JoinPath(baseURL, "/v1/code_sample")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getCodeSamples",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -725,13 +726,6 @@ func (s *CodeSamples) Get(ctx context.Context, request operations.GetCodeSamples
 // GetCodeSamplePreviewAsync - Poll for the result of an asynchronous Code Sample preview generation.
 // Poll for the result of an asynchronous Code Sample preview generation.
 func (s *CodeSamples) GetCodeSamplePreviewAsync(ctx context.Context, request operations.GetCodeSamplePreviewAsyncRequest, opts ...operations.Option) (*operations.GetCodeSamplePreviewAsyncResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getCodeSamplePreviewAsync",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -753,6 +747,14 @@ func (s *CodeSamples) GetCodeSamplePreviewAsync(ctx context.Context, request ope
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/code_sample/preview/async/{jobID}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getCodeSamplePreviewAsync",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

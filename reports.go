@@ -28,13 +28,6 @@ func newReports(sdkConfig sdkConfiguration) *Reports {
 
 // GetChangesReportSignedURL - Get the signed access url for the change reports for a particular document.
 func (s *Reports) GetChangesReportSignedURL(ctx context.Context, request operations.GetChangesReportSignedURLRequest, opts ...operations.Option) (*operations.GetChangesReportSignedURLResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getChangesReportSignedUrl",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *Reports) GetChangesReportSignedURL(ctx context.Context, request operati
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/reports/changes/{documentChecksum}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getChangesReportSignedUrl",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -227,13 +228,6 @@ func (s *Reports) GetChangesReportSignedURL(ctx context.Context, request operati
 
 // GetLintingReportSignedURL - Get the signed access url for the linting reports for a particular document.
 func (s *Reports) GetLintingReportSignedURL(ctx context.Context, request operations.GetLintingReportSignedURLRequest, opts ...operations.Option) (*operations.GetLintingReportSignedURLResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getLintingReportSignedUrl",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -255,6 +249,14 @@ func (s *Reports) GetLintingReportSignedURL(ctx context.Context, request operati
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/reports/linting/{documentChecksum}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getLintingReportSignedUrl",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -426,13 +428,6 @@ func (s *Reports) GetLintingReportSignedURL(ctx context.Context, request operati
 
 // UploadReport - Upload a report.
 func (s *Reports) UploadReport(ctx context.Context, request operations.UploadReportRequestBody, opts ...operations.Option) (*operations.UploadReportResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "uploadReport",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -456,6 +451,13 @@ func (s *Reports) UploadReport(ctx context.Context, request operations.UploadRep
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "uploadReport",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
 		return nil, err

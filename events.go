@@ -29,13 +29,6 @@ func newEvents(sdkConfig sdkConfiguration) *Events {
 
 // GetEventsByTarget - Load recent events for a particular workspace
 func (s *Events) GetEventsByTarget(ctx context.Context, request operations.GetWorkspaceEventsByTargetRequest, opts ...operations.Option) (*operations.GetWorkspaceEventsByTargetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceEventsByTarget",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceEventsByTargetGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -61,6 +54,14 @@ func (s *Events) GetEventsByTarget(ctx context.Context, request operations.GetWo
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/events/targets/{target_id}/events", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceEventsByTarget",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -251,13 +252,6 @@ func (s *Events) GetEventsByTarget(ctx context.Context, request operations.GetWo
 
 // GetTargets - Load targets for a particular workspace
 func (s *Events) GetTargets(ctx context.Context, request operations.GetWorkspaceTargetsRequest, opts ...operations.Option) (*operations.GetWorkspaceTargetsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceTargets",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -279,6 +273,14 @@ func (s *Events) GetTargets(ctx context.Context, request operations.GetWorkspace
 	opURL, err := url.JoinPath(baseURL, "/v1/workspace/events/targets")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceTargets",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -469,13 +471,6 @@ func (s *Events) GetTargets(ctx context.Context, request operations.GetWorkspace
 
 // GetTargetsDeprecated - Load targets for a particular workspace
 func (s *Events) GetTargetsDeprecated(ctx context.Context, request operations.GetWorkspaceTargetsDeprecatedRequest, opts ...operations.Option) (*operations.GetWorkspaceTargetsDeprecatedResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceTargetsDeprecated",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceTargetsDeprecatedGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -501,6 +496,14 @@ func (s *Events) GetTargetsDeprecated(ctx context.Context, request operations.Ge
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/events/targets", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceTargetsDeprecated",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -692,13 +695,6 @@ func (s *Events) GetTargetsDeprecated(ctx context.Context, request operations.Ge
 // Post events for a specific workspace
 // Sends an array of events to be stored for a particular workspace.
 func (s *Events) Post(ctx context.Context, request operations.PostWorkspaceEventsRequest, opts ...operations.Option) (*operations.PostWorkspaceEventsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "postWorkspaceEvents",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.PostWorkspaceEventsGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -726,6 +722,13 @@ func (s *Events) Post(ctx context.Context, request operations.PostWorkspaceEvent
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "postWorkspaceEvents",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -907,13 +910,6 @@ func (s *Events) Post(ctx context.Context, request operations.PostWorkspaceEvent
 
 // Search events for a particular workspace by any field
 func (s *Events) Search(ctx context.Context, request operations.SearchWorkspaceEventsRequest, opts ...operations.Option) (*operations.SearchWorkspaceEventsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "searchWorkspaceEvents",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.SearchWorkspaceEventsGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -939,6 +935,14 @@ func (s *Events) Search(ctx context.Context, request operations.SearchWorkspaceE
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/events", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "searchWorkspaceEvents",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

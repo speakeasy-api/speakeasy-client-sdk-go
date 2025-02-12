@@ -30,13 +30,6 @@ func newWorkspaces(sdkConfig sdkConfiguration) *Workspaces {
 // Create a workspace
 // Creates a workspace
 func (s *Workspaces) Create(ctx context.Context, request shared.Workspace, opts ...operations.Option) (*operations.CreateWorkspaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "createWorkspace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -60,6 +53,13 @@ func (s *Workspaces) Create(ctx context.Context, request shared.Workspace, opts 
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "createWorkspace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -252,13 +252,6 @@ func (s *Workspaces) Create(ctx context.Context, request shared.Workspace, opts 
 
 // CreateToken - Create a token for a particular workspace
 func (s *Workspaces) CreateToken(ctx context.Context, request operations.CreateWorkspaceTokenRequest, opts ...operations.Option) (*operations.CreateWorkspaceTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "createWorkspaceToken",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.CreateWorkspaceTokenGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -286,6 +279,13 @@ func (s *Workspaces) CreateToken(ctx context.Context, request operations.CreateW
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "createWorkspaceToken",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "WorkspaceToken", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -458,13 +458,6 @@ func (s *Workspaces) CreateToken(ctx context.Context, request operations.CreateW
 
 // DeleteToken - Delete a token for a particular workspace
 func (s *Workspaces) DeleteToken(ctx context.Context, request operations.DeleteWorkspaceTokenRequest, opts ...operations.Option) (*operations.DeleteWorkspaceTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "deleteWorkspaceToken",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.DeleteWorkspaceTokenGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -490,6 +483,14 @@ func (s *Workspaces) DeleteToken(ctx context.Context, request operations.DeleteW
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens/{tokenID}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "deleteWorkspaceToken",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -657,13 +658,6 @@ func (s *Workspaces) DeleteToken(ctx context.Context, request operations.DeleteW
 // Get workspace by context
 // Get information about a particular workspace by context.
 func (s *Workspaces) Get(ctx context.Context, opts ...operations.Option) (*operations.GetWorkspaceByContextResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceByContext",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -685,6 +679,14 @@ func (s *Workspaces) Get(ctx context.Context, opts ...operations.Option) (*opera
 	opURL, err := url.JoinPath(baseURL, "/v1/workspace")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceByContext",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -872,13 +874,6 @@ func (s *Workspaces) Get(ctx context.Context, opts ...operations.Option) (*opera
 // GetAll - Get workspaces for a user
 // Returns a list of workspaces a user has access too
 func (s *Workspaces) GetAll(ctx context.Context, opts ...operations.Option) (*operations.GetWorkspacesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaces",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -900,6 +895,14 @@ func (s *Workspaces) GetAll(ctx context.Context, opts ...operations.Option) (*op
 	opURL, err := url.JoinPath(baseURL, "/v1/workspaces")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaces",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1087,13 +1090,6 @@ func (s *Workspaces) GetAll(ctx context.Context, opts ...operations.Option) (*op
 // GetByID - Get workspace
 // Get information about a particular workspace.
 func (s *Workspaces) GetByID(ctx context.Context, request operations.GetWorkspaceRequest, opts ...operations.Option) (*operations.GetWorkspaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -1119,6 +1115,14 @@ func (s *Workspaces) GetByID(ctx context.Context, request operations.GetWorkspac
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1305,13 +1309,6 @@ func (s *Workspaces) GetByID(ctx context.Context, request operations.GetWorkspac
 
 // GetFeatureFlags - Get workspace feature flags
 func (s *Workspaces) GetFeatureFlags(ctx context.Context, request operations.GetWorkspaceFeatureFlagsRequest, opts ...operations.Option) (*operations.GetWorkspaceFeatureFlagsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceFeatureFlags",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceFeatureFlagsGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -1337,6 +1334,14 @@ func (s *Workspaces) GetFeatureFlags(ctx context.Context, request operations.Get
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/feature_flags", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceFeatureFlags",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1524,13 +1529,6 @@ func (s *Workspaces) GetFeatureFlags(ctx context.Context, request operations.Get
 // GetSettings - Get workspace settings
 // Get settings about a particular workspace.
 func (s *Workspaces) GetSettings(ctx context.Context, request operations.GetWorkspaceSettingsRequest, opts ...operations.Option) (*operations.GetWorkspaceSettingsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceSettings",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceSettingsGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -1556,6 +1554,14 @@ func (s *Workspaces) GetSettings(ctx context.Context, request operations.GetWork
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/settings", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceSettings",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1742,13 +1748,6 @@ func (s *Workspaces) GetSettings(ctx context.Context, request operations.GetWork
 
 // GetTeam - Get team members for a particular workspace
 func (s *Workspaces) GetTeam(ctx context.Context, request operations.GetWorkspaceTeamRequest, opts ...operations.Option) (*operations.GetWorkspaceTeamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceTeam",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceTeamGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -1774,6 +1773,14 @@ func (s *Workspaces) GetTeam(ctx context.Context, request operations.GetWorkspac
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceTeam",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1960,13 +1967,6 @@ func (s *Workspaces) GetTeam(ctx context.Context, request operations.GetWorkspac
 
 // GetTokens - Get tokens for a particular workspace
 func (s *Workspaces) GetTokens(ctx context.Context, request operations.GetWorkspaceTokensRequest, opts ...operations.Option) (*operations.GetWorkspaceTokensResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceTokens",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GetWorkspaceTokensGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -1992,6 +1992,14 @@ func (s *Workspaces) GetTokens(ctx context.Context, request operations.GetWorksp
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/tokens", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceTokens",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -2178,13 +2186,6 @@ func (s *Workspaces) GetTokens(ctx context.Context, request operations.GetWorksp
 
 // GrantAccess - Grant a user access to a particular workspace
 func (s *Workspaces) GrantAccess(ctx context.Context, request operations.GrantUserAccessToWorkspaceRequest, opts ...operations.Option) (*operations.GrantUserAccessToWorkspaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "grantUserAccessToWorkspace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.GrantUserAccessToWorkspaceGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -2210,6 +2211,14 @@ func (s *Workspaces) GrantAccess(ctx context.Context, request operations.GrantUs
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team/email/{email}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "grantUserAccessToWorkspace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -2396,13 +2405,6 @@ func (s *Workspaces) GrantAccess(ctx context.Context, request operations.GrantUs
 
 // RevokeAccess - Revoke a user's access to a particular workspace
 func (s *Workspaces) RevokeAccess(ctx context.Context, request operations.RevokeUserAccessToWorkspaceRequest, opts ...operations.Option) (*operations.RevokeUserAccessToWorkspaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "revokeUserAccessToWorkspace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.RevokeUserAccessToWorkspaceGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -2428,6 +2430,14 @@ func (s *Workspaces) RevokeAccess(ctx context.Context, request operations.Revoke
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/workspace/{workspace_id}/team/{userId}", request, globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "revokeUserAccessToWorkspace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -2594,13 +2604,6 @@ func (s *Workspaces) RevokeAccess(ctx context.Context, request operations.Revoke
 
 // SetFeatureFlags - Set workspace feature flags
 func (s *Workspaces) SetFeatureFlags(ctx context.Context, request shared.WorkspaceFeatureFlagRequest, opts ...operations.Option) (*operations.SetWorkspaceFeatureFlagsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "setWorkspaceFeatureFlags",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2624,6 +2627,13 @@ func (s *Workspaces) SetFeatureFlags(ctx context.Context, request shared.Workspa
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "setWorkspaceFeatureFlags",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -2817,13 +2827,6 @@ func (s *Workspaces) SetFeatureFlags(ctx context.Context, request shared.Workspa
 // Update workspace details
 // Update information about a particular workspace.
 func (s *Workspaces) Update(ctx context.Context, request operations.UpdateWorkspaceDetailsRequest, opts ...operations.Option) (*operations.UpdateWorkspaceDetailsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "updateWorkspaceDetails",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.UpdateWorkspaceDetailsGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -2851,6 +2854,13 @@ func (s *Workspaces) Update(ctx context.Context, request operations.UpdateWorksp
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "updateWorkspaceDetails",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Workspace", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -3024,13 +3034,6 @@ func (s *Workspaces) Update(ctx context.Context, request operations.UpdateWorksp
 // UpdateSettings - Update workspace settings
 // Update settings about a particular workspace.
 func (s *Workspaces) UpdateSettings(ctx context.Context, request operations.UpdateWorkspaceSettingsRequest, opts ...operations.Option) (*operations.UpdateWorkspaceSettingsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "updateWorkspaceSettings",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	globals := operations.UpdateWorkspaceSettingsGlobals{
 		WorkspaceID: s.sdkConfiguration.Globals.WorkspaceID,
 	}
@@ -3058,6 +3061,13 @@ func (s *Workspaces) UpdateSettings(ctx context.Context, request operations.Upda
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "updateWorkspaceSettings",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "WorkspaceSettings", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

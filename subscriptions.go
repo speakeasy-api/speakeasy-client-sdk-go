@@ -27,13 +27,6 @@ func newSubscriptions(sdkConfig sdkConfiguration) *Subscriptions {
 
 // ActivateSubscriptionNamespace - Activate an ignored namespace for a subscription
 func (s *Subscriptions) ActivateSubscriptionNamespace(ctx context.Context, request operations.ActivateSubscriptionNamespaceRequest, opts ...operations.Option) (*operations.ActivateSubscriptionNamespaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "activateSubscriptionNamespace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -55,6 +48,14 @@ func (s *Subscriptions) ActivateSubscriptionNamespace(ctx context.Context, reque
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/subscriptions/{subscriptionID}/{namespaceName}/activate", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "activateSubscriptionNamespace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -221,13 +222,6 @@ func (s *Subscriptions) ActivateSubscriptionNamespace(ctx context.Context, reque
 
 // IgnoreSubscriptionNamespace - Ignored a namespace for a subscription
 func (s *Subscriptions) IgnoreSubscriptionNamespace(ctx context.Context, request operations.IgnoreSubscriptionNamespaceRequest, opts ...operations.Option) (*operations.IgnoreSubscriptionNamespaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "ignoreSubscriptionNamespace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -249,6 +243,14 @@ func (s *Subscriptions) IgnoreSubscriptionNamespace(ctx context.Context, request
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "ignoreSubscriptionNamespace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

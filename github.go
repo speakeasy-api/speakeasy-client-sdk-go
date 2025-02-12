@@ -28,13 +28,6 @@ func newGithub(sdkConfig sdkConfiguration) *Github {
 }
 
 func (s *Github) CheckAccess(ctx context.Context, request operations.CheckGithubAccessRequest, opts ...operations.Option) (*operations.CheckGithubAccessResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "checkGithubAccess",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *Github) CheckAccess(ctx context.Context, request operations.CheckGithub
 	opURL, err := url.JoinPath(baseURL, "/v1/github/check_access")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "checkGithubAccess",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -225,13 +226,6 @@ func (s *Github) CheckAccess(ctx context.Context, request operations.CheckGithub
 }
 
 func (s *Github) CheckPublishingPRs(ctx context.Context, request operations.GithubCheckPublishingPRsRequest, opts ...operations.Option) (*operations.GithubCheckPublishingPRsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubCheckPublishingPRs",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -253,6 +247,14 @@ func (s *Github) CheckPublishingPRs(ctx context.Context, request operations.Gith
 	opURL, err := url.JoinPath(baseURL, "/v1/github/publishing_prs")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubCheckPublishingPRs",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -442,13 +444,6 @@ func (s *Github) CheckPublishingPRs(ctx context.Context, request operations.Gith
 }
 
 func (s *Github) CheckPublishingSecrets(ctx context.Context, request operations.GithubCheckPublishingSecretsRequest, opts ...operations.Option) (*operations.GithubCheckPublishingSecretsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubCheckPublishingSecrets",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -470,6 +465,14 @@ func (s *Github) CheckPublishingSecrets(ctx context.Context, request operations.
 	opURL, err := url.JoinPath(baseURL, "/v1/github/publishing_secrets")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubCheckPublishingSecrets",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -659,13 +662,6 @@ func (s *Github) CheckPublishingSecrets(ctx context.Context, request operations.
 }
 
 func (s *Github) ConfigureCodeSamples(ctx context.Context, request shared.GithubConfigureCodeSamplesRequest, opts ...operations.Option) (*operations.GithubConfigureCodeSamplesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubConfigureCodeSamples",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -689,6 +685,13 @@ func (s *Github) ConfigureCodeSamples(ctx context.Context, request shared.Github
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubConfigureCodeSamples",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -880,13 +883,6 @@ func (s *Github) ConfigureCodeSamples(ctx context.Context, request shared.Github
 }
 
 func (s *Github) ConfigureMintlifyRepo(ctx context.Context, request shared.GithubConfigureMintlifyRepoRequest, opts ...operations.Option) (*operations.GithubConfigureMintlifyRepoResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubConfigureMintlifyRepo",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -910,6 +906,13 @@ func (s *Github) ConfigureMintlifyRepo(ctx context.Context, request shared.Githu
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubConfigureMintlifyRepo",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1081,13 +1084,6 @@ func (s *Github) ConfigureMintlifyRepo(ctx context.Context, request shared.Githu
 }
 
 func (s *Github) ConfigureTarget(ctx context.Context, request shared.GithubConfigureTargetRequest, opts ...operations.Option) (*operations.GithubConfigureTargetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubConfigureTarget",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1111,6 +1107,13 @@ func (s *Github) ConfigureTarget(ctx context.Context, request shared.GithubConfi
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubConfigureTarget",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1282,13 +1285,6 @@ func (s *Github) ConfigureTarget(ctx context.Context, request shared.GithubConfi
 }
 
 func (s *Github) GetAction(ctx context.Context, request operations.GetGitHubActionRequest, opts ...operations.Option) (*operations.GetGitHubActionResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getGitHubAction",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1310,6 +1306,14 @@ func (s *Github) GetAction(ctx context.Context, request operations.GetGitHubActi
 	opURL, err := url.JoinPath(baseURL, "/v1/github/action")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getGitHubAction",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1499,13 +1503,6 @@ func (s *Github) GetAction(ctx context.Context, request operations.GetGitHubActi
 }
 
 func (s *Github) GetSetup(ctx context.Context, request operations.GetGithubSetupStateRequest, opts ...operations.Option) (*operations.GetGithubSetupStateResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getGithubSetupState",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1527,6 +1524,14 @@ func (s *Github) GetSetup(ctx context.Context, request operations.GetGithubSetup
 	opURL, err := url.JoinPath(baseURL, "/v1/github/setup")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getGithubSetupState",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1716,13 +1721,6 @@ func (s *Github) GetSetup(ctx context.Context, request operations.GetGithubSetup
 }
 
 func (s *Github) LinkGithub(ctx context.Context, request operations.LinkGithubAccessRequest, opts ...operations.Option) (*operations.LinkGithubAccessResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "linkGithubAccess",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1744,6 +1742,14 @@ func (s *Github) LinkGithub(ctx context.Context, request operations.LinkGithubAc
 	opURL, err := url.JoinPath(baseURL, "/v1/github/link")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "linkGithubAccess",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1913,13 +1919,6 @@ func (s *Github) LinkGithub(ctx context.Context, request operations.LinkGithubAc
 }
 
 func (s *Github) StorePublishingSecrets(ctx context.Context, request shared.GithubStorePublishingSecretsRequest, opts ...operations.Option) (*operations.GithubStorePublishingSecretsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubStorePublishingSecrets",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1943,6 +1942,13 @@ func (s *Github) StorePublishingSecrets(ctx context.Context, request shared.Gith
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubStorePublishingSecrets",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -2114,13 +2120,6 @@ func (s *Github) StorePublishingSecrets(ctx context.Context, request shared.Gith
 }
 
 func (s *Github) TriggerAction(ctx context.Context, request shared.GithubTriggerActionRequest, opts ...operations.Option) (*operations.GithubTriggerActionResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "githubTriggerAction",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2144,6 +2143,13 @@ func (s *Github) TriggerAction(ctx context.Context, request shared.GithubTrigger
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "githubTriggerAction",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

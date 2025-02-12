@@ -30,13 +30,6 @@ func newOrganizations(sdkConfig sdkConfiguration) *Organizations {
 // Create an organization
 // Creates an organization
 func (s *Organizations) Create(ctx context.Context, request shared.Organization, opts ...operations.Option) (*operations.CreateOrganizationResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "createOrganization",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -60,6 +53,13 @@ func (s *Organizations) Create(ctx context.Context, request shared.Organization,
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "createOrganization",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -253,13 +253,6 @@ func (s *Organizations) Create(ctx context.Context, request shared.Organization,
 // CreateFreeTrial - Create a free trial for an organization
 // Creates a free trial for an organization
 func (s *Organizations) CreateFreeTrial(ctx context.Context, opts ...operations.Option) (*operations.CreateFreeTrialResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "createFreeTrial",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -281,6 +274,14 @@ func (s *Organizations) CreateFreeTrial(ctx context.Context, opts ...operations.
 	opURL, err := url.JoinPath(baseURL, "/v1/organization/free_trial")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "createFreeTrial",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -448,13 +449,6 @@ func (s *Organizations) CreateFreeTrial(ctx context.Context, opts ...operations.
 // Get organization
 // Get information about a particular organization.
 func (s *Organizations) Get(ctx context.Context, request operations.GetOrganizationRequest, opts ...operations.Option) (*operations.GetOrganizationResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getOrganization",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -476,6 +470,14 @@ func (s *Organizations) Get(ctx context.Context, request operations.GetOrganizat
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/organization/{organizationID}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getOrganization",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -663,13 +665,6 @@ func (s *Organizations) Get(ctx context.Context, request operations.GetOrganizat
 // GetAll - Get organizations for a user
 // Returns a list of organizations a user has access too
 func (s *Organizations) GetAll(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getOrganizations",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -691,6 +686,14 @@ func (s *Organizations) GetAll(ctx context.Context, opts ...operations.Option) (
 	opURL, err := url.JoinPath(baseURL, "/v1/organizations")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getOrganizations",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -878,13 +881,6 @@ func (s *Organizations) GetAll(ctx context.Context, opts ...operations.Option) (
 // GetUsage - Get billing usage summary for a particular organization
 // Returns a billing usage summary by target languages for a particular organization
 func (s *Organizations) GetUsage(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationUsageResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getOrganizationUsage",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -906,6 +902,14 @@ func (s *Organizations) GetUsage(ctx context.Context, opts ...operations.Option)
 	opURL, err := url.JoinPath(baseURL, "/v1/organization/usage")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getOrganizationUsage",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

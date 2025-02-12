@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"mockserver/internal/handler/assert"
+	"mockserver/internal/handler/values"
 	"mockserver/internal/logging"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -53,6 +54,8 @@ func testGetBlobGetBlob0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
+	respBodyBytes := values.ReadFileToBytes("./testdata/example.file")
+	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
 }

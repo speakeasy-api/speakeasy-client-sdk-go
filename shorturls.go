@@ -29,13 +29,6 @@ func newShortURLs(sdkConfig sdkConfiguration) *ShortURLs {
 
 // Create - Shorten a URL.
 func (s *ShortURLs) Create(ctx context.Context, request operations.CreateRequestBody, opts ...operations.Option) (*operations.CreateResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -59,6 +52,13 @@ func (s *ShortURLs) Create(ctx context.Context, request operations.CreateRequest
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

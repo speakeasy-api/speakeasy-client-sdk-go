@@ -30,13 +30,6 @@ func newSuggest(sdkConfig sdkConfiguration) *Suggest {
 // Suggest - Generate suggestions for improving an OpenAPI document.
 // Get suggestions from an LLM model for improving an OpenAPI document.
 func (s *Suggest) Suggest(ctx context.Context, request operations.SuggestRequest, opts ...operations.Option) (*operations.SuggestResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "suggest",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -60,6 +53,13 @@ func (s *Suggest) Suggest(ctx context.Context, request operations.SuggestRequest
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "suggest",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "SuggestRequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -231,13 +231,6 @@ func (s *Suggest) Suggest(ctx context.Context, request operations.SuggestRequest
 
 // SuggestItems - Generate generic suggestions for a list of items.
 func (s *Suggest) SuggestItems(ctx context.Context, request shared.SuggestItemsRequestBody, opts ...operations.Option) (*operations.SuggestItemsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "suggestItems",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -261,6 +254,13 @@ func (s *Suggest) SuggestItems(ctx context.Context, request shared.SuggestItemsR
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "suggestItems",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -439,13 +439,6 @@ func (s *Suggest) SuggestItems(ctx context.Context, request shared.SuggestItemsR
 // SuggestOpenAPI - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 // Get suggestions from an LLM model for improving an OpenAPI document.
 func (s *Suggest) SuggestOpenAPI(ctx context.Context, request operations.SuggestOpenAPIRequest, opts ...operations.Option) (*operations.SuggestOpenAPIResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "suggestOpenAPI",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -469,6 +462,13 @@ func (s *Suggest) SuggestOpenAPI(ctx context.Context, request operations.Suggest
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "suggestOpenAPI",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
 		return nil, err
@@ -641,13 +641,6 @@ func (s *Suggest) SuggestOpenAPI(ctx context.Context, request operations.Suggest
 // SuggestOpenAPIRegistry - Generate suggestions for improving an OpenAPI document stored in the registry.
 // Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
 func (s *Suggest) SuggestOpenAPIRegistry(ctx context.Context, request operations.SuggestOpenAPIRegistryRequest, opts ...operations.Option) (*operations.SuggestOpenAPIRegistryResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "suggestOpenAPIRegistry",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -671,6 +664,13 @@ func (s *Suggest) SuggestOpenAPIRegistry(ctx context.Context, request operations
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "suggestOpenAPIRegistry",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "SuggestRequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

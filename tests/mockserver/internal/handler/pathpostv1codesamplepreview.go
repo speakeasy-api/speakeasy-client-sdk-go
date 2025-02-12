@@ -7,6 +7,8 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
@@ -58,6 +60,43 @@ func testGenerateCodeSamplePreviewGenerateCodeSamplePreview0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	respBody := &components.UsageSnippets{
+		Snippets: []components.UsageSnippet{
+			components.UsageSnippet{
+				Code: "import { Petstore } from \"petstore-sdk\";\n" +
+					"\n" +
+					"const petstore = new Petstore({\n" +
+					"  apiKey: \"<YOUR_API_KEY_HERE>\",\n" +
+					"});\n" +
+					"\n" +
+					"async function run() {\n" +
+					"  const result = await petstore.pet.getById({\n" +
+					"    id: 137396,\n" +
+					"  });\n" +
+					"\n" +
+					"  // Handle the result\n" +
+					"  console.log(result);\n" +
+					"}\n" +
+					"\n" +
+					"run();",
+				Language:    "typescript",
+				Method:      "get",
+				OperationID: "getPetById",
+				Path:        "/pet/{id}",
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
 }

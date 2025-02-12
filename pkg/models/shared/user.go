@@ -24,6 +24,8 @@ type User struct {
 	EmailVerified bool `json:"email_verified"`
 	// GitHub handle of the user.
 	GithubHandle *string `json:"github_handle,omitempty"`
+	// Indicates whether the user has created an API key. Not always populated
+	HasCreatedAPIKey *bool `json:"has_created_api_key,omitempty"`
 	// Unique identifier for the user.
 	ID string `json:"id"`
 	// Indicates whether the user is internal.
@@ -105,6 +107,13 @@ func (o *User) GetGithubHandle() *string {
 		return nil
 	}
 	return o.GithubHandle
+}
+
+func (o *User) GetHasCreatedAPIKey() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasCreatedAPIKey
 }
 
 func (o *User) GetID() string {

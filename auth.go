@@ -30,13 +30,6 @@ func newAuth(sdkConfig sdkConfiguration) *Auth {
 // GetAccess - Get access allowances for a particular workspace
 // Checks if generation is permitted for a particular run of the CLI
 func (s *Auth) GetAccess(ctx context.Context, request operations.GetWorkspaceAccessRequest, opts ...operations.Option) (*operations.GetWorkspaceAccessResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getWorkspaceAccess",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -58,6 +51,14 @@ func (s *Auth) GetAccess(ctx context.Context, request operations.GetWorkspaceAcc
 	opURL, err := url.JoinPath(baseURL, "/v1/workspace/access")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getWorkspaceAccess",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -242,13 +243,6 @@ func (s *Auth) GetAccess(ctx context.Context, request operations.GetWorkspaceAcc
 
 // GetAccessToken - Get or refresh an access token for the current workspace.
 func (s *Auth) GetAccessToken(ctx context.Context, request operations.GetAccessTokenRequest, opts ...operations.Option) (*operations.GetAccessTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getAccessToken",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -270,6 +264,14 @@ func (s *Auth) GetAccessToken(ctx context.Context, request operations.GetAccessT
 	opURL, err := url.JoinPath(baseURL, "/v1/auth/access_token")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getAccessToken",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
 	}
 
 	timeout := o.Timeout
@@ -456,13 +458,6 @@ func (s *Auth) GetAccessToken(ctx context.Context, request operations.GetAccessT
 
 // GetUser - Get information about the current user.
 func (s *Auth) GetUser(ctx context.Context, opts ...operations.Option) (*operations.GetUserResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getUser",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -484,6 +479,14 @@ func (s *Auth) GetUser(ctx context.Context, opts ...operations.Option) (*operati
 	opURL, err := url.JoinPath(baseURL, "/v1/user")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getUser",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -670,13 +673,6 @@ func (s *Auth) GetUser(ctx context.Context, opts ...operations.Option) (*operati
 
 // ValidateAPIKey - Validate the current api key.
 func (s *Auth) ValidateAPIKey(ctx context.Context, opts ...operations.Option) (*operations.ValidateAPIKeyResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "validateApiKey",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -698,6 +694,14 @@ func (s *Auth) ValidateAPIKey(ctx context.Context, opts ...operations.Option) (*
 	opURL, err := url.JoinPath(baseURL, "/v1/auth/validate")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "validateApiKey",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

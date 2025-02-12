@@ -29,13 +29,6 @@ func newArtifacts(sdkConfig sdkConfiguration) *Artifacts {
 
 // CreateRemoteSource - Configure a new remote source
 func (s *Artifacts) CreateRemoteSource(ctx context.Context, request *shared.RemoteSource, opts ...operations.Option) (*operations.CreateRemoteSourceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "createRemoteSource",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -59,6 +52,13 @@ func (s *Artifacts) CreateRemoteSource(ctx context.Context, request *shared.Remo
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "createRemoteSource",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -231,13 +231,6 @@ func (s *Artifacts) CreateRemoteSource(ctx context.Context, request *shared.Remo
 
 // GetBlob - Get blob for a particular digest
 func (s *Artifacts) GetBlob(ctx context.Context, request operations.GetBlobRequest, opts ...operations.Option) (*operations.GetBlobResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getBlob",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -259,6 +252,14 @@ func (s *Artifacts) GetBlob(ctx context.Context, request operations.GetBlobReque
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/blobs/{digest}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getBlob",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -437,13 +438,6 @@ func (s *Artifacts) GetBlob(ctx context.Context, request operations.GetBlobReque
 
 // GetManifest - Get manifest for a particular reference
 func (s *Artifacts) GetManifest(ctx context.Context, request operations.GetManifestRequest, opts ...operations.Option) (*operations.GetManifestResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getManifest",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -465,6 +459,14 @@ func (s *Artifacts) GetManifest(ctx context.Context, request operations.GetManif
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/manifests/{revision_reference}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getManifest",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -651,13 +653,6 @@ func (s *Artifacts) GetManifest(ctx context.Context, request operations.GetManif
 
 // GetNamespaces - Each namespace contains many revisions.
 func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option) (*operations.GetNamespacesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getNamespaces",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -679,6 +674,14 @@ func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option
 	opURL, err := url.JoinPath(baseURL, "/v1/artifacts/namespaces")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getNamespaces",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -864,13 +867,6 @@ func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option
 }
 
 func (s *Artifacts) GetRevisions(ctx context.Context, request operations.GetRevisionsRequest, opts ...operations.Option) (*operations.GetRevisionsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getRevisions",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -892,6 +888,14 @@ func (s *Artifacts) GetRevisions(ctx context.Context, request operations.GetRevi
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/artifacts/namespaces/{namespace_name}/revisions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getRevisions",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1081,13 +1085,6 @@ func (s *Artifacts) GetRevisions(ctx context.Context, request operations.GetRevi
 }
 
 func (s *Artifacts) GetTags(ctx context.Context, request operations.GetTagsRequest, opts ...operations.Option) (*operations.GetTagsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getTags",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1109,6 +1106,14 @@ func (s *Artifacts) GetTags(ctx context.Context, request operations.GetTagsReque
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/artifacts/namespaces/{namespace_name}/tags", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getTags",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1295,13 +1300,6 @@ func (s *Artifacts) GetTags(ctx context.Context, request operations.GetTagsReque
 
 // ListRemoteSources - Get remote sources attached to a particular namespace
 func (s *Artifacts) ListRemoteSources(ctx context.Context, request operations.ListRemoteSourcesRequest, opts ...operations.Option) (*operations.ListRemoteSourcesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "listRemoteSources",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1323,6 +1321,14 @@ func (s *Artifacts) ListRemoteSources(ctx context.Context, request operations.Li
 	opURL, err := url.JoinPath(baseURL, "/v1/artifacts/remote_sources")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "listRemoteSources",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1513,13 +1519,6 @@ func (s *Artifacts) ListRemoteSources(ctx context.Context, request operations.Li
 
 // PostTags - Add tags to an existing revision
 func (s *Artifacts) PostTags(ctx context.Context, request operations.PostTagsRequest, opts ...operations.Option) (*operations.PostTagsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "postTags",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1543,6 +1542,13 @@ func (s *Artifacts) PostTags(ctx context.Context, request operations.PostTagsReq
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "postTags",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AddTags", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1715,13 +1721,6 @@ func (s *Artifacts) PostTags(ctx context.Context, request operations.PostTagsReq
 
 // Preflight - Get access token for communicating with OCI distribution endpoints
 func (s *Artifacts) Preflight(ctx context.Context, request *shared.PreflightRequest, opts ...operations.Option) (*operations.PreflightResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "preflight",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1745,6 +1744,13 @@ func (s *Artifacts) Preflight(ctx context.Context, request *shared.PreflightRequ
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "preflight",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1937,13 +1943,6 @@ func (s *Artifacts) Preflight(ctx context.Context, request *shared.PreflightRequ
 
 // SetArchived - Set whether a namespace is archived
 func (s *Artifacts) SetArchived(ctx context.Context, request operations.ArchiveNamespaceRequest, opts ...operations.Option) (*operations.ArchiveNamespaceResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "archiveNamespace",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1967,6 +1966,13 @@ func (s *Artifacts) SetArchived(ctx context.Context, request operations.ArchiveN
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "archiveNamespace",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -2139,13 +2145,6 @@ func (s *Artifacts) SetArchived(ctx context.Context, request operations.ArchiveN
 
 // SetVisibility - Set visibility of a namespace with an existing metadata entry
 func (s *Artifacts) SetVisibility(ctx context.Context, request operations.SetVisibilityRequest, opts ...operations.Option) (*operations.SetVisibilityResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "setVisibility",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2169,6 +2168,13 @@ func (s *Artifacts) SetVisibility(ctx context.Context, request operations.SetVis
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "setVisibility",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
