@@ -12,6 +12,7 @@ import (
 // GeneratedHandlers returns all generated handlers.
 func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) []*GeneratedHandler {
 	return []*GeneratedHandler{
+		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/organization/add_ons/{add_on}", pathDeleteV1OrganizationAddOnsAddOn(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/artifacts/namespaces", pathGetV1ArtifactsNamespaces(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/artifacts/namespaces/{namespace_name}/revisions", pathGetV1ArtifactsNamespacesNamespaceNameRevisions(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/artifacts/namespaces/{namespace_name}/tags", pathGetV1ArtifactsNamespacesNamespaceNameTags(dir, rt)),
@@ -24,6 +25,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/github/setup", pathGetV1GithubSetup(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/blobs/{digest}", pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameBlobsDigest(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/manifests/{revision_reference}", pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameManifestsRevisionReference(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/v1/organization/add_ons", pathGetV1OrganizationAddOns(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/organization/usage", pathGetV1OrganizationUsage(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/organization/{organizationID}", pathGetV1OrganizationOrganizationID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/organizations", pathGetV1Organizations(dir, rt)),
@@ -49,6 +51,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/github/publishing_secrets", pathPostV1GithubPublishingSecrets(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/github/trigger_action", pathPostV1GithubTriggerAction(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/organization", pathPostV1Organization(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/organization/add_ons", pathPostV1OrganizationAddOns(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/organization/free_trial", pathPostV1OrganizationFreeTrial(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/reports", pathPostV1Reports(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/short_urls", pathPostV1ShortUrls(dir, rt)),

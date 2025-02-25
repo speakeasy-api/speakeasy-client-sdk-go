@@ -194,3 +194,62 @@ func TestOrganizations_GetOrganizationUsage(t *testing.T) {
 	}, res.OrganizationUsageResponse)
 
 }
+
+func TestOrganizations_CreateBillingAddOns(t *testing.T) {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createBillingAddOns")),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Organizations.CreateBillingAddOns(ctx, shared.OrganizationBillingAddOnRequest{
+		AddOns: []shared.BillingAddOn{
+			shared.BillingAddOnSDKTesting,
+			shared.BillingAddOnSDKTesting,
+			shared.BillingAddOnWebhooks,
+		},
+	})
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
+
+}
+
+func TestOrganizations_DeleteBillingAddOn(t *testing.T) {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("deleteBillingAddOn")),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Organizations.DeleteBillingAddOn(ctx, operations.DeleteBillingAddOnRequest{
+		AddOn: shared.BillingAddOnCustomCodeRegions,
+	})
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
+
+}
+
+func TestOrganizations_GetBillingAddOns(t *testing.T) {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getBillingAddOns")),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Organizations.GetBillingAddOns(ctx)
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
+
+}

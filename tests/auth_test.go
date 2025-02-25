@@ -104,6 +104,9 @@ func TestAuth_ValidateAPIKey(t *testing.T) {
 	assert.NotNil(t, res.APIKeyDetails)
 	assert.Equal(t, &shared.APIKeyDetails{
 		AccountTypeV2: shared.AccountTypeEnterprise,
+		BillingAddOns: []shared.BillingAddOn{
+			shared.BillingAddOnSDKTesting,
+		},
 		EnabledFeatures: []string{
 			"<value>",
 			"<value>",

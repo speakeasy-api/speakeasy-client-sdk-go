@@ -8,8 +8,9 @@ import (
 )
 
 type APIKeyDetails struct {
-	AccountTypeV2   AccountType `json:"account_type_v2"`
-	EnabledFeatures []string    `json:"enabled_features"`
+	AccountTypeV2   AccountType    `json:"account_type_v2"`
+	BillingAddOns   []BillingAddOn `json:"billing_add_ons"`
+	EnabledFeatures []string       `json:"enabled_features"`
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	FeatureFlags              []string `json:"feature_flags,omitempty"`
 	GenerationAccessUnlimited *bool    `json:"generation_access_unlimited,omitempty"`
@@ -37,6 +38,13 @@ func (o *APIKeyDetails) GetAccountTypeV2() AccountType {
 		return AccountType("")
 	}
 	return o.AccountTypeV2
+}
+
+func (o *APIKeyDetails) GetBillingAddOns() []BillingAddOn {
+	if o == nil {
+		return []BillingAddOn{}
+	}
+	return o.BillingAddOns
 }
 
 func (o *APIKeyDetails) GetEnabledFeatures() []string {

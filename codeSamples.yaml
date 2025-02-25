@@ -177,6 +177,24 @@ actions:
         - lang: go
           label: createOrganization
           source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Organizations.Create(ctx, shared.Organization{\n        ID: \"<id>\",\n        Name: \"<value>\",\n        Slug: \"<value>\",\n        AccountType: shared.AccountTypeScaleUp,\n        TelemetryDisabled: false,\n        CreatedAt: types.MustTimeFromString(\"2024-04-02T12:48:32.253Z\"),\n        UpdatedAt: types.MustTimeFromString(\"2023-05-28T06:20:22.766Z\"),\n        SsoActivated: true,\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Organization != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/organization/add_ons"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getBillingAddOns
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Organizations.GetBillingAddOns(ctx)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.OrganizationBillingAddOnResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/organization/add_ons"]["post"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: createBillingAddOns
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Organizations.CreateBillingAddOns(ctx, shared.OrganizationBillingAddOnRequest{\n        AddOns: []shared.BillingAddOn{\n            shared.BillingAddOnSDKTesting,\n            shared.BillingAddOnSDKTesting,\n            shared.BillingAddOnWebhooks,\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.OrganizationBillingAddOnResponse != nil {\n        // handle response\n    }\n}"
+  - target: $["paths"]["/v1/organization/add_ons/{add_on}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: deleteBillingAddOn
+          source: "package main\n\nimport(\n\t\"context\"\n\tspeakeasyclientsdkgo \"github.com/speakeasy-api/speakeasy-client-sdk-go/v3\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared\"\n\t\"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n    \n    s := speakeasyclientsdkgo.New(\n        speakeasyclientsdkgo.WithSecurity(shared.Security{\n            APIKey: speakeasyclientsdkgo.String(\"<YOUR_API_KEY_HERE>\"),\n        }),\n    )\n\n    res, err := s.Organizations.DeleteBillingAddOn(ctx, operations.DeleteBillingAddOnRequest{\n        AddOn: shared.BillingAddOnCustomCodeRegions,\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
   - target: $["paths"]["/v1/organization/free_trial"]["post"]
     update:
       x-codeSamples:

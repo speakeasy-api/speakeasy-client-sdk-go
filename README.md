@@ -139,9 +139,12 @@ func main() {
 ### [Organizations](docs/sdks/organizations/README.md)
 
 * [Create](docs/sdks/organizations/README.md#create) - Create an organization
+* [CreateBillingAddOns](docs/sdks/organizations/README.md#createbillingaddons) - Create billing add ons
 * [CreateFreeTrial](docs/sdks/organizations/README.md#createfreetrial) - Create a free trial for an organization
+* [DeleteBillingAddOn](docs/sdks/organizations/README.md#deletebillingaddon) - Delete billing add ons
 * [Get](docs/sdks/organizations/README.md#get) - Get organization
 * [GetAll](docs/sdks/organizations/README.md#getall) - Get organizations for a user
+* [GetBillingAddOns](docs/sdks/organizations/README.md#getbillingaddons) - Get billing add ons
 * [GetUsage](docs/sdks/organizations/README.md#getusage) - Get billing usage summary for a particular organization
 
 ### [Reports](docs/sdks/reports/README.md)
@@ -262,9 +265,9 @@ func main() {
 
 You can override the default server globally using the `WithServer(server string)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name   | Server                              |
-| ------ | ----------------------------------- |
-| `prod` | `https://api.prod.speakeasyapi.dev` |
+| Name   | Server                              | Description |
+| ------ | ----------------------------------- | ----------- |
+| `prod` | `https://api.prod.speakeasyapi.dev` |             |
 
 #### Example
 

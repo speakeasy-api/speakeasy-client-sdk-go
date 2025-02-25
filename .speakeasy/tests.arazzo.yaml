@@ -1719,3 +1719,35 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
     x-speakeasy-test-group: Artifacts
+  - workflowId: createBillingAddOns
+    steps:
+      - stepId: test
+        operationId: createBillingAddOns
+        requestBody:
+          contentType: application/json
+          payload:
+            add_ons:
+              - sdk_testing
+              - sdk_testing
+              - webhooks
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Organizations
+  - workflowId: deleteBillingAddOn
+    steps:
+      - stepId: test
+        operationId: deleteBillingAddOn
+        parameters:
+          - name: add_on
+            in: path
+            value: custom_code_regions
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Organizations
+  - workflowId: getBillingAddOns
+    steps:
+      - stepId: test
+        operationId: getBillingAddOns
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: Organizations

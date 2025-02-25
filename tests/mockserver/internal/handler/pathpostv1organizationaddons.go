@@ -8,13 +8,12 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
-	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathGetV1AuthValidate(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathPostV1OrganizationAddOns(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -22,15 +21,15 @@ func pathGetV1AuthValidate(dir *logging.HTTPFileDirectory, rt *tracking.RequestT
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "validateApiKey[0]":
-			dir.HandlerFunc("validateApiKey", testValidateAPIKeyValidateAPIKey0)(w, req)
+		case "createBillingAddOns[0]":
+			dir.HandlerFunc("createBillingAddOns", testCreateBillingAddOnsCreateBillingAddOns0)(w, req)
 		default:
 			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
 		}
 	}
 }
 
-func testValidateAPIKeyValidateAPIKey0(w http.ResponseWriter, req *http.Request) {
+func testCreateBillingAddOnsCreateBillingAddOns0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -46,6 +45,11 @@ func testValidateAPIKeyValidateAPIKey0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
+	if err := assert.ContentType(req, "application/json", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -56,21 +60,10 @@ func testValidateAPIKeyValidateAPIKey0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.APIKeyDetails{
-		AccountTypeV2: components.AccountTypeEnterprise,
-		BillingAddOns: []components.BillingAddOn{
+	respBody := &components.OrganizationBillingAddOnResponse{
+		AddOns: []components.BillingAddOn{
 			components.BillingAddOnSDKTesting,
 		},
-		EnabledFeatures: []string{
-			"<value>",
-			"<value>",
-			"<value>",
-		},
-		OrgSlug:            "<value>",
-		TelemetryDisabled:  true,
-		WorkspaceCreatedAt: types.MustTimeFromString("2024-04-24T00:30:38.626Z"),
-		WorkspaceID:        "<id>",
-		WorkspaceSlug:      "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

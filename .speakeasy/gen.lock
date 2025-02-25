@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 91d0aeea02ab32b58fdf8e9ef49d1b48
+  docChecksum: d718cd9b92034ef08c52f90bdc73a004
   docVersion: 0.4.0
-  speakeasyVersion: 1.490.0
-  generationVersion: 2.512.0
-  releaseVersion: 3.23.0
-  configChecksum: 77a4deca16e249b78bac49004ef89abf
+  speakeasyVersion: 1.503.0
+  generationVersion: 2.526.1
+  releaseVersion: 3.24.0
+  configChecksum: 7de12295c8c19f6ae380e82f5358f2e9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -14,8 +14,8 @@ management:
 features:
   go:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.8
-    core: 3.7.0
+    constsAndDefaults: 0.1.10
+    core: 3.7.2
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -29,13 +29,13 @@ features:
     intellisenseMarkdownSupport: 0.1.0
     mockServer: 0.1.0
     nameOverrides: 2.81.2
-    nullables: 0.1.0
+    nullables: 0.1.1
     openEnums: 0.1.0
     responseFormat: 0.1.2
     retries: 2.83.2
     sdkHooks: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.12.0
+    tests: 0.13.0
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -46,15 +46,18 @@ generatedFiles:
   - /pkg/models/operations/archivenamespace.go
   - /pkg/models/operations/checkgithubaccess.go
   - /pkg/models/operations/create.go
+  - /pkg/models/operations/createbillingaddons.go
   - /pkg/models/operations/createfreetrial.go
   - /pkg/models/operations/createorganization.go
   - /pkg/models/operations/createremotesource.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
+  - /pkg/models/operations/deletebillingaddon.go
   - /pkg/models/operations/deleteworkspacetoken.go
   - /pkg/models/operations/generatecodesamplepreview.go
   - /pkg/models/operations/generatecodesamplepreviewasync.go
   - /pkg/models/operations/getaccesstoken.go
+  - /pkg/models/operations/getbillingaddons.go
   - /pkg/models/operations/getblob.go
   - /pkg/models/operations/getchangesreportsignedurl.go
   - /pkg/models/operations/getcodesamplepreviewasync.go
@@ -114,6 +117,7 @@ generatedFiles:
   - /pkg/models/shared/addtags.go
   - /pkg/models/shared/annotations.go
   - /pkg/models/shared/apikeydetails.go
+  - /pkg/models/shared/billingaddon.go
   - /pkg/models/shared/clievent.go
   - /pkg/models/shared/codesampleschemainput.go
   - /pkg/models/shared/codesamplesjobstatus.go
@@ -140,6 +144,8 @@ generatedFiles:
   - /pkg/models/shared/oasoperation.go
   - /pkg/models/shared/oassummary.go
   - /pkg/models/shared/organization.go
+  - /pkg/models/shared/organizationbillingaddonrequest.go
+  - /pkg/models/shared/organizationbillingaddonresponse.go
   - /pkg/models/shared/organizationusage.go
   - /pkg/models/shared/organizationusageresponse.go
   - /pkg/models/shared/preflightrequest.go
@@ -183,6 +189,7 @@ generatedFiles:
   - docs/pkg/models/operations/archivenamespaceresponse.md
   - docs/pkg/models/operations/checkgithubaccessrequest.md
   - docs/pkg/models/operations/checkgithubaccessresponse.md
+  - docs/pkg/models/operations/createbillingaddonsresponse.md
   - docs/pkg/models/operations/createfreetrialresponse.md
   - docs/pkg/models/operations/createorganizationresponse.md
   - docs/pkg/models/operations/createremotesourceresponse.md
@@ -192,6 +199,8 @@ generatedFiles:
   - docs/pkg/models/operations/createworkspacetokenglobals.md
   - docs/pkg/models/operations/createworkspacetokenrequest.md
   - docs/pkg/models/operations/createworkspacetokenresponse.md
+  - docs/pkg/models/operations/deletebillingaddonrequest.md
+  - docs/pkg/models/operations/deletebillingaddonresponse.md
   - docs/pkg/models/operations/deleteworkspacetokenglobals.md
   - docs/pkg/models/operations/deleteworkspacetokenrequest.md
   - docs/pkg/models/operations/deleteworkspacetokenresponse.md
@@ -201,6 +210,7 @@ generatedFiles:
   - docs/pkg/models/operations/generatecodesamplepreviewresponse.md
   - docs/pkg/models/operations/getaccesstokenrequest.md
   - docs/pkg/models/operations/getaccesstokenresponse.md
+  - docs/pkg/models/operations/getbillingaddonsresponse.md
   - docs/pkg/models/operations/getblobrequest.md
   - docs/pkg/models/operations/getblobresponse.md
   - docs/pkg/models/operations/getchangesreportsignedurlrequest.md
@@ -322,6 +332,7 @@ generatedFiles:
   - docs/pkg/models/shared/annotations.md
   - docs/pkg/models/shared/apikeydetails.md
   - docs/pkg/models/shared/auth.md
+  - docs/pkg/models/shared/billingaddon.md
   - docs/pkg/models/shared/claims.md
   - docs/pkg/models/shared/clievent.md
   - docs/pkg/models/shared/codesampleschemainput.md
@@ -354,6 +365,8 @@ generatedFiles:
   - docs/pkg/models/shared/oassummary.md
   - docs/pkg/models/shared/openapidiffbumptype.md
   - docs/pkg/models/shared/organization.md
+  - docs/pkg/models/shared/organizationbillingaddonrequest.md
+  - docs/pkg/models/shared/organizationbillingaddonresponse.md
   - docs/pkg/models/shared/organizationusage.md
   - docs/pkg/models/shared/organizationusageresponse.md
   - docs/pkg/models/shared/preflightrequest.md
@@ -459,6 +472,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/doc.go
   - tests/mockserver/internal/handler/generated_handler.go
   - tests/mockserver/internal/handler/generated_handlers.go
+  - tests/mockserver/internal/handler/pathdeletev1organizationaddonsaddon.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespaces.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespacesnamespacenamerevisions.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespacesnamespacenametags.go
@@ -471,6 +485,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1githubsetup.go
   - tests/mockserver/internal/handler/pathgetv1ociv2organizationslugworkspaceslugnamespacenameblobsdigest.go
   - tests/mockserver/internal/handler/pathgetv1ociv2organizationslugworkspaceslugnamespacenamemanifestsrevisionreference.go
+  - tests/mockserver/internal/handler/pathgetv1organizationaddons.go
   - tests/mockserver/internal/handler/pathgetv1organizationorganizationid.go
   - tests/mockserver/internal/handler/pathgetv1organizations.go
   - tests/mockserver/internal/handler/pathgetv1organizationusage.go
@@ -496,6 +511,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathpostv1githubpublishingsecrets.go
   - tests/mockserver/internal/handler/pathpostv1githubtriggeraction.go
   - tests/mockserver/internal/handler/pathpostv1organization.go
+  - tests/mockserver/internal/handler/pathpostv1organizationaddons.go
   - tests/mockserver/internal/handler/pathpostv1organizationfreetrial.go
   - tests/mockserver/internal/handler/pathpostv1reports.go
   - tests/mockserver/internal/handler/pathpostv1shorturls.go
@@ -520,6 +536,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/addtags.go
   - tests/mockserver/internal/sdk/models/components/annotations.go
   - tests/mockserver/internal/sdk/models/components/apikeydetails.go
+  - tests/mockserver/internal/sdk/models/components/billingaddon.go
   - tests/mockserver/internal/sdk/models/components/clievent.go
   - tests/mockserver/internal/sdk/models/components/codesampleschemainput.go
   - tests/mockserver/internal/sdk/models/components/codesamplesjobstatus.go
@@ -547,6 +564,8 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/oasoperation.go
   - tests/mockserver/internal/sdk/models/components/oassummary.go
   - tests/mockserver/internal/sdk/models/components/organization.go
+  - tests/mockserver/internal/sdk/models/components/organizationbillingaddonrequest.go
+  - tests/mockserver/internal/sdk/models/components/organizationbillingaddonresponse.go
   - tests/mockserver/internal/sdk/models/components/organizationusage.go
   - tests/mockserver/internal/sdk/models/components/organizationusageresponse.go
   - tests/mockserver/internal/sdk/models/components/preflightrequest.go
@@ -583,15 +602,18 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/archivenamespace.go
   - tests/mockserver/internal/sdk/models/operations/checkgithubaccess.go
   - tests/mockserver/internal/sdk/models/operations/create.go
+  - tests/mockserver/internal/sdk/models/operations/createbillingaddons.go
   - tests/mockserver/internal/sdk/models/operations/createfreetrial.go
   - tests/mockserver/internal/sdk/models/operations/createorganization.go
   - tests/mockserver/internal/sdk/models/operations/createremotesource.go
   - tests/mockserver/internal/sdk/models/operations/createworkspace.go
   - tests/mockserver/internal/sdk/models/operations/createworkspacetoken.go
+  - tests/mockserver/internal/sdk/models/operations/deletebillingaddon.go
   - tests/mockserver/internal/sdk/models/operations/deleteworkspacetoken.go
   - tests/mockserver/internal/sdk/models/operations/generatecodesamplepreview.go
   - tests/mockserver/internal/sdk/models/operations/generatecodesamplepreviewasync.go
   - tests/mockserver/internal/sdk/models/operations/getaccesstoken.go
+  - tests/mockserver/internal/sdk/models/operations/getbillingaddons.go
   - tests/mockserver/internal/sdk/models/operations/getblob.go
   - tests/mockserver/internal/sdk/models/operations/getchangesreportsignedurl.go
   - tests/mockserver/internal/sdk/models/operations/getcodesamplepreviewasync.go
@@ -793,7 +815,7 @@ examples:
     speakeasy-default-validate-api-key:
       responses:
         2XX:
-          application/json: {"account_type_v2": "enterprise", "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": true, "workspace_created_at": "2024-02-05T22:57:49.657Z", "workspace_id": "<id>", "workspace_slug": "<value>"}
+          application/json: {"account_type_v2": "enterprise", "billing_add_ons": ["custom_code_regions", "webhooks", "sdk_testing"], "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": true, "workspace_created_at": "2024-02-05T22:57:49.657Z", "workspace_id": "<id>", "workspace_slug": "<value>"}
         4XX:
           application/json: {"message": "<value>", "status_code": 150892}
   generateCodeSamplePreview:
@@ -1290,6 +1312,16 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 334009}
+  createBillingAddOns:
+    speakeasy-default-create-billing-add-ons:
+      requestBody:
+        application/json: {"add_ons": ["sdk_testing", "sdk_testing", "webhooks"]}
+  deleteBillingAddOn:
+    speakeasy-default-delete-billing-add-on:
+      parameters:
+        path:
+          add_on: "custom_code_regions"
+  getBillingAddOns: {}
 examplesVersion: 1.0.0
 generatedTests:
   generateCodeSamplePreview: "2024-12-09T10:07:33-05:00"
@@ -1367,3 +1399,6 @@ generatedTests:
   getCodeSamples: "2025-01-03T22:02:43Z"
   setWorkspaceFeatureFlags: "2025-01-09T00:53:22Z"
   archiveNamespace: "2025-01-28T22:02:35Z"
+  createBillingAddOns: "2025-02-25T16:56:22Z"
+  deleteBillingAddOn: "2025-02-25T16:56:22Z"
+  getBillingAddOns: "2025-02-25T16:56:22Z"
