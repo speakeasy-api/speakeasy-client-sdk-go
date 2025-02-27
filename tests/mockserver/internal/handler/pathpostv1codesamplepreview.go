@@ -24,7 +24,7 @@ func pathPostV1CodeSamplePreview(dir *logging.HTTPFileDirectory, rt *tracking.Re
 		case "generateCodeSamplePreview[0]":
 			dir.HandlerFunc("generateCodeSamplePreview", testGenerateCodeSamplePreviewGenerateCodeSamplePreview0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

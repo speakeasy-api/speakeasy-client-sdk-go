@@ -22,7 +22,7 @@ func pathPostV1ArtifactsNamespacesNamespaceNameVisibility(dir *logging.HTTPFileD
 		case "setVisibility[0]":
 			dir.HandlerFunc("setVisibility", testSetVisibilitySetVisibility0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

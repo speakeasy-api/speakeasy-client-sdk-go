@@ -24,7 +24,7 @@ func pathGetV1GithubSetup(dir *logging.HTTPFileDirectory, rt *tracking.RequestTr
 		case "getGithubSetupState[0]":
 			dir.HandlerFunc("getGithubSetupState", testGetGithubSetupStateGetGithubSetupState0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

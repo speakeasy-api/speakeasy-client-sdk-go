@@ -22,7 +22,7 @@ func pathPostV1GithubPublishingSecrets(dir *logging.HTTPFileDirectory, rt *track
 		case "githubStorePublishingSecrets[0]":
 			dir.HandlerFunc("githubStorePublishingSecrets", testGithubStorePublishingSecretsGithubStorePublishingSecrets0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

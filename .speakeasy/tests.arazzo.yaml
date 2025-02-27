@@ -1751,3 +1751,32 @@ workflows:
         successCriteria:
           - condition: $statusCode == 200
     x-speakeasy-test-group: Organizations
+  - workflowId: createSchemaStoreItem
+    steps:
+      - stepId: test
+        operationId: createSchemaStoreItem
+        requestBody:
+          contentType: application/json
+          payload:
+            format: yaml
+            spec: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: SchemaStore
+  - workflowId: getSchemaStoreItem
+    steps:
+      - stepId: test
+        operationId: getSchemaStoreItem
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created_at": "2023-02-14T01:44:55.437Z",
+                "format": "yaml",
+                "id": "\u003cid\u003e",
+                "spec": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: SchemaStore

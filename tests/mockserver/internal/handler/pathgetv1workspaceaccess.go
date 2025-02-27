@@ -24,7 +24,7 @@ func pathGetV1WorkspaceAccess(dir *logging.HTTPFileDirectory, rt *tracking.Reque
 		case "getWorkspaceAccess[0]":
 			dir.HandlerFunc("getWorkspaceAccess", testGetWorkspaceAccessGetWorkspaceAccess0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -24,7 +24,7 @@ func pathPostV1WorkspaceFeatureFlags(dir *logging.HTTPFileDirectory, rt *trackin
 		case "setWorkspaceFeatureFlags[0]":
 			dir.HandlerFunc("setWorkspaceFeatureFlags", testSetWorkspaceFeatureFlagsSetWorkspaceFeatureFlags0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -24,7 +24,7 @@ func pathPostV1GithubConfigureCodeSamples(dir *logging.HTTPFileDirectory, rt *tr
 		case "githubConfigureCodeSamples[0]":
 			dir.HandlerFunc("githubConfigureCodeSamples", testGithubConfigureCodeSamplesGithubConfigureCodeSamples0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

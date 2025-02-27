@@ -23,7 +23,7 @@ func pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameBlobsDigest(dir *lo
 		case "getBlob[0]":
 			dir.HandlerFunc("getBlob", testGetBlobGetBlob0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -22,7 +22,7 @@ func pathPostV1OrganizationFreeTrial(dir *logging.HTTPFileDirectory, rt *trackin
 		case "createFreeTrial[0]":
 			dir.HandlerFunc("createFreeTrial", testCreateFreeTrialCreateFreeTrial0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

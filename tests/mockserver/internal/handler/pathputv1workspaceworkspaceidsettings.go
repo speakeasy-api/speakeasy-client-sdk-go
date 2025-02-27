@@ -22,7 +22,7 @@ func pathPutV1WorkspaceWorkspaceIDSettings(dir *logging.HTTPFileDirectory, rt *t
 		case "updateWorkspaceSettings[0]":
 			dir.HandlerFunc("updateWorkspaceSettings", testUpdateWorkspaceSettingsUpdateWorkspaceSettings0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

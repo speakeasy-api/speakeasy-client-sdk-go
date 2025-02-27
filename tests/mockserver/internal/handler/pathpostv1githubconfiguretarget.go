@@ -22,7 +22,7 @@ func pathPostV1GithubConfigureTarget(dir *logging.HTTPFileDirectory, rt *trackin
 		case "githubConfigureTarget[0]":
 			dir.HandlerFunc("githubConfigureTarget", testGithubConfigureTargetGithubConfigureTarget0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

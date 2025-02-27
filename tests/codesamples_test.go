@@ -16,9 +16,11 @@ import (
 func TestCodesamples_GetCodeSamples(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getCodeSamples")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getCodeSamples")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -37,6 +39,13 @@ func TestCodesamples_GetCodeSamples(t *testing.T) {
 				Language:    "<value>",
 				Method:      "<value>",
 				OperationID: "<id>",
+				Path:        "/root",
+			},
+			shared.UsageSnippet{
+				Code:        "<value>",
+				Language:    "<value>",
+				Method:      "<value>",
+				OperationID: "<id>",
 				Path:        "/usr/bin",
 			},
 			shared.UsageSnippet{
@@ -45,13 +54,6 @@ func TestCodesamples_GetCodeSamples(t *testing.T) {
 				Method:      "<value>",
 				OperationID: "<id>",
 				Path:        "/sys",
-			},
-			shared.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/root",
 			},
 		},
 	}, res.UsageSnippets)

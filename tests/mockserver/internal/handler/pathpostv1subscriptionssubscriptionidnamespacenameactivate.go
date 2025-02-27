@@ -22,7 +22,7 @@ func pathPostV1SubscriptionsSubscriptionIDNamespaceNameActivate(dir *logging.HTT
 		case "activateSubscriptionNamespace[0]":
 			dir.HandlerFunc("activateSubscriptionNamespace", testActivateSubscriptionNamespaceActivateSubscriptionNamespace0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

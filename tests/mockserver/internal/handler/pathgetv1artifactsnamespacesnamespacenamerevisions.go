@@ -25,7 +25,7 @@ func pathGetV1ArtifactsNamespacesNamespaceNameRevisions(dir *logging.HTTPFileDir
 		case "getRevisions[0]":
 			dir.HandlerFunc("getRevisions", testGetRevisionsGetRevisions0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -17,9 +17,11 @@ import (
 func TestArtifacts_CreateRemoteSource(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("createRemoteSource")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createRemoteSource")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -34,9 +36,11 @@ func TestArtifacts_CreateRemoteSource(t *testing.T) {
 func TestArtifacts_GetBlob(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getBlob")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getBlob")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -56,9 +60,11 @@ func TestArtifacts_GetBlob(t *testing.T) {
 func TestArtifacts_GetManifest(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getManifest")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getManifest")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -90,9 +96,11 @@ func TestArtifacts_GetManifest(t *testing.T) {
 func TestArtifacts_GetNamespaces(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getNamespaces")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getNamespaces")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -130,9 +138,11 @@ func TestArtifacts_GetNamespaces(t *testing.T) {
 func TestArtifacts_GetRevisions(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getRevisions")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getRevisions")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -165,9 +175,11 @@ func TestArtifacts_GetRevisions(t *testing.T) {
 func TestArtifacts_GetTags(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getTags")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getTags")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -188,9 +200,11 @@ func TestArtifacts_GetTags(t *testing.T) {
 func TestArtifacts_ListRemoteSources(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("listRemoteSources")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("listRemoteSources")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -221,9 +235,11 @@ func TestArtifacts_ListRemoteSources(t *testing.T) {
 func TestArtifacts_PostTags(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("postTags")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("postTags")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -240,9 +256,11 @@ func TestArtifacts_PostTags(t *testing.T) {
 func TestArtifacts_SetVisibility(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("setVisibility")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("setVisibility")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -259,9 +277,11 @@ func TestArtifacts_SetVisibility(t *testing.T) {
 func TestArtifacts_ArchiveNamespace(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("archiveNamespace")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("archiveNamespace")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),

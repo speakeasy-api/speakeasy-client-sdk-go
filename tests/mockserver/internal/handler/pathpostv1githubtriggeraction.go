@@ -22,7 +22,7 @@ func pathPostV1GithubTriggerAction(dir *logging.HTTPFileDirectory, rt *tracking.
 		case "githubTriggerAction[0]":
 			dir.HandlerFunc("githubTriggerAction", testGithubTriggerActionGithubTriggerAction0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

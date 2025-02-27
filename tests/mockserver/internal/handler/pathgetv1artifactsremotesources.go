@@ -24,7 +24,7 @@ func pathGetV1ArtifactsRemoteSources(dir *logging.HTTPFileDirectory, rt *trackin
 		case "listRemoteSources[0]":
 			dir.HandlerFunc("listRemoteSources", testListRemoteSourcesListRemoteSources0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

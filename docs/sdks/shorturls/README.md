@@ -28,7 +28,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
             APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),

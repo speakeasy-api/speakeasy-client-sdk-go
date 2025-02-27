@@ -24,7 +24,7 @@ func pathGetV1CodeSample(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		case "getCodeSamples[0]":
 			dir.HandlerFunc("getCodeSamples", testGetCodeSamplesGetCodeSamples0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

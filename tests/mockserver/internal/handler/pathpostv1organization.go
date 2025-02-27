@@ -25,7 +25,7 @@ func pathPostV1Organization(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "createOrganization[0]":
 			dir.HandlerFunc("createOrganization", testCreateOrganizationCreateOrganization0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

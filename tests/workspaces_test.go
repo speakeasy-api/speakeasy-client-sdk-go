@@ -17,9 +17,11 @@ import (
 func TestWorkspaces_CreateWorkspace(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("createWorkspace")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createWorkspace")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -54,9 +56,11 @@ func TestWorkspaces_CreateWorkspace(t *testing.T) {
 func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getWorkspaceByContext")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceByContext")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -94,9 +98,11 @@ func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
 func TestWorkspaces_GetWorkspaces(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getWorkspaces")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaces")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -124,9 +130,11 @@ func TestWorkspaces_GetWorkspaces(t *testing.T) {
 func TestWorkspaces_GetWorkspace(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getWorkspace")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspace")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -154,9 +162,11 @@ func TestWorkspaces_GetWorkspace(t *testing.T) {
 func TestWorkspaces_GetWorkspaceFeatureFlags(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getWorkspaceFeatureFlags")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceFeatureFlags")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -173,9 +183,11 @@ func TestWorkspaces_GetWorkspaceFeatureFlags(t *testing.T) {
 func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getWorkspaceSettings")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getWorkspaceSettings")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -199,9 +211,11 @@ func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
 func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("updateWorkspaceSettings")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("updateWorkspaceSettings")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -224,9 +238,11 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 func TestWorkspaces_SetWorkspaceFeatureFlags(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("setWorkspaceFeatureFlags")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("setWorkspaceFeatureFlags")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),

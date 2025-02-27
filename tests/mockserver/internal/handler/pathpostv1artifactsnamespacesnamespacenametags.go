@@ -22,7 +22,7 @@ func pathPostV1ArtifactsNamespacesNamespaceNameTags(dir *logging.HTTPFileDirecto
 		case "postTags[0]":
 			dir.HandlerFunc("postTags", testPostTagsPostTags0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

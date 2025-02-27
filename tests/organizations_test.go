@@ -17,9 +17,11 @@ import (
 func TestOrganizations_CreateOrganization(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("createOrganization")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createOrganization")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -54,9 +56,11 @@ func TestOrganizations_CreateOrganization(t *testing.T) {
 func TestOrganizations_CreateFreeTrial(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("createFreeTrial")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createFreeTrial")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -71,9 +75,11 @@ func TestOrganizations_CreateFreeTrial(t *testing.T) {
 func TestOrganizations_GetOrganization(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getOrganization")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getOrganization")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -101,9 +107,11 @@ func TestOrganizations_GetOrganization(t *testing.T) {
 func TestOrganizations_GetOrganizations(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getOrganizations")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getOrganizations")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -131,9 +139,11 @@ func TestOrganizations_GetOrganizations(t *testing.T) {
 func TestOrganizations_GetOrganizationUsage(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getOrganizationUsage")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getOrganizationUsage")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -198,9 +208,11 @@ func TestOrganizations_GetOrganizationUsage(t *testing.T) {
 func TestOrganizations_CreateBillingAddOns(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("createBillingAddOns")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("createBillingAddOns")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -221,9 +233,11 @@ func TestOrganizations_CreateBillingAddOns(t *testing.T) {
 func TestOrganizations_DeleteBillingAddOn(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("deleteBillingAddOn")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("deleteBillingAddOn")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -240,9 +254,11 @@ func TestOrganizations_DeleteBillingAddOn(t *testing.T) {
 func TestOrganizations_GetBillingAddOns(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getBillingAddOns")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getBillingAddOns")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),

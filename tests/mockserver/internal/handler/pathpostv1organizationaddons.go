@@ -24,7 +24,7 @@ func pathPostV1OrganizationAddOns(dir *logging.HTTPFileDirectory, rt *tracking.R
 		case "createBillingAddOns[0]":
 			dir.HandlerFunc("createBillingAddOns", testCreateBillingAddOnsCreateBillingAddOns0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -63,6 +63,8 @@ func testCreateBillingAddOnsCreateBillingAddOns0(w http.ResponseWriter, req *htt
 	respBody := &components.OrganizationBillingAddOnResponse{
 		AddOns: []components.BillingAddOn{
 			components.BillingAddOnSDKTesting,
+			components.BillingAddOnSDKTesting,
+			components.BillingAddOnWebhooks,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

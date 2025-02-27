@@ -22,7 +22,7 @@ func pathDeleteV1OrganizationAddOnsAddOn(dir *logging.HTTPFileDirectory, rt *tra
 		case "deleteBillingAddOn[0]":
 			dir.HandlerFunc("deleteBillingAddOn", testDeleteBillingAddOnDeleteBillingAddOn0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

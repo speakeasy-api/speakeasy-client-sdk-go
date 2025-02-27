@@ -24,7 +24,7 @@ func pathGetV1OrganizationUsage(dir *logging.HTTPFileDirectory, rt *tracking.Req
 		case "getOrganizationUsage[0]":
 			dir.HandlerFunc("getOrganizationUsage", testGetOrganizationUsageGetOrganizationUsage0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

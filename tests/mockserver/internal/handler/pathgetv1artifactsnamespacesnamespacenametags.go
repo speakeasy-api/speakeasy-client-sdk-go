@@ -24,7 +24,7 @@ func pathGetV1ArtifactsNamespacesNamespaceNameTags(dir *logging.HTTPFileDirector
 		case "getTags[0]":
 			dir.HandlerFunc("getTags", testGetTagsGetTags0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

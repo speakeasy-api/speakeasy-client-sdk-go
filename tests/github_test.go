@@ -16,9 +16,11 @@ import (
 func TestGithub_CheckGithubAccess(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("checkGithubAccess")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("checkGithubAccess")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -36,9 +38,11 @@ func TestGithub_CheckGithubAccess(t *testing.T) {
 func TestGithub_GithubConfigureCodeSamples(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("githubConfigureCodeSamples")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubConfigureCodeSamples")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -64,9 +68,11 @@ func TestGithub_GithubConfigureCodeSamples(t *testing.T) {
 func TestGithub_GithubConfigureMintlifyRepo(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("githubConfigureMintlifyRepo")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubConfigureMintlifyRepo")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -88,9 +94,11 @@ func TestGithub_GithubConfigureMintlifyRepo(t *testing.T) {
 func TestGithub_GithubConfigureTarget(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("githubConfigureTarget")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubConfigureTarget")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -108,9 +116,11 @@ func TestGithub_GithubConfigureTarget(t *testing.T) {
 func TestGithub_GetGithubSetupState(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("getGithubSetupState")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("getGithubSetupState")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -141,9 +151,11 @@ func TestGithub_GetGithubSetupState(t *testing.T) {
 func TestGithub_LinkGithubAccess(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("linkGithubAccess")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("linkGithubAccess")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -158,9 +170,11 @@ func TestGithub_LinkGithubAccess(t *testing.T) {
 func TestGithub_GithubStorePublishingSecrets(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("githubStorePublishingSecrets")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubStorePublishingSecrets")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),
@@ -177,9 +191,11 @@ func TestGithub_GithubStorePublishingSecrets(t *testing.T) {
 func TestGithub_GithubTriggerAction(t *testing.T) {
 	ctx := context.Background()
 
+	testHTTPClient := createTestHTTPClient("githubTriggerAction")
+
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(createTestHTTPClient("githubTriggerAction")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),

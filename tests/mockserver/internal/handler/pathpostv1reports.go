@@ -24,7 +24,7 @@ func pathPostV1Reports(dir *logging.HTTPFileDirectory, rt *tracking.RequestTrack
 		case "uploadReport[0]":
 			dir.HandlerFunc("uploadReport", testUploadReportUploadReport0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

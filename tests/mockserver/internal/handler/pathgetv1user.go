@@ -25,7 +25,7 @@ func pathGetV1User(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) 
 		case "getUser[0]":
 			dir.HandlerFunc("getUser", testGetUserGetUser0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

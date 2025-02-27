@@ -24,7 +24,7 @@ func pathGetV1OrganizationAddOns(dir *logging.HTTPFileDirectory, rt *tracking.Re
 		case "getBillingAddOns[0]":
 			dir.HandlerFunc("getBillingAddOns", testGetBillingAddOnsGetBillingAddOns0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
@@ -56,9 +56,7 @@ func testGetBillingAddOnsGetBillingAddOns0(w http.ResponseWriter, req *http.Requ
 		return
 	}
 	respBody := &components.OrganizationBillingAddOnResponse{
-		AddOns: []components.BillingAddOn{
-			components.BillingAddOnSDKTesting,
-		},
+		AddOns: []components.BillingAddOn{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

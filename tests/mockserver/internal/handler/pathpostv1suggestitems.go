@@ -23,7 +23,7 @@ func pathPostV1SuggestItems(dir *logging.HTTPFileDirectory, rt *tracking.Request
 		case "suggestItems[0]":
 			dir.HandlerFunc("suggestItems", testSuggestItemsSuggestItems0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

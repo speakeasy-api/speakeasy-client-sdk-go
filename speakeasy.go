@@ -92,7 +92,8 @@ type Speakeasy struct {
 	// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
 	Organizations *Organizations
 	// REST APIs for managing reports (lint reports, change reports, etc)
-	Reports *Reports
+	Reports     *Reports
+	SchemaStore *SchemaStore
 	// REST APIs for managing short URLs
 	ShortURLs *ShortURLs
 	// REST APIs for managing subscriptions
@@ -188,9 +189,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.24.0",
-			GenVersion:        "2.526.1",
-			UserAgent:         "speakeasy-sdk/go 3.24.0 2.526.1 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.25.0",
+			GenVersion:        "2.533.0",
+			UserAgent:         "speakeasy-sdk/go 3.25.0 2.533.0 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},
@@ -222,6 +223,8 @@ func New(opts ...SDKOption) *Speakeasy {
 	sdk.Organizations = newOrganizations(sdk.sdkConfiguration)
 
 	sdk.Reports = newReports(sdk.sdkConfiguration)
+
+	sdk.SchemaStore = newSchemaStore(sdk.sdkConfiguration)
 
 	sdk.ShortURLs = newShortURLs(sdk.sdkConfiguration)
 

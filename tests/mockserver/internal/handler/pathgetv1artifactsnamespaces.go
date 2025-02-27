@@ -25,7 +25,7 @@ func pathGetV1ArtifactsNamespaces(dir *logging.HTTPFileDirectory, rt *tracking.R
 		case "getNamespaces[0]":
 			dir.HandlerFunc("getNamespaces", testGetNamespacesGetNamespaces0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

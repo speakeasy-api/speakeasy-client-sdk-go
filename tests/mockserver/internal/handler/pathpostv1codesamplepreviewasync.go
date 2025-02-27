@@ -25,7 +25,7 @@ func pathPostV1CodeSamplePreviewAsync(dir *logging.HTTPFileDirectory, rt *tracki
 		case "generateCodeSamplePreviewAsync[0]":
 			dir.HandlerFunc("generateCodeSamplePreviewAsync", testGenerateCodeSamplePreviewAsyncGenerateCodeSamplePreviewAsync0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

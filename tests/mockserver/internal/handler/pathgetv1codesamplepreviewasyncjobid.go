@@ -25,7 +25,7 @@ func pathGetV1CodeSamplePreviewAsyncJobID(dir *logging.HTTPFileDirectory, rt *tr
 		case "getCodeSamplePreviewAsync[0]":
 			dir.HandlerFunc("getCodeSamplePreviewAsync", testGetCodeSamplePreviewAsyncGetCodeSamplePreviewAsync0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

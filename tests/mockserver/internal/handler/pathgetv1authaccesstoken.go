@@ -24,7 +24,7 @@ func pathGetV1AuthAccessToken(dir *logging.HTTPFileDirectory, rt *tracking.Reque
 		case "getAccessToken[0]":
 			dir.HandlerFunc("getAccessToken", testGetAccessTokenGetAccessToken0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

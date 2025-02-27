@@ -22,7 +22,7 @@ func pathPostV1GithubConfigureMintlifyRepo(dir *logging.HTTPFileDirectory, rt *t
 		case "githubConfigureMintlifyRepo[0]":
 			dir.HandlerFunc("githubConfigureMintlifyRepo", testGithubConfigureMintlifyRepoGithubConfigureMintlifyRepo0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

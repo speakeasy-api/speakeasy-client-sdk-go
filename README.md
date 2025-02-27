@@ -153,6 +153,11 @@ func main() {
 * [GetLintingReportSignedURL](docs/sdks/reports/README.md#getlintingreportsignedurl) - Get the signed access url for the linting reports for a particular document.
 * [UploadReport](docs/sdks/reports/README.md#uploadreport) - Upload a report.
 
+### [SchemaStore](docs/sdks/schemastore/README.md)
+
+* [CreateSchemaStoreItem](docs/sdks/schemastore/README.md#createschemastoreitem) - Create a schema in the schema store
+* [GetSchemaStoreItem](docs/sdks/schemastore/README.md#getschemastoreitem) - Get a OAS schema from the schema store
+
 ### [ShortURLs](docs/sdks/shorturls/README.md)
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.

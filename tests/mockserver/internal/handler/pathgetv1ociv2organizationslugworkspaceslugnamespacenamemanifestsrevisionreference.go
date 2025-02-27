@@ -25,7 +25,7 @@ func pathGetV1OciV2OrganizationSlugWorkspaceSlugNamespaceNameManifestsRevisionRe
 		case "getManifest[0]":
 			dir.HandlerFunc("getManifest", testGetManifestGetManifest0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

@@ -22,7 +22,7 @@ func pathPostV1GithubLink(dir *logging.HTTPFileDirectory, rt *tracking.RequestTr
 		case "linkGithubAccess[0]":
 			dir.HandlerFunc("linkGithubAccess", testLinkGithubAccessLinkGithubAccess0)(w, req)
 		default:
-			http.Error(w, "Unknown test: "+test, http.StatusBadRequest)
+			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }

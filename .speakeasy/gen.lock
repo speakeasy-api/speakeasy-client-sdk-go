@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: d718cd9b92034ef08c52f90bdc73a004
+  docChecksum: 8936bb89055708b0a128b348edfc1f22
   docVersion: 0.4.0
-  speakeasyVersion: 1.503.0
-  generationVersion: 2.526.1
-  releaseVersion: 3.24.0
-  configChecksum: 7de12295c8c19f6ae380e82f5358f2e9
+  speakeasyVersion: 1.507.0
+  generationVersion: 2.533.0
+  releaseVersion: 3.25.0
+  configChecksum: 2712f4348950aeea5bf3bb51a7d55afa
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -22,6 +22,7 @@ features:
     devContainers: 2.90.0
     downloadStreams: 0.1.2
     envVarSecurityUsage: 0.3.2
+    getRequestBodies: 2.81.1
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
@@ -35,7 +36,7 @@ features:
     retries: 2.83.2
     sdkHooks: 0.1.0
     serverIDs: 2.81.1
-    tests: 0.13.0
+    tests: 0.14.0
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -50,6 +51,7 @@ generatedFiles:
   - /pkg/models/operations/createfreetrial.go
   - /pkg/models/operations/createorganization.go
   - /pkg/models/operations/createremotesource.go
+  - /pkg/models/operations/createschemastoreitem.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
   - /pkg/models/operations/deletebillingaddon.go
@@ -71,6 +73,7 @@ generatedFiles:
   - /pkg/models/operations/getorganizations.go
   - /pkg/models/operations/getorganizationusage.go
   - /pkg/models/operations/getrevisions.go
+  - /pkg/models/operations/getschemastoreitem.go
   - /pkg/models/operations/gettags.go
   - /pkg/models/operations/getuser.go
   - /pkg/models/operations/getworkspace.go
@@ -156,6 +159,7 @@ generatedFiles:
   - /pkg/models/shared/report.go
   - /pkg/models/shared/revision.go
   - /pkg/models/shared/revisioncontentsmetadata.go
+  - /pkg/models/shared/schemastoreitem.go
   - /pkg/models/shared/security.go
   - /pkg/models/shared/shorturl.go
   - /pkg/models/shared/ssometadata.go
@@ -195,6 +199,8 @@ generatedFiles:
   - docs/pkg/models/operations/createremotesourceresponse.md
   - docs/pkg/models/operations/createrequestbody.md
   - docs/pkg/models/operations/createresponse.md
+  - docs/pkg/models/operations/createschemastoreitemrequestbody.md
+  - docs/pkg/models/operations/createschemastoreitemresponse.md
   - docs/pkg/models/operations/createworkspaceresponse.md
   - docs/pkg/models/operations/createworkspacetokenglobals.md
   - docs/pkg/models/operations/createworkspacetokenrequest.md
@@ -205,6 +211,7 @@ generatedFiles:
   - docs/pkg/models/operations/deleteworkspacetokenrequest.md
   - docs/pkg/models/operations/deleteworkspacetokenresponse.md
   - docs/pkg/models/operations/file.md
+  - docs/pkg/models/operations/format.md
   - docs/pkg/models/operations/generatecodesamplepreviewasyncresponse.md
   - docs/pkg/models/operations/generatecodesamplepreviewasyncresponsebody.md
   - docs/pkg/models/operations/generatecodesamplepreviewresponse.md
@@ -237,6 +244,8 @@ generatedFiles:
   - docs/pkg/models/operations/getorganizationusageresponse.md
   - docs/pkg/models/operations/getrevisionsrequest.md
   - docs/pkg/models/operations/getrevisionsresponse.md
+  - docs/pkg/models/operations/getschemastoreitemrequestbody.md
+  - docs/pkg/models/operations/getschemastoreitemresponse.md
   - docs/pkg/models/operations/gettagsrequest.md
   - docs/pkg/models/operations/gettagsresponse.md
   - docs/pkg/models/operations/getuserresponse.md
@@ -340,6 +349,7 @@ generatedFiles:
   - docs/pkg/models/shared/compositespecmetadata.md
   - docs/pkg/models/shared/diagnostic.md
   - docs/pkg/models/shared/featureflag.md
+  - docs/pkg/models/shared/format.md
   - docs/pkg/models/shared/generatebumptype.md
   - docs/pkg/models/shared/getnamespacesresponse.md
   - docs/pkg/models/shared/getrevisionsresponse.md
@@ -381,6 +391,7 @@ generatedFiles:
   - docs/pkg/models/shared/revisioncontentsmetadata.md
   - docs/pkg/models/shared/revisioncontentsmetadatatype.md
   - docs/pkg/models/shared/schemafile.md
+  - docs/pkg/models/shared/schemastoreitem.md
   - docs/pkg/models/shared/secrets.md
   - docs/pkg/models/shared/security.md
   - docs/pkg/models/shared/shorturl.md
@@ -415,6 +426,7 @@ generatedFiles:
   - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
+  - docs/sdks/schemastore/README.md
   - docs/sdks/shorturls/README.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/subscriptions/README.md
@@ -446,6 +458,7 @@ generatedFiles:
   - pkg/utils/security.go
   - pkg/utils/utils.go
   - reports.go
+  - schemastore.go
   - shorturls.go
   - speakeasy.go
   - subscriptions.go
@@ -491,6 +504,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1organizationusage.go
   - tests/mockserver/internal/handler/pathgetv1reportschangesdocumentchecksum.go
   - tests/mockserver/internal/handler/pathgetv1reportslintingdocumentchecksum.go
+  - tests/mockserver/internal/handler/pathgetv1schemastore.go
   - tests/mockserver/internal/handler/pathgetv1user.go
   - tests/mockserver/internal/handler/pathgetv1workspace.go
   - tests/mockserver/internal/handler/pathgetv1workspaceaccess.go
@@ -514,6 +528,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathpostv1organizationaddons.go
   - tests/mockserver/internal/handler/pathpostv1organizationfreetrial.go
   - tests/mockserver/internal/handler/pathpostv1reports.go
+  - tests/mockserver/internal/handler/pathpostv1schemastore.go
   - tests/mockserver/internal/handler/pathpostv1shorturls.go
   - tests/mockserver/internal/handler/pathpostv1subscriptionssubscriptionidnamespacenameactivate.go
   - tests/mockserver/internal/handler/pathpostv1subscriptionssubscriptionidnamespacenameignore.go
@@ -576,6 +591,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/report.go
   - tests/mockserver/internal/sdk/models/components/revision.go
   - tests/mockserver/internal/sdk/models/components/revisioncontentsmetadata.go
+  - tests/mockserver/internal/sdk/models/components/schemastoreitem.go
   - tests/mockserver/internal/sdk/models/components/security.go
   - tests/mockserver/internal/sdk/models/components/shorturl.go
   - tests/mockserver/internal/sdk/models/components/ssometadata.go
@@ -606,6 +622,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/createfreetrial.go
   - tests/mockserver/internal/sdk/models/operations/createorganization.go
   - tests/mockserver/internal/sdk/models/operations/createremotesource.go
+  - tests/mockserver/internal/sdk/models/operations/createschemastoreitem.go
   - tests/mockserver/internal/sdk/models/operations/createworkspace.go
   - tests/mockserver/internal/sdk/models/operations/createworkspacetoken.go
   - tests/mockserver/internal/sdk/models/operations/deletebillingaddon.go
@@ -627,6 +644,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/getorganizations.go
   - tests/mockserver/internal/sdk/models/operations/getorganizationusage.go
   - tests/mockserver/internal/sdk/models/operations/getrevisions.go
+  - tests/mockserver/internal/sdk/models/operations/getschemastoreitem.go
   - tests/mockserver/internal/sdk/models/operations/gettags.go
   - tests/mockserver/internal/sdk/models/operations/getuser.go
   - tests/mockserver/internal/sdk/models/operations/getworkspace.go
@@ -689,6 +707,7 @@ generatedFiles:
   - tests/reports_test.go
   - tests/requests_test.go
   - tests/schemas_test.go
+  - tests/schemastore_test.go
   - tests/shorturls_test.go
   - tests/speakeasy_test.go
   - tests/subscriptions_test.go
@@ -1316,12 +1335,40 @@ examples:
     speakeasy-default-create-billing-add-ons:
       requestBody:
         application/json: {"add_ons": ["sdk_testing", "sdk_testing", "webhooks"]}
+      responses:
+        "200":
+          application/json: {"add_ons": ["sdk_testing", "sdk_testing", "webhooks"]}
+        5XX:
+          application/json: {"message": "<value>", "status_code": 822767}
   deleteBillingAddOn:
     speakeasy-default-delete-billing-add-on:
       parameters:
         path:
           add_on: "custom_code_regions"
-  getBillingAddOns: {}
+      responses:
+        5XX:
+          application/json: {"message": "<value>", "status_code": 825779}
+  getBillingAddOns:
+    speakeasy-default-get-billing-add-ons:
+      responses:
+        "200":
+          application/json: {"add_ons": []}
+        5XX:
+          application/json: {"message": "<value>", "status_code": 697034}
+  createSchemaStoreItem:
+    speakeasy-default-create-schema-store-item:
+      requestBody:
+        application/json: {"format": "yaml", "spec": "<value>"}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 532077}
+  getSchemaStoreItem:
+    speakeasy-default-get-schema-store-item:
+      responses:
+        2XX:
+          application/json: {"created_at": "2023-02-14T01:44:55.437Z", "format": "yaml", "id": "<id>", "spec": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 168509}
 examplesVersion: 1.0.0
 generatedTests:
   generateCodeSamplePreview: "2024-12-09T10:07:33-05:00"
@@ -1402,3 +1449,5 @@ generatedTests:
   createBillingAddOns: "2025-02-25T16:56:22Z"
   deleteBillingAddOn: "2025-02-25T16:56:22Z"
   getBillingAddOns: "2025-02-25T16:56:22Z"
+  createSchemaStoreItem: "2025-02-27T22:02:41Z"
+  getSchemaStoreItem: "2025-02-27T22:02:41Z"
