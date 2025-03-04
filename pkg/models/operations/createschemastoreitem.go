@@ -5,6 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"net/http"
 )
 
@@ -56,6 +57,8 @@ func (o *CreateSchemaStoreItemRequestBody) GetSpec() string {
 type CreateSchemaStoreItemResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	// OK
+	SchemaStoreItem *shared.SchemaStoreItem
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
@@ -67,6 +70,13 @@ func (o *CreateSchemaStoreItemResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *CreateSchemaStoreItemResponse) GetSchemaStoreItem() *shared.SchemaStoreItem {
+	if o == nil {
+		return nil
+	}
+	return o.SchemaStoreItem
 }
 
 func (o *CreateSchemaStoreItemResponse) GetStatusCode() int {

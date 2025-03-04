@@ -55,6 +55,8 @@ func (o *CreateSchemaStoreItemRequestBody) GetSpec() string {
 
 type CreateSchemaStoreItemResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
+	// OK
+	SchemaStoreItem *components.SchemaStoreItem
 }
 
 func (o *CreateSchemaStoreItemResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -62,4 +64,11 @@ func (o *CreateSchemaStoreItemResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *CreateSchemaStoreItemResponse) GetSchemaStoreItem() *components.SchemaStoreItem {
+	if o == nil {
+		return nil
+	}
+	return o.SchemaStoreItem
 }

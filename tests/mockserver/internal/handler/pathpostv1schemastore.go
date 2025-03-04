@@ -7,6 +7,9 @@ import (
 	"log"
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
+	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
+	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
@@ -58,6 +61,23 @@ func testCreateSchemaStoreItemCreateSchemaStoreItem0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	respBody := &components.SchemaStoreItem{
+		CreatedAt: types.MustTimeFromString("2025-11-20T07:47:04.136Z"),
+		Format:    components.FormatYaml,
+		ID:        "<id>",
+		Spec:      "<value>",
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
 }

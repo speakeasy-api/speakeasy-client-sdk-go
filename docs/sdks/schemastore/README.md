@@ -41,7 +41,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res != nil {
+    if res.SchemaStoreItem != nil {
         // handle response
     }
 }
