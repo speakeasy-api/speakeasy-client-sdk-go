@@ -9,15 +9,17 @@ import (
 
 // WorkspaceToken - A workspace token
 type WorkspaceToken struct {
-	Alg         string     `json:"alg"`
-	CreatedAt   time.Time  `json:"created_at"`
-	CreatedBy   *string    `json:"created_by,omitempty"`
-	Email       *string    `json:"email,omitempty"`
-	ID          string     `json:"id"`
-	Key         string     `json:"key"`
-	LastUsed    *time.Time `json:"last_used,omitempty"`
-	Name        string     `json:"name"`
-	WorkspaceID string     `json:"workspace_id"`
+	Alg               string     `json:"alg"`
+	CreatedAt         time.Time  `json:"created_at"`
+	CreatedBy         *string    `json:"created_by,omitempty"`
+	CreatedByName     *string    `json:"created_by_name,omitempty"`
+	CreatedByPhotoURL *string    `json:"created_by_photo_url,omitempty"`
+	Email             *string    `json:"email,omitempty"`
+	ID                string     `json:"id"`
+	Key               string     `json:"key"`
+	LastUsed          *time.Time `json:"last_used,omitempty"`
+	Name              string     `json:"name"`
+	WorkspaceID       string     `json:"workspace_id"`
 }
 
 func (w WorkspaceToken) MarshalJSON() ([]byte, error) {
@@ -50,6 +52,20 @@ func (o *WorkspaceToken) GetCreatedBy() *string {
 		return nil
 	}
 	return o.CreatedBy
+}
+
+func (o *WorkspaceToken) GetCreatedByName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedByName
+}
+
+func (o *WorkspaceToken) GetCreatedByPhotoURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedByPhotoURL
 }
 
 func (o *WorkspaceToken) GetEmail() *string {
