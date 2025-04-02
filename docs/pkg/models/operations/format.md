@@ -1,5 +1,7 @@
 # Format
 
+The format of the OpenAPI specification.
+
 
 ## Values
 

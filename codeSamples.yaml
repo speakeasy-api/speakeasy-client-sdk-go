@@ -1467,6 +1467,8 @@ actions:
 
                 res, err := s.SchemaStore.CreateSchemaStoreItem(ctx, operations.CreateSchemaStoreItemRequestBody{
                     Spec: "<value>",
+                    PackageName: "<value>",
+                    SDKClassname: "<value>",
                     Format: operations.FormatYaml,
                 })
                 if err != nil {

@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// Format - The format of the OpenAPI specification.
 type Format string
 
 const (
@@ -35,8 +36,14 @@ func (e *Format) UnmarshalJSON(data []byte) error {
 }
 
 type CreateSchemaStoreItemRequestBody struct {
+	// The format of the OpenAPI specification.
 	Format Format `json:"format"`
-	Spec   string `json:"spec"`
+	// The package name to use in code snippets / quickstart.
+	PackageName string `json:"packageName"`
+	// The classname of the SDK to use in code snippets / quickstart.
+	SDKClassname string `json:"sdkClassname"`
+	// The OpenAPI specification to store.
+	Spec string `json:"spec"`
 }
 
 func (o *CreateSchemaStoreItemRequestBody) GetFormat() Format {
@@ -44,6 +51,20 @@ func (o *CreateSchemaStoreItemRequestBody) GetFormat() Format {
 		return Format("")
 	}
 	return o.Format
+}
+
+func (o *CreateSchemaStoreItemRequestBody) GetPackageName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageName
+}
+
+func (o *CreateSchemaStoreItemRequestBody) GetSDKClassname() string {
+	if o == nil {
+		return ""
+	}
+	return o.SDKClassname
 }
 
 func (o *CreateSchemaStoreItemRequestBody) GetSpec() string {

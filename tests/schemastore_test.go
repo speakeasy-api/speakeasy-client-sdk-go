@@ -28,8 +28,10 @@ func TestSchemastore_CreateSchemaStoreItem(t *testing.T) {
 	)
 
 	res, err := s.SchemaStore.CreateSchemaStoreItem(ctx, operations.CreateSchemaStoreItemRequestBody{
-		Format: operations.FormatYaml,
-		Spec:   "<value>",
+		Format:       operations.FormatYaml,
+		PackageName:  "<value>",
+		SDKClassname: "<value>",
+		Spec:         "<value>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -54,10 +56,12 @@ func TestSchemastore_GetSchemaStoreItem(t *testing.T) {
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
 	assert.NotNil(t, res.SchemaStoreItem)
 	assert.Equal(t, &shared.SchemaStoreItem{
-		CreatedAt: types.MustTimeFromString("2023-02-14T01:44:55.437Z"),
-		Format:    shared.FormatYaml,
-		ID:        "<id>",
-		Spec:      "<value>",
+		CreatedAt:    types.MustTimeFromString("2023-02-14T01:44:55.437Z"),
+		Format:       shared.FormatYaml,
+		ID:           "<id>",
+		PackageName:  "<value>",
+		SDKClassname: "<value>",
+		Spec:         "<value>",
 	}, res.SchemaStoreItem)
 
 }

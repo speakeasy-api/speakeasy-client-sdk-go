@@ -62,10 +62,12 @@ func testGetSchemaStoreItemGetSchemaStoreItem0(w http.ResponseWriter, req *http.
 		return
 	}
 	respBody := &components.SchemaStoreItem{
-		CreatedAt: types.MustTimeFromString("2023-02-14T01:44:55.437Z"),
-		Format:    components.FormatYaml,
-		ID:        "<id>",
-		Spec:      "<value>",
+		CreatedAt:    types.MustTimeFromString("2023-02-14T01:44:55.437Z"),
+		Format:       components.FormatYaml,
+		ID:           "<id>",
+		PackageName:  "<value>",
+		SDKClassname: "<value>",
+		Spec:         "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -36,6 +36,8 @@ func main() {
 
     res, err := s.SchemaStore.CreateSchemaStoreItem(ctx, operations.CreateSchemaStoreItemRequestBody{
         Format: operations.FormatYaml,
+        PackageName: "<value>",
+        SDKClassname: "<value>",
         Spec: "<value>",
     })
     if err != nil {

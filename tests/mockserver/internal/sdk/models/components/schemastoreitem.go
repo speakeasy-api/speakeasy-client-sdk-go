@@ -36,10 +36,12 @@ func (e *Format) UnmarshalJSON(data []byte) error {
 }
 
 type SchemaStoreItem struct {
-	CreatedAt time.Time `json:"created_at"`
-	Format    Format    `json:"format"`
-	ID        string    `json:"id"`
-	Spec      string    `json:"spec"`
+	CreatedAt    time.Time `json:"created_at"`
+	Format       Format    `json:"format"`
+	ID           string    `json:"id"`
+	PackageName  string    `json:"packageName"`
+	SDKClassname string    `json:"sdkClassname"`
+	Spec         string    `json:"spec"`
 }
 
 func (s SchemaStoreItem) MarshalJSON() ([]byte, error) {
@@ -72,6 +74,20 @@ func (o *SchemaStoreItem) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *SchemaStoreItem) GetPackageName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PackageName
+}
+
+func (o *SchemaStoreItem) GetSDKClassname() string {
+	if o == nil {
+		return ""
+	}
+	return o.SDKClassname
 }
 
 func (o *SchemaStoreItem) GetSpec() string {
