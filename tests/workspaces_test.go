@@ -260,3 +260,46 @@ func TestWorkspaces_SetWorkspaceFeatureFlags(t *testing.T) {
 	assert.Equal(t, &shared.WorkspaceFeatureFlagResponse{}, res.WorkspaceFeatureFlagResponse)
 
 }
+
+func TestWorkspaces_GetPublishingToken(t *testing.T) {
+	ctx := context.Background()
+
+	testHTTPClient := createTestHTTPClient("getPublishingToken")
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		speakeasyclientsdkgo.WithClient(testHTTPClient),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Workspaces.GetPublishingToken(ctx)
+	require.NoError(t, err)
+	assert.Equal(t, 200, res.StatusCode)
+	assert.NotNil(t, res.Classes)
+	assert.Equal(t, []shared.PublishingToken{
+		shared.PublishingToken{
+			CreatedAt:      types.MustTimeFromString("2023-01-18T23:26:03.849Z"),
+			ID:             "<id>",
+			TargetID:       "<id>",
+			TargetResource: "<value>",
+			Token:          "<value>",
+		},
+		shared.PublishingToken{
+			CreatedAt:      types.MustTimeFromString("2023-08-07T04:00:26.830Z"),
+			ID:             "<id>",
+			TargetID:       "<id>",
+			TargetResource: "<value>",
+			Token:          "<value>",
+		},
+		shared.PublishingToken{
+			CreatedAt:      types.MustTimeFromString("2024-01-27T14:50:38.288Z"),
+			ID:             "<id>",
+			TargetID:       "<id>",
+			TargetResource: "<value>",
+			Token:          "<value>",
+		},
+	}, res.Classes)
+
+}

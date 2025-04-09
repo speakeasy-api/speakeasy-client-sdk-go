@@ -62,8 +62,8 @@ func testCreateSchemaStoreItemCreateSchemaStoreItem0(w http.ResponseWriter, req 
 		return
 	}
 	respBody := &components.SchemaStoreItem{
-		CreatedAt:    types.MustTimeFromString("2025-11-20T07:47:04.136Z"),
-		Format:       components.FormatYaml,
+		CreatedAt:    types.MustTimeFromString("2024-08-06T03:45:46.936Z"),
+		Format:       components.FormatJSON,
 		ID:           "<id>",
 		PackageName:  "<value>",
 		SDKClassname: "<value>",

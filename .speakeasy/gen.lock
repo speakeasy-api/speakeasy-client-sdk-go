@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 9bac3df452724b208c1bfd26a9444437
+  docChecksum: 74feeb7d3ab996fefedb571ec9f06737
   docVersion: 0.4.0
-  speakeasyVersion: 1.528.1
-  generationVersion: 2.565.1
-  releaseVersion: 3.26.1
-  configChecksum: a76ea89f06727a67f80da746db49de9d
+  speakeasyVersion: 1.531.1
+  generationVersion: 2.568.5
+  releaseVersion: 3.26.2
+  configChecksum: 54d3cdd15f4601d1ee498905fdfea906
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -14,8 +14,8 @@ management:
 features:
   go:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
-    core: 3.7.2
+    constsAndDefaults: 0.1.12
+    core: 3.7.3
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -50,11 +50,13 @@ generatedFiles:
   - /pkg/models/operations/createbillingaddons.go
   - /pkg/models/operations/createfreetrial.go
   - /pkg/models/operations/createorganization.go
+  - /pkg/models/operations/createpublishingtoken.go
   - /pkg/models/operations/createremotesource.go
   - /pkg/models/operations/createschemastoreitem.go
   - /pkg/models/operations/createworkspace.go
   - /pkg/models/operations/createworkspacetoken.go
   - /pkg/models/operations/deletebillingaddon.go
+  - /pkg/models/operations/deletepublishingtoken.go
   - /pkg/models/operations/deleteworkspacetoken.go
   - /pkg/models/operations/generatecodesamplepreview.go
   - /pkg/models/operations/generatecodesamplepreviewasync.go
@@ -72,6 +74,9 @@ generatedFiles:
   - /pkg/models/operations/getorganization.go
   - /pkg/models/operations/getorganizations.go
   - /pkg/models/operations/getorganizationusage.go
+  - /pkg/models/operations/getpublishingtoken.go
+  - /pkg/models/operations/getpublishingtokenbyid.go
+  - /pkg/models/operations/getpublishingtokentargetbyid.go
   - /pkg/models/operations/getrevisions.go
   - /pkg/models/operations/getschemastoreitem.go
   - /pkg/models/operations/gettags.go
@@ -109,6 +114,7 @@ generatedFiles:
   - /pkg/models/operations/suggestitems.go
   - /pkg/models/operations/suggestopenapi.go
   - /pkg/models/operations/suggestopenapiregistry.go
+  - /pkg/models/operations/updatepublishingtokenexpiration.go
   - /pkg/models/operations/updateworkspacedetails.go
   - /pkg/models/operations/updateworkspacesettings.go
   - /pkg/models/operations/uploadreport.go
@@ -153,6 +159,7 @@ generatedFiles:
   - /pkg/models/shared/organizationusageresponse.go
   - /pkg/models/shared/preflightrequest.go
   - /pkg/models/shared/preflighttoken.go
+  - /pkg/models/shared/publishingtoken.go
   - /pkg/models/shared/remotedocument.go
   - /pkg/models/shared/remotesource.go
   - /pkg/models/shared/remotesourcesubscriptionsettings.go
@@ -196,6 +203,7 @@ generatedFiles:
   - docs/pkg/models/operations/createbillingaddonsresponse.md
   - docs/pkg/models/operations/createfreetrialresponse.md
   - docs/pkg/models/operations/createorganizationresponse.md
+  - docs/pkg/models/operations/createpublishingtokenresponse.md
   - docs/pkg/models/operations/createremotesourceresponse.md
   - docs/pkg/models/operations/createrequestbody.md
   - docs/pkg/models/operations/createresponse.md
@@ -207,6 +215,8 @@ generatedFiles:
   - docs/pkg/models/operations/createworkspacetokenresponse.md
   - docs/pkg/models/operations/deletebillingaddonrequest.md
   - docs/pkg/models/operations/deletebillingaddonresponse.md
+  - docs/pkg/models/operations/deletepublishingtokenrequest.md
+  - docs/pkg/models/operations/deletepublishingtokenresponse.md
   - docs/pkg/models/operations/deleteworkspacetokenglobals.md
   - docs/pkg/models/operations/deleteworkspacetokenrequest.md
   - docs/pkg/models/operations/deleteworkspacetokenresponse.md
@@ -242,6 +252,12 @@ generatedFiles:
   - docs/pkg/models/operations/getorganizationresponse.md
   - docs/pkg/models/operations/getorganizationsresponse.md
   - docs/pkg/models/operations/getorganizationusageresponse.md
+  - docs/pkg/models/operations/getpublishingtokenbyidrequest.md
+  - docs/pkg/models/operations/getpublishingtokenbyidresponse.md
+  - docs/pkg/models/operations/getpublishingtokenresponse.md
+  - docs/pkg/models/operations/getpublishingtokentargetbyidrequest.md
+  - docs/pkg/models/operations/getpublishingtokentargetbyidresponse.md
+  - docs/pkg/models/operations/getpublishingtokentargetbyidresponsebody.md
   - docs/pkg/models/operations/getrevisionsrequest.md
   - docs/pkg/models/operations/getrevisionsresponse.md
   - docs/pkg/models/operations/getschemastoreitemrequestbody.md
@@ -321,6 +337,9 @@ generatedFiles:
   - docs/pkg/models/operations/suggestopenapiresponse.md
   - docs/pkg/models/operations/suggestrequest.md
   - docs/pkg/models/operations/suggestresponse.md
+  - docs/pkg/models/operations/updatepublishingtokenexpirationrequest.md
+  - docs/pkg/models/operations/updatepublishingtokenexpirationrequestbody.md
+  - docs/pkg/models/operations/updatepublishingtokenexpirationresponse.md
   - docs/pkg/models/operations/updateworkspacedetailsglobals.md
   - docs/pkg/models/operations/updateworkspacedetailsrequest.md
   - docs/pkg/models/operations/updateworkspacedetailsresponse.md
@@ -381,6 +400,7 @@ generatedFiles:
   - docs/pkg/models/shared/organizationusageresponse.md
   - docs/pkg/models/shared/preflightrequest.md
   - docs/pkg/models/shared/preflighttoken.md
+  - docs/pkg/models/shared/publishingtoken.md
   - docs/pkg/models/shared/pullrequestmetadata.md
   - docs/pkg/models/shared/relationship.md
   - docs/pkg/models/shared/remotedocument.md
@@ -486,6 +506,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/generated_handler.go
   - tests/mockserver/internal/handler/generated_handlers.go
   - tests/mockserver/internal/handler/pathdeletev1organizationaddonsaddon.go
+  - tests/mockserver/internal/handler/pathdeletev1publishingtokentokenid.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespaces.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespacesnamespacenamerevisions.go
   - tests/mockserver/internal/handler/pathgetv1artifactsnamespacesnamespacenametags.go
@@ -502,6 +523,9 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1organizationorganizationid.go
   - tests/mockserver/internal/handler/pathgetv1organizations.go
   - tests/mockserver/internal/handler/pathgetv1organizationusage.go
+  - tests/mockserver/internal/handler/pathgetv1publishingtoken.go
+  - tests/mockserver/internal/handler/pathgetv1publishingtokentokenid.go
+  - tests/mockserver/internal/handler/pathgetv1publishingtokentokenidtarget.go
   - tests/mockserver/internal/handler/pathgetv1reportschangesdocumentchecksum.go
   - tests/mockserver/internal/handler/pathgetv1reportslintingdocumentchecksum.go
   - tests/mockserver/internal/handler/pathgetv1schemastore.go
@@ -527,6 +551,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathpostv1organization.go
   - tests/mockserver/internal/handler/pathpostv1organizationaddons.go
   - tests/mockserver/internal/handler/pathpostv1organizationfreetrial.go
+  - tests/mockserver/internal/handler/pathpostv1publishingtoken.go
   - tests/mockserver/internal/handler/pathpostv1reports.go
   - tests/mockserver/internal/handler/pathpostv1schemastore.go
   - tests/mockserver/internal/handler/pathpostv1shorturls.go
@@ -535,6 +560,7 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathpostv1suggestitems.go
   - tests/mockserver/internal/handler/pathpostv1workspace.go
   - tests/mockserver/internal/handler/pathpostv1workspacefeatureflags.go
+  - tests/mockserver/internal/handler/pathputv1publishingtokentokenid.go
   - tests/mockserver/internal/handler/pathputv1workspaceworkspaceidsettings.go
   - tests/mockserver/internal/handler/values/files.go
   - tests/mockserver/internal/logging/doc.go
@@ -585,6 +611,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/organizationusageresponse.go
   - tests/mockserver/internal/sdk/models/components/preflightrequest.go
   - tests/mockserver/internal/sdk/models/components/preflighttoken.go
+  - tests/mockserver/internal/sdk/models/components/publishingtoken.go
   - tests/mockserver/internal/sdk/models/components/remotedocument.go
   - tests/mockserver/internal/sdk/models/components/remotesource.go
   - tests/mockserver/internal/sdk/models/components/remotesourcesubscriptionsettings.go
@@ -621,11 +648,13 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/createbillingaddons.go
   - tests/mockserver/internal/sdk/models/operations/createfreetrial.go
   - tests/mockserver/internal/sdk/models/operations/createorganization.go
+  - tests/mockserver/internal/sdk/models/operations/createpublishingtoken.go
   - tests/mockserver/internal/sdk/models/operations/createremotesource.go
   - tests/mockserver/internal/sdk/models/operations/createschemastoreitem.go
   - tests/mockserver/internal/sdk/models/operations/createworkspace.go
   - tests/mockserver/internal/sdk/models/operations/createworkspacetoken.go
   - tests/mockserver/internal/sdk/models/operations/deletebillingaddon.go
+  - tests/mockserver/internal/sdk/models/operations/deletepublishingtoken.go
   - tests/mockserver/internal/sdk/models/operations/deleteworkspacetoken.go
   - tests/mockserver/internal/sdk/models/operations/generatecodesamplepreview.go
   - tests/mockserver/internal/sdk/models/operations/generatecodesamplepreviewasync.go
@@ -643,6 +672,9 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/getorganization.go
   - tests/mockserver/internal/sdk/models/operations/getorganizations.go
   - tests/mockserver/internal/sdk/models/operations/getorganizationusage.go
+  - tests/mockserver/internal/sdk/models/operations/getpublishingtoken.go
+  - tests/mockserver/internal/sdk/models/operations/getpublishingtokenbyid.go
+  - tests/mockserver/internal/sdk/models/operations/getpublishingtokentargetbyid.go
   - tests/mockserver/internal/sdk/models/operations/getrevisions.go
   - tests/mockserver/internal/sdk/models/operations/getschemastoreitem.go
   - tests/mockserver/internal/sdk/models/operations/gettags.go
@@ -680,6 +712,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/suggestitems.go
   - tests/mockserver/internal/sdk/models/operations/suggestopenapi.go
   - tests/mockserver/internal/sdk/models/operations/suggestopenapiregistry.go
+  - tests/mockserver/internal/sdk/models/operations/updatepublishingtokenexpiration.go
   - tests/mockserver/internal/sdk/models/operations/updateworkspacedetails.go
   - tests/mockserver/internal/sdk/models/operations/updateworkspacesettings.go
   - tests/mockserver/internal/sdk/models/operations/uploadreport.go
@@ -717,6 +750,51 @@ generatedFiles:
   - tests/workspaces_test.go
   - workspaces.go
 examples:
+  createPublishingToken:
+    speakeasy-default-create-publishing-token:
+      requestBody:
+        application/json: {"created_at": "2025-10-25T02:17:15.413Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}
+      responses:
+        "200":
+          application/json: {"created_at": "2023-12-11T20:09:47.767Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 447867}
+  deletePublishingToken:
+    speakeasy-default-delete-publishing-token:
+      parameters:
+        path:
+          tokenID: "<id>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 227169}
+  getPublishingTokenByID:
+    speakeasy-default-get-publishing-token-by-ID:
+      parameters:
+        path:
+          tokenID: "<id>"
+      responses:
+        "200":
+          application/json: {"created_at": "2025-10-20T08:51:57.553Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 82666}
+  getPublishingTokenTargetByID:
+    speakeasy-default-get-publishing-token-target-by-ID:
+      parameters:
+        path:
+          tokenID: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 297644}
+  updatePublishingTokenExpiration:
+    speakeasy-default-update-publishing-token-expiration:
+      parameters:
+        path:
+          tokenID: "<id>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 784694}
   createRemoteSource:
     speakeasy-default-create-remote-source:
       responses:
@@ -801,6 +879,14 @@ examples:
           application/json: {}
         4XX:
           application/json: {"message": "<value>", "status_code": 820828}
+  archiveNamespace:
+    speakeasy-default-archive-namespace:
+      parameters:
+        path:
+          namespace_name: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 334009}
   setVisibility:
     speakeasy-default-set-visibility:
       parameters:
@@ -835,21 +921,10 @@ examples:
     speakeasy-default-validate-api-key:
       responses:
         2XX:
-          application/json: {"account_type_v2": "enterprise", "billing_add_ons": ["custom_code_regions", "webhooks", "sdk_testing"], "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": true, "workspace_created_at": "2024-02-05T22:57:49.657Z", "workspace_id": "<id>", "workspace_slug": "<value>"}
+          application/json: {"account_type_v2": "enterprise", "billing_add_ons": ["webhooks", "sdk_testing", "webhooks"], "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": false, "workspace_created_at": "2024-02-23T05:39:14.801Z", "workspace_id": "<id>", "workspace_slug": "<value>"}
         4XX:
-          application/json: {"message": "<value>", "status_code": 150892}
+          application/json: {"message": "<value>", "status_code": 380984}
   generateCodeSamplePreview:
-    speakeasy-default-generate-code-sample-preview:
-      requestBody:
-        multipart/form-data: {"languages": ["<value>", "<value>"], "schema_file": {"": "example.file"}}
-      responses:
-        "200":
-          application/json: "x-file: example.file"
-          application/x-yaml: "x-file: example.file"
-        4XX:
-          application/json: {"message": "<value>", "status_code": 140843}
-        5XX:
-          application/json: {"message": "<value>", "status_code": 632138}
     default:
       requestBody:
         multipart/form-data: {"language": "<value>", "schema_file": {"": "example.file"}}
@@ -864,9 +939,9 @@ examples:
         "202":
           application/json: {"job_id": "<id>", "status": "running"}
         4XX:
-          application/json: {"message": "<value>", "status_code": 242219}
+          application/json: {"message": "<value>", "status_code": 885038}
         5XX:
-          application/json: {"message": "<value>", "status_code": 838573}
+          application/json: {"message": "<value>", "status_code": 242219}
   getCodeSamples:
     "":
       parameters:
@@ -891,20 +966,6 @@ examples:
         2XX:
           application/json: {"snippets": [{"code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"<YOUR_API_KEY_HERE>\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();", "language": "typescript", "method": "get", "operationId": "getPetById", "path": "/pet/{id}"}]}
   getCodeSamplePreviewAsync:
-    speakeasy-default-get-code-sample-preview-async:
-      parameters:
-        path:
-          jobID: "<id>"
-      responses:
-        "200":
-          application/json: "x-file: example.file"
-          application/x-yaml: "x-file: example.file"
-        "202":
-          application/json: {"status": "pending"}
-        4XX:
-          application/json: {"message": "<value>", "status_code": 44984}
-        5XX:
-          application/json: {"message": "<value>", "status_code": 416783}
     default:
       parameters:
         path:
@@ -1017,11 +1078,28 @@ examples:
           application/json: {"account_type": "enterprise", "created_at": "2025-11-08T08:43:39.394Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": true, "telemetry_disabled": true, "updated_at": "2023-04-09T14:25:29.356Z"}
         4XX:
           application/json: {"message": "<value>", "status_code": 792620}
+  createBillingAddOns:
+    speakeasy-default-create-billing-add-ons:
+      requestBody:
+        application/json: {"add_ons": ["sdk_testing", "sdk_testing", "webhooks"]}
+      responses:
+        "200":
+          application/json: {"add_ons": ["custom_code_regions", "custom_code_regions", "sdk_testing"]}
+        5XX:
+          application/json: {"message": "<value>", "status_code": 518517}
   createFreeTrial:
     speakeasy-default-create-free-trial:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 728627}
+  deleteBillingAddOn:
+    speakeasy-default-delete-billing-add-on:
+      parameters:
+        path:
+          add_on: "custom_code_regions"
+      responses:
+        5XX:
+          application/json: {"message": "<value>", "status_code": 783245}
   getOrganization:
     speakeasy-default-get-organization:
       parameters:
@@ -1039,6 +1117,13 @@ examples:
           application/json: [{"account_type": "free", "created_at": "2024-10-17T22:25:06.537Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": false, "telemetry_disabled": true, "updated_at": "2024-05-22T13:01:16.115Z"}, {"account_type": "business", "created_at": "2023-03-09T16:25:53.264Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": false, "telemetry_disabled": false, "updated_at": "2023-06-16T08:07:08.454Z"}]
         4XX:
           application/json: {"message": "<value>", "status_code": 217828}
+  getBillingAddOns:
+    speakeasy-default-get-billing-add-ons:
+      responses:
+        "200":
+          application/json: {"add_ons": []}
+        5XX:
+          application/json: {"message": "<value>", "status_code": 697034}
   getOrganizationUsage:
     speakeasy-default-get-organization-usage:
       responses:
@@ -1046,92 +1131,6 @@ examples:
           application/json: {"allowed_languages": [], "total_allowed_languages": 863126, "usage": [{"accessible": false, "accessible_features": ["<value>"], "gen_lock_ids": ["<value>", "<value>", "<value>"], "language": "<value>", "max_operations": 939867, "number_of_operations": 881790, "used_features": ["<value>"], "workspaces": ["<value>", "<value>"]}, {"accessible": true, "accessible_features": ["<value>", "<value>", "<value>"], "gen_lock_ids": ["<value>"], "language": "<value>", "max_operations": 593645, "number_of_operations": 369818, "used_features": ["<value>"], "workspaces": []}]}
         4XX:
           application/json: {"message": "<value>", "status_code": 804495}
-  getChangesReportSignedUrl:
-    speakeasy-default-get-changes-report-signed-url:
-      parameters:
-        path:
-          documentChecksum: "<value>"
-      responses:
-        2XX:
-          application/json: {"url": "https://rosy-masterpiece.biz/"}
-  getLintingReportSignedUrl:
-    speakeasy-default-get-linting-report-signed-url:
-      parameters:
-        path:
-          documentChecksum: "<value>"
-      responses:
-        2XX:
-          application/json: {"url": "https://negligible-merit.info"}
-  uploadReport:
-    speakeasy-default-upload-report:
-      requestBody:
-        multipart/form-data: {"data": {}, "file": {"": "example.file"}}
-      responses:
-        2XX:
-          application/json: {"url": "https://cluttered-stall.info"}
-  create:
-    speakeasy-default-create:
-      requestBody:
-        application/json: {"url": "https://probable-heating.com/"}
-      responses:
-        2XX:
-          application/json: {"full_url": "https://standard-utilization.com/", "short_url": "https://brisk-seafood.net/"}
-  activateSubscriptionNamespace:
-    speakeasy-default-activate-subscription-namespace:
-      parameters:
-        path:
-          subscriptionID: "<id>"
-          namespaceName: "<value>"
-      responses:
-        4XX:
-          application/json: {"message": "<value>", "status_code": 566510}
-  ignoreSubscriptionNamespace:
-    speakeasy-default-ignore-subscription-namespace:
-      parameters:
-        path:
-          subscriptionID: "<id>"
-          namespaceName: "<value>"
-      responses:
-        4XX:
-          application/json: {"message": "<value>", "status_code": 844164}
-  suggest:
-    speakeasy-default-suggest:
-      parameters:
-        header:
-          x-session-id: "<id>"
-      requestBody:
-        application/json: {"diagnostics": [{"message": "<value>", "path": ["/opt/include", "/opt/share"], "type": "<value>"}, {"message": "<value>", "path": [], "type": "<value>"}], "oas_summary": {"info": {"description": "amid traffic the unfortunately underneath what father lovely out", "license": {}, "summary": "<value>", "title": "<value>", "version": "<value>"}, "operations": [{"description": "times dull than except", "method": "<value>", "operation_id": "<id>", "path": "/mnt", "tags": ["<value>", "<value>"]}]}, "suggestion_type": "diagnostics-only"}
-      responses:
-        2XX:
-          application/json: "x-file: example.file"
-  suggestItems:
-    speakeasy-default-suggest-items:
-      requestBody:
-        application/json: {"items": [], "prompt": "<value>"}
-      responses:
-        2XX:
-          application/json: ["<value>", "<value>"]
-  suggestOpenAPI:
-    speakeasy-default-suggest-open-API:
-      parameters:
-        header:
-          x-session-id: "<id>"
-      requestBody:
-        multipart/form-data: {"schema": {"": "example.file"}}
-      responses:
-        2XX:
-          application/json: "x-file: example.file"
-  suggestOpenAPIRegistry:
-    speakeasy-default-suggest-open-API-registry:
-      parameters:
-        path:
-          namespace_name: "<value>"
-          revision_reference: "<value>"
-        header:
-          x-session-id: "<id>"
-      responses:
-        2XX:
-          application/json: "x-file: example.file"
   createWorkspace:
     speakeasy-default-create-workspace:
       requestBody:
@@ -1194,6 +1193,13 @@ examples:
           application/json: {}
         5XX:
           application/json: {"message": "<value>", "status_code": 104495}
+  getPublishingToken:
+    speakeasy-default-get-publishing-token:
+      responses:
+        "200":
+          application/json: [{"created_at": "2023-01-18T23:26:03.849Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}, {"created_at": "2023-08-07T04:00:26.830Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}, {"created_at": "2024-01-27T14:50:38.288Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}]
+        4XX:
+          application/json: {"message": "<value>", "status_code": 136532}
   getWorkspaceSettings:
     speakeasy-default-get-workspace-settings:
       parameters:
@@ -1273,6 +1279,108 @@ examples:
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 54657}
+  getChangesReportSignedUrl:
+    speakeasy-default-get-changes-report-signed-url:
+      parameters:
+        path:
+          documentChecksum: "<value>"
+      responses:
+        2XX:
+          application/json: {"url": "https://rosy-masterpiece.biz/"}
+  getLintingReportSignedUrl:
+    speakeasy-default-get-linting-report-signed-url:
+      parameters:
+        path:
+          documentChecksum: "<value>"
+      responses:
+        2XX:
+          application/json: {"url": "https://negligible-merit.info"}
+  uploadReport:
+    speakeasy-default-upload-report:
+      requestBody:
+        multipart/form-data: {"data": {}, "file": {"": "example.file"}}
+      responses:
+        2XX:
+          application/json: {"url": "https://cluttered-stall.info"}
+  createSchemaStoreItem:
+    speakeasy-default-create-schema-store-item:
+      requestBody:
+        application/json: {"format": "yaml", "packageName": "<value>", "sdkClassname": "<value>", "spec": "<value>"}
+      responses:
+        2XX:
+          application/json: {"created_at": "2024-08-06T03:45:46.936Z", "format": "json", "id": "<id>", "packageName": "<value>", "sdkClassname": "<value>", "spec": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 769739}
+  getSchemaStoreItem:
+    speakeasy-default-get-schema-store-item:
+      responses:
+        2XX:
+          application/json: {"created_at": "2023-02-14T01:44:55.437Z", "format": "yaml", "id": "<id>", "packageName": "<value>", "sdkClassname": "<value>", "spec": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 168509}
+  create:
+    speakeasy-default-create:
+      requestBody:
+        application/json: {"url": "https://probable-heating.com/"}
+      responses:
+        2XX:
+          application/json: {"full_url": "https://standard-utilization.com/", "short_url": "https://brisk-seafood.net/"}
+  activateSubscriptionNamespace:
+    speakeasy-default-activate-subscription-namespace:
+      parameters:
+        path:
+          subscriptionID: "<id>"
+          namespaceName: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 566510}
+  ignoreSubscriptionNamespace:
+    speakeasy-default-ignore-subscription-namespace:
+      parameters:
+        path:
+          subscriptionID: "<id>"
+          namespaceName: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 844164}
+  suggest:
+    speakeasy-default-suggest:
+      parameters:
+        header:
+          x-session-id: "<id>"
+      requestBody:
+        application/json: {"diagnostics": [{"message": "<value>", "path": ["/opt/include", "/opt/share"], "type": "<value>"}, {"message": "<value>", "path": [], "type": "<value>"}], "oas_summary": {"info": {"description": "amid traffic the unfortunately underneath what father lovely out", "license": {}, "summary": "<value>", "title": "<value>", "version": "<value>"}, "operations": [{"description": "times dull than except", "method": "<value>", "operation_id": "<id>", "path": "/mnt", "tags": ["<value>", "<value>"]}]}, "suggestion_type": "diagnostics-only"}
+      responses:
+        2XX:
+          application/json: "x-file: example.file"
+  suggestItems:
+    speakeasy-default-suggest-items:
+      requestBody:
+        application/json: {"items": [], "prompt": "<value>"}
+      responses:
+        2XX:
+          application/json: ["<value>", "<value>"]
+  suggestOpenAPI:
+    speakeasy-default-suggest-open-API:
+      parameters:
+        header:
+          x-session-id: "<id>"
+      requestBody:
+        multipart/form-data: {"schema": {"": "example.file"}}
+      responses:
+        2XX:
+          application/json: "x-file: example.file"
+  suggestOpenAPIRegistry:
+    speakeasy-default-suggest-open-API-registry:
+      parameters:
+        path:
+          namespace_name: "<value>"
+          revision_reference: "<value>"
+        header:
+          x-session-id: "<id>"
+      responses:
+        2XX:
+          application/json: "x-file: example.file"
   getWorkspaceEventsByTarget:
     speakeasy-default-get-workspace-events-by-target:
       parameters:
@@ -1282,7 +1390,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: [{"created_at": "2023-11-22T11:46:52.430Z", "execution_id": "<id>", "id": "<id>", "interaction_type": "AUTHENTICATE", "local_started_at": "2023-09-25T12:14:43.566Z", "speakeasy_api_key_name": "<value>", "speakeasy_version": "<value>", "success": true, "workspace_id": "<id>"}]
+          application/json: [{"created_at": "2023-11-22T11:46:52.430Z", "execution_id": "<id>", "id": "<id>", "interaction_type": "QUICKSTART", "local_started_at": "2023-09-25T12:14:43.566Z", "speakeasy_api_key_name": "<value>", "speakeasy_version": "<value>", "success": true, "workspace_id": "<id>"}]
         5XX:
           application/json: {"message": "<value>", "status_code": 858330}
   getWorkspaceTargets:
@@ -1324,55 +1432,7 @@ examples:
           application/json: [{"created_at": "2024-01-24T23:49:11.608Z", "execution_id": "<id>", "id": "<id>", "interaction_type": "LINT", "local_started_at": "2023-03-09T07:00:10.489Z", "speakeasy_api_key_name": "<value>", "speakeasy_version": "<value>", "success": true, "workspace_id": "<id>"}]
         5XX:
           application/json: {"message": "<value>", "status_code": 238575}
-  archiveNamespace:
-    speakeasy-default-archive-namespace:
-      parameters:
-        path:
-          namespace_name: "<value>"
-      responses:
-        4XX:
-          application/json: {"message": "<value>", "status_code": 334009}
-  createBillingAddOns:
-    speakeasy-default-create-billing-add-ons:
-      requestBody:
-        application/json: {"add_ons": ["sdk_testing", "sdk_testing", "webhooks"]}
-      responses:
-        "200":
-          application/json: {"add_ons": ["sdk_testing", "sdk_testing", "webhooks"]}
-        5XX:
-          application/json: {"message": "<value>", "status_code": 822767}
-  deleteBillingAddOn:
-    speakeasy-default-delete-billing-add-on:
-      parameters:
-        path:
-          add_on: "custom_code_regions"
-      responses:
-        5XX:
-          application/json: {"message": "<value>", "status_code": 825779}
-  getBillingAddOns:
-    speakeasy-default-get-billing-add-ons:
-      responses:
-        "200":
-          application/json: {"add_ons": []}
-        5XX:
-          application/json: {"message": "<value>", "status_code": 697034}
-  createSchemaStoreItem:
-    speakeasy-default-create-schema-store-item:
-      requestBody:
-        application/json: {"format": "yaml", "packageName": "<value>", "sdkClassname": "<value>", "spec": "<value>"}
-      responses:
-        4XX:
-          application/json: {"message": "<value>", "status_code": 532077}
-        2XX:
-          application/json: {"created_at": "2025-11-20T07:47:04.136Z", "format": "yaml", "id": "<id>", "packageName": "<value>", "sdkClassname": "<value>", "spec": "<value>"}
-  getSchemaStoreItem:
-    speakeasy-default-get-schema-store-item:
-      responses:
-        2XX:
-          application/json: {"created_at": "2023-02-14T01:44:55.437Z", "format": "yaml", "id": "<id>", "packageName": "<value>", "sdkClassname": "<value>", "spec": "<value>"}
-        4XX:
-          application/json: {"message": "<value>", "status_code": 168509}
-examplesVersion: 1.0.0
+examplesVersion: 1.0.1
 generatedTests:
   generateCodeSamplePreview: "2024-12-09T10:07:33-05:00"
   generateCodeSamplePreviewAsync: "2024-12-09T10:07:33-05:00"
@@ -1454,3 +1514,9 @@ generatedTests:
   getBillingAddOns: "2025-02-25T16:56:22Z"
   createSchemaStoreItem: "2025-02-27T22:02:41Z"
   getSchemaStoreItem: "2025-02-27T22:02:41Z"
+  createPublishingToken: "2025-04-09T22:02:41Z"
+  deletePublishingToken: "2025-04-09T22:02:41Z"
+  getPublishingTokenByID: "2025-04-09T22:02:41Z"
+  getPublishingTokenTargetByID: "2025-04-09T22:02:41Z"
+  updatePublishingTokenExpiration: "2025-04-09T22:02:41Z"
+  getPublishingToken: "2025-04-09T22:02:41Z"

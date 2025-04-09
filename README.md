@@ -56,6 +56,7 @@ import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -68,11 +69,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.PublishingToken != nil {
 		// handle response
 	}
 }
@@ -162,6 +169,13 @@ func main() {
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
+### [Speakeasy SDK](docs/sdks/speakeasy/README.md)
+
+* [CreatePublishingToken](docs/sdks/speakeasy/README.md#createpublishingtoken) - Create a publishing token for a workspace
+* [DeletePublishingToken](docs/sdks/speakeasy/README.md#deletepublishingtoken) - Delete a specific publishing token
+* [GetPublishingTokenByID](docs/sdks/speakeasy/README.md#getpublishingtokenbyid) - Get a specific publishing token
+* [GetPublishingTokenTargetByID](docs/sdks/speakeasy/README.md#getpublishingtokentargetbyid) - Get a specific publishing token target
+* [UpdatePublishingTokenExpiration](docs/sdks/speakeasy/README.md#updatepublishingtokenexpiration) - Updates the validitity period of a publishing token
 
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
@@ -184,6 +198,7 @@ func main() {
 * [GetAll](docs/sdks/workspaces/README.md#getall) - Get workspaces for a user
 * [GetByID](docs/sdks/workspaces/README.md#getbyid) - Get workspace
 * [GetFeatureFlags](docs/sdks/workspaces/README.md#getfeatureflags) - Get workspace feature flags
+* [GetPublishingToken](docs/sdks/workspaces/README.md#getpublishingtoken) - Get publishing tokens for a workspace
 * [GetSettings](docs/sdks/workspaces/README.md#getsettings) - Get workspace settings
 * [GetTeam](docs/sdks/workspaces/README.md#getteam) - Get team members for a particular workspace
 * [GetTokens](docs/sdks/workspaces/README.md#gettokens) - Get tokens for a particular workspace
@@ -211,7 +226,7 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `CreateRemoteSource` function may return the following errors:
+For example, the `CreatePublishingToken` function may return the following errors:
 
 | Error Type         | Status Code | Content Type     |
 | ------------------ | ----------- | ---------------- |
@@ -229,6 +244,7 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -241,7 +257,13 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	})
 	if err != nil {
 
 		var e *sdkerrors.Error
@@ -283,6 +305,7 @@ import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -296,11 +319,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.PublishingToken != nil {
 		// handle response
 	}
 }
@@ -317,6 +346,7 @@ import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -330,11 +360,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.PublishingToken != nil {
 		// handle response
 	}
 }
@@ -396,6 +432,7 @@ import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -408,11 +445,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.PublishingToken != nil {
 		// handle response
 	}
 }
@@ -481,6 +524,7 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 	"pkg/models/operations"
 )
@@ -494,7 +538,13 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil, operations.WithRetries(
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -508,7 +558,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.PublishingToken != nil {
 		// handle response
 	}
 }
@@ -524,6 +574,7 @@ import (
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -547,11 +598,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
+	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		ID:             "<id>",
+		TargetID:       "<id>",
+		TargetResource: "<value>",
+		Token:          "<value>",
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.PublishingToken != nil {
 		// handle response
 	}
 }
