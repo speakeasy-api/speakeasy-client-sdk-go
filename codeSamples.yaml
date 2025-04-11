@@ -1114,9 +1114,9 @@ actions:
 
                 res, err := s.Organizations.CreateBillingAddOns(ctx, shared.OrganizationBillingAddOnRequest{
                     AddOns: []shared.BillingAddOn{
+                        shared.BillingAddOnCustomCodeRegions,
+                        shared.BillingAddOnCustomCodeRegions,
                         shared.BillingAddOnSDKTesting,
-                        shared.BillingAddOnSDKTesting,
-                        shared.BillingAddOnWebhooks,
                     },
                 })
                 if err != nil {
@@ -1152,7 +1152,7 @@ actions:
                 )
 
                 res, err := s.Organizations.DeleteBillingAddOn(ctx, operations.DeleteBillingAddOnRequest{
-                    AddOn: shared.BillingAddOnCustomCodeRegions,
+                    AddOn: shared.BillingAddOnSnippetAi,
                 })
                 if err != nil {
                     log.Fatal(err)

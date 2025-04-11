@@ -8,3 +8,4 @@
 | `BillingAddOnWebhooks`          | webhooks                        |
 | `BillingAddOnSDKTesting`        | sdk_testing                     |
 | `BillingAddOnCustomCodeRegions` | custom_code_regions             |
+| `BillingAddOnSnippetAi`         | snippet_ai                      |
