@@ -58,10 +58,13 @@ func testGetPublishingTokenByIDGetPublishingTokenById0(w http.ResponseWriter, re
 	}
 	respBody := &components.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-20T08:51:57.553Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: components.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

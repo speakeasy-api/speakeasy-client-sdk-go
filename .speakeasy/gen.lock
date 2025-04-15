@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: d016f94831e6f41b132f11faa6b72e10
+  docChecksum: f0c8ccc65ddf652e139cdbb48e9c72b7
   docVersion: 0.4.0
-  speakeasyVersion: 1.531.3
-  generationVersion: 2.570.3
-  releaseVersion: 3.26.3
-  configChecksum: cb0cb610c63a2fb48af7eb6af50a2a90
+  speakeasyVersion: 1.532.0
+  generationVersion: 2.578.0
+  releaseVersion: 3.26.4
+  configChecksum: 36e7518dc80cb202b00b964a4d7cb365
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -422,6 +422,7 @@ generatedFiles:
   - docs/pkg/models/shared/suggestrequestbody.md
   - docs/pkg/models/shared/suggestrequestbodysuggestiontype.md
   - docs/pkg/models/shared/tag.md
+  - docs/pkg/models/shared/targetresource.md
   - docs/pkg/models/shared/targetsdk.md
   - docs/pkg/models/shared/type.md
   - docs/pkg/models/shared/usagesnippet.md
@@ -753,10 +754,10 @@ examples:
   createPublishingToken:
     speakeasy-default-create-publishing-token:
       requestBody:
-        application/json: {"created_at": "2025-10-25T02:17:15.413Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}
+        application/json: {"created_at": "2025-10-25T02:17:15.413Z", "created_by": "<value>", "id": "<id>", "organization_id": "<id>", "target_id": "<id>", "target_resource": "document", "token": "<value>", "workspace_id": "<id>"}
       responses:
         "200":
-          application/json: {"created_at": "2023-12-11T20:09:47.767Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}
+          application/json: {"created_at": "2023-12-11T20:09:47.767Z", "created_by": "<value>", "id": "<id>", "organization_id": "<id>", "target_id": "<id>", "target_resource": "document", "token": "<value>", "workspace_id": "<id>"}
         4XX:
           application/json: {"message": "<value>", "status_code": 447867}
   deletePublishingToken:
@@ -774,7 +775,7 @@ examples:
           tokenID: "<id>"
       responses:
         "200":
-          application/json: {"created_at": "2025-10-20T08:51:57.553Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}
+          application/json: {"created_at": "2025-10-20T08:51:57.553Z", "created_by": "<value>", "id": "<id>", "organization_id": "<id>", "target_id": "<id>", "target_resource": "document", "token": "<value>", "workspace_id": "<id>"}
         4XX:
           application/json: {"message": "<value>", "status_code": 82666}
   getPublishingTokenTargetByID:
@@ -1197,7 +1198,7 @@ examples:
     speakeasy-default-get-publishing-token:
       responses:
         "200":
-          application/json: [{"created_at": "2023-01-18T23:26:03.849Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}, {"created_at": "2023-08-07T04:00:26.830Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}, {"created_at": "2024-01-27T14:50:38.288Z", "id": "<id>", "target_id": "<id>", "target_resource": "<value>", "token": "<value>"}]
+          application/json: [{"created_at": "2023-01-18T23:26:03.849Z", "created_by": "<value>", "id": "<id>", "organization_id": "<id>", "target_id": "<id>", "target_resource": "document", "token": "<value>", "workspace_id": "<id>"}, {"created_at": "2023-08-07T04:00:26.830Z", "created_by": "<value>", "id": "<id>", "organization_id": "<id>", "target_id": "<id>", "target_resource": "document", "token": "<value>", "workspace_id": "<id>"}, {"created_at": "2024-01-27T14:50:38.288Z", "created_by": "<value>", "id": "<id>", "organization_id": "<id>", "target_id": "<id>", "target_resource": "document", "token": "<value>", "workspace_id": "<id>"}]
         4XX:
           application/json: {"message": "<value>", "status_code": 136532}
   getWorkspaceSettings:

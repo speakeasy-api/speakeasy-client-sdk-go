@@ -3,21 +3,48 @@
 package shared
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
 	"time"
 )
 
+type TargetResource string
+
+const (
+	TargetResourceDocument TargetResource = "document"
+)
+
+func (e TargetResource) ToPointer() *TargetResource {
+	return &e
+}
+func (e *TargetResource) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "document":
+		*e = TargetResource(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TargetResource: %v", v)
+	}
+}
+
 // PublishingToken - A token used to publish to a target
 type PublishingToken struct {
-	CreatedAt      time.Time  `json:"created_at"`
-	CreatedBy      *string    `json:"created_by,omitempty"`
-	ID             string     `json:"id"`
-	TargetID       string     `json:"target_id"`
-	TargetResource string     `json:"target_resource"`
-	Token          string     `json:"token"`
-	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
-	UpdatedBy      *string    `json:"updated_by,omitempty"`
-	ValidUntil     *time.Time `json:"valid_until,omitempty"`
+	CreatedAt      time.Time      `json:"created_at"`
+	CreatedBy      string         `json:"created_by"`
+	ID             string         `json:"id"`
+	OrganizationID string         `json:"organization_id"`
+	TargetID       string         `json:"target_id"`
+	TargetResource TargetResource `json:"target_resource"`
+	Token          string         `json:"token"`
+	UpdatedAt      *time.Time     `json:"updated_at,omitempty"`
+	UpdatedBy      *string        `json:"updated_by,omitempty"`
+	ValidUntil     *time.Time     `json:"valid_until,omitempty"`
+	WorkspaceID    string         `json:"workspace_id"`
 }
 
 func (p PublishingToken) MarshalJSON() ([]byte, error) {
@@ -38,9 +65,9 @@ func (o *PublishingToken) GetCreatedAt() time.Time {
 	return o.CreatedAt
 }
 
-func (o *PublishingToken) GetCreatedBy() *string {
+func (o *PublishingToken) GetCreatedBy() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.CreatedBy
 }
@@ -52,6 +79,13 @@ func (o *PublishingToken) GetID() string {
 	return o.ID
 }
 
+func (o *PublishingToken) GetOrganizationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OrganizationID
+}
+
 func (o *PublishingToken) GetTargetID() string {
 	if o == nil {
 		return ""
@@ -59,9 +93,9 @@ func (o *PublishingToken) GetTargetID() string {
 	return o.TargetID
 }
 
-func (o *PublishingToken) GetTargetResource() string {
+func (o *PublishingToken) GetTargetResource() TargetResource {
 	if o == nil {
-		return ""
+		return TargetResource("")
 	}
 	return o.TargetResource
 }
@@ -92,4 +126,11 @@ func (o *PublishingToken) GetValidUntil() *time.Time {
 		return nil
 	}
 	return o.ValidUntil
+}
+
+func (o *PublishingToken) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
 }

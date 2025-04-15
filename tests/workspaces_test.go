@@ -281,24 +281,33 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 	assert.Equal(t, []shared.PublishingToken{
 		shared.PublishingToken{
 			CreatedAt:      types.MustTimeFromString("2023-01-18T23:26:03.849Z"),
+			CreatedBy:      "<value>",
 			ID:             "<id>",
+			OrganizationID: "<id>",
 			TargetID:       "<id>",
-			TargetResource: "<value>",
+			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
+			WorkspaceID:    "<id>",
 		},
 		shared.PublishingToken{
 			CreatedAt:      types.MustTimeFromString("2023-08-07T04:00:26.830Z"),
+			CreatedBy:      "<value>",
 			ID:             "<id>",
+			OrganizationID: "<id>",
 			TargetID:       "<id>",
-			TargetResource: "<value>",
+			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
+			WorkspaceID:    "<id>",
 		},
 		shared.PublishingToken{
 			CreatedAt:      types.MustTimeFromString("2024-01-27T14:50:38.288Z"),
+			CreatedBy:      "<value>",
 			ID:             "<id>",
+			OrganizationID: "<id>",
 			TargetID:       "<id>",
-			TargetResource: "<value>",
+			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
+			WorkspaceID:    "<id>",
 		},
 	}, res.Classes)
 

@@ -116,20 +116,26 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
 	assert.NotNil(t, res.PublishingToken)
 	assert.Equal(t, &shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2023-12-11T20:09:47.767Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
 }
@@ -176,10 +182,13 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 	assert.NotNil(t, res.PublishingToken)
 	assert.Equal(t, &shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-20T08:51:57.553Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
 }

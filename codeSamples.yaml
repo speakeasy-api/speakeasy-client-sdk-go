@@ -1353,8 +1353,11 @@ actions:
                     ID: "<id>",
                     Token: "<value>",
                     TargetID: "<id>",
-                    TargetResource: "<value>",
+                    TargetResource: shared.TargetResourceDocument,
                     CreatedAt: types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+                    CreatedBy: "<value>",
+                    OrganizationID: "<id>",
+                    WorkspaceID: "<id>",
                 })
                 if err != nil {
                     log.Fatal(err)

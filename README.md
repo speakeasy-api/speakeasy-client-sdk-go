@@ -71,10 +71,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -259,10 +262,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	if err != nil {
 
@@ -321,10 +327,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -362,10 +371,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -447,10 +459,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -540,10 +555,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -600,10 +618,13 @@ func main() {
 
 	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
 		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
+		CreatedBy:      "<value>",
 		ID:             "<id>",
+		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: "<value>",
+		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		WorkspaceID:    "<id>",
 	})
 	if err != nil {
 		log.Fatal(err)
