@@ -1292,7 +1292,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/publishing_token"]["get"]
+  - target: $["paths"]["/v1/publishing-tokens"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -1316,7 +1316,7 @@ actions:
                     }),
                 )
 
-                res, err := s.Workspaces.GetPublishingToken(ctx)
+                res, err := s.PublishingTokens.List(ctx)
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -1324,7 +1324,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/publishing_token"]["post"]
+  - target: $["paths"]["/v1/publishing-tokens"]["post"]
     update:
       x-codeSamples:
         - lang: go
@@ -1336,7 +1336,6 @@ actions:
             	"context"
             	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"log"
             )
 
@@ -1349,16 +1348,7 @@ actions:
                     }),
                 )
 
-                res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
-                    ID: "<id>",
-                    Token: "<value>",
-                    TargetID: "<id>",
-                    TargetResource: shared.TargetResourceDocument,
-                    CreatedAt: types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
-                    CreatedBy: "<value>",
-                    OrganizationID: "<id>",
-                    WorkspaceID: "<id>",
-                })
+                res, err := s.PublishingTokens.Create(ctx, nil)
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -1366,7 +1356,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/publishing_token/{tokenID}"]["delete"]
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}"]["delete"]
     update:
       x-codeSamples:
         - lang: go
@@ -1391,7 +1381,7 @@ actions:
                     }),
                 )
 
-                res, err := s.DeletePublishingToken(ctx, operations.DeletePublishingTokenRequest{
+                res, err := s.PublishingTokens.Delete(ctx, operations.DeletePublishingTokenRequest{
                     TokenID: "<id>",
                 })
                 if err != nil {
@@ -1401,7 +1391,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/publishing_token/{tokenID}"]["get"]
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -1426,7 +1416,7 @@ actions:
                     }),
                 )
 
-                res, err := s.GetPublishingTokenByID(ctx, operations.GetPublishingTokenByIDRequest{
+                res, err := s.PublishingTokens.Get(ctx, operations.GetPublishingTokenByIDRequest{
                     TokenID: "<id>",
                 })
                 if err != nil {
@@ -1436,7 +1426,7 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/publishing_token/{tokenID}"]["put"]
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}"]["put"]
     update:
       x-codeSamples:
         - lang: go
@@ -1461,7 +1451,7 @@ actions:
                     }),
                 )
 
-                res, err := s.UpdatePublishingTokenExpiration(ctx, operations.UpdatePublishingTokenExpirationRequest{
+                res, err := s.PublishingTokens.Update(ctx, operations.UpdatePublishingTokenExpirationRequest{
                     TokenID: "<id>",
                 })
                 if err != nil {
@@ -1471,7 +1461,42 @@ actions:
                     // handle response
                 }
             }
-  - target: $["paths"]["/v1/publishing_token/{tokenID}/target"]["get"]
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}/metadata"]["get"]
+    update:
+      x-codeSamples:
+        - lang: go
+          label: getPublishingTokenPublicMetadata
+          source: |-
+            package main
+
+            import(
+            	"context"
+            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+            	"log"
+            )
+
+            func main() {
+                ctx := context.Background()
+
+                s := speakeasyclientsdkgo.New(
+                    speakeasyclientsdkgo.WithSecurity(shared.Security{
+                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                    }),
+                )
+
+                res, err := s.PublishingTokens.ResolveMetadata(ctx, operations.GetPublishingTokenPublicMetadataRequest{
+                    TokenID: "<id>",
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res.Object != nil {
+                    // handle response
+                }
+            }
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}/target"]["get"]
     update:
       x-codeSamples:
         - lang: go
@@ -1496,7 +1521,7 @@ actions:
                     }),
                 )
 
-                res, err := s.GetPublishingTokenTargetByID(ctx, operations.GetPublishingTokenTargetByIDRequest{
+                res, err := s.PublishingTokens.ResolveTarget(ctx, operations.GetPublishingTokenTargetByIDRequest{
                     TokenID: "<id>",
                 })
                 if err != nil {

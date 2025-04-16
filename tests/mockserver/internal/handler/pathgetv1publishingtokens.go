@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-func pathGetV1PublishingToken(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathGetV1PublishingTokens(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -65,6 +65,8 @@ func testGetPublishingTokenGetPublishingToken0(w http.ResponseWriter, req *http.
 			TargetID:       "<id>",
 			TargetResource: components.TargetResourceDocument,
 			Token:          "<value>",
+			TokenName:      "<value>",
+			ValidUntil:     types.MustTimeFromString("2024-08-24T11:59:25.466Z"),
 			WorkspaceID:    "<id>",
 		},
 		components.PublishingToken{
@@ -75,6 +77,8 @@ func testGetPublishingTokenGetPublishingToken0(w http.ResponseWriter, req *http.
 			TargetID:       "<id>",
 			TargetResource: components.TargetResourceDocument,
 			Token:          "<value>",
+			TokenName:      "<value>",
+			ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
 			WorkspaceID:    "<id>",
 		},
 		components.PublishingToken{
@@ -85,6 +89,8 @@ func testGetPublishingTokenGetPublishingToken0(w http.ResponseWriter, req *http.
 			TargetID:       "<id>",
 			TargetResource: components.TargetResourceDocument,
 			Token:          "<value>",
+			TokenName:      "<value>",
+			ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),
 			WorkspaceID:    "<id>",
 		},
 	}

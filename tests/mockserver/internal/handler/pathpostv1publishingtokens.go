@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-func pathGetV1PublishingTokenTokenID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathPostV1PublishingTokens(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -22,15 +22,15 @@ func pathGetV1PublishingTokenTokenID(dir *logging.HTTPFileDirectory, rt *trackin
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "getPublishingTokenByID[0]":
-			dir.HandlerFunc("getPublishingTokenByID", testGetPublishingTokenByIDGetPublishingTokenById0)(w, req)
+		case "createPublishingToken[0]":
+			dir.HandlerFunc("createPublishingToken", testCreatePublishingTokenCreatePublishingToken0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetPublishingTokenByIDGetPublishingTokenById0(w http.ResponseWriter, req *http.Request) {
+func testCreatePublishingTokenCreatePublishingToken0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -46,6 +46,11 @@ func testGetPublishingTokenByIDGetPublishingTokenById0(w http.ResponseWriter, re
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
 	}
+	if err := assert.ContentType(req, "application/json", false); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -57,13 +62,15 @@ func testGetPublishingTokenByIDGetPublishingTokenById0(w http.ResponseWriter, re
 		return
 	}
 	respBody := &components.PublishingToken{
-		CreatedAt:      types.MustTimeFromString("2025-10-20T08:51:57.553Z"),
+		CreatedAt:      types.MustTimeFromString("2023-12-11T20:09:47.767Z"),
 		CreatedBy:      "<value>",
 		ID:             "<id>",
 		OrganizationID: "<id>",
 		TargetID:       "<id>",
 		TargetResource: components.TargetResourceDocument,
 		Token:          "<value>",
+		TokenName:      "<value>",
+		ValidUntil:     types.MustTimeFromString("2025-09-04T09:11:49.246Z"),
 		WorkspaceID:    "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

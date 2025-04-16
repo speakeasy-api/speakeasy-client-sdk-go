@@ -11,7 +11,7 @@ import (
 	"net/http"
 )
 
-func pathDeleteV1PublishingTokenTokenID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathPutV1PublishingTokensTokenID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -19,15 +19,15 @@ func pathDeleteV1PublishingTokenTokenID(dir *logging.HTTPFileDirectory, rt *trac
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "deletePublishingToken[0]":
-			dir.HandlerFunc("deletePublishingToken", testDeletePublishingTokenDeletePublishingToken0)(w, req)
+		case "updatePublishingTokenExpiration[0]":
+			dir.HandlerFunc("updatePublishingTokenExpiration", testUpdatePublishingTokenExpirationUpdatePublishingTokenExpiration0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testDeletePublishingTokenDeletePublishingToken0(w http.ResponseWriter, req *http.Request) {
+func testUpdatePublishingTokenExpirationUpdatePublishingTokenExpiration0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -41,6 +41,11 @@ func testDeletePublishingTokenDeletePublishingToken0(w http.ResponseWriter, req 
 	if err := assert.SecurityHeader(req, "x-workspace-identifier", true); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "application/json", false); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {

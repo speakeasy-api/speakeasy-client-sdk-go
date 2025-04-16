@@ -41,9 +41,10 @@ type PublishingToken struct {
 	TargetID       string         `json:"target_id"`
 	TargetResource TargetResource `json:"target_resource"`
 	Token          string         `json:"token"`
+	TokenName      string         `json:"token_name"`
 	UpdatedAt      *time.Time     `json:"updated_at,omitempty"`
 	UpdatedBy      *string        `json:"updated_by,omitempty"`
-	ValidUntil     *time.Time     `json:"valid_until,omitempty"`
+	ValidUntil     time.Time      `json:"valid_until"`
 	WorkspaceID    string         `json:"workspace_id"`
 }
 
@@ -107,6 +108,13 @@ func (o *PublishingToken) GetToken() string {
 	return o.Token
 }
 
+func (o *PublishingToken) GetTokenName() string {
+	if o == nil {
+		return ""
+	}
+	return o.TokenName
+}
+
 func (o *PublishingToken) GetUpdatedAt() *time.Time {
 	if o == nil {
 		return nil
@@ -121,9 +129,9 @@ func (o *PublishingToken) GetUpdatedBy() *string {
 	return o.UpdatedBy
 }
 
-func (o *PublishingToken) GetValidUntil() *time.Time {
+func (o *PublishingToken) GetValidUntil() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.ValidUntil
 }

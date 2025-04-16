@@ -10,6 +10,8 @@ import (
 
 // UpdatePublishingTokenExpirationRequestBody - The publishing token to update
 type UpdatePublishingTokenExpirationRequestBody struct {
+	// The new name for the publishing token.
+	TokenName *string `json:"token_name,omitempty"`
 	// The new expiration date for the publishing token.
 	ValidUntil time.Time `json:"valid_until"`
 }
@@ -23,6 +25,13 @@ func (u *UpdatePublishingTokenExpirationRequestBody) UnmarshalJSON(data []byte) 
 		return err
 	}
 	return nil
+}
+
+func (o *UpdatePublishingTokenExpirationRequestBody) GetTokenName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TokenName
 }
 
 func (o *UpdatePublishingTokenExpirationRequestBody) GetValidUntil() time.Time {

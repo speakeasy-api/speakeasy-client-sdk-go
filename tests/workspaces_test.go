@@ -274,7 +274,7 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 		}),
 	)
 
-	res, err := s.Workspaces.GetPublishingToken(ctx)
+	res, err := s.PublishingTokens.List(ctx)
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
 	assert.NotNil(t, res.Classes)
@@ -287,6 +287,8 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			TargetID:       "<id>",
 			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
+			TokenName:      "<value>",
+			ValidUntil:     types.MustTimeFromString("2024-08-24T11:59:25.466Z"),
 			WorkspaceID:    "<id>",
 		},
 		shared.PublishingToken{
@@ -297,6 +299,8 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			TargetID:       "<id>",
 			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
+			TokenName:      "<value>",
+			ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
 			WorkspaceID:    "<id>",
 		},
 		shared.PublishingToken{
@@ -307,6 +311,8 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			TargetID:       "<id>",
 			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
+			TokenName:      "<value>",
+			ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),
 			WorkspaceID:    "<id>",
 		},
 	}, res.Classes)

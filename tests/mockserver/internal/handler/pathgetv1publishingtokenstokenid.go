@@ -8,12 +8,13 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
 )
 
-func pathGetV1CodeSample(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
+func pathGetV1PublishingTokensTokenID(dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		test := req.Header.Get("x-speakeasy-test-name")
 		instanceID := req.Header.Get("x-speakeasy-test-instance-id")
@@ -21,15 +22,15 @@ func pathGetV1CodeSample(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "getCodeSamples[0]":
-			dir.HandlerFunc("getCodeSamples", testGetCodeSamplesGetCodeSamples0)(w, req)
+		case "getPublishingTokenByID[0]":
+			dir.HandlerFunc("getPublishingTokenByID", testGetPublishingTokenByIDGetPublishingTokenById0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetCodeSamplesGetCodeSamples0(w http.ResponseWriter, req *http.Request) {
+func testGetPublishingTokenByIDGetPublishingTokenById0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -55,30 +56,17 @@ func testGetCodeSamplesGetCodeSamples0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.UsageSnippets{
-		Snippets: []components.UsageSnippet{
-			components.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/opt/sbin",
-			},
-			components.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/tmp",
-			},
-			components.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/opt/share",
-			},
-		},
+	respBody := &components.PublishingToken{
+		CreatedAt:      types.MustTimeFromString("2025-10-20T08:51:57.553Z"),
+		CreatedBy:      "<value>",
+		ID:             "<id>",
+		OrganizationID: "<id>",
+		TargetID:       "<id>",
+		TargetResource: components.TargetResourceDocument,
+		Token:          "<value>",
+		TokenName:      "<value>",
+		ValidUntil:     types.MustTimeFromString("2024-08-20T04:36:26.084Z"),
+		WorkspaceID:    "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

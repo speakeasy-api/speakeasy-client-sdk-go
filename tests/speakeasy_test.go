@@ -114,15 +114,11 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		}),
 	)
 
-	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
-		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
-		CreatedBy:      "<value>",
-		ID:             "<id>",
-		OrganizationID: "<id>",
+	res, err := s.PublishingTokens.Create(ctx, &operations.CreatePublishingTokenRequestBody{
 		TargetID:       "<id>",
-		TargetResource: shared.TargetResourceDocument,
-		Token:          "<value>",
-		WorkspaceID:    "<id>",
+		TargetResource: "<value>",
+		TokenName:      "<value>",
+		ValidUntil:     types.MustTimeFromString("2024-12-02T02:12:05.658Z"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -135,6 +131,8 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		TargetID:       "<id>",
 		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		TokenName:      "<value>",
+		ValidUntil:     types.MustTimeFromString("2025-08-24T05:20:24.233Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
@@ -153,7 +151,7 @@ func TestSpeakeasy_DeletePublishingToken(t *testing.T) {
 		}),
 	)
 
-	res, err := s.DeletePublishingToken(ctx, operations.DeletePublishingTokenRequest{
+	res, err := s.PublishingTokens.Delete(ctx, operations.DeletePublishingTokenRequest{
 		TokenID: "<id>",
 	})
 	require.NoError(t, err)
@@ -174,7 +172,7 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 		}),
 	)
 
-	res, err := s.GetPublishingTokenByID(ctx, operations.GetPublishingTokenByIDRequest{
+	res, err := s.PublishingTokens.Get(ctx, operations.GetPublishingTokenByIDRequest{
 		TokenID: "<id>",
 	})
 	require.NoError(t, err)
@@ -188,6 +186,8 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 		TargetID:       "<id>",
 		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
+		TokenName:      "<value>",
+		ValidUntil:     types.MustTimeFromString("2025-06-28T12:30:49.314Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
@@ -206,7 +206,7 @@ func TestSpeakeasy_GetPublishingTokenTargetByID(t *testing.T) {
 		}),
 	)
 
-	res, err := s.GetPublishingTokenTargetByID(ctx, operations.GetPublishingTokenTargetByIDRequest{
+	res, err := s.PublishingTokens.ResolveTarget(ctx, operations.GetPublishingTokenTargetByIDRequest{
 		TokenID: "<id>",
 	})
 	require.NoError(t, err)
@@ -229,7 +229,7 @@ func TestSpeakeasy_UpdatePublishingTokenExpiration(t *testing.T) {
 		}),
 	)
 
-	res, err := s.UpdatePublishingTokenExpiration(ctx, operations.UpdatePublishingTokenExpirationRequest{
+	res, err := s.PublishingTokens.Update(ctx, operations.UpdatePublishingTokenExpirationRequest{
 		TokenID: "<id>",
 	})
 	require.NoError(t, err)

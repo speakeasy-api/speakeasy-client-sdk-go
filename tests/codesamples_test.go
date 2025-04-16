@@ -46,14 +46,14 @@ func TestCodesamples_GetCodeSamples(t *testing.T) {
 				Language:    "<value>",
 				Method:      "<value>",
 				OperationID: "<id>",
-				Path:        "/usr/bin",
+				Path:        "/opt/sbin",
 			},
 			shared.UsageSnippet{
 				Code:        "<value>",
 				Language:    "<value>",
 				Method:      "<value>",
 				OperationID: "<id>",
-				Path:        "/sys",
+				Path:        "/tmp",
 			},
 		},
 	}, res.UsageSnippets)

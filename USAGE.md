@@ -6,7 +6,6 @@ import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
 
@@ -19,20 +18,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CreatePublishingToken(ctx, shared.PublishingToken{
-		CreatedAt:      types.MustTimeFromString("2025-10-25T02:17:15.413Z"),
-		CreatedBy:      "<value>",
-		ID:             "<id>",
-		OrganizationID: "<id>",
-		TargetID:       "<id>",
-		TargetResource: shared.TargetResourceDocument,
-		Token:          "<value>",
-		WorkspaceID:    "<id>",
-	})
+	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.PublishingToken != nil {
+	if res != nil {
 		// handle response
 	}
 }

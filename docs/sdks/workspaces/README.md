@@ -14,7 +14,6 @@ REST APIs for managing Workspaces (speakeasy tenancy)
 * [GetAll](#getall) - Get workspaces for a user
 * [GetByID](#getbyid) - Get workspace
 * [GetFeatureFlags](#getfeatureflags) - Get workspace feature flags
-* [GetPublishingToken](#getpublishingtoken) - Get publishing tokens for a workspace
 * [GetSettings](#getsettings) - Get workspace settings
 * [GetTeam](#getteam) - Get team members for a particular workspace
 * [GetTokens](#gettokens) - Get tokens for a particular workspace
@@ -430,59 +429,6 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.Error    | 5XX                | application/json   |
 | sdkerrors.SDKError | 4XX                | \*/\*              |
-
-## GetPublishingToken
-
-Returns a publishing token for the current workspace
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-        }),
-    )
-
-    res, err := s.Workspaces.GetPublishingToken(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Classes != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
-| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
-
-### Response
-
-**[*operations.GetPublishingTokenResponse](../../pkg/models/operations/getpublishingtokenresponse.md), error**
-
-### Errors
-
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.Error    | 4XX                | application/json   |
-| sdkerrors.SDKError | 5XX                | \*/\*              |
 
 ## GetSettings
 

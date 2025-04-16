@@ -1900,3 +1900,19 @@ workflows:
               ]
             type: simple
     x-speakeasy-test-group: Workspaces
+  - workflowId: getPublishingTokenPublicMetadata
+    steps:
+      - stepId: test
+        operationId: getPublishingTokenPublicMetadata
+        parameters:
+          - name: tokenID
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: PublishingTokens
