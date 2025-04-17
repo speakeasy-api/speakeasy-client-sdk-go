@@ -59,7 +59,7 @@ func testValidateAPIKeyValidateAPIKey0(w http.ResponseWriter, req *http.Request)
 	respBody := &components.APIKeyDetails{
 		AccountTypeV2: components.AccountTypeEnterprise,
 		BillingAddOns: []components.BillingAddOn{
-			components.BillingAddOnCustomCodeRegions,
+			components.BillingAddOnSDKTesting,
 		},
 		EnabledFeatures: []string{
 			"<value>",

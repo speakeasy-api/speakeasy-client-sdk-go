@@ -33,7 +33,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/publishing-tokens", pathGetV1PublishingTokens(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/publishing-tokens/{tokenID}", pathGetV1PublishingTokensTokenID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/publishing-tokens/{tokenID}/metadata", pathGetV1PublishingTokensTokenIDMetadata(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodGet, "/v1/publishing-tokens/{tokenID}/target", pathGetV1PublishingTokensTokenIDTarget(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/reports/changes/{documentChecksum}", pathGetV1ReportsChangesDocumentChecksum(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/reports/linting/{documentChecksum}", pathGetV1ReportsLintingDocumentChecksum(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/schema_store", pathGetV1SchemaStore(dir, rt)),

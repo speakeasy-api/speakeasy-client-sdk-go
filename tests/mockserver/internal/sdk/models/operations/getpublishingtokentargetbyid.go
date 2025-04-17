@@ -18,14 +18,10 @@ func (o *GetPublishingTokenTargetByIDRequest) GetTokenID() string {
 	return o.TokenID
 }
 
-// GetPublishingTokenTargetByIDResponseBody - OK
-type GetPublishingTokenTargetByIDResponseBody struct {
-}
-
 type GetPublishingTokenTargetByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
-	Object *GetPublishingTokenTargetByIDResponseBody
+	Res *string
 }
 
 func (o *GetPublishingTokenTargetByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -35,9 +31,9 @@ func (o *GetPublishingTokenTargetByIDResponse) GetHTTPMeta() components.HTTPMeta
 	return o.HTTPMeta
 }
 
-func (o *GetPublishingTokenTargetByIDResponse) GetObject() *GetPublishingTokenTargetByIDResponseBody {
+func (o *GetPublishingTokenTargetByIDResponse) GetRes() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.Res
 }

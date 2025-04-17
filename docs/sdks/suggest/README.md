@@ -51,9 +51,7 @@ func main() {
                 },
                 shared.Diagnostic{
                     Message: "<value>",
-                    Path: []string{
-
-                    },
+                    Path: []string{},
                     Type: "<value>",
                 },
             },
@@ -135,9 +133,7 @@ func main() {
     )
 
     res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
-        Items: []string{
-
-        },
+        Items: []string{},
         Prompt: "<value>",
     })
     if err != nil {

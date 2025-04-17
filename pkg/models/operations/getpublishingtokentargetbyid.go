@@ -18,10 +18,6 @@ func (o *GetPublishingTokenTargetByIDRequest) GetTokenID() string {
 	return o.TokenID
 }
 
-// GetPublishingTokenTargetByIDResponseBody - OK
-type GetPublishingTokenTargetByIDResponseBody struct {
-}
-
 type GetPublishingTokenTargetByIDResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -30,7 +26,7 @@ type GetPublishingTokenTargetByIDResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Object *GetPublishingTokenTargetByIDResponseBody
+	Res *string
 }
 
 func (o *GetPublishingTokenTargetByIDResponse) GetContentType() string {
@@ -54,9 +50,9 @@ func (o *GetPublishingTokenTargetByIDResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetPublishingTokenTargetByIDResponse) GetObject() *GetPublishingTokenTargetByIDResponseBody {
+func (o *GetPublishingTokenTargetByIDResponse) GetRes() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.Res
 }

@@ -1142,7 +1142,7 @@ func (s *PublishingTokens) ResolveTarget(ctx context.Context, request operations
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Accept", "text/plain")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
@@ -1251,18 +1251,14 @@ func (s *PublishingTokens) ResolveTarget(ctx context.Context, request operations
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `text/plain`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out operations.GetPublishingTokenTargetByIDResponseBody
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
-			}
-
-			res.Object = &out
+			out := string(rawBody)
+			res.Res = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

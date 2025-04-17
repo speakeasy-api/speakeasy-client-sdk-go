@@ -1527,7 +1527,7 @@ actions:
                 if err != nil {
                     log.Fatal(err)
                 }
-                if res.Object != nil {
+                if res.Res != nil {
                     // handle response
                 }
             }
@@ -1850,9 +1850,7 @@ actions:
 
                 res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
                     Prompt: "<value>",
-                    Items: []string{
-
-                    },
+                    Items: []string{},
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1982,14 +1980,10 @@ actions:
                                 Version: "<value>",
                                 License: shared.License{},
                             },
-                            Operations: []shared.OASOperation{
-
-                            },
+                            Operations: []shared.OASOperation{},
                         },
                         SuggestionType: shared.SuggestRequestBodySuggestionTypeDiagnosticsOnly,
-                        Diagnostics: []shared.Diagnostic{
-
-                        },
+                        Diagnostics: []shared.Diagnostic{},
                     },
                 })
                 if err != nil {

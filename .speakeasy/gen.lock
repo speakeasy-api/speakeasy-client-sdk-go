@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: 711b3f6457c659edd2d9b9d7c32fc154
+  docChecksum: 8e7108c1d91dd68426e05e155eea40e5
   docVersion: 0.4.0
-  speakeasyVersion: 1.533.0
-  generationVersion: 2.578.0
-  releaseVersion: 3.26.5
-  configChecksum: 6368b2e55a173af6c685e29bb724c22c
+  speakeasyVersion: 1.535.1
+  generationVersion: 2.585.2
+  releaseVersion: 3.26.6
+  configChecksum: 818f6e7fa2608e82f7daca365906612f
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
@@ -262,7 +262,6 @@ generatedFiles:
   - docs/pkg/models/operations/getpublishingtokenresponse.md
   - docs/pkg/models/operations/getpublishingtokentargetbyidrequest.md
   - docs/pkg/models/operations/getpublishingtokentargetbyidresponse.md
-  - docs/pkg/models/operations/getpublishingtokentargetbyidresponsebody.md
   - docs/pkg/models/operations/getrevisionsrequest.md
   - docs/pkg/models/operations/getrevisionsresponse.md
   - docs/pkg/models/operations/getschemastoreitemrequestbody.md
@@ -534,7 +533,6 @@ generatedFiles:
   - tests/mockserver/internal/handler/pathgetv1publishingtokens.go
   - tests/mockserver/internal/handler/pathgetv1publishingtokenstokenid.go
   - tests/mockserver/internal/handler/pathgetv1publishingtokenstokenidmetadata.go
-  - tests/mockserver/internal/handler/pathgetv1publishingtokenstokenidtarget.go
   - tests/mockserver/internal/handler/pathgetv1reportschangesdocumentchecksum.go
   - tests/mockserver/internal/handler/pathgetv1reportslintingdocumentchecksum.go
   - tests/mockserver/internal/handler/pathgetv1schemastore.go
@@ -796,6 +794,7 @@ examples:
       responses:
         "200":
           application/json: {}
+          text/plain: "<value>"
         4XX:
           application/json: {"message": "<value>", "status_code": 297644}
   updatePublishingTokenExpiration:

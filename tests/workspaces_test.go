@@ -288,7 +288,7 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
 			TokenName:      "<value>",
-			ValidUntil:     types.MustTimeFromString("2024-08-24T11:59:25.466Z"),
+			ValidUntil:     types.MustTimeFromString("2024-09-28T06:58:36.140Z"),
 			WorkspaceID:    "<id>",
 		},
 		shared.PublishingToken{
@@ -300,7 +300,7 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
 			TokenName:      "<value>",
-			ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
+			ValidUntil:     types.MustTimeFromString("2024-12-02T02:12:05.658Z"),
 			WorkspaceID:    "<id>",
 		},
 		shared.PublishingToken{
@@ -312,7 +312,7 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
 			TokenName:      "<value>",
-			ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),
+			ValidUntil:     types.MustTimeFromString("2025-08-24T05:20:24.233Z"),
 			WorkspaceID:    "<id>",
 		},
 	}, res.Classes)

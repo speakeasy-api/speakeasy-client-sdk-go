@@ -118,7 +118,7 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		TargetID:       "<id>",
 		TargetResource: "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2024-12-02T02:12:05.658Z"),
+		ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -132,7 +132,7 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2025-08-24T05:20:24.233Z"),
+		ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
@@ -187,33 +187,14 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2025-06-28T12:30:49.314Z"),
+		ValidUntil:     types.MustTimeFromString("2024-08-20T04:36:26.084Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
 }
 
 func TestSpeakeasy_GetPublishingTokenTargetByID(t *testing.T) {
-	ctx := context.Background()
-
-	testHTTPClient := createTestHTTPClient("getPublishingTokenTargetByID")
-
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
-
-	res, err := s.PublishingTokens.ResolveTarget(ctx, operations.GetPublishingTokenTargetByIDRequest{
-		TokenID: "<id>",
-	})
-	require.NoError(t, err)
-	assert.Equal(t, 200, res.StatusCode)
-	assert.NotNil(t, res.Object)
-	assert.Equal(t, &operations.GetPublishingTokenTargetByIDResponseBody{}, res.Object)
-
+	t.Skip("incomplete test found please make sure to address the following errors: [`workflow step getPublishingTokenTargetByID.test referencing operation getPublishingTokenTargetByID does not contain response body with content type application/json`]")
 }
 
 func TestSpeakeasy_UpdatePublishingTokenExpiration(t *testing.T) {
