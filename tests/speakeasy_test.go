@@ -118,7 +118,7 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		TargetID:       "<id>",
 		TargetResource: "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
+		ValidUntil:     types.MustTimeFromString("2024-12-02T02:12:05.658Z"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -132,7 +132,7 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),
+		ValidUntil:     types.MustTimeFromString("2025-08-24T05:20:24.233Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
@@ -187,7 +187,7 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2024-08-20T04:36:26.084Z"),
+		ValidUntil:     types.MustTimeFromString("2025-06-28T12:30:49.314Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 

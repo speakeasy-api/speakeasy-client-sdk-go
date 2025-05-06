@@ -70,7 +70,7 @@ func testCreatePublishingTokenCreatePublishingToken0(w http.ResponseWriter, req 
 		TargetResource: components.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2024-08-20T04:36:26.084Z"),
+		ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
 		WorkspaceID:    "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

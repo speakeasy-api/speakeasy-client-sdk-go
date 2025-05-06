@@ -113,7 +113,7 @@ func TestAuth_ValidateAPIKey(t *testing.T) {
 	assert.Equal(t, &shared.APIKeyDetails{
 		AccountTypeV2: shared.AccountTypeEnterprise,
 		BillingAddOns: []shared.BillingAddOn{
-			shared.BillingAddOnSnippetAi,
+			shared.BillingAddOnCustomCodeRegions,
 		},
 		EnabledFeatures: []string{
 			"<value>",

@@ -280,9 +280,9 @@ func main() {
 
 You can override the default server globally using the `WithServer(server string)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name   | Server                              | Description |
-| ------ | ----------------------------------- | ----------- |
-| `prod` | `https://api.prod.speakeasyapi.dev` |             |
+| Name   | Server                           | Description |
+| ------ | -------------------------------- | ----------- |
+| `prod` | `https://api.prod.speakeasy.com` |             |
 
 #### Example
 
@@ -334,7 +334,7 @@ func main() {
 	ctx := context.Background()
 
 	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL("https://api.prod.speakeasyapi.dev"),
+		speakeasyclientsdkgo.WithServerURL("https://api.prod.speakeasy.com"),
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
 			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
 		}),

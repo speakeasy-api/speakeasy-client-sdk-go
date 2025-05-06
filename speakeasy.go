@@ -20,7 +20,7 @@ const (
 
 // ServerList contains the list of servers available to the SDK
 var ServerList = map[string]string{
-	ServerProd: "https://api.prod.speakeasyapi.dev",
+	ServerProd: "https://api.prod.speakeasy.com",
 }
 
 // HTTPClient provides an interface for suplying the SDK with a custom HTTP client
@@ -190,9 +190,9 @@ func New(opts ...SDKOption) *Speakeasy {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.26.6",
-			GenVersion:        "2.585.2",
-			UserAgent:         "speakeasy-sdk/go 3.26.6 2.585.2 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
+			SDKVersion:        "3.26.7",
+			GenVersion:        "2.597.9",
+			UserAgent:         "speakeasy-sdk/go 3.26.7 2.597.9 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
 			Globals:           globals.Globals{},
 			Hooks:             hooks.New(),
 		},
