@@ -9,17 +9,17 @@ import (
 
 // Organization - A speakeasy organization
 type Organization struct {
-	AccountType       AccountType `json:"account_type"`
-	CreatedAt         time.Time   `json:"created_at"`
-	FreeTrialExpiry   *time.Time  `json:"free_trial_expiry,omitempty"`
 	ID                string      `json:"id"`
-	Internal          *bool       `json:"internal,omitempty"`
 	Name              string      `json:"name"`
 	Slug              string      `json:"slug"`
-	SsoActivated      bool        `json:"sso_activated"`
-	SsoConnectionID   *string     `json:"sso_connection_id,omitempty"`
+	AccountType       AccountType `json:"account_type"`
 	TelemetryDisabled bool        `json:"telemetry_disabled"`
+	CreatedAt         time.Time   `json:"created_at"`
 	UpdatedAt         time.Time   `json:"updated_at"`
+	FreeTrialExpiry   *time.Time  `json:"free_trial_expiry,omitempty"`
+	SsoConnectionID   *string     `json:"sso_connection_id,omitempty"`
+	SsoActivated      bool        `json:"sso_activated"`
+	Internal          *bool       `json:"internal,omitempty"`
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
@@ -33,39 +33,11 @@ func (o *Organization) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Organization) GetAccountType() AccountType {
-	if o == nil {
-		return AccountType("")
-	}
-	return o.AccountType
-}
-
-func (o *Organization) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *Organization) GetFreeTrialExpiry() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.FreeTrialExpiry
-}
-
 func (o *Organization) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *Organization) GetInternal() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Internal
 }
 
 func (o *Organization) GetName() string {
@@ -82,18 +54,11 @@ func (o *Organization) GetSlug() string {
 	return o.Slug
 }
 
-func (o *Organization) GetSsoActivated() bool {
+func (o *Organization) GetAccountType() AccountType {
 	if o == nil {
-		return false
+		return AccountType("")
 	}
-	return o.SsoActivated
-}
-
-func (o *Organization) GetSsoConnectionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SsoConnectionID
+	return o.AccountType
 }
 
 func (o *Organization) GetTelemetryDisabled() bool {
@@ -103,9 +68,44 @@ func (o *Organization) GetTelemetryDisabled() bool {
 	return o.TelemetryDisabled
 }
 
+func (o *Organization) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
 func (o *Organization) GetUpdatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.UpdatedAt
+}
+
+func (o *Organization) GetFreeTrialExpiry() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.FreeTrialExpiry
+}
+
+func (o *Organization) GetSsoConnectionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SsoConnectionID
+}
+
+func (o *Organization) GetSsoActivated() bool {
+	if o == nil {
+		return false
+	}
+	return o.SsoActivated
+}
+
+func (o *Organization) GetInternal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Internal
 }

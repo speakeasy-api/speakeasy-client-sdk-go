@@ -8,15 +8,8 @@ import (
 )
 
 type File struct {
-	Content  io.Reader `multipartForm:"content"`
 	FileName string    `multipartForm:"name=fileName"`
-}
-
-func (o *File) GetContent() io.Reader {
-	if o == nil {
-		return nil
-	}
-	return o.Content
+	Content  io.Reader `multipartForm:"content"`
 }
 
 func (o *File) GetFileName() string {
@@ -26,32 +19,39 @@ func (o *File) GetFileName() string {
 	return o.FileName
 }
 
-// UploadReportRequestBody - The report file to upload provided as a multipart/form-data file segment.
-type UploadReportRequestBody struct {
+func (o *File) GetContent() io.Reader {
+	if o == nil {
+		return nil
+	}
+	return o.Content
+}
+
+// UploadReportRequest - The report file to upload provided as a multipart/form-data file segment.
+type UploadReportRequest struct {
 	Data components.Report `multipartForm:"name=data,json"`
 	File File              `multipartForm:"file"`
 }
 
-func (o *UploadReportRequestBody) GetData() components.Report {
+func (o *UploadReportRequest) GetData() components.Report {
 	if o == nil {
 		return components.Report{}
 	}
 	return o.Data
 }
 
-func (o *UploadReportRequestBody) GetFile() File {
+func (o *UploadReportRequest) GetFile() File {
 	if o == nil {
 		return File{}
 	}
 	return o.File
 }
 
-// UploadReportUploadedReport - OK
-type UploadReportUploadedReport struct {
+// UploadedReport - OK
+type UploadedReport struct {
 	URL string `json:"url"`
 }
 
-func (o *UploadReportUploadedReport) GetURL() string {
+func (o *UploadedReport) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -61,7 +61,7 @@ func (o *UploadReportUploadedReport) GetURL() string {
 type UploadReportResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
-	UploadedReport *UploadReportUploadedReport
+	UploadedReport *UploadedReport
 }
 
 func (o *UploadReportResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -71,7 +71,7 @@ func (o *UploadReportResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *UploadReportResponse) GetUploadedReport() *UploadReportUploadedReport {
+func (o *UploadReportResponse) GetUploadedReport() *UploadedReport {
 	if o == nil {
 		return nil
 	}

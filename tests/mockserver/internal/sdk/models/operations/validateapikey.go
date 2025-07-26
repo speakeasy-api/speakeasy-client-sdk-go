@@ -7,16 +7,9 @@ import (
 )
 
 type ValidateAPIKeyResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	APIKeyDetails *components.APIKeyDetails
-	HTTPMeta      components.HTTPMetadata `json:"-"`
-}
-
-func (o *ValidateAPIKeyResponse) GetAPIKeyDetails() *components.APIKeyDetails {
-	if o == nil {
-		return nil
-	}
-	return o.APIKeyDetails
 }
 
 func (o *ValidateAPIKeyResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -24,4 +17,11 @@ func (o *ValidateAPIKeyResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *ValidateAPIKeyResponse) GetAPIKeyDetails() *components.APIKeyDetails {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyDetails
 }

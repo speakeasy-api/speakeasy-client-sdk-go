@@ -23,15 +23,8 @@ func (o *Auth) GetSecret() string {
 
 // WorkflowDocument - A document referenced by a workflow
 type WorkflowDocument struct {
-	Auth     *Auth  `json:"auth,omitempty"`
 	Location string `json:"location"`
-}
-
-func (o *WorkflowDocument) GetAuth() *Auth {
-	if o == nil {
-		return nil
-	}
-	return o.Auth
+	Auth     *Auth  `json:"auth,omitempty"`
 }
 
 func (o *WorkflowDocument) GetLocation() string {
@@ -39,4 +32,11 @@ func (o *WorkflowDocument) GetLocation() string {
 		return ""
 	}
 	return o.Location
+}
+
+func (o *WorkflowDocument) GetAuth() *Auth {
+	if o == nil {
+		return nil
+	}
+	return o.Auth
 }

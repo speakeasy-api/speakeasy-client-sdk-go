@@ -4,32 +4,18 @@ package components
 
 // GithubTriggerActionRequest - A request to trigger an action on a GitHub target
 type GithubTriggerActionRequest struct {
-	// Force an SDK generation
-	Force *bool `json:"force,omitempty"`
-	// The generation lock ID
-	GenLockID string `json:"gen_lock_id"`
 	// The GitHub organization name
 	Org string `json:"org"`
 	// The GitHub repository name
 	RepoName string `json:"repo_name"`
-	// A version to override the SDK too in workflow dispatch
-	SetVersion *string `json:"set_version,omitempty"`
 	// The target name for the action
 	TargetName *string `json:"target_name,omitempty"`
-}
-
-func (o *GithubTriggerActionRequest) GetForce() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Force
-}
-
-func (o *GithubTriggerActionRequest) GetGenLockID() string {
-	if o == nil {
-		return ""
-	}
-	return o.GenLockID
+	// The generation lock ID
+	GenLockID string `json:"gen_lock_id"`
+	// A version to override the SDK too in workflow dispatch
+	SetVersion *string `json:"set_version,omitempty"`
+	// Force an SDK generation
+	Force *bool `json:"force,omitempty"`
 }
 
 func (o *GithubTriggerActionRequest) GetOrg() string {
@@ -46,6 +32,20 @@ func (o *GithubTriggerActionRequest) GetRepoName() string {
 	return o.RepoName
 }
 
+func (o *GithubTriggerActionRequest) GetTargetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TargetName
+}
+
+func (o *GithubTriggerActionRequest) GetGenLockID() string {
+	if o == nil {
+		return ""
+	}
+	return o.GenLockID
+}
+
 func (o *GithubTriggerActionRequest) GetSetVersion() *string {
 	if o == nil {
 		return nil
@@ -53,9 +53,9 @@ func (o *GithubTriggerActionRequest) GetSetVersion() *string {
 	return o.SetVersion
 }
 
-func (o *GithubTriggerActionRequest) GetTargetName() *string {
+func (o *GithubTriggerActionRequest) GetForce() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.TargetName
+	return o.Force
 }

@@ -55,54 +55,54 @@ func testGetOrganizationUsageGetOrganizationUsage0(w http.ResponseWriter, req *h
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.OrganizationUsageResponse{
-		AllowedLanguages:      []string{},
-		TotalAllowedLanguages: 863126,
+	var respBody *components.OrganizationUsageResponse = &components.OrganizationUsageResponse{
 		Usage: []components.OrganizationUsage{
 			components.OrganizationUsage{
-				Accessible: false,
-				AccessibleFeatures: []string{
-					"<value>",
-				},
-				GenLockIds: []string{
-					"<value>",
-					"<value>",
-					"<value>",
-				},
-				Language:           "<value>",
-				MaxOperations:      224089,
 				NumberOfOperations: 939867,
+				MaxOperations:      224089,
+				Language:           "<value>",
 				UsedFeatures: []string{
 					"<value>",
 					"<value>",
 					"<value>",
 				},
+				AccessibleFeatures: []string{
+					"<value>",
+				},
+				Accessible: false,
 				Workspaces: []string{
+					"<value>",
+				},
+				GenLockIds: []string{
+					"<value>",
+					"<value>",
 					"<value>",
 				},
 			},
 			components.OrganizationUsage{
-				Accessible: false,
+				NumberOfOperations: 478406,
+				MaxOperations:      863126,
+				Language:           "<value>",
+				UsedFeatures: []string{
+					"<value>",
+					"<value>",
+				},
 				AccessibleFeatures: []string{
+					"<value>",
+				},
+				Accessible: false,
+				Workspaces: []string{
 					"<value>",
 				},
 				GenLockIds: []string{
 					"<value>",
 					"<value>",
-					"<value>",
-				},
-				Language:           "<value>",
-				MaxOperations:      863126,
-				NumberOfOperations: 478406,
-				UsedFeatures: []string{
-					"<value>",
-					"<value>",
-				},
-				Workspaces: []string{
 					"<value>",
 				},
 			},
 		},
+		TotalAllowedLanguages: 863126,
+		AllowedLanguages:      []string{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

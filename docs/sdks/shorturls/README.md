@@ -20,7 +20,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -29,14 +29,14 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{
-        URL: "https://probable-heating.com/",
+        URL: "https://exalted-heroine.org/",
     })
     if err != nil {
         log.Fatal(err)

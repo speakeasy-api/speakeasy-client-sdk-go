@@ -23,7 +23,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -32,9 +32,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -44,20 +44,14 @@ func main() {
                 shared.Diagnostic{
                     Message: "<value>",
                     Path: []string{
-                        "/opt/include",
-                        "/opt/share",
+                        "/usr/src",
                     },
-                    Type: "<value>",
-                },
-                shared.Diagnostic{
-                    Message: "<value>",
-                    Path: []string{},
                     Type: "<value>",
                 },
             },
             OasSummary: shared.OASSummary{
                 Info: shared.OASInfo{
-                    Description: "amid traffic the unfortunately underneath what father lovely out",
+                    Description: "prioritize bell vainly",
                     License: shared.License{},
                     Summary: "<value>",
                     Title: "<value>",
@@ -65,18 +59,18 @@ func main() {
                 },
                 Operations: []shared.OASOperation{
                     shared.OASOperation{
-                        Description: "times dull than except",
+                        Description: "though since instead accurate safe unnaturally charming",
                         Method: "<value>",
                         OperationID: "<id>",
-                        Path: "/mnt",
+                        Path: "/usr/local/bin",
                         Tags: []string{
-                            "<value>",
-                            "<value>",
+                            "<value 1>",
+                            "<value 2>",
                         },
                     },
                 },
             },
-            SuggestionType: shared.SuggestRequestBodySuggestionTypeDiagnosticsOnly,
+            SuggestionType: shared.SuggestRequestBodySuggestionTypeMethodNames,
         },
         XSessionID: "<id>",
     })
@@ -118,7 +112,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
@@ -126,14 +120,16 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
-        Items: []string{},
+        Items: []string{
+            "<value 1>",
+        },
         Prompt: "<value>",
     })
     if err != nil {
@@ -174,7 +170,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"os"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -184,22 +180,21 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Suggest.SuggestOpenAPI(ctx, operations.SuggestOpenAPIRequest{
         RequestBody: operations.SuggestOpenAPIRequestBody{
             Schema: operations.Schema{
-                Content: content,
+                Content: example,
                 FileName: "example.file",
             },
         },
@@ -243,7 +238,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -252,9 +247,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 

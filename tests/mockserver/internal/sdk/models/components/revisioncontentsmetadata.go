@@ -36,30 +36,30 @@ func (e *RevisionContentsMetadataType) UnmarshalJSON(data []byte) error {
 }
 
 type RevisionContentsMetadata struct {
+	Type RevisionContentsMetadataType `json:"type"`
+	// The workspace ID
+	WorkspaceID string `json:"workspace_id"`
+	// The fully qualified namespace
+	Namespace string `json:"namespace"`
+	// The digest of the parent bundle
+	RevisionDigest string `json:"revision_digest"`
+	// The OAS title
+	Title string `json:"title"`
+	// The OAS description
+	Description string `json:"description"`
+	// The OAS version
+	Version string `json:"version"`
+	// The hash of the contents
+	Hash string `json:"hash"`
+	// The tags contained in the OAS -- NOT the OCI tags. Will be empty if the OAS is an overlay.
+	Tags []string `json:"tags"`
+	// The operation IDs contained in the OAS. Will be empty if the OAS is an overlay.
+	OperationIds []string `json:"operation_ids"`
+	// The number of overlay actions in the OAS. Will be 0 if the OAS is not an overlay.
+	NumOverlayActions int64 `json:"num_overlay_actions"`
 	// Whether the OAS contains code samples.
 	ContainsCodeSamples bool      `json:"contains_code_samples"`
 	CreatedAt           time.Time `json:"created_at"`
-	// The OAS description
-	Description string `json:"description"`
-	// The hash of the contents
-	Hash string `json:"hash"`
-	// The fully qualified namespace
-	Namespace string `json:"namespace"`
-	// The number of overlay actions in the OAS. Will be 0 if the OAS is not an overlay.
-	NumOverlayActions int64 `json:"num_overlay_actions"`
-	// The operation IDs contained in the OAS. Will be empty if the OAS is an overlay.
-	OperationIds []string `json:"operation_ids"`
-	// The digest of the parent bundle
-	RevisionDigest string `json:"revision_digest"`
-	// The tags contained in the OAS -- NOT the OCI tags. Will be empty if the OAS is an overlay.
-	Tags []string `json:"tags"`
-	// The OAS title
-	Title string                       `json:"title"`
-	Type  RevisionContentsMetadataType `json:"type"`
-	// The OAS version
-	Version string `json:"version"`
-	// The workspace ID
-	WorkspaceID string `json:"workspace_id"`
 }
 
 func (r RevisionContentsMetadata) MarshalJSON() ([]byte, error) {
@@ -71,6 +71,83 @@ func (r *RevisionContentsMetadata) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *RevisionContentsMetadata) GetType() RevisionContentsMetadataType {
+	if o == nil {
+		return RevisionContentsMetadataType("")
+	}
+	return o.Type
+}
+
+func (o *RevisionContentsMetadata) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}
+
+func (o *RevisionContentsMetadata) GetNamespace() string {
+	if o == nil {
+		return ""
+	}
+	return o.Namespace
+}
+
+func (o *RevisionContentsMetadata) GetRevisionDigest() string {
+	if o == nil {
+		return ""
+	}
+	return o.RevisionDigest
+}
+
+func (o *RevisionContentsMetadata) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
+func (o *RevisionContentsMetadata) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
+func (o *RevisionContentsMetadata) GetVersion() string {
+	if o == nil {
+		return ""
+	}
+	return o.Version
+}
+
+func (o *RevisionContentsMetadata) GetHash() string {
+	if o == nil {
+		return ""
+	}
+	return o.Hash
+}
+
+func (o *RevisionContentsMetadata) GetTags() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Tags
+}
+
+func (o *RevisionContentsMetadata) GetOperationIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.OperationIds
+}
+
+func (o *RevisionContentsMetadata) GetNumOverlayActions() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.NumOverlayActions
 }
 
 func (o *RevisionContentsMetadata) GetContainsCodeSamples() bool {
@@ -85,81 +162,4 @@ func (o *RevisionContentsMetadata) GetCreatedAt() time.Time {
 		return time.Time{}
 	}
 	return o.CreatedAt
-}
-
-func (o *RevisionContentsMetadata) GetDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.Description
-}
-
-func (o *RevisionContentsMetadata) GetHash() string {
-	if o == nil {
-		return ""
-	}
-	return o.Hash
-}
-
-func (o *RevisionContentsMetadata) GetNamespace() string {
-	if o == nil {
-		return ""
-	}
-	return o.Namespace
-}
-
-func (o *RevisionContentsMetadata) GetNumOverlayActions() int64 {
-	if o == nil {
-		return 0
-	}
-	return o.NumOverlayActions
-}
-
-func (o *RevisionContentsMetadata) GetOperationIds() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.OperationIds
-}
-
-func (o *RevisionContentsMetadata) GetRevisionDigest() string {
-	if o == nil {
-		return ""
-	}
-	return o.RevisionDigest
-}
-
-func (o *RevisionContentsMetadata) GetTags() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Tags
-}
-
-func (o *RevisionContentsMetadata) GetTitle() string {
-	if o == nil {
-		return ""
-	}
-	return o.Title
-}
-
-func (o *RevisionContentsMetadata) GetType() RevisionContentsMetadataType {
-	if o == nil {
-		return RevisionContentsMetadataType("")
-	}
-	return o.Type
-}
-
-func (o *RevisionContentsMetadata) GetVersion() string {
-	if o == nil {
-		return ""
-	}
-	return o.Version
-}
-
-func (o *RevisionContentsMetadata) GetWorkspaceID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceID
 }

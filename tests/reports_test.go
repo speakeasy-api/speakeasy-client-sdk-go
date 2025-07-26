@@ -4,7 +4,7 @@ package tests
 
 import (
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
@@ -19,11 +19,11 @@ func TestReports_GetChangesReportSignedURL(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getChangesReportSignedUrl")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -44,11 +44,11 @@ func TestReports_GetLintingReportSignedURL(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getLintingReportSignedUrl")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -69,21 +69,21 @@ func TestReports_UploadReport(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("uploadReport")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
-	content, fileErr := os.Open("../.speakeasy/testfiles/example.file")
+	example, fileErr := os.Open("../.speakeasy/testfiles/example.file")
 	require.NoError(t, fileErr)
 
 	res, err := s.Reports.UploadReport(ctx, operations.UploadReportRequestBody{
 		Data: shared.Report{},
 		File: operations.File{
-			Content:  content,
+			Content:  example,
 			FileName: "example.file",
 		},
 	})

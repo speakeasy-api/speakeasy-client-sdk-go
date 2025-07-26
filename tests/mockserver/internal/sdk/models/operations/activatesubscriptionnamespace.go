@@ -7,17 +7,10 @@ import (
 )
 
 type ActivateSubscriptionNamespaceRequest struct {
-	// The namespace name
-	NamespaceName string `pathParam:"style=simple,explode=false,name=namespaceName"`
 	// The existing subscription ID
 	SubscriptionID string `pathParam:"style=simple,explode=false,name=subscriptionID"`
-}
-
-func (o *ActivateSubscriptionNamespaceRequest) GetNamespaceName() string {
-	if o == nil {
-		return ""
-	}
-	return o.NamespaceName
+	// The namespace name
+	NamespaceName string `pathParam:"style=simple,explode=false,name=namespaceName"`
 }
 
 func (o *ActivateSubscriptionNamespaceRequest) GetSubscriptionID() string {
@@ -25,6 +18,13 @@ func (o *ActivateSubscriptionNamespaceRequest) GetSubscriptionID() string {
 		return ""
 	}
 	return o.SubscriptionID
+}
+
+func (o *ActivateSubscriptionNamespaceRequest) GetNamespaceName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NamespaceName
 }
 
 type ActivateSubscriptionNamespaceResponse struct {

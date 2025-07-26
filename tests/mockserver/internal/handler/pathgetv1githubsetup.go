@@ -55,12 +55,12 @@ func testGetGithubSetupStateGetGithubSetupState0(w http.ResponseWriter, req *htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GithubSetupStateResponse{
+	var respBody *components.GithubSetupStateResponse = &components.GithubSetupStateResponse{
+		AppInstalled: false,
 		Actions: components.Actions{
 			GenerationActionConfigured: false,
 			PublishActionConfigured:    false,
 		},
-		AppInstalled: false,
 		Secrets: components.Secrets{
 			APIKeyConfigured:            true,
 			PublishingSecretsConfigured: true,

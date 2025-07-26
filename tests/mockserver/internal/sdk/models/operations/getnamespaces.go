@@ -7,16 +7,9 @@ import (
 )
 
 type GetNamespacesResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GetNamespacesResponse *components.GetNamespacesResponse
-	HTTPMeta              components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetNamespacesResponse) GetGetNamespacesResponse() *components.GetNamespacesResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GetNamespacesResponse
 }
 
 func (o *GetNamespacesResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -24,4 +17,11 @@ func (o *GetNamespacesResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetNamespacesResponse) GetGetNamespacesResponse() *components.GetNamespacesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetNamespacesResponse
 }

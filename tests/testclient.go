@@ -5,12 +5,12 @@ package tests
 import (
 	"crypto/rand"
 	"fmt"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"net/http"
 	"time"
 )
 
-func createTestHTTPClient(testName string) speakeasyclientsdkgo.HTTPClient {
+func createTestHTTPClient(testName string) v3.HTTPClient {
 	return &testClient{
 		client:         &http.Client{Timeout: 60 * time.Second},
 		testName:       testName,
@@ -24,7 +24,7 @@ type testClient struct {
 	testInstanceID string
 }
 
-var _ speakeasyclientsdkgo.HTTPClient = &testClient{}
+var _ v3.HTTPClient = &testClient{}
 
 func (c *testClient) Do(req *http.Request) (*http.Response, error) {
 	req.Header.Set("x-speakeasy-test-name", c.testName)

@@ -4,12 +4,19 @@ package components
 
 // GithubConfigureCodeSamplesResponse - A response to configure GitHub code samples
 type GithubConfigureCodeSamplesResponse struct {
+	// A document referenced by a workflow
+	Source WorkflowDocument `json:"source"`
 	// The URL of the code sample overlay registry
 	CodeSampleOverlayRegistryURL string `json:"codeSampleOverlayRegistryURL"`
 	// The ID of the GitHub action that was dispatched
 	GhActionID *string `json:"ghActionID,omitempty"`
-	// A document referenced by a workflow
-	Source WorkflowDocument `json:"source"`
+}
+
+func (o *GithubConfigureCodeSamplesResponse) GetSource() WorkflowDocument {
+	if o == nil {
+		return WorkflowDocument{}
+	}
+	return o.Source
 }
 
 func (o *GithubConfigureCodeSamplesResponse) GetCodeSampleOverlayRegistryURL() string {
@@ -24,11 +31,4 @@ func (o *GithubConfigureCodeSamplesResponse) GetGhActionID() *string {
 		return nil
 	}
 	return o.GhActionID
-}
-
-func (o *GithubConfigureCodeSamplesResponse) GetSource() WorkflowDocument {
-	if o == nil {
-		return WorkflowDocument{}
-	}
-	return o.Source
 }

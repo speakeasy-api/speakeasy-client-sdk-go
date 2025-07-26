@@ -7,16 +7,16 @@ import (
 )
 
 type LinkGithubAccessRequest struct {
-	GithubOidcToken *string `queryParam:"style=form,explode=true,name=github_oidc_token"`
-	GithubOrg       *string `queryParam:"style=form,explode=true,name=github_org"`
 	InstallationID  *string `queryParam:"style=form,explode=true,name=installation_id"`
+	GithubOrg       *string `queryParam:"style=form,explode=true,name=github_org"`
+	GithubOidcToken *string `queryParam:"style=form,explode=true,name=github_oidc_token"`
 }
 
-func (o *LinkGithubAccessRequest) GetGithubOidcToken() *string {
+func (o *LinkGithubAccessRequest) GetInstallationID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GithubOidcToken
+	return o.InstallationID
 }
 
 func (o *LinkGithubAccessRequest) GetGithubOrg() *string {
@@ -26,11 +26,11 @@ func (o *LinkGithubAccessRequest) GetGithubOrg() *string {
 	return o.GithubOrg
 }
 
-func (o *LinkGithubAccessRequest) GetInstallationID() *string {
+func (o *LinkGithubAccessRequest) GetGithubOidcToken() *string {
 	if o == nil {
 		return nil
 	}
-	return o.InstallationID
+	return o.GithubOidcToken
 }
 
 type LinkGithubAccessResponse struct {
