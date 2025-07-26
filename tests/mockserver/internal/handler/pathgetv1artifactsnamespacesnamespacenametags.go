@@ -55,7 +55,7 @@ func testGetTagsGetTags0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GetTagsResponse{
+	var respBody *components.GetTagsResponse = &components.GetTagsResponse{
 		Items: []components.Tag{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

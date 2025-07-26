@@ -22,11 +22,11 @@ func (o *GetPublishingTokenPublicMetadataRequest) GetTokenID() string {
 
 // GetPublishingTokenPublicMetadataResponseBody - OK
 type GetPublishingTokenPublicMetadataResponseBody struct {
-	OrganizationID *string    `json:"organization_id,omitempty"`
 	TargetID       *string    `json:"target_id,omitempty"`
 	TargetResource *string    `json:"target_resource,omitempty"`
-	ValidUntil     *time.Time `json:"valid_until,omitempty"`
 	WorkspaceID    *string    `json:"workspace_id,omitempty"`
+	OrganizationID *string    `json:"organization_id,omitempty"`
+	ValidUntil     *time.Time `json:"valid_until,omitempty"`
 }
 
 func (g GetPublishingTokenPublicMetadataResponseBody) MarshalJSON() ([]byte, error) {
@@ -38,13 +38,6 @@ func (g *GetPublishingTokenPublicMetadataResponseBody) UnmarshalJSON(data []byte
 		return err
 	}
 	return nil
-}
-
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetOrganizationID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OrganizationID
 }
 
 func (o *GetPublishingTokenPublicMetadataResponseBody) GetTargetID() *string {
@@ -61,18 +54,25 @@ func (o *GetPublishingTokenPublicMetadataResponseBody) GetTargetResource() *stri
 	return o.TargetResource
 }
 
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetValidUntil() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.ValidUntil
-}
-
 func (o *GetPublishingTokenPublicMetadataResponseBody) GetWorkspaceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *GetPublishingTokenPublicMetadataResponseBody) GetOrganizationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *GetPublishingTokenPublicMetadataResponseBody) GetValidUntil() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ValidUntil
 }
 
 type GetPublishingTokenPublicMetadataResponse struct {

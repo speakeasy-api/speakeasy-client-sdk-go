@@ -29,17 +29,17 @@ func (o *CompositeSpecMetadata) GetSubscriptionSettings() RemoteSourceSubscripti
 
 // Namespace - A namespace contains many revisions.
 type Namespace struct {
-	ArchivedAt            *time.Time             `json:"archived_at,omitempty"`
-	CompositeSpecMetadata *CompositeSpecMetadata `json:"composite_spec_metadata,omitempty"`
-	CreatedAt             time.Time              `json:"created_at"`
 	// {organization_slug}/{workspace_slug}/{namespace_name}
-	ID                     string                    `json:"id"`
-	LatestRevisionMetadata *RevisionContentsMetadata `json:"latest_revision_metadata,omitempty"`
+	ID string `json:"id"`
 	// A human-readable name for the namespace.
-	Name string `json:"name"`
-	// Indicates whether the namespace is publicly accessible
-	Public    *bool     `json:"public,omitempty"`
+	Name      string    `json:"name"`
+	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether the namespace is publicly accessible
+	Public                 *bool                     `json:"public,omitempty"`
+	ArchivedAt             *time.Time                `json:"archived_at,omitempty"`
+	LatestRevisionMetadata *RevisionContentsMetadata `json:"latest_revision_metadata,omitempty"`
+	CompositeSpecMetadata  *CompositeSpecMetadata    `json:"composite_spec_metadata,omitempty"`
 }
 
 func (n Namespace) MarshalJSON() ([]byte, error) {
@@ -53,39 +53,11 @@ func (n *Namespace) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Namespace) GetArchivedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.ArchivedAt
-}
-
-func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
-	if o == nil {
-		return nil
-	}
-	return o.CompositeSpecMetadata
-}
-
-func (o *Namespace) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
 func (o *Namespace) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
-	if o == nil {
-		return nil
-	}
-	return o.LatestRevisionMetadata
 }
 
 func (o *Namespace) GetName() string {
@@ -95,11 +67,11 @@ func (o *Namespace) GetName() string {
 	return o.Name
 }
 
-func (o *Namespace) GetPublic() *bool {
+func (o *Namespace) GetCreatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
-	return o.Public
+	return o.CreatedAt
 }
 
 func (o *Namespace) GetUpdatedAt() time.Time {
@@ -107,4 +79,32 @@ func (o *Namespace) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return o.UpdatedAt
+}
+
+func (o *Namespace) GetPublic() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Public
+}
+
+func (o *Namespace) GetArchivedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.LatestRevisionMetadata
+}
+
+func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeSpecMetadata
 }

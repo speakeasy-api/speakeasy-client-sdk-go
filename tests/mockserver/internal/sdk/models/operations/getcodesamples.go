@@ -6,19 +6,19 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type MethodPaths struct {
+type MethodPath struct {
 	Method components.HTTPMethod `queryParam:"name=method"`
 	Path   string                `queryParam:"name=path"`
 }
 
-func (o *MethodPaths) GetMethod() components.HTTPMethod {
+func (o *MethodPath) GetMethod() components.HTTPMethod {
 	if o == nil {
 		return components.HTTPMethod("")
 	}
 	return o.Method
 }
 
-func (o *MethodPaths) GetPath() string {
+func (o *MethodPath) GetPath() string {
 	if o == nil {
 		return ""
 	}
@@ -26,28 +26,21 @@ func (o *MethodPaths) GetPath() string {
 }
 
 type GetCodeSamplesRequest struct {
-	// The languages to retrieve snippets for.
-	Languages []string `queryParam:"style=form,explode=true,name=languages"`
-	// The method paths to retrieve snippets for.
-	MethodPaths []MethodPaths `queryParam:"style=form,explode=true,name=method_paths"`
-	// The operation IDs to retrieve snippets for.
-	OperationIds []string `queryParam:"style=form,explode=true,name=operation_ids"`
 	// The registry URL from which to retrieve the snippets.
 	RegistryURL string `queryParam:"style=form,explode=true,name=registry_url"`
+	// The operation IDs to retrieve snippets for.
+	OperationIds []string `queryParam:"style=form,explode=true,name=operation_ids"`
+	// The method paths to retrieve snippets for.
+	MethodPaths []MethodPath `queryParam:"style=form,explode=true,name=method_paths"`
+	// The languages to retrieve snippets for.
+	Languages []string `queryParam:"style=form,explode=true,name=languages"`
 }
 
-func (o *GetCodeSamplesRequest) GetLanguages() []string {
+func (o *GetCodeSamplesRequest) GetRegistryURL() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.Languages
-}
-
-func (o *GetCodeSamplesRequest) GetMethodPaths() []MethodPaths {
-	if o == nil {
-		return nil
-	}
-	return o.MethodPaths
+	return o.RegistryURL
 }
 
 func (o *GetCodeSamplesRequest) GetOperationIds() []string {
@@ -57,11 +50,18 @@ func (o *GetCodeSamplesRequest) GetOperationIds() []string {
 	return o.OperationIds
 }
 
-func (o *GetCodeSamplesRequest) GetRegistryURL() string {
+func (o *GetCodeSamplesRequest) GetMethodPaths() []MethodPath {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.RegistryURL
+	return o.MethodPaths
+}
+
+func (o *GetCodeSamplesRequest) GetLanguages() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Languages
 }
 
 type GetCodeSamplesResponse struct {

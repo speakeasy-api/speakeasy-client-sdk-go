@@ -4,10 +4,10 @@ package components
 
 // RemoteSource - Remote source configuration
 type RemoteSource struct {
-	Inputs []RemoteDocument `json:"inputs"`
-	// A document hosted in the registry
-	Output   RemoteDocument   `json:"output"`
+	Inputs   []RemoteDocument `json:"inputs"`
 	Overlays []RemoteDocument `json:"overlays,omitempty"`
+	// A document hosted in the registry
+	Output RemoteDocument `json:"output"`
 }
 
 func (o *RemoteSource) GetInputs() []RemoteDocument {
@@ -17,16 +17,16 @@ func (o *RemoteSource) GetInputs() []RemoteDocument {
 	return o.Inputs
 }
 
-func (o *RemoteSource) GetOutput() RemoteDocument {
-	if o == nil {
-		return RemoteDocument{}
-	}
-	return o.Output
-}
-
 func (o *RemoteSource) GetOverlays() []RemoteDocument {
 	if o == nil {
 		return nil
 	}
 	return o.Overlays
+}
+
+func (o *RemoteSource) GetOutput() RemoteDocument {
+	if o == nil {
+		return RemoteDocument{}
+	}
+	return o.Output
 }

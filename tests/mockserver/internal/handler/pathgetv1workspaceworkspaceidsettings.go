@@ -56,11 +56,11 @@ func testGetWorkspaceSettingsGetWorkspaceSettings0(w http.ResponseWriter, req *h
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.WorkspaceSettings{
+	var respBody *components.WorkspaceSettings = &components.WorkspaceSettings{
+		WorkspaceID: "<id>",
+		WebhookURL:  "https://different-amendment.com/",
 		CreatedAt:   types.MustTimeFromString("2024-05-29T22:34:47.605Z"),
 		UpdatedAt:   types.MustTimeFromString("2023-02-24T21:50:01.663Z"),
-		WebhookURL:  "https://different-amendment.com/",
-		WorkspaceID: "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

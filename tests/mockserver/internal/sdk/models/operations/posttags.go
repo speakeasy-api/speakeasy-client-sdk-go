@@ -7,16 +7,9 @@ import (
 )
 
 type PostTagsRequest struct {
+	NamespaceName string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	// A JSON representation of the tags to add
-	AddTags       *components.AddTags `request:"mediaType=application/json"`
-	NamespaceName string              `pathParam:"style=simple,explode=false,name=namespace_name"`
-}
-
-func (o *PostTagsRequest) GetAddTags() *components.AddTags {
-	if o == nil {
-		return nil
-	}
-	return o.AddTags
+	AddTags *components.AddTags `request:"mediaType=application/json"`
 }
 
 func (o *PostTagsRequest) GetNamespaceName() string {
@@ -24,6 +17,13 @@ func (o *PostTagsRequest) GetNamespaceName() string {
 		return ""
 	}
 	return o.NamespaceName
+}
+
+func (o *PostTagsRequest) GetAddTags() *components.AddTags {
+	if o == nil {
+		return nil
+	}
+	return o.AddTags
 }
 
 type PostTagsResponse struct {

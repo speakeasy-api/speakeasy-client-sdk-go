@@ -4,7 +4,7 @@ package tests
 
 import (
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
@@ -26,11 +26,11 @@ func TestSubscriptions_ActivateSubscriptionNamespace(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("activateSubscriptionNamespace")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -48,11 +48,11 @@ func TestSubscriptions_IgnoreSubscriptionNamespace(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("ignoreSubscriptionNamespace")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 

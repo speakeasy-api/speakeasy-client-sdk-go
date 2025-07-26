@@ -85,170 +85,170 @@ func (e *OpenapiDiffBumpType) UnmarshalJSON(data []byte) error {
 }
 
 type CliEvent struct {
-	// Remote commit ID.
-	CommitHead *string `json:"commit_head,omitempty"`
-	// Name of the CI environment.
-	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
-	// Timestamp when the event was created in the database.
-	CreatedAt time.Time `json:"created_at"`
-	// Duration of the event in milliseconds.
-	DurationMs *int64 `json:"duration_ms,omitempty"`
-	// Error message if the event was not successful.
-	Error *string `json:"error,omitempty"`
+	// Unique identifier for each event.
+	ID string `json:"id"`
 	// Unique identifier for each execution of the CLI.
 	ExecutionID string `json:"execution_id"`
-	// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
-	GenerateBumpType *GenerateBumpType `json:"generate_bump_type,omitempty"`
-	// Checksum of the configuration file (post generation)
-	GenerateConfigPostChecksum *string `json:"generate_config_post_checksum,omitempty"`
-	// Rendered configuration file (post generation)
-	GenerateConfigPostRaw *string `json:"generate_config_post_raw,omitempty"`
-	// The version of the customer's SDK that we just generated
-	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
-	// Checksum of the configuration file (prior to generation)
-	GenerateConfigPreChecksum *string `json:"generate_config_pre_checksum,omitempty"`
-	// Rendered configuration file (prior to generation)
-	GenerateConfigPreRaw *string `json:"generate_config_pre_raw,omitempty"`
-	// The version of the customer's SDK before we generated
-	GenerateConfigPreVersion *string `json:"generate_config_pre_version,omitempty"`
-	// Eligible feature set during generation
-	GenerateEligibleFeatures *string `json:"generate_eligible_features,omitempty"`
-	// gen.lock ID (expected to be a uuid).
-	GenerateGenLockID *string `json:"generate_gen_lock_id,omitempty"`
-	// Features post generation
-	GenerateGenLockPostFeatures *string `json:"generate_gen_lock_post_features,omitempty"`
-	// Blob digest of the Previous Generation
-	GenerateGenLockPreBlobDigest *string `json:"generate_gen_lock_pre_blob_digest,omitempty"`
-	// Checksum of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
-	GenerateGenLockPreDocChecksum *string `json:"generate_gen_lock_pre_doc_checksum,omitempty"`
-	// info.Version of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
-	GenerateGenLockPreDocVersion *string `json:"generate_gen_lock_pre_doc_version,omitempty"`
-	// Features prior to generation
-	GenerateGenLockPreFeatures *string `json:"generate_gen_lock_pre_features,omitempty"`
-	// Namespace name of the Previous Generation
-	GenerateGenLockPreNamespaceName *string `json:"generate_gen_lock_pre_namespace_name,omitempty"`
-	// Revision digest of the Previous Generation
-	GenerateGenLockPreRevisionDigest *string `json:"generate_gen_lock_pre_revision_digest,omitempty"`
-	// Artifact version for the Previous Generation
-	GenerateGenLockPreVersion *string `json:"generate_gen_lock_pre_version,omitempty"`
-	// The number of operations ignored in generation.
-	GenerateNumberOfOperationsIgnored *int64 `json:"generate_number_of_operations_ignored,omitempty"`
-	// The number of operations used in generation.
-	GenerateNumberOfOperationsUsed *int64 `json:"generate_number_of_operations_used,omitempty"`
-	// The number of terraform resources used in generation.
-	GenerateNumberOfTerraformResources *int64 `json:"generate_number_of_terraform_resources,omitempty"`
-	// Indicates whether tests were output.
-	GenerateOutputTests *bool `json:"generate_output_tests,omitempty"`
-	// Indicates whether the target was considered published.
-	GeneratePublished *bool `json:"generate_published,omitempty"`
-	// Expected Repo URL, for use in documentation generation.
-	GenerateRepoURL *string `json:"generate_repo_url,omitempty"`
+	// Identifier of the workspace.
+	WorkspaceID string `json:"workspace_id"`
+	// Identifier of the Speakeasy API key.
+	SpeakeasyAPIKeyName string `json:"speakeasy_api_key_name"`
+	// Type of interaction.
+	InteractionType InteractionType `json:"interaction_type"`
+	// Timestamp when the event started, in local time.
+	LocalStartedAt time.Time `json:"local_started_at"`
+	// Timestamp when the event completed, in local time.
+	LocalCompletedAt *time.Time `json:"local_completed_at,omitempty"`
+	// Timestamp when the event was created in the database.
+	CreatedAt time.Time `json:"created_at"`
+	// Version of the Speakeasy CLI.
+	SpeakeasyVersion string `json:"speakeasy_version"`
+	// Indicates whether the event was successful.
+	Success bool `json:"success"`
+	// Full CLI command.
+	RawCommand *string `json:"raw_command,omitempty"`
+	// Duration of the event in milliseconds.
+	DurationMs *int64 `json:"duration_ms,omitempty"`
+	// Name of the CI environment.
+	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
+	// Link to the GitHub action run.
+	GhActionRunLink *string `json:"gh_action_run_link,omitempty"`
+	// Version of the GitHub action.
+	GhActionVersion *string `json:"gh_action_version,omitempty"`
+	// GitHub organization of the action.
+	GhActionOrganization *string `json:"gh_action_organization,omitempty"`
+	// The reference to a created pull request URL.
+	GhPullRequest *string `json:"gh_pull_request,omitempty"`
+	// Whether or not changes were committed from generation in the Github Action.
+	GhChangesCommitted *bool `json:"gh_changes_committed,omitempty"`
+	// GitHub Action ref value.
+	GhActionRef *string `json:"gh_action_ref,omitempty"`
+	// GitHub repository of the action.
+	GhActionRepository *string `json:"gh_action_repository,omitempty"`
+	// Label of the git repository.
+	RepoLabel *string `json:"repo_label,omitempty"`
+	// Remote commit ID.
+	CommitHead *string `json:"commit_head,omitempty"`
+	// Remote hostname.
+	Hostname *string `json:"hostname,omitempty"`
+	// User's name from git configuration. (not GitHub username)
+	GitUserName *string `json:"git_user_name,omitempty"`
+	// User email from git configuration.
+	GitUserEmail *string `json:"git_user_email,omitempty"`
+	// Default owner for git remote.
+	GitRemoteDefaultOwner *string `json:"git_remote_default_owner,omitempty"`
+	// Default repository name for git remote.
+	GitRemoteDefaultRepo *string `json:"git_remote_default_repo,omitempty"`
+	// Current working directory relative to the git root.
+	GitRelativeCwd *string `json:"git_relative_cwd,omitempty"`
 	// The target of the event.
 	GenerateTarget *string `json:"generate_target,omitempty"`
 	// The workflow name of the target.
 	GenerateTargetName *string `json:"generate_target_name,omitempty"`
 	// The version of the target.
 	GenerateTargetVersion *string `json:"generate_target_version,omitempty"`
-	// Version of the generation logic used.
-	GenerateVersion *string `json:"generate_version,omitempty"`
-	// GitHub organization of the action.
-	GhActionOrganization *string `json:"gh_action_organization,omitempty"`
-	// GitHub Action ref value.
-	GhActionRef *string `json:"gh_action_ref,omitempty"`
-	// GitHub repository of the action.
-	GhActionRepository *string `json:"gh_action_repository,omitempty"`
-	// Link to the GitHub action run.
-	GhActionRunLink *string `json:"gh_action_run_link,omitempty"`
-	// Version of the GitHub action.
-	GhActionVersion *string `json:"gh_action_version,omitempty"`
-	// Whether or not changes were committed from generation in the Github Action.
-	GhChangesCommitted *bool `json:"gh_changes_committed,omitempty"`
-	// The reference to a created pull request URL.
-	GhPullRequest *string `json:"gh_pull_request,omitempty"`
-	// Current working directory relative to the git root.
-	GitRelativeCwd *string `json:"git_relative_cwd,omitempty"`
-	// Default owner for git remote.
-	GitRemoteDefaultOwner *string `json:"git_remote_default_owner,omitempty"`
-	// Default repository name for git remote.
-	GitRemoteDefaultRepo *string `json:"git_remote_default_repo,omitempty"`
-	// User email from git configuration.
-	GitUserEmail *string `json:"git_user_email,omitempty"`
-	// User's name from git configuration. (not GitHub username)
-	GitUserName *string `json:"git_user_name,omitempty"`
-	// Remote hostname.
-	Hostname *string `json:"hostname,omitempty"`
-	// Unique identifier for each event.
-	ID string `json:"id"`
-	// Type of interaction.
-	InteractionType InteractionType `json:"interaction_type"`
-	// The last step of the event.
-	LastStep *string `json:"last_step,omitempty"`
-	// The checksum of the lint report.
-	LintReportDigest *string `json:"lint_report_digest,omitempty"`
-	// The number of errors in the lint report.
-	LintReportErrorCount *int64 `json:"lint_report_error_count,omitempty"`
-	// The number of info messages in the lint report.
-	LintReportInfoCount *int64 `json:"lint_report_info_count,omitempty"`
-	// The number of warnings in the lint report.
-	LintReportWarningCount *int64 `json:"lint_report_warning_count,omitempty"`
-	// Timestamp when the event completed, in local time.
-	LocalCompletedAt *time.Time `json:"local_completed_at,omitempty"`
-	// Timestamp when the event started, in local time.
-	LocalStartedAt time.Time `json:"local_started_at"`
+	// gen.lock ID (expected to be a uuid).
+	GenerateGenLockID *string `json:"generate_gen_lock_id,omitempty"`
 	// Checksum of the currently Rendered OpenAPI document.
 	ManagementDocChecksum *string `json:"management_doc_checksum,omitempty"`
 	// Version taken from info.version field of the Rendered OpenAPI document.
 	ManagementDocVersion *string `json:"management_doc_version,omitempty"`
-	// Mermaid diagram
-	MermaidDiagram *string `json:"mermaid_diagram,omitempty"`
-	// The blob digest of the base source.
-	OpenapiDiffBaseSourceBlobDigest *string `json:"openapi_diff_base_source_blob_digest,omitempty"`
-	// The namespace name of the base source.
-	OpenapiDiffBaseSourceNamespaceName *string `json:"openapi_diff_base_source_namespace_name,omitempty"`
-	// The revision digest of the base source.
-	OpenapiDiffBaseSourceRevisionDigest *string `json:"openapi_diff_base_source_revision_digest,omitempty"`
-	// The number of breaking changes in the openapi diff report.
-	OpenapiDiffBreakingChangesCount *int64 `json:"openapi_diff_breaking_changes_count,omitempty"`
-	// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
-	OpenapiDiffBumpType *OpenapiDiffBumpType `json:"openapi_diff_bump_type,omitempty"`
-	// The checksum of the openapi diff report.
-	OpenapiDiffReportDigest *string `json:"openapi_diff_report_digest,omitempty"`
-	// Name of the published package.
-	PublishPackageName *string `json:"publish_package_name,omitempty"`
-	// Name of the registry where the package was published.
-	PublishPackageRegistryName *string `json:"publish_package_registry_name,omitempty"`
+	// Version of the generation logic used.
+	GenerateVersion *string `json:"generate_version,omitempty"`
+	// Indicates whether tests were output.
+	GenerateOutputTests *bool `json:"generate_output_tests,omitempty"`
+	// Rendered configuration file (prior to generation)
+	GenerateConfigPreRaw *string `json:"generate_config_pre_raw,omitempty"`
+	// Rendered configuration file (post generation)
+	GenerateConfigPostRaw *string `json:"generate_config_post_raw,omitempty"`
+	// The version of the customer's SDK before we generated
+	GenerateConfigPreVersion *string `json:"generate_config_pre_version,omitempty"`
+	// The version of the customer's SDK that we just generated
+	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
+	// Checksum of the configuration file (prior to generation)
+	GenerateConfigPreChecksum *string `json:"generate_config_pre_checksum,omitempty"`
+	// Checksum of the configuration file (post generation)
+	GenerateConfigPostChecksum *string `json:"generate_config_post_checksum,omitempty"`
+	// Eligible feature set during generation
+	GenerateEligibleFeatures *string `json:"generate_eligible_features,omitempty"`
+	// Features prior to generation
+	GenerateGenLockPreFeatures *string `json:"generate_gen_lock_pre_features,omitempty"`
+	// Features post generation
+	GenerateGenLockPostFeatures *string `json:"generate_gen_lock_post_features,omitempty"`
+	// info.Version of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
+	GenerateGenLockPreDocVersion *string `json:"generate_gen_lock_pre_doc_version,omitempty"`
+	// Checksum of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
+	GenerateGenLockPreDocChecksum *string `json:"generate_gen_lock_pre_doc_checksum,omitempty"`
+	// Artifact version for the Previous Generation
+	GenerateGenLockPreVersion *string `json:"generate_gen_lock_pre_version,omitempty"`
+	// Revision digest of the Previous Generation
+	GenerateGenLockPreRevisionDigest *string `json:"generate_gen_lock_pre_revision_digest,omitempty"`
+	// Blob digest of the Previous Generation
+	GenerateGenLockPreBlobDigest *string `json:"generate_gen_lock_pre_blob_digest,omitempty"`
+	// Namespace name of the Previous Generation
+	GenerateGenLockPreNamespaceName *string `json:"generate_gen_lock_pre_namespace_name,omitempty"`
+	// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
+	GenerateBumpType *GenerateBumpType `json:"generate_bump_type,omitempty"`
+	// The number of operations ignored in generation.
+	GenerateNumberOfOperationsIgnored *int64 `json:"generate_number_of_operations_ignored,omitempty"`
+	// The number of operations used in generation.
+	GenerateNumberOfOperationsUsed *int64 `json:"generate_number_of_operations_used,omitempty"`
+	// The number of terraform resources used in generation.
+	GenerateNumberOfTerraformResources *int64 `json:"generate_number_of_terraform_resources,omitempty"`
+	// Indicates whether the target was considered published.
+	GeneratePublished *bool `json:"generate_published,omitempty"`
+	// Expected Repo URL, for use in documentation generation.
+	GenerateRepoURL *string `json:"generate_repo_url,omitempty"`
 	// URL of the published package.
 	PublishPackageURL *string `json:"publish_package_url,omitempty"`
+	// Name of the published package.
+	PublishPackageName *string `json:"publish_package_name,omitempty"`
 	// Version of the published package.
 	PublishPackageVersion *string `json:"publish_package_version,omitempty"`
-	// Full CLI command.
-	RawCommand *string `json:"raw_command,omitempty"`
-	// Label of the git repository.
-	RepoLabel *string `json:"repo_label,omitempty"`
+	// Name of the registry where the package was published.
+	PublishPackageRegistryName *string `json:"publish_package_registry_name,omitempty"`
+	// The revision digest of the source.
+	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
 	// The blob digest of the source.
 	SourceBlobDigest *string `json:"source_blob_digest,omitempty"`
 	// The namespace name of the source.
 	SourceNamespaceName *string `json:"source_namespace_name,omitempty"`
-	// The revision digest of the source.
-	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
-	// Identifier of the Speakeasy API key.
-	SpeakeasyAPIKeyName string `json:"speakeasy_api_key_name"`
-	// Version of the Speakeasy CLI.
-	SpeakeasyVersion string `json:"speakeasy_version"`
-	// Indicates whether the event was successful.
-	Success bool `json:"success"`
+	// The checksum of the lint report.
+	LintReportDigest *string `json:"lint_report_digest,omitempty"`
+	// The number of errors in the lint report.
+	LintReportErrorCount *int64 `json:"lint_report_error_count,omitempty"`
+	// The number of warnings in the lint report.
+	LintReportWarningCount *int64 `json:"lint_report_warning_count,omitempty"`
+	// The number of info messages in the lint report.
+	LintReportInfoCount *int64 `json:"lint_report_info_count,omitempty"`
+	// The checksum of the openapi diff report.
+	OpenapiDiffReportDigest *string `json:"openapi_diff_report_digest,omitempty"`
+	// The revision digest of the base source.
+	OpenapiDiffBaseSourceRevisionDigest *string `json:"openapi_diff_base_source_revision_digest,omitempty"`
+	// The blob digest of the base source.
+	OpenapiDiffBaseSourceBlobDigest *string `json:"openapi_diff_base_source_blob_digest,omitempty"`
+	// The namespace name of the base source.
+	OpenapiDiffBaseSourceNamespaceName *string `json:"openapi_diff_base_source_namespace_name,omitempty"`
+	// The number of breaking changes in the openapi diff report.
+	OpenapiDiffBreakingChangesCount *int64 `json:"openapi_diff_breaking_changes_count,omitempty"`
+	// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+	OpenapiDiffBumpType *OpenapiDiffBumpType `json:"openapi_diff_bump_type,omitempty"`
+	// Error message if the event was not successful.
+	Error *string `json:"error,omitempty"`
+	// Mermaid diagram
+	MermaidDiagram *string `json:"mermaid_diagram,omitempty"`
+	// The last step of the event.
+	LastStep *string `json:"last_step,omitempty"`
 	// The raw test report xml
 	TestReportRaw *string `json:"test_report_raw,omitempty"`
-	// Workflow lock file (post execution)
-	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
-	// Workflow lock file (prior to execution)
-	WorkflowLockPreRaw *string `json:"workflow_lock_pre_raw,omitempty"`
-	// Workflow file (post execution)
-	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
 	// Workflow file (prior to execution)
 	WorkflowPreRaw *string `json:"workflow_pre_raw,omitempty"`
-	// Identifier of the workspace.
-	WorkspaceID string `json:"workspace_id"`
+	// Workflow file (post execution)
+	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
+	// Workflow lock file (prior to execution)
+	WorkflowLockPreRaw *string `json:"workflow_lock_pre_raw,omitempty"`
+	// Workflow lock file (post execution)
+	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
 }
 
 func (c CliEvent) MarshalJSON() ([]byte, error) {
@@ -262,39 +262,11 @@ func (c *CliEvent) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CliEvent) GetCommitHead() *string {
+func (o *CliEvent) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.CommitHead
-}
-
-func (o *CliEvent) GetContinuousIntegrationEnvironment() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ContinuousIntegrationEnvironment
-}
-
-func (o *CliEvent) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *CliEvent) GetDurationMs() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.DurationMs
-}
-
-func (o *CliEvent) GetError() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Error
+	return o.ID
 }
 
 func (o *CliEvent) GetExecutionID() string {
@@ -304,165 +276,186 @@ func (o *CliEvent) GetExecutionID() string {
 	return o.ExecutionID
 }
 
-func (o *CliEvent) GetGenerateBumpType() *GenerateBumpType {
+func (o *CliEvent) GetWorkspaceID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.GenerateBumpType
+	return o.WorkspaceID
 }
 
-func (o *CliEvent) GetGenerateConfigPostChecksum() *string {
+func (o *CliEvent) GetSpeakeasyAPIKeyName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.GenerateConfigPostChecksum
+	return o.SpeakeasyAPIKeyName
 }
 
-func (o *CliEvent) GetGenerateConfigPostRaw() *string {
+func (o *CliEvent) GetInteractionType() InteractionType {
 	if o == nil {
-		return nil
+		return InteractionType("")
 	}
-	return o.GenerateConfigPostRaw
+	return o.InteractionType
 }
 
-func (o *CliEvent) GetGenerateConfigPostVersion() *string {
+func (o *CliEvent) GetLocalStartedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
-	return o.GenerateConfigPostVersion
+	return o.LocalStartedAt
 }
 
-func (o *CliEvent) GetGenerateConfigPreChecksum() *string {
+func (o *CliEvent) GetLocalCompletedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateConfigPreChecksum
+	return o.LocalCompletedAt
 }
 
-func (o *CliEvent) GetGenerateConfigPreRaw() *string {
+func (o *CliEvent) GetCreatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
-	return o.GenerateConfigPreRaw
+	return o.CreatedAt
 }
 
-func (o *CliEvent) GetGenerateConfigPreVersion() *string {
+func (o *CliEvent) GetSpeakeasyVersion() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.GenerateConfigPreVersion
+	return o.SpeakeasyVersion
 }
 
-func (o *CliEvent) GetGenerateEligibleFeatures() *string {
+func (o *CliEvent) GetSuccess() bool {
 	if o == nil {
-		return nil
+		return false
 	}
-	return o.GenerateEligibleFeatures
+	return o.Success
 }
 
-func (o *CliEvent) GetGenerateGenLockID() *string {
+func (o *CliEvent) GetRawCommand() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockID
+	return o.RawCommand
 }
 
-func (o *CliEvent) GetGenerateGenLockPostFeatures() *string {
+func (o *CliEvent) GetDurationMs() *int64 {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPostFeatures
+	return o.DurationMs
 }
 
-func (o *CliEvent) GetGenerateGenLockPreBlobDigest() *string {
+func (o *CliEvent) GetContinuousIntegrationEnvironment() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreBlobDigest
+	return o.ContinuousIntegrationEnvironment
 }
 
-func (o *CliEvent) GetGenerateGenLockPreDocChecksum() *string {
+func (o *CliEvent) GetGhActionRunLink() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreDocChecksum
+	return o.GhActionRunLink
 }
 
-func (o *CliEvent) GetGenerateGenLockPreDocVersion() *string {
+func (o *CliEvent) GetGhActionVersion() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreDocVersion
+	return o.GhActionVersion
 }
 
-func (o *CliEvent) GetGenerateGenLockPreFeatures() *string {
+func (o *CliEvent) GetGhActionOrganization() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreFeatures
+	return o.GhActionOrganization
 }
 
-func (o *CliEvent) GetGenerateGenLockPreNamespaceName() *string {
+func (o *CliEvent) GetGhPullRequest() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreNamespaceName
+	return o.GhPullRequest
 }
 
-func (o *CliEvent) GetGenerateGenLockPreRevisionDigest() *string {
+func (o *CliEvent) GetGhChangesCommitted() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreRevisionDigest
+	return o.GhChangesCommitted
 }
 
-func (o *CliEvent) GetGenerateGenLockPreVersion() *string {
+func (o *CliEvent) GetGhActionRef() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreVersion
+	return o.GhActionRef
 }
 
-func (o *CliEvent) GetGenerateNumberOfOperationsIgnored() *int64 {
+func (o *CliEvent) GetGhActionRepository() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateNumberOfOperationsIgnored
+	return o.GhActionRepository
 }
 
-func (o *CliEvent) GetGenerateNumberOfOperationsUsed() *int64 {
+func (o *CliEvent) GetRepoLabel() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateNumberOfOperationsUsed
+	return o.RepoLabel
 }
 
-func (o *CliEvent) GetGenerateNumberOfTerraformResources() *int64 {
+func (o *CliEvent) GetCommitHead() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateNumberOfTerraformResources
+	return o.CommitHead
 }
 
-func (o *CliEvent) GetGenerateOutputTests() *bool {
+func (o *CliEvent) GetHostname() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateOutputTests
+	return o.Hostname
 }
 
-func (o *CliEvent) GetGeneratePublished() *bool {
+func (o *CliEvent) GetGitUserName() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GeneratePublished
+	return o.GitUserName
 }
 
-func (o *CliEvent) GetGenerateRepoURL() *string {
+func (o *CliEvent) GetGitUserEmail() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateRepoURL
+	return o.GitUserEmail
+}
+
+func (o *CliEvent) GetGitRemoteDefaultOwner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitRemoteDefaultOwner
+}
+
+func (o *CliEvent) GetGitRemoteDefaultRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitRemoteDefaultRepo
+}
+
+func (o *CliEvent) GetGitRelativeCwd() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitRelativeCwd
 }
 
 func (o *CliEvent) GetGenerateTarget() *string {
@@ -486,165 +479,11 @@ func (o *CliEvent) GetGenerateTargetVersion() *string {
 	return o.GenerateTargetVersion
 }
 
-func (o *CliEvent) GetGenerateVersion() *string {
+func (o *CliEvent) GetGenerateGenLockID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateVersion
-}
-
-func (o *CliEvent) GetGhActionOrganization() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionOrganization
-}
-
-func (o *CliEvent) GetGhActionRef() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionRef
-}
-
-func (o *CliEvent) GetGhActionRepository() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionRepository
-}
-
-func (o *CliEvent) GetGhActionRunLink() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionRunLink
-}
-
-func (o *CliEvent) GetGhActionVersion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionVersion
-}
-
-func (o *CliEvent) GetGhChangesCommitted() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.GhChangesCommitted
-}
-
-func (o *CliEvent) GetGhPullRequest() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhPullRequest
-}
-
-func (o *CliEvent) GetGitRelativeCwd() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitRelativeCwd
-}
-
-func (o *CliEvent) GetGitRemoteDefaultOwner() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitRemoteDefaultOwner
-}
-
-func (o *CliEvent) GetGitRemoteDefaultRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitRemoteDefaultRepo
-}
-
-func (o *CliEvent) GetGitUserEmail() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitUserEmail
-}
-
-func (o *CliEvent) GetGitUserName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitUserName
-}
-
-func (o *CliEvent) GetHostname() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Hostname
-}
-
-func (o *CliEvent) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *CliEvent) GetInteractionType() InteractionType {
-	if o == nil {
-		return InteractionType("")
-	}
-	return o.InteractionType
-}
-
-func (o *CliEvent) GetLastStep() *string {
-	if o == nil {
-		return nil
-	}
-	return o.LastStep
-}
-
-func (o *CliEvent) GetLintReportDigest() *string {
-	if o == nil {
-		return nil
-	}
-	return o.LintReportDigest
-}
-
-func (o *CliEvent) GetLintReportErrorCount() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.LintReportErrorCount
-}
-
-func (o *CliEvent) GetLintReportInfoCount() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.LintReportInfoCount
-}
-
-func (o *CliEvent) GetLintReportWarningCount() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.LintReportWarningCount
-}
-
-func (o *CliEvent) GetLocalCompletedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.LocalCompletedAt
-}
-
-func (o *CliEvent) GetLocalStartedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.LocalStartedAt
+	return o.GenerateGenLockID
 }
 
 func (o *CliEvent) GetManagementDocChecksum() *string {
@@ -661,67 +500,165 @@ func (o *CliEvent) GetManagementDocVersion() *string {
 	return o.ManagementDocVersion
 }
 
-func (o *CliEvent) GetMermaidDiagram() *string {
+func (o *CliEvent) GetGenerateVersion() *string {
 	if o == nil {
 		return nil
 	}
-	return o.MermaidDiagram
+	return o.GenerateVersion
 }
 
-func (o *CliEvent) GetOpenapiDiffBaseSourceBlobDigest() *string {
+func (o *CliEvent) GetGenerateOutputTests() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.OpenapiDiffBaseSourceBlobDigest
+	return o.GenerateOutputTests
 }
 
-func (o *CliEvent) GetOpenapiDiffBaseSourceNamespaceName() *string {
+func (o *CliEvent) GetGenerateConfigPreRaw() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OpenapiDiffBaseSourceNamespaceName
+	return o.GenerateConfigPreRaw
 }
 
-func (o *CliEvent) GetOpenapiDiffBaseSourceRevisionDigest() *string {
+func (o *CliEvent) GetGenerateConfigPostRaw() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OpenapiDiffBaseSourceRevisionDigest
+	return o.GenerateConfigPostRaw
 }
 
-func (o *CliEvent) GetOpenapiDiffBreakingChangesCount() *int64 {
+func (o *CliEvent) GetGenerateConfigPreVersion() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OpenapiDiffBreakingChangesCount
+	return o.GenerateConfigPreVersion
 }
 
-func (o *CliEvent) GetOpenapiDiffBumpType() *OpenapiDiffBumpType {
+func (o *CliEvent) GetGenerateConfigPostVersion() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OpenapiDiffBumpType
+	return o.GenerateConfigPostVersion
 }
 
-func (o *CliEvent) GetOpenapiDiffReportDigest() *string {
+func (o *CliEvent) GetGenerateConfigPreChecksum() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OpenapiDiffReportDigest
+	return o.GenerateConfigPreChecksum
 }
 
-func (o *CliEvent) GetPublishPackageName() *string {
+func (o *CliEvent) GetGenerateConfigPostChecksum() *string {
 	if o == nil {
 		return nil
 	}
-	return o.PublishPackageName
+	return o.GenerateConfigPostChecksum
 }
 
-func (o *CliEvent) GetPublishPackageRegistryName() *string {
+func (o *CliEvent) GetGenerateEligibleFeatures() *string {
 	if o == nil {
 		return nil
 	}
-	return o.PublishPackageRegistryName
+	return o.GenerateEligibleFeatures
+}
+
+func (o *CliEvent) GetGenerateGenLockPreFeatures() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreFeatures
+}
+
+func (o *CliEvent) GetGenerateGenLockPostFeatures() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPostFeatures
+}
+
+func (o *CliEvent) GetGenerateGenLockPreDocVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreDocVersion
+}
+
+func (o *CliEvent) GetGenerateGenLockPreDocChecksum() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreDocChecksum
+}
+
+func (o *CliEvent) GetGenerateGenLockPreVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreVersion
+}
+
+func (o *CliEvent) GetGenerateGenLockPreRevisionDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreRevisionDigest
+}
+
+func (o *CliEvent) GetGenerateGenLockPreBlobDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreBlobDigest
+}
+
+func (o *CliEvent) GetGenerateGenLockPreNamespaceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockPreNamespaceName
+}
+
+func (o *CliEvent) GetGenerateBumpType() *GenerateBumpType {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateBumpType
+}
+
+func (o *CliEvent) GetGenerateNumberOfOperationsIgnored() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateNumberOfOperationsIgnored
+}
+
+func (o *CliEvent) GetGenerateNumberOfOperationsUsed() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateNumberOfOperationsUsed
+}
+
+func (o *CliEvent) GetGenerateNumberOfTerraformResources() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateNumberOfTerraformResources
+}
+
+func (o *CliEvent) GetGeneratePublished() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GeneratePublished
+}
+
+func (o *CliEvent) GetGenerateRepoURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateRepoURL
 }
 
 func (o *CliEvent) GetPublishPackageURL() *string {
@@ -731,6 +668,13 @@ func (o *CliEvent) GetPublishPackageURL() *string {
 	return o.PublishPackageURL
 }
 
+func (o *CliEvent) GetPublishPackageName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageName
+}
+
 func (o *CliEvent) GetPublishPackageVersion() *string {
 	if o == nil {
 		return nil
@@ -738,18 +682,18 @@ func (o *CliEvent) GetPublishPackageVersion() *string {
 	return o.PublishPackageVersion
 }
 
-func (o *CliEvent) GetRawCommand() *string {
+func (o *CliEvent) GetPublishPackageRegistryName() *string {
 	if o == nil {
 		return nil
 	}
-	return o.RawCommand
+	return o.PublishPackageRegistryName
 }
 
-func (o *CliEvent) GetRepoLabel() *string {
+func (o *CliEvent) GetSourceRevisionDigest() *string {
 	if o == nil {
 		return nil
 	}
-	return o.RepoLabel
+	return o.SourceRevisionDigest
 }
 
 func (o *CliEvent) GetSourceBlobDigest() *string {
@@ -766,32 +710,95 @@ func (o *CliEvent) GetSourceNamespaceName() *string {
 	return o.SourceNamespaceName
 }
 
-func (o *CliEvent) GetSourceRevisionDigest() *string {
+func (o *CliEvent) GetLintReportDigest() *string {
 	if o == nil {
 		return nil
 	}
-	return o.SourceRevisionDigest
+	return o.LintReportDigest
 }
 
-func (o *CliEvent) GetSpeakeasyAPIKeyName() string {
+func (o *CliEvent) GetLintReportErrorCount() *int64 {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.SpeakeasyAPIKeyName
+	return o.LintReportErrorCount
 }
 
-func (o *CliEvent) GetSpeakeasyVersion() string {
+func (o *CliEvent) GetLintReportWarningCount() *int64 {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.SpeakeasyVersion
+	return o.LintReportWarningCount
 }
 
-func (o *CliEvent) GetSuccess() bool {
+func (o *CliEvent) GetLintReportInfoCount() *int64 {
 	if o == nil {
-		return false
+		return nil
 	}
-	return o.Success
+	return o.LintReportInfoCount
+}
+
+func (o *CliEvent) GetOpenapiDiffReportDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffReportDigest
+}
+
+func (o *CliEvent) GetOpenapiDiffBaseSourceRevisionDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBaseSourceRevisionDigest
+}
+
+func (o *CliEvent) GetOpenapiDiffBaseSourceBlobDigest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBaseSourceBlobDigest
+}
+
+func (o *CliEvent) GetOpenapiDiffBaseSourceNamespaceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBaseSourceNamespaceName
+}
+
+func (o *CliEvent) GetOpenapiDiffBreakingChangesCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBreakingChangesCount
+}
+
+func (o *CliEvent) GetOpenapiDiffBumpType() *OpenapiDiffBumpType {
+	if o == nil {
+		return nil
+	}
+	return o.OpenapiDiffBumpType
+}
+
+func (o *CliEvent) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *CliEvent) GetMermaidDiagram() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MermaidDiagram
+}
+
+func (o *CliEvent) GetLastStep() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastStep
 }
 
 func (o *CliEvent) GetTestReportRaw() *string {
@@ -801,18 +808,11 @@ func (o *CliEvent) GetTestReportRaw() *string {
 	return o.TestReportRaw
 }
 
-func (o *CliEvent) GetWorkflowLockPostRaw() *string {
+func (o *CliEvent) GetWorkflowPreRaw() *string {
 	if o == nil {
 		return nil
 	}
-	return o.WorkflowLockPostRaw
-}
-
-func (o *CliEvent) GetWorkflowLockPreRaw() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkflowLockPreRaw
+	return o.WorkflowPreRaw
 }
 
 func (o *CliEvent) GetWorkflowPostRaw() *string {
@@ -822,16 +822,16 @@ func (o *CliEvent) GetWorkflowPostRaw() *string {
 	return o.WorkflowPostRaw
 }
 
-func (o *CliEvent) GetWorkflowPreRaw() *string {
+func (o *CliEvent) GetWorkflowLockPreRaw() *string {
 	if o == nil {
 		return nil
 	}
-	return o.WorkflowPreRaw
+	return o.WorkflowLockPreRaw
 }
 
-func (o *CliEvent) GetWorkspaceID() string {
+func (o *CliEvent) GetWorkflowLockPostRaw() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.WorkspaceID
+	return o.WorkflowLockPostRaw
 }

@@ -19,16 +19,9 @@ func (o *SetVisibilityRequestBody) GetPublic() bool {
 }
 
 type SetVisibilityRequest struct {
+	NamespaceName string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	// Namespace visibility
-	RequestBody   *SetVisibilityRequestBody `request:"mediaType=application/json"`
-	NamespaceName string                    `pathParam:"style=simple,explode=false,name=namespace_name"`
-}
-
-func (o *SetVisibilityRequest) GetRequestBody() *SetVisibilityRequestBody {
-	if o == nil {
-		return nil
-	}
-	return o.RequestBody
+	RequestBody *SetVisibilityRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *SetVisibilityRequest) GetNamespaceName() string {
@@ -36,6 +29,13 @@ func (o *SetVisibilityRequest) GetNamespaceName() string {
 		return ""
 	}
 	return o.NamespaceName
+}
+
+func (o *SetVisibilityRequest) GetRequestBody() *SetVisibilityRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
 }
 
 type SetVisibilityResponse struct {

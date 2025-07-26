@@ -56,7 +56,9 @@ func testGetManifestGetManifest0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.Manifest{
+	var respBody *components.Manifest = &components.Manifest{
+		SchemaVersion: types.Int64(2),
+		MediaType:     types.String("application/vnd.docker.distribution.manifest.v2+json"),
 		Layers: []components.V2Descriptor{
 			components.V2Descriptor{
 				Digest:    types.String("sha256:5d20c808ce198565ff70b3ed23a991dd49afac45dece63474b27ce6ed036adc6"),
@@ -64,8 +66,6 @@ func testGetManifestGetManifest0(w http.ResponseWriter, req *http.Request) {
 				Size:      types.Int64(2107098),
 			},
 		},
-		MediaType:     types.String("application/vnd.docker.distribution.manifest.v2+json"),
-		SchemaVersion: types.Int64(2),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

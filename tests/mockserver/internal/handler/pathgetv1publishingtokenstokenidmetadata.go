@@ -55,7 +55,7 @@ func testGetPublishingTokenPublicMetadataGetPublishingTokenPublicMetadata0(w htt
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetPublishingTokenPublicMetadataResponseBody{}
+	var respBody *operations.GetPublishingTokenPublicMetadataResponseBody = &operations.GetPublishingTokenPublicMetadataResponseBody{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

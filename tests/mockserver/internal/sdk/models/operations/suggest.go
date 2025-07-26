@@ -8,16 +8,9 @@ import (
 )
 
 type SuggestRequest struct {
+	XSessionID string `header:"style=simple,explode=false,name=x-session-id"`
 	// The OAS summary and diagnostics to use for the suggestion.
 	SuggestRequestBody components.SuggestRequestBody `request:"mediaType=application/json"`
-	XSessionID         string                        `header:"style=simple,explode=false,name=x-session-id"`
-}
-
-func (o *SuggestRequest) GetSuggestRequestBody() components.SuggestRequestBody {
-	if o == nil {
-		return components.SuggestRequestBody{}
-	}
-	return o.SuggestRequestBody
 }
 
 func (o *SuggestRequest) GetXSessionID() string {
@@ -25,6 +18,13 @@ func (o *SuggestRequest) GetXSessionID() string {
 		return ""
 	}
 	return o.XSessionID
+}
+
+func (o *SuggestRequest) GetSuggestRequestBody() components.SuggestRequestBody {
+	if o == nil {
+		return components.SuggestRequestBody{}
+	}
+	return o.SuggestRequestBody
 }
 
 type SuggestResponse struct {

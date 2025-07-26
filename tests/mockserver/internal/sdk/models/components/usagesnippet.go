@@ -3,30 +3,23 @@
 package components
 
 type UsageSnippet struct {
-	// The code snippet
-	Code string `json:"code"`
-	// The language of the snippet
-	Language string `json:"language"`
+	// The path of the operation
+	Path string `json:"path"`
 	// The HTTP method of the operation
 	Method any `json:"method"`
 	// The operation ID for the snippet
 	OperationID string `json:"operationId"`
-	// The path of the operation
-	Path string `json:"path"`
+	// The language of the snippet
+	Language string `json:"language"`
+	// The code snippet
+	Code string `json:"code"`
 }
 
-func (o *UsageSnippet) GetCode() string {
+func (o *UsageSnippet) GetPath() string {
 	if o == nil {
 		return ""
 	}
-	return o.Code
-}
-
-func (o *UsageSnippet) GetLanguage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Language
+	return o.Path
 }
 
 func (o *UsageSnippet) GetMethod() any {
@@ -43,9 +36,16 @@ func (o *UsageSnippet) GetOperationID() string {
 	return o.OperationID
 }
 
-func (o *UsageSnippet) GetPath() string {
+func (o *UsageSnippet) GetLanguage() string {
 	if o == nil {
 		return ""
 	}
-	return o.Path
+	return o.Language
+}
+
+func (o *UsageSnippet) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
 }

@@ -22,7 +22,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -31,9 +31,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -78,7 +78,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -87,9 +87,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -134,7 +134,7 @@ package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"os"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -144,22 +144,21 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.String("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Reports.UploadReport(ctx, operations.UploadReportRequestBody{
         Data: shared.Report{},
         File: operations.File{
-            Content: content,
+            Content: example,
             FileName: "example.file",
         },
     })

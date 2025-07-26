@@ -18,17 +18,10 @@ func (o *UpdateWorkspaceSettingsGlobals) GetWorkspaceID() *string {
 }
 
 type UpdateWorkspaceSettingsRequest struct {
-	// The workspace settings to update.
-	WorkspaceSettings components.WorkspaceSettings `request:"mediaType=application/json"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
-}
-
-func (o *UpdateWorkspaceSettingsRequest) GetWorkspaceSettings() components.WorkspaceSettings {
-	if o == nil {
-		return components.WorkspaceSettings{}
-	}
-	return o.WorkspaceSettings
+	// The workspace settings to update.
+	WorkspaceSettings components.WorkspaceSettings `request:"mediaType=application/json"`
 }
 
 func (o *UpdateWorkspaceSettingsRequest) GetWorkspaceID() *string {
@@ -36,6 +29,13 @@ func (o *UpdateWorkspaceSettingsRequest) GetWorkspaceID() *string {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *UpdateWorkspaceSettingsRequest) GetWorkspaceSettings() components.WorkspaceSettings {
+	if o == nil {
+		return components.WorkspaceSettings{}
+	}
+	return o.WorkspaceSettings
 }
 
 type UpdateWorkspaceSettingsResponse struct {

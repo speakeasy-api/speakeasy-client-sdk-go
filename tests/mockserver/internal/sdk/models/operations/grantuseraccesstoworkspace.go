@@ -18,17 +18,10 @@ func (o *GrantUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
 }
 
 type GrantUserAccessToWorkspaceRequest struct {
-	// Email of the user to grant access to.
-	Email string `pathParam:"style=simple,explode=false,name=email"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
-}
-
-func (o *GrantUserAccessToWorkspaceRequest) GetEmail() string {
-	if o == nil {
-		return ""
-	}
-	return o.Email
+	// Email of the user to grant access to.
+	Email string `pathParam:"style=simple,explode=false,name=email"`
 }
 
 func (o *GrantUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
@@ -36,6 +29,13 @@ func (o *GrantUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *GrantUserAccessToWorkspaceRequest) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
 }
 
 type GrantUserAccessToWorkspaceResponse struct {

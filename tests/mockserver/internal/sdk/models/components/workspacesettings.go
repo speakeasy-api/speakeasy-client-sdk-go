@@ -8,10 +8,10 @@ import (
 )
 
 type WorkspaceSettings struct {
+	WorkspaceID string    `json:"workspace_id"`
+	WebhookURL  string    `json:"webhook_url"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
-	WebhookURL  string    `json:"webhook_url"`
-	WorkspaceID string    `json:"workspace_id"`
 }
 
 func (w WorkspaceSettings) MarshalJSON() ([]byte, error) {
@@ -23,6 +23,20 @@ func (w *WorkspaceSettings) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *WorkspaceSettings) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}
+
+func (o *WorkspaceSettings) GetWebhookURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookURL
 }
 
 func (o *WorkspaceSettings) GetCreatedAt() time.Time {
@@ -37,18 +51,4 @@ func (o *WorkspaceSettings) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return o.UpdatedAt
-}
-
-func (o *WorkspaceSettings) GetWebhookURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.WebhookURL
-}
-
-func (o *WorkspaceSettings) GetWorkspaceID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceID
 }

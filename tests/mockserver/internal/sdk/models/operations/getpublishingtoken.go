@@ -9,7 +9,7 @@ import (
 type GetPublishingTokenResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
-	Classes []components.PublishingToken
+	PublishingTokens []components.PublishingToken
 }
 
 func (o *GetPublishingTokenResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -19,9 +19,9 @@ func (o *GetPublishingTokenResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetPublishingTokenResponse) GetClasses() []components.PublishingToken {
+func (o *GetPublishingTokenResponse) GetPublishingTokens() []components.PublishingToken {
 	if o == nil {
 		return nil
 	}
-	return o.Classes
+	return o.PublishingTokens
 }

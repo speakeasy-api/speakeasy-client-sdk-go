@@ -18,52 +18,38 @@ func (o *SearchWorkspaceEventsGlobals) GetWorkspaceID() *string {
 }
 
 type SearchWorkspaceEventsRequest struct {
-	// Shared execution ID for cli events across a single action.
-	ExecutionID *string `queryParam:"style=form,explode=true,name=execution_id"`
-	// A specific gen lock ID for the events.
-	GenerateGenLockID *string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
-	// Specified interaction type for events.
-	InteractionType *components.InteractionType `queryParam:"style=form,explode=true,name=interaction_type"`
-	// Number of results to return.
-	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
+	// Unique identifier of the workspace.
+	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	// Unique identifier of the source revision digest.
+	SourceRevisionDigest *string `queryParam:"style=form,explode=true,name=source_revision_digest"`
 	// Unique identifier of the lint report digest.
 	LintReportDigest *string `queryParam:"style=form,explode=true,name=lint_report_digest"`
 	// Unique identifier of the openapi diff report digest.
 	OpenapiDiffReportDigest *string `queryParam:"style=form,explode=true,name=openapi_diff_report_digest"`
-	// Unique identifier of the source revision digest.
-	SourceRevisionDigest *string `queryParam:"style=form,explode=true,name=source_revision_digest"`
+	// Specified interaction type for events.
+	InteractionType *components.InteractionType `queryParam:"style=form,explode=true,name=interaction_type"`
+	// A specific gen lock ID for the events.
+	GenerateGenLockID *string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
+	// Shared execution ID for cli events across a single action.
+	ExecutionID *string `queryParam:"style=form,explode=true,name=execution_id"`
 	// Whether the event was successful or not.
 	Success *bool `queryParam:"style=form,explode=true,name=success"`
-	// Unique identifier of the workspace.
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	// Number of results to return.
+	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
 }
 
-func (o *SearchWorkspaceEventsRequest) GetExecutionID() *string {
+func (o *SearchWorkspaceEventsRequest) GetWorkspaceID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ExecutionID
+	return o.WorkspaceID
 }
 
-func (o *SearchWorkspaceEventsRequest) GetGenerateGenLockID() *string {
+func (o *SearchWorkspaceEventsRequest) GetSourceRevisionDigest() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateGenLockID
-}
-
-func (o *SearchWorkspaceEventsRequest) GetInteractionType() *components.InteractionType {
-	if o == nil {
-		return nil
-	}
-	return o.InteractionType
-}
-
-func (o *SearchWorkspaceEventsRequest) GetLimit() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Limit
+	return o.SourceRevisionDigest
 }
 
 func (o *SearchWorkspaceEventsRequest) GetLintReportDigest() *string {
@@ -80,11 +66,25 @@ func (o *SearchWorkspaceEventsRequest) GetOpenapiDiffReportDigest() *string {
 	return o.OpenapiDiffReportDigest
 }
 
-func (o *SearchWorkspaceEventsRequest) GetSourceRevisionDigest() *string {
+func (o *SearchWorkspaceEventsRequest) GetInteractionType() *components.InteractionType {
 	if o == nil {
 		return nil
 	}
-	return o.SourceRevisionDigest
+	return o.InteractionType
+}
+
+func (o *SearchWorkspaceEventsRequest) GetGenerateGenLockID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateGenLockID
+}
+
+func (o *SearchWorkspaceEventsRequest) GetExecutionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExecutionID
 }
 
 func (o *SearchWorkspaceEventsRequest) GetSuccess() *bool {
@@ -94,24 +94,17 @@ func (o *SearchWorkspaceEventsRequest) GetSuccess() *bool {
 	return o.Success
 }
 
-func (o *SearchWorkspaceEventsRequest) GetWorkspaceID() *string {
+func (o *SearchWorkspaceEventsRequest) GetLimit() *int64 {
 	if o == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return o.Limit
 }
 
 type SearchWorkspaceEventsResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Success
 	CliEventBatch []components.CliEvent
-	HTTPMeta      components.HTTPMetadata `json:"-"`
-}
-
-func (o *SearchWorkspaceEventsResponse) GetCliEventBatch() []components.CliEvent {
-	if o == nil {
-		return nil
-	}
-	return o.CliEventBatch
 }
 
 func (o *SearchWorkspaceEventsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -119,4 +112,11 @@ func (o *SearchWorkspaceEventsResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *SearchWorkspaceEventsResponse) GetCliEventBatch() []components.CliEvent {
+	if o == nil {
+		return nil
+	}
+	return o.CliEventBatch
 }

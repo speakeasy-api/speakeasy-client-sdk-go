@@ -10,10 +10,10 @@ import (
 
 // UpdatePublishingTokenExpirationRequestBody - The publishing token to update
 type UpdatePublishingTokenExpirationRequestBody struct {
-	// The new name for the publishing token.
-	TokenName *string `json:"token_name,omitempty"`
 	// The new expiration date for the publishing token.
 	ValidUntil time.Time `json:"valid_until"`
+	// The new name for the publishing token.
+	TokenName *string `json:"token_name,omitempty"`
 }
 
 func (u UpdatePublishingTokenExpirationRequestBody) MarshalJSON() ([]byte, error) {
@@ -27,13 +27,6 @@ func (u *UpdatePublishingTokenExpirationRequestBody) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *UpdatePublishingTokenExpirationRequestBody) GetTokenName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TokenName
-}
-
 func (o *UpdatePublishingTokenExpirationRequestBody) GetValidUntil() time.Time {
 	if o == nil {
 		return time.Time{}
@@ -41,18 +34,18 @@ func (o *UpdatePublishingTokenExpirationRequestBody) GetValidUntil() time.Time {
 	return o.ValidUntil
 }
 
-type UpdatePublishingTokenExpirationRequest struct {
-	// The publishing token to update
-	RequestBody *UpdatePublishingTokenExpirationRequestBody `request:"mediaType=application/json"`
-	// Unique identifier of the publishing token.
-	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
-}
-
-func (o *UpdatePublishingTokenExpirationRequest) GetRequestBody() *UpdatePublishingTokenExpirationRequestBody {
+func (o *UpdatePublishingTokenExpirationRequestBody) GetTokenName() *string {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.TokenName
+}
+
+type UpdatePublishingTokenExpirationRequest struct {
+	// Unique identifier of the publishing token.
+	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
+	// The publishing token to update
+	RequestBody *UpdatePublishingTokenExpirationRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdatePublishingTokenExpirationRequest) GetTokenID() string {
@@ -60,6 +53,13 @@ func (o *UpdatePublishingTokenExpirationRequest) GetTokenID() string {
 		return ""
 	}
 	return o.TokenID
+}
+
+func (o *UpdatePublishingTokenExpirationRequest) GetRequestBody() *UpdatePublishingTokenExpirationRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
 }
 
 type UpdatePublishingTokenExpirationResponse struct {

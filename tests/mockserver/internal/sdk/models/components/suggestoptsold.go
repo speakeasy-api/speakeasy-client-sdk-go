@@ -7,17 +7,17 @@ import (
 	"fmt"
 )
 
-type SuggestionType string
+type SuggestOptsOldSuggestionType string
 
 const (
-	SuggestionTypeMethodNames     SuggestionType = "method-names"
-	SuggestionTypeDiagnosticsOnly SuggestionType = "diagnostics-only"
+	SuggestOptsOldSuggestionTypeMethodNames     SuggestOptsOldSuggestionType = "method-names"
+	SuggestOptsOldSuggestionTypeDiagnosticsOnly SuggestOptsOldSuggestionType = "diagnostics-only"
 )
 
-func (e SuggestionType) ToPointer() *SuggestionType {
+func (e SuggestOptsOldSuggestionType) ToPointer() *SuggestOptsOldSuggestionType {
 	return &e
 }
-func (e *SuggestionType) UnmarshalJSON(data []byte) error {
+func (e *SuggestOptsOldSuggestionType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -26,16 +26,23 @@ func (e *SuggestionType) UnmarshalJSON(data []byte) error {
 	case "method-names":
 		fallthrough
 	case "diagnostics-only":
-		*e = SuggestionType(v)
+		*e = SuggestOptsOldSuggestionType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SuggestionType: %v", v)
+		return fmt.Errorf("invalid value for SuggestOptsOldSuggestionType: %v", v)
 	}
 }
 
 type SuggestOptsOld struct {
-	Diagnostics    []Diagnostic   `json:"diagnostics,omitempty"`
-	SuggestionType SuggestionType `json:"suggestion_type"`
+	SuggestionType SuggestOptsOldSuggestionType `json:"suggestion_type"`
+	Diagnostics    []Diagnostic                 `json:"diagnostics,omitempty"`
+}
+
+func (o *SuggestOptsOld) GetSuggestionType() SuggestOptsOldSuggestionType {
+	if o == nil {
+		return SuggestOptsOldSuggestionType("")
+	}
+	return o.SuggestionType
 }
 
 func (o *SuggestOptsOld) GetDiagnostics() []Diagnostic {
@@ -43,11 +50,4 @@ func (o *SuggestOptsOld) GetDiagnostics() []Diagnostic {
 		return nil
 	}
 	return o.Diagnostics
-}
-
-func (o *SuggestOptsOld) GetSuggestionType() SuggestionType {
-	if o == nil {
-		return SuggestionType("")
-	}
-	return o.SuggestionType
 }

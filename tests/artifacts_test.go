@@ -4,7 +4,7 @@ package tests
 
 import (
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
@@ -19,11 +19,11 @@ func TestArtifacts_CreateRemoteSource(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("createRemoteSource")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -38,11 +38,11 @@ func TestArtifacts_GetBlob(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getBlob")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -62,11 +62,11 @@ func TestArtifacts_GetManifest(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getManifest")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -82,13 +82,13 @@ func TestArtifacts_GetManifest(t *testing.T) {
 	assert.Equal(t, &shared.Manifest{
 		Layers: []shared.V2Descriptor{
 			shared.V2Descriptor{
-				Digest:    speakeasyclientsdkgo.String("sha256:5d20c808ce198565ff70b3ed23a991dd49afac45dece63474b27ce6ed036adc6"),
-				MediaType: speakeasyclientsdkgo.String("application/vnd.docker.image.rootfs.diff.tar.gzip"),
-				Size:      speakeasyclientsdkgo.Int64(2107098),
+				Digest:    v3.String("sha256:5d20c808ce198565ff70b3ed23a991dd49afac45dece63474b27ce6ed036adc6"),
+				MediaType: v3.String("application/vnd.docker.image.rootfs.diff.tar.gzip"),
+				Size:      v3.Int64(2107098),
 			},
 		},
-		MediaType:     speakeasyclientsdkgo.String("application/vnd.docker.distribution.manifest.v2+json"),
-		SchemaVersion: speakeasyclientsdkgo.Int64(2),
+		MediaType:     v3.String("application/vnd.docker.distribution.manifest.v2+json"),
+		SchemaVersion: v3.Int64(2),
 	}, res.Manifest)
 
 }
@@ -98,11 +98,11 @@ func TestArtifacts_GetNamespaces(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getNamespaces")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -140,11 +140,11 @@ func TestArtifacts_GetRevisions(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getRevisions")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -177,11 +177,11 @@ func TestArtifacts_GetTags(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getTags")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -202,11 +202,11 @@ func TestArtifacts_ListRemoteSources(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("listRemoteSources")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -237,11 +237,11 @@ func TestArtifacts_PostTags(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("postTags")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -258,11 +258,11 @@ func TestArtifacts_SetVisibility(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("setVisibility")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -279,11 +279,11 @@ func TestArtifacts_ArchiveNamespace(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("archiveNamespace")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 

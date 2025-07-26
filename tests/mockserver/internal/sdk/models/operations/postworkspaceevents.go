@@ -18,16 +18,9 @@ func (o *PostWorkspaceEventsGlobals) GetWorkspaceID() *string {
 }
 
 type PostWorkspaceEventsRequest struct {
-	RequestBody []components.CliEvent `request:"mediaType=application/json"`
 	// Unique identifier of the workspace.
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
-}
-
-func (o *PostWorkspaceEventsRequest) GetRequestBody() []components.CliEvent {
-	if o == nil {
-		return []components.CliEvent{}
-	}
-	return o.RequestBody
+	WorkspaceID *string               `pathParam:"style=simple,explode=false,name=workspace_id"`
+	RequestBody []components.CliEvent `request:"mediaType=application/json"`
 }
 
 func (o *PostWorkspaceEventsRequest) GetWorkspaceID() *string {
@@ -35,6 +28,13 @@ func (o *PostWorkspaceEventsRequest) GetWorkspaceID() *string {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *PostWorkspaceEventsRequest) GetRequestBody() []components.CliEvent {
+	if o == nil {
+		return []components.CliEvent{}
+	}
+	return o.RequestBody
 }
 
 type PostWorkspaceEventsResponse struct {

@@ -9,13 +9,13 @@ import (
 
 // OrganizationUsageResponse - A billing summary of organization usage
 type OrganizationUsageResponse struct {
-	// List of allowed languages
-	AllowedLanguages []string `json:"allowed_languages"`
+	Usage []OrganizationUsage `json:"usage"`
 	// Expiry date of the free trial, will be null if no trial
 	FreeTrialExpiry *time.Time `json:"free_trial_expiry,omitempty"`
 	// Total number of allowed languages, -1 if unlimited
-	TotalAllowedLanguages int64               `json:"total_allowed_languages"`
-	Usage                 []OrganizationUsage `json:"usage"`
+	TotalAllowedLanguages int64 `json:"total_allowed_languages"`
+	// List of allowed languages
+	AllowedLanguages []string `json:"allowed_languages"`
 }
 
 func (o OrganizationUsageResponse) MarshalJSON() ([]byte, error) {
@@ -29,11 +29,11 @@ func (o *OrganizationUsageResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *OrganizationUsageResponse) GetAllowedLanguages() []string {
+func (o *OrganizationUsageResponse) GetUsage() []OrganizationUsage {
 	if o == nil {
-		return []string{}
+		return []OrganizationUsage{}
 	}
-	return o.AllowedLanguages
+	return o.Usage
 }
 
 func (o *OrganizationUsageResponse) GetFreeTrialExpiry() *time.Time {
@@ -50,9 +50,9 @@ func (o *OrganizationUsageResponse) GetTotalAllowedLanguages() int64 {
 	return o.TotalAllowedLanguages
 }
 
-func (o *OrganizationUsageResponse) GetUsage() []OrganizationUsage {
+func (o *OrganizationUsageResponse) GetAllowedLanguages() []string {
 	if o == nil {
-		return []OrganizationUsage{}
+		return []string{}
 	}
-	return o.Usage
+	return o.AllowedLanguages
 }
