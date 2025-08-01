@@ -55,7 +55,7 @@ func testGetLintingReportSignedURLGetLintingReportSignedUrl0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetLintingReportSignedURLSignedAccess{
+	var respBody *operations.GetLintingReportSignedURLSignedAccess = &operations.GetLintingReportSignedURLSignedAccess{
 		URL: "https://negligible-merit.info",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

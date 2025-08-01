@@ -34,16 +34,9 @@ func (o *GithubCheckPublishingPRsRequest) GetRepo() string {
 }
 
 type GithubCheckPublishingPRsResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GithubPublishingPRResponse *components.GithubPublishingPRResponse
-	HTTPMeta                   components.HTTPMetadata `json:"-"`
-}
-
-func (o *GithubCheckPublishingPRsResponse) GetGithubPublishingPRResponse() *components.GithubPublishingPRResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GithubPublishingPRResponse
 }
 
 func (o *GithubCheckPublishingPRsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -51,4 +44,11 @@ func (o *GithubCheckPublishingPRsResponse) GetHTTPMeta() components.HTTPMetadata
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GithubCheckPublishingPRsResponse) GetGithubPublishingPRResponse() *components.GithubPublishingPRResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GithubPublishingPRResponse
 }

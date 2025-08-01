@@ -4,12 +4,13 @@ package tests
 
 import (
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"os"
 	"testing"
 )
 
@@ -18,11 +19,11 @@ func TestCodesamples_GetCodeSamples(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getCodeSamples")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -39,21 +40,185 @@ func TestCodesamples_GetCodeSamples(t *testing.T) {
 				Language:    "<value>",
 				Method:      "<value>",
 				OperationID: "<id>",
-				Path:        "/usr/bin",
-			},
-			shared.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/sys",
-			},
-			shared.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
 				Path:        "/root",
+			},
+			shared.UsageSnippet{
+				Code:        "<value>",
+				Language:    "<value>",
+				Method:      "<value>",
+				OperationID: "<id>",
+				Path:        "/opt/sbin",
+			},
+			shared.UsageSnippet{
+				Code:        "<value>",
+				Language:    "<value>",
+				Method:      "<value>",
+				OperationID: "<id>",
+				Path:        "/tmp",
+			},
+		},
+	}, res.UsageSnippets)
+
+}
+
+func TestCodesamples_GenerateCodeSamplePreviewDefault(t *testing.T) {
+	ctx := context.Background()
+
+	testHTTPClient := createTestHTTPClient("generateCodeSamplePreview-default")
+
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	example, fileErr := os.Open("../.speakeasy/testfiles/example.file")
+	require.NoError(t, fileErr)
+
+	res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
+		Language: "<value>",
+		SchemaFile: shared.SchemaFile{
+			Content:  example,
+			FileName: "example.file",
+		},
+	})
+	require.NoError(t, err)
+	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
+	assert.NotNil(t, res.UsageSnippets)
+	assert.Equal(t, &shared.UsageSnippets{
+		Snippets: []shared.UsageSnippet{
+			shared.UsageSnippet{
+				Code: "import { Petstore } from \"petstore-sdk\";\n" +
+					"\n" +
+					"const petstore = new Petstore({\n" +
+					"  apiKey: \"<YOUR_API_KEY_HERE>\",\n" +
+					"});\n" +
+					"\n" +
+					"async function run() {\n" +
+					"  const result = await petstore.pet.getById({\n" +
+					"    id: 137396,\n" +
+					"  });\n" +
+					"\n" +
+					"  // Handle the result\n" +
+					"  console.log(result);\n" +
+					"}\n" +
+					"\n" +
+					"run();",
+				Language:    "typescript",
+				Method:      "get",
+				OperationID: "getPetById",
+				Path:        "/pet/{id}",
+			},
+		},
+	}, res.UsageSnippets)
+
+}
+
+func TestCodesamples_GetCodeSamplesDefault(t *testing.T) {
+	ctx := context.Background()
+
+	testHTTPClient := createTestHTTPClient("getCodeSamples-default")
+
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.CodeSamples.Get(ctx, operations.GetCodeSamplesRequest{
+		Languages: []string{
+			"python",
+			"javascript",
+		},
+		MethodPaths: []operations.MethodPaths{
+			operations.MethodPaths{
+				Method: shared.HTTPMethodGet,
+				Path:   "/pets",
+			},
+		},
+		OperationIds: []string{
+			"getPets",
+		},
+		RegistryURL: "https://spec.speakeasy.com/my-org/my-workspace/my-source",
+	})
+	require.NoError(t, err)
+	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
+	assert.NotNil(t, res.UsageSnippets)
+	assert.Equal(t, &shared.UsageSnippets{
+		Snippets: []shared.UsageSnippet{
+			shared.UsageSnippet{
+				Code: "import { Petstore } from \"petstore-sdk\";\n" +
+					"\n" +
+					"const petstore = new Petstore({\n" +
+					"  apiKey: \"<YOUR_API_KEY_HERE>\",\n" +
+					"});\n" +
+					"\n" +
+					"async function run() {\n" +
+					"  const result = await petstore.pet.getById({\n" +
+					"    id: 137396,\n" +
+					"  });\n" +
+					"\n" +
+					"  // Handle the result\n" +
+					"  console.log(result);\n" +
+					"}\n" +
+					"\n" +
+					"run();",
+				Language:    "typescript",
+				Method:      "get",
+				OperationID: "getPetById",
+				Path:        "/pet/{id}",
+			},
+		},
+	}, res.UsageSnippets)
+
+}
+
+func TestCodesamples_GetCodeSamplePreviewAsyncDefault(t *testing.T) {
+	ctx := context.Background()
+
+	testHTTPClient := createTestHTTPClient("getCodeSamplePreviewAsync-default")
+
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.CodeSamples.GetCodeSamplePreviewAsync(ctx, operations.GetCodeSamplePreviewAsyncRequest{
+		JobID: "<id>",
+	})
+	require.NoError(t, err)
+	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
+	assert.NotNil(t, res.UsageSnippets)
+	assert.Equal(t, &shared.UsageSnippets{
+		Snippets: []shared.UsageSnippet{
+			shared.UsageSnippet{
+				Code: "import { Petstore } from \"petstore-sdk\";\n" +
+					"\n" +
+					"const petstore = new Petstore({\n" +
+					"  apiKey: \"<YOUR_API_KEY_HERE>\",\n" +
+					"});\n" +
+					"\n" +
+					"async function run() {\n" +
+					"  const result = await petstore.pet.getById({\n" +
+					"    id: 137396,\n" +
+					"  });\n" +
+					"\n" +
+					"  // Handle the result\n" +
+					"  console.log(result);\n" +
+					"}\n" +
+					"\n" +
+					"run();",
+				Language:    "typescript",
+				Method:      "get",
+				OperationID: "getPetById",
+				Path:        "/pet/{id}",
 			},
 		},
 	}, res.UsageSnippets)

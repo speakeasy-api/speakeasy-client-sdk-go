@@ -3,57 +3,22 @@
 package components
 
 type OrganizationUsage struct {
-	// Indicates if the features are accessible
-	Accessible bool `json:"accessible"`
-	// Features that are accessible
-	AccessibleFeatures []string `json:"accessible_features"`
-	// List of generation lock IDs
-	GenLockIds []string `json:"gen_lock_ids"`
-	// The programming language used
-	Language string `json:"language"`
-	// Maximum Number of operations per SDK specific in contract
-	MaxOperations int64 `json:"max_operations"`
 	// Number of operations performed
 	NumberOfOperations int64 `json:"number_of_operations"`
+	// Maximum Number of operations per SDK specific in contract
+	MaxOperations int64 `json:"max_operations"`
+	// The programming language used
+	Language string `json:"language"`
 	// Features that have been used
 	UsedFeatures []string `json:"used_features"`
+	// Features that are accessible
+	AccessibleFeatures []string `json:"accessible_features"`
+	// Indicates if the features are accessible
+	Accessible bool `json:"accessible"`
 	// List of workspace IDs
 	Workspaces []string `json:"workspaces"`
-}
-
-func (o *OrganizationUsage) GetAccessible() bool {
-	if o == nil {
-		return false
-	}
-	return o.Accessible
-}
-
-func (o *OrganizationUsage) GetAccessibleFeatures() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.AccessibleFeatures
-}
-
-func (o *OrganizationUsage) GetGenLockIds() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.GenLockIds
-}
-
-func (o *OrganizationUsage) GetLanguage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Language
-}
-
-func (o *OrganizationUsage) GetMaxOperations() int64 {
-	if o == nil {
-		return 0
-	}
-	return o.MaxOperations
+	// List of generation lock IDs
+	GenLockIds []string `json:"gen_lock_ids"`
 }
 
 func (o *OrganizationUsage) GetNumberOfOperations() int64 {
@@ -63,6 +28,20 @@ func (o *OrganizationUsage) GetNumberOfOperations() int64 {
 	return o.NumberOfOperations
 }
 
+func (o *OrganizationUsage) GetMaxOperations() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.MaxOperations
+}
+
+func (o *OrganizationUsage) GetLanguage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Language
+}
+
 func (o *OrganizationUsage) GetUsedFeatures() []string {
 	if o == nil {
 		return []string{}
@@ -70,9 +49,30 @@ func (o *OrganizationUsage) GetUsedFeatures() []string {
 	return o.UsedFeatures
 }
 
+func (o *OrganizationUsage) GetAccessibleFeatures() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.AccessibleFeatures
+}
+
+func (o *OrganizationUsage) GetAccessible() bool {
+	if o == nil {
+		return false
+	}
+	return o.Accessible
+}
+
 func (o *OrganizationUsage) GetWorkspaces() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Workspaces
+}
+
+func (o *OrganizationUsage) GetGenLockIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.GenLockIds
 }

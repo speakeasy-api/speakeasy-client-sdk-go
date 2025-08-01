@@ -11,12 +11,12 @@ type Claims struct {
 }
 
 type AccessTokenUser struct {
+	Email         *string    `json:"email,omitempty"`
+	ID            *string    `json:"id,omitempty"`
+	DisplayName   *string    `json:"display_name,omitempty"`
 	Admin         *bool      `json:"admin,omitempty"`
 	CreatedAt     *time.Time `json:"created_at,omitempty"`
-	DisplayName   *string    `json:"display_name,omitempty"`
-	Email         *string    `json:"email,omitempty"`
 	EmailVerified *bool      `json:"email_verified,omitempty"`
-	ID            *string    `json:"id,omitempty"`
 }
 
 func (a AccessTokenUser) MarshalJSON() ([]byte, error) {
@@ -28,6 +28,27 @@ func (a *AccessTokenUser) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *AccessTokenUser) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *AccessTokenUser) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *AccessTokenUser) GetDisplayName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DisplayName
 }
 
 func (o *AccessTokenUser) GetAdmin() *bool {
@@ -44,20 +65,6 @@ func (o *AccessTokenUser) GetCreatedAt() *time.Time {
 	return o.CreatedAt
 }
 
-func (o *AccessTokenUser) GetDisplayName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DisplayName
-}
-
-func (o *AccessTokenUser) GetEmail() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Email
-}
-
 func (o *AccessTokenUser) GetEmailVerified() *bool {
 	if o == nil {
 		return nil
@@ -65,66 +72,59 @@ func (o *AccessTokenUser) GetEmailVerified() *bool {
 	return o.EmailVerified
 }
 
-func (o *AccessTokenUser) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-type Workspaces struct {
-	AccountType *AccountType `json:"account_type,omitempty"`
+type AccessTokenWorkspace struct {
 	ID          *string      `json:"id,omitempty"`
 	Name        *string      `json:"name,omitempty"`
 	UpdatedAt   *time.Time   `json:"updated_at,omitempty"`
+	AccountType *AccountType `json:"account_type,omitempty"`
 }
 
-func (w Workspaces) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(w, "", false)
+func (a AccessTokenWorkspace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
 }
 
-func (w *Workspaces) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+func (a *AccessTokenWorkspace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Workspaces) GetAccountType() *AccountType {
-	if o == nil {
-		return nil
-	}
-	return o.AccountType
-}
-
-func (o *Workspaces) GetID() *string {
+func (o *AccessTokenWorkspace) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Workspaces) GetName() *string {
+func (o *AccessTokenWorkspace) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *Workspaces) GetUpdatedAt() *time.Time {
+func (o *AccessTokenWorkspace) GetUpdatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
+func (o *AccessTokenWorkspace) GetAccountType() *AccountType {
+	if o == nil {
+		return nil
+	}
+	return o.AccountType
+}
+
 // An AccessToken is a token that can be used to authenticate with the Speakeasy API.
 type AccessToken struct {
-	AccessToken  string          `json:"access_token"`
-	Claims       Claims          `json:"claims"`
-	FeatureFlags []FeatureFlag   `json:"feature_flags,omitempty"`
-	User         AccessTokenUser `json:"user"`
-	Workspaces   []Workspaces    `json:"workspaces,omitempty"`
+	AccessToken  string                 `json:"access_token"`
+	Claims       Claims                 `json:"claims"`
+	User         AccessTokenUser        `json:"user"`
+	Workspaces   []AccessTokenWorkspace `json:"workspaces,omitempty"`
+	FeatureFlags []FeatureFlag          `json:"feature_flags,omitempty"`
 }
 
 func (o *AccessToken) GetAccessToken() string {
@@ -141,13 +141,6 @@ func (o *AccessToken) GetClaims() Claims {
 	return o.Claims
 }
 
-func (o *AccessToken) GetFeatureFlags() []FeatureFlag {
-	if o == nil {
-		return nil
-	}
-	return o.FeatureFlags
-}
-
 func (o *AccessToken) GetUser() AccessTokenUser {
 	if o == nil {
 		return AccessTokenUser{}
@@ -155,9 +148,16 @@ func (o *AccessToken) GetUser() AccessTokenUser {
 	return o.User
 }
 
-func (o *AccessToken) GetWorkspaces() []Workspaces {
+func (o *AccessToken) GetWorkspaces() []AccessTokenWorkspace {
 	if o == nil {
 		return nil
 	}
 	return o.Workspaces
+}
+
+func (o *AccessToken) GetFeatureFlags() []FeatureFlag {
+	if o == nil {
+		return nil
+	}
+	return o.FeatureFlags
 }

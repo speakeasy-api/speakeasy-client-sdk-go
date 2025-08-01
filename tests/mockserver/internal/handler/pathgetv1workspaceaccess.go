@@ -55,7 +55,7 @@ func testGetWorkspaceAccessGetWorkspaceAccess0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.AccessDetails{
+	var respBody *components.AccessDetails = &components.AccessDetails{
 		GenerationAllowed: true,
 		Message:           "<value>",
 	}

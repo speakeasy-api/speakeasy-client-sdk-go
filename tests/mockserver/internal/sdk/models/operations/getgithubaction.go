@@ -7,10 +7,17 @@ import (
 )
 
 type GetGitHubActionRequest struct {
-	Org  string `queryParam:"style=form,explode=true,name=org"`
-	Repo string `queryParam:"style=form,explode=true,name=repo"`
 	// The targetName of the workflow target.
 	TargetName *string `queryParam:"style=form,explode=true,name=targetName"`
+	Org        string  `queryParam:"style=form,explode=true,name=org"`
+	Repo       string  `queryParam:"style=form,explode=true,name=repo"`
+}
+
+func (o *GetGitHubActionRequest) GetTargetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TargetName
 }
 
 func (o *GetGitHubActionRequest) GetOrg() string {
@@ -27,24 +34,10 @@ func (o *GetGitHubActionRequest) GetRepo() string {
 	return o.Repo
 }
 
-func (o *GetGitHubActionRequest) GetTargetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TargetName
-}
-
 type GetGitHubActionResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GithubGetActionResponse *components.GithubGetActionResponse
-	HTTPMeta                components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetGitHubActionResponse) GetGithubGetActionResponse() *components.GithubGetActionResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GithubGetActionResponse
 }
 
 func (o *GetGitHubActionResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -52,4 +45,11 @@ func (o *GetGitHubActionResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetGitHubActionResponse) GetGithubGetActionResponse() *components.GithubGetActionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GithubGetActionResponse
 }

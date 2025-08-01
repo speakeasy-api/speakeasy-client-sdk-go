@@ -18,16 +18,9 @@ func (o *CreateWorkspaceTokenGlobals) GetWorkspaceID() *string {
 }
 
 type CreateWorkspaceTokenRequest struct {
-	WorkspaceToken components.WorkspaceToken `request:"mediaType=application/json"`
 	// Unique identifier of the workspace.
-	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
-}
-
-func (o *CreateWorkspaceTokenRequest) GetWorkspaceToken() components.WorkspaceToken {
-	if o == nil {
-		return components.WorkspaceToken{}
-	}
-	return o.WorkspaceToken
+	WorkspaceID    *string                   `pathParam:"style=simple,explode=false,name=workspace_id"`
+	WorkspaceToken components.WorkspaceToken `request:"mediaType=application/json"`
 }
 
 func (o *CreateWorkspaceTokenRequest) GetWorkspaceID() *string {
@@ -35,6 +28,13 @@ func (o *CreateWorkspaceTokenRequest) GetWorkspaceID() *string {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *CreateWorkspaceTokenRequest) GetWorkspaceToken() components.WorkspaceToken {
+	if o == nil {
+		return components.WorkspaceToken{}
+	}
+	return o.WorkspaceToken
 }
 
 type CreateWorkspaceTokenResponse struct {

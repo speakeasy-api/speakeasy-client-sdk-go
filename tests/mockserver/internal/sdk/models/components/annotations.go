@@ -4,36 +4,29 @@ package components
 
 // Annotations
 type Annotations struct {
-	// The authors of the image
-	OrgOpencontainersImageAuthors *string `json:"org.opencontainers.image.authors,omitempty"`
 	// The time the image was created
 	OrgOpencontainersImageCreated *string `json:"org.opencontainers.image.created,omitempty"`
-	// Human-readable description of the software packaged in the image
-	OrgOpencontainersImageDescription *string `json:"org.opencontainers.image.description,omitempty"`
-	// The documentation URL of the image
-	OrgOpencontainersImageDocumentation *string `json:"org.opencontainers.image.documentation,omitempty"`
-	OrgOpencontainersImageLicenses      *string `json:"org.opencontainers.image.licenses,omitempty"`
-	// Name of the reference for a target
-	OrgOpencontainersImageRefName *string `json:"org.opencontainers.image.ref.name,omitempty"`
-	// Source control revision identifier
-	OrgOpencontainersImageRevision *string `json:"org.opencontainers.image.revision,omitempty"`
-	// The URL to get source code for building the image
-	OrgOpencontainersImageSource *string `json:"org.opencontainers.image.source,omitempty"`
-	// Human-readable title of the image
-	OrgOpencontainersImageTitle *string `json:"org.opencontainers.image.title,omitempty"`
+	// The authors of the image
+	OrgOpencontainersImageAuthors *string `json:"org.opencontainers.image.authors,omitempty"`
 	// The URL of the image
 	OrgOpencontainersImageURL *string `json:"org.opencontainers.image.url,omitempty"`
-	// Name of the distributing entity, organization or individual.
-	OrgOpencontainersImageVendor *string `json:"org.opencontainers.image.vendor,omitempty"`
+	// The documentation URL of the image
+	OrgOpencontainersImageDocumentation *string `json:"org.opencontainers.image.documentation,omitempty"`
+	// The URL to get source code for building the image
+	OrgOpencontainersImageSource *string `json:"org.opencontainers.image.source,omitempty"`
 	// The version of the packaged software
 	OrgOpencontainersImageVersion *string `json:"org.opencontainers.image.version,omitempty"`
-}
-
-func (o *Annotations) GetOrgOpencontainersImageAuthors() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OrgOpencontainersImageAuthors
+	// Source control revision identifier
+	OrgOpencontainersImageRevision *string `json:"org.opencontainers.image.revision,omitempty"`
+	// Name of the distributing entity, organization or individual.
+	OrgOpencontainersImageVendor   *string `json:"org.opencontainers.image.vendor,omitempty"`
+	OrgOpencontainersImageLicenses *string `json:"org.opencontainers.image.licenses,omitempty"`
+	// Name of the reference for a target
+	OrgOpencontainersImageRefName *string `json:"org.opencontainers.image.ref.name,omitempty"`
+	// Human-readable title of the image
+	OrgOpencontainersImageTitle *string `json:"org.opencontainers.image.title,omitempty"`
+	// Human-readable description of the software packaged in the image
+	OrgOpencontainersImageDescription *string `json:"org.opencontainers.image.description,omitempty"`
 }
 
 func (o *Annotations) GetOrgOpencontainersImageCreated() *string {
@@ -43,11 +36,18 @@ func (o *Annotations) GetOrgOpencontainersImageCreated() *string {
 	return o.OrgOpencontainersImageCreated
 }
 
-func (o *Annotations) GetOrgOpencontainersImageDescription() *string {
+func (o *Annotations) GetOrgOpencontainersImageAuthors() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageDescription
+	return o.OrgOpencontainersImageAuthors
+}
+
+func (o *Annotations) GetOrgOpencontainersImageURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrgOpencontainersImageURL
 }
 
 func (o *Annotations) GetOrgOpencontainersImageDocumentation() *string {
@@ -55,6 +55,34 @@ func (o *Annotations) GetOrgOpencontainersImageDocumentation() *string {
 		return nil
 	}
 	return o.OrgOpencontainersImageDocumentation
+}
+
+func (o *Annotations) GetOrgOpencontainersImageSource() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrgOpencontainersImageSource
+}
+
+func (o *Annotations) GetOrgOpencontainersImageVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrgOpencontainersImageVersion
+}
+
+func (o *Annotations) GetOrgOpencontainersImageRevision() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrgOpencontainersImageRevision
+}
+
+func (o *Annotations) GetOrgOpencontainersImageVendor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OrgOpencontainersImageVendor
 }
 
 func (o *Annotations) GetOrgOpencontainersImageLicenses() *string {
@@ -71,20 +99,6 @@ func (o *Annotations) GetOrgOpencontainersImageRefName() *string {
 	return o.OrgOpencontainersImageRefName
 }
 
-func (o *Annotations) GetOrgOpencontainersImageRevision() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OrgOpencontainersImageRevision
-}
-
-func (o *Annotations) GetOrgOpencontainersImageSource() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OrgOpencontainersImageSource
-}
-
 func (o *Annotations) GetOrgOpencontainersImageTitle() *string {
 	if o == nil {
 		return nil
@@ -92,23 +106,9 @@ func (o *Annotations) GetOrgOpencontainersImageTitle() *string {
 	return o.OrgOpencontainersImageTitle
 }
 
-func (o *Annotations) GetOrgOpencontainersImageURL() *string {
+func (o *Annotations) GetOrgOpencontainersImageDescription() *string {
 	if o == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageURL
-}
-
-func (o *Annotations) GetOrgOpencontainersImageVendor() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OrgOpencontainersImageVendor
-}
-
-func (o *Annotations) GetOrgOpencontainersImageVersion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.OrgOpencontainersImageVersion
+	return o.OrgOpencontainersImageDescription
 }

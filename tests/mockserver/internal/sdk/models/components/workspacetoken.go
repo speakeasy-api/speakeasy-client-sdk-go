@@ -9,17 +9,17 @@ import (
 
 // WorkspaceToken - A workspace token
 type WorkspaceToken struct {
+	ID                string     `json:"id"`
+	Name              string     `json:"name"`
+	WorkspaceID       string     `json:"workspace_id"`
 	Alg               string     `json:"alg"`
+	Key               string     `json:"key"`
+	LastUsed          *time.Time `json:"last_used,omitempty"`
 	CreatedAt         time.Time  `json:"created_at"`
 	CreatedBy         *string    `json:"created_by,omitempty"`
 	CreatedByName     *string    `json:"created_by_name,omitempty"`
 	CreatedByPhotoURL *string    `json:"created_by_photo_url,omitempty"`
 	Email             *string    `json:"email,omitempty"`
-	ID                string     `json:"id"`
-	Key               string     `json:"key"`
-	LastUsed          *time.Time `json:"last_used,omitempty"`
-	Name              string     `json:"name"`
-	WorkspaceID       string     `json:"workspace_id"`
 }
 
 func (w WorkspaceToken) MarshalJSON() ([]byte, error) {
@@ -33,11 +33,46 @@ func (w *WorkspaceToken) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (o *WorkspaceToken) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *WorkspaceToken) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *WorkspaceToken) GetWorkspaceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WorkspaceID
+}
+
 func (o *WorkspaceToken) GetAlg() string {
 	if o == nil {
 		return ""
 	}
 	return o.Alg
+}
+
+func (o *WorkspaceToken) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *WorkspaceToken) GetLastUsed() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.LastUsed
 }
 
 func (o *WorkspaceToken) GetCreatedAt() time.Time {
@@ -73,39 +108,4 @@ func (o *WorkspaceToken) GetEmail() *string {
 		return nil
 	}
 	return o.Email
-}
-
-func (o *WorkspaceToken) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *WorkspaceToken) GetKey() string {
-	if o == nil {
-		return ""
-	}
-	return o.Key
-}
-
-func (o *WorkspaceToken) GetLastUsed() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.LastUsed
-}
-
-func (o *WorkspaceToken) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *WorkspaceToken) GetWorkspaceID() string {
-	if o == nil {
-		return ""
-	}
-	return o.WorkspaceID
 }

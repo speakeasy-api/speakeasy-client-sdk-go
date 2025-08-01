@@ -1916,3 +1916,99 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: PublishingTokens
+  - workflowId: generateCodeSamplePreview-default
+    steps:
+      - stepId: test
+        operationId: generateCodeSamplePreview
+        requestBody:
+          contentType: multipart/form-data
+          payload:
+            language: <value>
+            schema_file: 'x-file: example.file'
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "snippets": [
+                  {
+                    "code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"\u003cYOUR_API_KEY_HERE\u003e\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();",
+                    "language": "typescript",
+                    "method": "get",
+                    "operationId": "getPetById",
+                    "path": "/pet/{id}"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: CodeSamples
+    x-speakeasy-test-rebuild: true
+  - workflowId: getCodeSamples-default
+    steps:
+      - stepId: test
+        operationId: getCodeSamples
+        parameters:
+          - name: registry_url
+            in: query
+            value: https://spec.speakeasy.com/my-org/my-workspace/my-source
+          - name: operation_ids
+            in: query
+            value:
+              - getPets
+          - name: method_paths
+            in: query
+            value:
+              - method: get
+                path: /pets
+          - name: languages
+            in: query
+            value:
+              - python
+              - javascript
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "snippets": [
+                  {
+                    "code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"\u003cYOUR_API_KEY_HERE\u003e\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();",
+                    "language": "typescript",
+                    "method": "get",
+                    "operationId": "getPetById",
+                    "path": "/pet/{id}"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: CodeSamples
+    x-speakeasy-test-rebuild: true
+  - workflowId: getCodeSamplePreviewAsync-default
+    steps:
+      - stepId: test
+        operationId: getCodeSamplePreviewAsync
+        parameters:
+          - name: jobID
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 2XX
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "snippets": [
+                  {
+                    "code": "import { Petstore } from \"petstore-sdk\";\n\nconst petstore = new Petstore({\n  apiKey: \"\u003cYOUR_API_KEY_HERE\u003e\",\n});\n\nasync function run() {\n  const result = await petstore.pet.getById({\n    id: 137396,\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();",
+                    "language": "typescript",
+                    "method": "get",
+                    "operationId": "getPetById",
+                    "path": "/pet/{id}"
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: CodeSamples
+    x-speakeasy-test-rebuild: true

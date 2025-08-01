@@ -9,18 +9,18 @@ import (
 
 // PullRequestMetadata - This can only be populated when the github app is installed for a repo
 type PullRequestMetadata struct {
-	BaseBranch *string    `json:"base_branch,omitempty"`
-	CanMerge   *bool      `json:"can_merge,omitempty"`
-	CreatedAt  *time.Time `json:"created_at,omitempty"`
+	Status    *string    `json:"status,omitempty"`
+	Title     *string    `json:"title,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// truncated to first 1000 characters
 	Description *string `json:"description,omitempty"`
 	HeadBranch  *string `json:"head_branch,omitempty"`
+	BaseBranch  *string `json:"base_branch,omitempty"`
+	CanMerge    *bool   `json:"can_merge,omitempty"`
 	// List of github labels
 	Labels []string `json:"labels,omitempty"`
 	// List of github handles
 	RequestedReviewers []string `json:"requested_reviewers,omitempty"`
-	Status             *string  `json:"status,omitempty"`
-	Title              *string  `json:"title,omitempty"`
 }
 
 func (p PullRequestMetadata) MarshalJSON() ([]byte, error) {
@@ -34,18 +34,18 @@ func (p *PullRequestMetadata) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PullRequestMetadata) GetBaseBranch() *string {
+func (o *PullRequestMetadata) GetStatus() *string {
 	if o == nil {
 		return nil
 	}
-	return o.BaseBranch
+	return o.Status
 }
 
-func (o *PullRequestMetadata) GetCanMerge() *bool {
+func (o *PullRequestMetadata) GetTitle() *string {
 	if o == nil {
 		return nil
 	}
-	return o.CanMerge
+	return o.Title
 }
 
 func (o *PullRequestMetadata) GetCreatedAt() *time.Time {
@@ -69,6 +69,20 @@ func (o *PullRequestMetadata) GetHeadBranch() *string {
 	return o.HeadBranch
 }
 
+func (o *PullRequestMetadata) GetBaseBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BaseBranch
+}
+
+func (o *PullRequestMetadata) GetCanMerge() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CanMerge
+}
+
 func (o *PullRequestMetadata) GetLabels() []string {
 	if o == nil {
 		return nil
@@ -83,33 +97,12 @@ func (o *PullRequestMetadata) GetRequestedReviewers() []string {
 	return o.RequestedReviewers
 }
 
-func (o *PullRequestMetadata) GetStatus() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *PullRequestMetadata) GetTitle() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Title
-}
-
 // GithubPublishingPRResponse - Open generation PRs pending publishing
 type GithubPublishingPRResponse struct {
-	PendingVersion *string `json:"pending_version,omitempty"`
 	PullRequest    *string `json:"pull_request,omitempty"`
+	PendingVersion *string `json:"pending_version,omitempty"`
 	// This can only be populated when the github app is installed for a repo
 	PullRequestMetadata *PullRequestMetadata `json:"pull_request_metadata,omitempty"`
-}
-
-func (o *GithubPublishingPRResponse) GetPendingVersion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PendingVersion
 }
 
 func (o *GithubPublishingPRResponse) GetPullRequest() *string {
@@ -117,6 +110,13 @@ func (o *GithubPublishingPRResponse) GetPullRequest() *string {
 		return nil
 	}
 	return o.PullRequest
+}
+
+func (o *GithubPublishingPRResponse) GetPendingVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PendingVersion
 }
 
 func (o *GithubPublishingPRResponse) GetPullRequestMetadata() *PullRequestMetadata {

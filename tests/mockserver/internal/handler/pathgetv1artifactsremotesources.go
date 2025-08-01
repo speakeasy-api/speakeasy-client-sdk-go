@@ -55,7 +55,7 @@ func testListRemoteSourcesListRemoteSources0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.RemoteSource{
+	var respBody *components.RemoteSource = &components.RemoteSource{
 		Inputs: []components.RemoteDocument{
 			components.RemoteDocument{
 				RegistryURL: "https://well-lit-cap.net",

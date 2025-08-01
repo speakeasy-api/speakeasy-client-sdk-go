@@ -56,15 +56,15 @@ func testGetOrganizationGetOrganization0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.Organization{
-		AccountType:       components.AccountTypeBusiness,
-		CreatedAt:         types.MustTimeFromString("2023-09-05T11:33:52.011Z"),
+	var respBody *components.Organization = &components.Organization{
 		ID:                "<id>",
 		Name:              "<value>",
 		Slug:              "<value>",
-		SsoActivated:      false,
+		AccountType:       components.AccountTypeBusiness,
 		TelemetryDisabled: false,
+		CreatedAt:         types.MustTimeFromString("2023-09-05T11:33:52.011Z"),
 		UpdatedAt:         types.MustTimeFromString("2023-07-26T06:33:15.810Z"),
+		SsoActivated:      false,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

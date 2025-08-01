@@ -55,7 +55,7 @@ func testGetChangesReportSignedURLGetChangesReportSignedUrl0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GetChangesReportSignedURLSignedAccess{
+	var respBody *operations.GetChangesReportSignedURLSignedAccess = &operations.GetChangesReportSignedURLSignedAccess{
 		URL: "https://rosy-masterpiece.biz/",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

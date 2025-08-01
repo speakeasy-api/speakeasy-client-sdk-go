@@ -55,8 +55,10 @@ func testGetBillingAddOnsGetBillingAddOns0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.OrganizationBillingAddOnResponse{
-		AddOns: []components.BillingAddOn{},
+	var respBody *components.OrganizationBillingAddOnResponse = &components.OrganizationBillingAddOnResponse{
+		AddOns: []components.BillingAddOn{
+			components.BillingAddOnSnippetAi,
+		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

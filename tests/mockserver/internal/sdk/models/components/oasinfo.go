@@ -14,32 +14,11 @@ func (o *License) GetIdentifier() *string {
 }
 
 type OASInfo struct {
-	Description string  `json:"description"`
-	License     License `json:"license"`
-	Summary     string  `json:"summary"`
 	Title       string  `json:"title"`
+	Summary     string  `json:"summary"`
+	Description string  `json:"description"`
 	Version     string  `json:"version"`
-}
-
-func (o *OASInfo) GetDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.Description
-}
-
-func (o *OASInfo) GetLicense() License {
-	if o == nil {
-		return License{}
-	}
-	return o.License
-}
-
-func (o *OASInfo) GetSummary() string {
-	if o == nil {
-		return ""
-	}
-	return o.Summary
+	License     License `json:"license"`
 }
 
 func (o *OASInfo) GetTitle() string {
@@ -49,9 +28,30 @@ func (o *OASInfo) GetTitle() string {
 	return o.Title
 }
 
+func (o *OASInfo) GetSummary() string {
+	if o == nil {
+		return ""
+	}
+	return o.Summary
+}
+
+func (o *OASInfo) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
+
 func (o *OASInfo) GetVersion() string {
 	if o == nil {
 		return ""
 	}
 	return o.Version
+}
+
+func (o *OASInfo) GetLicense() License {
+	if o == nil {
+		return License{}
+	}
+	return o.License
 }

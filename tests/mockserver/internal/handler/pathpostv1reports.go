@@ -60,7 +60,7 @@ func testUploadReportUploadReport0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.UploadReportUploadedReport{
+	var respBody *operations.UploadedReport = &operations.UploadedReport{
 		URL: "https://cluttered-stall.info",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

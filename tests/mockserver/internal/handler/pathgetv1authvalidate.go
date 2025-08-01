@@ -56,21 +56,19 @@ func testValidateAPIKeyValidateAPIKey0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.APIKeyDetails{
+	var respBody *components.APIKeyDetails = &components.APIKeyDetails{
+		WorkspaceID:   "<id>",
+		WorkspaceSlug: "<value>",
+		OrgSlug:       "<value>",
 		AccountTypeV2: components.AccountTypeEnterprise,
-		BillingAddOns: []components.BillingAddOn{
-			components.BillingAddOnCustomCodeRegions,
-		},
 		EnabledFeatures: []string{
 			"<value>",
 			"<value>",
 			"<value>",
 		},
-		OrgSlug:            "<value>",
+		BillingAddOns:      []components.BillingAddOn{},
 		TelemetryDisabled:  true,
 		WorkspaceCreatedAt: types.MustTimeFromString("2024-04-24T00:30:38.626Z"),
-		WorkspaceID:        "<id>",
-		WorkspaceSlug:      "<value>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

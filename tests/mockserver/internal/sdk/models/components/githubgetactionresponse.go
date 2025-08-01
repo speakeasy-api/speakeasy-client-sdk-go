@@ -4,17 +4,10 @@ package components
 
 // GithubGetActionResponse - response to a getting the latest action run on a GitHub request
 type GithubGetActionResponse struct {
-	// The status of the latest action run if available
-	RunStatus *string `json:"run_status,omitempty"`
 	// The URL for latest action run if available
 	RunURL *string `json:"run_url,omitempty"`
-}
-
-func (o *GithubGetActionResponse) GetRunStatus() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RunStatus
+	// The status of the latest action run if available
+	RunStatus *string `json:"run_status,omitempty"`
 }
 
 func (o *GithubGetActionResponse) GetRunURL() *string {
@@ -22,4 +15,11 @@ func (o *GithubGetActionResponse) GetRunURL() *string {
 		return nil
 	}
 	return o.RunURL
+}
+
+func (o *GithubGetActionResponse) GetRunStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RunStatus
 }

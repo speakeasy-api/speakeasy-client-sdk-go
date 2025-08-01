@@ -34,16 +34,9 @@ func (e *SuggestRequestBodySuggestionType) UnmarshalJSON(data []byte) error {
 }
 
 type SuggestRequestBody struct {
-	Diagnostics    []Diagnostic                     `json:"diagnostics"`
 	OasSummary     OASSummary                       `json:"oas_summary"`
 	SuggestionType SuggestRequestBodySuggestionType `json:"suggestion_type"`
-}
-
-func (o *SuggestRequestBody) GetDiagnostics() []Diagnostic {
-	if o == nil {
-		return []Diagnostic{}
-	}
-	return o.Diagnostics
+	Diagnostics    []Diagnostic                     `json:"diagnostics"`
 }
 
 func (o *SuggestRequestBody) GetOasSummary() OASSummary {
@@ -58,4 +51,11 @@ func (o *SuggestRequestBody) GetSuggestionType() SuggestRequestBodySuggestionTyp
 		return SuggestRequestBodySuggestionType("")
 	}
 	return o.SuggestionType
+}
+
+func (o *SuggestRequestBody) GetDiagnostics() []Diagnostic {
+	if o == nil {
+		return []Diagnostic{}
+	}
+	return o.Diagnostics
 }

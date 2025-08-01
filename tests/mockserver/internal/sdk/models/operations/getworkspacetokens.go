@@ -32,7 +32,7 @@ func (o *GetWorkspaceTokensRequest) GetWorkspaceID() *string {
 type GetWorkspaceTokensResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
-	Classes []components.WorkspaceToken
+	WorkspaceTokens []components.WorkspaceToken
 }
 
 func (o *GetWorkspaceTokensResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -42,9 +42,9 @@ func (o *GetWorkspaceTokensResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetWorkspaceTokensResponse) GetClasses() []components.WorkspaceToken {
+func (o *GetWorkspaceTokensResponse) GetWorkspaceTokens() []components.WorkspaceToken {
 	if o == nil {
 		return nil
 	}
-	return o.Classes
+	return o.WorkspaceTokens
 }
