@@ -30,6 +30,21 @@ func pathGetV1AuthAccessToken(dir *logging.HTTPFileDirectory, rt *tracking.Reque
 }
 
 func testGetAccessTokenGetAccessToken0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.SecurityHeader(req, "x-api-key", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.SecurityHeader(req, "x-workspace-identifier", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -40,7 +55,7 @@ func testGetAccessTokenGetAccessToken0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.AccessToken{
+	var respBody *components.AccessToken = &components.AccessToken{
 		AccessToken: "<value>",
 		Claims:      components.Claims{},
 		User:        components.AccessTokenUser{},

@@ -3,15 +3,8 @@
 package components
 
 type ShortURL struct {
-	FullURL  string `json:"full_url"`
 	ShortURL string `json:"short_url"`
-}
-
-func (o *ShortURL) GetFullURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.FullURL
+	FullURL  string `json:"full_url"`
 }
 
 func (o *ShortURL) GetShortURL() string {
@@ -19,4 +12,11 @@ func (o *ShortURL) GetShortURL() string {
 		return ""
 	}
 	return o.ShortURL
+}
+
+func (o *ShortURL) GetFullURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.FullURL
 }

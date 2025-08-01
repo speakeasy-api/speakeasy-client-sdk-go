@@ -8,19 +8,19 @@ import (
 )
 
 type SuggestOpenAPIRegistryRequest struct {
-	// Suggest options
-	SuggestRequestBody *components.SuggestRequestBody `request:"mediaType=application/json"`
-	NamespaceName      string                         `pathParam:"style=simple,explode=false,name=namespace_name"`
+	XSessionID    string `header:"style=simple,explode=false,name=x-session-id"`
+	NamespaceName string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	// Tag or digest
 	RevisionReference string `pathParam:"style=simple,explode=false,name=revision_reference"`
-	XSessionID        string `header:"style=simple,explode=false,name=x-session-id"`
+	// Suggest options
+	SuggestRequestBody *components.SuggestRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *SuggestOpenAPIRegistryRequest) GetSuggestRequestBody() *components.SuggestRequestBody {
+func (o *SuggestOpenAPIRegistryRequest) GetXSessionID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.SuggestRequestBody
+	return o.XSessionID
 }
 
 func (o *SuggestOpenAPIRegistryRequest) GetNamespaceName() string {
@@ -37,11 +37,11 @@ func (o *SuggestOpenAPIRegistryRequest) GetRevisionReference() string {
 	return o.RevisionReference
 }
 
-func (o *SuggestOpenAPIRegistryRequest) GetXSessionID() string {
+func (o *SuggestOpenAPIRegistryRequest) GetSuggestRequestBody() *components.SuggestRequestBody {
 	if o == nil {
-		return ""
+		return nil
 	}
-	return o.XSessionID
+	return o.SuggestRequestBody
 }
 
 type SuggestOpenAPIRegistryResponse struct {

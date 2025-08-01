@@ -4,16 +4,9 @@ package components
 
 // WorkspaceTeamResponse - Workspace team response
 type WorkspaceTeamResponse struct {
+	Users []User `json:"users"`
 	// SSO metadata for a workspace
 	SsoMetadata *SSOMetadata `json:"sso_metadata,omitempty"`
-	Users       []User       `json:"users"`
-}
-
-func (o *WorkspaceTeamResponse) GetSsoMetadata() *SSOMetadata {
-	if o == nil {
-		return nil
-	}
-	return o.SsoMetadata
 }
 
 func (o *WorkspaceTeamResponse) GetUsers() []User {
@@ -21,4 +14,11 @@ func (o *WorkspaceTeamResponse) GetUsers() []User {
 		return []User{}
 	}
 	return o.Users
+}
+
+func (o *WorkspaceTeamResponse) GetSsoMetadata() *SSOMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.SsoMetadata
 }

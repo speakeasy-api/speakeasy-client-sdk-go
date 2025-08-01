@@ -19,16 +19,9 @@ func (o *GetAccessTokenRequest) GetWorkspaceID() string {
 }
 
 type GetAccessTokenResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	AccessToken *components.AccessToken
-	HTTPMeta    components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetAccessTokenResponse) GetAccessToken() *components.AccessToken {
-	if o == nil {
-		return nil
-	}
-	return o.AccessToken
 }
 
 func (o *GetAccessTokenResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -36,4 +29,11 @@ func (o *GetAccessTokenResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetAccessTokenResponse) GetAccessToken() *components.AccessToken {
+	if o == nil {
+		return nil
+	}
+	return o.AccessToken
 }

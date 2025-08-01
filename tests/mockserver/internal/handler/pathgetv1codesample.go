@@ -23,6 +23,8 @@ func pathGetV1CodeSample(dir *logging.HTTPFileDirectory, rt *tracking.RequestTra
 		switch fmt.Sprintf("%s[%d]", test, count) {
 		case "getCodeSamples[0]":
 			dir.HandlerFunc("getCodeSamples", testGetCodeSamplesGetCodeSamples0)(w, req)
+		case "getCodeSamples-default[0]":
+			dir.HandlerFunc("getCodeSamples", testGetCodeSamplesGetCodeSamplesDefault0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
@@ -55,28 +57,95 @@ func testGetCodeSamplesGetCodeSamples0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.UsageSnippets{
+	var respBody *components.UsageSnippets = &components.UsageSnippets{
 		Snippets: []components.UsageSnippet{
 			components.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/root",
-			},
-			components.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
-				Path:        "/opt/sbin",
-			},
-			components.UsageSnippet{
-				Code:        "<value>",
-				Language:    "<value>",
-				Method:      "<value>",
-				OperationID: "<id>",
 				Path:        "/tmp",
+				Method:      "<value>",
+				OperationID: "<id>",
+				Language:    "<value>",
+				Code:        "<value>",
+			},
+			components.UsageSnippet{
+				Path:        "/opt/share",
+				Method:      "<value>",
+				OperationID: "<id>",
+				Language:    "<value>",
+				Code:        "<value>",
+			},
+			components.UsageSnippet{
+				Path:        "/usr/src",
+				Method:      "<value>",
+				OperationID: "<id>",
+				Language:    "<value>",
+				Code:        "<value>",
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testGetCodeSamplesGetCodeSamplesDefault0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.SecurityHeader(req, "x-api-key", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.SecurityHeader(req, "x-workspace-identifier", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	var respBody *components.UsageSnippets = &components.UsageSnippets{
+		Snippets: []components.UsageSnippet{
+			components.UsageSnippet{
+				Path:        "/pet/{id}",
+				Method:      "get",
+				OperationID: "getPetById",
+				Language:    "typescript",
+				Code: "import { Petstore } from \"petstore-sdk\";\n" +
+					"\n" +
+					"const petstore = new Petstore({\n" +
+					"  apiKey: \"<YOUR_API_KEY_HERE>\",\n" +
+					"});\n" +
+					"\n" +
+					"async function run() {\n" +
+					"  const result = await petstore.pet.getById({\n" +
+					"    id: 137396,\n" +
+					"  });\n" +
+					"\n" +
+					"  // Handle the result\n" +
+					"  console.log(result);\n" +
+					"}\n" +
+					"\n" +
+					"run();",
 			},
 		},
 	}

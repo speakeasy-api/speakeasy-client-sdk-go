@@ -4,9 +4,9 @@ package components
 
 type RemoteSourceSubscriptionSettings struct {
 	BaseSpecNamespaces []string `json:"base_spec_namespaces"`
+	OverlayNamespaces  []string `json:"overlay_namespaces"`
 	IgnoredNamespaces  []string `json:"ignored_namespaces,omitempty"`
 	OutputNamespace    string   `json:"output_namespace"`
-	OverlayNamespaces  []string `json:"overlay_namespaces"`
 }
 
 func (o *RemoteSourceSubscriptionSettings) GetBaseSpecNamespaces() []string {
@@ -14,6 +14,13 @@ func (o *RemoteSourceSubscriptionSettings) GetBaseSpecNamespaces() []string {
 		return []string{}
 	}
 	return o.BaseSpecNamespaces
+}
+
+func (o *RemoteSourceSubscriptionSettings) GetOverlayNamespaces() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.OverlayNamespaces
 }
 
 func (o *RemoteSourceSubscriptionSettings) GetIgnoredNamespaces() []string {
@@ -28,11 +35,4 @@ func (o *RemoteSourceSubscriptionSettings) GetOutputNamespace() string {
 		return ""
 	}
 	return o.OutputNamespace
-}
-
-func (o *RemoteSourceSubscriptionSettings) GetOverlayNamespaces() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.OverlayNamespaces
 }

@@ -60,11 +60,11 @@ func testGithubConfigureCodeSamplesGithubConfigureCodeSamples0(w http.ResponseWr
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GithubConfigureCodeSamplesResponse{
-		CodeSampleOverlayRegistryURL: "https://giving-handover.net",
+	var respBody *components.GithubConfigureCodeSamplesResponse = &components.GithubConfigureCodeSamplesResponse{
 		Source: components.WorkflowDocument{
 			Location: "<value>",
 		},
+		CodeSampleOverlayRegistryURL: "https://giving-handover.net",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

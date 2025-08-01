@@ -61,16 +61,15 @@ func testCreatePublishingTokenCreatePublishingToken0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.PublishingToken{
+	var respBody *components.PublishingToken = &components.PublishingToken{
+		ID:             "<id>",
+		Token:          "<value>",
+		ValidUntil:     types.MustTimeFromString("2024-08-20T04:36:26.084Z"),
+		TokenName:      "<value>",
+		TargetID:       "<id>",
 		CreatedAt:      types.MustTimeFromString("2023-12-11T20:09:47.767Z"),
 		CreatedBy:      "<value>",
-		ID:             "<id>",
 		OrganizationID: "<id>",
-		TargetID:       "<id>",
-		TargetResource: components.TargetResourceDocument,
-		Token:          "<value>",
-		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
 		WorkspaceID:    "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

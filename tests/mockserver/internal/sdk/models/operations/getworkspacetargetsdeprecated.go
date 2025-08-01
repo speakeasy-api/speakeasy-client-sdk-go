@@ -20,10 +20,10 @@ func (o *GetWorkspaceTargetsDeprecatedGlobals) GetWorkspaceID() *string {
 }
 
 type GetWorkspaceTargetsDeprecatedRequest struct {
-	// Filter to only return targets with events created after this timestamp
-	AfterLastEventCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_last_event_created_at"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	// Filter to only return targets with events created after this timestamp
+	AfterLastEventCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_last_event_created_at"`
 }
 
 func (g GetWorkspaceTargetsDeprecatedRequest) MarshalJSON() ([]byte, error) {
@@ -37,18 +37,18 @@ func (g *GetWorkspaceTargetsDeprecatedRequest) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *GetWorkspaceTargetsDeprecatedRequest) GetAfterLastEventCreatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.AfterLastEventCreatedAt
-}
-
 func (o *GetWorkspaceTargetsDeprecatedRequest) GetWorkspaceID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *GetWorkspaceTargetsDeprecatedRequest) GetAfterLastEventCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.AfterLastEventCreatedAt
 }
 
 type GetWorkspaceTargetsDeprecatedResponse struct {

@@ -7,16 +7,9 @@ import (
 )
 
 type GithubConfigureCodeSamplesResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GithubConfigureCodeSamplesResponse *components.GithubConfigureCodeSamplesResponse
-	HTTPMeta                           components.HTTPMetadata `json:"-"`
-}
-
-func (o *GithubConfigureCodeSamplesResponse) GetGithubConfigureCodeSamplesResponse() *components.GithubConfigureCodeSamplesResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GithubConfigureCodeSamplesResponse
 }
 
 func (o *GithubConfigureCodeSamplesResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -24,4 +17,11 @@ func (o *GithubConfigureCodeSamplesResponse) GetHTTPMeta() components.HTTPMetada
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GithubConfigureCodeSamplesResponse) GetGithubConfigureCodeSamplesResponse() *components.GithubConfigureCodeSamplesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GithubConfigureCodeSamplesResponse
 }

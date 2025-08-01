@@ -6,11 +6,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type GetSchemaStoreItemRequestBody struct {
+type GetSchemaStoreItemRequest struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *GetSchemaStoreItemRequestBody) GetID() *string {
+func (o *GetSchemaStoreItemRequest) GetID() *string {
 	if o == nil {
 		return nil
 	}

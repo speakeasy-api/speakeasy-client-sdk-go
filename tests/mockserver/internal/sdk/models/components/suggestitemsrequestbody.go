@@ -3,17 +3,10 @@
 package components
 
 type SuggestItemsRequestBody struct {
-	// The list of "things" to get suggestions for. One suggestion will be returned for each item in the list.
-	Items []string `json:"items"`
 	// The prompt to use for the suggestion. Think of this as the "preamble".
 	Prompt string `json:"prompt"`
-}
-
-func (o *SuggestItemsRequestBody) GetItems() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Items
+	// The list of "things" to get suggestions for. One suggestion will be returned for each item in the list.
+	Items []string `json:"items"`
 }
 
 func (o *SuggestItemsRequestBody) GetPrompt() string {
@@ -21,4 +14,11 @@ func (o *SuggestItemsRequestBody) GetPrompt() string {
 		return ""
 	}
 	return o.Prompt
+}
+
+func (o *SuggestItemsRequestBody) GetItems() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Items
 }

@@ -31,16 +31,9 @@ func (o *ArchiveNamespaceRequestBody) GetArchived() *bool {
 }
 
 type ArchiveNamespaceRequest struct {
+	NamespaceName string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	// Archived status
-	RequestBody   *ArchiveNamespaceRequestBody `request:"mediaType=application/json"`
-	NamespaceName string                       `pathParam:"style=simple,explode=false,name=namespace_name"`
-}
-
-func (o *ArchiveNamespaceRequest) GetRequestBody() *ArchiveNamespaceRequestBody {
-	if o == nil {
-		return nil
-	}
-	return o.RequestBody
+	RequestBody *ArchiveNamespaceRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *ArchiveNamespaceRequest) GetNamespaceName() string {
@@ -48,6 +41,13 @@ func (o *ArchiveNamespaceRequest) GetNamespaceName() string {
 		return ""
 	}
 	return o.NamespaceName
+}
+
+func (o *ArchiveNamespaceRequest) GetRequestBody() *ArchiveNamespaceRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
 }
 
 type ArchiveNamespaceResponse struct {

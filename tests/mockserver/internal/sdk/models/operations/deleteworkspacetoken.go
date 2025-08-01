@@ -18,17 +18,10 @@ func (o *DeleteWorkspaceTokenGlobals) GetWorkspaceID() *string {
 }
 
 type DeleteWorkspaceTokenRequest struct {
-	// Unique identifier of the token.
-	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
-}
-
-func (o *DeleteWorkspaceTokenRequest) GetTokenID() string {
-	if o == nil {
-		return ""
-	}
-	return o.TokenID
+	// Unique identifier of the token.
+	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
 }
 
 func (o *DeleteWorkspaceTokenRequest) GetWorkspaceID() *string {
@@ -36,6 +29,13 @@ func (o *DeleteWorkspaceTokenRequest) GetWorkspaceID() *string {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *DeleteWorkspaceTokenRequest) GetTokenID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TokenID
 }
 
 type DeleteWorkspaceTokenResponse struct {

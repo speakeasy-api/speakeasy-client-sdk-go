@@ -20,12 +20,12 @@ func (o *GetWorkspaceEventsByTargetGlobals) GetWorkspaceID() *string {
 }
 
 type GetWorkspaceEventsByTargetRequest struct {
-	// Filter to only return events created after this timestamp
-	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`
-	// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
-	TargetID string `pathParam:"style=simple,explode=false,name=target_id"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
+	TargetID string `pathParam:"style=simple,explode=false,name=target_id"`
+	// Filter to only return events created after this timestamp
+	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`
 }
 
 func (g GetWorkspaceEventsByTargetRequest) MarshalJSON() ([]byte, error) {
@@ -39,11 +39,11 @@ func (g *GetWorkspaceEventsByTargetRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
+func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.AfterCreatedAt
+	return o.WorkspaceID
 }
 
 func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
@@ -53,24 +53,17 @@ func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
 	return o.TargetID
 }
 
-func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
+func (o *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return o.AfterCreatedAt
 }
 
 type GetWorkspaceEventsByTargetResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Success
 	CliEventBatch []components.CliEvent
-	HTTPMeta      components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []components.CliEvent {
-	if o == nil {
-		return nil
-	}
-	return o.CliEventBatch
 }
 
 func (o *GetWorkspaceEventsByTargetResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -78,4 +71,11 @@ func (o *GetWorkspaceEventsByTargetResponse) GetHTTPMeta() components.HTTPMetada
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []components.CliEvent {
+	if o == nil {
+		return nil
+	}
+	return o.CliEventBatch
 }

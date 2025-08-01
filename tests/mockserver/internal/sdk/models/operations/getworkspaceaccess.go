@@ -9,10 +9,10 @@ import (
 type GetWorkspaceAccessRequest struct {
 	// Unique identifier of the generation target.
 	GenLockID *string `queryParam:"style=form,explode=true,name=genLockId"`
-	// Skip side-effects like incrementing metrics.
-	Passive *bool `queryParam:"style=form,explode=true,name=passive"`
 	// The type of the generated target.
 	TargetType *string `queryParam:"style=form,explode=true,name=targetType"`
+	// Skip side-effects like incrementing metrics.
+	Passive *bool `queryParam:"style=form,explode=true,name=passive"`
 }
 
 func (o *GetWorkspaceAccessRequest) GetGenLockID() *string {
@@ -22,13 +22,6 @@ func (o *GetWorkspaceAccessRequest) GetGenLockID() *string {
 	return o.GenLockID
 }
 
-func (o *GetWorkspaceAccessRequest) GetPassive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Passive
-}
-
 func (o *GetWorkspaceAccessRequest) GetTargetType() *string {
 	if o == nil {
 		return nil
@@ -36,17 +29,17 @@ func (o *GetWorkspaceAccessRequest) GetTargetType() *string {
 	return o.TargetType
 }
 
-type GetWorkspaceAccessResponse struct {
-	// OK
-	AccessDetails *components.AccessDetails
-	HTTPMeta      components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetWorkspaceAccessResponse) GetAccessDetails() *components.AccessDetails {
+func (o *GetWorkspaceAccessRequest) GetPassive() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.AccessDetails
+	return o.Passive
+}
+
+type GetWorkspaceAccessResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	// OK
+	AccessDetails *components.AccessDetails
 }
 
 func (o *GetWorkspaceAccessResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -54,4 +47,11 @@ func (o *GetWorkspaceAccessResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetWorkspaceAccessResponse) GetAccessDetails() *components.AccessDetails {
+	if o == nil {
+		return nil
+	}
+	return o.AccessDetails
 }

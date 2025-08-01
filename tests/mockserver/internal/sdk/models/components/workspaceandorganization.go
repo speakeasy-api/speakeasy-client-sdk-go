@@ -4,17 +4,10 @@ package components
 
 // WorkspaceAndOrganization - A workspace and organization
 type WorkspaceAndOrganization struct {
-	// A speakeasy organization
-	Organization Organization `json:"organization"`
 	// A speakeasy workspace
 	Workspace Workspace `json:"workspace"`
-}
-
-func (o *WorkspaceAndOrganization) GetOrganization() Organization {
-	if o == nil {
-		return Organization{}
-	}
-	return o.Organization
+	// A speakeasy organization
+	Organization Organization `json:"organization"`
 }
 
 func (o *WorkspaceAndOrganization) GetWorkspace() Workspace {
@@ -22,4 +15,11 @@ func (o *WorkspaceAndOrganization) GetWorkspace() Workspace {
 		return Workspace{}
 	}
 	return o.Workspace
+}
+
+func (o *WorkspaceAndOrganization) GetOrganization() Organization {
+	if o == nil {
+		return Organization{}
+	}
+	return o.Organization
 }

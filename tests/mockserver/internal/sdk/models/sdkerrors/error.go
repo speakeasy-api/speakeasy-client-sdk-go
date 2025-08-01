@@ -4,6 +4,7 @@ package sdkerrors
 
 import (
 	"encoding/json"
+	"mockserver/internal/sdk/models/components"
 )
 
 // Error - The `Status` type defines a logical error model
@@ -11,7 +12,8 @@ type Error struct {
 	// A developer-facing error message.
 	Message string `json:"message"`
 	// The HTTP status code
-	StatusCode int `json:"status_code"`
+	StatusCode int                     `json:"status_code"`
+	HTTPMeta   components.HTTPMetadata `json:"-"`
 }
 
 var _ error = &Error{}

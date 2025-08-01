@@ -13,7 +13,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -21,9 +21,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -45,7 +45,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -54,9 +54,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -80,7 +80,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -89,9 +89,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -115,7 +115,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -124,9 +124,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -150,7 +150,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -159,9 +159,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -185,7 +185,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -194,9 +194,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -220,7 +220,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -228,9 +228,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -252,7 +252,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -261,9 +261,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -287,7 +287,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -295,9 +295,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -319,7 +319,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
             )
@@ -327,7 +327,7 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New()
+                s := v3.New()
 
                 res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
                     WorkspaceID: "<id>",
@@ -349,7 +349,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -357,9 +357,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -381,7 +381,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -390,16 +390,22 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.CodeSamples.Get(ctx, operations.GetCodeSamplesRequest{
                     RegistryURL: "https://spec.speakeasy.com/my-org/my-workspace/my-source",
                     OperationIds: []string{
-                        "getPets",
+                        "g",
+                        "e",
+                        "t",
+                        "P",
+                        "e",
+                        "t",
+                        "s",
                     },
                     MethodPaths: []operations.MethodPaths{
                         operations.MethodPaths{
@@ -429,7 +435,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"log"
@@ -438,23 +444,22 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                content, fileErr := os.Open("example.file")
+                example, fileErr := os.Open("example.file")
                 if fileErr != nil {
                     panic(fileErr)
                 }
-
 
                 res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
                     Language: "<value>",
                     SchemaFile: shared.SchemaFile{
                         FileName: "example.file",
-                        Content: content,
+                        Content: example,
                     },
                 })
                 if err != nil {
@@ -474,7 +479,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"log"
@@ -483,23 +488,22 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                content, fileErr := os.Open("example.file")
+                example, fileErr := os.Open("example.file")
                 if fileErr != nil {
                     panic(fileErr)
                 }
-
 
                 res, err := s.CodeSamples.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
                     Language: "<value>",
                     SchemaFile: shared.SchemaFile{
                         FileName: "example.file",
-                        Content: content,
+                        Content: example,
                     },
                 })
                 if err != nil {
@@ -519,7 +523,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -528,9 +532,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -554,7 +558,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -563,9 +567,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -590,7 +594,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -599,9 +603,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -626,7 +630,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -634,9 +638,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -662,7 +666,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -670,9 +674,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -681,7 +685,7 @@ actions:
                     Repo: "<value>",
                     Input: "<value>",
                     Overlays: []string{
-                        "<value>",
+                        "<value 1>",
                     },
                 })
                 if err != nil {
@@ -701,7 +705,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -709,9 +713,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -736,7 +740,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -745,9 +749,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -769,7 +773,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -778,9 +782,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -806,7 +810,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -815,9 +819,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -841,7 +845,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -849,9 +853,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -875,7 +879,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -884,9 +888,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -912,7 +916,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -920,9 +924,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -948,7 +952,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -957,9 +961,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -986,7 +990,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -995,9 +999,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1024,7 +1028,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"log"
@@ -1033,9 +1037,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1045,8 +1049,8 @@ actions:
                     Slug: "<value>",
                     AccountType: shared.AccountTypeScaleUp,
                     TelemetryDisabled: false,
-                    CreatedAt: types.MustTimeFromString("2024-04-02T12:48:32.253Z"),
-                    UpdatedAt: types.MustTimeFromString("2023-05-28T06:20:22.766Z"),
+                    CreatedAt: types.MustTimeFromString("2025-12-17T21:02:28.497Z"),
+                    UpdatedAt: types.MustTimeFromString("2025-07-22T00:26:10.078Z"),
                     SsoActivated: true,
                 })
                 if err != nil {
@@ -1066,7 +1070,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1074,9 +1078,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1098,7 +1102,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1106,17 +1110,15 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Organizations.CreateBillingAddOns(ctx, shared.OrganizationBillingAddOnRequest{
                     AddOns: []shared.BillingAddOn{
                         shared.BillingAddOnCustomCodeRegions,
-                        shared.BillingAddOnCustomCodeRegions,
-                        shared.BillingAddOnSDKTesting,
                     },
                 })
                 if err != nil {
@@ -1136,7 +1138,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1145,14 +1147,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Organizations.DeleteBillingAddOn(ctx, operations.DeleteBillingAddOnRequest{
-                    AddOn: shared.BillingAddOnSnippetAi,
+                    AddOn: shared.BillingAddOnSDKTesting,
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1171,7 +1173,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1179,9 +1181,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1203,7 +1205,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1211,9 +1213,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1235,7 +1237,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1244,9 +1246,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1270,7 +1272,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1278,9 +1280,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1302,7 +1304,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1310,9 +1312,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1334,7 +1336,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1342,9 +1344,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1366,7 +1368,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1375,9 +1377,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1401,7 +1403,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1410,9 +1412,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1436,7 +1438,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1445,9 +1447,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1471,7 +1473,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1480,9 +1482,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1506,7 +1508,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1515,9 +1517,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1541,7 +1543,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -1551,23 +1553,22 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                content, fileErr := os.Open("example.file")
+                example, fileErr := os.Open("example.file")
                 if fileErr != nil {
                     panic(fileErr)
                 }
-
 
                 res, err := s.Reports.UploadReport(ctx, operations.UploadReportRequestBody{
                     Data: shared.Report{},
                     File: operations.File{
                         FileName: "example.file",
-                        Content: content,
+                        Content: example,
                     },
                 })
                 if err != nil {
@@ -1587,7 +1588,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1596,9 +1597,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1622,7 +1623,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1631,9 +1632,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1657,7 +1658,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1665,9 +1666,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1689,7 +1690,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1698,9 +1699,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1727,7 +1728,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1736,14 +1737,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{
-                    URL: "https://probable-heating.com/",
+                    URL: "https://exalted-heroine.org/",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1762,7 +1763,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1771,9 +1772,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1798,7 +1799,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1807,9 +1808,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1834,7 +1835,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -1842,15 +1843,17 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
                     Prompt: "<value>",
-                    Items: []string{},
+                    Items: []string{
+                        "<value 1>",
+                    },
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -1869,7 +1872,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"os"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -1879,24 +1882,23 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                content, fileErr := os.Open("example.file")
+                example, fileErr := os.Open("example.file")
                 if fileErr != nil {
                     panic(fileErr)
                 }
-
 
                 res, err := s.Suggest.SuggestOpenAPI(ctx, operations.SuggestOpenAPIRequest{
                     XSessionID: "<id>",
                     RequestBody: operations.SuggestOpenAPIRequestBody{
                         Schema: operations.Schema{
                             FileName: "example.file",
-                            Content: content,
+                            Content: example,
                         },
                     },
                 })
@@ -1917,7 +1919,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1926,9 +1928,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1954,7 +1956,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -1963,9 +1965,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -1976,13 +1978,13 @@ actions:
                             Info: shared.OASInfo{
                                 Title: "<value>",
                                 Summary: "<value>",
-                                Description: "ugh which garrote ashamed sarong fiddle really",
+                                Description: "strictly shyly who and than majority unit boohoo",
                                 Version: "<value>",
                                 License: shared.License{},
                             },
                             Operations: []shared.OASOperation{},
                         },
-                        SuggestionType: shared.SuggestRequestBodySuggestionTypeDiagnosticsOnly,
+                        SuggestionType: shared.SuggestRequestBodySuggestionTypeMethodNames,
                         Diagnostics: []shared.Diagnostic{},
                     },
                 })
@@ -2003,7 +2005,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -2011,9 +2013,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -2035,7 +2037,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -2043,9 +2045,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -2067,7 +2069,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"log"
@@ -2076,19 +2078,19 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.Create(ctx, shared.Workspace{
-                    CreatedAt: types.MustTimeFromString("2024-06-17T07:14:55.338Z"),
+                    CreatedAt: types.MustTimeFromString("2023-11-18T13:41:10.525Z"),
                     ID: "<id>",
                     Name: "<value>",
                     OrganizationID: "<id>",
                     Slug: "<value>",
-                    UpdatedAt: types.MustTimeFromString("2024-11-30T17:06:07.804Z"),
+                    UpdatedAt: types.MustTimeFromString("2024-11-21T08:36:32.740Z"),
                     Verified: true,
                 })
                 if err != nil {
@@ -2108,7 +2110,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2117,9 +2119,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -2141,7 +2143,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2150,9 +2152,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
@@ -2174,7 +2176,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -2182,17 +2184,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.SetFeatureFlags(ctx, shared.WorkspaceFeatureFlagRequest{
-                    FeatureFlags: []shared.WorkspaceFeatureFlag{
-                        shared.WorkspaceFeatureFlagSkipSchemaRegistry,
-                        shared.WorkspaceFeatureFlagWebhooks,
-                    },
+                    FeatureFlags: []shared.WorkspaceFeatureFlag{},
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -2211,7 +2210,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2220,15 +2219,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2246,7 +2244,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -2256,21 +2254,21 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.Update(ctx, operations.UpdateWorkspaceDetailsRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     Workspace: shared.Workspace{
-                        CreatedAt: types.MustTimeFromString("2025-07-28T19:04:48.565Z"),
+                        CreatedAt: types.MustTimeFromString("2023-08-02T22:30:24.264Z"),
                         ID: "<id>",
                         Name: "<value>",
                         OrganizationID: "<id>",
                         Slug: "<value>",
-                        UpdatedAt: types.MustTimeFromString("2024-10-16T10:52:42.015Z"),
+                        UpdatedAt: types.MustTimeFromString("2025-01-24T03:53:13.581Z"),
                         Verified: true,
                     },
                 })
@@ -2291,7 +2289,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2300,15 +2298,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2326,7 +2323,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -2336,23 +2333,23 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     RequestBody: []shared.CliEvent{
                         shared.CliEvent{
                             ID: "<id>",
                             ExecutionID: "<id>",
                             WorkspaceID: "<id>",
                             SpeakeasyAPIKeyName: "<value>",
-                            InteractionType: shared.InteractionTypeRun,
-                            LocalStartedAt: types.MustTimeFromString("2024-09-08T05:59:33.876Z"),
-                            CreatedAt: types.MustTimeFromString("2025-08-12T17:54:17.538Z"),
+                            InteractionType: shared.InteractionTypeCiExec,
+                            LocalStartedAt: types.MustTimeFromString("2024-12-22T21:01:06.740Z"),
+                            CreatedAt: types.MustTimeFromString("2024-01-24T01:13:51.002Z"),
                             SpeakeasyVersion: "<value>",
                             Success: true,
                         },
@@ -2375,7 +2372,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2384,15 +2381,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2410,7 +2406,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2419,14 +2415,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     TargetID: "<id>",
                 })
                 if err != nil {
@@ -2446,7 +2442,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2455,15 +2451,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2481,7 +2476,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2490,15 +2485,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2516,7 +2510,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -2526,19 +2520,19 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     WorkspaceSettings: shared.WorkspaceSettings{
                         WorkspaceID: "<id>",
-                        WebhookURL: "https://last-suspension.info/",
-                        CreatedAt: types.MustTimeFromString("2024-12-28T06:46:35.807Z"),
-                        UpdatedAt: types.MustTimeFromString("2025-02-03T10:37:56.725Z"),
+                        WebhookURL: "https://wicked-reboot.org",
+                        CreatedAt: types.MustTimeFromString("2024-07-27T10:14:11.397Z"),
+                        UpdatedAt: types.MustTimeFromString("2025-12-12T17:54:28.990Z"),
                     },
                 })
                 if err != nil {
@@ -2558,7 +2552,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2567,15 +2561,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2593,7 +2586,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2602,15 +2595,15 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.GrantAccess(ctx, operations.GrantUserAccessToWorkspaceRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                    Email: "Lucinda.Batz8@hotmail.com",
+                    Email: "Idella24@gmail.com",
                 })
                 if err != nil {
                     log.Fatal(err)
@@ -2629,7 +2622,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2638,14 +2631,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.RevokeAccess(ctx, operations.RevokeUserAccessToWorkspaceRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     UserID: "<id>",
                 })
                 if err != nil {
@@ -2665,7 +2658,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2674,15 +2667,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
-                res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-                })
+                res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{})
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -2700,7 +2692,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
@@ -2710,21 +2702,21 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.CreateToken(ctx, operations.CreateWorkspaceTokenRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     WorkspaceToken: shared.WorkspaceToken{
                         ID: "<id>",
                         Name: "<value>",
                         WorkspaceID: "<id>",
                         Alg: "<value>",
                         Key: "<key>",
-                        CreatedAt: types.MustTimeFromString("2023-08-16T02:33:00.784Z"),
+                        CreatedAt: types.MustTimeFromString("2024-10-04T10:23:04.522Z"),
                     },
                 })
                 if err != nil {
@@ -2744,7 +2736,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
             	"log"
@@ -2753,14 +2745,14 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithWorkspaceID("<id>"),
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 
                 res, err := s.Workspaces.DeleteToken(ctx, operations.DeleteWorkspaceTokenRequest{
-                    WorkspaceID: speakeasyclientsdkgo.String("<id>"),
                     TokenID: "<id>",
                 })
                 if err != nil {
@@ -2780,7 +2772,7 @@ actions:
 
             import(
             	"context"
-            	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+            	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
             	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
             	"log"
             )
@@ -2788,9 +2780,9 @@ actions:
             func main() {
                 ctx := context.Background()
 
-                s := speakeasyclientsdkgo.New(
-                    speakeasyclientsdkgo.WithSecurity(shared.Security{
-                        APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+                s := v3.New(
+                    v3.WithSecurity(shared.Security{
+                        APIKey: v3.String("<YOUR_API_KEY_HERE>"),
                     }),
                 )
 

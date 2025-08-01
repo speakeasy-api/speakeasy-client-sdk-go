@@ -4,7 +4,7 @@ package tests
 
 import (
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
@@ -19,11 +19,11 @@ func TestWorkspaces_CreateWorkspace(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("createWorkspace")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -33,7 +33,7 @@ func TestWorkspaces_CreateWorkspace(t *testing.T) {
 		Name:              "<value>",
 		OrganizationID:    "<id>",
 		Slug:              "<value>",
-		TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
+		TelemetryDisabled: v3.Bool(false),
 		UpdatedAt:         types.MustTimeFromString("2023-04-03T12:48:32.253Z"),
 		Verified:          true,
 	})
@@ -46,7 +46,7 @@ func TestWorkspaces_CreateWorkspace(t *testing.T) {
 		Name:              "<value>",
 		OrganizationID:    "<id>",
 		Slug:              "<value>",
-		TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
+		TelemetryDisabled: v3.Bool(false),
 		UpdatedAt:         types.MustTimeFromString("2024-11-08T08:43:39.394Z"),
 		Verified:          true,
 	}, res.Workspace)
@@ -58,11 +58,11 @@ func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getWorkspaceByContext")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -87,7 +87,7 @@ func TestWorkspaces_GetWorkspaceByContext(t *testing.T) {
 			Name:              "<value>",
 			OrganizationID:    "<id>",
 			Slug:              "<value>",
-			TelemetryDisabled: speakeasyclientsdkgo.Bool(true),
+			TelemetryDisabled: v3.Bool(true),
 			UpdatedAt:         types.MustTimeFromString("2023-05-10T02:28:23.533Z"),
 			Verified:          true,
 		},
@@ -100,11 +100,11 @@ func TestWorkspaces_GetWorkspaces(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getWorkspaces")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -119,7 +119,7 @@ func TestWorkspaces_GetWorkspaces(t *testing.T) {
 			Name:              "<value>",
 			OrganizationID:    "<id>",
 			Slug:              "<value>",
-			TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
+			TelemetryDisabled: v3.Bool(false),
 			UpdatedAt:         types.MustTimeFromString("2023-12-15T17:14:28.501Z"),
 			Verified:          true,
 		},
@@ -132,16 +132,16 @@ func TestWorkspaces_GetWorkspace(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getWorkspace")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
 	res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
-		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+		WorkspaceID: v3.String("<id>"),
 	})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -152,7 +152,7 @@ func TestWorkspaces_GetWorkspace(t *testing.T) {
 		Name:              "<value>",
 		OrganizationID:    "<id>",
 		Slug:              "<value>",
-		TelemetryDisabled: speakeasyclientsdkgo.Bool(false),
+		TelemetryDisabled: v3.Bool(false),
 		UpdatedAt:         types.MustTimeFromString("2024-10-23T07:17:30.329Z"),
 		Verified:          false,
 	}, res.Workspace)
@@ -164,16 +164,16 @@ func TestWorkspaces_GetWorkspaceFeatureFlags(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getWorkspaceFeatureFlags")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
 	res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
-		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+		WorkspaceID: v3.String("<id>"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -185,16 +185,16 @@ func TestWorkspaces_GetWorkspaceSettings(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getWorkspaceSettings")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
 	res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
-		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+		WorkspaceID: v3.String("<id>"),
 	})
 	require.NoError(t, err)
 	assert.Contains(t, []any{200, 201, 202, 203, 204, 205, 206, 207, 208, 226}, res.StatusCode)
@@ -213,11 +213,11 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("updateWorkspaceSettings")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -228,7 +228,7 @@ func TestWorkspaces_UpdateWorkspaceSettings(t *testing.T) {
 			WebhookURL:  "https://grown-pharmacopoeia.net",
 			WorkspaceID: "<id>",
 		},
-		WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+		WorkspaceID: v3.String("<id>"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -240,11 +240,11 @@ func TestWorkspaces_SetWorkspaceFeatureFlags(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("setWorkspaceFeatureFlags")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -266,11 +266,11 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getPublishingToken")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -285,7 +285,6 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			ID:             "<id>",
 			OrganizationID: "<id>",
 			TargetID:       "<id>",
-			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
 			TokenName:      "<value>",
 			ValidUntil:     types.MustTimeFromString("2024-08-24T11:59:25.466Z"),
@@ -297,7 +296,6 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			ID:             "<id>",
 			OrganizationID: "<id>",
 			TargetID:       "<id>",
-			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
 			TokenName:      "<value>",
 			ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
@@ -309,7 +307,6 @@ func TestWorkspaces_GetPublishingToken(t *testing.T) {
 			ID:             "<id>",
 			OrganizationID: "<id>",
 			TargetID:       "<id>",
-			TargetResource: shared.TargetResourceDocument,
 			Token:          "<value>",
 			TokenName:      "<value>",
 			ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),

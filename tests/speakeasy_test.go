@@ -4,7 +4,7 @@ package tests
 
 import (
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
@@ -20,21 +20,21 @@ func TestSpeakeasy_GenerateCodeSamplePreview(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("generateCodeSamplePreview")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
-	content, fileErr := os.Open("../.speakeasy/testfiles/example.file")
+	example, fileErr := os.Open("../.speakeasy/testfiles/example.file")
 	require.NoError(t, fileErr)
 
 	res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
 		Language: "<value>",
 		SchemaFile: shared.SchemaFile{
-			Content:  content,
+			Content:  example,
 			FileName: "example.file",
 		},
 	})
@@ -48,21 +48,21 @@ func TestSpeakeasy_GenerateCodeSamplePreviewAsync(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("generateCodeSamplePreviewAsync")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
-	content, fileErr := os.Open("../.speakeasy/testfiles/example.file")
+	example, fileErr := os.Open("../.speakeasy/testfiles/example.file")
 	require.NoError(t, fileErr)
 
 	res, err := s.CodeSamples.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
 		Language: "<value>",
 		SchemaFile: shared.SchemaFile{
-			Content:  content,
+			Content:  example,
 			FileName: "example.file",
 		},
 	})
@@ -81,11 +81,11 @@ func TestSpeakeasy_GetCodeSamplePreviewAsync(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getCodeSamplePreviewAsync")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -106,11 +106,11 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("createPublishingToken")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -118,7 +118,7 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		TargetID:       "<id>",
 		TargetResource: "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2024-12-02T02:12:05.658Z"),
+		ValidUntil:     types.MustTimeFromString("2024-08-24T11:59:25.466Z"),
 	})
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.StatusCode)
@@ -129,10 +129,9 @@ func TestSpeakeasy_CreatePublishingToken(t *testing.T) {
 		ID:             "<id>",
 		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2025-08-24T05:20:24.233Z"),
+		ValidUntil:     types.MustTimeFromString("2025-02-22T20:20:27.935Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
@@ -143,11 +142,11 @@ func TestSpeakeasy_DeletePublishingToken(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("deletePublishingToken")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -164,11 +163,11 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("getPublishingTokenByID")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -184,10 +183,9 @@ func TestSpeakeasy_GetPublishingTokenByID(t *testing.T) {
 		ID:             "<id>",
 		OrganizationID: "<id>",
 		TargetID:       "<id>",
-		TargetResource: shared.TargetResourceDocument,
 		Token:          "<value>",
 		TokenName:      "<value>",
-		ValidUntil:     types.MustTimeFromString("2025-06-28T12:30:49.314Z"),
+		ValidUntil:     types.MustTimeFromString("2024-10-22T15:05:16.239Z"),
 		WorkspaceID:    "<id>",
 	}, res.PublishingToken)
 
@@ -202,11 +200,11 @@ func TestSpeakeasy_UpdatePublishingTokenExpiration(t *testing.T) {
 
 	testHTTPClient := createTestHTTPClient("updatePublishingTokenExpiration")
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
-		speakeasyclientsdkgo.WithClient(testHTTPClient),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+	s := v3.New(
+		v3.WithServerURL(utils.GetEnv("TEST_SERVER_URL", "http://localhost:18080")),
+		v3.WithClient(testHTTPClient),
+		v3.WithSecurity(shared.Security{
+			APIKey: v3.String("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 

@@ -8,22 +8,40 @@ import (
 )
 
 type TargetSDK struct {
+	// Unique identifier of the target the same as `generate_gen_lock_id`
+	ID string `json:"id"`
+	// Unique identifier of the last event for the target
+	LastEventID string `json:"last_event_id"`
+	// Timestamp when the event was created in the database.
+	LastEventCreatedAt time.Time `json:"last_event_created_at"`
+	// Type of interaction.
+	LastEventInteractionType InteractionType `json:"last_event_interaction_type"`
+	// Indicates whether the event was successful.
+	Success *bool `json:"success,omitempty"`
 	// Remote commit ID.
 	CommitHead *string `json:"commit_head,omitempty"`
-	// Name of the CI environment.
-	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
-	// Error message if the last event was not successful.
-	Error *string `json:"error,omitempty"`
-	// Version of the generated target (post generation)
-	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
-	// Eligible feature set during generation
-	GenerateEligibleFeatures *string `json:"generate_eligible_features,omitempty"`
+	// Default owner for git remote.
+	GitRemoteDefaultOwner *string `json:"git_remote_default_owner,omitempty"`
+	// Default repository name for git remote.
+	GitRemoteDefaultRepo *string `json:"git_remote_default_repo,omitempty"`
+	// Current working directory relative to the git root.
+	GitRelativeCwd *string `json:"git_relative_cwd,omitempty"`
+	// eg `typescript`, `terraform`, `python`
+	GenerateTarget string `json:"generate_target"`
+	// The workflow name of the target.
+	GenerateTargetName *string `json:"generate_target_name,omitempty"`
 	// gen.lock ID (expected to be a uuid). The same as `id`. A unique identifier for the target.
 	GenerateGenLockID string `json:"generate_gen_lock_id"`
+	// The version of the Speakeasy generator for this target eg v2 of the typescript generator.
+	GenerateTargetVersion *string `json:"generate_target_version,omitempty"`
+	// Version of the generated target (post generation)
+	GenerateConfigPostVersion *string `json:"generate_config_post_version,omitempty"`
 	// Features prior to generation
 	GenerateGenLockPreFeatures *string `json:"generate_gen_lock_pre_features,omitempty"`
 	// Artifact version for the Previous Generation
 	GenerateGenLockPreVersion *string `json:"generate_gen_lock_pre_version,omitempty"`
+	// Eligible feature set during generation
+	GenerateEligibleFeatures *string `json:"generate_eligible_features,omitempty"`
 	// The number of operations ignored in generation.
 	GenerateNumberOfOperationsIgnored *int64 `json:"generate_number_of_operations_ignored,omitempty"`
 	// The number of operations used in generation.
@@ -32,72 +50,54 @@ type TargetSDK struct {
 	GenerateNumberOfTerraformResources *int64 `json:"generate_number_of_terraform_resources,omitempty"`
 	// Indicates whether the target was considered published.
 	GeneratePublished *bool `json:"generate_published,omitempty"`
-	// eg `typescript`, `terraform`, `python`
-	GenerateTarget string `json:"generate_target"`
-	// The workflow name of the target.
-	GenerateTargetName *string `json:"generate_target_name,omitempty"`
-	// The version of the Speakeasy generator for this target eg v2 of the typescript generator.
-	GenerateTargetVersion *string `json:"generate_target_version,omitempty"`
-	// GitHub organization of the action.
-	GhActionOrganization *string `json:"gh_action_organization,omitempty"`
+	// Name of the CI environment.
+	ContinuousIntegrationEnvironment *string `json:"continuous_integration_environment,omitempty"`
 	// GitHub Action ref value.
 	GhActionRef *string `json:"gh_action_ref,omitempty"`
-	// GitHub repository of the action.
-	GhActionRepository *string `json:"gh_action_repository,omitempty"`
 	// Link to the GitHub action run.
 	GhActionRunLink *string `json:"gh_action_run_link,omitempty"`
 	// Version of the GitHub action.
 	GhActionVersion *string `json:"gh_action_version,omitempty"`
-	// Current working directory relative to the git root.
-	GitRelativeCwd *string `json:"git_relative_cwd,omitempty"`
-	// Default owner for git remote.
-	GitRemoteDefaultOwner *string `json:"git_remote_default_owner,omitempty"`
-	// Default repository name for git remote.
-	GitRemoteDefaultRepo *string `json:"git_remote_default_repo,omitempty"`
-	// User email from git configuration.
-	GitUserEmail *string `json:"git_user_email,omitempty"`
-	// User's name from git configuration. (not GitHub username)
-	GitUserName *string `json:"git_user_name,omitempty"`
-	// Remote hostname.
-	Hostname *string `json:"hostname,omitempty"`
-	// Unique identifier of the target the same as `generate_gen_lock_id`
-	ID string `json:"id"`
-	// Timestamp when the event was created in the database.
-	LastEventCreatedAt time.Time `json:"last_event_created_at"`
-	// Unique identifier of the last event for the target
-	LastEventID string `json:"last_event_id"`
-	// Type of interaction.
-	LastEventInteractionType InteractionType `json:"last_event_interaction_type"`
-	// Timestamp when the last publishing event was created.
-	LastPublishCreatedAt *time.Time `json:"last_publish_created_at,omitempty"`
-	// Link to the GitHub action run for the last publishing event.
-	LastPublishGhActionRunLink *string `json:"last_publish_gh_action_run_link,omitempty"`
-	// Name of the published package.
-	PublishPackageName *string `json:"publish_package_name,omitempty"`
-	// Name of the registry where the package was published.
-	PublishPackageRegistryName *string `json:"publish_package_registry_name,omitempty"`
-	// URL of the published package.
-	PublishPackageURL *string `json:"publish_package_url,omitempty"`
-	// Version of the published package.
-	PublishPackageVersion *string `json:"publish_package_version,omitempty"`
+	// GitHub organization of the action.
+	GhActionOrganization *string `json:"gh_action_organization,omitempty"`
+	// GitHub repository of the action.
+	GhActionRepository *string `json:"gh_action_repository,omitempty"`
 	// Label of the git repository.
 	RepoLabel *string `json:"repo_label,omitempty"`
+	// Remote hostname.
+	Hostname *string `json:"hostname,omitempty"`
+	// User's name from git configuration. (not GitHub username)
+	GitUserName *string `json:"git_user_name,omitempty"`
+	// User email from git configuration.
+	GitUserEmail *string `json:"git_user_email,omitempty"`
+	// The revision digest of the source.
+	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
 	// The blob digest of the source.
 	SourceBlobDigest *string `json:"source_blob_digest,omitempty"`
 	// The namespace name of the source.
 	SourceNamespaceName *string `json:"source_namespace_name,omitempty"`
-	// The revision digest of the source.
-	SourceRevisionDigest *string `json:"source_revision_digest,omitempty"`
-	// Indicates whether the event was successful.
-	Success *bool `json:"success,omitempty"`
-	// Workflow lock file (post execution)
-	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
-	// Workflow lock file (prior to execution)
-	WorkflowLockPreRaw *string `json:"workflow_lock_pre_raw,omitempty"`
-	// Workflow file (post execution)
-	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
+	// Error message if the last event was not successful.
+	Error *string `json:"error,omitempty"`
 	// Workflow file (prior to execution)
 	WorkflowPreRaw *string `json:"workflow_pre_raw,omitempty"`
+	// Workflow file (post execution)
+	WorkflowPostRaw *string `json:"workflow_post_raw,omitempty"`
+	// Workflow lock file (prior to execution)
+	WorkflowLockPreRaw *string `json:"workflow_lock_pre_raw,omitempty"`
+	// Workflow lock file (post execution)
+	WorkflowLockPostRaw *string `json:"workflow_lock_post_raw,omitempty"`
+	// URL of the published package.
+	PublishPackageURL *string `json:"publish_package_url,omitempty"`
+	// Name of the published package.
+	PublishPackageName *string `json:"publish_package_name,omitempty"`
+	// Version of the published package.
+	PublishPackageVersion *string `json:"publish_package_version,omitempty"`
+	// Name of the registry where the package was published.
+	PublishPackageRegistryName *string `json:"publish_package_registry_name,omitempty"`
+	// Timestamp when the last publishing event was created.
+	LastPublishCreatedAt *time.Time `json:"last_publish_created_at,omitempty"`
+	// Link to the GitHub action run for the last publishing event.
+	LastPublishGhActionRunLink *string `json:"last_publish_gh_action_run_link,omitempty"`
 }
 
 func (t TargetSDK) MarshalJSON() ([]byte, error) {
@@ -111,6 +111,41 @@ func (t *TargetSDK) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (o *TargetSDK) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TargetSDK) GetLastEventID() string {
+	if o == nil {
+		return ""
+	}
+	return o.LastEventID
+}
+
+func (o *TargetSDK) GetLastEventCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.LastEventCreatedAt
+}
+
+func (o *TargetSDK) GetLastEventInteractionType() InteractionType {
+	if o == nil {
+		return InteractionType("")
+	}
+	return o.LastEventInteractionType
+}
+
+func (o *TargetSDK) GetSuccess() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Success
+}
+
 func (o *TargetSDK) GetCommitHead() *string {
 	if o == nil {
 		return nil
@@ -118,32 +153,39 @@ func (o *TargetSDK) GetCommitHead() *string {
 	return o.CommitHead
 }
 
-func (o *TargetSDK) GetContinuousIntegrationEnvironment() *string {
+func (o *TargetSDK) GetGitRemoteDefaultOwner() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ContinuousIntegrationEnvironment
+	return o.GitRemoteDefaultOwner
 }
 
-func (o *TargetSDK) GetError() *string {
+func (o *TargetSDK) GetGitRemoteDefaultRepo() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Error
+	return o.GitRemoteDefaultRepo
 }
 
-func (o *TargetSDK) GetGenerateConfigPostVersion() *string {
+func (o *TargetSDK) GetGitRelativeCwd() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateConfigPostVersion
+	return o.GitRelativeCwd
 }
 
-func (o *TargetSDK) GetGenerateEligibleFeatures() *string {
+func (o *TargetSDK) GetGenerateTarget() string {
+	if o == nil {
+		return ""
+	}
+	return o.GenerateTarget
+}
+
+func (o *TargetSDK) GetGenerateTargetName() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateEligibleFeatures
+	return o.GenerateTargetName
 }
 
 func (o *TargetSDK) GetGenerateGenLockID() string {
@@ -151,6 +193,20 @@ func (o *TargetSDK) GetGenerateGenLockID() string {
 		return ""
 	}
 	return o.GenerateGenLockID
+}
+
+func (o *TargetSDK) GetGenerateTargetVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateTargetVersion
+}
+
+func (o *TargetSDK) GetGenerateConfigPostVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateConfigPostVersion
 }
 
 func (o *TargetSDK) GetGenerateGenLockPreFeatures() *string {
@@ -165,6 +221,13 @@ func (o *TargetSDK) GetGenerateGenLockPreVersion() *string {
 		return nil
 	}
 	return o.GenerateGenLockPreVersion
+}
+
+func (o *TargetSDK) GetGenerateEligibleFeatures() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GenerateEligibleFeatures
 }
 
 func (o *TargetSDK) GetGenerateNumberOfOperationsIgnored() *int64 {
@@ -195,32 +258,11 @@ func (o *TargetSDK) GetGeneratePublished() *bool {
 	return o.GeneratePublished
 }
 
-func (o *TargetSDK) GetGenerateTarget() string {
-	if o == nil {
-		return ""
-	}
-	return o.GenerateTarget
-}
-
-func (o *TargetSDK) GetGenerateTargetName() *string {
+func (o *TargetSDK) GetContinuousIntegrationEnvironment() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GenerateTargetName
-}
-
-func (o *TargetSDK) GetGenerateTargetVersion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GenerateTargetVersion
-}
-
-func (o *TargetSDK) GetGhActionOrganization() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionOrganization
+	return o.ContinuousIntegrationEnvironment
 }
 
 func (o *TargetSDK) GetGhActionRef() *string {
@@ -228,13 +270,6 @@ func (o *TargetSDK) GetGhActionRef() *string {
 		return nil
 	}
 	return o.GhActionRef
-}
-
-func (o *TargetSDK) GetGhActionRepository() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GhActionRepository
 }
 
 func (o *TargetSDK) GetGhActionRunLink() *string {
@@ -251,39 +286,25 @@ func (o *TargetSDK) GetGhActionVersion() *string {
 	return o.GhActionVersion
 }
 
-func (o *TargetSDK) GetGitRelativeCwd() *string {
+func (o *TargetSDK) GetGhActionOrganization() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GitRelativeCwd
+	return o.GhActionOrganization
 }
 
-func (o *TargetSDK) GetGitRemoteDefaultOwner() *string {
+func (o *TargetSDK) GetGhActionRepository() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GitRemoteDefaultOwner
+	return o.GhActionRepository
 }
 
-func (o *TargetSDK) GetGitRemoteDefaultRepo() *string {
+func (o *TargetSDK) GetRepoLabel() *string {
 	if o == nil {
 		return nil
 	}
-	return o.GitRemoteDefaultRepo
-}
-
-func (o *TargetSDK) GetGitUserEmail() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitUserEmail
-}
-
-func (o *TargetSDK) GetGitUserName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GitUserName
+	return o.RepoLabel
 }
 
 func (o *TargetSDK) GetHostname() *string {
@@ -293,81 +314,25 @@ func (o *TargetSDK) GetHostname() *string {
 	return o.Hostname
 }
 
-func (o *TargetSDK) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *TargetSDK) GetLastEventCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.LastEventCreatedAt
-}
-
-func (o *TargetSDK) GetLastEventID() string {
-	if o == nil {
-		return ""
-	}
-	return o.LastEventID
-}
-
-func (o *TargetSDK) GetLastEventInteractionType() InteractionType {
-	if o == nil {
-		return InteractionType("")
-	}
-	return o.LastEventInteractionType
-}
-
-func (o *TargetSDK) GetLastPublishCreatedAt() *time.Time {
+func (o *TargetSDK) GetGitUserName() *string {
 	if o == nil {
 		return nil
 	}
-	return o.LastPublishCreatedAt
+	return o.GitUserName
 }
 
-func (o *TargetSDK) GetLastPublishGhActionRunLink() *string {
+func (o *TargetSDK) GetGitUserEmail() *string {
 	if o == nil {
 		return nil
 	}
-	return o.LastPublishGhActionRunLink
+	return o.GitUserEmail
 }
 
-func (o *TargetSDK) GetPublishPackageName() *string {
+func (o *TargetSDK) GetSourceRevisionDigest() *string {
 	if o == nil {
 		return nil
 	}
-	return o.PublishPackageName
-}
-
-func (o *TargetSDK) GetPublishPackageRegistryName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PublishPackageRegistryName
-}
-
-func (o *TargetSDK) GetPublishPackageURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PublishPackageURL
-}
-
-func (o *TargetSDK) GetPublishPackageVersion() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PublishPackageVersion
-}
-
-func (o *TargetSDK) GetRepoLabel() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RepoLabel
+	return o.SourceRevisionDigest
 }
 
 func (o *TargetSDK) GetSourceBlobDigest() *string {
@@ -384,32 +349,18 @@ func (o *TargetSDK) GetSourceNamespaceName() *string {
 	return o.SourceNamespaceName
 }
 
-func (o *TargetSDK) GetSourceRevisionDigest() *string {
+func (o *TargetSDK) GetError() *string {
 	if o == nil {
 		return nil
 	}
-	return o.SourceRevisionDigest
+	return o.Error
 }
 
-func (o *TargetSDK) GetSuccess() *bool {
+func (o *TargetSDK) GetWorkflowPreRaw() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Success
-}
-
-func (o *TargetSDK) GetWorkflowLockPostRaw() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkflowLockPostRaw
-}
-
-func (o *TargetSDK) GetWorkflowLockPreRaw() *string {
-	if o == nil {
-		return nil
-	}
-	return o.WorkflowLockPreRaw
+	return o.WorkflowPreRaw
 }
 
 func (o *TargetSDK) GetWorkflowPostRaw() *string {
@@ -419,9 +370,58 @@ func (o *TargetSDK) GetWorkflowPostRaw() *string {
 	return o.WorkflowPostRaw
 }
 
-func (o *TargetSDK) GetWorkflowPreRaw() *string {
+func (o *TargetSDK) GetWorkflowLockPreRaw() *string {
 	if o == nil {
 		return nil
 	}
-	return o.WorkflowPreRaw
+	return o.WorkflowLockPreRaw
+}
+
+func (o *TargetSDK) GetWorkflowLockPostRaw() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkflowLockPostRaw
+}
+
+func (o *TargetSDK) GetPublishPackageURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageURL
+}
+
+func (o *TargetSDK) GetPublishPackageName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageName
+}
+
+func (o *TargetSDK) GetPublishPackageVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageVersion
+}
+
+func (o *TargetSDK) GetPublishPackageRegistryName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishPackageRegistryName
+}
+
+func (o *TargetSDK) GetLastPublishCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.LastPublishCreatedAt
+}
+
+func (o *TargetSDK) GetLastPublishGhActionRunLink() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastPublishGhActionRunLink
 }

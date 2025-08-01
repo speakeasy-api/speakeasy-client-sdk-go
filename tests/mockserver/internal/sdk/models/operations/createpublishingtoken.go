@@ -8,51 +8,51 @@ import (
 	"time"
 )
 
-// CreatePublishingTokenRequestBody - The publishing token to create
-type CreatePublishingTokenRequestBody struct {
+// CreatePublishingTokenRequest - The publishing token to create
+type CreatePublishingTokenRequest struct {
 	TargetID       string    `json:"target_id"`
 	TargetResource string    `json:"target_resource"`
-	TokenName      string    `json:"token_name"`
 	ValidUntil     time.Time `json:"valid_until"`
+	TokenName      string    `json:"token_name"`
 }
 
-func (c CreatePublishingTokenRequestBody) MarshalJSON() ([]byte, error) {
+func (c CreatePublishingTokenRequest) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreatePublishingTokenRequestBody) UnmarshalJSON(data []byte) error {
+func (c *CreatePublishingTokenRequest) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreatePublishingTokenRequestBody) GetTargetID() string {
+func (o *CreatePublishingTokenRequest) GetTargetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TargetID
 }
 
-func (o *CreatePublishingTokenRequestBody) GetTargetResource() string {
+func (o *CreatePublishingTokenRequest) GetTargetResource() string {
 	if o == nil {
 		return ""
 	}
 	return o.TargetResource
 }
 
-func (o *CreatePublishingTokenRequestBody) GetTokenName() string {
-	if o == nil {
-		return ""
-	}
-	return o.TokenName
-}
-
-func (o *CreatePublishingTokenRequestBody) GetValidUntil() time.Time {
+func (o *CreatePublishingTokenRequest) GetValidUntil() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.ValidUntil
+}
+
+func (o *CreatePublishingTokenRequest) GetTokenName() string {
+	if o == nil {
+		return ""
+	}
+	return o.TokenName
 }
 
 type CreatePublishingTokenResponse struct {
