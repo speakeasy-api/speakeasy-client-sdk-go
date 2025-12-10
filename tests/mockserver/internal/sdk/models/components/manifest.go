@@ -4,37 +4,23 @@ package components
 
 // Manifest - Returns the requested manifest file
 type Manifest struct {
-	// Annotations
-	Annotations *Annotations `json:"annotations,omitempty"`
-	// Type of artifact
-	ArtifactType *string `json:"artifactType,omitempty"`
-	// List of V2 image layer information
-	Layers []V2Descriptor `json:"layers,omitempty"`
-	// Media type usually application/vnd.docker.distribution.manifest.v2+json if this is in the accept header
-	MediaType *string `json:"mediaType,omitempty"`
 	// Schema version
 	SchemaVersion *int64 `json:"schemaVersion,omitempty"`
+	// Media type usually application/vnd.docker.distribution.manifest.v2+json if this is in the accept header
+	MediaType *string `json:"mediaType,omitempty"`
+	// Type of artifact
+	ArtifactType *string `json:"artifactType,omitempty"`
+	// Annotations
+	Annotations *Annotations `json:"annotations,omitempty"`
+	// List of V2 image layer information
+	Layers []V2Descriptor `json:"layers,omitempty"`
 }
 
-func (o *Manifest) GetAnnotations() *Annotations {
+func (o *Manifest) GetSchemaVersion() *int64 {
 	if o == nil {
 		return nil
 	}
-	return o.Annotations
-}
-
-func (o *Manifest) GetArtifactType() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ArtifactType
-}
-
-func (o *Manifest) GetLayers() []V2Descriptor {
-	if o == nil {
-		return nil
-	}
-	return o.Layers
+	return o.SchemaVersion
 }
 
 func (o *Manifest) GetMediaType() *string {
@@ -44,9 +30,23 @@ func (o *Manifest) GetMediaType() *string {
 	return o.MediaType
 }
 
-func (o *Manifest) GetSchemaVersion() *int64 {
+func (o *Manifest) GetArtifactType() *string {
 	if o == nil {
 		return nil
 	}
-	return o.SchemaVersion
+	return o.ArtifactType
+}
+
+func (o *Manifest) GetAnnotations() *Annotations {
+	if o == nil {
+		return nil
+	}
+	return o.Annotations
+}
+
+func (o *Manifest) GetLayers() []V2Descriptor {
+	if o == nil {
+		return nil
+	}
+	return o.Layers
 }

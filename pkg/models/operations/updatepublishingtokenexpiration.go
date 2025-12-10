@@ -21,24 +21,24 @@ func (u UpdatePublishingTokenExpirationRequestBody) MarshalJSON() ([]byte, error
 }
 
 func (u *UpdatePublishingTokenExpirationRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdatePublishingTokenExpirationRequestBody) GetTokenName() *string {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationRequestBody) GetTokenName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.TokenName
+	return u.TokenName
 }
 
-func (o *UpdatePublishingTokenExpirationRequestBody) GetValidUntil() time.Time {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationRequestBody) GetValidUntil() time.Time {
+	if u == nil {
 		return time.Time{}
 	}
-	return o.ValidUntil
+	return u.ValidUntil
 }
 
 type UpdatePublishingTokenExpirationRequest struct {
@@ -48,18 +48,18 @@ type UpdatePublishingTokenExpirationRequest struct {
 	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
 }
 
-func (o *UpdatePublishingTokenExpirationRequest) GetRequestBody() *UpdatePublishingTokenExpirationRequestBody {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationRequest) GetRequestBody() *UpdatePublishingTokenExpirationRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
-func (o *UpdatePublishingTokenExpirationRequest) GetTokenID() string {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationRequest) GetTokenID() string {
+	if u == nil {
 		return ""
 	}
-	return o.TokenID
+	return u.TokenID
 }
 
 type UpdatePublishingTokenExpirationResponse struct {
@@ -71,23 +71,23 @@ type UpdatePublishingTokenExpirationResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *UpdatePublishingTokenExpirationResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePublishingTokenExpirationResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePublishingTokenExpirationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePublishingTokenExpirationResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }

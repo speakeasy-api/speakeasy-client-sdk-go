@@ -42,16 +42,9 @@ func (o *Secrets) GetPublishingSecretsConfigured() bool {
 
 // GithubSetupStateResponse - The state of a particular SDK targets github setup
 type GithubSetupStateResponse struct {
-	Actions      Actions `json:"actions"`
 	AppInstalled bool    `json:"app_installed"`
+	Actions      Actions `json:"actions"`
 	Secrets      Secrets `json:"secrets"`
-}
-
-func (o *GithubSetupStateResponse) GetActions() Actions {
-	if o == nil {
-		return Actions{}
-	}
-	return o.Actions
 }
 
 func (o *GithubSetupStateResponse) GetAppInstalled() bool {
@@ -59,6 +52,13 @@ func (o *GithubSetupStateResponse) GetAppInstalled() bool {
 		return false
 	}
 	return o.AppInstalled
+}
+
+func (o *GithubSetupStateResponse) GetActions() Actions {
+	if o == nil {
+		return Actions{}
+	}
+	return o.Actions
 }
 
 func (o *GithubSetupStateResponse) GetSecrets() Secrets {

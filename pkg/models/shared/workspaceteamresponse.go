@@ -9,16 +9,16 @@ type WorkspaceTeamResponse struct {
 	Users       []User       `json:"users"`
 }
 
-func (o *WorkspaceTeamResponse) GetSsoMetadata() *SSOMetadata {
-	if o == nil {
+func (w *WorkspaceTeamResponse) GetSsoMetadata() *SSOMetadata {
+	if w == nil {
 		return nil
 	}
-	return o.SsoMetadata
+	return w.SsoMetadata
 }
 
-func (o *WorkspaceTeamResponse) GetUsers() []User {
-	if o == nil {
+func (w *WorkspaceTeamResponse) GetUsers() []User {
+	if w == nil {
 		return []User{}
 	}
-	return o.Users
+	return w.Users
 }

@@ -18,30 +18,30 @@ type GetNamespacesResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetNamespacesResponse) GetContentType() string {
-	if o == nil {
+func (g *GetNamespacesResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetNamespacesResponse) GetGetNamespacesResponse() *shared.GetNamespacesResponse {
-	if o == nil {
+func (g *GetNamespacesResponse) GetGetNamespacesResponse() *shared.GetNamespacesResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GetNamespacesResponse
+	return g.GetNamespacesResponse
 }
 
-func (o *GetNamespacesResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetNamespacesResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetNamespacesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetNamespacesResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

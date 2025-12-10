@@ -14,18 +14,18 @@ type SuggestRequest struct {
 	XSessionID         string                    `header:"style=simple,explode=false,name=x-session-id"`
 }
 
-func (o *SuggestRequest) GetSuggestRequestBody() shared.SuggestRequestBody {
-	if o == nil {
+func (s *SuggestRequest) GetSuggestRequestBody() shared.SuggestRequestBody {
+	if s == nil {
 		return shared.SuggestRequestBody{}
 	}
-	return o.SuggestRequestBody
+	return s.SuggestRequestBody
 }
 
-func (o *SuggestRequest) GetXSessionID() string {
-	if o == nil {
+func (s *SuggestRequest) GetXSessionID() string {
+	if s == nil {
 		return ""
 	}
-	return o.XSessionID
+	return s.XSessionID
 }
 
 type SuggestResponse struct {
@@ -40,30 +40,30 @@ type SuggestResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *SuggestResponse) GetContentType() string {
-	if o == nil {
+func (s *SuggestResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SuggestResponse) GetSchema() io.ReadCloser {
-	if o == nil {
+func (s *SuggestResponse) GetSchema() io.ReadCloser {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SuggestResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SuggestResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SuggestResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SuggestResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }

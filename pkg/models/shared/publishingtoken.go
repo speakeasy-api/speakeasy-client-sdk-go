@@ -53,92 +53,92 @@ func (p PublishingToken) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PublishingToken) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PublishingToken) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *PublishingToken) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PublishingToken) GetCreatedBy() string {
-	if o == nil {
+func (p *PublishingToken) GetCreatedBy() string {
+	if p == nil {
 		return ""
 	}
-	return o.CreatedBy
+	return p.CreatedBy
 }
 
-func (o *PublishingToken) GetID() string {
-	if o == nil {
+func (p *PublishingToken) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PublishingToken) GetOrganizationID() string {
-	if o == nil {
+func (p *PublishingToken) GetOrganizationID() string {
+	if p == nil {
 		return ""
 	}
-	return o.OrganizationID
+	return p.OrganizationID
 }
 
-func (o *PublishingToken) GetTargetID() string {
-	if o == nil {
+func (p *PublishingToken) GetTargetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.TargetID
+	return p.TargetID
 }
 
-func (o *PublishingToken) GetTargetResource() TargetResource {
-	if o == nil {
+func (p *PublishingToken) GetTargetResource() TargetResource {
+	if p == nil {
 		return TargetResource("")
 	}
-	return o.TargetResource
+	return p.TargetResource
 }
 
-func (o *PublishingToken) GetToken() string {
-	if o == nil {
+func (p *PublishingToken) GetToken() string {
+	if p == nil {
 		return ""
 	}
-	return o.Token
+	return p.Token
 }
 
-func (o *PublishingToken) GetTokenName() string {
-	if o == nil {
+func (p *PublishingToken) GetTokenName() string {
+	if p == nil {
 		return ""
 	}
-	return o.TokenName
+	return p.TokenName
 }
 
-func (o *PublishingToken) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (p *PublishingToken) GetUpdatedAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }
 
-func (o *PublishingToken) GetUpdatedBy() *string {
-	if o == nil {
+func (p *PublishingToken) GetUpdatedBy() *string {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedBy
+	return p.UpdatedBy
 }
 
-func (o *PublishingToken) GetValidUntil() time.Time {
-	if o == nil {
+func (p *PublishingToken) GetValidUntil() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.ValidUntil
+	return p.ValidUntil
 }
 
-func (o *PublishingToken) GetWorkspaceID() string {
-	if o == nil {
+func (p *PublishingToken) GetWorkspaceID() string {
+	if p == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return p.WorkspaceID
 }

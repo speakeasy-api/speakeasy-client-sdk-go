@@ -16,25 +16,25 @@ type GetWorkspaceAccessRequest struct {
 	TargetType *string `queryParam:"style=form,explode=true,name=targetType"`
 }
 
-func (o *GetWorkspaceAccessRequest) GetGenLockID() *string {
-	if o == nil {
+func (g *GetWorkspaceAccessRequest) GetGenLockID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.GenLockID
+	return g.GenLockID
 }
 
-func (o *GetWorkspaceAccessRequest) GetPassive() *bool {
-	if o == nil {
+func (g *GetWorkspaceAccessRequest) GetPassive() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Passive
+	return g.Passive
 }
 
-func (o *GetWorkspaceAccessRequest) GetTargetType() *string {
-	if o == nil {
+func (g *GetWorkspaceAccessRequest) GetTargetType() *string {
+	if g == nil {
 		return nil
 	}
-	return o.TargetType
+	return g.TargetType
 }
 
 type GetWorkspaceAccessResponse struct {
@@ -48,30 +48,30 @@ type GetWorkspaceAccessResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetWorkspaceAccessResponse) GetAccessDetails() *shared.AccessDetails {
-	if o == nil {
+func (g *GetWorkspaceAccessResponse) GetAccessDetails() *shared.AccessDetails {
+	if g == nil {
 		return nil
 	}
-	return o.AccessDetails
+	return g.AccessDetails
 }
 
-func (o *GetWorkspaceAccessResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceAccessResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceAccessResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceAccessResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceAccessResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceAccessResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

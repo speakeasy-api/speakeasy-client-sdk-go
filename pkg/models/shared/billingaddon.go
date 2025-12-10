@@ -14,3 +14,14 @@ const (
 func (e BillingAddOn) ToPointer() *BillingAddOn {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *BillingAddOn) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "webhooks", "sdk_testing", "custom_code_regions", "snippet_ai":
+			return true
+		}
+	}
+	return false
+}

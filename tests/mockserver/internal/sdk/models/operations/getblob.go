@@ -8,24 +8,10 @@ import (
 )
 
 type GetBlobRequest struct {
-	Digest           string `pathParam:"style=simple,explode=false,name=digest"`
-	NamespaceName    string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	OrganizationSlug string `pathParam:"style=simple,explode=false,name=organization_slug"`
 	WorkspaceSlug    string `pathParam:"style=simple,explode=false,name=workspace_slug"`
-}
-
-func (o *GetBlobRequest) GetDigest() string {
-	if o == nil {
-		return ""
-	}
-	return o.Digest
-}
-
-func (o *GetBlobRequest) GetNamespaceName() string {
-	if o == nil {
-		return ""
-	}
-	return o.NamespaceName
+	NamespaceName    string `pathParam:"style=simple,explode=false,name=namespace_name"`
+	Digest           string `pathParam:"style=simple,explode=false,name=digest"`
 }
 
 func (o *GetBlobRequest) GetOrganizationSlug() string {
@@ -42,18 +28,25 @@ func (o *GetBlobRequest) GetWorkspaceSlug() string {
 	return o.WorkspaceSlug
 }
 
-type GetBlobResponse struct {
-	// OK
-	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	Blob     io.ReadCloser
-	HTTPMeta components.HTTPMetadata `json:"-"`
+func (o *GetBlobRequest) GetNamespaceName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NamespaceName
 }
 
-func (o *GetBlobResponse) GetBlob() io.ReadCloser {
+func (o *GetBlobRequest) GetDigest() string {
 	if o == nil {
-		return nil
+		return ""
 	}
-	return o.Blob
+	return o.Digest
+}
+
+type GetBlobResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	// OK
+	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
+	Blob io.ReadCloser
 }
 
 func (o *GetBlobResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -61,4 +54,11 @@ func (o *GetBlobResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetBlobResponse) GetBlob() io.ReadCloser {
+	if o == nil {
+		return nil
+	}
+	return o.Blob
 }

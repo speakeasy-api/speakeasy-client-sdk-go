@@ -7,18 +7,18 @@ type Relationship struct {
 	WorkspaceID string `json:"workspace_id"`
 }
 
-func (o *Relationship) GetUserID() string {
-	if o == nil {
+func (r *Relationship) GetUserID() string {
+	if r == nil {
 		return ""
 	}
-	return o.UserID
+	return r.UserID
 }
 
-func (o *Relationship) GetWorkspaceID() string {
-	if o == nil {
+func (r *Relationship) GetWorkspaceID() string {
+	if r == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return r.WorkspaceID
 }
 
 // WorkspaceInviteResponse - A response for workspace user invite
@@ -27,16 +27,16 @@ type WorkspaceInviteResponse struct {
 	Relationship Relationship `json:"relationship"`
 }
 
-func (o *WorkspaceInviteResponse) GetInviteLink() *string {
-	if o == nil {
+func (w *WorkspaceInviteResponse) GetInviteLink() *string {
+	if w == nil {
 		return nil
 	}
-	return o.InviteLink
+	return w.InviteLink
 }
 
-func (o *WorkspaceInviteResponse) GetRelationship() Relationship {
-	if o == nil {
+func (w *WorkspaceInviteResponse) GetRelationship() Relationship {
+	if w == nil {
 		return Relationship{}
 	}
-	return o.Relationship
+	return w.Relationship
 }

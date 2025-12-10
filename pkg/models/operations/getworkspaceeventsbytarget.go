@@ -13,11 +13,11 @@ type GetWorkspaceEventsByTargetGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceEventsByTargetGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetGlobals) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceEventsByTargetRequest struct {
@@ -34,31 +34,31 @@ func (g GetWorkspaceEventsByTargetRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetWorkspaceEventsByTargetRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.AfterCreatedAt
+	return g.AfterCreatedAt
 }
 
-func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TargetID
+	return g.TargetID
 }
 
-func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceEventsByTargetResponse struct {
@@ -72,30 +72,30 @@ type GetWorkspaceEventsByTargetResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []shared.CliEvent {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []shared.CliEvent {
+	if g == nil {
 		return nil
 	}
-	return o.CliEventBatch
+	return g.CliEventBatch
 }
 
-func (o *GetWorkspaceEventsByTargetResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceEventsByTargetResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceEventsByTargetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceEventsByTargetResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

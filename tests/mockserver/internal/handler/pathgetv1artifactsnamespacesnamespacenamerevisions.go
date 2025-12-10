@@ -56,16 +56,16 @@ func testGetRevisionsGetRevisions0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GetRevisionsResponse{
+	var respBody *components.GetRevisionsResponse = &components.GetRevisionsResponse{
 		Items: []components.Revision{
 			components.Revision{
-				CreatedAt:     types.MustTimeFromString("2024-09-16T19:17:04.361Z"),
-				Digest:        "sha256:6d1ef012b5674ad8a127ecfa9b5e6f5178d171b90ee462846974177fd9bdd39f",
 				ID:            "<id>",
+				Digest:        "sha256:6d1ef012b5674ad8a127ecfa9b5e6f5178d171b90ee462846974177fd9bdd39f",
 				NamespaceName: "<value>",
 				Tags: []string{
 					"<value>",
 				},
+				CreatedAt: types.MustTimeFromString("2024-09-16T19:17:04.361Z"),
 				UpdatedAt: types.MustTimeFromString("2023-12-06T05:58:38.953Z"),
 			},
 		},

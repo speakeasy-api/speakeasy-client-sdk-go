@@ -11,10 +11,10 @@ import (
 type Workspace struct {
 	CreatedAt      time.Time `json:"created_at"`
 	ID             string    `json:"id"`
-	Inactive       *bool     `json:"inactive,omitempty"`
 	Name           string    `json:"name"`
 	OrganizationID string    `json:"organization_id"`
 	Slug           string    `json:"slug"`
+	Inactive       *bool     `json:"inactive,omitempty"`
 	// Deprecated. Use organization.telemetry_disabled instead.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -28,7 +28,7 @@ func (w Workspace) MarshalJSON() ([]byte, error) {
 }
 
 func (w *Workspace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &w, "", false, []string{"created_at", "id", "name", "organization_id", "slug", "updated_at", "verified"}); err != nil {
 		return err
 	}
 	return nil
@@ -46,13 +46,6 @@ func (o *Workspace) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *Workspace) GetInactive() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Inactive
 }
 
 func (o *Workspace) GetName() string {
@@ -74,6 +67,13 @@ func (o *Workspace) GetSlug() string {
 		return ""
 	}
 	return o.Slug
+}
+
+func (o *Workspace) GetInactive() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Inactive
 }
 
 func (o *Workspace) GetTelemetryDisabled() *bool {

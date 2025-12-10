@@ -10,16 +10,16 @@ type GithubGetActionResponse struct {
 	RunURL *string `json:"run_url,omitempty"`
 }
 
-func (o *GithubGetActionResponse) GetRunStatus() *string {
-	if o == nil {
+func (g *GithubGetActionResponse) GetRunStatus() *string {
+	if g == nil {
 		return nil
 	}
-	return o.RunStatus
+	return g.RunStatus
 }
 
-func (o *GithubGetActionResponse) GetRunURL() *string {
-	if o == nil {
+func (g *GithubGetActionResponse) GetRunURL() *string {
+	if g == nil {
 		return nil
 	}
-	return o.RunURL
+	return g.RunURL
 }

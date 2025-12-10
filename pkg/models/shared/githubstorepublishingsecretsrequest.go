@@ -10,16 +10,16 @@ type GithubStorePublishingSecretsRequest struct {
 	Secrets map[string]string `json:"secrets,omitempty"`
 }
 
-func (o *GithubStorePublishingSecretsRequest) GetGenerateGenLockID() string {
-	if o == nil {
+func (g *GithubStorePublishingSecretsRequest) GetGenerateGenLockID() string {
+	if g == nil {
 		return ""
 	}
-	return o.GenerateGenLockID
+	return g.GenerateGenLockID
 }
 
-func (o *GithubStorePublishingSecretsRequest) GetSecrets() map[string]string {
-	if o == nil {
+func (g *GithubStorePublishingSecretsRequest) GetSecrets() map[string]string {
+	if g == nil {
 		return nil
 	}
-	return o.Secrets
+	return g.Secrets
 }

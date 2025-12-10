@@ -6,6 +6,7 @@ generation:
   sdkClassName: speakeasy
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
@@ -15,15 +16,22 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   mockServer:
     disabled: false
+  persistentEdits: {}
   tests:
+    generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: false
 go:
-  version: 3.26.7
+  version: 3.27.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
+  baseErrorName: SpeakeasyError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   flattenGlobalSecurity: true
@@ -35,9 +43,17 @@ go:
       operations: pkg/models/operations
       shared: pkg/models/shared
       webhooks: pkg/models/webhooks
+  includeEmptyObjects: false
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   maxMethodParams: 0
   methodArguments: require-security-and-request
+  modulePath: ""
+  multipartArrayFormat: legacy
+  nullableOptionalWrapper: false
   outputModelSuffix: output
   packageName: github.com/speakeasy-api/speakeasy-client-sdk-go
+  respectRequiredFields: false
   responseFormat: envelope
+  sdkPackageName: ""
+  unionStrategy: left-to-right

@@ -17,7 +17,7 @@ func (a ArchiveNamespaceRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (a *ArchiveNamespaceRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -31,16 +31,9 @@ func (o *ArchiveNamespaceRequestBody) GetArchived() *bool {
 }
 
 type ArchiveNamespaceRequest struct {
+	NamespaceName string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	// Archived status
-	RequestBody   *ArchiveNamespaceRequestBody `request:"mediaType=application/json"`
-	NamespaceName string                       `pathParam:"style=simple,explode=false,name=namespace_name"`
-}
-
-func (o *ArchiveNamespaceRequest) GetRequestBody() *ArchiveNamespaceRequestBody {
-	if o == nil {
-		return nil
-	}
-	return o.RequestBody
+	Body *ArchiveNamespaceRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *ArchiveNamespaceRequest) GetNamespaceName() string {
@@ -48,6 +41,13 @@ func (o *ArchiveNamespaceRequest) GetNamespaceName() string {
 		return ""
 	}
 	return o.NamespaceName
+}
+
+func (o *ArchiveNamespaceRequest) GetBody() *ArchiveNamespaceRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
 }
 
 type ArchiveNamespaceResponse struct {

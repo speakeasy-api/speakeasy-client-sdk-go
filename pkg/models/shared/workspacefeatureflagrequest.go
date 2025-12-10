@@ -7,9 +7,9 @@ type WorkspaceFeatureFlagRequest struct {
 	FeatureFlags []WorkspaceFeatureFlag `json:"feature_flags"`
 }
 
-func (o *WorkspaceFeatureFlagRequest) GetFeatureFlags() []WorkspaceFeatureFlag {
-	if o == nil {
+func (w *WorkspaceFeatureFlagRequest) GetFeatureFlags() []WorkspaceFeatureFlag {
+	if w == nil {
 		return []WorkspaceFeatureFlag{}
 	}
-	return o.FeatureFlags
+	return w.FeatureFlags
 }

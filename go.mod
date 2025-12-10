@@ -1,9 +1,9 @@
 module github.com/speakeasy-api/speakeasy-client-sdk-go/v3
 
-go 1.20
+go 1.22
 
 require (
-	github.com/ericlagergren/decimal v0.0.0-20221120152707-495c53812d05
+	github.com/ericlagergren/decimal v0.0.0-20240411145413-00de7ca16731
 	github.com/stretchr/testify v1.8.4
 )
 

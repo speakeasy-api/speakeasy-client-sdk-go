@@ -18,30 +18,30 @@ type CreateWorkspaceResponse struct {
 	Workspace *shared.Workspace
 }
 
-func (o *CreateWorkspaceResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateWorkspaceResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateWorkspaceResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateWorkspaceResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateWorkspaceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateWorkspaceResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateWorkspaceResponse) GetWorkspace() *shared.Workspace {
-	if o == nil {
+func (c *CreateWorkspaceResponse) GetWorkspace() *shared.Workspace {
+	if c == nil {
 		return nil
 	}
-	return o.Workspace
+	return c.Workspace
 }

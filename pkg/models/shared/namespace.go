@@ -13,18 +13,18 @@ type CompositeSpecMetadata struct {
 	SubscriptionSettings RemoteSourceSubscriptionSettings `json:"subscription_settings"`
 }
 
-func (o *CompositeSpecMetadata) GetSubscriptionID() string {
-	if o == nil {
+func (c *CompositeSpecMetadata) GetSubscriptionID() string {
+	if c == nil {
 		return ""
 	}
-	return o.SubscriptionID
+	return c.SubscriptionID
 }
 
-func (o *CompositeSpecMetadata) GetSubscriptionSettings() RemoteSourceSubscriptionSettings {
-	if o == nil {
+func (c *CompositeSpecMetadata) GetSubscriptionSettings() RemoteSourceSubscriptionSettings {
+	if c == nil {
 		return RemoteSourceSubscriptionSettings{}
 	}
-	return o.SubscriptionSettings
+	return c.SubscriptionSettings
 }
 
 // Namespace - A namespace contains many revisions.
@@ -47,64 +47,64 @@ func (n Namespace) MarshalJSON() ([]byte, error) {
 }
 
 func (n *Namespace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Namespace) GetArchivedAt() *time.Time {
-	if o == nil {
+func (n *Namespace) GetArchivedAt() *time.Time {
+	if n == nil {
 		return nil
 	}
-	return o.ArchivedAt
+	return n.ArchivedAt
 }
 
-func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
-	if o == nil {
+func (n *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
+	if n == nil {
 		return nil
 	}
-	return o.CompositeSpecMetadata
+	return n.CompositeSpecMetadata
 }
 
-func (o *Namespace) GetCreatedAt() time.Time {
-	if o == nil {
+func (n *Namespace) GetCreatedAt() time.Time {
+	if n == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return n.CreatedAt
 }
 
-func (o *Namespace) GetID() string {
-	if o == nil {
+func (n *Namespace) GetID() string {
+	if n == nil {
 		return ""
 	}
-	return o.ID
+	return n.ID
 }
 
-func (o *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
-	if o == nil {
+func (n *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
+	if n == nil {
 		return nil
 	}
-	return o.LatestRevisionMetadata
+	return n.LatestRevisionMetadata
 }
 
-func (o *Namespace) GetName() string {
-	if o == nil {
+func (n *Namespace) GetName() string {
+	if n == nil {
 		return ""
 	}
-	return o.Name
+	return n.Name
 }
 
-func (o *Namespace) GetPublic() *bool {
-	if o == nil {
+func (n *Namespace) GetPublic() *bool {
+	if n == nil {
 		return nil
 	}
-	return o.Public
+	return n.Public
 }
 
-func (o *Namespace) GetUpdatedAt() time.Time {
-	if o == nil {
+func (n *Namespace) GetUpdatedAt() time.Time {
+	if n == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return n.UpdatedAt
 }

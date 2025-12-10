@@ -6,12 +6,12 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type CreateRequestBody struct {
+type CreateRequest struct {
 	// URL to shorten
 	URL string `json:"url"`
 }
 
-func (o *CreateRequestBody) GetURL() string {
+func (o *CreateRequest) GetURL() string {
 	if o == nil {
 		return ""
 	}

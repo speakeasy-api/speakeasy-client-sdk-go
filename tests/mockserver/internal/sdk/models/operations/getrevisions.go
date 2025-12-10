@@ -27,16 +27,9 @@ func (o *GetRevisionsRequest) GetNextPageToken() *string {
 }
 
 type GetRevisionsResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GetRevisionsResponse *components.GetRevisionsResponse
-	HTTPMeta             components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetRevisionsResponse) GetGetRevisionsResponse() *components.GetRevisionsResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GetRevisionsResponse
 }
 
 func (o *GetRevisionsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -44,4 +37,11 @@ func (o *GetRevisionsResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetRevisionsResponse) GetGetRevisionsResponse() *components.GetRevisionsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetRevisionsResponse
 }

@@ -55,7 +55,7 @@ func testGetWorkspaceFeatureFlagsGetWorkspaceFeatureFlags0(w http.ResponseWriter
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.WorkspaceFeatureFlagResponse{}
+	var respBody *components.WorkspaceFeatureFlagResponse = &components.WorkspaceFeatureFlagResponse{}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

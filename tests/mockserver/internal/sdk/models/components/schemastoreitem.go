@@ -36,12 +36,12 @@ func (e *Format) UnmarshalJSON(data []byte) error {
 }
 
 type SchemaStoreItem struct {
-	CreatedAt    time.Time `json:"created_at"`
-	Format       Format    `json:"format"`
 	ID           string    `json:"id"`
+	Spec         string    `json:"spec"`
 	PackageName  string    `json:"packageName"`
 	SDKClassname string    `json:"sdkClassname"`
-	Spec         string    `json:"spec"`
+	CreatedAt    time.Time `json:"created_at"`
+	Format       Format    `json:"format"`
 }
 
 func (s SchemaStoreItem) MarshalJSON() ([]byte, error) {
@@ -49,24 +49,10 @@ func (s SchemaStoreItem) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SchemaStoreItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"id", "spec", "packageName", "sdkClassname", "created_at", "format"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *SchemaStoreItem) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *SchemaStoreItem) GetFormat() Format {
-	if o == nil {
-		return Format("")
-	}
-	return o.Format
 }
 
 func (o *SchemaStoreItem) GetID() string {
@@ -74,6 +60,13 @@ func (o *SchemaStoreItem) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *SchemaStoreItem) GetSpec() string {
+	if o == nil {
+		return ""
+	}
+	return o.Spec
 }
 
 func (o *SchemaStoreItem) GetPackageName() string {
@@ -90,9 +83,16 @@ func (o *SchemaStoreItem) GetSDKClassname() string {
 	return o.SDKClassname
 }
 
-func (o *SchemaStoreItem) GetSpec() string {
+func (o *SchemaStoreItem) GetCreatedAt() time.Time {
 	if o == nil {
-		return ""
+		return time.Time{}
 	}
-	return o.Spec
+	return o.CreatedAt
+}
+
+func (o *SchemaStoreItem) GetFormat() Format {
+	if o == nil {
+		return Format("")
+	}
+	return o.Format
 }

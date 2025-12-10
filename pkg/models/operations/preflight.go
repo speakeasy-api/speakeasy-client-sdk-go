@@ -18,30 +18,30 @@ type PreflightResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PreflightResponse) GetContentType() string {
-	if o == nil {
+func (p *PreflightResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PreflightResponse) GetPreflightToken() *shared.PreflightToken {
-	if o == nil {
+func (p *PreflightResponse) GetPreflightToken() *shared.PreflightToken {
+	if p == nil {
 		return nil
 	}
-	return o.PreflightToken
+	return p.PreflightToken
 }
 
-func (o *PreflightResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PreflightResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PreflightResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PreflightResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }

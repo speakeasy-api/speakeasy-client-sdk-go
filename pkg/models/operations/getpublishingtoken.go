@@ -18,30 +18,30 @@ type GetPublishingTokenResponse struct {
 	Classes []shared.PublishingToken
 }
 
-func (o *GetPublishingTokenResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPublishingTokenResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPublishingTokenResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPublishingTokenResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPublishingTokenResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPublishingTokenResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPublishingTokenResponse) GetClasses() []shared.PublishingToken {
-	if o == nil {
+func (g *GetPublishingTokenResponse) GetClasses() []shared.PublishingToken {
+	if g == nil {
 		return nil
 	}
-	return o.Classes
+	return g.Classes
 }

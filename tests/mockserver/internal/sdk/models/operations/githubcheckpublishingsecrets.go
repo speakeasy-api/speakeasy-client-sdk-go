@@ -18,16 +18,9 @@ func (o *GithubCheckPublishingSecretsRequest) GetGenerateGenLockID() string {
 }
 
 type GithubCheckPublishingSecretsResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GithubMissingPublishingSecretsResponse *components.GithubMissingPublishingSecretsResponse
-	HTTPMeta                               components.HTTPMetadata `json:"-"`
-}
-
-func (o *GithubCheckPublishingSecretsResponse) GetGithubMissingPublishingSecretsResponse() *components.GithubMissingPublishingSecretsResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GithubMissingPublishingSecretsResponse
 }
 
 func (o *GithubCheckPublishingSecretsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -35,4 +28,11 @@ func (o *GithubCheckPublishingSecretsResponse) GetHTTPMeta() components.HTTPMeta
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GithubCheckPublishingSecretsResponse) GetGithubMissingPublishingSecretsResponse() *components.GithubMissingPublishingSecretsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GithubMissingPublishingSecretsResponse
 }

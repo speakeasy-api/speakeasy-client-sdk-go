@@ -6,9 +6,9 @@ type GetNamespacesResponse struct {
 	Items []Namespace `json:"items"`
 }
 
-func (o *GetNamespacesResponse) GetItems() []Namespace {
-	if o == nil {
+func (g *GetNamespacesResponse) GetItems() []Namespace {
+	if g == nil {
 		return []Namespace{}
 	}
-	return o.Items
+	return g.Items
 }

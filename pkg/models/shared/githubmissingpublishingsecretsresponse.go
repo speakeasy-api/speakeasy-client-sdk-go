@@ -7,9 +7,9 @@ type GithubMissingPublishingSecretsResponse struct {
 	MissingSecrets []string `json:"missing_secrets,omitempty"`
 }
 
-func (o *GithubMissingPublishingSecretsResponse) GetMissingSecrets() []string {
-	if o == nil {
+func (g *GithubMissingPublishingSecretsResponse) GetMissingSecrets() []string {
+	if g == nil {
 		return nil
 	}
-	return o.MissingSecrets
+	return g.MissingSecrets
 }

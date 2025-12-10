@@ -15,37 +15,37 @@ type UsageSnippet struct {
 	Path string `json:"path"`
 }
 
-func (o *UsageSnippet) GetCode() string {
-	if o == nil {
+func (u *UsageSnippet) GetCode() string {
+	if u == nil {
 		return ""
 	}
-	return o.Code
+	return u.Code
 }
 
-func (o *UsageSnippet) GetLanguage() string {
-	if o == nil {
+func (u *UsageSnippet) GetLanguage() string {
+	if u == nil {
 		return ""
 	}
-	return o.Language
+	return u.Language
 }
 
-func (o *UsageSnippet) GetMethod() any {
-	if o == nil {
+func (u *UsageSnippet) GetMethod() any {
+	if u == nil {
 		return nil
 	}
-	return o.Method
+	return u.Method
 }
 
-func (o *UsageSnippet) GetOperationID() string {
-	if o == nil {
+func (u *UsageSnippet) GetOperationID() string {
+	if u == nil {
 		return ""
 	}
-	return o.OperationID
+	return u.OperationID
 }
 
-func (o *UsageSnippet) GetPath() string {
-	if o == nil {
+func (u *UsageSnippet) GetPath() string {
+	if u == nil {
 		return ""
 	}
-	return o.Path
+	return u.Path
 }

@@ -35,43 +35,43 @@ func (e *Format) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateSchemaStoreItemRequestBody struct {
-	// The format of the OpenAPI specification.
-	Format Format `json:"format"`
+type CreateSchemaStoreItemRequest struct {
+	// The OpenAPI specification to store.
+	Spec string `json:"spec"`
 	// The package name to use in code snippets / quickstart.
 	PackageName string `json:"packageName"`
 	// The classname of the SDK to use in code snippets / quickstart.
 	SDKClassname string `json:"sdkClassname"`
-	// The OpenAPI specification to store.
-	Spec string `json:"spec"`
+	// The format of the OpenAPI specification.
+	Format Format `json:"format"`
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetFormat() Format {
+func (o *CreateSchemaStoreItemRequest) GetSpec() string {
 	if o == nil {
-		return Format("")
+		return ""
 	}
-	return o.Format
+	return o.Spec
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetPackageName() string {
+func (o *CreateSchemaStoreItemRequest) GetPackageName() string {
 	if o == nil {
 		return ""
 	}
 	return o.PackageName
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetSDKClassname() string {
+func (o *CreateSchemaStoreItemRequest) GetSDKClassname() string {
 	if o == nil {
 		return ""
 	}
 	return o.SDKClassname
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetSpec() string {
+func (o *CreateSchemaStoreItemRequest) GetFormat() Format {
 	if o == nil {
-		return ""
+		return Format("")
 	}
-	return o.Spec
+	return o.Format
 }
 
 type CreateSchemaStoreItemResponse struct {

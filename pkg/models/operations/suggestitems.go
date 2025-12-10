@@ -17,30 +17,30 @@ type SuggestItemsResponse struct {
 	Strings []string
 }
 
-func (o *SuggestItemsResponse) GetContentType() string {
-	if o == nil {
+func (s *SuggestItemsResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SuggestItemsResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SuggestItemsResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SuggestItemsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SuggestItemsResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }
 
-func (o *SuggestItemsResponse) GetStrings() []string {
-	if o == nil {
+func (s *SuggestItemsResponse) GetStrings() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Strings
+	return s.Strings
 }

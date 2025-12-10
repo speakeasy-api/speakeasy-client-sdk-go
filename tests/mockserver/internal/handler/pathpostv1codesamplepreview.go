@@ -23,6 +23,8 @@ func pathPostV1CodeSamplePreview(dir *logging.HTTPFileDirectory, rt *tracking.Re
 		switch fmt.Sprintf("%s[%d]", test, count) {
 		case "generateCodeSamplePreview[0]":
 			dir.HandlerFunc("generateCodeSamplePreview", testGenerateCodeSamplePreviewGenerateCodeSamplePreview0)(w, req)
+		case "generateCodeSamplePreview-default[0]":
+			dir.HandlerFunc("generateCodeSamplePreview", testGenerateCodeSamplePreviewGenerateCodeSamplePreviewDefault0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
@@ -60,9 +62,13 @@ func testGenerateCodeSamplePreviewGenerateCodeSamplePreview0(w http.ResponseWrit
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.UsageSnippets{
+	var respBody *components.UsageSnippets = &components.UsageSnippets{
 		Snippets: []components.UsageSnippet{
 			components.UsageSnippet{
+				Path:        "/pet/{id}",
+				Method:      "get",
+				OperationID: "getPetById",
+				Language:    "typescript",
 				Code: "import { Petstore } from \"petstore-sdk\";\n" +
 					"\n" +
 					"const petstore = new Petstore({\n" +
@@ -79,10 +85,78 @@ func testGenerateCodeSamplePreviewGenerateCodeSamplePreview0(w http.ResponseWrit
 					"}\n" +
 					"\n" +
 					"run();",
-				Language:    "typescript",
+			},
+		},
+	}
+	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
+
+	if err != nil {
+		http.Error(
+			w,
+			"Unable to encode response body as JSON: "+err.Error(),
+			http.StatusInternalServerError,
+		)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(respBodyBytes)
+}
+
+func testGenerateCodeSamplePreviewGenerateCodeSamplePreviewDefault0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.SecurityHeader(req, "x-api-key", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.SecurityHeader(req, "x-workspace-identifier", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+	if err := assert.ContentType(req, "multipart/form-data", true); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if err := assert.HeaderExists(req, "User-Agent"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	var respBody *components.UsageSnippets = &components.UsageSnippets{
+		Snippets: []components.UsageSnippet{
+			components.UsageSnippet{
+				Path:        "/pet/{id}",
 				Method:      "get",
 				OperationID: "getPetById",
-				Path:        "/pet/{id}",
+				Language:    "typescript",
+				Code: "import { Petstore } from \"petstore-sdk\";\n" +
+					"\n" +
+					"const petstore = new Petstore({\n" +
+					"  apiKey: \"<YOUR_API_KEY_HERE>\",\n" +
+					"});\n" +
+					"\n" +
+					"async function run() {\n" +
+					"  const result = await petstore.pet.getById({\n" +
+					"    id: 137396,\n" +
+					"  });\n" +
+					"\n" +
+					"  // Handle the result\n" +
+					"  console.log(result);\n" +
+					"}\n" +
+					"\n" +
+					"run();",
 			},
 		},
 	}

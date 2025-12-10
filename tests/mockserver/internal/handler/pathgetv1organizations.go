@@ -56,16 +56,16 @@ func testGetOrganizationsGetOrganizations0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []components.Organization{
+	var respBody []components.Organization = []components.Organization{
 		components.Organization{
-			AccountType:       components.AccountTypeFree,
-			CreatedAt:         types.MustTimeFromString("2023-10-18T22:25:06.537Z"),
 			ID:                "<id>",
 			Name:              "<value>",
 			Slug:              "<value>",
-			SsoActivated:      true,
+			AccountType:       components.AccountTypeFree,
 			TelemetryDisabled: false,
+			CreatedAt:         types.MustTimeFromString("2023-10-18T22:25:06.537Z"),
 			UpdatedAt:         types.MustTimeFromString("2022-01-18T20:59:19.735Z"),
+			SsoActivated:      true,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

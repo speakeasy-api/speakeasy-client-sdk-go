@@ -18,30 +18,30 @@ type CreateBillingAddOnsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CreateBillingAddOnsResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateBillingAddOnsResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateBillingAddOnsResponse) GetOrganizationBillingAddOnResponse() *shared.OrganizationBillingAddOnResponse {
-	if o == nil {
+func (c *CreateBillingAddOnsResponse) GetOrganizationBillingAddOnResponse() *shared.OrganizationBillingAddOnResponse {
+	if c == nil {
 		return nil
 	}
-	return o.OrganizationBillingAddOnResponse
+	return c.OrganizationBillingAddOnResponse
 }
 
-func (o *CreateBillingAddOnsResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateBillingAddOnsResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateBillingAddOnsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateBillingAddOnsResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

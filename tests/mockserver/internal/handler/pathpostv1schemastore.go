@@ -61,13 +61,13 @@ func testCreateSchemaStoreItemCreateSchemaStoreItem0(w http.ResponseWriter, req 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.SchemaStoreItem{
-		CreatedAt:    types.MustTimeFromString("2024-08-06T03:45:46.936Z"),
-		Format:       components.FormatJSON,
+	var respBody *components.SchemaStoreItem = &components.SchemaStoreItem{
 		ID:           "<id>",
+		Spec:         "<value>",
 		PackageName:  "<value>",
 		SDKClassname: "<value>",
-		Spec:         "<value>",
+		CreatedAt:    types.MustTimeFromString("2023-06-13T18:33:55.488Z"),
+		Format:       components.FormatJSON,
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

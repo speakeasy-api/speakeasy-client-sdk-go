@@ -7,17 +7,17 @@ import (
 	"fmt"
 )
 
-type Type string
+type ReportType string
 
 const (
-	TypeLinting Type = "linting"
-	TypeChanges Type = "changes"
+	ReportTypeLinting ReportType = "linting"
+	ReportTypeChanges ReportType = "changes"
 )
 
-func (e Type) ToPointer() *Type {
+func (e ReportType) ToPointer() *ReportType {
 	return &e
 }
-func (e *Type) UnmarshalJSON(data []byte) error {
+func (e *ReportType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -26,18 +26,18 @@ func (e *Type) UnmarshalJSON(data []byte) error {
 	case "linting":
 		fallthrough
 	case "changes":
-		*e = Type(v)
+		*e = ReportType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Type: %v", v)
+		return fmt.Errorf("invalid value for ReportType: %v", v)
 	}
 }
 
 type Report struct {
-	Type *Type `json:"type,omitempty"`
+	Type *ReportType `json:"type,omitempty"`
 }
 
-func (o *Report) GetType() *Type {
+func (o *Report) GetType() *ReportType {
 	if o == nil {
 		return nil
 	}

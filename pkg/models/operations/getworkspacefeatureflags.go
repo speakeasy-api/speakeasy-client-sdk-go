@@ -11,11 +11,11 @@ type GetWorkspaceFeatureFlagsGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceFeatureFlagsGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceFeatureFlagsGlobals) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceFeatureFlagsRequest struct {
@@ -23,11 +23,11 @@ type GetWorkspaceFeatureFlagsRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceFeatureFlagsRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceFeatureFlagsRequest) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceFeatureFlagsResponse struct {
@@ -41,30 +41,30 @@ type GetWorkspaceFeatureFlagsResponse struct {
 	WorkspaceFeatureFlagResponse *shared.WorkspaceFeatureFlagResponse
 }
 
-func (o *GetWorkspaceFeatureFlagsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceFeatureFlagsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceFeatureFlagsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceFeatureFlagsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceFeatureFlagsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceFeatureFlagsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetWorkspaceFeatureFlagsResponse) GetWorkspaceFeatureFlagResponse() *shared.WorkspaceFeatureFlagResponse {
-	if o == nil {
+func (g *GetWorkspaceFeatureFlagsResponse) GetWorkspaceFeatureFlagResponse() *shared.WorkspaceFeatureFlagResponse {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceFeatureFlagResponse
+	return g.WorkspaceFeatureFlagResponse
 }

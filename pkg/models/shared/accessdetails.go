@@ -42,23 +42,23 @@ type AccessDetails struct {
 	Message           string `json:"message"`
 }
 
-func (o *AccessDetails) GetGenerationAllowed() bool {
-	if o == nil {
+func (a *AccessDetails) GetGenerationAllowed() bool {
+	if a == nil {
 		return false
 	}
-	return o.GenerationAllowed
+	return a.GenerationAllowed
 }
 
-func (o *AccessDetails) GetLevel() *Level {
-	if o == nil {
+func (a *AccessDetails) GetLevel() *Level {
+	if a == nil {
 		return nil
 	}
-	return o.Level
+	return a.Level
 }
 
-func (o *AccessDetails) GetMessage() string {
-	if o == nil {
+func (a *AccessDetails) GetMessage() string {
+	if a == nil {
 		return ""
 	}
-	return o.Message
+	return a.Message
 }

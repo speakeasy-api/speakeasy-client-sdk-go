@@ -11,11 +11,11 @@ type GrantUserAccessToWorkspaceGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GrantUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GrantUserAccessToWorkspaceRequest struct {
@@ -25,18 +25,18 @@ type GrantUserAccessToWorkspaceRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GrantUserAccessToWorkspaceRequest) GetEmail() string {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceRequest) GetEmail() string {
+	if g == nil {
 		return ""
 	}
-	return o.Email
+	return g.Email
 }
 
-func (o *GrantUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GrantUserAccessToWorkspaceResponse struct {
@@ -50,30 +50,30 @@ type GrantUserAccessToWorkspaceResponse struct {
 	WorkspaceInviteResponse *shared.WorkspaceInviteResponse
 }
 
-func (o *GrantUserAccessToWorkspaceResponse) GetContentType() string {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GrantUserAccessToWorkspaceResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GrantUserAccessToWorkspaceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GrantUserAccessToWorkspaceResponse) GetWorkspaceInviteResponse() *shared.WorkspaceInviteResponse {
-	if o == nil {
+func (g *GrantUserAccessToWorkspaceResponse) GetWorkspaceInviteResponse() *shared.WorkspaceInviteResponse {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceInviteResponse
+	return g.WorkspaceInviteResponse
 }

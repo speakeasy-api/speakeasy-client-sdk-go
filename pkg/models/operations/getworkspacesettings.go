@@ -11,11 +11,11 @@ type GetWorkspaceSettingsGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceSettingsGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceSettingsGlobals) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceSettingsRequest struct {
@@ -23,11 +23,11 @@ type GetWorkspaceSettingsRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceSettingsRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceSettingsRequest) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceSettingsResponse struct {
@@ -41,30 +41,30 @@ type GetWorkspaceSettingsResponse struct {
 	WorkspaceSettings *shared.WorkspaceSettings
 }
 
-func (o *GetWorkspaceSettingsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceSettingsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceSettingsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceSettingsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetWorkspaceSettingsResponse) GetWorkspaceSettings() *shared.WorkspaceSettings {
-	if o == nil {
+func (g *GetWorkspaceSettingsResponse) GetWorkspaceSettings() *shared.WorkspaceSettings {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceSettings
+	return g.WorkspaceSettings
 }

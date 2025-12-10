@@ -10,16 +10,16 @@ type GithubConfigureTargetRequest struct {
 	RepoName string `json:"repo_name"`
 }
 
-func (o *GithubConfigureTargetRequest) GetOrg() string {
-	if o == nil {
+func (g *GithubConfigureTargetRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GithubConfigureTargetRequest) GetRepoName() string {
-	if o == nil {
+func (g *GithubConfigureTargetRequest) GetRepoName() string {
+	if g == nil {
 		return ""
 	}
-	return o.RepoName
+	return g.RepoName
 }
