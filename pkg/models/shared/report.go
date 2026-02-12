@@ -37,9 +37,9 @@ type Report struct {
 	Type *Type `json:"type,omitempty"`
 }
 
-func (o *Report) GetType() *Type {
-	if o == nil {
+func (r *Report) GetType() *Type {
+	if r == nil {
 		return nil
 	}
-	return o.Type
+	return r.Type
 }

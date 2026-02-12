@@ -20,12 +20,12 @@ func (o *GetWorkspaceEventsByTargetGlobals) GetWorkspaceID() *string {
 }
 
 type GetWorkspaceEventsByTargetRequest struct {
-	// Filter to only return events created after this timestamp
-	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`
-	// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
-	TargetID string `pathParam:"style=simple,explode=false,name=target_id"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
+	// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
+	TargetID string `pathParam:"style=simple,explode=false,name=target_id"`
+	// Filter to only return events created after this timestamp
+	AfterCreatedAt *time.Time `queryParam:"style=form,explode=true,name=after_created_at"`
 }
 
 func (g GetWorkspaceEventsByTargetRequest) MarshalJSON() ([]byte, error) {
@@ -33,24 +33,10 @@ func (g GetWorkspaceEventsByTargetRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetWorkspaceEventsByTargetRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"target_id"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.AfterCreatedAt
-}
-
-func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.TargetID
 }
 
 func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
@@ -60,17 +46,24 @@ func (o *GetWorkspaceEventsByTargetRequest) GetWorkspaceID() *string {
 	return o.WorkspaceID
 }
 
-type GetWorkspaceEventsByTargetResponse struct {
-	// Success
-	CliEventBatch []components.CliEvent
-	HTTPMeta      components.HTTPMetadata `json:"-"`
+func (o *GetWorkspaceEventsByTargetRequest) GetTargetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TargetID
 }
 
-func (o *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []components.CliEvent {
+func (o *GetWorkspaceEventsByTargetRequest) GetAfterCreatedAt() *time.Time {
 	if o == nil {
 		return nil
 	}
-	return o.CliEventBatch
+	return o.AfterCreatedAt
+}
+
+type GetWorkspaceEventsByTargetResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	// Success
+	CliEventBatch []components.CliEvent
 }
 
 func (o *GetWorkspaceEventsByTargetResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -78,4 +71,11 @@ func (o *GetWorkspaceEventsByTargetResponse) GetHTTPMeta() components.HTTPMetada
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetWorkspaceEventsByTargetResponse) GetCliEventBatch() []components.CliEvent {
+	if o == nil {
+		return nil
+	}
+	return o.CliEventBatch
 }

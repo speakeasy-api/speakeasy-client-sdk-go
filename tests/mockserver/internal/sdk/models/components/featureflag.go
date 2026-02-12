@@ -19,7 +19,7 @@ func (f FeatureFlag) MarshalJSON() ([]byte, error) {
 }
 
 func (f *FeatureFlag) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &f, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"feature_flag"}); err != nil {
 		return err
 	}
 	return nil

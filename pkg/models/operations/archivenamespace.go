@@ -17,17 +17,17 @@ func (a ArchiveNamespaceRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (a *ArchiveNamespaceRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ArchiveNamespaceRequestBody) GetArchived() *bool {
-	if o == nil {
+func (a *ArchiveNamespaceRequestBody) GetArchived() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Archived
+	return a.Archived
 }
 
 type ArchiveNamespaceRequest struct {
@@ -36,18 +36,18 @@ type ArchiveNamespaceRequest struct {
 	NamespaceName string                       `pathParam:"style=simple,explode=false,name=namespace_name"`
 }
 
-func (o *ArchiveNamespaceRequest) GetRequestBody() *ArchiveNamespaceRequestBody {
-	if o == nil {
+func (a *ArchiveNamespaceRequest) GetRequestBody() *ArchiveNamespaceRequestBody {
+	if a == nil {
 		return nil
 	}
-	return o.RequestBody
+	return a.RequestBody
 }
 
-func (o *ArchiveNamespaceRequest) GetNamespaceName() string {
-	if o == nil {
+func (a *ArchiveNamespaceRequest) GetNamespaceName() string {
+	if a == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return a.NamespaceName
 }
 
 type ArchiveNamespaceResponse struct {
@@ -59,23 +59,23 @@ type ArchiveNamespaceResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *ArchiveNamespaceResponse) GetContentType() string {
-	if o == nil {
+func (a *ArchiveNamespaceResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *ArchiveNamespaceResponse) GetStatusCode() int {
-	if o == nil {
+func (a *ArchiveNamespaceResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *ArchiveNamespaceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *ArchiveNamespaceResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }

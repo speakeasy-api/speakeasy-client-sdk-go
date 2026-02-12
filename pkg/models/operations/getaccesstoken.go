@@ -12,11 +12,11 @@ type GetAccessTokenRequest struct {
 	WorkspaceID string `queryParam:"style=form,explode=true,name=workspace_id"`
 }
 
-func (o *GetAccessTokenRequest) GetWorkspaceID() string {
-	if o == nil {
+func (g *GetAccessTokenRequest) GetWorkspaceID() string {
+	if g == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetAccessTokenResponse struct {
@@ -30,30 +30,30 @@ type GetAccessTokenResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetAccessTokenResponse) GetAccessToken() *shared.AccessToken {
-	if o == nil {
+func (g *GetAccessTokenResponse) GetAccessToken() *shared.AccessToken {
+	if g == nil {
 		return nil
 	}
-	return o.AccessToken
+	return g.AccessToken
 }
 
-func (o *GetAccessTokenResponse) GetContentType() string {
-	if o == nil {
+func (g *GetAccessTokenResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetAccessTokenResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetAccessTokenResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetAccessTokenResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetAccessTokenResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

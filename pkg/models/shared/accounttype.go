@@ -14,3 +14,14 @@ const (
 func (e AccountType) ToPointer() *AccountType {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AccountType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "free", "scale-up", "business", "enterprise":
+			return true
+		}
+	}
+	return false
+}

@@ -34,17 +34,17 @@ func (e *TargetResource) UnmarshalJSON(data []byte) error {
 
 // PublishingToken - A token used to publish to a target
 type PublishingToken struct {
-	CreatedAt      time.Time      `json:"created_at"`
-	CreatedBy      string         `json:"created_by"`
 	ID             string         `json:"id"`
-	OrganizationID string         `json:"organization_id"`
+	Token          string         `json:"token"`
+	ValidUntil     time.Time      `json:"valid_until"`
+	TokenName      string         `json:"token_name"`
 	TargetID       string         `json:"target_id"`
 	TargetResource TargetResource `json:"target_resource"`
-	Token          string         `json:"token"`
-	TokenName      string         `json:"token_name"`
+	CreatedAt      time.Time      `json:"created_at"`
 	UpdatedAt      *time.Time     `json:"updated_at,omitempty"`
+	CreatedBy      string         `json:"created_by"`
 	UpdatedBy      *string        `json:"updated_by,omitempty"`
-	ValidUntil     time.Time      `json:"valid_until"`
+	OrganizationID string         `json:"organization_id"`
 	WorkspaceID    string         `json:"workspace_id"`
 }
 
@@ -53,24 +53,10 @@ func (p PublishingToken) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PublishingToken) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "token", "valid_until", "token_name", "target_id", "target_resource", "created_at", "created_by", "organization_id", "workspace_id"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *PublishingToken) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *PublishingToken) GetCreatedBy() string {
-	if o == nil {
-		return ""
-	}
-	return o.CreatedBy
 }
 
 func (o *PublishingToken) GetID() string {
@@ -80,11 +66,25 @@ func (o *PublishingToken) GetID() string {
 	return o.ID
 }
 
-func (o *PublishingToken) GetOrganizationID() string {
+func (o *PublishingToken) GetToken() string {
 	if o == nil {
 		return ""
 	}
-	return o.OrganizationID
+	return o.Token
+}
+
+func (o *PublishingToken) GetValidUntil() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.ValidUntil
+}
+
+func (o *PublishingToken) GetTokenName() string {
+	if o == nil {
+		return ""
+	}
+	return o.TokenName
 }
 
 func (o *PublishingToken) GetTargetID() string {
@@ -101,18 +101,11 @@ func (o *PublishingToken) GetTargetResource() TargetResource {
 	return o.TargetResource
 }
 
-func (o *PublishingToken) GetToken() string {
+func (o *PublishingToken) GetCreatedAt() time.Time {
 	if o == nil {
-		return ""
+		return time.Time{}
 	}
-	return o.Token
-}
-
-func (o *PublishingToken) GetTokenName() string {
-	if o == nil {
-		return ""
-	}
-	return o.TokenName
+	return o.CreatedAt
 }
 
 func (o *PublishingToken) GetUpdatedAt() *time.Time {
@@ -122,6 +115,13 @@ func (o *PublishingToken) GetUpdatedAt() *time.Time {
 	return o.UpdatedAt
 }
 
+func (o *PublishingToken) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
 func (o *PublishingToken) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
@@ -129,11 +129,11 @@ func (o *PublishingToken) GetUpdatedBy() *string {
 	return o.UpdatedBy
 }
 
-func (o *PublishingToken) GetValidUntil() time.Time {
+func (o *PublishingToken) GetOrganizationID() string {
 	if o == nil {
-		return time.Time{}
+		return ""
 	}
-	return o.ValidUntil
+	return o.OrganizationID
 }
 
 func (o *PublishingToken) GetWorkspaceID() string {

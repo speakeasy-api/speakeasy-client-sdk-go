@@ -15,23 +15,23 @@ type CreateFreeTrialResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CreateFreeTrialResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateFreeTrialResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateFreeTrialResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateFreeTrialResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateFreeTrialResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateFreeTrialResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

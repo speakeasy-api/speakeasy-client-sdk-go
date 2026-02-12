@@ -47,32 +47,32 @@ type CreateSchemaStoreItemRequestBody struct {
 	Spec string `json:"spec"`
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetFormat() Format {
-	if o == nil {
+func (c *CreateSchemaStoreItemRequestBody) GetFormat() Format {
+	if c == nil {
 		return Format("")
 	}
-	return o.Format
+	return c.Format
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetPackageName() string {
-	if o == nil {
+func (c *CreateSchemaStoreItemRequestBody) GetPackageName() string {
+	if c == nil {
 		return ""
 	}
-	return o.PackageName
+	return c.PackageName
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetSDKClassname() string {
-	if o == nil {
+func (c *CreateSchemaStoreItemRequestBody) GetSDKClassname() string {
+	if c == nil {
 		return ""
 	}
-	return o.SDKClassname
+	return c.SDKClassname
 }
 
-func (o *CreateSchemaStoreItemRequestBody) GetSpec() string {
-	if o == nil {
+func (c *CreateSchemaStoreItemRequestBody) GetSpec() string {
+	if c == nil {
 		return ""
 	}
-	return o.Spec
+	return c.Spec
 }
 
 type CreateSchemaStoreItemResponse struct {
@@ -86,30 +86,30 @@ type CreateSchemaStoreItemResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CreateSchemaStoreItemResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSchemaStoreItemResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSchemaStoreItemResponse) GetSchemaStoreItem() *shared.SchemaStoreItem {
-	if o == nil {
+func (c *CreateSchemaStoreItemResponse) GetSchemaStoreItem() *shared.SchemaStoreItem {
+	if c == nil {
 		return nil
 	}
-	return o.SchemaStoreItem
+	return c.SchemaStoreItem
 }
 
-func (o *CreateSchemaStoreItemResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSchemaStoreItemResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSchemaStoreItemResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSchemaStoreItemResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

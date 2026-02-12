@@ -12,11 +12,11 @@ type DeleteBillingAddOnRequest struct {
 	AddOn shared.BillingAddOn `pathParam:"style=simple,explode=false,name=add_on"`
 }
 
-func (o *DeleteBillingAddOnRequest) GetAddOn() shared.BillingAddOn {
-	if o == nil {
+func (d *DeleteBillingAddOnRequest) GetAddOn() shared.BillingAddOn {
+	if d == nil {
 		return shared.BillingAddOn("")
 	}
-	return o.AddOn
+	return d.AddOn
 }
 
 type DeleteBillingAddOnResponse struct {
@@ -28,23 +28,23 @@ type DeleteBillingAddOnResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteBillingAddOnResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteBillingAddOnResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteBillingAddOnResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteBillingAddOnResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteBillingAddOnResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteBillingAddOnResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

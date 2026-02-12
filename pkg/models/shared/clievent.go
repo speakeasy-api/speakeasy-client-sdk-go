@@ -256,582 +256,582 @@ func (c CliEvent) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CliEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CliEvent) GetCommitHead() *string {
-	if o == nil {
+func (c *CliEvent) GetCommitHead() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CommitHead
+	return c.CommitHead
 }
 
-func (o *CliEvent) GetContinuousIntegrationEnvironment() *string {
-	if o == nil {
+func (c *CliEvent) GetContinuousIntegrationEnvironment() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ContinuousIntegrationEnvironment
+	return c.ContinuousIntegrationEnvironment
 }
 
-func (o *CliEvent) GetCreatedAt() time.Time {
-	if o == nil {
+func (c *CliEvent) GetCreatedAt() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CliEvent) GetDurationMs() *int64 {
-	if o == nil {
+func (c *CliEvent) GetDurationMs() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.DurationMs
+	return c.DurationMs
 }
 
-func (o *CliEvent) GetError() *string {
-	if o == nil {
+func (c *CliEvent) GetError() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Error
+	return c.Error
 }
 
-func (o *CliEvent) GetExecutionID() string {
-	if o == nil {
+func (c *CliEvent) GetExecutionID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ExecutionID
+	return c.ExecutionID
 }
 
-func (o *CliEvent) GetGenerateBumpType() *GenerateBumpType {
-	if o == nil {
+func (c *CliEvent) GetGenerateBumpType() *GenerateBumpType {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateBumpType
+	return c.GenerateBumpType
 }
 
-func (o *CliEvent) GetGenerateConfigPostChecksum() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateConfigPostChecksum() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateConfigPostChecksum
+	return c.GenerateConfigPostChecksum
 }
 
-func (o *CliEvent) GetGenerateConfigPostRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateConfigPostRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateConfigPostRaw
+	return c.GenerateConfigPostRaw
 }
 
-func (o *CliEvent) GetGenerateConfigPostVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateConfigPostVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateConfigPostVersion
+	return c.GenerateConfigPostVersion
 }
 
-func (o *CliEvent) GetGenerateConfigPreChecksum() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateConfigPreChecksum() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateConfigPreChecksum
+	return c.GenerateConfigPreChecksum
 }
 
-func (o *CliEvent) GetGenerateConfigPreRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateConfigPreRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateConfigPreRaw
+	return c.GenerateConfigPreRaw
 }
 
-func (o *CliEvent) GetGenerateConfigPreVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateConfigPreVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateConfigPreVersion
+	return c.GenerateConfigPreVersion
 }
 
-func (o *CliEvent) GetGenerateEligibleFeatures() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateEligibleFeatures() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateEligibleFeatures
+	return c.GenerateEligibleFeatures
 }
 
-func (o *CliEvent) GetGenerateGenLockID() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockID
+	return c.GenerateGenLockID
 }
 
-func (o *CliEvent) GetGenerateGenLockPostFeatures() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPostFeatures() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPostFeatures
+	return c.GenerateGenLockPostFeatures
 }
 
-func (o *CliEvent) GetGenerateGenLockPreBlobDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreBlobDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreBlobDigest
+	return c.GenerateGenLockPreBlobDigest
 }
 
-func (o *CliEvent) GetGenerateGenLockPreDocChecksum() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreDocChecksum() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreDocChecksum
+	return c.GenerateGenLockPreDocChecksum
 }
 
-func (o *CliEvent) GetGenerateGenLockPreDocVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreDocVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreDocVersion
+	return c.GenerateGenLockPreDocVersion
 }
 
-func (o *CliEvent) GetGenerateGenLockPreFeatures() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreFeatures() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreFeatures
+	return c.GenerateGenLockPreFeatures
 }
 
-func (o *CliEvent) GetGenerateGenLockPreNamespaceName() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreNamespaceName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreNamespaceName
+	return c.GenerateGenLockPreNamespaceName
 }
 
-func (o *CliEvent) GetGenerateGenLockPreRevisionDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreRevisionDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreRevisionDigest
+	return c.GenerateGenLockPreRevisionDigest
 }
 
-func (o *CliEvent) GetGenerateGenLockPreVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateGenLockPreVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreVersion
+	return c.GenerateGenLockPreVersion
 }
 
-func (o *CliEvent) GetGenerateNumberOfOperationsIgnored() *int64 {
-	if o == nil {
+func (c *CliEvent) GetGenerateNumberOfOperationsIgnored() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateNumberOfOperationsIgnored
+	return c.GenerateNumberOfOperationsIgnored
 }
 
-func (o *CliEvent) GetGenerateNumberOfOperationsUsed() *int64 {
-	if o == nil {
+func (c *CliEvent) GetGenerateNumberOfOperationsUsed() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateNumberOfOperationsUsed
+	return c.GenerateNumberOfOperationsUsed
 }
 
-func (o *CliEvent) GetGenerateNumberOfTerraformResources() *int64 {
-	if o == nil {
+func (c *CliEvent) GetGenerateNumberOfTerraformResources() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateNumberOfTerraformResources
+	return c.GenerateNumberOfTerraformResources
 }
 
-func (o *CliEvent) GetGenerateOutputTests() *bool {
-	if o == nil {
+func (c *CliEvent) GetGenerateOutputTests() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateOutputTests
+	return c.GenerateOutputTests
 }
 
-func (o *CliEvent) GetGeneratePublished() *bool {
-	if o == nil {
+func (c *CliEvent) GetGeneratePublished() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.GeneratePublished
+	return c.GeneratePublished
 }
 
-func (o *CliEvent) GetGenerateRepoURL() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateRepoURL() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateRepoURL
+	return c.GenerateRepoURL
 }
 
-func (o *CliEvent) GetGenerateTarget() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateTarget() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateTarget
+	return c.GenerateTarget
 }
 
-func (o *CliEvent) GetGenerateTargetName() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateTargetName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateTargetName
+	return c.GenerateTargetName
 }
 
-func (o *CliEvent) GetGenerateTargetVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateTargetVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateTargetVersion
+	return c.GenerateTargetVersion
 }
 
-func (o *CliEvent) GetGenerateVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGenerateVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GenerateVersion
+	return c.GenerateVersion
 }
 
-func (o *CliEvent) GetGhActionOrganization() *string {
-	if o == nil {
+func (c *CliEvent) GetGhActionOrganization() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GhActionOrganization
+	return c.GhActionOrganization
 }
 
-func (o *CliEvent) GetGhActionRef() *string {
-	if o == nil {
+func (c *CliEvent) GetGhActionRef() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GhActionRef
+	return c.GhActionRef
 }
 
-func (o *CliEvent) GetGhActionRepository() *string {
-	if o == nil {
+func (c *CliEvent) GetGhActionRepository() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GhActionRepository
+	return c.GhActionRepository
 }
 
-func (o *CliEvent) GetGhActionRunLink() *string {
-	if o == nil {
+func (c *CliEvent) GetGhActionRunLink() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GhActionRunLink
+	return c.GhActionRunLink
 }
 
-func (o *CliEvent) GetGhActionVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetGhActionVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GhActionVersion
+	return c.GhActionVersion
 }
 
-func (o *CliEvent) GetGhChangesCommitted() *bool {
-	if o == nil {
+func (c *CliEvent) GetGhChangesCommitted() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.GhChangesCommitted
+	return c.GhChangesCommitted
 }
 
-func (o *CliEvent) GetGhPullRequest() *string {
-	if o == nil {
+func (c *CliEvent) GetGhPullRequest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GhPullRequest
+	return c.GhPullRequest
 }
 
-func (o *CliEvent) GetGitRelativeCwd() *string {
-	if o == nil {
+func (c *CliEvent) GetGitRelativeCwd() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GitRelativeCwd
+	return c.GitRelativeCwd
 }
 
-func (o *CliEvent) GetGitRemoteDefaultOwner() *string {
-	if o == nil {
+func (c *CliEvent) GetGitRemoteDefaultOwner() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GitRemoteDefaultOwner
+	return c.GitRemoteDefaultOwner
 }
 
-func (o *CliEvent) GetGitRemoteDefaultRepo() *string {
-	if o == nil {
+func (c *CliEvent) GetGitRemoteDefaultRepo() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GitRemoteDefaultRepo
+	return c.GitRemoteDefaultRepo
 }
 
-func (o *CliEvent) GetGitUserEmail() *string {
-	if o == nil {
+func (c *CliEvent) GetGitUserEmail() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GitUserEmail
+	return c.GitUserEmail
 }
 
-func (o *CliEvent) GetGitUserName() *string {
-	if o == nil {
+func (c *CliEvent) GetGitUserName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.GitUserName
+	return c.GitUserName
 }
 
-func (o *CliEvent) GetHostname() *string {
-	if o == nil {
+func (c *CliEvent) GetHostname() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Hostname
+	return c.Hostname
 }
 
-func (o *CliEvent) GetID() string {
-	if o == nil {
+func (c *CliEvent) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CliEvent) GetInteractionType() InteractionType {
-	if o == nil {
+func (c *CliEvent) GetInteractionType() InteractionType {
+	if c == nil {
 		return InteractionType("")
 	}
-	return o.InteractionType
+	return c.InteractionType
 }
 
-func (o *CliEvent) GetLastStep() *string {
-	if o == nil {
+func (c *CliEvent) GetLastStep() *string {
+	if c == nil {
 		return nil
 	}
-	return o.LastStep
+	return c.LastStep
 }
 
-func (o *CliEvent) GetLintReportDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetLintReportDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.LintReportDigest
+	return c.LintReportDigest
 }
 
-func (o *CliEvent) GetLintReportErrorCount() *int64 {
-	if o == nil {
+func (c *CliEvent) GetLintReportErrorCount() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.LintReportErrorCount
+	return c.LintReportErrorCount
 }
 
-func (o *CliEvent) GetLintReportInfoCount() *int64 {
-	if o == nil {
+func (c *CliEvent) GetLintReportInfoCount() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.LintReportInfoCount
+	return c.LintReportInfoCount
 }
 
-func (o *CliEvent) GetLintReportWarningCount() *int64 {
-	if o == nil {
+func (c *CliEvent) GetLintReportWarningCount() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.LintReportWarningCount
+	return c.LintReportWarningCount
 }
 
-func (o *CliEvent) GetLocalCompletedAt() *time.Time {
-	if o == nil {
+func (c *CliEvent) GetLocalCompletedAt() *time.Time {
+	if c == nil {
 		return nil
 	}
-	return o.LocalCompletedAt
+	return c.LocalCompletedAt
 }
 
-func (o *CliEvent) GetLocalStartedAt() time.Time {
-	if o == nil {
+func (c *CliEvent) GetLocalStartedAt() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.LocalStartedAt
+	return c.LocalStartedAt
 }
 
-func (o *CliEvent) GetManagementDocChecksum() *string {
-	if o == nil {
+func (c *CliEvent) GetManagementDocChecksum() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ManagementDocChecksum
+	return c.ManagementDocChecksum
 }
 
-func (o *CliEvent) GetManagementDocVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetManagementDocVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ManagementDocVersion
+	return c.ManagementDocVersion
 }
 
-func (o *CliEvent) GetMermaidDiagram() *string {
-	if o == nil {
+func (c *CliEvent) GetMermaidDiagram() *string {
+	if c == nil {
 		return nil
 	}
-	return o.MermaidDiagram
+	return c.MermaidDiagram
 }
 
-func (o *CliEvent) GetOpenapiDiffBaseSourceBlobDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetOpenapiDiffBaseSourceBlobDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.OpenapiDiffBaseSourceBlobDigest
+	return c.OpenapiDiffBaseSourceBlobDigest
 }
 
-func (o *CliEvent) GetOpenapiDiffBaseSourceNamespaceName() *string {
-	if o == nil {
+func (c *CliEvent) GetOpenapiDiffBaseSourceNamespaceName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.OpenapiDiffBaseSourceNamespaceName
+	return c.OpenapiDiffBaseSourceNamespaceName
 }
 
-func (o *CliEvent) GetOpenapiDiffBaseSourceRevisionDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetOpenapiDiffBaseSourceRevisionDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.OpenapiDiffBaseSourceRevisionDigest
+	return c.OpenapiDiffBaseSourceRevisionDigest
 }
 
-func (o *CliEvent) GetOpenapiDiffBreakingChangesCount() *int64 {
-	if o == nil {
+func (c *CliEvent) GetOpenapiDiffBreakingChangesCount() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.OpenapiDiffBreakingChangesCount
+	return c.OpenapiDiffBreakingChangesCount
 }
 
-func (o *CliEvent) GetOpenapiDiffBumpType() *OpenapiDiffBumpType {
-	if o == nil {
+func (c *CliEvent) GetOpenapiDiffBumpType() *OpenapiDiffBumpType {
+	if c == nil {
 		return nil
 	}
-	return o.OpenapiDiffBumpType
+	return c.OpenapiDiffBumpType
 }
 
-func (o *CliEvent) GetOpenapiDiffReportDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetOpenapiDiffReportDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.OpenapiDiffReportDigest
+	return c.OpenapiDiffReportDigest
 }
 
-func (o *CliEvent) GetPublishPackageName() *string {
-	if o == nil {
+func (c *CliEvent) GetPublishPackageName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PublishPackageName
+	return c.PublishPackageName
 }
 
-func (o *CliEvent) GetPublishPackageRegistryName() *string {
-	if o == nil {
+func (c *CliEvent) GetPublishPackageRegistryName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PublishPackageRegistryName
+	return c.PublishPackageRegistryName
 }
 
-func (o *CliEvent) GetPublishPackageURL() *string {
-	if o == nil {
+func (c *CliEvent) GetPublishPackageURL() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PublishPackageURL
+	return c.PublishPackageURL
 }
 
-func (o *CliEvent) GetPublishPackageVersion() *string {
-	if o == nil {
+func (c *CliEvent) GetPublishPackageVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PublishPackageVersion
+	return c.PublishPackageVersion
 }
 
-func (o *CliEvent) GetRawCommand() *string {
-	if o == nil {
+func (c *CliEvent) GetRawCommand() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RawCommand
+	return c.RawCommand
 }
 
-func (o *CliEvent) GetRepoLabel() *string {
-	if o == nil {
+func (c *CliEvent) GetRepoLabel() *string {
+	if c == nil {
 		return nil
 	}
-	return o.RepoLabel
+	return c.RepoLabel
 }
 
-func (o *CliEvent) GetSourceBlobDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetSourceBlobDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.SourceBlobDigest
+	return c.SourceBlobDigest
 }
 
-func (o *CliEvent) GetSourceNamespaceName() *string {
-	if o == nil {
+func (c *CliEvent) GetSourceNamespaceName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.SourceNamespaceName
+	return c.SourceNamespaceName
 }
 
-func (o *CliEvent) GetSourceRevisionDigest() *string {
-	if o == nil {
+func (c *CliEvent) GetSourceRevisionDigest() *string {
+	if c == nil {
 		return nil
 	}
-	return o.SourceRevisionDigest
+	return c.SourceRevisionDigest
 }
 
-func (o *CliEvent) GetSpeakeasyAPIKeyName() string {
-	if o == nil {
+func (c *CliEvent) GetSpeakeasyAPIKeyName() string {
+	if c == nil {
 		return ""
 	}
-	return o.SpeakeasyAPIKeyName
+	return c.SpeakeasyAPIKeyName
 }
 
-func (o *CliEvent) GetSpeakeasyVersion() string {
-	if o == nil {
+func (c *CliEvent) GetSpeakeasyVersion() string {
+	if c == nil {
 		return ""
 	}
-	return o.SpeakeasyVersion
+	return c.SpeakeasyVersion
 }
 
-func (o *CliEvent) GetSuccess() bool {
-	if o == nil {
+func (c *CliEvent) GetSuccess() bool {
+	if c == nil {
 		return false
 	}
-	return o.Success
+	return c.Success
 }
 
-func (o *CliEvent) GetTestReportRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetTestReportRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.TestReportRaw
+	return c.TestReportRaw
 }
 
-func (o *CliEvent) GetWorkflowLockPostRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetWorkflowLockPostRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.WorkflowLockPostRaw
+	return c.WorkflowLockPostRaw
 }
 
-func (o *CliEvent) GetWorkflowLockPreRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetWorkflowLockPreRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.WorkflowLockPreRaw
+	return c.WorkflowLockPreRaw
 }
 
-func (o *CliEvent) GetWorkflowPostRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetWorkflowPostRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.WorkflowPostRaw
+	return c.WorkflowPostRaw
 }
 
-func (o *CliEvent) GetWorkflowPreRaw() *string {
-	if o == nil {
+func (c *CliEvent) GetWorkflowPreRaw() *string {
+	if c == nil {
 		return nil
 	}
-	return o.WorkflowPreRaw
+	return c.WorkflowPreRaw
 }
 
-func (o *CliEvent) GetWorkspaceID() string {
-	if o == nil {
+func (c *CliEvent) GetWorkspaceID() string {
+	if c == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return c.WorkspaceID
 }

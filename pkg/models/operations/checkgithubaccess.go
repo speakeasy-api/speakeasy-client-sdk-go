@@ -11,18 +11,18 @@ type CheckGithubAccessRequest struct {
 	Repo string `queryParam:"style=form,explode=true,name=repo"`
 }
 
-func (o *CheckGithubAccessRequest) GetOrg() string {
-	if o == nil {
+func (c *CheckGithubAccessRequest) GetOrg() string {
+	if c == nil {
 		return ""
 	}
-	return o.Org
+	return c.Org
 }
 
-func (o *CheckGithubAccessRequest) GetRepo() string {
-	if o == nil {
+func (c *CheckGithubAccessRequest) GetRepo() string {
+	if c == nil {
 		return ""
 	}
-	return o.Repo
+	return c.Repo
 }
 
 type CheckGithubAccessResponse struct {
@@ -34,23 +34,23 @@ type CheckGithubAccessResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CheckGithubAccessResponse) GetContentType() string {
-	if o == nil {
+func (c *CheckGithubAccessResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CheckGithubAccessResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CheckGithubAccessResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CheckGithubAccessResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CheckGithubAccessResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

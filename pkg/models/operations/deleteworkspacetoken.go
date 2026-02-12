@@ -10,11 +10,11 @@ type DeleteWorkspaceTokenGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *DeleteWorkspaceTokenGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (d *DeleteWorkspaceTokenGlobals) GetWorkspaceID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return d.WorkspaceID
 }
 
 type DeleteWorkspaceTokenRequest struct {
@@ -24,18 +24,18 @@ type DeleteWorkspaceTokenRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *DeleteWorkspaceTokenRequest) GetTokenID() string {
-	if o == nil {
+func (d *DeleteWorkspaceTokenRequest) GetTokenID() string {
+	if d == nil {
 		return ""
 	}
-	return o.TokenID
+	return d.TokenID
 }
 
-func (o *DeleteWorkspaceTokenRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (d *DeleteWorkspaceTokenRequest) GetWorkspaceID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return d.WorkspaceID
 }
 
 type DeleteWorkspaceTokenResponse struct {
@@ -47,23 +47,23 @@ type DeleteWorkspaceTokenResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteWorkspaceTokenResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteWorkspaceTokenResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteWorkspaceTokenResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteWorkspaceTokenResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteWorkspaceTokenResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteWorkspaceTokenResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

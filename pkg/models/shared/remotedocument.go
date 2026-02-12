@@ -7,9 +7,9 @@ type RemoteDocument struct {
 	RegistryURL string `json:"registry_url"`
 }
 
-func (o *RemoteDocument) GetRegistryURL() string {
-	if o == nil {
+func (r *RemoteDocument) GetRegistryURL() string {
+	if r == nil {
 		return ""
 	}
-	return o.RegistryURL
+	return r.RegistryURL
 }

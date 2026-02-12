@@ -56,16 +56,16 @@ func testGetUserGetUser0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.User{
-		Admin:         false,
-		Confirmed:     true,
-		CreatedAt:     types.MustTimeFromString("2024-09-05T08:59:40.988Z"),
-		DisplayName:   "Tianna_Prohaska",
+	var respBody *components.User = &components.User{
+		ID:            "<id>",
 		Email:         "Morton82@gmail.com",
 		EmailVerified: false,
-		ID:            "<id>",
-		UpdatedAt:     types.MustTimeFromString("2022-08-28T03:26:52.335Z"),
+		DisplayName:   "Tianna_Prohaska",
+		Confirmed:     true,
 		Whitelisted:   true,
+		Admin:         false,
+		CreatedAt:     types.MustTimeFromString("2024-09-05T08:59:40.988Z"),
+		UpdatedAt:     types.MustTimeFromString("2022-08-28T03:26:52.335Z"),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

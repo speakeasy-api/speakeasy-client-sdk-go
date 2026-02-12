@@ -7,18 +7,18 @@ type Auth struct {
 	Secret string `json:"secret"`
 }
 
-func (o *Auth) GetHeader() string {
-	if o == nil {
+func (a *Auth) GetHeader() string {
+	if a == nil {
 		return ""
 	}
-	return o.Header
+	return a.Header
 }
 
-func (o *Auth) GetSecret() string {
-	if o == nil {
+func (a *Auth) GetSecret() string {
+	if a == nil {
 		return ""
 	}
-	return o.Secret
+	return a.Secret
 }
 
 // WorkflowDocument - A document referenced by a workflow
@@ -27,16 +27,16 @@ type WorkflowDocument struct {
 	Location string `json:"location"`
 }
 
-func (o *WorkflowDocument) GetAuth() *Auth {
-	if o == nil {
+func (w *WorkflowDocument) GetAuth() *Auth {
+	if w == nil {
 		return nil
 	}
-	return o.Auth
+	return w.Auth
 }
 
-func (o *WorkflowDocument) GetLocation() string {
-	if o == nil {
+func (w *WorkflowDocument) GetLocation() string {
+	if w == nil {
 		return ""
 	}
-	return o.Location
+	return w.Location
 }

@@ -1,5 +1,4 @@
 # Subscriptions
-(*Subscriptions*)
 
 ## Overview
 
@@ -16,13 +15,14 @@ Activate an ignored namespace for a subscription
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="activateSubscriptionNamespace" method="post" path="/v1/subscriptions/{subscriptionID}/{namespaceName}/activate" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -30,9 +30,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -74,13 +74,14 @@ Ignored a namespace for a subscription
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="ignoreSubscriptionNamespace" method="post" path="/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -88,9 +89,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 

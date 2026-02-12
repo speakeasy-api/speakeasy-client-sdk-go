@@ -29,17 +29,17 @@ func (o *CompositeSpecMetadata) GetSubscriptionSettings() RemoteSourceSubscripti
 
 // Namespace - A namespace contains many revisions.
 type Namespace struct {
-	ArchivedAt            *time.Time             `json:"archived_at,omitempty"`
-	CompositeSpecMetadata *CompositeSpecMetadata `json:"composite_spec_metadata,omitempty"`
-	CreatedAt             time.Time              `json:"created_at"`
 	// {organization_slug}/{workspace_slug}/{namespace_name}
-	ID                     string                    `json:"id"`
-	LatestRevisionMetadata *RevisionContentsMetadata `json:"latest_revision_metadata,omitempty"`
+	ID string `json:"id"`
 	// A human-readable name for the namespace.
-	Name string `json:"name"`
-	// Indicates whether the namespace is publicly accessible
-	Public    *bool     `json:"public,omitempty"`
+	Name      string    `json:"name"`
+	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether the namespace is publicly accessible
+	Public                 *bool                     `json:"public,omitempty"`
+	ArchivedAt             *time.Time                `json:"archived_at,omitempty"`
+	LatestRevisionMetadata *RevisionContentsMetadata `json:"latest_revision_metadata,omitempty"`
+	CompositeSpecMetadata  *CompositeSpecMetadata    `json:"composite_spec_metadata,omitempty"`
 }
 
 func (n Namespace) MarshalJSON() ([]byte, error) {
@@ -47,31 +47,10 @@ func (n Namespace) MarshalJSON() ([]byte, error) {
 }
 
 func (n *Namespace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"id", "name", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *Namespace) GetArchivedAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.ArchivedAt
-}
-
-func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
-	if o == nil {
-		return nil
-	}
-	return o.CompositeSpecMetadata
-}
-
-func (o *Namespace) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
 }
 
 func (o *Namespace) GetID() string {
@@ -81,18 +60,25 @@ func (o *Namespace) GetID() string {
 	return o.ID
 }
 
-func (o *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
-	if o == nil {
-		return nil
-	}
-	return o.LatestRevisionMetadata
-}
-
 func (o *Namespace) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
+}
+
+func (o *Namespace) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Namespace) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
 }
 
 func (o *Namespace) GetPublic() *bool {
@@ -102,9 +88,23 @@ func (o *Namespace) GetPublic() *bool {
 	return o.Public
 }
 
-func (o *Namespace) GetUpdatedAt() time.Time {
+func (o *Namespace) GetArchivedAt() *time.Time {
 	if o == nil {
-		return time.Time{}
+		return nil
 	}
-	return o.UpdatedAt
+	return o.ArchivedAt
+}
+
+func (o *Namespace) GetLatestRevisionMetadata() *RevisionContentsMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.LatestRevisionMetadata
+}
+
+func (o *Namespace) GetCompositeSpecMetadata() *CompositeSpecMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.CompositeSpecMetadata
 }

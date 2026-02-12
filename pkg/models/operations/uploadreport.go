@@ -13,18 +13,18 @@ type File struct {
 	FileName string `multipartForm:"name=fileName"`
 }
 
-func (o *File) GetContent() any {
-	if o == nil {
+func (f *File) GetContent() any {
+	if f == nil {
 		return nil
 	}
-	return o.Content
+	return f.Content
 }
 
-func (o *File) GetFileName() string {
-	if o == nil {
+func (f *File) GetFileName() string {
+	if f == nil {
 		return ""
 	}
-	return o.FileName
+	return f.FileName
 }
 
 // UploadReportRequestBody - The report file to upload provided as a multipart/form-data file segment.
@@ -33,18 +33,18 @@ type UploadReportRequestBody struct {
 	File File          `multipartForm:"file,name=file"`
 }
 
-func (o *UploadReportRequestBody) GetData() shared.Report {
-	if o == nil {
+func (u *UploadReportRequestBody) GetData() shared.Report {
+	if u == nil {
 		return shared.Report{}
 	}
-	return o.Data
+	return u.Data
 }
 
-func (o *UploadReportRequestBody) GetFile() File {
-	if o == nil {
+func (u *UploadReportRequestBody) GetFile() File {
+	if u == nil {
 		return File{}
 	}
-	return o.File
+	return u.File
 }
 
 // UploadReportUploadedReport - OK
@@ -52,11 +52,11 @@ type UploadReportUploadedReport struct {
 	URL string `json:"url"`
 }
 
-func (o *UploadReportUploadedReport) GetURL() string {
-	if o == nil {
+func (u *UploadReportUploadedReport) GetURL() string {
+	if u == nil {
 		return ""
 	}
-	return o.URL
+	return u.URL
 }
 
 type UploadReportResponse struct {
@@ -70,30 +70,30 @@ type UploadReportResponse struct {
 	UploadedReport *UploadReportUploadedReport
 }
 
-func (o *UploadReportResponse) GetContentType() string {
-	if o == nil {
+func (u *UploadReportResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UploadReportResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UploadReportResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UploadReportResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UploadReportResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UploadReportResponse) GetUploadedReport() *UploadReportUploadedReport {
-	if o == nil {
+func (u *UploadReportResponse) GetUploadedReport() *UploadReportUploadedReport {
+	if u == nil {
 		return nil
 	}
-	return o.UploadedReport
+	return u.UploadedReport
 }

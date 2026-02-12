@@ -13,18 +13,18 @@ type GetRevisionsRequest struct {
 	NextPageToken *string `queryParam:"style=form,explode=true,name=next_page_token"`
 }
 
-func (o *GetRevisionsRequest) GetNamespaceName() string {
-	if o == nil {
+func (g *GetRevisionsRequest) GetNamespaceName() string {
+	if g == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return g.NamespaceName
 }
 
-func (o *GetRevisionsRequest) GetNextPageToken() *string {
-	if o == nil {
+func (g *GetRevisionsRequest) GetNextPageToken() *string {
+	if g == nil {
 		return nil
 	}
-	return o.NextPageToken
+	return g.NextPageToken
 }
 
 type GetRevisionsResponse struct {
@@ -38,30 +38,30 @@ type GetRevisionsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetRevisionsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetRevisionsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetRevisionsResponse) GetGetRevisionsResponse() *shared.GetRevisionsResponse {
-	if o == nil {
+func (g *GetRevisionsResponse) GetGetRevisionsResponse() *shared.GetRevisionsResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GetRevisionsResponse
+	return g.GetRevisionsResponse
 }
 
-func (o *GetRevisionsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetRevisionsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetRevisionsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetRevisionsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

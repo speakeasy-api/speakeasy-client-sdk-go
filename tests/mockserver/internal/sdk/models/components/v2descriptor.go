@@ -4,21 +4,14 @@ package components
 
 // V2Descriptor - V2 descriptor
 type V2Descriptor struct {
-	// Annotations
-	Annotations *Annotations `json:"annotations,omitempty"`
 	// Digest
 	Digest *string `json:"digest,omitempty"`
 	// Media type
 	MediaType *string `json:"mediaType,omitempty"`
 	// Size
 	Size *int64 `json:"size,omitempty"`
-}
-
-func (o *V2Descriptor) GetAnnotations() *Annotations {
-	if o == nil {
-		return nil
-	}
-	return o.Annotations
+	// Annotations
+	Annotations *Annotations `json:"annotations,omitempty"`
 }
 
 func (o *V2Descriptor) GetDigest() *string {
@@ -40,4 +33,11 @@ func (o *V2Descriptor) GetSize() *int64 {
 		return nil
 	}
 	return o.Size
+}
+
+func (o *V2Descriptor) GetAnnotations() *Annotations {
+	if o == nil {
+		return nil
+	}
+	return o.Annotations
 }

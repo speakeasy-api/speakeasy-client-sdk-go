@@ -9,16 +9,16 @@ type SuggestItemsRequestBody struct {
 	Prompt string `json:"prompt"`
 }
 
-func (o *SuggestItemsRequestBody) GetItems() []string {
-	if o == nil {
+func (s *SuggestItemsRequestBody) GetItems() []string {
+	if s == nil {
 		return []string{}
 	}
-	return o.Items
+	return s.Items
 }
 
-func (o *SuggestItemsRequestBody) GetPrompt() string {
-	if o == nil {
+func (s *SuggestItemsRequestBody) GetPrompt() string {
+	if s == nil {
 		return ""
 	}
-	return o.Prompt
+	return s.Prompt
 }

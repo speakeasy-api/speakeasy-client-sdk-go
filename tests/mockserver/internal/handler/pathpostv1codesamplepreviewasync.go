@@ -61,7 +61,7 @@ func testGenerateCodeSamplePreviewAsyncGenerateCodeSamplePreviewAsync0(w http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &operations.GenerateCodeSamplePreviewAsyncResponseBody{
+	var respBody *operations.GenerateCodeSamplePreviewAsyncResponseBody = &operations.GenerateCodeSamplePreviewAsyncResponseBody{
 		JobID:  "<id>",
 		Status: components.CodeSamplesJobStatusRunning,
 	}

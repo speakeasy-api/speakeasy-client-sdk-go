@@ -1,5 +1,4 @@
 # CodeSamples
-(*CodeSamples*)
 
 ## Overview
 
@@ -18,13 +17,14 @@ This endpoint generates Code Sample previews from a file and configuration param
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="generateCodeSamplePreview" method="post" path="/v1/code_sample/preview" example="default" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"os"
 	"log"
 )
@@ -32,22 +32,21 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.CodeSamples.GenerateCodeSamplePreview(ctx, shared.CodeSampleSchemaInput{
         Language: "<value>",
         SchemaFile: shared.SchemaFile{
-            Content: content,
+            Content: example,
             FileName: "example.file",
         },
     })
@@ -85,13 +84,14 @@ This endpoint generates Code Sample previews from a file and configuration param
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="generateCodeSamplePreviewAsync" method="post" path="/v1/code_sample/preview/async" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"os"
 	"log"
 )
@@ -99,22 +99,21 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.CodeSamples.GenerateCodeSamplePreviewAsync(ctx, shared.CodeSampleSchemaInput{
         Language: "<value>",
         SchemaFile: shared.SchemaFile{
-            Content: content,
+            Content: example,
             FileName: "example.file",
         },
     })
@@ -152,13 +151,14 @@ Retrieve usage snippets from an OpenAPI document stored in the registry. Support
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getCodeSamples" method="get" path="/v1/code_sample" example="default" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -166,9 +166,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -222,13 +222,14 @@ Poll for the result of an asynchronous Code Sample preview generation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getCodeSamplePreviewAsync" method="get" path="/v1/code_sample/preview/async/{jobID}" example="default" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -236,9 +237,9 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 

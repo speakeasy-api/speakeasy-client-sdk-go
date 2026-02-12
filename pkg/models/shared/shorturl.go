@@ -7,16 +7,16 @@ type ShortURL struct {
 	ShortURL string `json:"short_url"`
 }
 
-func (o *ShortURL) GetFullURL() string {
-	if o == nil {
+func (s *ShortURL) GetFullURL() string {
+	if s == nil {
 		return ""
 	}
-	return o.FullURL
+	return s.FullURL
 }
 
-func (o *ShortURL) GetShortURL() string {
-	if o == nil {
+func (s *ShortURL) GetShortURL() string {
+	if s == nil {
 		return ""
 	}
-	return o.ShortURL
+	return s.ShortURL
 }

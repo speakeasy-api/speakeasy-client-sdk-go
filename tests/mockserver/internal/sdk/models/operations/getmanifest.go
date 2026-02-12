@@ -7,18 +7,11 @@ import (
 )
 
 type GetManifestRequest struct {
-	NamespaceName    string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	OrganizationSlug string `pathParam:"style=simple,explode=false,name=organization_slug"`
+	WorkspaceSlug    string `pathParam:"style=simple,explode=false,name=workspace_slug"`
+	NamespaceName    string `pathParam:"style=simple,explode=false,name=namespace_name"`
 	// Tag or digest
 	RevisionReference string `pathParam:"style=simple,explode=false,name=revision_reference"`
-	WorkspaceSlug     string `pathParam:"style=simple,explode=false,name=workspace_slug"`
-}
-
-func (o *GetManifestRequest) GetNamespaceName() string {
-	if o == nil {
-		return ""
-	}
-	return o.NamespaceName
 }
 
 func (o *GetManifestRequest) GetOrganizationSlug() string {
@@ -28,18 +21,25 @@ func (o *GetManifestRequest) GetOrganizationSlug() string {
 	return o.OrganizationSlug
 }
 
-func (o *GetManifestRequest) GetRevisionReference() string {
-	if o == nil {
-		return ""
-	}
-	return o.RevisionReference
-}
-
 func (o *GetManifestRequest) GetWorkspaceSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.WorkspaceSlug
+}
+
+func (o *GetManifestRequest) GetNamespaceName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NamespaceName
+}
+
+func (o *GetManifestRequest) GetRevisionReference() string {
+	if o == nil {
+		return ""
+	}
+	return o.RevisionReference
 }
 
 type GetManifestResponse struct {

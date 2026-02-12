@@ -56,7 +56,7 @@ func testGetWorkspaceGetWorkspace0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.Workspace{
+	var respBody *components.Workspace = &components.Workspace{
 		CreatedAt:         types.MustTimeFromString("2024-11-17T10:14:22.985Z"),
 		ID:                "<id>",
 		Name:              "<value>",

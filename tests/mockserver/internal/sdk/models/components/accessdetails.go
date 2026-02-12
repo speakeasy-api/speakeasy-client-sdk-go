@@ -38,8 +38,8 @@ func (e *Level) UnmarshalJSON(data []byte) error {
 
 type AccessDetails struct {
 	GenerationAllowed bool   `json:"generation_allowed"`
-	Level             *Level `json:"level,omitempty"`
 	Message           string `json:"message"`
+	Level             *Level `json:"level,omitempty"`
 }
 
 func (o *AccessDetails) GetGenerationAllowed() bool {
@@ -49,16 +49,16 @@ func (o *AccessDetails) GetGenerationAllowed() bool {
 	return o.GenerationAllowed
 }
 
-func (o *AccessDetails) GetLevel() *Level {
-	if o == nil {
-		return nil
-	}
-	return o.Level
-}
-
 func (o *AccessDetails) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
+}
+
+func (o *AccessDetails) GetLevel() *Level {
+	if o == nil {
+		return nil
+	}
+	return o.Level
 }

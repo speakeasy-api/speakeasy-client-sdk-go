@@ -10,23 +10,23 @@ type RemoteSource struct {
 	Overlays []RemoteDocument `json:"overlays,omitempty"`
 }
 
-func (o *RemoteSource) GetInputs() []RemoteDocument {
-	if o == nil {
+func (r *RemoteSource) GetInputs() []RemoteDocument {
+	if r == nil {
 		return []RemoteDocument{}
 	}
-	return o.Inputs
+	return r.Inputs
 }
 
-func (o *RemoteSource) GetOutput() RemoteDocument {
-	if o == nil {
+func (r *RemoteSource) GetOutput() RemoteDocument {
+	if r == nil {
 		return RemoteDocument{}
 	}
-	return o.Output
+	return r.Output
 }
 
-func (o *RemoteSource) GetOverlays() []RemoteDocument {
-	if o == nil {
+func (r *RemoteSource) GetOverlays() []RemoteDocument {
+	if r == nil {
 		return nil
 	}
-	return o.Overlays
+	return r.Overlays
 }

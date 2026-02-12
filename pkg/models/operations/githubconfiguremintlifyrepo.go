@@ -15,23 +15,23 @@ type GithubConfigureMintlifyRepoResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubConfigureMintlifyRepoResponse) GetContentType() string {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GithubConfigureMintlifyRepoResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GithubConfigureMintlifyRepoResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

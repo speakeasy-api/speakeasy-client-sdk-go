@@ -14,30 +14,30 @@ type V2Descriptor struct {
 	Size *int64 `json:"size,omitempty"`
 }
 
-func (o *V2Descriptor) GetAnnotations() *Annotations {
-	if o == nil {
+func (v *V2Descriptor) GetAnnotations() *Annotations {
+	if v == nil {
 		return nil
 	}
-	return o.Annotations
+	return v.Annotations
 }
 
-func (o *V2Descriptor) GetDigest() *string {
-	if o == nil {
+func (v *V2Descriptor) GetDigest() *string {
+	if v == nil {
 		return nil
 	}
-	return o.Digest
+	return v.Digest
 }
 
-func (o *V2Descriptor) GetMediaType() *string {
-	if o == nil {
+func (v *V2Descriptor) GetMediaType() *string {
+	if v == nil {
 		return nil
 	}
-	return o.MediaType
+	return v.MediaType
 }
 
-func (o *V2Descriptor) GetSize() *int64 {
-	if o == nil {
+func (v *V2Descriptor) GetSize() *int64 {
+	if v == nil {
 		return nil
 	}
-	return o.Size
+	return v.Size
 }

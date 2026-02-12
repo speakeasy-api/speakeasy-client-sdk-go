@@ -7,18 +7,18 @@ type Actions struct {
 	PublishActionConfigured    bool `json:"publish_action_configured"`
 }
 
-func (o *Actions) GetGenerationActionConfigured() bool {
-	if o == nil {
+func (a *Actions) GetGenerationActionConfigured() bool {
+	if a == nil {
 		return false
 	}
-	return o.GenerationActionConfigured
+	return a.GenerationActionConfigured
 }
 
-func (o *Actions) GetPublishActionConfigured() bool {
-	if o == nil {
+func (a *Actions) GetPublishActionConfigured() bool {
+	if a == nil {
 		return false
 	}
-	return o.PublishActionConfigured
+	return a.PublishActionConfigured
 }
 
 type Secrets struct {
@@ -26,18 +26,18 @@ type Secrets struct {
 	PublishingSecretsConfigured bool `json:"publishing_secrets_configured"`
 }
 
-func (o *Secrets) GetAPIKeyConfigured() bool {
-	if o == nil {
+func (s *Secrets) GetAPIKeyConfigured() bool {
+	if s == nil {
 		return false
 	}
-	return o.APIKeyConfigured
+	return s.APIKeyConfigured
 }
 
-func (o *Secrets) GetPublishingSecretsConfigured() bool {
-	if o == nil {
+func (s *Secrets) GetPublishingSecretsConfigured() bool {
+	if s == nil {
 		return false
 	}
-	return o.PublishingSecretsConfigured
+	return s.PublishingSecretsConfigured
 }
 
 // GithubSetupStateResponse - The state of a particular SDK targets github setup
@@ -47,23 +47,23 @@ type GithubSetupStateResponse struct {
 	Secrets      Secrets `json:"secrets"`
 }
 
-func (o *GithubSetupStateResponse) GetActions() Actions {
-	if o == nil {
+func (g *GithubSetupStateResponse) GetActions() Actions {
+	if g == nil {
 		return Actions{}
 	}
-	return o.Actions
+	return g.Actions
 }
 
-func (o *GithubSetupStateResponse) GetAppInstalled() bool {
-	if o == nil {
+func (g *GithubSetupStateResponse) GetAppInstalled() bool {
+	if g == nil {
 		return false
 	}
-	return o.AppInstalled
+	return g.AppInstalled
 }
 
-func (o *GithubSetupStateResponse) GetSecrets() Secrets {
-	if o == nil {
+func (g *GithubSetupStateResponse) GetSecrets() Secrets {
+	if g == nil {
 		return Secrets{}
 	}
-	return o.Secrets
+	return g.Secrets
 }

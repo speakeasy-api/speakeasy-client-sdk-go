@@ -18,16 +18,9 @@ func (o *GetTagsRequest) GetNamespaceName() string {
 }
 
 type GetTagsResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	GetTagsResponse *components.GetTagsResponse
-	HTTPMeta        components.HTTPMetadata `json:"-"`
-}
-
-func (o *GetTagsResponse) GetGetTagsResponse() *components.GetTagsResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GetTagsResponse
 }
 
 func (o *GetTagsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -35,4 +28,11 @@ func (o *GetTagsResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetTagsResponse) GetGetTagsResponse() *components.GetTagsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetTagsResponse
 }

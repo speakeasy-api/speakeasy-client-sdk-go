@@ -60,9 +60,9 @@ func testCreateCreate0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.ShortURL{
-		FullURL:  "https://probable-heating.com/",
+	var respBody *components.ShortURL = &components.ShortURL{
 		ShortURL: "https://standard-utilization.com/",
+		FullURL:  "https://probable-heating.com/",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
