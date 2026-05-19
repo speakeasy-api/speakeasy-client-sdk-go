@@ -15,23 +15,23 @@ type CreateRemoteSourceResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CreateRemoteSourceResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateRemoteSourceResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateRemoteSourceResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateRemoteSourceResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateRemoteSourceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateRemoteSourceResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

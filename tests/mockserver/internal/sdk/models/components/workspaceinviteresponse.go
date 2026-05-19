@@ -2,16 +2,13 @@
 
 package components
 
-type Relationship struct {
-	UserID      string `json:"user_id"`
-	WorkspaceID string `json:"workspace_id"`
-}
+import (
+	"mockserver/internal/sdk/optionalnullable"
+)
 
-func (o *Relationship) GetUserID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UserID
+type Relationship struct {
+	WorkspaceID string `json:"workspace_id"`
+	UserID      string `json:"user_id"`
 }
 
 func (o *Relationship) GetWorkspaceID() string {
@@ -21,17 +18,17 @@ func (o *Relationship) GetWorkspaceID() string {
 	return o.WorkspaceID
 }
 
-// WorkspaceInviteResponse - A response for workspace user invite
-type WorkspaceInviteResponse struct {
-	InviteLink   *string      `json:"invite_link,omitempty"`
-	Relationship Relationship `json:"relationship"`
+func (o *Relationship) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
 }
 
-func (o *WorkspaceInviteResponse) GetInviteLink() *string {
-	if o == nil {
-		return nil
-	}
-	return o.InviteLink
+// WorkspaceInviteResponse - A response for workspace user invite
+type WorkspaceInviteResponse struct {
+	Relationship Relationship                              `json:"relationship"`
+	InviteLink   optionalnullable.OptionalNullable[string] `json:"invite_link,omitempty"`
 }
 
 func (o *WorkspaceInviteResponse) GetRelationship() Relationship {
@@ -39,4 +36,11 @@ func (o *WorkspaceInviteResponse) GetRelationship() Relationship {
 		return Relationship{}
 	}
 	return o.Relationship
+}
+
+func (o *WorkspaceInviteResponse) GetInviteLink() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.InviteLink
 }

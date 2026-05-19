@@ -56,24 +56,24 @@ func testGetNamespacesGetNamespaces0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GetNamespacesResponse{
+	var respBody *components.GetNamespacesResponse = &components.GetNamespacesResponse{
 		Items: []components.Namespace{
 			components.Namespace{
-				CreatedAt: types.MustTimeFromString("2024-01-20T10:11:46.428Z"),
 				ID:        "<id>",
 				Name:      "<value>",
+				CreatedAt: types.MustTimeFromString("2024-01-20T10:11:46.428Z"),
 				UpdatedAt: types.MustTimeFromString("2022-01-07T04:43:36.873Z"),
 			},
 			components.Namespace{
-				CreatedAt: types.MustTimeFromString("2023-07-06T07:26:30.970Z"),
 				ID:        "<id>",
 				Name:      "<value>",
+				CreatedAt: types.MustTimeFromString("2023-07-06T07:26:30.970Z"),
 				UpdatedAt: types.MustTimeFromString("2024-01-31T11:34:19.590Z"),
 			},
 			components.Namespace{
-				CreatedAt: types.MustTimeFromString("2022-08-10T13:43:30.983Z"),
 				ID:        "<id>",
 				Name:      "<value>",
+				CreatedAt: types.MustTimeFromString("2022-08-10T13:43:30.983Z"),
 				UpdatedAt: types.MustTimeFromString("2022-07-15T08:41:36.371Z"),
 			},
 		},

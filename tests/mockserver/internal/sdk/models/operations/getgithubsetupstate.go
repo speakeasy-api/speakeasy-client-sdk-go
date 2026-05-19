@@ -7,16 +7,9 @@ import (
 )
 
 type GetGithubSetupStateRequest struct {
-	GenerateGenLockID string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
 	Org               string `queryParam:"style=form,explode=true,name=org"`
 	Repo              string `queryParam:"style=form,explode=true,name=repo"`
-}
-
-func (o *GetGithubSetupStateRequest) GetGenerateGenLockID() string {
-	if o == nil {
-		return ""
-	}
-	return o.GenerateGenLockID
+	GenerateGenLockID string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
 }
 
 func (o *GetGithubSetupStateRequest) GetOrg() string {
@@ -33,17 +26,17 @@ func (o *GetGithubSetupStateRequest) GetRepo() string {
 	return o.Repo
 }
 
-type GetGithubSetupStateResponse struct {
-	// github setup state response
-	GithubSetupStateResponse *components.GithubSetupStateResponse
-	HTTPMeta                 components.HTTPMetadata `json:"-"`
+func (o *GetGithubSetupStateRequest) GetGenerateGenLockID() string {
+	if o == nil {
+		return ""
+	}
+	return o.GenerateGenLockID
 }
 
-func (o *GetGithubSetupStateResponse) GetGithubSetupStateResponse() *components.GithubSetupStateResponse {
-	if o == nil {
-		return nil
-	}
-	return o.GithubSetupStateResponse
+type GetGithubSetupStateResponse struct {
+	HTTPMeta components.HTTPMetadata `json:"-"`
+	// github setup state response
+	GithubSetupStateResponse *components.GithubSetupStateResponse
 }
 
 func (o *GetGithubSetupStateResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -51,4 +44,11 @@ func (o *GetGithubSetupStateResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *GetGithubSetupStateResponse) GetGithubSetupStateResponse() *components.GithubSetupStateResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GithubSetupStateResponse
 }

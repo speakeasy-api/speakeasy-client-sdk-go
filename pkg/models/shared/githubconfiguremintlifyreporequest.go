@@ -16,37 +16,37 @@ type GithubConfigureMintlifyRepoRequest struct {
 	Subdirectory *string `json:"subdirectory,omitempty"`
 }
 
-func (o *GithubConfigureMintlifyRepoRequest) GetInput() string {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoRequest) GetInput() string {
+	if g == nil {
 		return ""
 	}
-	return o.Input
+	return g.Input
 }
 
-func (o *GithubConfigureMintlifyRepoRequest) GetOrg() string {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GithubConfigureMintlifyRepoRequest) GetOverlays() []string {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoRequest) GetOverlays() []string {
+	if g == nil {
 		return []string{}
 	}
-	return o.Overlays
+	return g.Overlays
 }
 
-func (o *GithubConfigureMintlifyRepoRequest) GetRepo() string {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoRequest) GetRepo() string {
+	if g == nil {
 		return ""
 	}
-	return o.Repo
+	return g.Repo
 }
 
-func (o *GithubConfigureMintlifyRepoRequest) GetSubdirectory() *string {
-	if o == nil {
+func (g *GithubConfigureMintlifyRepoRequest) GetSubdirectory() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Subdirectory
+	return g.Subdirectory
 }

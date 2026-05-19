@@ -11,11 +11,11 @@ type ListRemoteSourcesRequest struct {
 	NamespaceName string `queryParam:"style=form,explode=true,name=namespace_name"`
 }
 
-func (o *ListRemoteSourcesRequest) GetNamespaceName() string {
-	if o == nil {
+func (l *ListRemoteSourcesRequest) GetNamespaceName() string {
+	if l == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return l.NamespaceName
 }
 
 type ListRemoteSourcesResponse struct {
@@ -29,30 +29,30 @@ type ListRemoteSourcesResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *ListRemoteSourcesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListRemoteSourcesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListRemoteSourcesResponse) GetRemoteSource() *shared.RemoteSource {
-	if o == nil {
+func (l *ListRemoteSourcesResponse) GetRemoteSource() *shared.RemoteSource {
+	if l == nil {
 		return nil
 	}
-	return o.RemoteSource
+	return l.RemoteSource
 }
 
-func (o *ListRemoteSourcesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListRemoteSourcesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListRemoteSourcesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListRemoteSourcesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }

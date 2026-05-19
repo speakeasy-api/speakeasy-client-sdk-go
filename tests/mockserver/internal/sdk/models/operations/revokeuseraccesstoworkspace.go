@@ -18,17 +18,10 @@ func (o *RevokeUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
 }
 
 type RevokeUserAccessToWorkspaceRequest struct {
-	// Unique identifier of the user.
-	UserID string `pathParam:"style=simple,explode=false,name=userId"`
 	// Unique identifier of the workspace.
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
-}
-
-func (o *RevokeUserAccessToWorkspaceRequest) GetUserID() string {
-	if o == nil {
-		return ""
-	}
-	return o.UserID
+	// Unique identifier of the user.
+	UserID string `pathParam:"style=simple,explode=false,name=userId"`
 }
 
 func (o *RevokeUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
@@ -36,6 +29,13 @@ func (o *RevokeUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
 		return nil
 	}
 	return o.WorkspaceID
+}
+
+func (o *RevokeUserAccessToWorkspaceRequest) GetUserID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserID
 }
 
 type RevokeUserAccessToWorkspaceResponse struct {

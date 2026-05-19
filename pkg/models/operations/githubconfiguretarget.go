@@ -15,23 +15,23 @@ type GithubConfigureTargetResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubConfigureTargetResponse) GetContentType() string {
-	if o == nil {
+func (g *GithubConfigureTargetResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GithubConfigureTargetResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GithubConfigureTargetResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GithubConfigureTargetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GithubConfigureTargetResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

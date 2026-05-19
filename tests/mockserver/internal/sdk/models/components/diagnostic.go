@@ -3,21 +3,14 @@
 package components
 
 type Diagnostic struct {
-	// Help message for how to fix the issue
-	HelpMessage *string `json:"helpMessage,omitempty"`
 	// Message describing the issue
 	Message string `json:"message"`
 	// Schema path to the issue
 	Path []string `json:"path"`
 	// Issue type
 	Type string `json:"type"`
-}
-
-func (o *Diagnostic) GetHelpMessage() *string {
-	if o == nil {
-		return nil
-	}
-	return o.HelpMessage
+	// Help message for how to fix the issue
+	HelpMessage *string `json:"helpMessage,omitempty"`
 }
 
 func (o *Diagnostic) GetMessage() string {
@@ -39,4 +32,11 @@ func (o *Diagnostic) GetType() string {
 		return ""
 	}
 	return o.Type
+}
+
+func (o *Diagnostic) GetHelpMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HelpMessage
 }

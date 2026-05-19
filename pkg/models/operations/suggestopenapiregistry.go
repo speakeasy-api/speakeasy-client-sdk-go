@@ -17,32 +17,32 @@ type SuggestOpenAPIRegistryRequest struct {
 	XSessionID        string `header:"style=simple,explode=false,name=x-session-id"`
 }
 
-func (o *SuggestOpenAPIRegistryRequest) GetSuggestRequestBody() *shared.SuggestRequestBody {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryRequest) GetSuggestRequestBody() *shared.SuggestRequestBody {
+	if s == nil {
 		return nil
 	}
-	return o.SuggestRequestBody
+	return s.SuggestRequestBody
 }
 
-func (o *SuggestOpenAPIRegistryRequest) GetNamespaceName() string {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryRequest) GetNamespaceName() string {
+	if s == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return s.NamespaceName
 }
 
-func (o *SuggestOpenAPIRegistryRequest) GetRevisionReference() string {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryRequest) GetRevisionReference() string {
+	if s == nil {
 		return ""
 	}
-	return o.RevisionReference
+	return s.RevisionReference
 }
 
-func (o *SuggestOpenAPIRegistryRequest) GetXSessionID() string {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryRequest) GetXSessionID() string {
+	if s == nil {
 		return ""
 	}
-	return o.XSessionID
+	return s.XSessionID
 }
 
 type SuggestOpenAPIRegistryResponse struct {
@@ -57,30 +57,30 @@ type SuggestOpenAPIRegistryResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *SuggestOpenAPIRegistryResponse) GetContentType() string {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SuggestOpenAPIRegistryResponse) GetSchema() io.ReadCloser {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryResponse) GetSchema() io.ReadCloser {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SuggestOpenAPIRegistryResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SuggestOpenAPIRegistryResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SuggestOpenAPIRegistryResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }

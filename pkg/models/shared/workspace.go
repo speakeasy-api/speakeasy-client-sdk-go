@@ -28,71 +28,71 @@ func (w Workspace) MarshalJSON() ([]byte, error) {
 }
 
 func (w *Workspace) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Workspace) GetCreatedAt() time.Time {
-	if o == nil {
+func (w *Workspace) GetCreatedAt() time.Time {
+	if w == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return w.CreatedAt
 }
 
-func (o *Workspace) GetID() string {
-	if o == nil {
+func (w *Workspace) GetID() string {
+	if w == nil {
 		return ""
 	}
-	return o.ID
+	return w.ID
 }
 
-func (o *Workspace) GetInactive() *bool {
-	if o == nil {
+func (w *Workspace) GetInactive() *bool {
+	if w == nil {
 		return nil
 	}
-	return o.Inactive
+	return w.Inactive
 }
 
-func (o *Workspace) GetName() string {
-	if o == nil {
+func (w *Workspace) GetName() string {
+	if w == nil {
 		return ""
 	}
-	return o.Name
+	return w.Name
 }
 
-func (o *Workspace) GetOrganizationID() string {
-	if o == nil {
+func (w *Workspace) GetOrganizationID() string {
+	if w == nil {
 		return ""
 	}
-	return o.OrganizationID
+	return w.OrganizationID
 }
 
-func (o *Workspace) GetSlug() string {
-	if o == nil {
+func (w *Workspace) GetSlug() string {
+	if w == nil {
 		return ""
 	}
-	return o.Slug
+	return w.Slug
 }
 
-func (o *Workspace) GetTelemetryDisabled() *bool {
-	if o == nil {
+func (w *Workspace) GetTelemetryDisabled() *bool {
+	if w == nil {
 		return nil
 	}
-	return o.TelemetryDisabled
+	return w.TelemetryDisabled
 }
 
-func (o *Workspace) GetUpdatedAt() time.Time {
-	if o == nil {
+func (w *Workspace) GetUpdatedAt() time.Time {
+	if w == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return w.UpdatedAt
 }
 
-func (o *Workspace) GetVerified() bool {
-	if o == nil {
+func (w *Workspace) GetVerified() bool {
+	if w == nil {
 		return false
 	}
-	return o.Verified
+	return w.Verified
 }

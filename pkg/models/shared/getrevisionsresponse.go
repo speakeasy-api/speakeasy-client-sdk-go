@@ -7,16 +7,16 @@ type GetRevisionsResponse struct {
 	NextPageToken string     `json:"next_page_token"`
 }
 
-func (o *GetRevisionsResponse) GetItems() []Revision {
-	if o == nil {
+func (g *GetRevisionsResponse) GetItems() []Revision {
+	if g == nil {
 		return []Revision{}
 	}
-	return o.Items
+	return g.Items
 }
 
-func (o *GetRevisionsResponse) GetNextPageToken() string {
-	if o == nil {
+func (g *GetRevisionsResponse) GetNextPageToken() string {
+	if g == nil {
 		return ""
 	}
-	return o.NextPageToken
+	return g.NextPageToken
 }

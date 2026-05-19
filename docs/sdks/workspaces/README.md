@@ -1,5 +1,4 @@
 # Workspaces
-(*Workspaces*)
 
 ## Overview
 
@@ -29,13 +28,14 @@ Creates a workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createWorkspace" method="post" path="/v1/workspace" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"log"
 )
@@ -43,19 +43,19 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.Create(ctx, shared.Workspace{
-        CreatedAt: types.MustTimeFromString("2024-06-17T07:14:55.338Z"),
+        CreatedAt: types.MustTimeFromString("2024-11-17T13:41:10.525Z"),
         ID: "<id>",
         Name: "<value>",
         OrganizationID: "<id>",
         Slug: "<value>",
-        UpdatedAt: types.MustTimeFromString("2024-11-30T17:06:07.804Z"),
+        UpdatedAt: types.MustTimeFromString("2025-11-21T08:36:32.740Z"),
         Verified: true,
     })
     if err != nil {
@@ -92,13 +92,14 @@ Create a token for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createWorkspaceToken" method="post" path="/v1/workspace/{workspace_id}/tokens" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -107,22 +108,22 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.CreateToken(ctx, operations.CreateWorkspaceTokenRequest{
         WorkspaceToken: shared.WorkspaceToken{
             Alg: "<value>",
-            CreatedAt: types.MustTimeFromString("2023-08-16T02:33:00.784Z"),
+            CreatedAt: types.MustTimeFromString("2025-10-04T10:23:04.522Z"),
             ID: "<id>",
             Key: "<key>",
             Name: "<value>",
             WorkspaceID: "<id>",
         },
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -158,13 +159,14 @@ Delete a token for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteWorkspaceToken" method="delete" path="/v1/workspace/{workspace_id}/tokens/{tokenID}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -172,15 +174,15 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.DeleteToken(ctx, operations.DeleteWorkspaceTokenRequest{
         TokenID: "<id>",
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -216,22 +218,23 @@ Get information about a particular workspace by context.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceByContext" method="get" path="/v1/workspace" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -269,22 +272,23 @@ Returns a list of workspaces a user has access too
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaces" method="get" path="/v1/workspaces" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -322,13 +326,14 @@ Get information about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspace" method="get" path="/v1/workspace/{workspace_id}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -336,15 +341,14 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Workspaces.GetByID(ctx, operations.GetWorkspaceRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -379,13 +383,14 @@ Get workspace feature flags
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceFeatureFlags" method="get" path="/v1/workspace/{workspace_id}/feature_flags" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -393,15 +398,14 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Workspaces.GetFeatureFlags(ctx, operations.GetWorkspaceFeatureFlagsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -436,13 +440,14 @@ Get settings about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceSettings" method="get" path="/v1/workspace/{workspace_id}/settings" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -450,15 +455,14 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Workspaces.GetSettings(ctx, operations.GetWorkspaceSettingsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -493,13 +497,14 @@ Get team members for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceTeam" method="get" path="/v1/workspace/{workspace_id}/team" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -507,15 +512,14 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Workspaces.GetTeam(ctx, operations.GetWorkspaceTeamRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -550,13 +554,14 @@ Get tokens for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceTokens" method="get" path="/v1/workspace/{workspace_id}/tokens" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -564,15 +569,14 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Workspaces.GetTokens(ctx, operations.GetWorkspaceTokensRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -607,13 +611,14 @@ Grant a user access to a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="grantUserAccessToWorkspace" method="put" path="/v1/workspace/{workspace_id}/team/email/{email}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -621,15 +626,15 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.GrantAccess(ctx, operations.GrantUserAccessToWorkspaceRequest{
-        Email: "Lucinda.Batz8@hotmail.com",
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
+        Email: "Idella24@gmail.com",
     })
     if err != nil {
         log.Fatal(err)
@@ -665,13 +670,14 @@ Revoke a user's access to a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="revokeUserAccessToWorkspace" method="delete" path="/v1/workspace/{workspace_id}/team/{userId}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -679,15 +685,15 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.RevokeAccess(ctx, operations.RevokeUserAccessToWorkspaceRequest{
         UserID: "<id>",
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -723,30 +729,28 @@ Set workspace feature flags
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="setWorkspaceFeatureFlags" method="post" path="/v1/workspace/feature_flags" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.SetFeatureFlags(ctx, shared.WorkspaceFeatureFlagRequest{
-        FeatureFlags: []shared.WorkspaceFeatureFlag{
-            shared.WorkspaceFeatureFlagSkipSchemaRegistry,
-            shared.WorkspaceFeatureFlagWebhooks,
-        },
+        FeatureFlags: []shared.WorkspaceFeatureFlag{},
     })
     if err != nil {
         log.Fatal(err)
@@ -782,13 +786,14 @@ Update information about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateWorkspaceDetails" method="post" path="/v1/workspace/{workspace_id}/details" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -797,23 +802,23 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.Update(ctx, operations.UpdateWorkspaceDetailsRequest{
         Workspace: shared.Workspace{
-            CreatedAt: types.MustTimeFromString("2025-07-28T19:04:48.565Z"),
+            CreatedAt: types.MustTimeFromString("2024-08-01T22:30:24.264Z"),
             ID: "<id>",
             Name: "<value>",
             OrganizationID: "<id>",
             Slug: "<value>",
-            UpdatedAt: types.MustTimeFromString("2024-10-16T10:52:42.015Z"),
+            UpdatedAt: types.MustTimeFromString("2026-01-24T03:53:13.581Z"),
             Verified: true,
         },
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -849,13 +854,14 @@ Update settings about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateWorkspaceSettings" method="put" path="/v1/workspace/{workspace_id}/settings" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -864,20 +870,20 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New(
-        speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+    s := v3.New(
+        v3.WithWorkspaceID("<id>"),
+        v3.WithSecurity(shared.Security{
+            APIKey: v3.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Workspaces.UpdateSettings(ctx, operations.UpdateWorkspaceSettingsRequest{
         WorkspaceSettings: shared.WorkspaceSettings{
-            CreatedAt: types.MustTimeFromString("2023-07-05T11:43:28.305Z"),
-            UpdatedAt: types.MustTimeFromString("2024-05-14T05:39:21.874Z"),
-            WebhookURL: "https://grown-pharmacopoeia.net",
+            CreatedAt: types.MustTimeFromString("2026-03-09T15:48:09.330Z"),
+            UpdatedAt: types.MustTimeFromString("2026-11-24T16:37:53.492Z"),
+            WebhookURL: "https://wobbly-lid.org",
             WorkspaceID: "<id>",
         },
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)

@@ -28,73 +28,73 @@ func (p PullRequestMetadata) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PullRequestMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PullRequestMetadata) GetBaseBranch() *string {
-	if o == nil {
+func (p *PullRequestMetadata) GetBaseBranch() *string {
+	if p == nil {
 		return nil
 	}
-	return o.BaseBranch
+	return p.BaseBranch
 }
 
-func (o *PullRequestMetadata) GetCanMerge() *bool {
-	if o == nil {
+func (p *PullRequestMetadata) GetCanMerge() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.CanMerge
+	return p.CanMerge
 }
 
-func (o *PullRequestMetadata) GetCreatedAt() *time.Time {
-	if o == nil {
+func (p *PullRequestMetadata) GetCreatedAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PullRequestMetadata) GetDescription() *string {
-	if o == nil {
+func (p *PullRequestMetadata) GetDescription() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Description
+	return p.Description
 }
 
-func (o *PullRequestMetadata) GetHeadBranch() *string {
-	if o == nil {
+func (p *PullRequestMetadata) GetHeadBranch() *string {
+	if p == nil {
 		return nil
 	}
-	return o.HeadBranch
+	return p.HeadBranch
 }
 
-func (o *PullRequestMetadata) GetLabels() []string {
-	if o == nil {
+func (p *PullRequestMetadata) GetLabels() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Labels
+	return p.Labels
 }
 
-func (o *PullRequestMetadata) GetRequestedReviewers() []string {
-	if o == nil {
+func (p *PullRequestMetadata) GetRequestedReviewers() []string {
+	if p == nil {
 		return nil
 	}
-	return o.RequestedReviewers
+	return p.RequestedReviewers
 }
 
-func (o *PullRequestMetadata) GetStatus() *string {
-	if o == nil {
+func (p *PullRequestMetadata) GetStatus() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Status
+	return p.Status
 }
 
-func (o *PullRequestMetadata) GetTitle() *string {
-	if o == nil {
+func (p *PullRequestMetadata) GetTitle() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Title
+	return p.Title
 }
 
 // GithubPublishingPRResponse - Open generation PRs pending publishing
@@ -105,23 +105,23 @@ type GithubPublishingPRResponse struct {
 	PullRequestMetadata *PullRequestMetadata `json:"pull_request_metadata,omitempty"`
 }
 
-func (o *GithubPublishingPRResponse) GetPendingVersion() *string {
-	if o == nil {
+func (g *GithubPublishingPRResponse) GetPendingVersion() *string {
+	if g == nil {
 		return nil
 	}
-	return o.PendingVersion
+	return g.PendingVersion
 }
 
-func (o *GithubPublishingPRResponse) GetPullRequest() *string {
-	if o == nil {
+func (g *GithubPublishingPRResponse) GetPullRequest() *string {
+	if g == nil {
 		return nil
 	}
-	return o.PullRequest
+	return g.PullRequest
 }
 
-func (o *GithubPublishingPRResponse) GetPullRequestMetadata() *PullRequestMetadata {
-	if o == nil {
+func (g *GithubPublishingPRResponse) GetPullRequestMetadata() *PullRequestMetadata {
+	if g == nil {
 		return nil
 	}
-	return o.PullRequestMetadata
+	return g.PullRequestMetadata
 }

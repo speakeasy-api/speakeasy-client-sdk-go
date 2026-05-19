@@ -12,11 +12,11 @@ type GetPublishingTokenByIDRequest struct {
 	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
 }
 
-func (o *GetPublishingTokenByIDRequest) GetTokenID() string {
-	if o == nil {
+func (g *GetPublishingTokenByIDRequest) GetTokenID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TokenID
+	return g.TokenID
 }
 
 type GetPublishingTokenByIDResponse struct {
@@ -30,30 +30,30 @@ type GetPublishingTokenByIDResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetPublishingTokenByIDResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPublishingTokenByIDResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPublishingTokenByIDResponse) GetPublishingToken() *shared.PublishingToken {
-	if o == nil {
+func (g *GetPublishingTokenByIDResponse) GetPublishingToken() *shared.PublishingToken {
+	if g == nil {
 		return nil
 	}
-	return o.PublishingToken
+	return g.PublishingToken
 }
 
-func (o *GetPublishingTokenByIDResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPublishingTokenByIDResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPublishingTokenByIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPublishingTokenByIDResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

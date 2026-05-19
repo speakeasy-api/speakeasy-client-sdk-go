@@ -59,7 +59,7 @@ func testSuggestItemsSuggestItems0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := []string{
+	var respBody []string = []string{
 		"<value>",
 		"<value>",
 	}

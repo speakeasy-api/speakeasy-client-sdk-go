@@ -8,15 +8,8 @@ import (
 )
 
 type Schema struct {
-	Content  io.Reader `multipartForm:"content"`
 	FileName string    `multipartForm:"name=fileName"`
-}
-
-func (o *Schema) GetContent() io.Reader {
-	if o == nil {
-		return nil
-	}
-	return o.Content
+	Content  io.Reader `multipartForm:"content"`
 }
 
 func (o *Schema) GetFileName() string {
@@ -26,10 +19,17 @@ func (o *Schema) GetFileName() string {
 	return o.FileName
 }
 
+func (o *Schema) GetContent() io.Reader {
+	if o == nil {
+		return nil
+	}
+	return o.Content
+}
+
 // SuggestOpenAPIRequestBody - The schema file to upload provided as a multipart/form-data file segment.
 type SuggestOpenAPIRequestBody struct {
 	Opts   *components.SuggestOptsOld `multipartForm:"name=opts,json"`
-	Schema Schema                     `multipartForm:"file"`
+	Schema Schema                     `multipartForm:"file,name=schema"`
 }
 
 func (o *SuggestOpenAPIRequestBody) GetOpts() *components.SuggestOptsOld {
@@ -47,16 +47,9 @@ func (o *SuggestOpenAPIRequestBody) GetSchema() Schema {
 }
 
 type SuggestOpenAPIRequest struct {
+	XSessionID string `header:"style=simple,explode=false,name=x-session-id"`
 	// The schema file to upload provided as a multipart/form-data file segment.
-	RequestBody SuggestOpenAPIRequestBody `request:"mediaType=multipart/form-data"`
-	XSessionID  string                    `header:"style=simple,explode=false,name=x-session-id"`
-}
-
-func (o *SuggestOpenAPIRequest) GetRequestBody() SuggestOpenAPIRequestBody {
-	if o == nil {
-		return SuggestOpenAPIRequestBody{}
-	}
-	return o.RequestBody
+	Body SuggestOpenAPIRequestBody `request:"mediaType=multipart/form-data"`
 }
 
 func (o *SuggestOpenAPIRequest) GetXSessionID() string {
@@ -64,6 +57,13 @@ func (o *SuggestOpenAPIRequest) GetXSessionID() string {
 		return ""
 	}
 	return o.XSessionID
+}
+
+func (o *SuggestOpenAPIRequest) GetBody() SuggestOpenAPIRequestBody {
+	if o == nil {
+		return SuggestOpenAPIRequestBody{}
+	}
+	return o.Body
 }
 
 type SuggestOpenAPIResponse struct {

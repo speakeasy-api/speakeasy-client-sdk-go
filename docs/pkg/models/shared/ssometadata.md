@@ -7,5 +7,5 @@ SSO metadata for a workspace
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `SsoActivated`     | *bool*             | :heavy_check_mark: | N/A                |
-| `SsoDomains`       | []*string*         | :heavy_check_mark: | N/A                |
+| `SsoActivated`     | `bool`             | :heavy_check_mark: | N/A                |
+| `SsoDomains`       | []`string`         | :heavy_check_mark: | N/A                |

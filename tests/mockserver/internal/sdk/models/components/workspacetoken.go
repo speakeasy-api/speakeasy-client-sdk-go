@@ -3,23 +3,24 @@
 package components
 
 import (
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
 
 // WorkspaceToken - A workspace token
 type WorkspaceToken struct {
-	Alg               string     `json:"alg"`
-	CreatedAt         time.Time  `json:"created_at"`
-	CreatedBy         *string    `json:"created_by,omitempty"`
-	CreatedByName     *string    `json:"created_by_name,omitempty"`
-	CreatedByPhotoURL *string    `json:"created_by_photo_url,omitempty"`
-	Email             *string    `json:"email,omitempty"`
-	ID                string     `json:"id"`
-	Key               string     `json:"key"`
-	LastUsed          *time.Time `json:"last_used,omitempty"`
-	Name              string     `json:"name"`
-	WorkspaceID       string     `json:"workspace_id"`
+	ID                string                                       `json:"id"`
+	Name              string                                       `json:"name"`
+	WorkspaceID       string                                       `json:"workspace_id"`
+	Alg               string                                       `json:"alg"`
+	Key               string                                       `json:"key"`
+	LastUsed          optionalnullable.OptionalNullable[time.Time] `json:"last_used,omitempty"`
+	CreatedAt         time.Time                                    `json:"created_at"`
+	CreatedBy         optionalnullable.OptionalNullable[string]    `json:"created_by,omitempty"`
+	CreatedByName     optionalnullable.OptionalNullable[string]    `json:"created_by_name,omitempty"`
+	CreatedByPhotoURL optionalnullable.OptionalNullable[string]    `json:"created_by_photo_url,omitempty"`
+	Email             optionalnullable.OptionalNullable[string]    `json:"email,omitempty"`
 }
 
 func (w WorkspaceToken) MarshalJSON() ([]byte, error) {
@@ -27,52 +28,10 @@ func (w WorkspaceToken) MarshalJSON() ([]byte, error) {
 }
 
 func (w *WorkspaceToken) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &w, "", false, []string{"id", "name", "workspace_id", "alg", "key", "created_at"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *WorkspaceToken) GetAlg() string {
-	if o == nil {
-		return ""
-	}
-	return o.Alg
-}
-
-func (o *WorkspaceToken) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *WorkspaceToken) GetCreatedBy() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedBy
-}
-
-func (o *WorkspaceToken) GetCreatedByName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedByName
-}
-
-func (o *WorkspaceToken) GetCreatedByPhotoURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedByPhotoURL
-}
-
-func (o *WorkspaceToken) GetEmail() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Email
 }
 
 func (o *WorkspaceToken) GetID() string {
@@ -80,20 +39,6 @@ func (o *WorkspaceToken) GetID() string {
 		return ""
 	}
 	return o.ID
-}
-
-func (o *WorkspaceToken) GetKey() string {
-	if o == nil {
-		return ""
-	}
-	return o.Key
-}
-
-func (o *WorkspaceToken) GetLastUsed() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.LastUsed
 }
 
 func (o *WorkspaceToken) GetName() string {
@@ -108,4 +53,60 @@ func (o *WorkspaceToken) GetWorkspaceID() string {
 		return ""
 	}
 	return o.WorkspaceID
+}
+
+func (o *WorkspaceToken) GetAlg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Alg
+}
+
+func (o *WorkspaceToken) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *WorkspaceToken) GetLastUsed() optionalnullable.OptionalNullable[time.Time] {
+	if o == nil {
+		return nil
+	}
+	return o.LastUsed
+}
+
+func (o *WorkspaceToken) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *WorkspaceToken) GetCreatedBy() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
+}
+
+func (o *WorkspaceToken) GetCreatedByName() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedByName
+}
+
+func (o *WorkspaceToken) GetCreatedByPhotoURL() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedByPhotoURL
+}
+
+func (o *WorkspaceToken) GetEmail() optionalnullable.OptionalNullable[string] {
+	if o == nil {
+		return nil
+	}
+	return o.Email
 }

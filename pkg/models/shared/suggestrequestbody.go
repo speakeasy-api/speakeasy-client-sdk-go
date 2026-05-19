@@ -39,23 +39,23 @@ type SuggestRequestBody struct {
 	SuggestionType SuggestRequestBodySuggestionType `json:"suggestion_type"`
 }
 
-func (o *SuggestRequestBody) GetDiagnostics() []Diagnostic {
-	if o == nil {
+func (s *SuggestRequestBody) GetDiagnostics() []Diagnostic {
+	if s == nil {
 		return []Diagnostic{}
 	}
-	return o.Diagnostics
+	return s.Diagnostics
 }
 
-func (o *SuggestRequestBody) GetOasSummary() OASSummary {
-	if o == nil {
+func (s *SuggestRequestBody) GetOasSummary() OASSummary {
+	if s == nil {
 		return OASSummary{}
 	}
-	return o.OasSummary
+	return s.OasSummary
 }
 
-func (o *SuggestRequestBody) GetSuggestionType() SuggestRequestBodySuggestionType {
-	if o == nil {
+func (s *SuggestRequestBody) GetSuggestionType() SuggestRequestBodySuggestionType {
+	if s == nil {
 		return SuggestRequestBodySuggestionType("")
 	}
-	return o.SuggestionType
+	return s.SuggestionType
 }

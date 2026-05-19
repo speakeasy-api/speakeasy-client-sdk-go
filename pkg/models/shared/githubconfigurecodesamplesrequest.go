@@ -12,23 +12,23 @@ type GithubConfigureCodeSamplesRequest struct {
 	TargetName string `json:"targetName"`
 }
 
-func (o *GithubConfigureCodeSamplesRequest) GetOrg() string {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GithubConfigureCodeSamplesRequest) GetRepo() string {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesRequest) GetRepo() string {
+	if g == nil {
 		return ""
 	}
-	return o.Repo
+	return g.Repo
 }
 
-func (o *GithubConfigureCodeSamplesRequest) GetTargetName() string {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesRequest) GetTargetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.TargetName
+	return g.TargetName
 }

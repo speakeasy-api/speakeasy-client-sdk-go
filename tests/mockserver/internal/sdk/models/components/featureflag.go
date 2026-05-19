@@ -3,6 +3,7 @@
 package components
 
 import (
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -10,8 +11,8 @@ import (
 // FeatureFlag - A feature flag is a key-value pair that can be used to enable or disable features.
 type FeatureFlag struct {
 	// enum value workspace feature flag
-	FeatureFlag WorkspaceFeatureFlag `json:"feature_flag"`
-	TrialEndsAt *time.Time           `json:"trial_ends_at,omitempty"`
+	FeatureFlag WorkspaceFeatureFlag                         `json:"feature_flag"`
+	TrialEndsAt optionalnullable.OptionalNullable[time.Time] `json:"trial_ends_at,omitempty"`
 }
 
 func (f FeatureFlag) MarshalJSON() ([]byte, error) {
@@ -19,7 +20,7 @@ func (f FeatureFlag) MarshalJSON() ([]byte, error) {
 }
 
 func (f *FeatureFlag) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &f, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"feature_flag"}); err != nil {
 		return err
 	}
 	return nil
@@ -32,7 +33,7 @@ func (o *FeatureFlag) GetFeatureFlag() WorkspaceFeatureFlag {
 	return o.FeatureFlag
 }
 
-func (o *FeatureFlag) GetTrialEndsAt() *time.Time {
+func (o *FeatureFlag) GetTrialEndsAt() optionalnullable.OptionalNullable[time.Time] {
 	if o == nil {
 		return nil
 	}

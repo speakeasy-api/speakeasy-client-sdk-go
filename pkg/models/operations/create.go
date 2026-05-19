@@ -12,11 +12,11 @@ type CreateRequestBody struct {
 	URL string `json:"url"`
 }
 
-func (o *CreateRequestBody) GetURL() string {
-	if o == nil {
+func (c *CreateRequestBody) GetURL() string {
+	if c == nil {
 		return ""
 	}
-	return o.URL
+	return c.URL
 }
 
 type CreateResponse struct {
@@ -30,30 +30,30 @@ type CreateResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CreateResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateResponse) GetShortURL() *shared.ShortURL {
-	if o == nil {
+func (c *CreateResponse) GetShortURL() *shared.ShortURL {
+	if c == nil {
 		return nil
 	}
-	return o.ShortURL
+	return c.ShortURL
 }
 
-func (o *CreateResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

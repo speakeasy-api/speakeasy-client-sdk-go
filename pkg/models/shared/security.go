@@ -8,23 +8,23 @@ type Security struct {
 	WorkspaceIdentifier *string `security:"scheme,type=apiKey,subtype=header,name=x-workspace-identifier"`
 }
 
-func (o *Security) GetAPIKey() *string {
-	if o == nil {
+func (s *Security) GetAPIKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.APIKey
+	return s.APIKey
 }
 
-func (o *Security) GetBearer() *string {
-	if o == nil {
+func (s *Security) GetBearer() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Bearer
+	return s.Bearer
 }
 
-func (o *Security) GetWorkspaceIdentifier() *string {
-	if o == nil {
+func (s *Security) GetWorkspaceIdentifier() *string {
+	if s == nil {
 		return nil
 	}
-	return o.WorkspaceIdentifier
+	return s.WorkspaceIdentifier
 }

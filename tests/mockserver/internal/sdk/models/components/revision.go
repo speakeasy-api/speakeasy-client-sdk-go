@@ -8,14 +8,14 @@ import (
 )
 
 type Revision struct {
+	// Format {namespace_id}/{revision_digest}
+	ID               string                    `json:"id"`
+	Digest           string                    `json:"digest"`
+	NamespaceName    string                    `json:"namespace_name"`
+	Tags             []string                  `json:"tags"`
 	ContentsMetadata *RevisionContentsMetadata `json:"contents_metadata,omitempty"`
 	CreatedAt        time.Time                 `json:"created_at"`
-	Digest           string                    `json:"digest"`
-	// Format {namespace_id}/{revision_digest}
-	ID            string    `json:"id"`
-	NamespaceName string    `json:"namespace_name"`
-	Tags          []string  `json:"tags"`
-	UpdatedAt     time.Time `json:"updated_at"`
+	UpdatedAt        time.Time                 `json:"updated_at"`
 }
 
 func (r Revision) MarshalJSON() ([]byte, error) {
@@ -23,31 +23,10 @@ func (r Revision) MarshalJSON() ([]byte, error) {
 }
 
 func (r *Revision) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "digest", "namespace_name", "tags", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *Revision) GetContentsMetadata() *RevisionContentsMetadata {
-	if o == nil {
-		return nil
-	}
-	return o.ContentsMetadata
-}
-
-func (o *Revision) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *Revision) GetDigest() string {
-	if o == nil {
-		return ""
-	}
-	return o.Digest
 }
 
 func (o *Revision) GetID() string {
@@ -55,6 +34,13 @@ func (o *Revision) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *Revision) GetDigest() string {
+	if o == nil {
+		return ""
+	}
+	return o.Digest
 }
 
 func (o *Revision) GetNamespaceName() string {
@@ -69,6 +55,20 @@ func (o *Revision) GetTags() []string {
 		return []string{}
 	}
 	return o.Tags
+}
+
+func (o *Revision) GetContentsMetadata() *RevisionContentsMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.ContentsMetadata
+}
+
+func (o *Revision) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
 }
 
 func (o *Revision) GetUpdatedAt() time.Time {

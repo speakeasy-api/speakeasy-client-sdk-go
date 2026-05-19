@@ -13,18 +13,18 @@ type IgnoreSubscriptionNamespaceRequest struct {
 	SubscriptionID string `pathParam:"style=simple,explode=false,name=subscriptionID"`
 }
 
-func (o *IgnoreSubscriptionNamespaceRequest) GetNamespaceName() string {
-	if o == nil {
+func (i *IgnoreSubscriptionNamespaceRequest) GetNamespaceName() string {
+	if i == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return i.NamespaceName
 }
 
-func (o *IgnoreSubscriptionNamespaceRequest) GetSubscriptionID() string {
-	if o == nil {
+func (i *IgnoreSubscriptionNamespaceRequest) GetSubscriptionID() string {
+	if i == nil {
 		return ""
 	}
-	return o.SubscriptionID
+	return i.SubscriptionID
 }
 
 type IgnoreSubscriptionNamespaceResponse struct {
@@ -36,23 +36,23 @@ type IgnoreSubscriptionNamespaceResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *IgnoreSubscriptionNamespaceResponse) GetContentType() string {
-	if o == nil {
+func (i *IgnoreSubscriptionNamespaceResponse) GetContentType() string {
+	if i == nil {
 		return ""
 	}
-	return o.ContentType
+	return i.ContentType
 }
 
-func (o *IgnoreSubscriptionNamespaceResponse) GetStatusCode() int {
-	if o == nil {
+func (i *IgnoreSubscriptionNamespaceResponse) GetStatusCode() int {
+	if i == nil {
 		return 0
 	}
-	return o.StatusCode
+	return i.StatusCode
 }
 
-func (o *IgnoreSubscriptionNamespaceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (i *IgnoreSubscriptionNamespaceResponse) GetRawResponse() *http.Response {
+	if i == nil {
 		return nil
 	}
-	return o.RawResponse
+	return i.RawResponse
 }

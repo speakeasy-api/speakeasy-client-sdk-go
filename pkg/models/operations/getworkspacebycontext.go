@@ -18,30 +18,30 @@ type GetWorkspaceByContextResponse struct {
 	WorkspaceAndOrganization *shared.WorkspaceAndOrganization
 }
 
-func (o *GetWorkspaceByContextResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceByContextResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceByContextResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceByContextResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceByContextResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceByContextResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetWorkspaceByContextResponse) GetWorkspaceAndOrganization() *shared.WorkspaceAndOrganization {
-	if o == nil {
+func (g *GetWorkspaceByContextResponse) GetWorkspaceAndOrganization() *shared.WorkspaceAndOrganization {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceAndOrganization
+	return g.WorkspaceAndOrganization
 }

@@ -3,43 +3,44 @@
 package components
 
 import (
+	"mockserver/internal/sdk/optionalnullable"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
 
 type User struct {
-	// Indicates whether the user is an admin.
-	Admin bool `json:"admin"`
-	// Indicates whether the user has been confirmed.
-	Confirmed bool `json:"confirmed"`
-	// Timestamp of the user's creation.
-	CreatedAt time.Time `json:"created_at"`
-	// Identifier of the default workspace.
-	DefaultWorkspaceID *string `json:"default_workspace_id,omitempty"`
-	// Display name of the user.
-	DisplayName string `json:"display_name"`
+	// Unique identifier for the user.
+	ID string `json:"id"`
 	// Email address of the user.
 	Email string `json:"email"`
 	// Indicates whether the email address has been verified.
 	EmailVerified bool `json:"email_verified"`
 	// GitHub handle of the user.
-	GithubHandle *string `json:"github_handle,omitempty"`
-	// Indicates whether the user has created an API key. Not always populated
-	HasCreatedAPIKey *bool `json:"has_created_api_key,omitempty"`
-	// Unique identifier for the user.
-	ID string `json:"id"`
-	// Indicates whether the user is internal.
-	Internal *bool `json:"internal,omitempty"`
-	// Timestamp of the last login.
-	LastLoginAt *time.Time `json:"last_login_at,omitempty"`
+	GithubHandle optionalnullable.OptionalNullable[string] `json:"github_handle,omitempty"`
+	// Display name of the user.
+	DisplayName string `json:"display_name"`
 	// URL of the user's photo.
-	PhotoURL *string `json:"photo_url,omitempty"`
-	// Hash used for pylon identity verification returned on v1/user.
-	PylonIdentityHash *string `json:"pylon_identity_hash,omitempty"`
-	// Timestamp of the user's last update.
-	UpdatedAt time.Time `json:"updated_at"`
+	PhotoURL optionalnullable.OptionalNullable[string] `json:"photo_url,omitempty"`
+	// Identifier of the default workspace.
+	DefaultWorkspaceID optionalnullable.OptionalNullable[string] `json:"default_workspace_id,omitempty"`
+	// Indicates whether the user has been confirmed.
+	Confirmed bool `json:"confirmed"`
 	// Indicates whether the user has been whitelisted.
 	Whitelisted bool `json:"whitelisted"`
+	// Timestamp of the last login.
+	LastLoginAt optionalnullable.OptionalNullable[time.Time] `json:"last_login_at,omitempty"`
+	// Indicates whether the user is an admin.
+	Admin bool `json:"admin"`
+	// Timestamp of the user's creation.
+	CreatedAt time.Time `json:"created_at"`
+	// Timestamp of the user's last update.
+	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether the user is internal.
+	Internal *bool `json:"internal,omitempty"`
+	// Hash used for pylon identity verification returned on v1/user.
+	PylonIdentityHash *string `json:"pylon_identity_hash,omitempty"`
+	// Indicates whether the user has created an API key. Not always populated
+	HasCreatedAPIKey *bool `json:"has_created_api_key,omitempty"`
 }
 
 func (u User) MarshalJSON() ([]byte, error) {
@@ -47,45 +48,17 @@ func (u User) MarshalJSON() ([]byte, error) {
 }
 
 func (u *User) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "email", "email_verified", "display_name", "confirmed", "whitelisted", "admin", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *User) GetAdmin() bool {
-	if o == nil {
-		return false
-	}
-	return o.Admin
-}
-
-func (o *User) GetConfirmed() bool {
-	if o == nil {
-		return false
-	}
-	return o.Confirmed
-}
-
-func (o *User) GetCreatedAt() time.Time {
-	if o == nil {
-		return time.Time{}
-	}
-	return o.CreatedAt
-}
-
-func (o *User) GetDefaultWorkspaceID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DefaultWorkspaceID
-}
-
-func (o *User) GetDisplayName() string {
+func (o *User) GetID() string {
 	if o == nil {
 		return ""
 	}
-	return o.DisplayName
+	return o.ID
 }
 
 func (o *User) GetEmail() string {
@@ -102,53 +75,67 @@ func (o *User) GetEmailVerified() bool {
 	return o.EmailVerified
 }
 
-func (o *User) GetGithubHandle() *string {
+func (o *User) GetGithubHandle() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.GithubHandle
 }
 
-func (o *User) GetHasCreatedAPIKey() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasCreatedAPIKey
-}
-
-func (o *User) GetID() string {
+func (o *User) GetDisplayName() string {
 	if o == nil {
 		return ""
 	}
-	return o.ID
+	return o.DisplayName
 }
 
-func (o *User) GetInternal() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Internal
-}
-
-func (o *User) GetLastLoginAt() *time.Time {
-	if o == nil {
-		return nil
-	}
-	return o.LastLoginAt
-}
-
-func (o *User) GetPhotoURL() *string {
+func (o *User) GetPhotoURL() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
 	return o.PhotoURL
 }
 
-func (o *User) GetPylonIdentityHash() *string {
+func (o *User) GetDefaultWorkspaceID() optionalnullable.OptionalNullable[string] {
 	if o == nil {
 		return nil
 	}
-	return o.PylonIdentityHash
+	return o.DefaultWorkspaceID
+}
+
+func (o *User) GetConfirmed() bool {
+	if o == nil {
+		return false
+	}
+	return o.Confirmed
+}
+
+func (o *User) GetWhitelisted() bool {
+	if o == nil {
+		return false
+	}
+	return o.Whitelisted
+}
+
+func (o *User) GetLastLoginAt() optionalnullable.OptionalNullable[time.Time] {
+	if o == nil {
+		return nil
+	}
+	return o.LastLoginAt
+}
+
+func (o *User) GetAdmin() bool {
+	if o == nil {
+		return false
+	}
+	return o.Admin
+}
+
+func (o *User) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
 }
 
 func (o *User) GetUpdatedAt() time.Time {
@@ -158,9 +145,23 @@ func (o *User) GetUpdatedAt() time.Time {
 	return o.UpdatedAt
 }
 
-func (o *User) GetWhitelisted() bool {
+func (o *User) GetInternal() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
-	return o.Whitelisted
+	return o.Internal
+}
+
+func (o *User) GetPylonIdentityHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PylonIdentityHash
+}
+
+func (o *User) GetHasCreatedAPIKey() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasCreatedAPIKey
 }

@@ -105,323 +105,323 @@ func (t TargetSDK) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TargetSDK) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *TargetSDK) GetCommitHead() *string {
-	if o == nil {
+func (t *TargetSDK) GetCommitHead() *string {
+	if t == nil {
 		return nil
 	}
-	return o.CommitHead
+	return t.CommitHead
 }
 
-func (o *TargetSDK) GetContinuousIntegrationEnvironment() *string {
-	if o == nil {
+func (t *TargetSDK) GetContinuousIntegrationEnvironment() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ContinuousIntegrationEnvironment
+	return t.ContinuousIntegrationEnvironment
 }
 
-func (o *TargetSDK) GetError() *string {
-	if o == nil {
+func (t *TargetSDK) GetError() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Error
+	return t.Error
 }
 
-func (o *TargetSDK) GetGenerateConfigPostVersion() *string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateConfigPostVersion() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateConfigPostVersion
+	return t.GenerateConfigPostVersion
 }
 
-func (o *TargetSDK) GetGenerateEligibleFeatures() *string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateEligibleFeatures() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateEligibleFeatures
+	return t.GenerateEligibleFeatures
 }
 
-func (o *TargetSDK) GetGenerateGenLockID() string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateGenLockID() string {
+	if t == nil {
 		return ""
 	}
-	return o.GenerateGenLockID
+	return t.GenerateGenLockID
 }
 
-func (o *TargetSDK) GetGenerateGenLockPreFeatures() *string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateGenLockPreFeatures() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreFeatures
+	return t.GenerateGenLockPreFeatures
 }
 
-func (o *TargetSDK) GetGenerateGenLockPreVersion() *string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateGenLockPreVersion() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateGenLockPreVersion
+	return t.GenerateGenLockPreVersion
 }
 
-func (o *TargetSDK) GetGenerateNumberOfOperationsIgnored() *int64 {
-	if o == nil {
+func (t *TargetSDK) GetGenerateNumberOfOperationsIgnored() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateNumberOfOperationsIgnored
+	return t.GenerateNumberOfOperationsIgnored
 }
 
-func (o *TargetSDK) GetGenerateNumberOfOperationsUsed() *int64 {
-	if o == nil {
+func (t *TargetSDK) GetGenerateNumberOfOperationsUsed() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateNumberOfOperationsUsed
+	return t.GenerateNumberOfOperationsUsed
 }
 
-func (o *TargetSDK) GetGenerateNumberOfTerraformResources() *int64 {
-	if o == nil {
+func (t *TargetSDK) GetGenerateNumberOfTerraformResources() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateNumberOfTerraformResources
+	return t.GenerateNumberOfTerraformResources
 }
 
-func (o *TargetSDK) GetGeneratePublished() *bool {
-	if o == nil {
+func (t *TargetSDK) GetGeneratePublished() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.GeneratePublished
+	return t.GeneratePublished
 }
 
-func (o *TargetSDK) GetGenerateTarget() string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateTarget() string {
+	if t == nil {
 		return ""
 	}
-	return o.GenerateTarget
+	return t.GenerateTarget
 }
 
-func (o *TargetSDK) GetGenerateTargetName() *string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateTargetName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateTargetName
+	return t.GenerateTargetName
 }
 
-func (o *TargetSDK) GetGenerateTargetVersion() *string {
-	if o == nil {
+func (t *TargetSDK) GetGenerateTargetVersion() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GenerateTargetVersion
+	return t.GenerateTargetVersion
 }
 
-func (o *TargetSDK) GetGhActionOrganization() *string {
-	if o == nil {
+func (t *TargetSDK) GetGhActionOrganization() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GhActionOrganization
+	return t.GhActionOrganization
 }
 
-func (o *TargetSDK) GetGhActionRef() *string {
-	if o == nil {
+func (t *TargetSDK) GetGhActionRef() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GhActionRef
+	return t.GhActionRef
 }
 
-func (o *TargetSDK) GetGhActionRepository() *string {
-	if o == nil {
+func (t *TargetSDK) GetGhActionRepository() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GhActionRepository
+	return t.GhActionRepository
 }
 
-func (o *TargetSDK) GetGhActionRunLink() *string {
-	if o == nil {
+func (t *TargetSDK) GetGhActionRunLink() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GhActionRunLink
+	return t.GhActionRunLink
 }
 
-func (o *TargetSDK) GetGhActionVersion() *string {
-	if o == nil {
+func (t *TargetSDK) GetGhActionVersion() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GhActionVersion
+	return t.GhActionVersion
 }
 
-func (o *TargetSDK) GetGitRelativeCwd() *string {
-	if o == nil {
+func (t *TargetSDK) GetGitRelativeCwd() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GitRelativeCwd
+	return t.GitRelativeCwd
 }
 
-func (o *TargetSDK) GetGitRemoteDefaultOwner() *string {
-	if o == nil {
+func (t *TargetSDK) GetGitRemoteDefaultOwner() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GitRemoteDefaultOwner
+	return t.GitRemoteDefaultOwner
 }
 
-func (o *TargetSDK) GetGitRemoteDefaultRepo() *string {
-	if o == nil {
+func (t *TargetSDK) GetGitRemoteDefaultRepo() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GitRemoteDefaultRepo
+	return t.GitRemoteDefaultRepo
 }
 
-func (o *TargetSDK) GetGitUserEmail() *string {
-	if o == nil {
+func (t *TargetSDK) GetGitUserEmail() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GitUserEmail
+	return t.GitUserEmail
 }
 
-func (o *TargetSDK) GetGitUserName() *string {
-	if o == nil {
+func (t *TargetSDK) GetGitUserName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.GitUserName
+	return t.GitUserName
 }
 
-func (o *TargetSDK) GetHostname() *string {
-	if o == nil {
+func (t *TargetSDK) GetHostname() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Hostname
+	return t.Hostname
 }
 
-func (o *TargetSDK) GetID() string {
-	if o == nil {
+func (t *TargetSDK) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TargetSDK) GetLastEventCreatedAt() time.Time {
-	if o == nil {
+func (t *TargetSDK) GetLastEventCreatedAt() time.Time {
+	if t == nil {
 		return time.Time{}
 	}
-	return o.LastEventCreatedAt
+	return t.LastEventCreatedAt
 }
 
-func (o *TargetSDK) GetLastEventID() string {
-	if o == nil {
+func (t *TargetSDK) GetLastEventID() string {
+	if t == nil {
 		return ""
 	}
-	return o.LastEventID
+	return t.LastEventID
 }
 
-func (o *TargetSDK) GetLastEventInteractionType() InteractionType {
-	if o == nil {
+func (t *TargetSDK) GetLastEventInteractionType() InteractionType {
+	if t == nil {
 		return InteractionType("")
 	}
-	return o.LastEventInteractionType
+	return t.LastEventInteractionType
 }
 
-func (o *TargetSDK) GetLastPublishCreatedAt() *time.Time {
-	if o == nil {
+func (t *TargetSDK) GetLastPublishCreatedAt() *time.Time {
+	if t == nil {
 		return nil
 	}
-	return o.LastPublishCreatedAt
+	return t.LastPublishCreatedAt
 }
 
-func (o *TargetSDK) GetLastPublishGhActionRunLink() *string {
-	if o == nil {
+func (t *TargetSDK) GetLastPublishGhActionRunLink() *string {
+	if t == nil {
 		return nil
 	}
-	return o.LastPublishGhActionRunLink
+	return t.LastPublishGhActionRunLink
 }
 
-func (o *TargetSDK) GetPublishPackageName() *string {
-	if o == nil {
+func (t *TargetSDK) GetPublishPackageName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PublishPackageName
+	return t.PublishPackageName
 }
 
-func (o *TargetSDK) GetPublishPackageRegistryName() *string {
-	if o == nil {
+func (t *TargetSDK) GetPublishPackageRegistryName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PublishPackageRegistryName
+	return t.PublishPackageRegistryName
 }
 
-func (o *TargetSDK) GetPublishPackageURL() *string {
-	if o == nil {
+func (t *TargetSDK) GetPublishPackageURL() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PublishPackageURL
+	return t.PublishPackageURL
 }
 
-func (o *TargetSDK) GetPublishPackageVersion() *string {
-	if o == nil {
+func (t *TargetSDK) GetPublishPackageVersion() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PublishPackageVersion
+	return t.PublishPackageVersion
 }
 
-func (o *TargetSDK) GetRepoLabel() *string {
-	if o == nil {
+func (t *TargetSDK) GetRepoLabel() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RepoLabel
+	return t.RepoLabel
 }
 
-func (o *TargetSDK) GetSourceBlobDigest() *string {
-	if o == nil {
+func (t *TargetSDK) GetSourceBlobDigest() *string {
+	if t == nil {
 		return nil
 	}
-	return o.SourceBlobDigest
+	return t.SourceBlobDigest
 }
 
-func (o *TargetSDK) GetSourceNamespaceName() *string {
-	if o == nil {
+func (t *TargetSDK) GetSourceNamespaceName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.SourceNamespaceName
+	return t.SourceNamespaceName
 }
 
-func (o *TargetSDK) GetSourceRevisionDigest() *string {
-	if o == nil {
+func (t *TargetSDK) GetSourceRevisionDigest() *string {
+	if t == nil {
 		return nil
 	}
-	return o.SourceRevisionDigest
+	return t.SourceRevisionDigest
 }
 
-func (o *TargetSDK) GetSuccess() *bool {
-	if o == nil {
+func (t *TargetSDK) GetSuccess() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Success
+	return t.Success
 }
 
-func (o *TargetSDK) GetWorkflowLockPostRaw() *string {
-	if o == nil {
+func (t *TargetSDK) GetWorkflowLockPostRaw() *string {
+	if t == nil {
 		return nil
 	}
-	return o.WorkflowLockPostRaw
+	return t.WorkflowLockPostRaw
 }
 
-func (o *TargetSDK) GetWorkflowLockPreRaw() *string {
-	if o == nil {
+func (t *TargetSDK) GetWorkflowLockPreRaw() *string {
+	if t == nil {
 		return nil
 	}
-	return o.WorkflowLockPreRaw
+	return t.WorkflowLockPreRaw
 }
 
-func (o *TargetSDK) GetWorkflowPostRaw() *string {
-	if o == nil {
+func (t *TargetSDK) GetWorkflowPostRaw() *string {
+	if t == nil {
 		return nil
 	}
-	return o.WorkflowPostRaw
+	return t.WorkflowPostRaw
 }
 
-func (o *TargetSDK) GetWorkflowPreRaw() *string {
-	if o == nil {
+func (t *TargetSDK) GetWorkflowPreRaw() *string {
+	if t == nil {
 		return nil
 	}
-	return o.WorkflowPreRaw
+	return t.WorkflowPreRaw
 }

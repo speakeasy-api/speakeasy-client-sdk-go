@@ -18,44 +18,44 @@ type GithubTriggerActionRequest struct {
 	TargetName *string `json:"target_name,omitempty"`
 }
 
-func (o *GithubTriggerActionRequest) GetForce() *bool {
-	if o == nil {
+func (g *GithubTriggerActionRequest) GetForce() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Force
+	return g.Force
 }
 
-func (o *GithubTriggerActionRequest) GetGenLockID() string {
-	if o == nil {
+func (g *GithubTriggerActionRequest) GetGenLockID() string {
+	if g == nil {
 		return ""
 	}
-	return o.GenLockID
+	return g.GenLockID
 }
 
-func (o *GithubTriggerActionRequest) GetOrg() string {
-	if o == nil {
+func (g *GithubTriggerActionRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GithubTriggerActionRequest) GetRepoName() string {
-	if o == nil {
+func (g *GithubTriggerActionRequest) GetRepoName() string {
+	if g == nil {
 		return ""
 	}
-	return o.RepoName
+	return g.RepoName
 }
 
-func (o *GithubTriggerActionRequest) GetSetVersion() *string {
-	if o == nil {
+func (g *GithubTriggerActionRequest) GetSetVersion() *string {
+	if g == nil {
 		return nil
 	}
-	return o.SetVersion
+	return g.SetVersion
 }
 
-func (o *GithubTriggerActionRequest) GetTargetName() *string {
-	if o == nil {
+func (g *GithubTriggerActionRequest) GetTargetName() *string {
+	if g == nil {
 		return nil
 	}
-	return o.TargetName
+	return g.TargetName
 }

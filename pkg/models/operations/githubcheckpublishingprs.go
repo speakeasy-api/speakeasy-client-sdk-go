@@ -13,25 +13,25 @@ type GithubCheckPublishingPRsRequest struct {
 	Repo              string `queryParam:"style=form,explode=true,name=repo"`
 }
 
-func (o *GithubCheckPublishingPRsRequest) GetGenerateGenLockID() string {
-	if o == nil {
+func (g *GithubCheckPublishingPRsRequest) GetGenerateGenLockID() string {
+	if g == nil {
 		return ""
 	}
-	return o.GenerateGenLockID
+	return g.GenerateGenLockID
 }
 
-func (o *GithubCheckPublishingPRsRequest) GetOrg() string {
-	if o == nil {
+func (g *GithubCheckPublishingPRsRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GithubCheckPublishingPRsRequest) GetRepo() string {
-	if o == nil {
+func (g *GithubCheckPublishingPRsRequest) GetRepo() string {
+	if g == nil {
 		return ""
 	}
-	return o.Repo
+	return g.Repo
 }
 
 type GithubCheckPublishingPRsResponse struct {
@@ -45,30 +45,30 @@ type GithubCheckPublishingPRsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubCheckPublishingPRsResponse) GetContentType() string {
-	if o == nil {
+func (g *GithubCheckPublishingPRsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GithubCheckPublishingPRsResponse) GetGithubPublishingPRResponse() *shared.GithubPublishingPRResponse {
-	if o == nil {
+func (g *GithubCheckPublishingPRsResponse) GetGithubPublishingPRResponse() *shared.GithubPublishingPRResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GithubPublishingPRResponse
+	return g.GithubPublishingPRResponse
 }
 
-func (o *GithubCheckPublishingPRsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GithubCheckPublishingPRsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GithubCheckPublishingPRsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GithubCheckPublishingPRsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

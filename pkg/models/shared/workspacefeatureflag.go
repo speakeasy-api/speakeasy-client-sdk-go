@@ -15,3 +15,14 @@ const (
 func (e WorkspaceFeatureFlag) ToPointer() *WorkspaceFeatureFlag {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *WorkspaceFeatureFlag) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "schema_registry", "changes_report", "skip_schema_registry", "webhooks":
+			return true
+		}
+	}
+	return false
+}

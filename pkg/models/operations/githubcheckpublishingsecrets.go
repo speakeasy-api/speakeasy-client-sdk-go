@@ -11,11 +11,11 @@ type GithubCheckPublishingSecretsRequest struct {
 	GenerateGenLockID string `queryParam:"style=form,explode=true,name=generate_gen_lock_id"`
 }
 
-func (o *GithubCheckPublishingSecretsRequest) GetGenerateGenLockID() string {
-	if o == nil {
+func (g *GithubCheckPublishingSecretsRequest) GetGenerateGenLockID() string {
+	if g == nil {
 		return ""
 	}
-	return o.GenerateGenLockID
+	return g.GenerateGenLockID
 }
 
 type GithubCheckPublishingSecretsResponse struct {
@@ -29,30 +29,30 @@ type GithubCheckPublishingSecretsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubCheckPublishingSecretsResponse) GetContentType() string {
-	if o == nil {
+func (g *GithubCheckPublishingSecretsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GithubCheckPublishingSecretsResponse) GetGithubMissingPublishingSecretsResponse() *shared.GithubMissingPublishingSecretsResponse {
-	if o == nil {
+func (g *GithubCheckPublishingSecretsResponse) GetGithubMissingPublishingSecretsResponse() *shared.GithubMissingPublishingSecretsResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GithubMissingPublishingSecretsResponse
+	return g.GithubMissingPublishingSecretsResponse
 }
 
-func (o *GithubCheckPublishingSecretsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GithubCheckPublishingSecretsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GithubCheckPublishingSecretsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GithubCheckPublishingSecretsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

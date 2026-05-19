@@ -11,11 +11,11 @@ type SetVisibilityRequestBody struct {
 	Public bool `json:"public"`
 }
 
-func (o *SetVisibilityRequestBody) GetPublic() bool {
-	if o == nil {
+func (s *SetVisibilityRequestBody) GetPublic() bool {
+	if s == nil {
 		return false
 	}
-	return o.Public
+	return s.Public
 }
 
 type SetVisibilityRequest struct {
@@ -24,18 +24,18 @@ type SetVisibilityRequest struct {
 	NamespaceName string                    `pathParam:"style=simple,explode=false,name=namespace_name"`
 }
 
-func (o *SetVisibilityRequest) GetRequestBody() *SetVisibilityRequestBody {
-	if o == nil {
+func (s *SetVisibilityRequest) GetRequestBody() *SetVisibilityRequestBody {
+	if s == nil {
 		return nil
 	}
-	return o.RequestBody
+	return s.RequestBody
 }
 
-func (o *SetVisibilityRequest) GetNamespaceName() string {
-	if o == nil {
+func (s *SetVisibilityRequest) GetNamespaceName() string {
+	if s == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return s.NamespaceName
 }
 
 type SetVisibilityResponse struct {
@@ -47,23 +47,23 @@ type SetVisibilityResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *SetVisibilityResponse) GetContentType() string {
-	if o == nil {
+func (s *SetVisibilityResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SetVisibilityResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SetVisibilityResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SetVisibilityResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SetVisibilityResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }

@@ -40,7 +40,7 @@ func testGetAccessTokenGetAccessToken0(w http.ResponseWriter, req *http.Request)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.AccessToken{
+	var respBody *components.AccessToken = &components.AccessToken{
 		AccessToken: "<value>",
 		Claims:      components.Claims{},
 		User:        components.AccessTokenUser{},

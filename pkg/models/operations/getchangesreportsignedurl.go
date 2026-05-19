@@ -11,11 +11,11 @@ type GetChangesReportSignedURLRequest struct {
 	DocumentChecksum string `pathParam:"style=simple,explode=false,name=documentChecksum"`
 }
 
-func (o *GetChangesReportSignedURLRequest) GetDocumentChecksum() string {
-	if o == nil {
+func (g *GetChangesReportSignedURLRequest) GetDocumentChecksum() string {
+	if g == nil {
 		return ""
 	}
-	return o.DocumentChecksum
+	return g.DocumentChecksum
 }
 
 // GetChangesReportSignedURLSignedAccess - OK
@@ -23,11 +23,11 @@ type GetChangesReportSignedURLSignedAccess struct {
 	URL string `json:"url"`
 }
 
-func (o *GetChangesReportSignedURLSignedAccess) GetURL() string {
-	if o == nil {
+func (g *GetChangesReportSignedURLSignedAccess) GetURL() string {
+	if g == nil {
 		return ""
 	}
-	return o.URL
+	return g.URL
 }
 
 type GetChangesReportSignedURLResponse struct {
@@ -41,30 +41,30 @@ type GetChangesReportSignedURLResponse struct {
 	SignedAccess *GetChangesReportSignedURLSignedAccess
 }
 
-func (o *GetChangesReportSignedURLResponse) GetContentType() string {
-	if o == nil {
+func (g *GetChangesReportSignedURLResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetChangesReportSignedURLResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetChangesReportSignedURLResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetChangesReportSignedURLResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetChangesReportSignedURLResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetChangesReportSignedURLResponse) GetSignedAccess() *GetChangesReportSignedURLSignedAccess {
-	if o == nil {
+func (g *GetChangesReportSignedURLResponse) GetSignedAccess() *GetChangesReportSignedURLSignedAccess {
+	if g == nil {
 		return nil
 	}
-	return o.SignedAccess
+	return g.SignedAccess
 }

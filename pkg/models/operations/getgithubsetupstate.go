@@ -13,25 +13,25 @@ type GetGithubSetupStateRequest struct {
 	Repo              string `queryParam:"style=form,explode=true,name=repo"`
 }
 
-func (o *GetGithubSetupStateRequest) GetGenerateGenLockID() string {
-	if o == nil {
+func (g *GetGithubSetupStateRequest) GetGenerateGenLockID() string {
+	if g == nil {
 		return ""
 	}
-	return o.GenerateGenLockID
+	return g.GenerateGenLockID
 }
 
-func (o *GetGithubSetupStateRequest) GetOrg() string {
-	if o == nil {
+func (g *GetGithubSetupStateRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GetGithubSetupStateRequest) GetRepo() string {
-	if o == nil {
+func (g *GetGithubSetupStateRequest) GetRepo() string {
+	if g == nil {
 		return ""
 	}
-	return o.Repo
+	return g.Repo
 }
 
 type GetGithubSetupStateResponse struct {
@@ -45,30 +45,30 @@ type GetGithubSetupStateResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetGithubSetupStateResponse) GetContentType() string {
-	if o == nil {
+func (g *GetGithubSetupStateResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetGithubSetupStateResponse) GetGithubSetupStateResponse() *shared.GithubSetupStateResponse {
-	if o == nil {
+func (g *GetGithubSetupStateResponse) GetGithubSetupStateResponse() *shared.GithubSetupStateResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GithubSetupStateResponse
+	return g.GithubSetupStateResponse
 }
 
-func (o *GetGithubSetupStateResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetGithubSetupStateResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetGithubSetupStateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetGithubSetupStateResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

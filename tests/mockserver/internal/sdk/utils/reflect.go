@@ -22,6 +22,21 @@ func isNil(typ reflect.Type, val reflect.Value) bool {
 	return false
 }
 
+func isEmpty(typ reflect.Type, val reflect.Value) bool {
+	if typ == nil {
+		return true
+	}
+
+	switch typ.Kind() {
+	case reflect.Array, reflect.Slice, reflect.String:
+		return val.Len() == 0
+		// Maps are only "empty" when nil; a non-nil empty map is preserved so that
+		// optional map[string]any{} fields are serialized as {} rather than omitted.
+	}
+
+	return false
+}
+
 func trueReflectValue(val reflect.Value) reflect.Value {
 	kind := val.Type().Kind()
 	for kind == reflect.Interface || kind == reflect.Ptr {
