@@ -15,18 +15,18 @@ type GenerateCodeSamplePreviewAsyncResponseBody struct {
 	Status shared.CodeSamplesJobStatus `json:"status"`
 }
 
-func (o *GenerateCodeSamplePreviewAsyncResponseBody) GetJobID() string {
-	if o == nil {
+func (g *GenerateCodeSamplePreviewAsyncResponseBody) GetJobID() string {
+	if g == nil {
 		return ""
 	}
-	return o.JobID
+	return g.JobID
 }
 
-func (o *GenerateCodeSamplePreviewAsyncResponseBody) GetStatus() shared.CodeSamplesJobStatus {
-	if o == nil {
+func (g *GenerateCodeSamplePreviewAsyncResponseBody) GetStatus() shared.CodeSamplesJobStatus {
+	if g == nil {
 		return shared.CodeSamplesJobStatus("")
 	}
-	return o.Status
+	return g.Status
 }
 
 type GenerateCodeSamplePreviewAsyncResponse struct {
@@ -40,30 +40,30 @@ type GenerateCodeSamplePreviewAsyncResponse struct {
 	Object *GenerateCodeSamplePreviewAsyncResponseBody
 }
 
-func (o *GenerateCodeSamplePreviewAsyncResponse) GetContentType() string {
-	if o == nil {
+func (g *GenerateCodeSamplePreviewAsyncResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GenerateCodeSamplePreviewAsyncResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GenerateCodeSamplePreviewAsyncResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GenerateCodeSamplePreviewAsyncResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GenerateCodeSamplePreviewAsyncResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GenerateCodeSamplePreviewAsyncResponse) GetObject() *GenerateCodeSamplePreviewAsyncResponseBody {
-	if o == nil {
+func (g *GenerateCodeSamplePreviewAsyncResponse) GetObject() *GenerateCodeSamplePreviewAsyncResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

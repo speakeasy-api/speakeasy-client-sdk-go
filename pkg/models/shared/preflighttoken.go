@@ -7,9 +7,9 @@ type PreflightToken struct {
 	AuthToken *string `json:"auth_token,omitempty"`
 }
 
-func (o *PreflightToken) GetAuthToken() *string {
-	if o == nil {
+func (p *PreflightToken) GetAuthToken() *string {
+	if p == nil {
 		return nil
 	}
-	return o.AuthToken
+	return p.AuthToken
 }

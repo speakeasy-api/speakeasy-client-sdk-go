@@ -12,23 +12,23 @@ type GithubConfigureCodeSamplesResponse struct {
 	Source WorkflowDocument `json:"source"`
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetCodeSampleOverlayRegistryURL() string {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetCodeSampleOverlayRegistryURL() string {
+	if g == nil {
 		return ""
 	}
-	return o.CodeSampleOverlayRegistryURL
+	return g.CodeSampleOverlayRegistryURL
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetGhActionID() *string {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetGhActionID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.GhActionID
+	return g.GhActionID
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetSource() WorkflowDocument {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetSource() WorkflowDocument {
+	if g == nil {
 		return WorkflowDocument{}
 	}
-	return o.Source
+	return g.Source
 }

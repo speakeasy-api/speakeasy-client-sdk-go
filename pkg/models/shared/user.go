@@ -47,120 +47,120 @@ func (u User) MarshalJSON() ([]byte, error) {
 }
 
 func (u *User) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *User) GetAdmin() bool {
-	if o == nil {
+func (u *User) GetAdmin() bool {
+	if u == nil {
 		return false
 	}
-	return o.Admin
+	return u.Admin
 }
 
-func (o *User) GetConfirmed() bool {
-	if o == nil {
+func (u *User) GetConfirmed() bool {
+	if u == nil {
 		return false
 	}
-	return o.Confirmed
+	return u.Confirmed
 }
 
-func (o *User) GetCreatedAt() time.Time {
-	if o == nil {
+func (u *User) GetCreatedAt() time.Time {
+	if u == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *User) GetDefaultWorkspaceID() *string {
-	if o == nil {
+func (u *User) GetDefaultWorkspaceID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DefaultWorkspaceID
+	return u.DefaultWorkspaceID
 }
 
-func (o *User) GetDisplayName() string {
-	if o == nil {
+func (u *User) GetDisplayName() string {
+	if u == nil {
 		return ""
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *User) GetEmail() string {
-	if o == nil {
+func (u *User) GetEmail() string {
+	if u == nil {
 		return ""
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *User) GetEmailVerified() bool {
-	if o == nil {
+func (u *User) GetEmailVerified() bool {
+	if u == nil {
 		return false
 	}
-	return o.EmailVerified
+	return u.EmailVerified
 }
 
-func (o *User) GetGithubHandle() *string {
-	if o == nil {
+func (u *User) GetGithubHandle() *string {
+	if u == nil {
 		return nil
 	}
-	return o.GithubHandle
+	return u.GithubHandle
 }
 
-func (o *User) GetHasCreatedAPIKey() *bool {
-	if o == nil {
+func (u *User) GetHasCreatedAPIKey() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.HasCreatedAPIKey
+	return u.HasCreatedAPIKey
 }
 
-func (o *User) GetID() string {
-	if o == nil {
+func (u *User) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *User) GetInternal() *bool {
-	if o == nil {
+func (u *User) GetInternal() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Internal
+	return u.Internal
 }
 
-func (o *User) GetLastLoginAt() *time.Time {
-	if o == nil {
+func (u *User) GetLastLoginAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.LastLoginAt
+	return u.LastLoginAt
 }
 
-func (o *User) GetPhotoURL() *string {
-	if o == nil {
+func (u *User) GetPhotoURL() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PhotoURL
+	return u.PhotoURL
 }
 
-func (o *User) GetPylonIdentityHash() *string {
-	if o == nil {
+func (u *User) GetPylonIdentityHash() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PylonIdentityHash
+	return u.PylonIdentityHash
 }
 
-func (o *User) GetUpdatedAt() time.Time {
-	if o == nil {
+func (u *User) GetUpdatedAt() time.Time {
+	if u == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return u.UpdatedAt
 }
 
-func (o *User) GetWhitelisted() bool {
-	if o == nil {
+func (u *User) GetWhitelisted() bool {
+	if u == nil {
 		return false
 	}
-	return o.Whitelisted
+	return u.Whitelisted
 }

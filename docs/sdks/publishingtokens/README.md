@@ -1,5 +1,4 @@
 # PublishingTokens
-(*PublishingTokens*)
 
 ## Overview
 
@@ -19,15 +18,14 @@ Creates a publishing token for the current workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createPublishingToken" method="post" path="/v1/publishing-tokens" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"log"
 )
 
@@ -36,16 +34,11 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.PublishingTokens.Create(ctx, &operations.CreatePublishingTokenRequestBody{
-        TargetID: "<id>",
-        TargetResource: "document",
-        TokenName: "<value>",
-        ValidUntil: types.MustTimeFromString("2024-06-17T07:14:55.338Z"),
-    })
+    res, err := s.PublishingTokens.Create(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -80,13 +73,14 @@ Delete a particular publishing token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deletePublishingToken" method="delete" path="/v1/publishing-tokens/{tokenID}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -96,7 +90,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -137,13 +131,14 @@ Get information about a particular publishing token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getPublishingTokenByID" method="get" path="/v1/publishing-tokens/{tokenID}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -153,7 +148,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -194,13 +189,14 @@ Returns a publishing token for the current workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getPublishingToken" method="get" path="/v1/publishing-tokens" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"log"
 )
 
@@ -209,7 +205,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -247,13 +243,14 @@ Get information about a particular publishing token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getPublishingTokenPublicMetadata" method="get" path="/v1/publishing-tokens/{tokenID}/metadata" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -263,7 +260,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -304,13 +301,14 @@ Get information about a particular publishing token target.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getPublishingTokenTargetByID" method="get" path="/v1/publishing-tokens/{tokenID}/target" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -320,7 +318,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -361,13 +359,14 @@ Updates the validity period of a particular publishing token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updatePublishingTokenExpiration" method="put" path="/v1/publishing-tokens/{tokenID}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -377,7 +376,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 

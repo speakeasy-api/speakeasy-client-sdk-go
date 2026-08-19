@@ -6,9 +6,9 @@ type PreflightRequest struct {
 	NamespaceName string `json:"namespace_name"`
 }
 
-func (o *PreflightRequest) GetNamespaceName() string {
-	if o == nil {
+func (p *PreflightRequest) GetNamespaceName() string {
+	if p == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return p.NamespaceName
 }

@@ -11,11 +11,11 @@ type UpdateWorkspaceSettingsGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *UpdateWorkspaceSettingsGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (u *UpdateWorkspaceSettingsGlobals) GetWorkspaceID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return u.WorkspaceID
 }
 
 type UpdateWorkspaceSettingsRequest struct {
@@ -25,18 +25,18 @@ type UpdateWorkspaceSettingsRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *UpdateWorkspaceSettingsRequest) GetWorkspaceSettings() shared.WorkspaceSettings {
-	if o == nil {
+func (u *UpdateWorkspaceSettingsRequest) GetWorkspaceSettings() shared.WorkspaceSettings {
+	if u == nil {
 		return shared.WorkspaceSettings{}
 	}
-	return o.WorkspaceSettings
+	return u.WorkspaceSettings
 }
 
-func (o *UpdateWorkspaceSettingsRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (u *UpdateWorkspaceSettingsRequest) GetWorkspaceID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return u.WorkspaceID
 }
 
 type UpdateWorkspaceSettingsResponse struct {
@@ -48,23 +48,23 @@ type UpdateWorkspaceSettingsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *UpdateWorkspaceSettingsResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateWorkspaceSettingsResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateWorkspaceSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateWorkspaceSettingsResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateWorkspaceSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateWorkspaceSettingsResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }

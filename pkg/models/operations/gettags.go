@@ -11,11 +11,11 @@ type GetTagsRequest struct {
 	NamespaceName string `pathParam:"style=simple,explode=false,name=namespace_name"`
 }
 
-func (o *GetTagsRequest) GetNamespaceName() string {
-	if o == nil {
+func (g *GetTagsRequest) GetNamespaceName() string {
+	if g == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return g.NamespaceName
 }
 
 type GetTagsResponse struct {
@@ -29,30 +29,30 @@ type GetTagsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetTagsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetTagsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetTagsResponse) GetGetTagsResponse() *shared.GetTagsResponse {
-	if o == nil {
+func (g *GetTagsResponse) GetGetTagsResponse() *shared.GetTagsResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GetTagsResponse
+	return g.GetTagsResponse
 }
 
-func (o *GetTagsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetTagsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetTagsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetTagsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

@@ -1,5 +1,4 @@
 # ShortURLs
-(*ShortURLs*)
 
 ## Overview
 
@@ -15,13 +14,14 @@ Shorten a URL.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create" method="post" path="/v1/short_urls" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -31,12 +31,12 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.ShortURLs.Create(ctx, operations.CreateRequestBody{
-        URL: "https://probable-heating.com/",
+        URL: "https://exalted-heroine.org/",
     })
     if err != nil {
         log.Fatal(err)

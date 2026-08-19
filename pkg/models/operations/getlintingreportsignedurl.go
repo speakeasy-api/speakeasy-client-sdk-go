@@ -11,11 +11,11 @@ type GetLintingReportSignedURLRequest struct {
 	DocumentChecksum string `pathParam:"style=simple,explode=false,name=documentChecksum"`
 }
 
-func (o *GetLintingReportSignedURLRequest) GetDocumentChecksum() string {
-	if o == nil {
+func (g *GetLintingReportSignedURLRequest) GetDocumentChecksum() string {
+	if g == nil {
 		return ""
 	}
-	return o.DocumentChecksum
+	return g.DocumentChecksum
 }
 
 // GetLintingReportSignedURLSignedAccess - OK
@@ -23,11 +23,11 @@ type GetLintingReportSignedURLSignedAccess struct {
 	URL string `json:"url"`
 }
 
-func (o *GetLintingReportSignedURLSignedAccess) GetURL() string {
-	if o == nil {
+func (g *GetLintingReportSignedURLSignedAccess) GetURL() string {
+	if g == nil {
 		return ""
 	}
-	return o.URL
+	return g.URL
 }
 
 type GetLintingReportSignedURLResponse struct {
@@ -41,30 +41,30 @@ type GetLintingReportSignedURLResponse struct {
 	SignedAccess *GetLintingReportSignedURLSignedAccess
 }
 
-func (o *GetLintingReportSignedURLResponse) GetContentType() string {
-	if o == nil {
+func (g *GetLintingReportSignedURLResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetLintingReportSignedURLResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetLintingReportSignedURLResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetLintingReportSignedURLResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetLintingReportSignedURLResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetLintingReportSignedURLResponse) GetSignedAccess() *GetLintingReportSignedURLSignedAccess {
-	if o == nil {
+func (g *GetLintingReportSignedURLResponse) GetSignedAccess() *GetLintingReportSignedURLSignedAccess {
+	if g == nil {
 		return nil
 	}
-	return o.SignedAccess
+	return g.SignedAccess
 }

@@ -24,52 +24,52 @@ func (a AccessTokenUser) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AccessTokenUser) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *AccessTokenUser) GetAdmin() *bool {
-	if o == nil {
+func (a *AccessTokenUser) GetAdmin() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.Admin
+	return a.Admin
 }
 
-func (o *AccessTokenUser) GetCreatedAt() *time.Time {
-	if o == nil {
+func (a *AccessTokenUser) GetCreatedAt() *time.Time {
+	if a == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *AccessTokenUser) GetDisplayName() *string {
-	if o == nil {
+func (a *AccessTokenUser) GetDisplayName() *string {
+	if a == nil {
 		return nil
 	}
-	return o.DisplayName
+	return a.DisplayName
 }
 
-func (o *AccessTokenUser) GetEmail() *string {
-	if o == nil {
+func (a *AccessTokenUser) GetEmail() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Email
+	return a.Email
 }
 
-func (o *AccessTokenUser) GetEmailVerified() *bool {
-	if o == nil {
+func (a *AccessTokenUser) GetEmailVerified() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.EmailVerified
+	return a.EmailVerified
 }
 
-func (o *AccessTokenUser) GetID() *string {
-	if o == nil {
+func (a *AccessTokenUser) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
 type Workspaces struct {
@@ -84,38 +84,38 @@ func (w Workspaces) MarshalJSON() ([]byte, error) {
 }
 
 func (w *Workspaces) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Workspaces) GetAccountType() *AccountType {
-	if o == nil {
+func (w *Workspaces) GetAccountType() *AccountType {
+	if w == nil {
 		return nil
 	}
-	return o.AccountType
+	return w.AccountType
 }
 
-func (o *Workspaces) GetID() *string {
-	if o == nil {
+func (w *Workspaces) GetID() *string {
+	if w == nil {
 		return nil
 	}
-	return o.ID
+	return w.ID
 }
 
-func (o *Workspaces) GetName() *string {
-	if o == nil {
+func (w *Workspaces) GetName() *string {
+	if w == nil {
 		return nil
 	}
-	return o.Name
+	return w.Name
 }
 
-func (o *Workspaces) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (w *Workspaces) GetUpdatedAt() *time.Time {
+	if w == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return w.UpdatedAt
 }
 
 // An AccessToken is a token that can be used to authenticate with the Speakeasy API.
@@ -127,37 +127,37 @@ type AccessToken struct {
 	Workspaces   []Workspaces    `json:"workspaces,omitempty"`
 }
 
-func (o *AccessToken) GetAccessToken() string {
-	if o == nil {
+func (a *AccessToken) GetAccessToken() string {
+	if a == nil {
 		return ""
 	}
-	return o.AccessToken
+	return a.AccessToken
 }
 
-func (o *AccessToken) GetClaims() Claims {
-	if o == nil {
+func (a *AccessToken) GetClaims() Claims {
+	if a == nil {
 		return Claims{}
 	}
-	return o.Claims
+	return a.Claims
 }
 
-func (o *AccessToken) GetFeatureFlags() []FeatureFlag {
-	if o == nil {
+func (a *AccessToken) GetFeatureFlags() []FeatureFlag {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlags
+	return a.FeatureFlags
 }
 
-func (o *AccessToken) GetUser() AccessTokenUser {
-	if o == nil {
+func (a *AccessToken) GetUser() AccessTokenUser {
+	if a == nil {
 		return AccessTokenUser{}
 	}
-	return o.User
+	return a.User
 }
 
-func (o *AccessToken) GetWorkspaces() []Workspaces {
-	if o == nil {
+func (a *AccessToken) GetWorkspaces() []Workspaces {
+	if a == nil {
 		return nil
 	}
-	return o.Workspaces
+	return a.Workspaces
 }

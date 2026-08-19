@@ -11,30 +11,30 @@ type Tag struct {
 	RevisionDigest string `json:"revision_digest"`
 }
 
-func (o *Tag) GetID() string {
-	if o == nil {
+func (t *Tag) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *Tag) GetName() string {
-	if o == nil {
+func (t *Tag) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *Tag) GetNamespaceName() string {
-	if o == nil {
+func (t *Tag) GetNamespaceName() string {
+	if t == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return t.NamespaceName
 }
 
-func (o *Tag) GetRevisionDigest() string {
-	if o == nil {
+func (t *Tag) GetRevisionDigest() string {
+	if t == nil {
 		return ""
 	}
-	return o.RevisionDigest
+	return t.RevisionDigest
 }

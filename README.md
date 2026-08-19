@@ -15,7 +15,8 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
+Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+The Subscriptions API manages subscriptions for CLI and registry events
 
 For more information about the API: [The Speakeasy Platform Documentation](/docs)
 <!-- End Summary [summary] -->
@@ -31,6 +32,7 @@ For more information about the API: [The Speakeasy Platform Documentation](/docs
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
   * [Global Parameters](#global-parameters)
+  * [Pagination](#pagination)
   * [Retries](#retries)
 
 <!-- End Table of Contents [toc] -->
@@ -40,7 +42,7 @@ For more information about the API: [The Speakeasy Platform Documentation](/docs
 
 To add the SDK as a dependency to your project:
 ```bash
-go get github.com/speakeasy-api/speakeasy-client-sdk-go
+go get github.com/speakeasy-api/speakeasy-client-sdk-go/v3
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -55,18 +57,13 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
+	s := speakeasyclientsdkgo.New()
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
@@ -119,6 +116,7 @@ func main() {
 * [GetEventsByTarget](docs/sdks/events/README.md#geteventsbytarget) - Load recent events for a particular workspace
 * [GetTargets](docs/sdks/events/README.md#gettargets) - Load targets for a particular workspace
 * [GetTargetsDeprecated](docs/sdks/events/README.md#gettargetsdeprecated) - Load targets for a particular workspace
+* [GetTargetsSummary](docs/sdks/events/README.md#gettargetssummary) - Load a lean summary of targets for a workspace with pagination. Returns only essential fields needed by the dashboard UI.
 * [Post](docs/sdks/events/README.md#post) - Post events for a specific workspace
 * [Search](docs/sdks/events/README.md#search) - Search events for a particular workspace by any field
 
@@ -138,14 +136,27 @@ func main() {
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
+* [ActivateLanguage](docs/sdks/organizations/README.md#activatelanguage) - Activate language
+* [CancelSubscription](docs/sdks/organizations/README.md#cancelsubscription) - Cancel subscription
 * [Create](docs/sdks/organizations/README.md#create) - Create an organization
 * [CreateBillingAddOns](docs/sdks/organizations/README.md#createbillingaddons) - Create billing add ons
 * [CreateFreeTrial](docs/sdks/organizations/README.md#createfreetrial) - Create a free trial for an organization
+* [CreateLanguageCheckoutSession](docs/sdks/organizations/README.md#createlanguagecheckoutsession) - Create language checkout session
+* [DeactivateLanguage](docs/sdks/organizations/README.md#deactivatelanguage) - Deactivate language
 * [DeleteBillingAddOn](docs/sdks/organizations/README.md#deletebillingaddon) - Delete billing add ons
 * [Get](docs/sdks/organizations/README.md#get) - Get organization
 * [GetAll](docs/sdks/organizations/README.md#getall) - Get organizations for a user
 * [GetBillingAddOns](docs/sdks/organizations/README.md#getbillingaddons) - Get billing add ons
+* [GetBillingEmail](docs/sdks/organizations/README.md#getbillingemail) - Get billing email for an organization
+* [GetBillingOperations](docs/sdks/organizations/README.md#getbillingoperations) - Get billing operations breakdown for an organization
+* [GetBusinessTierPrices](docs/sdks/organizations/README.md#getbusinesstierprices) - Get business tier prices
+* [GetLanguages](docs/sdks/organizations/README.md#getlanguages) - Get language billing configurations
+* [GetSubscription](docs/sdks/organizations/README.md#getsubscription) - Get organization subscription
+* [GetTrialTargets](docs/sdks/organizations/README.md#gettrialtargets) - Get trial targets
 * [GetUsage](docs/sdks/organizations/README.md#getusage) - Get billing usage summary for a particular organization
+* [HandleCheckoutCallback](docs/sdks/organizations/README.md#handlecheckoutcallback) - Checkout callback
+* [RevertSubscriptionCancellation](docs/sdks/organizations/README.md#revertsubscriptioncancellation) - Revert subscription cancellation
+* [UpsertBillingEmail](docs/sdks/organizations/README.md#upsertbillingemail) - Create or update billing email
 
 ### [PublishingTokens](docs/sdks/publishingtokens/README.md)
 
@@ -172,7 +183,6 @@ func main() {
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
-
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
 * [ActivateSubscriptionNamespace](docs/sdks/subscriptions/README.md#activatesubscriptionnamespace) - Activate an ignored namespace for a subscription
@@ -184,6 +194,10 @@ func main() {
 * [SuggestItems](docs/sdks/suggest/README.md#suggestitems) - Generate generic suggestions for a list of items.
 * [SuggestOpenAPI](docs/sdks/suggest/README.md#suggestopenapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [SuggestOpenAPIRegistry](docs/sdks/suggest/README.md#suggestopenapiregistry) - Generate suggestions for improving an OpenAPI document stored in the registry.
+
+### [Webhooks](docs/sdks/webhooks/README.md)
+
+* [HandleStripeWebhook](docs/sdks/webhooks/README.md#handlestripewebhook) - Handle Stripe webhook
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
@@ -238,18 +252,13 @@ import (
 	"errors"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
+	s := speakeasyclientsdkgo.New()
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
@@ -292,7 +301,6 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -301,9 +309,6 @@ func main() {
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServer("prod"),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
 	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
@@ -326,7 +331,6 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -335,9 +339,6 @@ func main() {
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL("https://api.prod.speakeasy.com"),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
 	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
@@ -371,12 +372,13 @@ The built-in `net/http` client satisfies this interface and a default client bas
 import (
 	"net/http"
 	"time"
-	"github.com/myorg/your-go-sdk"
+
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 )
 
 var (
 	httpClient = &http.Client{Timeout: 30 * time.Second}
-	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+	sdkClient  = speakeasyclientsdkgo.New(speakeasyclientsdkgo.WithClient(httpClient))
 )
 ```
 
@@ -392,11 +394,14 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 This SDK supports the following security schemes globally:
 
-| Name                  | Type   | Scheme      |
-| --------------------- | ------ | ----------- |
-| `APIKey`              | apiKey | API key     |
-| `Bearer`              | http   | HTTP Bearer |
-| `WorkspaceIdentifier` | apiKey | API key     |
+| Name                   | Type   | Scheme      |
+| ---------------------- | ------ | ----------- |
+| `APIKey`               | apiKey | API key     |
+| `APIKey1`              | apiKey | API key     |
+| `Bearer`               | http   | HTTP Bearer |
+| `Bearer1`              | http   | HTTP Bearer |
+| `WorkspaceIdentifier`  | apiKey | API key     |
+| `WorkspaceIdentifier1` | apiKey | API key     |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
@@ -414,7 +419,7 @@ func main() {
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -461,7 +466,9 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New()
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithWorkspaceID("<id>"),
+	)
 
 	res, err := s.Auth.GetAccessToken(ctx, operations.GetAccessTokenRequest{
 		WorkspaceID: "<id>",
@@ -477,6 +484,58 @@ func main() {
 ```
 <!-- End Global Parameters [global-parameters] -->
 
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `nil`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```go
+package main
+
+import (
+	"context"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	ctx := context.Background()
+
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
+	)
+
+	res, err := s.Events.GetTargetsSummary(ctx, operations.GetWorkspaceTargetsSummaryRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.TargetsSummaryPage != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
+	}
+}
+
+```
+<!-- End Pagination [pagination] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -489,7 +548,6 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
 	"pkg/models/operations"
@@ -498,11 +556,7 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New(
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
-	)
+	s := speakeasyclientsdkgo.New()
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil, operations.WithRetries(
 		retry.Config{
@@ -532,7 +586,6 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
 )
@@ -552,9 +605,6 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
-		}),
 	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)

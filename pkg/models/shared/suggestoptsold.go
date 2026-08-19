@@ -38,16 +38,16 @@ type SuggestOptsOld struct {
 	SuggestionType SuggestionType `json:"suggestion_type"`
 }
 
-func (o *SuggestOptsOld) GetDiagnostics() []Diagnostic {
-	if o == nil {
+func (s *SuggestOptsOld) GetDiagnostics() []Diagnostic {
+	if s == nil {
 		return nil
 	}
-	return o.Diagnostics
+	return s.Diagnostics
 }
 
-func (o *SuggestOptsOld) GetSuggestionType() SuggestionType {
-	if o == nil {
+func (s *SuggestOptsOld) GetSuggestionType() SuggestionType {
+	if s == nil {
 		return SuggestionType("")
 	}
-	return o.SuggestionType
+	return s.SuggestionType
 }

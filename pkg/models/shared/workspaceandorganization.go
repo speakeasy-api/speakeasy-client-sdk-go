@@ -10,16 +10,16 @@ type WorkspaceAndOrganization struct {
 	Workspace Workspace `json:"workspace"`
 }
 
-func (o *WorkspaceAndOrganization) GetOrganization() Organization {
-	if o == nil {
+func (w *WorkspaceAndOrganization) GetOrganization() Organization {
+	if w == nil {
 		return Organization{}
 	}
-	return o.Organization
+	return w.Organization
 }
 
-func (o *WorkspaceAndOrganization) GetWorkspace() Workspace {
-	if o == nil {
+func (w *WorkspaceAndOrganization) GetWorkspace() Workspace {
+	if w == nil {
 		return Workspace{}
 	}
-	return o.Workspace
+	return w.Workspace
 }

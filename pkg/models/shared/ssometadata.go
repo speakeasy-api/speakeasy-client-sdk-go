@@ -8,16 +8,16 @@ type SSOMetadata struct {
 	SsoDomains   []string `json:"sso_domains"`
 }
 
-func (o *SSOMetadata) GetSsoActivated() bool {
-	if o == nil {
+func (s *SSOMetadata) GetSsoActivated() bool {
+	if s == nil {
 		return false
 	}
-	return o.SsoActivated
+	return s.SsoActivated
 }
 
-func (o *SSOMetadata) GetSsoDomains() []string {
-	if o == nil {
+func (s *SSOMetadata) GetSsoDomains() []string {
+	if s == nil {
 		return []string{}
 	}
-	return o.SsoDomains
+	return s.SsoDomains
 }

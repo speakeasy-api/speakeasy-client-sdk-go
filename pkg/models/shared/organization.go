@@ -17,9 +17,9 @@ type Organization struct {
 	Name              string      `json:"name"`
 	Slug              string      `json:"slug"`
 	SsoActivated      bool        `json:"sso_activated"`
-	SsoConnectionID   *string     `json:"sso_connection_id,omitempty"`
 	TelemetryDisabled bool        `json:"telemetry_disabled"`
 	UpdatedAt         time.Time   `json:"updated_at"`
+	WorkosID          *string     `json:"workos_id,omitempty"`
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
@@ -27,7 +27,7 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 }
 
 func (o *Organization) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -89,13 +89,6 @@ func (o *Organization) GetSsoActivated() bool {
 	return o.SsoActivated
 }
 
-func (o *Organization) GetSsoConnectionID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SsoConnectionID
-}
-
 func (o *Organization) GetTelemetryDisabled() bool {
 	if o == nil {
 		return false
@@ -108,4 +101,11 @@ func (o *Organization) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return o.UpdatedAt
+}
+
+func (o *Organization) GetWorkosID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WorkosID
 }

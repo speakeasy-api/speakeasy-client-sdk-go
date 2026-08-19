@@ -49,8 +49,12 @@ type RevisionContentsMetadata struct {
 	NumOverlayActions int64 `json:"num_overlay_actions"`
 	// The operation IDs contained in the OAS. Will be empty if the OAS is an overlay.
 	OperationIds []string `json:"operation_ids"`
+	// A relative diff between the current revision and the previous revision.
+	RelativeDiff *RelativeDiff `json:"relative_diff,omitempty"`
 	// The digest of the parent bundle
 	RevisionDigest string `json:"revision_digest"`
+	// The servers contained in the OAS. Will be empty if the OAS is an overlay.
+	ServerUrls []Server `json:"server_urls"`
 	// The tags contained in the OAS -- NOT the OCI tags. Will be empty if the OAS is an overlay.
 	Tags []string `json:"tags"`
 	// The OAS title
@@ -67,99 +71,113 @@ func (r RevisionContentsMetadata) MarshalJSON() ([]byte, error) {
 }
 
 func (r *RevisionContentsMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RevisionContentsMetadata) GetContainsCodeSamples() bool {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetContainsCodeSamples() bool {
+	if r == nil {
 		return false
 	}
-	return o.ContainsCodeSamples
+	return r.ContainsCodeSamples
 }
 
-func (o *RevisionContentsMetadata) GetCreatedAt() time.Time {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetCreatedAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return r.CreatedAt
 }
 
-func (o *RevisionContentsMetadata) GetDescription() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetDescription() string {
+	if r == nil {
 		return ""
 	}
-	return o.Description
+	return r.Description
 }
 
-func (o *RevisionContentsMetadata) GetHash() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetHash() string {
+	if r == nil {
 		return ""
 	}
-	return o.Hash
+	return r.Hash
 }
 
-func (o *RevisionContentsMetadata) GetNamespace() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetNamespace() string {
+	if r == nil {
 		return ""
 	}
-	return o.Namespace
+	return r.Namespace
 }
 
-func (o *RevisionContentsMetadata) GetNumOverlayActions() int64 {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetNumOverlayActions() int64 {
+	if r == nil {
 		return 0
 	}
-	return o.NumOverlayActions
+	return r.NumOverlayActions
 }
 
-func (o *RevisionContentsMetadata) GetOperationIds() []string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetOperationIds() []string {
+	if r == nil {
 		return []string{}
 	}
-	return o.OperationIds
+	return r.OperationIds
 }
 
-func (o *RevisionContentsMetadata) GetRevisionDigest() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetRelativeDiff() *RelativeDiff {
+	if r == nil {
+		return nil
+	}
+	return r.RelativeDiff
+}
+
+func (r *RevisionContentsMetadata) GetRevisionDigest() string {
+	if r == nil {
 		return ""
 	}
-	return o.RevisionDigest
+	return r.RevisionDigest
 }
 
-func (o *RevisionContentsMetadata) GetTags() []string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetServerUrls() []Server {
+	if r == nil {
+		return []Server{}
+	}
+	return r.ServerUrls
+}
+
+func (r *RevisionContentsMetadata) GetTags() []string {
+	if r == nil {
 		return []string{}
 	}
-	return o.Tags
+	return r.Tags
 }
 
-func (o *RevisionContentsMetadata) GetTitle() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetTitle() string {
+	if r == nil {
 		return ""
 	}
-	return o.Title
+	return r.Title
 }
 
-func (o *RevisionContentsMetadata) GetType() RevisionContentsMetadataType {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetType() RevisionContentsMetadataType {
+	if r == nil {
 		return RevisionContentsMetadataType("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RevisionContentsMetadata) GetVersion() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetVersion() string {
+	if r == nil {
 		return ""
 	}
-	return o.Version
+	return r.Version
 }
 
-func (o *RevisionContentsMetadata) GetWorkspaceID() string {
-	if o == nil {
+func (r *RevisionContentsMetadata) GetWorkspaceID() string {
+	if r == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return r.WorkspaceID
 }

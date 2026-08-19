@@ -23,57 +23,57 @@ func (r Revision) MarshalJSON() ([]byte, error) {
 }
 
 func (r *Revision) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Revision) GetContentsMetadata() *RevisionContentsMetadata {
-	if o == nil {
+func (r *Revision) GetContentsMetadata() *RevisionContentsMetadata {
+	if r == nil {
 		return nil
 	}
-	return o.ContentsMetadata
+	return r.ContentsMetadata
 }
 
-func (o *Revision) GetCreatedAt() time.Time {
-	if o == nil {
+func (r *Revision) GetCreatedAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return r.CreatedAt
 }
 
-func (o *Revision) GetDigest() string {
-	if o == nil {
+func (r *Revision) GetDigest() string {
+	if r == nil {
 		return ""
 	}
-	return o.Digest
+	return r.Digest
 }
 
-func (o *Revision) GetID() string {
-	if o == nil {
+func (r *Revision) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *Revision) GetNamespaceName() string {
-	if o == nil {
+func (r *Revision) GetNamespaceName() string {
+	if r == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return r.NamespaceName
 }
 
-func (o *Revision) GetTags() []string {
-	if o == nil {
+func (r *Revision) GetTags() []string {
+	if r == nil {
 		return []string{}
 	}
-	return o.Tags
+	return r.Tags
 }
 
-func (o *Revision) GetUpdatedAt() time.Time {
-	if o == nil {
+func (r *Revision) GetUpdatedAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return r.UpdatedAt
 }

@@ -12,25 +12,25 @@ type LinkGithubAccessRequest struct {
 	InstallationID  *string `queryParam:"style=form,explode=true,name=installation_id"`
 }
 
-func (o *LinkGithubAccessRequest) GetGithubOidcToken() *string {
-	if o == nil {
+func (l *LinkGithubAccessRequest) GetGithubOidcToken() *string {
+	if l == nil {
 		return nil
 	}
-	return o.GithubOidcToken
+	return l.GithubOidcToken
 }
 
-func (o *LinkGithubAccessRequest) GetGithubOrg() *string {
-	if o == nil {
+func (l *LinkGithubAccessRequest) GetGithubOrg() *string {
+	if l == nil {
 		return nil
 	}
-	return o.GithubOrg
+	return l.GithubOrg
 }
 
-func (o *LinkGithubAccessRequest) GetInstallationID() *string {
-	if o == nil {
+func (l *LinkGithubAccessRequest) GetInstallationID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.InstallationID
+	return l.InstallationID
 }
 
 type LinkGithubAccessResponse struct {
@@ -42,23 +42,23 @@ type LinkGithubAccessResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *LinkGithubAccessResponse) GetContentType() string {
-	if o == nil {
+func (l *LinkGithubAccessResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *LinkGithubAccessResponse) GetStatusCode() int {
-	if o == nil {
+func (l *LinkGithubAccessResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *LinkGithubAccessResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *LinkGithubAccessResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }

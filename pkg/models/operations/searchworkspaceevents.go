@@ -11,11 +11,11 @@ type SearchWorkspaceEventsGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *SearchWorkspaceEventsGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsGlobals) GetWorkspaceID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return s.WorkspaceID
 }
 
 type SearchWorkspaceEventsRequest struct {
@@ -39,67 +39,67 @@ type SearchWorkspaceEventsRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *SearchWorkspaceEventsRequest) GetExecutionID() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetExecutionID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ExecutionID
+	return s.ExecutionID
 }
 
-func (o *SearchWorkspaceEventsRequest) GetGenerateGenLockID() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetGenerateGenLockID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.GenerateGenLockID
+	return s.GenerateGenLockID
 }
 
-func (o *SearchWorkspaceEventsRequest) GetInteractionType() *shared.InteractionType {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetInteractionType() *shared.InteractionType {
+	if s == nil {
 		return nil
 	}
-	return o.InteractionType
+	return s.InteractionType
 }
 
-func (o *SearchWorkspaceEventsRequest) GetLimit() *int64 {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetLimit() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Limit
+	return s.Limit
 }
 
-func (o *SearchWorkspaceEventsRequest) GetLintReportDigest() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetLintReportDigest() *string {
+	if s == nil {
 		return nil
 	}
-	return o.LintReportDigest
+	return s.LintReportDigest
 }
 
-func (o *SearchWorkspaceEventsRequest) GetOpenapiDiffReportDigest() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetOpenapiDiffReportDigest() *string {
+	if s == nil {
 		return nil
 	}
-	return o.OpenapiDiffReportDigest
+	return s.OpenapiDiffReportDigest
 }
 
-func (o *SearchWorkspaceEventsRequest) GetSourceRevisionDigest() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetSourceRevisionDigest() *string {
+	if s == nil {
 		return nil
 	}
-	return o.SourceRevisionDigest
+	return s.SourceRevisionDigest
 }
 
-func (o *SearchWorkspaceEventsRequest) GetSuccess() *bool {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetSuccess() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Success
+	return s.Success
 }
 
-func (o *SearchWorkspaceEventsRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (s *SearchWorkspaceEventsRequest) GetWorkspaceID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return s.WorkspaceID
 }
 
 type SearchWorkspaceEventsResponse struct {
@@ -113,30 +113,30 @@ type SearchWorkspaceEventsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *SearchWorkspaceEventsResponse) GetCliEventBatch() []shared.CliEvent {
-	if o == nil {
+func (s *SearchWorkspaceEventsResponse) GetCliEventBatch() []shared.CliEvent {
+	if s == nil {
 		return nil
 	}
-	return o.CliEventBatch
+	return s.CliEventBatch
 }
 
-func (o *SearchWorkspaceEventsResponse) GetContentType() string {
-	if o == nil {
+func (s *SearchWorkspaceEventsResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SearchWorkspaceEventsResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SearchWorkspaceEventsResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SearchWorkspaceEventsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SearchWorkspaceEventsResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }

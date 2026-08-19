@@ -19,36 +19,36 @@ func (w WorkspaceSettings) MarshalJSON() ([]byte, error) {
 }
 
 func (w *WorkspaceSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &w, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &w, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *WorkspaceSettings) GetCreatedAt() time.Time {
-	if o == nil {
+func (w *WorkspaceSettings) GetCreatedAt() time.Time {
+	if w == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return w.CreatedAt
 }
 
-func (o *WorkspaceSettings) GetUpdatedAt() time.Time {
-	if o == nil {
+func (w *WorkspaceSettings) GetUpdatedAt() time.Time {
+	if w == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return w.UpdatedAt
 }
 
-func (o *WorkspaceSettings) GetWebhookURL() string {
-	if o == nil {
+func (w *WorkspaceSettings) GetWebhookURL() string {
+	if w == nil {
 		return ""
 	}
-	return o.WebhookURL
+	return w.WebhookURL
 }
 
-func (o *WorkspaceSettings) GetWorkspaceID() string {
-	if o == nil {
+func (w *WorkspaceSettings) GetWorkspaceID() string {
+	if w == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return w.WorkspaceID
 }

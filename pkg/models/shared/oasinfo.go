@@ -6,11 +6,11 @@ type License struct {
 	Identifier *string `json:"identifier,omitempty"`
 }
 
-func (o *License) GetIdentifier() *string {
-	if o == nil {
+func (l *License) GetIdentifier() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Identifier
+	return l.Identifier
 }
 
 type OASInfo struct {

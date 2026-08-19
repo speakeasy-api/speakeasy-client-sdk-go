@@ -19,17 +19,17 @@ func (g GetWorkspaceTargetsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetWorkspaceTargetsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetWorkspaceTargetsRequest) GetAfterLastEventCreatedAt() *time.Time {
-	if o == nil {
+func (g *GetWorkspaceTargetsRequest) GetAfterLastEventCreatedAt() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.AfterLastEventCreatedAt
+	return g.AfterLastEventCreatedAt
 }
 
 type GetWorkspaceTargetsResponse struct {
@@ -43,30 +43,30 @@ type GetWorkspaceTargetsResponse struct {
 	TargetSDKList []shared.TargetSDK
 }
 
-func (o *GetWorkspaceTargetsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceTargetsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceTargetsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceTargetsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceTargetsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceTargetsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetWorkspaceTargetsResponse) GetTargetSDKList() []shared.TargetSDK {
-	if o == nil {
+func (g *GetWorkspaceTargetsResponse) GetTargetSDKList() []shared.TargetSDK {
+	if g == nil {
 		return nil
 	}
-	return o.TargetSDKList
+	return g.TargetSDKList
 }

@@ -2,9 +2,12 @@
 
 package speakeasyclientsdkgo
 
+// Generated from OpenAPI doc version 0.4.0 and generator version 2.869.25
+
 import (
 	"context"
 	"fmt"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/config"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/globals"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/internal/hooks"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
@@ -23,7 +26,7 @@ var ServerList = map[string]string{
 	ServerProd: "https://api.prod.speakeasy.com",
 }
 
-// HTTPClient provides an interface for suplying the SDK with a custom HTTP client
+// HTTPClient provides an interface for supplying the SDK with a custom HTTP client
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
@@ -49,48 +52,22 @@ func Float64(f float64) *float64 { return &f }
 // Pointer provides a helper function to return a pointer to a type
 func Pointer[T any](v T) *T { return &v }
 
-type sdkConfiguration struct {
-	Client            HTTPClient
-	Security          func(context.Context) (interface{}, error)
-	ServerURL         string
-	Server            string
-	Language          string
-	OpenAPIDocVersion string
-	SDKVersion        string
-	GenVersion        string
-	UserAgent         string
-	Globals           globals.Globals
-	RetryConfig       *retry.Config
-	Hooks             *hooks.Hooks
-	Timeout           *time.Duration
-}
-
-func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
-	if c.ServerURL != "" {
-		return c.ServerURL, nil
-	}
-
-	if c.Server == "" {
-		c.Server = "prod"
-	}
-
-	return ServerList[c.Server], nil
-}
-
-// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
+// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+// The Subscriptions API manages subscriptions for CLI and registry events
 //
 // /docs - The Speakeasy Platform Documentation
 type Speakeasy struct {
+	SDKVersion string
 	// REST APIs for working with Registry artifacts
 	Artifacts *Artifacts
 	// REST APIs for managing Authentication
 	Auth *Auth
+	// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
+	Organizations *Organizations
 	// REST APIs for retrieving Code Samples
 	CodeSamples *CodeSamples
 	// REST APIs for managing the github integration
-	Github *Github
-	// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
-	Organizations    *Organizations
+	Github           *Github
 	PublishingTokens *PublishingTokens
 	// REST APIs for managing reports (lint reports, change reports, etc)
 	Reports     *Reports
@@ -101,17 +78,20 @@ type Speakeasy struct {
 	Subscriptions *Subscriptions
 	// REST APIs for managing LLM OAS suggestions
 	Suggest *Suggest
+	// Webhook endpoints for external service integrations
+	Webhooks *Webhooks
 	// REST APIs for managing Workspaces (speakeasy tenancy)
 	Workspaces *Workspaces
 	// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 	Events *Events
 
-	sdkConfiguration sdkConfiguration
+	sdkConfiguration config.SDKConfiguration
+	hooks            *hooks.Hooks
 }
 
 type SDKOption func(*Speakeasy)
 
-// WithServerURL allows the overriding of the default server URL
+// WithServerURL allows providing an alternative server URL
 func WithServerURL(serverURL string) SDKOption {
 	return func(sdk *Speakeasy) {
 		sdk.sdkConfiguration.ServerURL = serverURL
@@ -187,15 +167,13 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Speakeasy {
 	sdk := &Speakeasy{
-		sdkConfiguration: sdkConfiguration{
-			Language:          "go",
-			OpenAPIDocVersion: "0.4.0",
-			SDKVersion:        "3.26.7",
-			GenVersion:        "2.597.9",
-			UserAgent:         "speakeasy-sdk/go 3.26.7 2.597.9 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go",
-			Globals:           globals.Globals{},
-			Hooks:             hooks.New(),
+		SDKVersion: "3.27.0",
+		sdkConfiguration: config.SDKConfiguration{
+			UserAgent:  "speakeasy-sdk/go 3.27.0 2.869.25 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go/v3",
+			Globals:    globals.Globals{},
+			ServerList: ServerList,
 		},
+		hooks: hooks.New(),
 	}
 	for _, opt := range opts {
 		opt(sdk)
@@ -208,36 +186,25 @@ func New(opts ...SDKOption) *Speakeasy {
 
 	currentServerURL, _ := sdk.sdkConfiguration.GetServerDetails()
 	serverURL := currentServerURL
-	serverURL, sdk.sdkConfiguration.Client = sdk.sdkConfiguration.Hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.Client)
-	if serverURL != currentServerURL {
+	serverURL, sdk.sdkConfiguration.Client = sdk.hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.Client)
+	if currentServerURL != serverURL {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.Artifacts = newArtifacts(sdk.sdkConfiguration)
-
-	sdk.Auth = newAuth(sdk.sdkConfiguration)
-
-	sdk.CodeSamples = newCodeSamples(sdk.sdkConfiguration)
-
-	sdk.Github = newGithub(sdk.sdkConfiguration)
-
-	sdk.Organizations = newOrganizations(sdk.sdkConfiguration)
-
-	sdk.PublishingTokens = newPublishingTokens(sdk.sdkConfiguration)
-
-	sdk.Reports = newReports(sdk.sdkConfiguration)
-
-	sdk.SchemaStore = newSchemaStore(sdk.sdkConfiguration)
-
-	sdk.ShortURLs = newShortURLs(sdk.sdkConfiguration)
-
-	sdk.Subscriptions = newSubscriptions(sdk.sdkConfiguration)
-
-	sdk.Suggest = newSuggest(sdk.sdkConfiguration)
-
-	sdk.Workspaces = newWorkspaces(sdk.sdkConfiguration)
-
-	sdk.Events = newEvents(sdk.sdkConfiguration)
+	sdk.Artifacts = newArtifacts(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Auth = newAuth(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Organizations = newOrganizations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CodeSamples = newCodeSamples(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Github = newGithub(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PublishingTokens = newPublishingTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Reports = newReports(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SchemaStore = newSchemaStore(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ShortURLs = newShortURLs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Subscriptions = newSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Suggest = newSuggest(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Webhooks = newWebhooks(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Workspaces = newWorkspaces(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Events = newEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

@@ -6,9 +6,9 @@ type UsageSnippets struct {
 	Snippets []UsageSnippet `json:"snippets"`
 }
 
-func (o *UsageSnippets) GetSnippets() []UsageSnippet {
-	if o == nil {
+func (u *UsageSnippets) GetSnippets() []UsageSnippet {
+	if u == nil {
 		return []UsageSnippet{}
 	}
-	return o.Snippets
+	return u.Snippets
 }

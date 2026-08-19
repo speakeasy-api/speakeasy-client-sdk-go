@@ -18,30 +18,30 @@ type GetOrganizationsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetOrganizationsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetOrganizationsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetOrganizationsResponse) GetOrganizations() []shared.Organization {
-	if o == nil {
+func (g *GetOrganizationsResponse) GetOrganizations() []shared.Organization {
+	if g == nil {
 		return nil
 	}
-	return o.Organizations
+	return g.Organizations
 }
 
-func (o *GetOrganizationsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetOrganizationsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetOrganizationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetOrganizationsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

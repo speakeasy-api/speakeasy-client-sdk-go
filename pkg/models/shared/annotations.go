@@ -29,86 +29,86 @@ type Annotations struct {
 	OrgOpencontainersImageVersion *string `json:"org.opencontainers.image.version,omitempty"`
 }
 
-func (o *Annotations) GetOrgOpencontainersImageAuthors() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageAuthors() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageAuthors
+	return a.OrgOpencontainersImageAuthors
 }
 
-func (o *Annotations) GetOrgOpencontainersImageCreated() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageCreated() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageCreated
+	return a.OrgOpencontainersImageCreated
 }
 
-func (o *Annotations) GetOrgOpencontainersImageDescription() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageDescription() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageDescription
+	return a.OrgOpencontainersImageDescription
 }
 
-func (o *Annotations) GetOrgOpencontainersImageDocumentation() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageDocumentation() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageDocumentation
+	return a.OrgOpencontainersImageDocumentation
 }
 
-func (o *Annotations) GetOrgOpencontainersImageLicenses() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageLicenses() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageLicenses
+	return a.OrgOpencontainersImageLicenses
 }
 
-func (o *Annotations) GetOrgOpencontainersImageRefName() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageRefName() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageRefName
+	return a.OrgOpencontainersImageRefName
 }
 
-func (o *Annotations) GetOrgOpencontainersImageRevision() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageRevision() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageRevision
+	return a.OrgOpencontainersImageRevision
 }
 
-func (o *Annotations) GetOrgOpencontainersImageSource() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageSource() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageSource
+	return a.OrgOpencontainersImageSource
 }
 
-func (o *Annotations) GetOrgOpencontainersImageTitle() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageTitle() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageTitle
+	return a.OrgOpencontainersImageTitle
 }
 
-func (o *Annotations) GetOrgOpencontainersImageURL() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageURL() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageURL
+	return a.OrgOpencontainersImageURL
 }
 
-func (o *Annotations) GetOrgOpencontainersImageVendor() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageVendor() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageVendor
+	return a.OrgOpencontainersImageVendor
 }
 
-func (o *Annotations) GetOrgOpencontainersImageVersion() *string {
-	if o == nil {
+func (a *Annotations) GetOrgOpencontainersImageVersion() *string {
+	if a == nil {
 		return nil
 	}
-	return o.OrgOpencontainersImageVersion
+	return a.OrgOpencontainersImageVersion
 }

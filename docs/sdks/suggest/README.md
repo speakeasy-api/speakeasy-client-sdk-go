@@ -1,5 +1,4 @@
 # Suggest
-(*Suggest*)
 
 ## Overview
 
@@ -18,13 +17,14 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="suggest" method="post" path="/v1/suggest/openapi_from_summary" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -34,7 +34,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -44,20 +44,14 @@ func main() {
                 shared.Diagnostic{
                     Message: "<value>",
                     Path: []string{
-                        "/opt/include",
-                        "/opt/share",
+                        "/usr/src",
                     },
-                    Type: "<value>",
-                },
-                shared.Diagnostic{
-                    Message: "<value>",
-                    Path: []string{},
                     Type: "<value>",
                 },
             },
             OasSummary: shared.OASSummary{
                 Info: shared.OASInfo{
-                    Description: "amid traffic the unfortunately underneath what father lovely out",
+                    Description: "prioritize bell vainly",
                     License: shared.License{},
                     Summary: "<value>",
                     Title: "<value>",
@@ -65,18 +59,18 @@ func main() {
                 },
                 Operations: []shared.OASOperation{
                     shared.OASOperation{
-                        Description: "times dull than except",
+                        Description: "though since instead accurate safe unnaturally charming",
                         Method: "<value>",
                         OperationID: "<id>",
-                        Path: "/mnt",
+                        Path: "/usr/local/bin",
                         Tags: []string{
-                            "<value>",
-                            "<value>",
+                            "<value 1>",
+                            "<value 2>",
                         },
                     },
                 },
             },
-            SuggestionType: shared.SuggestRequestBodySuggestionTypeDiagnosticsOnly,
+            SuggestionType: shared.SuggestRequestBodySuggestionTypeMethodNames,
         },
         XSessionID: "<id>",
     })
@@ -113,13 +107,14 @@ Generate generic suggestions for a list of items.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="suggestItems" method="post" path="/v1/suggest/items" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"log"
 )
 
@@ -128,12 +123,14 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Suggest.SuggestItems(ctx, shared.SuggestItemsRequestBody{
-        Items: []string{},
+        Items: []string{
+            "<value 1>",
+        },
         Prompt: "<value>",
     })
     if err != nil {
@@ -169,13 +166,14 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="suggestOpenAPI" method="post" path="/v1/suggest/openapi" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"os"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -186,20 +184,19 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Suggest.SuggestOpenAPI(ctx, operations.SuggestOpenAPIRequest{
         RequestBody: operations.SuggestOpenAPIRequestBody{
             Schema: operations.Schema{
-                Content: content,
+                Content: example,
                 FileName: "example.file",
             },
         },
@@ -238,13 +235,14 @@ Get suggestions from an LLM model for improving an OpenAPI document stored in th
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="suggestOpenAPIRegistry" method="post" path="/v1/suggest/openapi/{namespace_name}/{revision_reference}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -254,7 +252,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
