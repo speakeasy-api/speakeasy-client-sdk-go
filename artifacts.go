@@ -64,7 +64,7 @@ func (s *Artifacts) CreateRemoteSource(ctx context.Context, request *shared.Remo
 		Context:          ctx,
 		OperationID:      "createRemoteSource",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
@@ -90,6 +90,10 @@ func (s *Artifacts) CreateRemoteSource(ctx context.Context, request *shared.Remo
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {
@@ -267,7 +271,7 @@ func (s *Artifacts) GetBlob(ctx context.Context, request operations.GetBlobReque
 		Context:          ctx,
 		OperationID:      "getBlob",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -287,6 +291,10 @@ func (s *Artifacts) GetBlob(ctx context.Context, request operations.GetBlobReque
 	}
 	req.Header.Set("Accept", "application/octet-stream")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
 
 	for k, v := range o.SetHeaders {
 		req.Header.Set(k, v)
@@ -474,7 +482,7 @@ func (s *Artifacts) GetManifest(ctx context.Context, request operations.GetManif
 		Context:          ctx,
 		OperationID:      "getManifest",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -494,6 +502,10 @@ func (s *Artifacts) GetManifest(ctx context.Context, request operations.GetManif
 	}
 	req.Header.Set("Accept", "application/vnd.oci.image.manifest.v1+json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
 
 	for k, v := range o.SetHeaders {
 		req.Header.Set(k, v)
@@ -689,7 +701,7 @@ func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option
 		Context:          ctx,
 		OperationID:      "getNamespaces",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -709,6 +721,10 @@ func (s *Artifacts) GetNamespaces(ctx context.Context, opts ...operations.Option
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
 
 	for k, v := range o.SetHeaders {
 		req.Header.Set(k, v)
@@ -903,7 +919,7 @@ func (s *Artifacts) GetRevisions(ctx context.Context, request operations.GetRevi
 		Context:          ctx,
 		OperationID:      "getRevisions",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -926,6 +942,10 @@ func (s *Artifacts) GetRevisions(ctx context.Context, request operations.GetRevi
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {
@@ -1121,7 +1141,7 @@ func (s *Artifacts) GetTags(ctx context.Context, request operations.GetTagsReque
 		Context:          ctx,
 		OperationID:      "getTags",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1141,6 +1161,10 @@ func (s *Artifacts) GetTags(ctx context.Context, request operations.GetTagsReque
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
 
 	for k, v := range o.SetHeaders {
 		req.Header.Set(k, v)
@@ -1336,7 +1360,7 @@ func (s *Artifacts) ListRemoteSources(ctx context.Context, request operations.Li
 		Context:          ctx,
 		OperationID:      "listRemoteSources",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1359,6 +1383,10 @@ func (s *Artifacts) ListRemoteSources(ctx context.Context, request operations.Li
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {
@@ -1555,7 +1583,7 @@ func (s *Artifacts) PostTags(ctx context.Context, request operations.PostTagsReq
 		Context:          ctx,
 		OperationID:      "postTags",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AddTags", "json", `request:"mediaType=application/json"`)
 	if err != nil {
@@ -1581,6 +1609,10 @@ func (s *Artifacts) PostTags(ctx context.Context, request operations.PostTagsReq
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {
@@ -1758,7 +1790,7 @@ func (s *Artifacts) Preflight(ctx context.Context, request *shared.PreflightRequ
 		Context:          ctx,
 		OperationID:      "preflight",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
@@ -1784,6 +1816,10 @@ func (s *Artifacts) Preflight(ctx context.Context, request *shared.PreflightRequ
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {
@@ -1980,7 +2016,7 @@ func (s *Artifacts) SetArchived(ctx context.Context, request operations.ArchiveN
 		Context:          ctx,
 		OperationID:      "archiveNamespace",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
@@ -2006,6 +2042,10 @@ func (s *Artifacts) SetArchived(ctx context.Context, request operations.ArchiveN
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {
@@ -2183,7 +2223,7 @@ func (s *Artifacts) SetVisibility(ctx context.Context, request operations.SetVis
 		Context:          ctx,
 		OperationID:      "setVisibility",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
@@ -2209,6 +2249,10 @@ func (s *Artifacts) SetVisibility(ctx context.Context, request operations.SetVis
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	if reqContentType != "" {
 		req.Header.Set("Content-Type", reqContentType)
+	}
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
 	}
 
 	for k, v := range o.SetHeaders {

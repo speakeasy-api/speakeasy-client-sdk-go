@@ -57,13 +57,18 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New()
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
+	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
@@ -252,13 +257,18 @@ import (
 	"errors"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/sdkerrors"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New()
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
+	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
 	if err != nil {
@@ -301,6 +311,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -309,6 +320,9 @@ func main() {
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServer("prod"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
 	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
@@ -331,6 +345,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"log"
 )
 
@@ -339,6 +354,9 @@ func main() {
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithServerURL("https://api.prod.speakeasy.com"),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
 	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
@@ -394,14 +412,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 This SDK supports the following security schemes globally:
 
-| Name                   | Type   | Scheme      |
-| ---------------------- | ------ | ----------- |
-| `APIKey`               | apiKey | API key     |
-| `APIKey1`              | apiKey | API key     |
-| `Bearer`               | http   | HTTP Bearer |
-| `Bearer1`              | http   | HTTP Bearer |
-| `WorkspaceIdentifier`  | apiKey | API key     |
-| `WorkspaceIdentifier1` | apiKey | API key     |
+| Name                  | Type   | Scheme      |
+| --------------------- | ------ | ----------- |
+| `APIKey`              | apiKey | API key     |
+| `Bearer`              | http   | HTTP Bearer |
+| `WorkspaceIdentifier` | apiKey | API key     |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
@@ -508,7 +523,7 @@ func main() {
 
 	s := speakeasyclientsdkgo.New(
 		speakeasyclientsdkgo.WithSecurity(shared.Security{
-			APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
 		}),
 	)
 
@@ -548,6 +563,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
 	"pkg/models/operations"
@@ -556,7 +572,11 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := speakeasyclientsdkgo.New()
+	s := speakeasyclientsdkgo.New(
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
+	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil, operations.WithRetries(
 		retry.Config{
@@ -586,6 +606,7 @@ package main
 import (
 	"context"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/retry"
 	"log"
 )
@@ -605,6 +626,9 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
+		speakeasyclientsdkgo.WithSecurity(shared.Security{
+			APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+		}),
 	)
 
 	res, err := s.Artifacts.CreateRemoteSource(ctx, nil)
