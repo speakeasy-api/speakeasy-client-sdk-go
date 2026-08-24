@@ -13,11 +13,11 @@ type GetWorkspaceTargetsDeprecatedGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *GetWorkspaceTargetsDeprecatedGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedGlobals) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceTargetsDeprecatedRequest struct {
@@ -32,24 +32,24 @@ func (g GetWorkspaceTargetsDeprecatedRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetWorkspaceTargetsDeprecatedRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetWorkspaceTargetsDeprecatedRequest) GetAfterLastEventCreatedAt() *time.Time {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedRequest) GetAfterLastEventCreatedAt() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.AfterLastEventCreatedAt
+	return g.AfterLastEventCreatedAt
 }
 
-func (o *GetWorkspaceTargetsDeprecatedRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedRequest) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetWorkspaceTargetsDeprecatedResponse struct {
@@ -63,30 +63,30 @@ type GetWorkspaceTargetsDeprecatedResponse struct {
 	TargetSDKList []shared.TargetSDK
 }
 
-func (o *GetWorkspaceTargetsDeprecatedResponse) GetContentType() string {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetWorkspaceTargetsDeprecatedResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetWorkspaceTargetsDeprecatedResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetWorkspaceTargetsDeprecatedResponse) GetTargetSDKList() []shared.TargetSDK {
-	if o == nil {
+func (g *GetWorkspaceTargetsDeprecatedResponse) GetTargetSDKList() []shared.TargetSDK {
+	if g == nil {
 		return nil
 	}
-	return o.TargetSDKList
+	return g.TargetSDKList
 }

@@ -18,30 +18,30 @@ type ValidateAPIKeyResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *ValidateAPIKeyResponse) GetAPIKeyDetails() *shared.APIKeyDetails {
-	if o == nil {
+func (v *ValidateAPIKeyResponse) GetAPIKeyDetails() *shared.APIKeyDetails {
+	if v == nil {
 		return nil
 	}
-	return o.APIKeyDetails
+	return v.APIKeyDetails
 }
 
-func (o *ValidateAPIKeyResponse) GetContentType() string {
-	if o == nil {
+func (v *ValidateAPIKeyResponse) GetContentType() string {
+	if v == nil {
 		return ""
 	}
-	return o.ContentType
+	return v.ContentType
 }
 
-func (o *ValidateAPIKeyResponse) GetStatusCode() int {
-	if o == nil {
+func (v *ValidateAPIKeyResponse) GetStatusCode() int {
+	if v == nil {
 		return 0
 	}
-	return o.StatusCode
+	return v.StatusCode
 }
 
-func (o *ValidateAPIKeyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (v *ValidateAPIKeyResponse) GetRawResponse() *http.Response {
+	if v == nil {
 		return nil
 	}
-	return o.RawResponse
+	return v.RawResponse
 }

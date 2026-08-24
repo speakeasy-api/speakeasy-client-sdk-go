@@ -18,30 +18,30 @@ type SetWorkspaceFeatureFlagsResponse struct {
 	WorkspaceFeatureFlagResponse *shared.WorkspaceFeatureFlagResponse
 }
 
-func (o *SetWorkspaceFeatureFlagsResponse) GetContentType() string {
-	if o == nil {
+func (s *SetWorkspaceFeatureFlagsResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SetWorkspaceFeatureFlagsResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SetWorkspaceFeatureFlagsResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SetWorkspaceFeatureFlagsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SetWorkspaceFeatureFlagsResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }
 
-func (o *SetWorkspaceFeatureFlagsResponse) GetWorkspaceFeatureFlagResponse() *shared.WorkspaceFeatureFlagResponse {
-	if o == nil {
+func (s *SetWorkspaceFeatureFlagsResponse) GetWorkspaceFeatureFlagResponse() *shared.WorkspaceFeatureFlagResponse {
+	if s == nil {
 		return nil
 	}
-	return o.WorkspaceFeatureFlagResponse
+	return s.WorkspaceFeatureFlagResponse
 }

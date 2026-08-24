@@ -14,18 +14,18 @@ type Schema struct {
 	FileName string `multipartForm:"name=fileName"`
 }
 
-func (o *Schema) GetContent() any {
-	if o == nil {
+func (s *Schema) GetContent() any {
+	if s == nil {
 		return nil
 	}
-	return o.Content
+	return s.Content
 }
 
-func (o *Schema) GetFileName() string {
-	if o == nil {
+func (s *Schema) GetFileName() string {
+	if s == nil {
 		return ""
 	}
-	return o.FileName
+	return s.FileName
 }
 
 // SuggestOpenAPIRequestBody - The schema file to upload provided as a multipart/form-data file segment.
@@ -34,18 +34,18 @@ type SuggestOpenAPIRequestBody struct {
 	Schema Schema                 `multipartForm:"file,name=schema"`
 }
 
-func (o *SuggestOpenAPIRequestBody) GetOpts() *shared.SuggestOptsOld {
-	if o == nil {
+func (s *SuggestOpenAPIRequestBody) GetOpts() *shared.SuggestOptsOld {
+	if s == nil {
 		return nil
 	}
-	return o.Opts
+	return s.Opts
 }
 
-func (o *SuggestOpenAPIRequestBody) GetSchema() Schema {
-	if o == nil {
+func (s *SuggestOpenAPIRequestBody) GetSchema() Schema {
+	if s == nil {
 		return Schema{}
 	}
-	return o.Schema
+	return s.Schema
 }
 
 type SuggestOpenAPIRequest struct {
@@ -54,18 +54,18 @@ type SuggestOpenAPIRequest struct {
 	XSessionID  string                    `header:"style=simple,explode=false,name=x-session-id"`
 }
 
-func (o *SuggestOpenAPIRequest) GetRequestBody() SuggestOpenAPIRequestBody {
-	if o == nil {
+func (s *SuggestOpenAPIRequest) GetRequestBody() SuggestOpenAPIRequestBody {
+	if s == nil {
 		return SuggestOpenAPIRequestBody{}
 	}
-	return o.RequestBody
+	return s.RequestBody
 }
 
-func (o *SuggestOpenAPIRequest) GetXSessionID() string {
-	if o == nil {
+func (s *SuggestOpenAPIRequest) GetXSessionID() string {
+	if s == nil {
 		return ""
 	}
-	return o.XSessionID
+	return s.XSessionID
 }
 
 type SuggestOpenAPIResponse struct {
@@ -80,30 +80,30 @@ type SuggestOpenAPIResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *SuggestOpenAPIResponse) GetContentType() string {
-	if o == nil {
+func (s *SuggestOpenAPIResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SuggestOpenAPIResponse) GetSchema() io.ReadCloser {
-	if o == nil {
+func (s *SuggestOpenAPIResponse) GetSchema() io.ReadCloser {
+	if s == nil {
 		return nil
 	}
-	return o.Schema
+	return s.Schema
 }
 
-func (o *SuggestOpenAPIResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SuggestOpenAPIResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SuggestOpenAPIResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SuggestOpenAPIResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }

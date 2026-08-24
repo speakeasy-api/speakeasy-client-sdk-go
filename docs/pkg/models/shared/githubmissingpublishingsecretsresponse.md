@@ -7,4 +7,4 @@ A valid response containing MISSING publishing secret keys for a github target
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `MissingSecrets`   | []*string*         | :heavy_minus_sign: | N/A                |
+| `MissingSecrets`   | []`string`         | :heavy_minus_sign: | N/A                |

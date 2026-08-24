@@ -19,22 +19,22 @@ func (f FeatureFlag) MarshalJSON() ([]byte, error) {
 }
 
 func (f *FeatureFlag) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &f, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &f, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *FeatureFlag) GetFeatureFlag() WorkspaceFeatureFlag {
-	if o == nil {
+func (f *FeatureFlag) GetFeatureFlag() WorkspaceFeatureFlag {
+	if f == nil {
 		return WorkspaceFeatureFlag("")
 	}
-	return o.FeatureFlag
+	return f.FeatureFlag
 }
 
-func (o *FeatureFlag) GetTrialEndsAt() *time.Time {
-	if o == nil {
+func (f *FeatureFlag) GetTrialEndsAt() *time.Time {
+	if f == nil {
 		return nil
 	}
-	return o.TrialEndsAt
+	return f.TrialEndsAt
 }

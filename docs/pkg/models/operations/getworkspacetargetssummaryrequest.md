@@ -1,0 +1,10 @@
+# GetWorkspaceTargetsSummaryRequest
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `AfterLastEventCreatedAt`                                                                           | [*time.Time](https://pkg.go.dev/time#Time)                                                          | :heavy_minus_sign:                                                                                  | Filter to only return targets with events created after this timestamp                              |
+| `Cursor`                                                                                            | `*string`                                                                                           | :heavy_minus_sign:                                                                                  | Opaque cursor for pagination. Pass the next_cursor from the previous response to get the next page. |
+| `Limit`                                                                                             | `*int64`                                                                                            | :heavy_minus_sign:                                                                                  | Maximum number of targets to return per page (default 50, max 200)                                  |

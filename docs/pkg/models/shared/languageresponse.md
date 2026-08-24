@@ -1,0 +1,12 @@
+# LanguageResponse
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `BillingStatus`                                                                      | [*shared.LanguageBillingStatus](../../../pkg/models/shared/languagebillingstatus.md) | :heavy_minus_sign:                                                                   | The billing status of a language                                                     |
+| `CanDeactivate`                                                                      | `bool`                                                                               | :heavy_check_mark:                                                                   | Whether the language can be deactivated (false if within 2-week cooldown)            |
+| `Deactivated`                                                                        | `bool`                                                                               | :heavy_check_mark:                                                                   | Whether the language is deactivated                                                  |
+| `Language`                                                                           | `string`                                                                             | :heavy_check_mark:                                                                   | The target language (e.g., typescript, python, go)                                   |
+| `TrialEndsAt`                                                                        | [*time.Time](https://pkg.go.dev/time#Time)                                           | :heavy_minus_sign:                                                                   | When the trial ends (if applicable)                                                  |

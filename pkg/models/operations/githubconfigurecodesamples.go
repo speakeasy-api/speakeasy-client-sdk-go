@@ -18,30 +18,30 @@ type GithubConfigureCodeSamplesResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetContentType() string {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetGithubConfigureCodeSamplesResponse() *shared.GithubConfigureCodeSamplesResponse {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetGithubConfigureCodeSamplesResponse() *shared.GithubConfigureCodeSamplesResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GithubConfigureCodeSamplesResponse
+	return g.GithubConfigureCodeSamplesResponse
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GithubConfigureCodeSamplesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GithubConfigureCodeSamplesResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

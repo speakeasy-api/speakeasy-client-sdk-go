@@ -13,18 +13,18 @@ type PostTagsRequest struct {
 	NamespaceName string          `pathParam:"style=simple,explode=false,name=namespace_name"`
 }
 
-func (o *PostTagsRequest) GetAddTags() *shared.AddTags {
-	if o == nil {
+func (p *PostTagsRequest) GetAddTags() *shared.AddTags {
+	if p == nil {
 		return nil
 	}
-	return o.AddTags
+	return p.AddTags
 }
 
-func (o *PostTagsRequest) GetNamespaceName() string {
-	if o == nil {
+func (p *PostTagsRequest) GetNamespaceName() string {
+	if p == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return p.NamespaceName
 }
 
 type PostTagsResponse struct {
@@ -36,23 +36,23 @@ type PostTagsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PostTagsResponse) GetContentType() string {
-	if o == nil {
+func (p *PostTagsResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostTagsResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostTagsResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostTagsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostTagsResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }

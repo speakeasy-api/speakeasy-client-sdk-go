@@ -14,25 +14,25 @@ type GetGitHubActionRequest struct {
 	TargetName *string `queryParam:"style=form,explode=true,name=targetName"`
 }
 
-func (o *GetGitHubActionRequest) GetOrg() string {
-	if o == nil {
+func (g *GetGitHubActionRequest) GetOrg() string {
+	if g == nil {
 		return ""
 	}
-	return o.Org
+	return g.Org
 }
 
-func (o *GetGitHubActionRequest) GetRepo() string {
-	if o == nil {
+func (g *GetGitHubActionRequest) GetRepo() string {
+	if g == nil {
 		return ""
 	}
-	return o.Repo
+	return g.Repo
 }
 
-func (o *GetGitHubActionRequest) GetTargetName() *string {
-	if o == nil {
+func (g *GetGitHubActionRequest) GetTargetName() *string {
+	if g == nil {
 		return nil
 	}
-	return o.TargetName
+	return g.TargetName
 }
 
 type GetGitHubActionResponse struct {
@@ -46,30 +46,30 @@ type GetGitHubActionResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetGitHubActionResponse) GetContentType() string {
-	if o == nil {
+func (g *GetGitHubActionResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetGitHubActionResponse) GetGithubGetActionResponse() *shared.GithubGetActionResponse {
-	if o == nil {
+func (g *GetGitHubActionResponse) GetGithubGetActionResponse() *shared.GithubGetActionResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GithubGetActionResponse
+	return g.GithubGetActionResponse
 }
 
-func (o *GetGitHubActionResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetGitHubActionResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetGitHubActionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetGitHubActionResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

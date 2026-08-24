@@ -14,8 +14,15 @@ type APIKeyDetails struct {
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	FeatureFlags              []string `json:"feature_flags,omitempty"`
 	GenerationAccessUnlimited *bool    `json:"generation_access_unlimited,omitempty"`
-	OrgSlug                   string   `json:"org_slug"`
-	TelemetryDisabled         bool     `json:"telemetry_disabled"`
+	// Signed JWT (EdDSA/Ed25519) asserting the workspace's commercial license
+	// entitlements at time of issue. Verified offline by the open-source
+	// generator against its embedded JWK set; may be persisted as an offline
+	// license file. Only present for commercially-entitled workspaces when
+	// license signing is configured.
+	//
+	LicenseJwt        *string `json:"license_jwt,omitempty"`
+	OrgSlug           string  `json:"org_slug"`
+	TelemetryDisabled bool    `json:"telemetry_disabled"`
 	// Workspace creation timestamp.
 	WorkspaceCreatedAt time.Time `json:"workspace_created_at"`
 	WorkspaceID        string    `json:"workspace_id"`
@@ -27,78 +34,85 @@ func (a APIKeyDetails) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIKeyDetails) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *APIKeyDetails) GetAccountTypeV2() AccountType {
-	if o == nil {
+func (a *APIKeyDetails) GetAccountTypeV2() AccountType {
+	if a == nil {
 		return AccountType("")
 	}
-	return o.AccountTypeV2
+	return a.AccountTypeV2
 }
 
-func (o *APIKeyDetails) GetBillingAddOns() []BillingAddOn {
-	if o == nil {
+func (a *APIKeyDetails) GetBillingAddOns() []BillingAddOn {
+	if a == nil {
 		return []BillingAddOn{}
 	}
-	return o.BillingAddOns
+	return a.BillingAddOns
 }
 
-func (o *APIKeyDetails) GetEnabledFeatures() []string {
-	if o == nil {
+func (a *APIKeyDetails) GetEnabledFeatures() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.EnabledFeatures
+	return a.EnabledFeatures
 }
 
-func (o *APIKeyDetails) GetFeatureFlags() []string {
-	if o == nil {
+func (a *APIKeyDetails) GetFeatureFlags() []string {
+	if a == nil {
 		return nil
 	}
-	return o.FeatureFlags
+	return a.FeatureFlags
 }
 
-func (o *APIKeyDetails) GetGenerationAccessUnlimited() *bool {
-	if o == nil {
+func (a *APIKeyDetails) GetGenerationAccessUnlimited() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.GenerationAccessUnlimited
+	return a.GenerationAccessUnlimited
 }
 
-func (o *APIKeyDetails) GetOrgSlug() string {
-	if o == nil {
+func (a *APIKeyDetails) GetLicenseJwt() *string {
+	if a == nil {
+		return nil
+	}
+	return a.LicenseJwt
+}
+
+func (a *APIKeyDetails) GetOrgSlug() string {
+	if a == nil {
 		return ""
 	}
-	return o.OrgSlug
+	return a.OrgSlug
 }
 
-func (o *APIKeyDetails) GetTelemetryDisabled() bool {
-	if o == nil {
+func (a *APIKeyDetails) GetTelemetryDisabled() bool {
+	if a == nil {
 		return false
 	}
-	return o.TelemetryDisabled
+	return a.TelemetryDisabled
 }
 
-func (o *APIKeyDetails) GetWorkspaceCreatedAt() time.Time {
-	if o == nil {
+func (a *APIKeyDetails) GetWorkspaceCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.WorkspaceCreatedAt
+	return a.WorkspaceCreatedAt
 }
 
-func (o *APIKeyDetails) GetWorkspaceID() string {
-	if o == nil {
+func (a *APIKeyDetails) GetWorkspaceID() string {
+	if a == nil {
 		return ""
 	}
-	return o.WorkspaceID
+	return a.WorkspaceID
 }
 
-func (o *APIKeyDetails) GetWorkspaceSlug() string {
-	if o == nil {
+func (a *APIKeyDetails) GetWorkspaceSlug() string {
+	if a == nil {
 		return ""
 	}
-	return o.WorkspaceSlug
+	return a.WorkspaceSlug
 }

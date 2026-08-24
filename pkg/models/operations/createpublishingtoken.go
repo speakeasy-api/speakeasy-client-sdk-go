@@ -22,38 +22,38 @@ func (c CreatePublishingTokenRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreatePublishingTokenRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreatePublishingTokenRequestBody) GetTargetID() string {
-	if o == nil {
+func (c *CreatePublishingTokenRequestBody) GetTargetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.TargetID
+	return c.TargetID
 }
 
-func (o *CreatePublishingTokenRequestBody) GetTargetResource() string {
-	if o == nil {
+func (c *CreatePublishingTokenRequestBody) GetTargetResource() string {
+	if c == nil {
 		return ""
 	}
-	return o.TargetResource
+	return c.TargetResource
 }
 
-func (o *CreatePublishingTokenRequestBody) GetTokenName() string {
-	if o == nil {
+func (c *CreatePublishingTokenRequestBody) GetTokenName() string {
+	if c == nil {
 		return ""
 	}
-	return o.TokenName
+	return c.TokenName
 }
 
-func (o *CreatePublishingTokenRequestBody) GetValidUntil() time.Time {
-	if o == nil {
+func (c *CreatePublishingTokenRequestBody) GetValidUntil() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.ValidUntil
+	return c.ValidUntil
 }
 
 type CreatePublishingTokenResponse struct {
@@ -67,30 +67,30 @@ type CreatePublishingTokenResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *CreatePublishingTokenResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePublishingTokenResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePublishingTokenResponse) GetPublishingToken() *shared.PublishingToken {
-	if o == nil {
+func (c *CreatePublishingTokenResponse) GetPublishingToken() *shared.PublishingToken {
+	if c == nil {
 		return nil
 	}
-	return o.PublishingToken
+	return c.PublishingToken
 }
 
-func (o *CreatePublishingTokenResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePublishingTokenResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePublishingTokenResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePublishingTokenResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }

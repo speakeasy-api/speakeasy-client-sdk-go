@@ -8,18 +8,18 @@ type SchemaFile struct {
 	FileName string `multipartForm:"name=fileName"`
 }
 
-func (o *SchemaFile) GetContent() any {
-	if o == nil {
+func (s *SchemaFile) GetContent() any {
+	if s == nil {
 		return nil
 	}
-	return o.Content
+	return s.Content
 }
 
-func (o *SchemaFile) GetFileName() string {
-	if o == nil {
+func (s *SchemaFile) GetFileName() string {
+	if s == nil {
 		return ""
 	}
-	return o.FileName
+	return s.FileName
 }
 
 type CodeSampleSchemaInput struct {
@@ -35,37 +35,37 @@ type CodeSampleSchemaInput struct {
 	SDKClassName *string `multipartForm:"name=sdk_class_name"`
 }
 
-func (o *CodeSampleSchemaInput) GetLanguage() string {
-	if o == nil {
+func (c *CodeSampleSchemaInput) GetLanguage() string {
+	if c == nil {
 		return ""
 	}
-	return o.Language
+	return c.Language
 }
 
-func (o *CodeSampleSchemaInput) GetOperationIds() []string {
-	if o == nil {
+func (c *CodeSampleSchemaInput) GetOperationIds() []string {
+	if c == nil {
 		return nil
 	}
-	return o.OperationIds
+	return c.OperationIds
 }
 
-func (o *CodeSampleSchemaInput) GetPackageName() *string {
-	if o == nil {
+func (c *CodeSampleSchemaInput) GetPackageName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.PackageName
+	return c.PackageName
 }
 
-func (o *CodeSampleSchemaInput) GetSchemaFile() SchemaFile {
-	if o == nil {
+func (c *CodeSampleSchemaInput) GetSchemaFile() SchemaFile {
+	if c == nil {
 		return SchemaFile{}
 	}
-	return o.SchemaFile
+	return c.SchemaFile
 }
 
-func (o *CodeSampleSchemaInput) GetSDKClassName() *string {
-	if o == nil {
+func (c *CodeSampleSchemaInput) GetSDKClassName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.SDKClassName
+	return c.SDKClassName
 }

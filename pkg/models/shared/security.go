@@ -3,28 +3,52 @@
 package shared
 
 type Security struct {
-	APIKey              *string `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`
-	Bearer              *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
-	WorkspaceIdentifier *string `security:"scheme,type=apiKey,subtype=header,name=x-workspace-identifier"`
+	APIKey               *string `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`
+	APIKey1              *string `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`
+	Bearer               *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
+	Bearer1              *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
+	WorkspaceIdentifier  *string `security:"scheme,type=apiKey,subtype=header,name=x-workspace-identifier"`
+	WorkspaceIdentifier1 *string `security:"scheme,type=apiKey,subtype=header,name=x-workspace-identifier"`
 }
 
-func (o *Security) GetAPIKey() *string {
-	if o == nil {
+func (s *Security) GetAPIKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.APIKey
+	return s.APIKey
 }
 
-func (o *Security) GetBearer() *string {
-	if o == nil {
+func (s *Security) GetAPIKey1() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Bearer
+	return s.APIKey1
 }
 
-func (o *Security) GetWorkspaceIdentifier() *string {
-	if o == nil {
+func (s *Security) GetBearer() *string {
+	if s == nil {
 		return nil
 	}
-	return o.WorkspaceIdentifier
+	return s.Bearer
+}
+
+func (s *Security) GetBearer1() *string {
+	if s == nil {
+		return nil
+	}
+	return s.Bearer1
+}
+
+func (s *Security) GetWorkspaceIdentifier() *string {
+	if s == nil {
+		return nil
+	}
+	return s.WorkspaceIdentifier
+}
+
+func (s *Security) GetWorkspaceIdentifier1() *string {
+	if s == nil {
+		return nil
+	}
+	return s.WorkspaceIdentifier1
 }

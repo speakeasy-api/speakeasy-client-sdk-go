@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `URL`              | *string*           | :heavy_check_mark: | URL to shorten     |
+| `URL`              | `string`           | :heavy_check_mark: | URL to shorten     |

@@ -49,50 +49,50 @@ func (s SchemaStoreItem) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SchemaStoreItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SchemaStoreItem) GetCreatedAt() time.Time {
-	if o == nil {
+func (s *SchemaStoreItem) GetCreatedAt() time.Time {
+	if s == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *SchemaStoreItem) GetFormat() Format {
-	if o == nil {
+func (s *SchemaStoreItem) GetFormat() Format {
+	if s == nil {
 		return Format("")
 	}
-	return o.Format
+	return s.Format
 }
 
-func (o *SchemaStoreItem) GetID() string {
-	if o == nil {
+func (s *SchemaStoreItem) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SchemaStoreItem) GetPackageName() string {
-	if o == nil {
+func (s *SchemaStoreItem) GetPackageName() string {
+	if s == nil {
 		return ""
 	}
-	return o.PackageName
+	return s.PackageName
 }
 
-func (o *SchemaStoreItem) GetSDKClassname() string {
-	if o == nil {
+func (s *SchemaStoreItem) GetSDKClassname() string {
+	if s == nil {
 		return ""
 	}
-	return o.SDKClassname
+	return s.SDKClassname
 }
 
-func (o *SchemaStoreItem) GetSpec() string {
-	if o == nil {
+func (s *SchemaStoreItem) GetSpec() string {
+	if s == nil {
 		return ""
 	}
-	return o.Spec
+	return s.Spec
 }

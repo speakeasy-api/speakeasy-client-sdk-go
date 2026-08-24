@@ -12,11 +12,11 @@ type GetCodeSamplePreviewAsyncRequest struct {
 	JobID string `pathParam:"style=simple,explode=false,name=jobID"`
 }
 
-func (o *GetCodeSamplePreviewAsyncRequest) GetJobID() string {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncRequest) GetJobID() string {
+	if g == nil {
 		return ""
 	}
-	return o.JobID
+	return g.JobID
 }
 
 // GetCodeSamplePreviewAsyncResponseBody - Job is still in progress
@@ -25,11 +25,11 @@ type GetCodeSamplePreviewAsyncResponseBody struct {
 	Status shared.CodeSamplesJobStatus `json:"status"`
 }
 
-func (o *GetCodeSamplePreviewAsyncResponseBody) GetStatus() shared.CodeSamplesJobStatus {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncResponseBody) GetStatus() shared.CodeSamplesJobStatus {
+	if g == nil {
 		return shared.CodeSamplesJobStatus("")
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetCodeSamplePreviewAsyncResponse struct {
@@ -45,37 +45,37 @@ type GetCodeSamplePreviewAsyncResponse struct {
 	Object *GetCodeSamplePreviewAsyncResponseBody
 }
 
-func (o *GetCodeSamplePreviewAsyncResponse) GetContentType() string {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetCodeSamplePreviewAsyncResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetCodeSamplePreviewAsyncResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetCodeSamplePreviewAsyncResponse) GetUsageSnippets() *shared.UsageSnippets {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncResponse) GetUsageSnippets() *shared.UsageSnippets {
+	if g == nil {
 		return nil
 	}
-	return o.UsageSnippets
+	return g.UsageSnippets
 }
 
-func (o *GetCodeSamplePreviewAsyncResponse) GetObject() *GetCodeSamplePreviewAsyncResponseBody {
-	if o == nil {
+func (g *GetCodeSamplePreviewAsyncResponse) GetObject() *GetCodeSamplePreviewAsyncResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

@@ -14,32 +14,32 @@ type GetBlobRequest struct {
 	WorkspaceSlug    string `pathParam:"style=simple,explode=false,name=workspace_slug"`
 }
 
-func (o *GetBlobRequest) GetDigest() string {
-	if o == nil {
+func (g *GetBlobRequest) GetDigest() string {
+	if g == nil {
 		return ""
 	}
-	return o.Digest
+	return g.Digest
 }
 
-func (o *GetBlobRequest) GetNamespaceName() string {
-	if o == nil {
+func (g *GetBlobRequest) GetNamespaceName() string {
+	if g == nil {
 		return ""
 	}
-	return o.NamespaceName
+	return g.NamespaceName
 }
 
-func (o *GetBlobRequest) GetOrganizationSlug() string {
-	if o == nil {
+func (g *GetBlobRequest) GetOrganizationSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.OrganizationSlug
+	return g.OrganizationSlug
 }
 
-func (o *GetBlobRequest) GetWorkspaceSlug() string {
-	if o == nil {
+func (g *GetBlobRequest) GetWorkspaceSlug() string {
+	if g == nil {
 		return ""
 	}
-	return o.WorkspaceSlug
+	return g.WorkspaceSlug
 }
 
 type GetBlobResponse struct {
@@ -54,30 +54,30 @@ type GetBlobResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetBlobResponse) GetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetBlobResponse) GetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.Blob
+	return g.Blob
 }
 
-func (o *GetBlobResponse) GetContentType() string {
-	if o == nil {
+func (g *GetBlobResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetBlobResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetBlobResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetBlobResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetBlobResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

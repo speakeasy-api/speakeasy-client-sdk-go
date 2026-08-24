@@ -9,30 +9,30 @@ type RemoteSourceSubscriptionSettings struct {
 	OverlayNamespaces  []string `json:"overlay_namespaces"`
 }
 
-func (o *RemoteSourceSubscriptionSettings) GetBaseSpecNamespaces() []string {
-	if o == nil {
+func (r *RemoteSourceSubscriptionSettings) GetBaseSpecNamespaces() []string {
+	if r == nil {
 		return []string{}
 	}
-	return o.BaseSpecNamespaces
+	return r.BaseSpecNamespaces
 }
 
-func (o *RemoteSourceSubscriptionSettings) GetIgnoredNamespaces() []string {
-	if o == nil {
+func (r *RemoteSourceSubscriptionSettings) GetIgnoredNamespaces() []string {
+	if r == nil {
 		return nil
 	}
-	return o.IgnoredNamespaces
+	return r.IgnoredNamespaces
 }
 
-func (o *RemoteSourceSubscriptionSettings) GetOutputNamespace() string {
-	if o == nil {
+func (r *RemoteSourceSubscriptionSettings) GetOutputNamespace() string {
+	if r == nil {
 		return ""
 	}
-	return o.OutputNamespace
+	return r.OutputNamespace
 }
 
-func (o *RemoteSourceSubscriptionSettings) GetOverlayNamespaces() []string {
-	if o == nil {
+func (r *RemoteSourceSubscriptionSettings) GetOverlayNamespaces() []string {
+	if r == nil {
 		return []string{}
 	}
-	return o.OverlayNamespaces
+	return r.OverlayNamespaces
 }

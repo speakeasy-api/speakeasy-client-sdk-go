@@ -10,16 +10,16 @@ type AddTags struct {
 	Tags []string `json:"tags"`
 }
 
-func (o *AddTags) GetRevisionDigest() string {
-	if o == nil {
+func (a *AddTags) GetRevisionDigest() string {
+	if a == nil {
 		return ""
 	}
-	return o.RevisionDigest
+	return a.RevisionDigest
 }
 
-func (o *AddTags) GetTags() []string {
-	if o == nil {
+func (a *AddTags) GetTags() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.Tags
+	return a.Tags
 }

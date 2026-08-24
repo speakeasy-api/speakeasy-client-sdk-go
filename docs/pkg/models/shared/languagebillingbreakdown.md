@@ -1,0 +1,14 @@
+# LanguageBillingBreakdown
+
+Contains the billing breakdown for a single language
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `BillableUnits`                                                                         | `int64`                                                                                 | :heavy_check_mark:                                                                      | Total billable units contributed by targets in this language                            |
+| `Language`                                                                              | `string`                                                                                | :heavy_check_mark:                                                                      | The generated SDK language                                                              |
+| `OperationCount`                                                                        | `int64`                                                                                 | :heavy_check_mark:                                                                      | Number of operations from the latest generation event for this language                 |
+| `TargetCount`                                                                           | `int64`                                                                                 | :heavy_check_mark:                                                                      | Number of generated SDK targets for this language                                       |
+| `Targets`                                                                               | [][shared.TargetBillingBreakdown](../../../pkg/models/shared/targetbillingbreakdown.md) | :heavy_check_mark:                                                                      | List of generated targets for this language                                             |

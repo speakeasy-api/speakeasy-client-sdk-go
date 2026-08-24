@@ -13,30 +13,30 @@ type Diagnostic struct {
 	Type string `json:"type"`
 }
 
-func (o *Diagnostic) GetHelpMessage() *string {
-	if o == nil {
+func (d *Diagnostic) GetHelpMessage() *string {
+	if d == nil {
 		return nil
 	}
-	return o.HelpMessage
+	return d.HelpMessage
 }
 
-func (o *Diagnostic) GetMessage() string {
-	if o == nil {
+func (d *Diagnostic) GetMessage() string {
+	if d == nil {
 		return ""
 	}
-	return o.Message
+	return d.Message
 }
 
-func (o *Diagnostic) GetPath() []string {
-	if o == nil {
+func (d *Diagnostic) GetPath() []string {
+	if d == nil {
 		return []string{}
 	}
-	return o.Path
+	return d.Path
 }
 
-func (o *Diagnostic) GetType() string {
-	if o == nil {
+func (d *Diagnostic) GetType() string {
+	if d == nil {
 		return ""
 	}
-	return o.Type
+	return d.Type
 }

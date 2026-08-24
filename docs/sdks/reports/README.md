@@ -1,5 +1,4 @@
 # Reports
-(*Reports*)
 
 ## Overview
 
@@ -17,13 +16,14 @@ Get the signed access url for the change reports for a particular document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getChangesReportSignedUrl" method="get" path="/v1/reports/changes/{documentChecksum}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -33,7 +33,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -73,13 +73,14 @@ Get the signed access url for the linting reports for a particular document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getLintingReportSignedUrl" method="get" path="/v1/reports/linting/{documentChecksum}" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -89,7 +90,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -129,13 +130,14 @@ Upload a report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="uploadReport" method="post" path="/v1/reports" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"os"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -146,20 +148,19 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    content, fileErr := os.Open("example.file")
+    example, fileErr := os.Open("example.file")
     if fileErr != nil {
         panic(fileErr)
     }
 
-
     res, err := s.Reports.UploadReport(ctx, operations.UploadReportRequestBody{
         Data: shared.Report{},
         File: operations.File{
-            Content: content,
+            Content: example,
             FileName: "example.file",
         },
     })

@@ -10,11 +10,11 @@ type RevokeUserAccessToWorkspaceGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *RevokeUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (r *RevokeUserAccessToWorkspaceGlobals) GetWorkspaceID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return r.WorkspaceID
 }
 
 type RevokeUserAccessToWorkspaceRequest struct {
@@ -24,18 +24,18 @@ type RevokeUserAccessToWorkspaceRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *RevokeUserAccessToWorkspaceRequest) GetUserID() string {
-	if o == nil {
+func (r *RevokeUserAccessToWorkspaceRequest) GetUserID() string {
+	if r == nil {
 		return ""
 	}
-	return o.UserID
+	return r.UserID
 }
 
-func (o *RevokeUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (r *RevokeUserAccessToWorkspaceRequest) GetWorkspaceID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return r.WorkspaceID
 }
 
 type RevokeUserAccessToWorkspaceResponse struct {
@@ -47,23 +47,23 @@ type RevokeUserAccessToWorkspaceResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *RevokeUserAccessToWorkspaceResponse) GetContentType() string {
-	if o == nil {
+func (r *RevokeUserAccessToWorkspaceResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *RevokeUserAccessToWorkspaceResponse) GetStatusCode() int {
-	if o == nil {
+func (r *RevokeUserAccessToWorkspaceResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *RevokeUserAccessToWorkspaceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *RevokeUserAccessToWorkspaceResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }

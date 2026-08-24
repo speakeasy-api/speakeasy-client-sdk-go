@@ -16,37 +16,37 @@ type Manifest struct {
 	SchemaVersion *int64 `json:"schemaVersion,omitempty"`
 }
 
-func (o *Manifest) GetAnnotations() *Annotations {
-	if o == nil {
+func (m *Manifest) GetAnnotations() *Annotations {
+	if m == nil {
 		return nil
 	}
-	return o.Annotations
+	return m.Annotations
 }
 
-func (o *Manifest) GetArtifactType() *string {
-	if o == nil {
+func (m *Manifest) GetArtifactType() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ArtifactType
+	return m.ArtifactType
 }
 
-func (o *Manifest) GetLayers() []V2Descriptor {
-	if o == nil {
+func (m *Manifest) GetLayers() []V2Descriptor {
+	if m == nil {
 		return nil
 	}
-	return o.Layers
+	return m.Layers
 }
 
-func (o *Manifest) GetMediaType() *string {
-	if o == nil {
+func (m *Manifest) GetMediaType() *string {
+	if m == nil {
 		return nil
 	}
-	return o.MediaType
+	return m.MediaType
 }
 
-func (o *Manifest) GetSchemaVersion() *int64 {
-	if o == nil {
+func (m *Manifest) GetSchemaVersion() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.SchemaVersion
+	return m.SchemaVersion
 }

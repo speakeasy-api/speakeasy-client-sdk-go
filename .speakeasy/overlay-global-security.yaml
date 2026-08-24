@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: Restore global security requirement
+  version: 0.0.1
+# The registry's composed spec lost its top-level `security` when
+# `speakeasy merge` (>=1.752, 2026-03) started pushing it down onto every
+# operation. Generators then model auth as per-operation parameters, which for
+# this SDK means WithSecurity(string) and a required Security argument on every
+# method — a breaking change for all v3 consumers. Restoring the global
+# requirement keeps the v3 surface (WithSecurity(shared.Security), no per-call
+# security) intact; operations that explicitly declare `security: []` keep
+# their public override. Remove once speakeasy-registry restores it upstream.
+actions:
+  - target: "$"
+    update:
+      security:
+        - APIKey: []
+        - WorkspaceIdentifier: []
+        - Bearer: []

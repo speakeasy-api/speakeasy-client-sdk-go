@@ -8,9 +8,21 @@ const (
 	AccountTypeFree       AccountType = "free"
 	AccountTypeScaleUp    AccountType = "scale-up"
 	AccountTypeBusiness   AccountType = "business"
+	AccountTypeOss        AccountType = "oss"
 	AccountTypeEnterprise AccountType = "enterprise"
 )
 
 func (e AccountType) ToPointer() *AccountType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AccountType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "free", "scale-up", "business", "oss", "enterprise":
+			return true
+		}
+	}
+	return false
 }

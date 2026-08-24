@@ -1,5 +1,4 @@
 # Events
-(*Events*)
 
 ## Overview
 
@@ -10,6 +9,7 @@ REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action
 * [GetEventsByTarget](#geteventsbytarget) - Load recent events for a particular workspace
 * [GetTargets](#gettargets) - Load targets for a particular workspace
 * [GetTargetsDeprecated](#gettargetsdeprecated) - Load targets for a particular workspace
+* [GetTargetsSummary](#gettargetssummary) - Load a lean summary of targets for a workspace with pagination. Returns only essential fields needed by the dashboard UI.
 * [Post](#post) - Post events for a specific workspace
 * [Search](#search) - Search events for a particular workspace by any field
 
@@ -19,13 +19,14 @@ Load recent events for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceEventsByTarget" method="get" path="/v1/workspace/{workspace_id}/events/targets/{target_id}/events" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -34,14 +35,14 @@ func main() {
     ctx := context.Background()
 
     s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithWorkspaceID("<id>"),
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Events.GetEventsByTarget(ctx, operations.GetWorkspaceEventsByTargetRequest{
         TargetID: "<id>",
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -77,13 +78,14 @@ Load targets for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceTargets" method="get" path="/v1/workspace/events/targets" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -93,7 +95,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -132,13 +134,14 @@ Load targets for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceTargetsDeprecated" method="get" path="/v1/workspace/{workspace_id}/events/targets" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -147,14 +150,13 @@ func main() {
     ctx := context.Background()
 
     s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithWorkspaceID("<id>"),
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Events.GetTargetsDeprecated(ctx, operations.GetWorkspaceTargetsDeprecatedRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -183,20 +185,20 @@ func main() {
 | sdkerrors.Error    | 5XX                | application/json   |
 | sdkerrors.SDKError | 4XX                | \*/\*              |
 
-## Post
+## GetTargetsSummary
 
-Sends an array of events to be stored for a particular workspace.
+Load a lean summary of targets for a workspace with pagination. Returns only essential fields needed by the dashboard UI.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getWorkspaceTargetsSummary" method="get" path="/v1/workspace/events/targets/summary" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -206,25 +208,94 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+        }),
+    )
+
+    res, err := s.Events.GetTargetsSummary(ctx, operations.GetWorkspaceTargetsSummaryRequest{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TargetsSummaryPage != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.GetWorkspaceTargetsSummaryRequest](../../pkg/models/operations/getworkspacetargetssummaryrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../pkg/models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.GetWorkspaceTargetsSummaryResponse](../../pkg/models/operations/getworkspacetargetssummaryresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.Error    | 5XX                | application/json   |
+| sdkerrors.SDKError | 4XX                | \*/\*              |
+
+## Post
+
+Sends an array of events to be stored for a particular workspace.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="postWorkspaceEvents" method="post" path="/v1/workspace/{workspace_id}/events" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithWorkspaceID("<id>"),
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
     res, err := s.Events.Post(ctx, operations.PostWorkspaceEventsRequest{
         RequestBody: []shared.CliEvent{
             shared.CliEvent{
-                CreatedAt: types.MustTimeFromString("2025-03-02T10:07:28.113Z"),
+                CreatedAt: types.MustTimeFromString("2024-02-16T09:12:42.397Z"),
                 ExecutionID: "<id>",
                 ID: "<id>",
-                InteractionType: shared.InteractionTypeAuthenticate,
-                LocalStartedAt: types.MustTimeFromString("2025-08-12T17:54:17.538Z"),
+                InteractionType: shared.InteractionTypeQuickstart,
+                LocalStartedAt: types.MustTimeFromString("2025-01-23T01:13:51.002Z"),
                 SpeakeasyAPIKeyName: "<value>",
                 SpeakeasyVersion: "<value>",
                 Success: true,
                 WorkspaceID: "<id>",
             },
         },
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
     })
     if err != nil {
         log.Fatal(err)
@@ -260,13 +331,14 @@ Search events for a particular workspace by any field
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="searchWorkspaceEvents" method="get" path="/v1/workspace/{workspace_id}/events" -->
 ```go
 package main
 
 import(
 	"context"
-	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
+	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
@@ -275,14 +347,13 @@ func main() {
     ctx := context.Background()
 
     s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithWorkspaceID("<id>"),
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey: speakeasyclientsdkgo.String("<YOUR_API_KEY_HERE>"),
+            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{
-        WorkspaceID: speakeasyclientsdkgo.String("<id>"),
-    })
+    res, err := s.Events.Search(ctx, operations.SearchWorkspaceEventsRequest{})
     if err != nil {
         log.Fatal(err)
     }

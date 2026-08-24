@@ -13,11 +13,11 @@ type GetPublishingTokenPublicMetadataRequest struct {
 	TokenID string `pathParam:"style=simple,explode=false,name=tokenID"`
 }
 
-func (o *GetPublishingTokenPublicMetadataRequest) GetTokenID() string {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataRequest) GetTokenID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TokenID
+	return g.TokenID
 }
 
 // GetPublishingTokenPublicMetadataResponseBody - OK
@@ -34,45 +34,45 @@ func (g GetPublishingTokenPublicMetadataResponseBody) MarshalJSON() ([]byte, err
 }
 
 func (g *GetPublishingTokenPublicMetadataResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetOrganizationID() *string {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponseBody) GetOrganizationID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.OrganizationID
+	return g.OrganizationID
 }
 
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetTargetID() *string {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponseBody) GetTargetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.TargetID
+	return g.TargetID
 }
 
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetTargetResource() *string {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponseBody) GetTargetResource() *string {
+	if g == nil {
 		return nil
 	}
-	return o.TargetResource
+	return g.TargetResource
 }
 
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetValidUntil() *time.Time {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponseBody) GetValidUntil() *time.Time {
+	if g == nil {
 		return nil
 	}
-	return o.ValidUntil
+	return g.ValidUntil
 }
 
-func (o *GetPublishingTokenPublicMetadataResponseBody) GetWorkspaceID() *string {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponseBody) GetWorkspaceID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return g.WorkspaceID
 }
 
 type GetPublishingTokenPublicMetadataResponse struct {
@@ -86,30 +86,30 @@ type GetPublishingTokenPublicMetadataResponse struct {
 	Object *GetPublishingTokenPublicMetadataResponseBody
 }
 
-func (o *GetPublishingTokenPublicMetadataResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPublishingTokenPublicMetadataResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPublishingTokenPublicMetadataResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPublishingTokenPublicMetadataResponse) GetObject() *GetPublishingTokenPublicMetadataResponseBody {
-	if o == nil {
+func (g *GetPublishingTokenPublicMetadataResponse) GetObject() *GetPublishingTokenPublicMetadataResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

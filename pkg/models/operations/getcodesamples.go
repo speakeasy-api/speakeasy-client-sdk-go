@@ -12,18 +12,18 @@ type MethodPaths struct {
 	Path   string            `queryParam:"name=path"`
 }
 
-func (o *MethodPaths) GetMethod() shared.HTTPMethod {
-	if o == nil {
+func (m *MethodPaths) GetMethod() shared.HTTPMethod {
+	if m == nil {
 		return shared.HTTPMethod("")
 	}
-	return o.Method
+	return m.Method
 }
 
-func (o *MethodPaths) GetPath() string {
-	if o == nil {
+func (m *MethodPaths) GetPath() string {
+	if m == nil {
 		return ""
 	}
-	return o.Path
+	return m.Path
 }
 
 type GetCodeSamplesRequest struct {
@@ -37,32 +37,32 @@ type GetCodeSamplesRequest struct {
 	RegistryURL string `queryParam:"style=form,explode=true,name=registry_url"`
 }
 
-func (o *GetCodeSamplesRequest) GetLanguages() []string {
-	if o == nil {
+func (g *GetCodeSamplesRequest) GetLanguages() []string {
+	if g == nil {
 		return nil
 	}
-	return o.Languages
+	return g.Languages
 }
 
-func (o *GetCodeSamplesRequest) GetMethodPaths() []MethodPaths {
-	if o == nil {
+func (g *GetCodeSamplesRequest) GetMethodPaths() []MethodPaths {
+	if g == nil {
 		return nil
 	}
-	return o.MethodPaths
+	return g.MethodPaths
 }
 
-func (o *GetCodeSamplesRequest) GetOperationIds() []string {
-	if o == nil {
+func (g *GetCodeSamplesRequest) GetOperationIds() []string {
+	if g == nil {
 		return nil
 	}
-	return o.OperationIds
+	return g.OperationIds
 }
 
-func (o *GetCodeSamplesRequest) GetRegistryURL() string {
-	if o == nil {
+func (g *GetCodeSamplesRequest) GetRegistryURL() string {
+	if g == nil {
 		return ""
 	}
-	return o.RegistryURL
+	return g.RegistryURL
 }
 
 type GetCodeSamplesResponse struct {
@@ -76,30 +76,30 @@ type GetCodeSamplesResponse struct {
 	UsageSnippets *shared.UsageSnippets
 }
 
-func (o *GetCodeSamplesResponse) GetContentType() string {
-	if o == nil {
+func (g *GetCodeSamplesResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetCodeSamplesResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetCodeSamplesResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetCodeSamplesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetCodeSamplesResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetCodeSamplesResponse) GetUsageSnippets() *shared.UsageSnippets {
-	if o == nil {
+func (g *GetCodeSamplesResponse) GetUsageSnippets() *shared.UsageSnippets {
+	if g == nil {
 		return nil
 	}
-	return o.UsageSnippets
+	return g.UsageSnippets
 }

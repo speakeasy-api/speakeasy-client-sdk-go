@@ -11,11 +11,11 @@ type GetSchemaStoreItemRequestBody struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *GetSchemaStoreItemRequestBody) GetID() *string {
-	if o == nil {
+func (g *GetSchemaStoreItemRequestBody) GetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetSchemaStoreItemResponse struct {
@@ -29,30 +29,30 @@ type GetSchemaStoreItemResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *GetSchemaStoreItemResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSchemaStoreItemResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSchemaStoreItemResponse) GetSchemaStoreItem() *shared.SchemaStoreItem {
-	if o == nil {
+func (g *GetSchemaStoreItemResponse) GetSchemaStoreItem() *shared.SchemaStoreItem {
+	if g == nil {
 		return nil
 	}
-	return o.SchemaStoreItem
+	return g.SchemaStoreItem
 }
 
-func (o *GetSchemaStoreItemResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSchemaStoreItemResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSchemaStoreItemResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSchemaStoreItemResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }

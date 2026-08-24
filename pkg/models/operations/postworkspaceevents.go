@@ -11,11 +11,11 @@ type PostWorkspaceEventsGlobals struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *PostWorkspaceEventsGlobals) GetWorkspaceID() *string {
-	if o == nil {
+func (p *PostWorkspaceEventsGlobals) GetWorkspaceID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return p.WorkspaceID
 }
 
 type PostWorkspaceEventsRequest struct {
@@ -24,18 +24,18 @@ type PostWorkspaceEventsRequest struct {
 	WorkspaceID *string `pathParam:"style=simple,explode=false,name=workspace_id"`
 }
 
-func (o *PostWorkspaceEventsRequest) GetRequestBody() []shared.CliEvent {
-	if o == nil {
+func (p *PostWorkspaceEventsRequest) GetRequestBody() []shared.CliEvent {
+	if p == nil {
 		return []shared.CliEvent{}
 	}
-	return o.RequestBody
+	return p.RequestBody
 }
 
-func (o *PostWorkspaceEventsRequest) GetWorkspaceID() *string {
-	if o == nil {
+func (p *PostWorkspaceEventsRequest) GetWorkspaceID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.WorkspaceID
+	return p.WorkspaceID
 }
 
 type PostWorkspaceEventsResponse struct {
@@ -47,23 +47,23 @@ type PostWorkspaceEventsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PostWorkspaceEventsResponse) GetContentType() string {
-	if o == nil {
+func (p *PostWorkspaceEventsResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostWorkspaceEventsResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostWorkspaceEventsResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostWorkspaceEventsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostWorkspaceEventsResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
