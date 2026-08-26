@@ -3,11 +3,7 @@ speakeasyVersion: latest
 sources:
     my-source:
         inputs:
-            # Authoritative spec, published by speakeasy-registry CI on every merge
-            # to main (the www.speakeasy.com copy is a hand-maintained snapshot).
             - location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/speakeasy-api:latest
-        overlays:
-            - location: .speakeasy/overlay-global-security.yaml
         registry:
             location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/my-source
 targets:
