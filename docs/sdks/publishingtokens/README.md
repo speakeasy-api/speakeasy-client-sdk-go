@@ -26,8 +26,6 @@ import(
 	"context"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
-	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
 
@@ -40,12 +38,7 @@ func main() {
         }),
     )
 
-    res, err := s.PublishingTokens.Create(ctx, &operations.CreatePublishingTokenRequestBody{
-        TargetID: "<id>",
-        TargetResource: "<value>",
-        TokenName: "<value>",
-        ValidUntil: types.MustTimeFromString("2024-03-04T16:00:09.135Z"),
-    })
+    res, err := s.PublishingTokens.Create(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }

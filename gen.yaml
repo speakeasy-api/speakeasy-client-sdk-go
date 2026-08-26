@@ -24,7 +24,7 @@ generation:
   requestBodyFieldName: ""
   versioningStrategy: automatic
   mockServer:
-    disabled: false
+    disabled: true
   persistentEdits: {}
   tests:
     generateTests: true

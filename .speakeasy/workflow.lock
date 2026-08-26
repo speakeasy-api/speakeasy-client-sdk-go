@@ -13,7 +13,7 @@ targets:
         sourceRevisionDigest: sha256:4eaebafb4f596bd34e1f231b5cd9774dbab195f29606649a09b8fb5fd52d9438
         sourceBlobDigest: sha256:864a1f32cc159cc9c3dacdf55b3078ce33fa2506fe588ee9f2840bff6fe572f9
         codeSamplesNamespace: code-samples-go-speakeasy-client-sdk-go
-        codeSamplesRevisionDigest: sha256:f3eab39f1422367d19094a60480f64f1239a70ee3673da77e7dd1101e7533bee
+        codeSamplesRevisionDigest: sha256:e4aa6494393c8ff02cb3b6a3fee2971bc73bb925974ac862c13e654db9c9579d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
