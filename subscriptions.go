@@ -62,7 +62,7 @@ func (s *Subscriptions) ActivateSubscriptionNamespace(ctx context.Context, reque
 		Context:          ctx,
 		OperationID:      "activateSubscriptionNamespace",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -82,6 +82,10 @@ func (s *Subscriptions) ActivateSubscriptionNamespace(ctx context.Context, reque
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
 
 	for k, v := range o.SetHeaders {
 		req.Header.Set(k, v)
@@ -258,7 +262,7 @@ func (s *Subscriptions) IgnoreSubscriptionNamespace(ctx context.Context, request
 		Context:          ctx,
 		OperationID:      "ignoreSubscriptionNamespace",
 		OAuth2Scopes:     nil,
-		SecuritySource:   nil,
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -278,6 +282,10 @@ func (s *Subscriptions) IgnoreSubscriptionNamespace(ctx context.Context, request
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+		return nil, err
+	}
 
 	for k, v := range o.SetHeaders {
 		req.Header.Set(k, v)

@@ -26,6 +26,8 @@ import(
 	"context"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/types"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
 )
 
@@ -34,11 +36,16 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
-    res, err := s.PublishingTokens.Create(ctx, nil)
+    res, err := s.PublishingTokens.Create(ctx, &operations.CreatePublishingTokenRequestBody{
+        TargetID: "<id>",
+        TargetResource: "<value>",
+        TokenName: "<value>",
+        ValidUntil: types.MustTimeFromString("2024-03-04T16:00:09.135Z"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -90,7 +97,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -148,7 +155,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -205,7 +212,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -260,7 +267,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -318,7 +325,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 
@@ -376,7 +383,7 @@ func main() {
 
     s := speakeasyclientsdkgo.New(
         speakeasyclientsdkgo.WithSecurity(shared.Security{
-            APIKey1: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
         }),
     )
 

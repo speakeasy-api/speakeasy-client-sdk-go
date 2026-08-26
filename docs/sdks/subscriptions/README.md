@@ -21,6 +21,7 @@ package main
 
 import(
 	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -29,7 +30,11 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New()
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+        }),
+    )
 
     res, err := s.Subscriptions.ActivateSubscriptionNamespace(ctx, operations.ActivateSubscriptionNamespaceRequest{
         NamespaceName: "<value>",
@@ -75,6 +80,7 @@ package main
 
 import(
 	"context"
+	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/shared"
 	speakeasyclientsdkgo "github.com/speakeasy-api/speakeasy-client-sdk-go/v3"
 	"github.com/speakeasy-api/speakeasy-client-sdk-go/v3/pkg/models/operations"
 	"log"
@@ -83,7 +89,11 @@ import(
 func main() {
     ctx := context.Background()
 
-    s := speakeasyclientsdkgo.New()
+    s := speakeasyclientsdkgo.New(
+        speakeasyclientsdkgo.WithSecurity(shared.Security{
+            APIKey: speakeasyclientsdkgo.Pointer("<YOUR_API_KEY_HERE>"),
+        }),
+    )
 
     res, err := s.Subscriptions.IgnoreSubscriptionNamespace(ctx, operations.IgnoreSubscriptionNamespaceRequest{
         NamespaceName: "<value>",
