@@ -2,7 +2,7 @@
 
 package speakeasyclientsdkgo
 
-// Generated from OpenAPI doc version 0.4.0 and generator version 2.932.9
+// Generated from OpenAPI doc version 0.4.0 and generator version 2.933.0
 
 import (
 	"context"
@@ -167,9 +167,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Speakeasy {
 	sdk := &Speakeasy{
-		SDKVersion: "3.28.0",
+		SDKVersion: "3.28.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 3.28.0 2.932.9 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go/v3",
+			UserAgent:  "speakeasy-sdk/go 3.28.1 2.933.0 0.4.0 github.com/speakeasy-api/speakeasy-client-sdk-go/v3",
 			Globals:    globals.Globals{},
 			ServerList: ServerList,
 		},

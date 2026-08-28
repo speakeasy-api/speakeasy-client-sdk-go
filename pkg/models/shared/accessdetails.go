@@ -39,7 +39,16 @@ func (e *Level) UnmarshalJSON(data []byte) error {
 type AccessDetails struct {
 	GenerationAllowed bool   `json:"generation_allowed"`
 	Level             *Level `json:"level,omitempty"`
-	Message           string `json:"message"`
+	// Signed JWT (EdDSA/Ed25519) asserting the workspace's commercial license
+	// entitlements at time of issue. Verified offline by the open-source
+	// generator against its embedded JWK set; may be persisted as an offline
+	// license file. Only present whenever generation is not blocked and license
+	// signing is configured; scoped to the requested target for free-tier
+	// workspaces, unrestricted otherwise.
+	//
+	LicenseJwt *string `json:"license_jwt,omitempty"`
+	Message    string  `json:"message"`
+	StatusCode *string `json:"status_code,omitempty"`
 }
 
 func (a *AccessDetails) GetGenerationAllowed() bool {
@@ -56,9 +65,23 @@ func (a *AccessDetails) GetLevel() *Level {
 	return a.Level
 }
 
+func (a *AccessDetails) GetLicenseJwt() *string {
+	if a == nil {
+		return nil
+	}
+	return a.LicenseJwt
+}
+
 func (a *AccessDetails) GetMessage() string {
 	if a == nil {
 		return ""
 	}
 	return a.Message
+}
+
+func (a *AccessDetails) GetStatusCode() *string {
+	if a == nil {
+		return nil
+	}
+	return a.StatusCode
 }

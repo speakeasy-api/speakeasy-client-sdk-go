@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 2858c6d9-f946-4185-ae68-3b8e708830fb
 management:
-  docChecksum: aaae533c921391530bea852f455ff1ff
+  docChecksum: 158a90f192654d7f787e6fda02fea20e
   docVersion: 0.4.0
-  speakeasyVersion: 1.795.3
-  generationVersion: 2.932.9
-  releaseVersion: 3.28.0
-  configChecksum: 8d1f17bac1d078db07db3a390d5d4abe
+  speakeasyVersion: 1.796.1
+  generationVersion: 2.933.0
+  releaseVersion: 3.28.1
+  configChecksum: 6bdf924c8ed2579dbcb2417ce2ba68ad
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-go
   published: true
 persistentEdits:
-  generation_id: eba3bbc2-e8c2-44df-9e59-76c8a364d9d3
-  pristine_commit_hash: 85d9285e0355ffb725795405633a66d3ebde11c0
-  pristine_tree_hash: 76bf5199ffaaaf7bf8871967b655ccaa091f40f0
+  generation_id: 1930920d-ba88-4e0c-bc40-905cf414bdbb
+  pristine_commit_hash: da6d3c506275542841e9bf59e7dec7b5b21b864d
+  pristine_tree_hash: 47f706ece20d91cd8f486e7bb2a0f8e03007c4ac
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.14
-    core: 3.13.48
+    core: 3.13.51
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -800,8 +800,8 @@ trackedFiles:
     pristine_git_object: e21c7bbebbe5cc3c4131a05d465740376feed264
   docs/pkg/models/shared/accessdetails.md:
     id: 8cd4fe2cd23b
-    last_write_checksum: sha1:360b56630329b822f05947d5e722d0992eef936a
-    pristine_git_object: 0bb527bd8fd9526e7aae7b36e66748d85cd30df8
+    last_write_checksum: sha1:941a3b3ac42064f4148dc8ba508112a62cd5b0bb
+    pristine_git_object: 8d855fa37482db57f0dffca355095604ce01143f
   docs/pkg/models/shared/accesstoken.md:
     id: e17971f2440e
     last_write_checksum: sha1:19bdf32555dd7c16d27634468aea21574c7969df
@@ -1720,8 +1720,8 @@ trackedFiles:
     pristine_git_object: 7d63b9813d4d5a025a0337b45f42e4b9fb404eeb
   pkg/models/shared/accessdetails.go:
     id: ff943edb6ee3
-    last_write_checksum: sha1:56a324c16f166b913c72b8022e49b036f1c4db89
-    pristine_git_object: e2129708a7392242626cccc3dc9939f4803ec7de
+    last_write_checksum: sha1:2c6d55a0f63a8c7c0bfc5128232dc69f31a607a4
+    pristine_git_object: b0ca5637ed5915336ad39bbba8581a4588c699f3
   pkg/models/shared/accesstoken.go:
     id: 3a88854523ff
     last_write_checksum: sha1:7d47e88e505a7397f5432cfe1f51fc468c1f3374
@@ -2180,8 +2180,8 @@ trackedFiles:
     pristine_git_object: 7441bb2207dd82faa6808aa74716615f52813781
   speakeasy.go:
     id: 1cb8d6d515ed
-    last_write_checksum: sha1:9d73e1ca73de69a36aeeb6a7579f256bf54e9a7e
-    pristine_git_object: 3aa6f5350e088c8b236c83d9cfc7888ef55582b0
+    last_write_checksum: sha1:99b6d5f4100959e500b815e7a79f3c716af9bfec
+    pristine_git_object: d8a2c86d007dd6febe6cfb4193ea91e85c1fbaba
   subscriptions.go:
     id: 7ffd9f652eea
     last_write_checksum: sha1:7eed9a6f3ea69daf27fc1ce172467f6c07b2b6dc
@@ -3107,6 +3107,9 @@ generatedTests:
   generateCodeSamplePreview-default: "2026-08-19T14:27:31+01:00"
   getCodeSamples-default: "2026-08-19T14:27:31+01:00"
   getCodeSamplePreviewAsync-default: "2026-08-19T14:27:31+01:00"
+releaseNotes: |
+  ## Go SDK Changes:
+  * `Speakeasy.Auth.GetAccess()`:  `response` **Changed**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
